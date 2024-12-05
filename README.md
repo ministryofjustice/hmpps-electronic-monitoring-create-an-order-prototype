@@ -13,7 +13,7 @@ Deployed from main at: TBC
 ### Installation
 Install the prototype by checking out the repository and installing dependencies:
 
-git clone git@github.com:ministryofjustice/hmpps-electronic-monitoring-designprototype.git
+git clone git@github.com:ministryofjustice/hmpps-electronic-monitoring-create-an-order-prototype.git
 
 cd hmpps-electronic-monitoring-designprototype
 
