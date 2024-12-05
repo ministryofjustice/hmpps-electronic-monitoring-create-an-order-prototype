@@ -1,0 +1,194 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Identity numbers - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+      <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the device wearer</span>
+        Identity numbers
+      </h1>
+
+      <form class="form" action="personal-details" method="post">
+
+        <p>Identity numbers help us identify the device wearer.</p>
+
+
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+
+        {% set nomisHtml %}
+        {{ govukInput({
+          id: "nomis",
+          name: "nomis",
+          spellcheck: false,
+          value: data['nomis'],
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: "NOMIS ID"
+          }
+        }) }}
+        {% endset -%}
+
+        {% set pncHtml %}
+        {{ govukInput({
+          id: "pnc",
+          name: "pnc",
+          value: data['wearer-pnc'],
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: "PNC ID"
+          }
+        }) }}
+        {% endset -%}
+
+        {% set deliusHtml %}
+        {{ govukInput({
+          id: "delius",
+          name: "delius",
+          classes: "govuk-!-width-two-thirds",
+          value: data['delius'],
+          label: {
+            text: "Delius ID"
+          }
+        }) }}
+        {% endset -%}
+
+         {% set prisonHtml %}
+        {{ govukInput({
+          id: "prison",
+          name: "prison",
+          classes: "govuk-!-width-two-thirds",
+          value: data['prison'],
+          label: {
+            text: "Prison number"
+          }
+        }) }}
+        {% endset -%}
+
+         {% set hoHtml %}
+        {{ govukInput({
+          id: "ho",
+          name: "ho",
+          value: data['ho'],
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: "Home Office reference number"
+          }
+        }) }}
+        {% endset -%}
+
+         {% set urnHtml %}
+        {{ govukInput({
+          id: "urn",
+          name: "urn",
+          value: data['urn'],
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: "URN ID number"
+          }
+        }) }}
+        {% endset -%}
+
+        {{ govukCheckboxes({
+          name: "identity-numbers",
+          fieldset: {
+            legend: {
+              text: "What identity numbers do you have for the device wearer?",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "Select all options that you have"
+          },
+          items: [
+            {
+              value: "National Offender Management Information System (NOMIS) ID",
+              checked: (true if data['nomis'] !== NULL and data['nomis'] !== ''),
+              text: "National Offender Management Information System (NOMIS) ID",
+              conditional: {
+                html: nomisHtml
+              }
+            },
+            {
+              value: "Police National Computer (PNC) ID",
+              checked: (true if data['pnc'] !== NULL and data['pnc'] !== ''),
+              text: "Police National Computer (PNC) ID",
+              conditional: {
+                html: pncHtml
+              }
+            },
+            {
+              value: "Delius ID",
+              checked: (true if data['delius'] !== NULL and data['delius'] !== ''),
+              text: "Delius ID",
+              conditional: {
+                html: deliusHtml
+              }
+            },
+            {
+              value: "Prison number",
+              checked: (true if data['prison'] !== NULL and data['prison'] !== ''),
+              text: "Prison number",
+              conditional: {
+                html: prisonHtml
+              }
+            },
+            {
+              value: "Home Office reference number",
+              checked: (true if data['ho'] !== NULL and data['ho'] !== ''),
+              text: "Home Office reference number",
+              conditional: {
+                html: hoHtml
+              }
+            },
+            {
+              value: "URN ID number",
+              checked: (true if data['urn'] !== NULL and data['urn'] !== ''),
+              text: "URN ID number",
+              conditional: {
+                html: urnHtml
+              }
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "Not able to provide this information",
+              checked: (true if data['identity-numbers'] == 'Not able to provide this information'),
+              text: "Not able to provide this information",
+              behaviour: "exclusive"
+            }
+          ]
+        }) }}
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+       {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

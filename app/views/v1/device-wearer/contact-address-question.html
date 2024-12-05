@@ -1,0 +1,71 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible adult details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the device wearer</span>
+        Device wearer's address
+      </h1>
+     
+
+      <form class="form" action="contact-address" method="post">
+
+          {{ govukRadios({
+            name: "addressquestion",
+            fieldset: {
+              legend: {
+                text: "Does the device wearer have a fixed address?",
+               classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "For example, the device wearer has a tenancy or permanent address they are registered at."
+            },
+            items: [
+           
+              {
+                value: "Yes, they have a fixed address",
+                checked: (true if data['addressquestion'] == 'Yes, they have a fixed address'),
+                text: "Yes, they have a fixed address"
+              },
+              {
+                value: "No, they have no fixed address",
+                checked: (true if data['addressquestion'] == 'No, they have no fixed address'),
+                text: "No, they have no fixed address"
+              }
+            ]
+          }) }}
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

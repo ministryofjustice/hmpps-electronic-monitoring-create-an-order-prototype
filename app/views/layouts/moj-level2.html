@@ -1,0 +1,78 @@
+     {#
+    For guidance on how to use layouts see:
+    https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+    #}
+    {% extends "layouts/main.html" %}
+
+
+
+    
+    {% block header %}
+    
+    {%- from "moj/components/header/macro.njk" import mojHeader -%}
+
+{{ mojHeader({
+  organisationLabel: {
+    text: 'HMPPS',
+    href: '#'
+  },
+  serviceLabel: {
+    text: 'Electronic Monitoring',
+    href: '#'
+  },
+  navigation: {
+    label: 'Account navigation',
+    items: [{
+      text: 'Ada Lovelace',
+      href: '#',
+      active: true
+    }, {
+      text: 'Sign out',
+      href: '/signin'
+    }]
+  }
+
+}) }}
+    <div class="govuk-width-container">
+      {{ govukPhaseBanner({
+        tag: {
+          text: "Beta"
+        },
+        html: 'This is a new service. Help us improve it and <a class="govuk-link" href="/v1/feedback">give your feedback</a>.'
+      }) }}
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    {% block backlink %}
+    
+
+    
+    {% endblock %}
+    
+    {% endblock %}
+
+   {% block footer %}
+
+      {{ govukFooter({
+        meta: {
+          items: [
+            {
+              href: "#",
+              text: "Accessibility statement"
+            },
+            {
+              href: "/manage-prototype/clear-data",
+              text: "Clear data"
+            }
+          ]
+        }
+      }) }}
+
+      {% endblock %}

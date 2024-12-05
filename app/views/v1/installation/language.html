@@ -1,0 +1,128 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Language - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Access needs and installation risk information</span>
+        Language spoken
+      </h1>
+
+      <form class="form" action="risk" method="post">
+
+
+         {% set languageHtml %}
+          {{ xGovukAutocomplete({
+                id: "language",
+                name: "language",
+                value: data['language'],
+                allowEmpty: false,
+                label: {
+                  classes: "govuk-label",
+                  text: "What language should be used when speaking to the device wearer?"
+                },
+
+                items: [
+                  { text: "Mandarin Chinese" },
+                  { text: "Spanish" },
+                  { text: "English" },
+                  { text: "Hindi" },
+                  { text: "Bengali" },
+                  { text: "Portugese" },
+                  { text: "Russian" },
+                  { text: "Japanese" },
+                  { text: "Vietnamese" },
+                  { text: "Turkish" },
+                  { text: "Wu Chinese" },
+                  { text: "Marathi" },
+                  { text: "Telugu" },
+                  { text: "Punjabi" },
+                  { text: "Korean" },
+                  { text: "Tamil" },
+                  { text: "Arabic" },
+                  { text: "German" },
+                  { text: "French" },
+                  { text: "Urdu" },
+                  { text: "Italian" },
+                  { text: "Iranian Persian" },
+                  { text: "Javanese" },
+                  { text: "Slovakian" },
+                  { text: "Swahili" },
+                  { text: "Croatian" },
+                  { text: "Dutch" },
+                  { text: "Greek" },
+                  { text: "Albanian" },
+                  { text: "Welsh" }
+                ]
+              }) }}
+          {% endset -%}
+
+         
+
+          {{ govukRadios({
+            name: "wearer-language",
+            fieldset: {
+              legend: {
+                text: "Does the device wearer require an interpreter?",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select one option"
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['wearer-language'] == 'Yes'),
+                conditional: {
+                  html: languageHtml
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (true if data['wearer-language'] == 'No'),
+                conditional: {
+                 
+                }
+              }
+            ]
+          }) }}
+
+        
+
+
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

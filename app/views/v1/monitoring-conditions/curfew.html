@@ -1,0 +1,151 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible adult details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Monitoring conditions</span>
+        Curfew monitoring addresses
+      </h1>
+
+
+      <form class="form" action="/curfew-address-question" method="post">
+
+          <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  {% if (data['addressquestion'] == "No, they have no fixed address") %}
+                   Temporary address
+
+                  {% else %}
+                  Contact address
+
+                  {% endif %}
+                </dt>
+                <dd class="govuk-summary-list__value">
+
+
+                  <p class="govuk-body">123 Carter Bar<br>
+                                        Glossop<br>
+                                        High Peak<br>
+                                        SK22 2NG</p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <ul class="govuk-summary-list__actions-list">
+                   
+                      <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> contact details</span></a>
+                 
+                  </ul>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Installation address
+                </dt>
+
+               {% if (data['installaddressquestion'] == "No") %}
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body">
+                    {{ data['installaddressLine1'] }}<br>
+                    {{ data['installaddressTown'] }}<br>
+                    {{ data['installaddressPostcode'] }}
+                </dd>
+                {% else %}
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body">{% if (data['addressquestion'] == "No, they have no fixed address") %}
+                   Same as temporary address
+
+                  {% else %}
+                  Same as contact address
+
+                  {% endif %}
+                </dd>
+                {% endif %}
+                <dd class="govuk-summary-list__actions">
+                  <ul class="govuk-summary-list__actions-list">
+                   
+                      <a class="govuk-link" href="install-address-question">Change<span class="govuk-visually-hidden"> contact details</span></a>
+                 
+                  </ul>
+                </dd>
+              </div>
+              {% if (data['addcurfewaddress'] == "Yes") %}
+                <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  {{ data['curfewaddressname'] }}
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body">
+                    {{ data['curfewaddressLine1'] }}<br>
+                    {{ data['curfewaddressTown'] }}<br>
+                    {{ data['curfewaddressPostcode'] }}
+                <dd class="govuk-summary-list__actions">
+                  <ul class="govuk-summary-list__actions-list">
+                    
+                      <a class="govuk-link" href="curfew-address">Change<span class="govuk-visually-hidden"> contact details</span></a>
+                 
+                  </ul>
+                </dd>
+              </div>
+
+              {% endif %}
+            </dl>
+
+
+
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "curfewaddressquestion",
+            fieldset: {
+              legend: {
+                text: "Are there any other addresses where the device wearer will spend curfew hours?",
+               classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+           
+              {
+                value: "Yes",
+                text: "Yes"
+              },
+              {
+                value: "No",
+                checked: (true if data['curfewaddressquestion'] == 'No'),
+                text: "No"
+              }
+            ]
+          }) }}
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

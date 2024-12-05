@@ -1,0 +1,114 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Date of birth - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the device wearer</span>
+        Date of birth
+      </h1>
+
+      <form class="form" action="/eighteen-answer" method="post">
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+       
+
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-label govuk-label--s">
+                What is the device wearer's date of birth?
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 27 3 2007
+              </div>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="wearer-dob-day" type="text" inputmode="numeric" value="{{ data['wearer-dob-day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="wearer-dob-month" type="text" inputmode="numeric" value="{{ data['wearer-dob-month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="wearer-dob-year" type="text" inputmode="numeric" value="{{ data['wearer-dob-year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "eighteen",
+            fieldset: {
+              legend: {
+                text: "Will the device wearer be 18 years old or over when the electronic monitoring device is installed?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['eighteen'] == 'Yes')
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (true if data['eighteen'] == 'No')
+              }
+            ]
+          }) }}
+
+           
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+       
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

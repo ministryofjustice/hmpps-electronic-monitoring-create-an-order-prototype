@@ -1,0 +1,83 @@
+{% extends "layouts/moj.html" %}
+
+{% block pageTitle %}
+  Feedback - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Give feedback on Electronic Monitoring</h1>
+
+      <form class="form" action="feedback-confirmation" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {{ govukRadios({
+            name: "feedback",
+            fieldset: {
+              legend: {
+                text: "Overall how do you feel about the service you received today?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            items: [
+              {
+                value: "very-satisfied",
+                text: "Very satisfied"
+              },
+              {
+                value: "satisfied",
+                text: "Satisfied"
+              },
+              {
+                value: "neutral",
+                text: "Neither satisfied or disatisfied"
+              },
+              {
+                value: "disatisfied",
+                text: "Disatisfied"
+              },
+              {
+                value: "very-disatisfied",
+                text: "Very disatisfied"
+              }
+            ]
+          }) }}
+
+          {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+          
+
+              {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+              {{ govukCharacterCount({
+                name: "withHint",
+                id: "with-hint",
+                maxlength: 200,
+                label: {
+                  text: "How could we improve this service?",
+                  classes: "govuk-label--m",
+                  isPageHeading: false
+                },
+                hint: {
+                  text: "Do not include personal or financial information like your National Insurance number or credit card details"
+                }
+              }) }}
+
+
+    <button type="submit" class="govuk-button" data-module="govuk-button" data-govuk-button-init="">
+      Send feedback
+    </button>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

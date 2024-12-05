@@ -1,0 +1,113 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Personal details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the device wearer</span>
+        Gender
+      </h1>
+
+      <p>
+        Gender helps the person fitting the device use the correct language when talking to the device wearer.
+      </p>
+
+      <form class="form" action="age" method="post">
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+         {% set genderHtml %}
+          {{ govukInput({
+            id: "gender",
+            name: "wearer-gender-other",
+            spellcheck: false,
+            value: data['wearer-gender-other'],
+            classes: "govuk-input--width-20",
+            label: {
+              text: "What is the device wearer's chosen identity?"
+            }
+          }) }}
+          {% endset -%}
+
+         
+
+          {{ govukRadios({
+            name: "wearer-gender",
+            fieldset: {
+              legend: {
+                text: "How does the device wearer describe themselves?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select one option"
+            },
+            items: [
+              {
+                value: "Male",
+                checked: (true if data['wearer-gender'] == 'Male'),
+                text: "Male"
+              },
+              {
+                value: "Female",
+                checked: (true if data['wearer-gender'] == 'Female'),
+                text: "Female"
+              },
+              {
+                value: "Non binary",
+                checked: (true if data['wearer-gender'] == 'Non binary'),
+                text: "Non binary"
+              },
+              {
+                value: "Self identify",
+                checked: (true if data['wearer-gender'] == 'Self identify'),
+                text: "Self identify",
+                conditional: {
+                  html: genderHtml
+                }
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "Not able to provide this information",
+                checked: (true if data['wearer-gender'] == 'Not able to provide this information'),
+                text: "Not able to provide this information"
+              }
+            ]
+          }) }}
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

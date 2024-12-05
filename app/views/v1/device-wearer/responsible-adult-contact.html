@@ -1,0 +1,101 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible adult details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the device wearer</span>
+        Responsible adult's telephone number
+      </h1>
+
+    
+     
+
+      <form class="form" action="contact-address-question" method="post">
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+       
+
+
+         {% set telHtml %}
+          {{ govukInput({
+            id: "adult-telephone",
+            name: "adult-telephone",
+            type: "tel",
+            spellcheck: false,
+            value: data['adult-telephone'],
+            classes: "govuk-input--width-20",
+            label: {
+              text: "What is the responsible adult's telephone number?"
+            },
+            hint: {
+              text: "Provide either a landline or mobile number"
+            }
+          }) }}
+          {% endset -%}
+
+         
+
+          {{ govukRadios({
+            name: "adult-tel-question",
+            fieldset: {
+              legend: {
+                text: "Does the responsible adult have a contact telephone number?",
+               classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select one option"
+            },
+            items: [
+           
+              {
+                value: "Yes",
+                checked: (true if data['adult-tel-question'] == 'Yes'),
+                text: "Yes",
+                conditional: {
+                  html: telHtml
+                }
+              },
+              {
+                value: "No",
+                checked: (true if data['adult-tel-question'] == 'No'),
+                text: "No"
+              }
+            ]
+          }) }}
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}
