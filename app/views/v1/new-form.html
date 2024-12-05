@@ -1,0 +1,100 @@
+{% extends "layouts/moj.html" %}
+
+{% block pageTitle %}
+  Electronic Monitoring notification form - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<!-- Breadcrumb -->
+<a href="dashboard" action="action" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Electronic Monitoring notification form</h1>
+
+      <form class="form" action="new-form" method="post">
+
+  <!-- <h2 class="govuk-heading-m">Notification form sections</h2>-->
+
+      {% set completedStatus = {
+        text: "Completed"
+      } %}
+
+      {% set incompleteStatus = {
+        tag: {
+          text: "Incomplete",
+          classes: "govuk-tag--blue"
+        }
+      } %}
+
+      {# To switch between the completed and incomplete statues, use some inline logic within the component below, like this: "status: (completedStatus if ... else incompleteStatus)" #}
+
+      {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the responsible organisation"
+            },
+            href: ("#" if data['section-2-complete'] == 'true' else "#"),
+            status: (completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers" if data['section-1-complete'] == 'true' else "device-wearer/identity-numbers"),
+            status: (completedStatus if data['section-1-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Monitoring conditions"
+            },
+            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "monitoring-conditions/monitoring-details"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk information"
+            },
+            href: ("installation/check-answers" if data['section-3-complete'] == 'true' else "installation/disability"),
+            status: (completedStatus if data['section-3-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Attachments"
+            },
+            href: ("#" if data['section-5-complete'] == 'true' else "#"),
+            status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          }
+
+        ]
+      }) }}
+
+
+
+
+      <div class="govuk-!-margin-top-5">
+       <div class="govuk-button-group">
+
+           {% if (data['section-1-complete'] == true) and (data['section-2-complete'] == true) and data['section-3-complete'] == true and data['section-4-complete'] == true and data['section-5-complete'] == true %}
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Submit form
+          </button>
+          {% else %}
+              <button type="submit" class="govuk-button" disabled data-module="govuk-button">
+                Submit form
+              </button>
+          {% endif %}
+
+          <a class="govuk-link" href="delete-form">Delete form</a>
+        </div>
+      </div>
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

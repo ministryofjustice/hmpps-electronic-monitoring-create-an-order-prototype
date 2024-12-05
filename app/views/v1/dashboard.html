@@ -1,0 +1,118 @@
+{% extends "layouts/moj.html" %}
+
+{% block pageTitle %}
+  Dashboard - Electronic Monitoring
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Electronic Monitoring notification forms
+      </h1>
+
+      <form class="form" action="new-form" method="post">
+
+       <!--  <h2 class="govuk-heading-m">
+          Submit a new notification form
+        </h2>
+
+       <p>
+          [Insert content here - see the
+          <a href="#" target="_blank">help text link (opens in a new tab)</a>
+        </p>-->
+
+        
+
+        <button type="submit" class="govuk-button" data-module="govuk-button" data-govuk-button-init="">
+          Start new form
+        </button>
+
+      </form>
+
+      <h2 class="govuk-heading-m">
+          View existing notification forms
+        </h2>
+
+        <p>
+          Edit or view your draft and submitted notification forms.
+        </p>
+
+
+
+          {% from "govuk/components/tabs/macro.njk" import govukTabs %}
+          {% from "govuk/components/table/macro.njk" import govukTable %}
+
+          {% set draftFormsHtml %}
+      
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Name of device wearer</th>
+                <th scope="col" class="govuk-table__header">Updated on</th>
+                <th scope="col" class="govuk-table__header">Reference</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="#">David Francis</a></td>
+                <td class="govuk-table__cell">29 November 2024</td>
+                <td class="govuk-table__cell">12453</td>
+              </tr>
+            </tbody>
+          </table>
+          {% endset -%}
+
+          {% set submittedFormsHtml %}
+    
+         <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Name of device wearer</th>
+                <th scope="col" class="govuk-table__header">Updated on</th>
+                <th scope="col" class="govuk-table__header">Reference</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="#">Jon Elliot</a></td>
+                <td class="govuk-table__cell">23 November 2024</td>
+                <td class="govuk-table__cell">12476</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="#">Mike Smith</a></td>
+                <td class="govuk-table__cell">12 November 2024</td>
+                <td class="govuk-table__cell">12490</td>
+              </tr>
+            </tbody>
+          </table>
+          {% endset -%}
+
+       
+          
+
+          {{ govukTabs({
+            items: [
+              {
+                label: "Draft forms",
+                id: "past-day",
+                panel: {
+                  html: draftFormsHtml
+                }
+              },
+              {
+                label: "Submitted forms",
+                id: "past-week",
+                panel: {
+                  html: submittedFormsHtml
+                }
+              }
+            ]
+          }) }}
+
+    </div>
+</div>
+
+{% endblock %}

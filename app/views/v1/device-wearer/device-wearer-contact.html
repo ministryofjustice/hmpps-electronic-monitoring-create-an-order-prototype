@@ -1,0 +1,98 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible adult details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the device wearer</span>
+        Device wearer's telephone number
+      </h1>
+
+      <p>We use the telephone number to contact the device wearer.</p>
+    
+     
+
+      <form class="form" action="contact-address-question" method="post">
+
+
+
+         {% set telHtml %}
+          {{ govukInput({
+            id: "wearer-telephone",
+            name: "wearer-telephone",
+            type: "tel",
+            spellcheck: false,
+            value: data['wearer-telephone'],
+            classes: "govuk-input--width-20",
+            label: {
+              text: "What is the device wearer's telephone number?"
+            },
+            hint: {
+              text: "Provide either a landline or mobile number"
+            }
+          }) }}
+          {% endset -%}
+
+         
+
+          {{ govukRadios({
+            name: "wearer-tel-question",
+            fieldset: {
+              legend: {
+                text: "Does the device wearer have a contact telephone number?",
+               classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select one option"
+            },
+            items: [
+           
+              {
+                value: "Yes",
+                checked: (true if data['wearer-tel-question'] == 'Yes'),
+                text: "Yes",
+                conditional: {
+                  html: telHtml
+                }
+              },
+              {
+                value: "No",
+                checked: (true if data['wearer-tel-question'] == 'No'),
+                text: "No"
+              }
+            ]
+          }) }}
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

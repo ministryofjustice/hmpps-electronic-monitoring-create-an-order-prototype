@@ -1,0 +1,83 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible adult details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Monitoring conditions</span>
+        Installation address
+      </h1>
+
+      {% if (data['addressquestion'] == "No, they have no fixed address") %}
+       <p class="govuk-body">Temporary address:</p>
+
+      {% else %}
+      <p class="govuk-body">Contact address:</p>
+
+      {% endif %}
+
+
+      <p>123 Carter Bar<br>
+          Glossop<br>
+          High Peak<br>
+          SK22 2NG</p>
+     
+
+      <form class="form" action="/installation-address" method="post">
+
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "installaddressquestion",
+            fieldset: {
+              legend: {
+                text: "Is this the address where the tag will be installed?",
+               classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+           
+              {
+                value: "Yes",
+                checked: (true if data['installaddressquestion'] == 'Yes'),
+                text: "Yes"
+              },
+              {
+                value: "No",
+                checked: (true if data['installaddressquestion'] == 'No'),
+                text: "No"
+              }
+            ]
+          }) }}
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

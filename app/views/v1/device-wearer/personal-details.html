@@ -1,0 +1,135 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Personal details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the device wearer</span>
+        Name and preferred name
+      </h1>
+
+      <form class="form" action="gender" method="post">
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukInput({
+          label: {
+            text: "What is the device wearer's first name?",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "wearer-firstname",
+          name: "wearer-firstname",
+          spellcheck: false,
+          value: data['wearer-firstname']
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "What is the device wearer's last name?",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "wearer-lastname",
+          name: "wearer-lastname",
+          spellcheck: false,
+          value: data['wearer-lastname']
+        }) }}
+
+
+          {% set aliasHtml %}
+          {{ govukInput({
+            id: "contact-by-email",
+            name: "wearer-alias",
+            spellcheck: false,
+            value: data['wearer-alias'],
+            classes: "govuk-input--width-20",
+            hint: {
+              text: "For example, a nick name or shortened version of their name"
+            },
+            label: {
+              text: "What is the device wearer's preferred name or alias?"
+            }
+          }) }}
+          {% endset -%}
+
+         
+
+          {{ govukRadios({
+            name: "wearer-alias-question",
+            fieldset: {
+              legend: {
+                text: "Does the device wearer have a preferred name or alias that is different to their first name?",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select one option"
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['wearer-alias-question'] == 'Yes'),
+                conditional: {
+                  html: aliasHtml
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (true if data['wearer-alias-question'] == 'No'),
+                conditional: {
+                 
+                }
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "Not able to provide this information",
+                text: "Not able to provide this information",
+                checked: (true if data['wearer-alias-question'] == 'Not able to provide this information'),
+                conditional: {
+                 
+                }
+              }
+            ]
+          }) }}
+
+
+         
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

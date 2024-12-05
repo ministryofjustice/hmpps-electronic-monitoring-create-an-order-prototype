@@ -1,0 +1,119 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Personal details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Monitoring conditions</span>
+        Monitoring details
+      </h1>
+
+      <form class="form" action="install-address-question" method="post">
+
+        <h2 class="govuk-heading-s">
+        When should the monitoring take place
+      </h2>
+      <p>Coming soon</p>
+
+       <h2 class="govuk-heading-s">
+        Order information
+      </h2>
+      <p>Coming soon</p>
+      <br>
+
+        {{ govukCheckboxes({
+            name: "monitoringtype",
+            fieldset: {
+              legend: {
+                text: "What monitoring does the device wearer need?",
+                classes: "govuk-fieldset__legend--s"
+
+              }
+            },
+            hint: {
+              text: "Select all that apply"
+            },
+            items: [
+              {
+                value: "Curfew with electronic monitoring",
+                checked: (true if data['monitoringtype'] == 'Curfew with electronic monitoring'),
+                hint: {
+                  text: "The device wearer must stay inside an address at specific times during the day and night."
+                },
+                text: "Curfew with electronic monitoring"
+              },
+              {
+                value: "Exclusion and inclusion zone monitoring",
+                checked: (true if data['monitoringtype'] == 'Exclusion and inclusion zone monitoring'),
+                hint: {
+                  text: "The device wearer must not enter identified areas or can only enter identified areas at specified times."
+                },
+                text: "Exclusion and inclusion zone monitoring"
+              },
+              {
+                value: "Trail monitoring",
+                checked: (true if data['monitoringtype'] == 'Trail monitoring'),
+                hint: {
+                  text: "GPS tracking will record the movements of the device wearer throughout the day. Must be monitored if the device wearer is part of the Acquisitive Crime Project."
+                },
+                text: "Trail monitoring"
+              },
+              {
+                value: "Mandatory attendance monitoring",
+                checked: (true if data['monitoringtype'] == 'Mandatory attendance monitoring'),
+                hint: {
+                  text: "Attendance of the device wearer at appointments is monitored."
+                },
+                text: "Mandatory attendance monitoring"
+              },
+              {
+                value: "Alcohol monitoring",
+                checked: (true if data['monitoringtype'] == 'Alcohol monitoring'),
+                disabled: (true if data['eighteen'] == 'No'),
+                hint: {
+                  text: "The device wearer's levels of alcohol or abstinence from alcohol is monitored."
+                },
+                text: "Alcohol monitoring"
+              }
+              
+          ]
+        }) }}
+
+
+
+
+
+
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}
