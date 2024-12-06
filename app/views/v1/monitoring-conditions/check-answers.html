@@ -64,7 +64,7 @@
          
  </dl>
 
-  {% if (data['monitoringtype'] == "Curfew with electronic monitoring") %}
+  {% if (data['monitoringtype'] == "Curfew with electronic monitoring" or data['monitoringtype2'] == "Curfew with electronic monitoring")  %}
 
  <h2 class="govuk-heading-m">Curfew with electronic monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -148,7 +148,7 @@
       
 {% endif %}
 
- {% if (data['monitoringtype'] == "Exclusion and inclusion zone monitoring") %}
+ {% if (data['monitoringtype'] == "Exclusion and inclusion zone monitoring" or data['monitoringtype2'] == "Exclusion and inclusion zone monitoring") %}
 
  <h2 class="govuk-heading-m">Exclusion and inclusion zone monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -171,7 +171,7 @@
 
    {% endif %}   
    
-    {% if (data['monitoringtype'] == "Trail monitoring") %}
+    {% if (data['monitoringtype'] == "Trail monitoring" or data['monitoringtype'] == "Trail monitoring") %}
 
  <h2 class="govuk-heading-m">Trail monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -194,7 +194,7 @@
 
    {% endif %}   
 
-    {% if (data['monitoringtype'] == "Mandatory attendance monitoring") %}
+    {% if (data['monitoringtype'] == "Mandatory attendance monitoring" or data['monitoringtype2'] == "Mandatory attendance monitoring") %}
 
  <h2 class="govuk-heading-m">Mandatory attendance monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -214,7 +214,7 @@
 
    {% endif %}    
 
-    {% if (data['monitoringtype'] == "Alcohol monitoring") %}
+    {% if (data['monitoringtype'] == "Alcohol monitoring" or data['monitoringtype2'] == "Alcohol monitoring") %}
 
  <h2 class="govuk-heading-m">Alcohol monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">

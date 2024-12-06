@@ -1,0 +1,75 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible adult details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the responsible organisation</span>
+        Check your answers
+      </h1>
+
+
+       <p>Check and save the information about the responsible organisation.</p>
+
+      <form class="form" action="../new-form?section-2-complete=true" method="post">
+
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+          xxxx
+            </dt>
+            <dd class="govuk-summary-list__value">
+             <a href="#">{{ data['xxxx'] }}</a>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> xxxx </span></a>
+                </li>
+                
+            </dd>
+          </div>
+
+      
+
+        </dl>
+     
+        
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+        <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and go to next section",
+          href: "../device-wearer/identity-numbers?section-2-complete=true"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and return to main form menu",
+          classes: "govuk-button--secondary"
+        }) }}
+
+        
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}
