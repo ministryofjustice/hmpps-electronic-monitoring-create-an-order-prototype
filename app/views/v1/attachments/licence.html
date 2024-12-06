@@ -12,21 +12,26 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      
-
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">Monitoring conditions</span>
-        Curfew timetable
-      </h1>
 
 
-      <form class="form" action="monitoring-needed" method="post">
+      <form class="form" action="photo-question" method="post">
 
-     
+        <span class="govuk-caption-l">Attachments</span>
 
-       
+          {{ govukFileUpload({
+            id: "licence",
+            name: "licence",
+            isPageHeading: true,
+            label: {
+              text: "Upload the licence document",
+              classes: 'govuk-label--l'
+            },
+            hint: {
+              text: 'You can upload the licence as a scanned copy or photo of the original'
+            }
+          }) }}
 
-    {% from "govuk/components/button/macro.njk" import govukButton %}
+
 
       <div class="govuk-button-group">
         {{ govukButton({

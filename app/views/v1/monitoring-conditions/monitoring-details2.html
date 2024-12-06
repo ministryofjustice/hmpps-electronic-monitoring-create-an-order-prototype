@@ -17,13 +17,13 @@
         Monitoring type
       </h1>
 
-      <form class="form" action="/monitoring-type" method="post">
+      <form class="form" action="/monitoring-type2" method="post">
     
      
-
+        <input type="hidden" name="monitoringtypeadded" value="Yes">
 
         {{ govukRadios({
-            name: "monitoringtype",
+            name: "monitoringtype2",
             fieldset: {
               legend: {
                 text: "What monitoring does the device wearer need?",
@@ -37,7 +37,7 @@
             items: [
               {
                 value: "Curfew with electronic monitoring",
-                checked: (true if data['monitoringtype'] == 'Curfew with electronic monitoring'),
+                disabled: (true if data['monitoringtype'] == 'Curfew with electronic monitoring'),
                 hint: {
                   text: "The device wearer must stay inside an address at specific times during the day and night."
                 },
@@ -45,7 +45,7 @@
               },
               {
                 value: "Exclusion and inclusion zone monitoring",
-                checked: (true if data['monitoringtype'] == 'Exclusion and inclusion zone monitoring'),
+                disabled: (true if data['monitoringtype'] == 'Exclusion and inclusion zone monitoring'),
                 hint: {
                   text: "The device wearer must not enter identified areas or can only enter identified areas at specified times."
                 },
@@ -53,7 +53,7 @@
               },
               {
                 value: "Trail monitoring",
-                checked: (true if data['monitoringtype'] == 'Trail monitoring'),
+                disabled: (true if data['monitoringtype'] == 'Trail monitoring'),
                 hint: {
                   text: "GPS tracking will record the movements of the device wearer throughout the day. Must be monitored if the device wearer is part of the Acquisitive Crime Project."
                 },
@@ -61,7 +61,7 @@
               },
               {
                 value: "Mandatory attendance monitoring",
-                checked: (true if data['monitoringtype'] == 'Mandatory attendance monitoring'),
+                disabled: (true if data['monitoringtype'] == 'Mandatory attendance monitoring'),
                 hint: {
                   text: "Attendance of the device wearer at appointments is monitored."
                 },
@@ -69,8 +69,8 @@
               },
               {
                 value: "Alcohol monitoring",
-                checked: (true if data['monitoringtype'] == 'Alcohol monitoring'),
-                disabled: (true if data['eighteen'] == 'No'),
+                disabled: (true if data['monitoringtype'] == 'Alcohol monitoring'),
+       
                 hint: {
                   text: "The device wearer's levels of alcohol or abstinence from alcohol is monitored."
                 },

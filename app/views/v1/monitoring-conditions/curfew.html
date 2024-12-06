@@ -23,7 +23,31 @@
       <form class="form" action="/curfew-address-question" method="post">
 
           <dl class="govuk-summary-list">
+
+             {% if (data['installaddressquestion'] == "Yes") %}
               <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Installation address
+                </dt>
+                <dd class="govuk-summary-list__value">
+
+
+                  <p class="govuk-body">123 Carter Bar<br>
+                                        Glossop<br>
+                                        High Peak<br>
+                                        SK22 2NG</p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <ul class="govuk-summary-list__actions-list">
+                   
+                      <a class="govuk-link" href="install-address-question">Change<span class="govuk-visually-hidden"> Installation address</span></a>
+                 
+                  </ul>
+                </dd>
+              </div>
+              {% endif %}
+              {% if (data['installaddressquestion'] == "No") %}
+                <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   {% if (data['addressquestion'] == "No, they have no fixed address") %}
                    Temporary address
@@ -44,7 +68,7 @@
                 <dd class="govuk-summary-list__actions">
                   <ul class="govuk-summary-list__actions-list">
                    
-                      <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> contact details</span></a>
+                      <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> Contact details</span></a>
                  
                   </ul>
                 </dd>
@@ -53,25 +77,15 @@
                 <dt class="govuk-summary-list__key">
                   Installation address
                 </dt>
-
-               {% if (data['installaddressquestion'] == "No") %}
                 <dd class="govuk-summary-list__value">
                   <p class="govuk-body">
                     {{ data['installaddressLine1'] }}<br>
                     {{ data['installaddressTown'] }}<br>
                     {{ data['installaddressPostcode'] }}
                 </dd>
-                {% else %}
-                <dd class="govuk-summary-list__value">
-                  <p class="govuk-body">{% if (data['addressquestion'] == "No, they have no fixed address") %}
-                   Same as temporary address
-
-                  {% else %}
-                  Same as contact address
-
-                  {% endif %}
+                
                 </dd>
-                {% endif %}
+                
                 <dd class="govuk-summary-list__actions">
                   <ul class="govuk-summary-list__actions-list">
                    
@@ -80,6 +94,7 @@
                   </ul>
                 </dd>
               </div>
+              {% endif %}
               {% if (data['addcurfewaddress'] == "Yes") %}
                 <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">

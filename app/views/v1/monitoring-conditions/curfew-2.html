@@ -25,10 +25,10 @@
          <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
               <legend class="govuk-label govuk-label--s">
-                What is the release date?
+                What is the date the device wearer will be released from custody?
               </legend>
               <div id="passport-issued-hint" class="govuk-hint">
-                The date the device wearer will be released from custody. For example, 27 3 2020
+                For example, 27 3 2020
               </div>
               <div class="govuk-date-input" id="passport-issued">
                 <div class="govuk-date-input__item">
@@ -63,16 +63,16 @@
        
    <div id="curfewTimes-form" class="govuk-form-group">
     <fieldset class="govuk-fieldset">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What are the curfew times on the day of release?</legend>
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What are the start and end times of the curfew on the day of release?</legend>
 
       <div class="govuk-date-input ">
-        <div class="govuk-hint">Enter the start and end times of the curfew. For example 19:00 to 07:00 for a curfew spanning 19:00 on the day of release until 07:00 the next day</div>
+        <div class="govuk-hint">For example 19:00 to 07:00 for a curfew spanning 19:00 on the day of release until 07:00 the next day</div>
         
 
         <div class="govuk-date-input__item">
           <div class="govuk-form-group form-group-start-hours">
               <label class="govuk-label govuk-date-input__label" for="curfewTimes-start-hours"><span class="govuk-visually-hidden">Start</span> Hour</label>
-              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewTimes-start-hours" name="curfewTimesStartHours" value="{{ data['curfewTimesStartHours'] }}" type="number" pattern="[0-9]{2}" min="0" max="23">
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewTimes-start-hours" name="curfewTimesStartHours" value="{{ data['curfewTimesStartHours'] }}">
           </div>
         </div>
         <div class="govuk-date-input__item">
@@ -81,7 +81,7 @@
         <div class="govuk-date-input__item">
           <div class="govuk-form-group form-group-start-minutes">
               <label class="govuk-label govuk-date-input__label" for="curfewTimes-start-minutes"><span class="govuk-visually-hidden">Start</span> Minutes</label>
-              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewTimes-start-minutes" name="curfewTimesStartMinutes" value="{{ data['curfewTimesStartMinutes'] }}" type="number" pattern="[0-9]{2}" min="0" max="59">
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewTimes-start-minutes" name="curfewTimesStartMinutes" value="{{ data['curfewTimesStartMinutes'] }}">
           </div>
         </div>
 
@@ -92,7 +92,7 @@
         <div class="govuk-date-input__item">
           <div class="govuk-form-group form-group-end-hours">
               <label class="govuk-label govuk-date-input__label" for="curfewTimes-end-hours"><span class="govuk-visually-hidden">End</span> Hour</label>
-              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewTimes-end-hours" name="curfewTimesEndHours" value="{{ data['curfewTimesEndHours'] }}" type="number" pattern="[0-9]{2}" min="0" max="23">
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewTimes-end-hours" name="curfewTimesEndHours" value="{{ data['curfewTimesEndHours'] }}">
           </div>
         </div>
         <div class="govuk-date-input__item">
@@ -101,7 +101,7 @@
         <div class="govuk-date-input__item">
           <div class="govuk-form-group form-group-end-minutes">
               <label class="govuk-label govuk-date-input__label" for="curfewTimes-end-minutes"><span class="govuk-visually-hidden">End</span> Minutes</label>
-              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewTimes-end-minutes" name="curfewTimesEndMinutes" value="{{ data['curfewTimesEndMinutes'] }}" type="number" pattern="[0-9]{2}" min="0" max="59">
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewTimes-end-minutes" name="curfewTimesEndMinutes" value="{{ data['curfewTimesEndMinutes'] }}">
           </div>
         </div>
 
@@ -120,6 +120,15 @@
      Select one option
     </div>
     <div class="govuk-radios" data-module="govuk-radios">
+      {% if (data['installaddressquestion'] == "Yes") %}
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="whereDoYouLive" name="release-address" type="radio" value="Contact">
+        <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+          Installation address - 123 Carter Bar
+        </label>
+      </div>
+      {% endif %}
+      {% if (data['installaddressquestion'] == "No") %}
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="whereDoYouLive" name="release-address" type="radio" value="Contact">
         <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
@@ -127,10 +136,10 @@
             Temporary address -
           {% else %}
             Contact address -
-          {% endif %} 123 Carter Bar
+          {% endif %} 
+          123 Carter Bar
         </label>
       </div>
-      {% if (data['installaddressquestion'] == "No") %}
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="whereDoYouLive-2" name="release-address" type="radio" value="Installation">
         <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">

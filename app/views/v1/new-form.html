@@ -53,7 +53,7 @@
             title: {
               text: "Monitoring conditions"
             },
-            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "monitoring-conditions/monitoring-details"),
+            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "monitoring-conditions/install-address-question"),
             status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
           },
           {
@@ -67,7 +67,7 @@
             title: {
               text: "Attachments"
             },
-            href: ("#" if data['section-5-complete'] == 'true' else "#"),
+            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/licence"),
             status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
           }
 
