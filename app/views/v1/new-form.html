@@ -15,7 +15,7 @@
 
       <h1 class="govuk-heading-l">Electronic Monitoring notification form</h1>
 
-      <form class="form" action="new-form" method="post">
+      <form class="form" action="submit-confirmation" method="post">
 
   <!-- <h2 class="govuk-heading-m">Notification form sections</h2>-->
 
@@ -39,7 +39,7 @@
             title: {
               text: "About the responsible organisation"
             },
-            href: ("#" if data['section-2-complete'] == 'true' else "#"),
+            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/org-details"),
             status: (completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
           },
           {
@@ -80,7 +80,7 @@
       <div class="govuk-!-margin-top-5">
        <div class="govuk-button-group">
 
-           {% if (data['section-1-complete'] == true) and (data['section-2-complete'] == true) and data['section-3-complete'] == true and data['section-4-complete'] == true and data['section-5-complete'] == true %}
+           {% if (data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true') %}
           <button type="submit" class="govuk-button" data-module="govuk-button">
             Submit form
           </button>

@@ -1,7 +1,7 @@
 {% extends "layouts/moj.html" %}
 
 {% block pageTitle %}
-  Delete form confirmation - Electronic Monitoring
+  The notification form has been deleted - Electronic Monitoring
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,18 +23,14 @@
          
         </div>
         
-      <p class="govuk-body">
-          Go back to your <a href="dashboard" class="govuk-link">Electronic Monitoring notification forms</a>. 
-
-        </p>
-     <!--     {{ govukButton({
+        <div class="govuk-button-group">
+        {{ govukButton({
           text: "Back to your notification forms",
           href: "dashboard"
         }) }}
-        -->
-
-
-
+       
+      </div>
+      
       </div>
     </div>
   </main>

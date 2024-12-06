@@ -60,14 +60,6 @@
                 text: "Trail monitoring"
               },
               {
-                value: "Mandatory attendance monitoring",
-                disabled: (true if data['monitoringtype'] == 'Mandatory attendance monitoring'),
-                hint: {
-                  text: "Attendance of the device wearer at appointments is monitored."
-                },
-                text: "Mandatory attendance monitoring"
-              },
-              {
                 value: "Alcohol monitoring",
                 disabled: (true if data['monitoringtype'] == 'Alcohol monitoring'),
        
@@ -75,6 +67,14 @@
                   text: "The device wearer's levels of alcohol or abstinence from alcohol is monitored."
                 },
                 text: "Alcohol monitoring"
+              },
+              {
+                value: "Mandatory attendance monitoring",
+                disabled: (true if data['monitoringtype'] == 'Mandatory attendance monitoring'),
+                hint: {
+                  text: "Attendance of the device wearer at appointments is monitored."
+                },
+                text: "Mandatory attendance monitoring"
               }
               
           ]

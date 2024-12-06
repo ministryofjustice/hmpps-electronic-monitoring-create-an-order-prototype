@@ -1,7 +1,7 @@
 {% extends "layouts/moj.html" %}
 
 {% block pageTitle %}
- Thank you for your feedback - Electronic Monitoring
+ The notification form has been successfully submitted - Electronic Monitoring
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,22 +15,30 @@
       <div class="govuk-grid-column-two-thirds">
         <div class="govuk-panel govuk-panel--confirmation">
           <h1 class="govuk-panel__title">
-            Thank you for your feedback
+            The notification form has been successfully submitted
           </h1>
+          <div class="govuk-panel__body">
+            Reference number<br><strong>123654</strong>
+          </div>
          
         </div>
-        <p class="govuk-body">
-          Your feedback is used to improve the service.
-        </p>
       
-        <div class="govuk-button-group">
+        <img src="/public/images/form_download.svg" alt="PDF download icon">
+
+         {{ govukButton({
+          text: "View submitted notification form",
+          href: '#',
+          classes: "govuk-button--secondary"
+        }) }}
+ 
+
+  <div class="govuk-button-group">
         {{ govukButton({
           text: "Back to your notification forms",
           href: "dashboard"
         }) }}
        
-      </div>
-
+</div>
       </div>
     </div>
   </main>
