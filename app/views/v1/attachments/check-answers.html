@@ -1,0 +1,102 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible adult details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Attachments</span>
+        Check your answers
+      </h1>
+
+
+       <p>Check and save the information about the documents you have attached.</p>
+
+      <form class="form" action="../new-form?section-5-complete=true" method="post">
+
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Licence
+            </dt>
+            <dd class="govuk-summary-list__value">
+             <a href="#">{{ data['licence'] }}</a>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               <ul class="govuk-summary-list__actions-list">
+                <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link" href="are-you-sure?doc-delete=licence">Delete<span class="govuk-visually-hidden"> Licence </span></a>
+                </li>
+                <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link" href="licence">Change<span class="govuk-visually-hidden"> Licence </span></a>
+                </li>
+              </ul>
+            </dd>
+          </div>
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Do you have a photo identification document to upload?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['photoquestion'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="photo-question">Change<span class="govuk-visually-hidden"> Licence </span></a>
+            </dd>
+          </div>
+          {% if (data['photoquestion'] == "Yes") %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Photo identification
+            </dt>
+            <dd class="govuk-summary-list__value">
+             <a href="#">{{ data['photo'] }}</a>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link" href="are-you-sure?doc-delete=photo identification">Delete<span class="govuk-visually-hidden"> Photo identification</span></a>
+                </li>
+                <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link" href="photo">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+              </li>
+           </dd>
+          </div>
+
+          {% endif %}
+
+        </dl>
+     
+        
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and return to main form menu"
+        }) }}
+
+      
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

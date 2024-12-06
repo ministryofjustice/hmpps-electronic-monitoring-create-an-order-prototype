@@ -1,7 +1,7 @@
 {% extends "layouts/moj-level2.html" %}
 
 {% block pageTitle %}
-  Personal details - Electronic Monitoring
+  Responsible adult details - Electronic Monitoring
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,38 +12,20 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">Access needs and installation risk information</span>
-        Disability or health conditions additional needs
-      </h1>
 
-      <form class="form" action="language" method="post">
+      <form class="form" action="/photo-question" method="post">
 
-
-
-          {% set needsHtml %}
-          {{ govukTextarea({
-            id: "needs",
-            name: "needs",
-            spellcheck: false,
-            value: data['needs'],
-            hint: {
-              text: "For example, has difficulty climbing steps to a first floor room"
-            },
-            label: {
-              text: "What should we know about the device wearer's disability or accessibility needs?"
-            }
-          }) }}
-          {% endset -%}
-
+   
          
-
+        <span class="govuk-caption-l">Attachments</span>
           {{ govukRadios({
-            name: "disability-needs-question",
+            classes: "govuk-radios--inline",
+            name: "photoquestion",
             fieldset: {
               legend: {
-                text: "Is there anything else we should know about the device wearer’s disability or accessibility needs?",
-                classes: "govuk-fieldset__legend--s"
+                text: "Do you have a photo identification document to upload?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
               }
             },
             hint: {
@@ -53,15 +35,15 @@
               {
                 value: "Yes",
                 text: "Yes",
-                checked: (true if data['disability-needs-question'] == 'Yes'),
+                checked: (true if data['photoquestion'] == 'Yes'),
                 conditional: {
-                  html: needsHtml
+                
                 }
               },
               {
                 value: "No",
                 text: "No",
-                checked: (true if data['disability-needs-question'] == 'No'),
+                checked: (true if data['photoquestion'] == 'No'),
                 conditional: {
                  
                 }
@@ -70,8 +52,8 @@
           }) }}
 
 
-         
-
+     
+        
 
        
 

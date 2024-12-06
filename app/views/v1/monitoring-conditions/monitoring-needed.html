@@ -1,0 +1,118 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible adult details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Monitoring conditions</span>
+        Monitoring details
+      </h1>
+
+
+      <form class="form" action="/monitoring-list" method="post">
+
+          <dl class="govuk-summary-list">
+       
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  {{ data['monitoringtype'] }}
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body">                    
+                </dd>  
+                </dd>  
+                <dd class="govuk-summary-list__actions">
+                  <ul class="govuk-summary-list__actions-list">
+                     <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link" href="#">Delete<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
+                    </li>
+                    <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
+                    </li>       
+                  </ul>
+                </dd>
+              </div>
+
+              {% if (data['monitoringtypeadded'] == "Yes") %}
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  {{ data['monitoringtype2'] }}
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body">                    
+                </dd>  
+                </dd>  
+                <dd class="govuk-summary-list__actions">
+                  <ul class="govuk-summary-list__actions-list">
+                     <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link" href="#">Delete<span class="govuk-visually-hidden"> {{ data['monitoringtype2'] }}</span></a>
+                    </li>
+                    <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> {{ data['monitoringtype2'] }}</span></a>
+                    </li>       
+                  </ul>
+                </dd>
+              </div>
+
+              {% endif %}
+  
+            </dl>
+
+
+
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "monitoringtypesquestion",
+            fieldset: {
+              legend: {
+                text: "Are there any other types of monitoring needed for the device wearer?",
+               classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+           
+              {
+                value: "Yes",
+                text: "Yes"
+              },
+              {
+                value: "No",
+                text: "No"
+              }
+            ]
+          }) }}
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

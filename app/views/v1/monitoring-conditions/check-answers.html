@@ -4,11 +4,6 @@
   Check your answers - Electronic Monitoring
 {% endblock %}
 
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-
-
 {% block beforeContent %}
 <a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
 {% endblock %}
@@ -32,20 +27,11 @@
     <h2 class="govuk-heading-m">Monitoring details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-            <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What monitoring does the device wearer need?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['monitoringtype'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="monitoring-details">Change<span class="govuk-visually-hidden"> What monitoring does the device wearer need? </span></a>
-            </dd>
-          </div>
+          
+         
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Installation address
+              What is the address where the tag or tags will be installed?
             </dt>
             <dd class="govuk-summary-list__value">
               {% if (data['installaddressquestion'] == "No") %}
@@ -62,7 +48,19 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="install-address-question">Change<span class="govuk-visually-hidden"> Installation address </span></a>
             </dd>
-          </div>       
+          </div>  
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What monitoring does the device wearer need?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['monitoringtype'] }}<br>
+              {{ data['monitoringtype2'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="monitoring-needed">Change<span class="govuk-visually-hidden"> What monitoring does the device wearer need? </span></a>
+            </dd>
+          </div>     
          
  </dl>
 
@@ -120,11 +118,7 @@
             </dt>
             <dd class="govuk-summary-list__value">
               {% if (data['release-address'] == "Contact") %}
-              {% if (data['addressquestion'] == "No, they have no fixed address") %}
-                Temporary address:
-              {% else %}
-                Contact address:
-              {% endif %} <br>
+
               123 Carter Bar<br>
               Glossop<br>
               High Peak<br>
@@ -132,7 +126,7 @@
 
               {% elseif (data['release-address'] == "Installation") %}
 
-              Installation address:<br>
+
               {{ data['installaddressLine1'] }}<br>
               {{ data['installaddressTown'] }}<br>
               {{ data['installaddressPostcode'] }}
@@ -170,7 +164,7 @@
               {{ data['answer'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="curfew">Change<span class="govuk-visually-hidden"> What is the address where the device wearer will spend curfew hours? </span></a>
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What is the address where the device wearer will spend curfew hours? </span></a>
             </dd>
           </div>
        </dl>
@@ -193,7 +187,7 @@
               {{ data['answer'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="curfew">Change<span class="govuk-visually-hidden"> What is the address where the device wearer will spend curfew hours? </span></a>
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What is the address where the device wearer will spend curfew hours? </span></a>
             </dd>
           </div>
        </dl>
@@ -213,7 +207,7 @@
               {{ data['answer'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="curfew">Change<span class="govuk-visually-hidden"> What is the address where the device wearer will spend curfew hours? </span></a>
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What is the address where the device wearer will spend curfew hours? </span></a>
             </dd>
           </div>
        </dl>
@@ -230,15 +224,70 @@
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Question
+              What type of alcohol monitoring is needed?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['answer'] }}
+              {{ data['type-alcohol'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="curfew">Change<span class="govuk-visually-hidden"> What is the address where the device wearer will spend curfew hours? </span></a>
+              <a class="govuk-link" href="alcohol">Change<span class="govuk-visually-hidden"> What type of alcohol monitoring is needed? </span></a>
             </dd>
           </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the alcohol monitoring starts?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['alcoholmonitoringstart-day'] }} {{ data['alcoholmonitoringstart-month']  | monthName }} {{ data['alcoholmonitoringstart-year'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="alcohol">Change<span class="govuk-visually-hidden"> What is the date the alcohol monitoring starts? </span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the alcohol monitoring ends?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['alcoholmonitoringend-day'] }} {{ data['alcoholmonitoringend-month']  | monthName  }} {{ data['alcoholmonitoringend-year'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="alcohol">Change<span class="govuk-visually-hidden"> What is the date the alcohol monitoring ends? </span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Where will alcohol base station monitoring equipment be installed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if (data['alcoholaddress'] == "Contact") %}
+
+              123 Carter Bar<br>
+              Glossop<br>
+              High Peak<br>
+              SK22 2NG</p>
+
+              {% elseif (data['alcoholaddress'] == "Installation") %}
+
+
+              {{ data['installaddressLine1'] }}<br>
+              {{ data['installaddressTown'] }}<br>
+              {{ data['installaddressPostcode'] }}
+         
+              {% else %}
+              {{ data['alcoholaddressLine1'] }}<br>
+              {{ data['alcoholaddressTown'] }}<br>
+              {{ data['alcoholaddressPostcode'] }}
+              {% endif %}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="alcohol">Change<span class="govuk-visually-hidden">  Where will alcohol base station monitoring equipment be installed? </span></a>
+            </dd>
+          </div>
+
+
+
        </dl>
 
    {% endif %}   
@@ -247,14 +296,17 @@
 
       <div class="govuk-button-group">
         {{ govukButton({
-          text: "Continue to next section",
-          href: "#"
+          text: "Save and go to next section",
+          href: "../installation/disability?section-4-complete=true"
         }) }}
 
         {{ govukButton({
-          text: "Return to main form menu",
+          text: "Save and return to main form menu",
           classes: "govuk-button--secondary"
         }) }}
+
+        
+
 
 
       </div>

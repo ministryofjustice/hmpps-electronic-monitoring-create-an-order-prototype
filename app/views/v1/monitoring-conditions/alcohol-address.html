@@ -16,15 +16,15 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Monitoring conditions</span>
-        Add installation address
+        Add alcohol monitoring base station installation address
       </h1>
 
 
-      <form class="form" action="monitoring-details" method="post">
+      <form class="form" action="monitoring-needed" method="post">
 
       {% call govukFieldset({
         legend: {
-          text: "What is the address where the tag or tags will be installed?",
+          text: "What is the address where the alcohol monitoring base station will be installed?",
           classes: "govuk-fieldset__legend--s"
         }
       }) %}
@@ -36,8 +36,8 @@
             text: "Address line 1"
           },
           id: "address-line-1",
-          name: "installaddressLine1",
-          value: data['installaddressLine1']
+          name: "alcoholaddressLine1",
+          value: data['alcoholaddressLine1']
         }) }}
 
         {{ govukInput({
@@ -45,8 +45,8 @@
             text: "Address line 2 (optional)"
           },
           id: "address-line-2",
-          name: "installaddressLine2",
-          value: data['installaddressLine2']
+          name: "alcoholaddressLine2",
+          value: data['alcoholaddressLine2']
         }) }}
 
         {{ govukInput({
@@ -55,8 +55,8 @@
           },
           classes: "govuk-!-width-two-thirds",
           id: "address-town",
-          name: "installaddressTown",
-          value: data['installaddressTown']
+          name: "alcoholaddressTown",
+          value: data['alcoholaddressTown']
         }) }}
 
         {{ govukInput({
@@ -64,8 +64,8 @@
             text: "County (optional)"
           },
           classes: "govuk-!-width-two-thirds",
-          id: "installaddresscounty",
-          value: data['installaddresscounty']
+          id: "alcoholaddresscounty",
+          value: data['alcoholaddresscounty']
         }) }}
 
         {{ govukInput({
@@ -74,8 +74,8 @@
           },
           classes: "govuk-input--width-10",
           id: "address-postcode",
-          name: "installaddressPostcode",
-          value: data['installaddressPostcode']
+          name: "alcoholaddressPostcode",
+          value: data['alcoholaddressPostcode']
         }) }}
 
       {% endcall %}   
