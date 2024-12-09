@@ -27,7 +27,28 @@
     <h2 class="govuk-heading-m">Monitoring details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-          
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the monitoring starts?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['monitoringstart-day'] }} {{ data['monitoringstart-month']  | monthName }} {{ data['monitoringstart-year'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="monitoring-dates">Change<span class="govuk-visually-hidden"> What is the date the monitoring starts? </span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the monitoring ends? (optional)
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['monitoringend-day'] }} {{ data['monitoringend-month']  | monthName  }} {{ data['monitoringend-year'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="monitoring-dates">Change<span class="govuk-visually-hidden"> What is the date the monitoring ends? </span></a>
+            </dd>
+          </div>
          
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -246,7 +267,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the alcohol monitoring ends?
+              What is the date the alcohol monitoring ends? (optional)
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['alcoholmonitoringend-day'] }} {{ data['alcoholmonitoringend-month']  | monthName  }} {{ data['alcoholmonitoringend-year'] }}

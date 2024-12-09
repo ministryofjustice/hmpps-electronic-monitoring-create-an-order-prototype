@@ -124,7 +124,7 @@
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="whereDoYouLive" name="release-address" type="radio" value="Contact">
         <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
-          Installation address - 123 Carter Bar
+          Contact address - 123 Carter Bar
         </label>
       </div>
       {% endif %}
@@ -132,18 +132,15 @@
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="whereDoYouLive" name="release-address" type="radio" value="Contact">
         <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
-          {% if (data['addressquestion'] == "No, they have no fixed address") %}
-            Temporary address -
-          {% else %}
-            Contact address -
-          {% endif %} 
+         
+          Contact address -
           123 Carter Bar
         </label>
       </div>
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="whereDoYouLive-2" name="release-address" type="radio" value="Installation">
         <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
-         Installation address - {{ data['installaddressLine1'] }}
+         Tag installation address - {{ data['installaddressLine1'] }}
         </label>
       </div>
       {% endif %}

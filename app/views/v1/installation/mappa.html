@@ -1,7 +1,7 @@
 {% extends "layouts/moj-level2.html" %}
 
 {% block pageTitle %}
-  Responsible adult details - Electronic Monitoring
+  Personal details - Electronic Monitoring
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,40 +13,51 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">About the device wearer</span>
-        Device wearer's address
+        <span class="govuk-caption-l">Access needs and installation risk information</span>
+        Multi-Agency Public Protection Arrangements (MAPPA)
       </h1>
-     
 
-      <form class="form" action="/contact-address" method="post">
+      <form class="form" action="/mappa" method="post">
+
+        
+         
 
           {{ govukRadios({
-            name: "addressquestion",
+            classes: "govuk-radios--inline",
+            name: "mappaquestion",
             fieldset: {
               legend: {
-                text: "Does the device wearer have a fixed address?",
-               classes: "govuk-fieldset__legend--s"
+                text: "Is the device wearer a MAPPA offender?",
+                classes: "govuk-fieldset__legend--s"
               }
             },
             hint: {
-              text: "For example, the device wearer has a tenancy or permanent address they are registered at."
+              text: "Select one option"
             },
             items: [
-           
               {
-                value: "Yes, they have a fixed address",
-                checked: (true if data['addressquestion'] == 'Yes, they have a fixed address'),
-                text: "Yes, they have a fixed address"
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['mappaquestion'] == 'Yes'),
+                conditional: {
+                
+                }
               },
               {
-                value: "No, they have no fixed address",
-                checked: (true if data['addressquestion'] == 'No, they have no fixed address'),
-                text: "No, they have no fixed address"
+                value: "No",
+                text: "No",
+                checked: (true if data['mappaquestion'] == 'No'),
+                conditional: {
+                 
+                }
               }
             ]
           }) }}
 
 
+
+
+     
        
 
     {% from "govuk/components/button/macro.njk" import govukButton %}

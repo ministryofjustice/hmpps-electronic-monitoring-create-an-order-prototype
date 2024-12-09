@@ -1,0 +1,148 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Personal details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Access needs and installation risk information</span>
+       Risk at installation
+      </h1>
+
+      <form class="form" action="/risk" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {{ govukCheckboxes({
+            name: "risk",
+            fieldset: {
+              legend: {
+                text: "What are the risks that apply to the device wearer?",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+             hint: {
+              text: "Select all that apply"
+            },
+            items: [
+              {
+                value: "Threats of violence",
+                checked: (true if data['risk'] == 'Threats of violence'),
+                text: "Threats of violence"
+              },
+              {
+                value: "Sexual offences",
+                checked: (true if data['risk'] == 'Sexual offences'),
+                text: "Sexual offences"
+              },
+              {
+                value: "Risk to specific gender",
+                checked: (true if data['risk'] == 'Risk to specific gender'),
+                text: "Risk to specific gender"
+              },
+              {
+                value: "Racial abuse or threats",
+                checked: (true if data['risk'] == 'Racial abuse or threats'),
+                text: "Racial abuse or threats"
+              },
+              {
+                value: "History of substance abuse",
+                checked: (true if data['risk'] == 'History of substance abuse'),
+                text: "History of substance abuse"
+              },
+              {
+                value: "Diversity concerns (mental health issues, learning difficulties etc)",
+                checked: (true if data['risk'] == 'Diversity concerns (mental health issues, learning difficulties etc)'),
+                text: "Diversity concerns (mental health issues, learning difficulties etc)"
+              },
+              {
+                value: "Dangerous dogs/pets at premises",
+                checked: (true if data['risk'] == 'Dangerous dogs/pets at premises'),
+                text: "Dangerous dogs/pets at premises"
+              },
+              {
+                value: "Managed through IOM",
+                checked: (true if data['risk'] == 'Managed through IOM'),
+                text: "Managed through IOM"
+              },
+              {
+                value: "Safeguarding issues",
+                checked: (true if data['risk'] == 'Safeguarding issues'),
+                text: "Safeguarding issues"
+              },
+              {
+                value: "Other occupants who pose a risk to staff",
+                checked: (true if data['risk'] == 'Other occupants who pose a risk to staff'),
+                text: "Other occupants who pose a risk to staff"
+              },
+              
+              {
+                value: "Homophobic views",
+                checked: (true if data['risk'] == 'Homophobic views'),
+                text: "Homophobic views"
+              },
+              {
+                value: "Offence risks",
+                checked: (true if data['risk'] == 'Offence risks'),
+                text: "Offence risks"
+              },
+              {
+                value: "Postcode risk",
+                checked: (true if data['risk'] == 'Postcode risk'),
+                text: "Postcode risk"
+              },
+              {
+                value: "Under 18 living at the property",
+                checked: (true if data['risk'] == 'Under 18 living at the property'),
+                text: "Under 18 living at the property"
+              },
+              {
+                value: "Other known risks",
+                checked: (true if data['risk'] == 'Other known risks'),
+                text: "Other known risks"
+              },
+
+              {
+                divider: "or"
+              },
+              {
+                value: "There are no risks that apply to the device wearer",
+                checked: (true if data['risk'] == 'There are no risks that apply to the device wearer'),
+                text: "There are no risks that apply to the device wearer",
+                behaviour: "exclusive"
+              }
+            ]
+          }) }}
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

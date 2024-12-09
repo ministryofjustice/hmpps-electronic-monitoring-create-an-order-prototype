@@ -103,15 +103,99 @@
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Question 1
+              What type of offence has been committed by the device wearer?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['offence'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="risk">Change<span class="govuk-visually-hidden"> What type of offence has been committed by the device wearer?</span></a>
+            </dd>
+          </div>
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             What are the risks that apply to the device wearer?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['risk'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="risk">Change<span class="govuk-visually-hidden"> Question 1 </span></a>
+              <a class="govuk-link" href="risk-2">Change<span class="govuk-visually-hidden"> What are the risks that apply to the device wearer?</span></a>
             </dd>
           </div>
+
+          {% if (data['risk'] == "There are no risks that apply to the device wearer") %}
+
+          {% else %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Is there anything else we should know that will help lower risk of violence or threatening behaviour at installation?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['risk-question'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="risk-3">Change<span class="govuk-visually-hidden"> Is there anything else we should know that will help lower risk of violence or threatening behaviour at installation?</span></a>
+            </dd>
+          </div>
+          {% if (data['risk-question'] == "Yes") %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               What should we know that will help lower risk of violence or threatening behaviour?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['risk-needs'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="risk-3">Change<span class="govuk-visually-hidden"> What should we know that will help lower risk of violence or threatening behaviour? </span></a>
+            </dd>
+          </div>
+
+
+          {% endif %}
+          {% endif %}
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Is the device wearer a MAPPA offender?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['mappaquestion'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="mappa">Change<span class="govuk-visually-hidden"> Is the device wearer a MAPPA offender?</span></a>
+            </dd>
+          </div>
+          {% if (data['mappaquestion'] == "Yes") %}
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Which level of MAPPA applies to the device wearer?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['mappa-level'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="mapp-2">Change<span class="govuk-visually-hidden"> Which level of MAPPA applies to the device wearer?</span></a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           What is the MAPPA case type applied to the device wearer?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['mappa-type'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="risk">Change<span class="govuk-visually-hidden"> What is the MAPPA case type applied to the device wearer?</span></a>
+            </dd>
+          </div>
+
+           {% endif %}
+
 
         </dl>
       

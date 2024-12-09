@@ -1,0 +1,137 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Personal details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Access needs and installation risk information</span>
+        MAPPA details
+      </h1>
+
+      <form class="form" action="check-answers" method="post">
+
+        
+         
+
+          {{ govukRadios({
+            name: "mappa-level",
+            fieldset: {
+              legend: {
+                text: "Which level of MAPPA applies to the device wearer?",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select one option"
+            },
+            items: [
+              {
+                value: "MAPPA 1",
+                text: "MAPPA 1",
+                checked: (true if data['mappa-level'] == 'MAPPA 1')
+         
+                
+                },
+              {
+                value: "MAPPA 2",
+                text: "MAPPA 2",
+                checked: (true if data['mappa-level'] == 'MAPPA 2')
+
+                 
+                },
+              {
+                value: "MAPPA 3",
+                text: "MAPPA 3",
+                checked: (true if data['mappa-level'] == 'MAPPA 3')
+                 
+                }
+            ]
+          }) }}
+
+             {{ govukRadios({
+            name: "mappa-type",
+            fieldset: {
+              legend: {
+                text: "What is the MAPPA case type applied to the device wearer?",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select one option"
+            },
+            items: [
+              {
+                value: "Serious Organised Crime",
+                text: "Serious Organised Crime",
+                checked: (true if data['mappa-type'] == 'Serious Organised Crime')
+         
+                
+                },
+              {
+                value: "Terrorism Act, Counter Terrorism",
+                text: "Terrorism Act, Counter Terrorism",
+                checked: (true if data['mappa-type'] == 'Terrorism Act, Counter Terrorism')
+
+                 
+                },
+              {
+                value: "Terrorism Prevention and Investigation measures",
+                text: "Terrorism Prevention and Investigation measures",
+                checked: (true if data['mappa-type'] == 'Terrorism Prevention and Investigation measures')
+                 
+                },
+                 {
+                value: "Special Immigration Appeals Commission",
+                text: "Special Immigration Appeals Commission",
+                checked: (true if data['mappa-type'] == 'Special Immigration Appeals Commission')
+                 
+                },
+                 {
+                value: "High Profile Immigration",
+                text: "High Profile Immigration",
+                checked: (true if data['mappa-type'] == 'High Profile Immigration')
+                 
+                }, {
+                value: "Critical Public Protection Case",
+                text: "Critical Public Protection Case",
+                checked: (true if data['mappa-type'] == 'Critical Public Protection Case')
+                 
+                }
+            ]
+          }) }}
+
+
+
+
+     
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

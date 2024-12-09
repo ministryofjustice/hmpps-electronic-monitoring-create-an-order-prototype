@@ -27,7 +27,7 @@
              {% if (data['installaddressquestion'] == "Yes") %}
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  Installation address
+                  Contact address
                 </dt>
                 <dd class="govuk-summary-list__value">
 
@@ -40,22 +40,19 @@
                 <dd class="govuk-summary-list__actions">
                   <ul class="govuk-summary-list__actions-list">
                    
-                      <a class="govuk-link" href="install-address-question">Change<span class="govuk-visually-hidden"> Installation address</span></a>
+                    
                  
                   </ul>
                 </dd>
               </div>
               {% endif %}
               {% if (data['installaddressquestion'] == "No") %}
+              {% if  data['addressquestion'] == "No, they have no fixed address" %}
+              {% else %}
                 <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  {% if (data['addressquestion'] == "No, they have no fixed address") %}
-                   Temporary address
-
-                  {% else %}
-                  Contact address
-
-                  {% endif %}
+                 
+                   Contact address
                 </dt>
                 <dd class="govuk-summary-list__value">
 
@@ -68,14 +65,15 @@
                 <dd class="govuk-summary-list__actions">
                   <ul class="govuk-summary-list__actions-list">
                    
-                      <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> Contact details</span></a>
+                     
                  
                   </ul>
                 </dd>
               </div>
+              {% endif %}
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  Installation address
+                  Tag installation address
                 </dt>
                 <dd class="govuk-summary-list__value">
                   <p class="govuk-body">

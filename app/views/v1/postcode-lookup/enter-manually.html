@@ -14,21 +14,15 @@
 
 
 
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">About the device wearer</span>
-        Device wearer's contact address
-      </h1>
 
-      <p>If the device wearer has multiple addresses, enter the address where they spend most of their time or have registered as their home residence.</p>
+      <form class="form" action="#" method="post">
 
-
-
-      <form class="form" action="check-answers" method="post">
-
+  <span class="govuk-caption-l">About the device wearer</span>
       {% call govukFieldset({
         legend: {
           text: "What is the device wearer's address?",
-          classes: "govuk-fieldset__legend--s"
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
         }
       }) %}
 
