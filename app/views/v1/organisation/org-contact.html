@@ -16,32 +16,40 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">About the responsible organisation</span>
-        Team details
+       Responsible organisation's contact details
       </h1>
 
 
-      <form class="form" action="responsible-officer" method="post">
+      <form class="form" action="check-answers" method="post">
 
 
-
-           {{ govukInput({
+        {{ govukInput({
           label: {
-            text: "What is the email address for your team?",
-            classes: "govuk-label--s",
-             hint: {
-              text: "For example, provide an email address for a shared mailbox that your team has access to.
-                      Do not provide a personal email address."
-            }
+            text: "What is the responsible organisation's telephone number?",
+            classes: "govuk-label--s"
           },
           classes: "govuk-input--width-20",
-          id: "team-email",
-          name: "team-email",
+          id: "org-tel",
+          name: "org-tel",
           spellcheck: false,
-          value: data['team-email']
+          value: data['org-tel']
         }) }}
 
-        
 
+        {{ govukInput({
+          label: {
+            text: "What is the responsible organisation's email address?",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "org-email",
+          name: "org-email",
+          spellcheck: false,
+          value: data['org-email']
+        }) }}
+
+
+     
 
        
 

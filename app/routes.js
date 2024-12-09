@@ -78,6 +78,15 @@ router.post('/eighteen-answer', function(request, response) {
     }
 })
 
+router.post('/contact-address', function(request, response) {
+
+    var addressquestion = request.session.data['addressquestion']
+    if (addressquestion == "Yes, they have a fixed address"){
+        response.redirect("/v1/device-wearer/contact-address")
+    } else {
+        response.redirect("/v1/device-wearer/check-answers")
+    }
+})
 router.post('/disability', function(request, response) {
 
     var disability = request.session.data['disability']
@@ -87,6 +96,38 @@ router.post('/disability', function(request, response) {
         response.redirect("/v1/installation/language")    
     } else {
         response.redirect("/v1/installation/disability-needs")
+    }
+})
+
+router.post('/risk', function(request, response) {
+
+    var risk = request.session.data['risk']
+    if (risk == "There are no risks that apply to the device wearer"){
+        response.redirect("/v1/installation/mappa")  
+    } else {
+        response.redirect("/v1/installation/risk-3")
+    }
+})
+
+router.post('/mappa', function(request, response) {
+
+    var mappaquestion = request.session.data['mappaquestion']
+    if (mappaquestion == "Yes"){
+        response.redirect("/v1/installation/mappa-2")  
+    } else {
+        response.redirect("/v1/installation/check-answers")
+    }
+})
+
+router.post('/install-address-question', function(request, response) {
+
+
+    var addressquestion = request.session.data['addressquestion']
+    
+    if (addressquestion == "No, they have no fixed address"){
+        response.redirect("/v1/monitoring-conditions/install-address")   
+    } else {
+        response.redirect("/v1/monitoring-conditions/install-address-question")
     }
 })
 

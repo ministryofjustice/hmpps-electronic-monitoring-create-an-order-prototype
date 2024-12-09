@@ -16,32 +16,51 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">About the responsible organisation</span>
-        Team details
+       Responsible officer's details
       </h1>
 
 
-      <form class="form" action="responsible-officer" method="post">
+      <form class="form" action="officer-org" method="post">
 
 
 
            {{ govukInput({
           label: {
-            text: "What is the email address for your team?",
-            classes: "govuk-label--s",
-             hint: {
-              text: "For example, provide an email address for a shared mailbox that your team has access to.
-                      Do not provide a personal email address."
-            }
+            text: "What is the responsible officer's first name?",
+            classes: "govuk-label--s"
           },
           classes: "govuk-input--width-20",
-          id: "team-email",
-          name: "team-email",
+          id: "officer-firstname",
+          name: "officer-firstname",
           spellcheck: false,
-          value: data['team-email']
+          value: data['officer-firstname']
         }) }}
 
-        
+        {{ govukInput({
+          label: {
+            text: "What is the responsible officer's last name?",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "officer-lastname",
+          name: "officer-lastname",
+          spellcheck: false,
+          value: data['officer-lastname']
+        }) }}
 
+        {{ govukInput({
+          label: {
+            text: "What is the responsible officer's telephone number?",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "officer-tel",
+          name: "officer-tel",
+          spellcheck: false,
+          value: data['officer-tel']
+        }) }}
+
+     
 
        
 

@@ -14,24 +14,24 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Access needs and installation risk information</span>
-        Disability or health conditions additional needs
+        Risk at installation additional information
       </h1>
 
-      <form class="form" action="language" method="post">
+      <form class="form" action="mappa" method="post">
 
 
 
-          {% set needsHtml %}
+          {% set riskHtml %}
           {{ govukTextarea({
             id: "needs",
-            name: "needs",
+            name: "risk-needs",
             spellcheck: false,
-            value: data['needs'],
+            value: data['risk-needs'],
             hint: {
-              text: "For example, has difficulty climbing steps to a first floor room."
+              text: "Include details about the device wearer's behaviour and if there are risks at the installation property we should know of."
             },
             label: {
-              text: "What should we know about the device wearer's disability or accessibility needs?"
+              text: "What should we know that will help lower risk of violence or threatening behaviour?"
             }
           }) }}
           {% endset -%}
@@ -39,10 +39,10 @@
          
 
           {{ govukRadios({
-            name: "disability-needs-question",
+            name: "risk-question",
             fieldset: {
               legend: {
-                text: "Is there anything else we should know about the device wearer’s disability or accessibility needs?",
+                text: "Is there anything else we should know that will help lower risk of violence or threatening behaviour at installation?",
                 classes: "govuk-fieldset__legend--s"
               }
             },
@@ -53,15 +53,15 @@
               {
                 value: "Yes",
                 text: "Yes",
-                checked: (true if data['disability-needs-question'] == 'Yes'),
+                checked: (true if data['risk-question'] == 'Yes'),
                 conditional: {
-                  html: needsHtml
+                  html: riskHtml
                 }
               },
               {
                 value: "No",
                 text: "No",
-                checked: (true if data['disability-needs-question'] == 'No'),
+                checked: (true if data['risk-question'] == 'No'),
                 conditional: {
                  
                 }

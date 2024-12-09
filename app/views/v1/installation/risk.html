@@ -14,10 +14,102 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Access needs and installation risk information</span>
-       Installation risk
+      Offence committed
       </h1>
 
-      <form class="form" action="check-answers" method="post">
+      <form class="form" action="risk-2" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {{ govukRadios({
+            name: "offence",
+            fieldset: {
+              legend: {
+                text: "What type of offence has been committed by the device wearer?",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+              {
+                value: "Violence against the person",
+                checked: (true if data['offence'] == 'Violence against the person'),
+                text: "Violence against the person"
+              },
+              {
+                value: "Sexual offences",
+                checked: (true if data['offence'] == 'Sexual offences'),
+                text: "Sexual offences"
+              },
+              {
+                value: "Robbery",
+                checked: (true if data['offence'] == 'Robbery'),
+                text: "Robbery"
+              },
+              {
+                value: "Theft offences",
+                checked: (true if data['offence'] == 'Theft offences'),
+                text: "Theft offences"
+              },
+              {
+                value: "Criminal damage and arson",
+                checked: (true if data['offence'] == 'Criminal damage and arson'),
+                text: "Criminal damage and arson"
+              },
+              {
+                value: "Drug offences",
+                checked: (true if data['offence'] == 'Drug offences'),
+                text: "Drug offences"
+              },
+              {
+                value: "Possession of weapons",
+                checked: (true if data['offence'] == 'Possession of weapons'),
+                text: "Possession of weapons"
+              },
+              {
+                value: "Public order offences",
+                checked: (true if data['offence'] == 'Public order offences'),
+                text: "Public order offences"
+              },
+              {
+                value: "Miscellaneous crimes against society",
+                checked: (true if data['offence'] == 'Miscellaneous crimes against society'),
+                text: "Miscellaneous crimes against society"
+              },
+              {
+                value: "Fraud offences",
+                checked: (true if data['offence'] == 'Fraud offences'),
+                text: "Fraud offences"
+              },
+              {
+                value: "Summary non-motoring",
+                checked: (true if data['offence'] == 'Summary non-motoring'),
+                text: "Summary non-motoring"
+              },
+              {
+                value: "Summary motoring",
+                checked: (true if data['offence'] == 'Summary motoring'),
+                text: "Summary motoring"
+              },
+
+              {
+                divider: "or"
+              },
+              {
+                value: "Offence not recorded",
+                checked: (true if data['offence'] == 'Offence not recorded'),
+                text: "Offence not recorded"
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "The offence committed is not relevant to the risk of installation",
+                checked: (true if data['risk'] == 'The offence committed is not relevant to the risk of installation'),
+                text: "The offence committed is not relevant to the risk of installation"
+              }
+            ]
+          }) }}
 
 
        

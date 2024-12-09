@@ -12,22 +12,19 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-
+      
 
       <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">About the device wearer</span>
-        Device wearer's contact address
+        <span class="govuk-caption-l">About the responsible organisation</span>
+        Responsible organisation's address
       </h1>
 
-      <p>If the device wearer has multiple addresses, enter the address where they spend most of their time or have registered as their home residence.</p>
 
-
-
-      <form class="form" action="check-answers" method="post">
+      <form class="form" action="org-contact" method="post">
 
       {% call govukFieldset({
         legend: {
-          text: "What is the device wearer's address?",
+          text: "What is the address of the responsible organisation?",
           classes: "govuk-fieldset__legend--s"
         }
       }) %}
@@ -39,8 +36,8 @@
             text: "Address line 1"
           },
           id: "address-line-1",
-          name: "contactaddressLine1",
-          value: data['contactaddressLine1']
+          name: "orgaddressLine1",
+          value: data['orgaddressLine1']
         }) }}
 
         {{ govukInput({
@@ -48,8 +45,8 @@
             text: "Address line 2 (optional)"
           },
           id: "address-line-2",
-          name: "contactaddressLine2",
-          value: data['contactaddressLine2']
+          name: "orgaddressLine2",
+          value: data['orgaddressLine2']
         }) }}
 
         {{ govukInput({
@@ -58,8 +55,8 @@
           },
           classes: "govuk-!-width-two-thirds",
           id: "address-town",
-          name: "contactaddressTown",
-          value: data['contactaddressTown']
+          name: "orgaddressTown",
+          value: data['orgaddressTown']
         }) }}
 
         {{ govukInput({
@@ -67,8 +64,8 @@
             text: "County (optional)"
           },
           classes: "govuk-!-width-two-thirds",
-          id: "contactaddresscounty",
-          value: data['contactaddresscounty']
+          id: "orgaddresscounty",
+          value: data['orgaddresscounty']
         }) }}
 
         {{ govukInput({
@@ -77,8 +74,8 @@
           },
           classes: "govuk-input--width-10",
           id: "address-postcode",
-          name: "contactaddressPostcode",
-          value: data['contactaddressPostcode']
+          name: "orgaddressPostcode",
+          value: data['orgaddressPostcode']
         }) }}
 
       {% endcall %}   
