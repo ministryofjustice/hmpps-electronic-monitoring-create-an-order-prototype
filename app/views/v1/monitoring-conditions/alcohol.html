@@ -140,13 +140,12 @@
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="whereDoYouLive" name="alcoholaddress" type="radio" value="Contact">
               <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
-                Installation address - 123 Carter Bar
+                Contact address - 123 Carter Bar
               </label>
             </div>
             {% endif %}
             {% if (data['installaddressquestion'] == "No") %}
-            {% if  data['addressquestion'] == "No, they have no fixed address" %}
-            {% else %}
+            
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="whereDoYouLive" name="alcoholaddress" type="radio" value="Contact">
               <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
@@ -154,7 +153,7 @@
                 123 Carter Bar
               </label>
             </div>
-             {% endif %}
+          
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="whereDoYouLive-2" name="alcoholaddress" type="radio" value="Installation">
               <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
