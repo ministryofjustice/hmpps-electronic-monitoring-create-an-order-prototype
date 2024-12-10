@@ -23,7 +23,6 @@
          
 
           {{ govukRadios({
-            classes: "govuk-radios--inline",
             name: "mappaquestion",
             fieldset: {
               legend: {
@@ -50,6 +49,15 @@
                 conditional: {
                  
                 }
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "Not able to provide this information",
+                checked: (true if data['mappaquestion'] == 'Not able to provide this information'),
+                text: "Not able to provide this information",
+                behaviour: "exclusive"
               }
             ]
           }) }}

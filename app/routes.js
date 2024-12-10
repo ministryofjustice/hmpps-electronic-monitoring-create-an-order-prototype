@@ -207,7 +207,7 @@ router.post('/monitoring-list', function(request, response) {
     if (monitoringtypesquestion == "Yes"){
         response.redirect("/v1/monitoring-conditions/monitoring-details2")
     } else {
-        response.redirect("/v1/monitoring-conditions/check-answers")
+        response.redirect("/v1/monitoring-conditions/order-information")
     }
 })
 

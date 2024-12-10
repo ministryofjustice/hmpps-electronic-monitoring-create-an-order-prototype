@@ -17,6 +17,31 @@
         Monitoring type
       </h1>
 
+      {% if (data['addressquestion'] == "No, they have no fixed address" and data['eighteen'] == "No") %}
+
+      {{ govukInsetText({
+        text: "Curfew with electronic monitoring is not an option because the device wearer does not have a fixed address. Alcohol monitoring is not an option because the device wearer will not be 18 years old or older when the electronic monitoring device is installed."
+      }) }}
+
+
+     {% elseif (data['addressquestion'] == "No, they have no fixed address") %}
+
+ 
+
+      {{ govukInsetText({
+        text: "Curfew with electronic monitoring is not an option because the device wearer does not have a fixed address."
+      }) }}
+
+
+     {% elseif (data['eighteen'] == "No") %}
+
+
+      {{ govukInsetText({
+        text: "Alcohol monitoring is not an option because the device wearer will not be 18 years old or older when the electronic monitoring device is installed."
+      }) }}
+
+     {% endif %}  
+
       <form class="form" action="/monitoring-type2" method="post">
     
      
@@ -37,7 +62,7 @@
             items: [
               {
                 value: "Curfew with electronic monitoring",
-                disabled: (true if data['monitoringtype'] == 'Curfew with electronic monitoring'),
+                disabled: (true if data['monitoringtype'] == 'Curfew with electronic monitoring' or data['addressquestion'] == 'No, they have no fixed address'),
                 hint: {
                   text: "The device wearer must stay inside an address at specific times during the day and night."
                 },
@@ -61,7 +86,7 @@
               },
               {
                 value: "Alcohol monitoring",
-                disabled: (true if data['monitoringtype'] == 'Alcohol monitoring'),
+                disabled: (true if data['monitoringtype'] == 'Alcohol monitoring' or data['eighteen'] == 'No'),
        
                 hint: {
                   text: "The device wearer's levels of alcohol or abstinence from alcohol is monitored."
