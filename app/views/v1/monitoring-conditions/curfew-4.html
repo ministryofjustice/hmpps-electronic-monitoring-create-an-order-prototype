@@ -1,4 +1,9 @@
+
+
 {% extends "layouts/moj-level2.html" %}
+
+
+
 
 {% block pageTitle %}
   Responsible adult details - Electronic Monitoring
@@ -16,13 +21,140 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Monitoring conditions</span>
-        Curfew timetable
+        Check the curfew timetable
       </h1>
+
+    <!--      <p>The standard curfew hours are used in the timetable. You can change these if you need to.</p>
+
+  <p>Curfew times can be overnight and span days. For example, 19:00 to 07:00 spanning from 19:00 on the day until 07:00 the next day.</p>-->
+
+
 
 
       <form class="form" action="monitoring-needed" method="post">
 
-     
+
+
+          
+
+            <dl class="govuk-summary-list">
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Monday
+                </dt>
+                <dd class="govuk-summary-list__value">
+                {% if (data['curfewtimetableday'] == "Monday") %}
+                  {{ data['curfewchange-starttime'] }} to {{ data['curfewchange-endtime'] }} {{ data['curfew-same-next-day'] }} <br> at {{ data['day-address'] }}
+                {% else %}
+                  7:00pm to 7:00am the next day<br>at Contact address - 123 Carter Bar
+                 {% endif %}  
+                </dd>
+              
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="curfew-change?curfewtimetableday=Monday">Change<span class="govuk-visually-hidden"> name</span></a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Tuesday
+                </dt>
+                <dd class="govuk-summary-list__value">
+                {% if (data['curfewtimetableday'] == "Tuesday") %}
+                  {{ data['curfewchange-starttime'] }} to {{ data['curfewchange-endtime'] }} {{ data['curfew-same-next-day'] }} <br> at {{ data['day-address'] }}
+                {% else %}
+                  7:00pm to 7:00am the next day<br>at Contact address - 123 Carter Bar
+                 {% endif %}  
+                </dd>
+              
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="curfew-change?curfewtimetableday=Tuesday">Change<span class="govuk-visually-hidden"> name</span></a>
+                </dd>
+              </div>
+               <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Wednesday
+                </dt>
+                <dd class="govuk-summary-list__value">
+                {% if (data['curfewtimetableday'] == "Wednesday") %}
+                  {{ data['curfewchange-starttime'] }} to {{ data['curfewchange-endtime'] }} {{ data['curfew-same-next-day'] }} <br> at {{ data['day-address'] }}
+                {% else %}
+                  7:00pm to 7:00am the next day<br>at Contact address - 123 Carter Bar
+                 {% endif %}  
+                </dd>
+              
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="curfew-change?curfewtimetableday=Wednesday">Change<span class="govuk-visually-hidden"> name</span></a>
+                </dd>
+              </div>
+               <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Thursday
+                </dt>
+                <dd class="govuk-summary-list__value">
+                {% if (data['curfewtimetableday'] == "Thursday") %}
+                  {{ data['curfewchange-starttime'] }} to {{ data['curfewchange-endtime'] }} {{ data['curfew-same-next-day'] }} <br> at {{ data['day-address'] }}
+                {% else %}
+                  7:00pm to 7:00am the next day<br>at Contact address - 123 Carter Bar
+                 {% endif %}  
+                </dd>
+              
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="curfew-change?curfewtimetableday=Thursday">Change<span class="govuk-visually-hidden"> name</span></a>
+                </dd>
+              </div>
+               <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Friday
+                </dt>
+                <dd class="govuk-summary-list__value">
+                {% if (data['curfewtimetableday'] == "Friday") %}
+                  {{ data['curfewchange-starttime'] }} to {{ data['curfewchange-endtime'] }} {{ data['curfew-same-next-day'] }} <br> at {{ data['day-address'] }}
+                {% else %}
+                  7:00pm to 7:00am the next day<br>at Contact address - 123 Carter Bar
+                 {% endif %}  
+                </dd>
+              
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="curfew-change?curfewtimetableday=Friday">Change<span class="govuk-visually-hidden"> name</span></a>
+                </dd>
+              </div>
+               <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Saturday
+                </dt>
+                <dd class="govuk-summary-list__value">
+                {% if (data['curfewtimetableday'] == "Saturday") %}
+                  {{ data['curfewchange-starttime'] }} to {{ data['curfewchange-endtime'] }} {{ data['curfew-same-next-day'] }} <br> at {{ data['day-address'] }}
+                {% else %}
+                  7:00pm to 7:00am the next day<br>at Contact address - 123 Carter Bar
+                 {% endif %}  
+                </dd>
+              
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="curfew-change?curfewtimetableday=Saturday">Change<span class="govuk-visually-hidden"> name</span></a>
+                </dd>
+              </div>
+               <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  Sunday
+                </dt>
+                <dd class="govuk-summary-list__value">
+                {% if (data['curfewtimetableday'] == "Sunday") %}
+                  {{ data['curfewchange-starttime'] }} to {{ data['curfewchange-endtime'] }} {{ data['curfew-same-next-day'] }} <br> at {{ data['day-address'] }}
+                {% else %}
+                  7:00pm to 7:00am the next day<br>at Contact address - 123 Carter Bar
+                 {% endif %}  
+                </dd>
+              
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="curfew-change?curfewtimetableday=Sunday">Change<span class="govuk-visually-hidden"> name</span></a>
+                </dd>
+              </div>
+
+              
+            </dl>
+                 
 
        
 

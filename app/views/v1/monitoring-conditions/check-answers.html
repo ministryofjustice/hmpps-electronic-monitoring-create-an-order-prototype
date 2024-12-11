@@ -49,6 +49,17 @@
               <a class="govuk-link" href="monitoring-dates">Change<span class="govuk-visually-hidden"> What is the date the monitoring ends? </span></a>
             </dd>
           </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Order information
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['answer'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="order-information">Change<span class="govuk-visually-hidden"> What is the address where the device wearer will spend curfew hours? </span></a>
+            </dd>
+          </div>
          
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -108,6 +119,29 @@
             </dd>
           </div>
 
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the curfew monitoring starts?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfewstart-day'] }} {{ data['curfewstart-month']  | monthName }} {{ data['curfewstart-year'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="curfew-2">Change<span class="govuk-visually-hidden"> What is the date the curfew monitoring starts? </span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the curfew monitoring ends? (optional)
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfewend-day'] }} {{ data['curfewend-month']  | monthName  }} {{ data['curfewend-year'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="curfew-2">Change<span class="govuk-visually-hidden"> What is the date the curfew monitoring ends? </span></a>
+            </dd>
+          </div>
+
 
 
 
@@ -119,18 +153,29 @@
               {{ data['release-day'] }} {{ data['release-month'] | monthName }} {{ data['release-year'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="curfew-2">Change<span class="govuk-visually-hidden"> What is the release date? </span></a>
+              <a class="govuk-link" href="curfew-3">Change<span class="govuk-visually-hidden"> What is the release date? </span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What are the curfew times on the day of release?
+              What is the start time for curfew this day?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['curfewTimesStartMinutes'] }}:{{ data['curfewTimesStartHours'] }} to {{ data['curfewTimesEndMinutes'] }}:{{ data['curfewTimesEndHours'] }}
+              {{ data['release-starttime'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="curfew-2">Change<span class="govuk-visually-hidden"> What are the curfew times on the day of release? </span></a>
+              <a class="govuk-link" href="curfew-3">Change<span class="govuk-visually-hidden"> WWhat is the start time for curfew this day? </span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the end time for curfew?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['release-endtime'] }} {{ data['curfew-same-next-day'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="curfew-3">Change<span class="govuk-visually-hidden"> WWhat is the end time for curfew? </span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -161,7 +206,89 @@
 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="curfew-2">Change<span class="govuk-visually-hidden"> What address will the device wearer be at during curfew hours on their day of release? </span></a>
+              <a class="govuk-link" href="curfew-3">Change<span class="govuk-visually-hidden"> What address will the device wearer be at during curfew hours on their day of release? </span></a>
+            </dd>
+          </div>
+        </dl>
+        
+    <h2 class="govuk-heading-m">Curfew timetable</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Monday
+            </dt>
+            <dd class="govuk-summary-list__value">
+             7:00pm to 7:00am the next day<br>at Contact address - 123 Carter Bar
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="curfew-3">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Tuesday
+            </dt>
+            <dd class="govuk-summary-list__value">
+             7:00pm to 7:00am the next day<br>at Contact address - 123 Carter Bar
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="curfew-3">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Wednesday
+            </dt>
+            <dd class="govuk-summary-list__value">
+             7:00pm to 7:00am the next day<br>at Contact address - 123 Carter Bar
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="curfew-3">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Thursday
+            </dt>
+            <dd class="govuk-summary-list__value">
+             7:00pm to 7:00am the next day<br>at Contact address - 123 Carter Bar
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="curfew-3">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Friday
+            </dt>
+            <dd class="govuk-summary-list__value">
+             7:00pm to 7:00am the next day<br>at Contact address - 123 Carter Bar
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="curfew-3">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Saturday
+            </dt>
+            <dd class="govuk-summary-list__value">
+             7:00pm to 7:00am the next day<br>at Contact address - 123 Carter Bar
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="curfew-3">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Sunday
+            </dt>
+            <dd class="govuk-summary-list__value">
+             7:00pm to 7:00am the next day<br>at Contact address - 123 Carter Bar
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="curfew-3">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
             </dd>
           </div>
 
@@ -324,21 +451,7 @@
    {% endif %}   
 
 
-   <h2 class="govuk-heading-m">Order information</h2>
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Question
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['answer'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What is the address where the device wearer will spend curfew hours? </span></a>
-            </dd>
-          </div>
-       </dl>
+ 
 
 
     {% from "govuk/components/button/macro.njk" import govukButton %}

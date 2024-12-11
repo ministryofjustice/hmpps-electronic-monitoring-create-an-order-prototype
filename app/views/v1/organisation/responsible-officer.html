@@ -20,7 +20,7 @@
       </h1>
 
 
-      <form class="form" action="officer-org" method="post">
+      <form class="form" action="org-address" method="post">
 
 
 
@@ -59,6 +59,56 @@
           spellcheck: false,
           value: data['officer-tel']
         }) }}
+
+           {{ govukRadios({
+            name: "officer-org",
+            fieldset: {
+              legend: {
+                text: "What organisation is the responsible officer part of?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select one option"
+            },
+            items: [
+              {
+                value: "Youth Justice Service (YJS)",
+                checked: (true if data['officer-org'] == 'Youth Justice Service (YJS)'),
+                text: "Youth Justice Service (YJS)"
+              },
+              {
+                value: "Youth Custody Service (YCS)",
+                checked: (true if data['officer-org'] == 'Youth Custody Service (YCS)'),
+                text: "Youth Custody Service (YCS)"
+              },
+              {
+                value: "Probation",
+                checked: (true if data['officer-org'] == 'Probation'),
+                text: "Probation"
+              },
+              {
+                value: "Field monitoring service",
+                checked: (true if data['officer-org'] == 'Field monitoring service'),
+                text: "Field monitoring service"
+                
+              },
+              {
+                value: "Home Office",
+                checked: (true if data['officer-org'] == 'Home Office'),
+                text: "Home Office"
+                
+              },
+              {
+                value: "Police",
+                checked: (true if data['officer-org'] == 'Police'),
+                text: "Police"
+                
+              }
+            ]
+          }) }}
+
 
      
 

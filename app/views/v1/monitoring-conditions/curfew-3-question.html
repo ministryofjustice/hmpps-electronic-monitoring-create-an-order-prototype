@@ -1,0 +1,71 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible adult details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <form class="form" action="/curfew-times-question" method="post">
+
+        
+
+
+   <span class="govuk-caption-l">Monitoring conditions</span>
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "curfewtimesquestion",
+            fieldset: {
+              legend: {
+                text: "Do you want to use the standard curfew times for the curfew timetable?",   
+                isPageHeading: true,
+               classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+                    text: "The standard times are 7:00pm to 7:00am the next day. You can change the times or location for any given day on later screens if you need to."
+                  },
+            items: [
+           
+              {
+                value: "Yes",
+                checked: (true if data['curfewtimesquestion'] == 'Yes'),
+                text: "Yes"
+              },
+              {
+                value: "No",
+                checked: (true if data['curfewtimesquestion'] == 'No'),
+                text: "No"
+              }
+            ]
+          }) }}
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}
