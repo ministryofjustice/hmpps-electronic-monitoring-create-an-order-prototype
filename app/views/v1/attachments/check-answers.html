@@ -29,6 +29,20 @@
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
+             Do you have a licence document to upload?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['licencequestion'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="licence-question">Change<span class="govuk-visually-hidden"> Do you have a licence document to upload? </span></a>
+            </dd>
+          </div>
+          {% if (data['licencequestion'] == "Yes") %}
+
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
               Licence
             </dt>
             <dd class="govuk-summary-list__value">
@@ -45,6 +59,7 @@
               </ul>
             </dd>
           </div>
+           {% endif %}
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">

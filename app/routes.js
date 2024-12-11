@@ -189,6 +189,17 @@ router.post('/curfew-address-question', function(request, response) {
     }
 })
 
+router.post('/curfew-times-question', function(request, response) {
+
+    var curfewtimesquestion = request.session.data['curfewtimesquestion']
+    if (curfewtimesquestion == "Yes"){
+        response.redirect("/v1/monitoring-conditions/curfew-4?curfewtimetableday=False&curfewstandard=true")
+    } else {
+        response.redirect("/v1/monitoring-conditions/curfew-change?curfewtimetableday=Monday&curfewstandard=false")
+    }
+})
+
+
 router.post('/alcohol', function(request, response) {
 
     var alcoholaddress = request.session.data['alcoholaddress']
@@ -207,9 +218,21 @@ router.post('/monitoring-list', function(request, response) {
     if (monitoringtypesquestion == "Yes"){
         response.redirect("/v1/monitoring-conditions/monitoring-details2")
     } else {
-        response.redirect("/v1/monitoring-conditions/order-information")
+        response.redirect("/v1/monitoring-conditions/check-answers")
     }
 })
+
+
+router.post('/licence-question', function(request, response) {
+
+    var licencequestion = request.session.data['licencequestion']
+    if (licencequestion == "Yes"){
+        response.redirect("/v1/attachments/licence")
+    } else {
+        response.redirect("/v1/attachments/photo-question")
+    }
+})
+
 
 router.post('/photo-question', function(request, response) {
 
