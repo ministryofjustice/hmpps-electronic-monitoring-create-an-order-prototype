@@ -16,11 +16,92 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Monitoring conditions</span>
-        Attendance monitoring
+        Mandatory attendance monitoring dates
       </h1>
 
 
-      <form class="form" action="monitoring-needed" method="post">
+      <form class="form" action="attendance-2" method="post">
+
+
+           <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-label govuk-label--s">
+                What is the date the mandatory attendance monitoring starts?
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 27 3 2020
+              </div>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoring-day" name="attendancestart-day" type="text" inputmode="numeric" value="{{ data['attendancestart-day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoring-month" name="attendancestart-month" type="text" inputmode="numeric" value="{{ data['attendancestart-month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="monitoring-year" name="attendancestart-year" type="text" inputmode="numeric" value="{{ data['attendancestart-year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+            <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-label govuk-label--s">
+                What is the date the mandatory attendance monitoring ends? (optional)
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 27 3 2020
+              </div>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoringend-day" name="attendanceend-day" type="text" inputmode="numeric" value="{{ data['attendanceend-day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoringend-month" name="attendanceend-month" type="text" inputmode="numeric" value="{{ data['attendanceend-month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="monitoringend-year" name="attendanceend-year" type="text" inputmode="numeric" value="{{ data['attendanceend-year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+       
+
+
+       
+       
 
        
 

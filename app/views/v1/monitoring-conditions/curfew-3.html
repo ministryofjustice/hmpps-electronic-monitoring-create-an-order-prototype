@@ -66,15 +66,25 @@
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What is the start time of the curfew this day?</legend>
 
       <div class="govuk-date-input ">
-        <div class="govuk-hint">For example, 9am or 7:30pm. Enter 12pm for midday.</div>
+        <div class="govuk-hint">For example, 19:00 to 07:00.</div>
         
 
+        
         <div class="govuk-date-input__item">
           <div class="govuk-form-group form-group-start-hours">
-              <input class="govuk-input govuk-date-input__input govuk-input--width-5" id="release-starttime" name="release-starttime" value="{{ data['release-starttime'] }}">
+             <label class="govuk-label govuk-date-input__label" for="release-starttime-hours"><span class="govuk-visually-hidden">End</span> Hour</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="release-starttime-hours" name="release-starttime-hours" value="{{ data['release-starttime-hours'] }}">
           </div>
         </div>
-        
+        <div class="govuk-date-input__item">
+          <label class="govuk-label govuk-date-input__label">:</label>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+            <label class="govuk-label govuk-date-input__label" for="release-starttime-minutes"><span class="govuk-visually-hidden">Start</span> Minutes</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="release-starttime-minutes" name="release-starttime-minutes" value="{{ data['release-starttime-minutes'] }}">
+          </div>
+        </div>
       </div>
     </fieldset>
   </div>
@@ -84,12 +94,22 @@
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What is the end time of the curfew?</legend>
 
       <div class="govuk-date-input ">
-        <div class="govuk-hint">For example, 9am or 7:30pm. Enter 12pm for midday.</div>
+        <div class="govuk-hint">For example, 19:00 to 07:00.</div>
         
 
         <div class="govuk-date-input__item">
           <div class="govuk-form-group form-group-start-hours">
-              <input class="govuk-input govuk-date-input__input govuk-input--width-5" id="release-endtime" name="release-endtime" value="{{ data['release-endtime'] }}">
+             <label class="govuk-label govuk-date-input__label" for="release-endtime-hours"><span class="govuk-visually-hidden">End</span> Hour</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="release-endtime-hours" name="release-endtime-hours" value="{{ data['release-endtime-hours'] }}">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <label class="govuk-label govuk-date-input__label">:</label>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+            <label class="govuk-label govuk-date-input__label" for="release-endtime-minutes"><span class="govuk-visually-hidden">Start</span> Minutes</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="release-endtime-minutes" name="release-endtime-minutes" value="{{ data['release-endtime-minutes'] }}">
           </div>
         </div>
         <div class="govuk-date-input__item">

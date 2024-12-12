@@ -210,6 +210,17 @@ router.post('/alcohol', function(request, response) {
     }
 })
 
+router.post('/exclusion-question', function(request, response) {
+
+    var exclusionquestion = request.session.data['exclusionquestion']
+    if (exclusionquestion == "Yes"){
+        response.redirect("/v1/monitoring-conditions/exclusion-4")
+    } else {
+        response.redirect("/v1/monitoring-conditions/monitoring-needed")
+    }
+})
+
+
 
 
 router.post('/monitoring-list', function(request, response) {

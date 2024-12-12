@@ -1,0 +1,151 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible adult details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Monitoring conditions</span>
+        Appointment details
+      </h1>
+
+
+      <form class="form" action="attendance-3" method="post">
+
+     
+  
+       {{ govukInput({
+            id: "contact-by-email",
+            name: "appointment-reason",
+            spellcheck: false,
+            value: data['appointment-reason'],
+            classes: "govuk-input",
+            hint: {
+              text: "For example, education or medical appointment"
+            },
+            label: {
+              text: "What is the appointment for?",
+              classes: "govuk-label--s"
+            }
+          }) }}
+
+            {{ govukInput({
+            id: "contact-by-email",
+            name: "appointment-day",
+            spellcheck: false,
+            value: data['appointment-day'],
+            classes: "govuk-input",
+            hint: {
+              text: "For example, On Monday and Wednesday every week "
+            },
+            label: {
+              text: "On what day or days is the appointment?",
+              classes: "govuk-label--s"
+            }
+          }) }}
+
+
+          <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+              <h1 class="govuk-fieldset__heading">
+                What time does the appointment start?
+              </h1>
+            </legend>
+            <div id="passport-issued-hint" class="govuk-hint">
+              For example 09:45 or 15:30 (24 hours)
+            </div>
+            <div class="govuk-date-input" id="passport-issued">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                    Hour
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="appointment-start-hours" type="text" inputmode="numeric" value="{{ data['appointment-start-hours'] }}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <label class="govuk-label govuk-date-input__label">:</label>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                    Minute
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="appointment-start-minutes" type="text" inputmode="numeric" value="{{ data['appointment-start-minutes'] }}">
+                </div>
+              </div>
+              
+            </div>
+          </fieldset>
+        </div>
+
+         <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+              <h1 class="govuk-fieldset__heading">
+                What time does the appointment end?
+              </h1>
+            </legend>
+            <div id="passport-issued-hint" class="govuk-hint">
+              For example 09:45 or 15:30 (24 hours)
+            </div>
+            <div class="govuk-date-input" id="passport-issued">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                    Hour
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="appointment-end-hours" type="text" inputmode="numeric" value="{{ data['appointment-end-hours'] }}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <label class="govuk-label govuk-date-input__label">:</label>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                    Minute
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="appointment-end-minutes" type="text" inputmode="numeric" value="{{ data['appointment-end-minutes'] }}">
+                </div>
+              </div>
+              
+            </div>
+          </fieldset>
+        </div>
+
+      
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

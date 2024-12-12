@@ -1,0 +1,115 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible adult details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Monitoring conditions</span>
+        Exclusion and inclusion details
+      </h1>
+
+
+      <form class="form" action="exclusion-3" method="post">
+
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "exclusion-type",
+            fieldset: {
+              legend: {
+                text: "Is the monitoring for an exclusion or inclusion zone?",
+               classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+           
+              {
+                value: "Exclusion zone",
+                checked: (true if data['exclusion-type'] == 'Exclusion zone'),
+                text: "Exclusion zone"
+              },
+              {
+                value: "Inclusion zone",
+                checked: (true if data['exclusion-type'] == 'Inclusion zone'),
+                text: "Inclusion zone"
+              }
+            ]
+          }) }}
+
+          {{ govukInput({
+            id: "contact-by-email",
+            name: "exclusion-name",
+            spellcheck: false,
+            value: data['exclusion-name'],
+            classes: "govuk-input",
+            hint: {
+              text: "For example, partner's house"
+            },
+            label: {
+              text: "What name would you give to the exclusion or inclusion zone?",
+              classes: "govuk-label--s"
+            }
+          }) }}
+
+
+            {{ govukTextarea({
+              name: "exclusion-description",
+              id: "exclusion-description",
+              label: {
+                text: "Where is the exclusion or inclusion zone?",
+                classes: "govuk-label--s",
+                isPageHeading: false
+              },
+              hint: {
+                text: "Write a description of the zone and include additional information that will help us understand its restrictions. For example include door numbers, building names or landmarks that pinpoint where the zone starts and ends."
+              },
+              value: data['exclusion-description']
+            }) }}
+
+             {{ govukTextarea({
+              name: "exclusion-dates",
+              id: "exclusion-dates",
+              label: {
+                text: "When must the exclusion or inclusion zone be followed?",
+                classes: "govuk-label--s",
+                isPageHeading: false
+              },
+              hint: {
+                text: "For example, On Monday to Friday between 08:00 to 17:00 every week "
+              },
+              value: data['exclusion-dates']
+            }) }}
+
+         
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

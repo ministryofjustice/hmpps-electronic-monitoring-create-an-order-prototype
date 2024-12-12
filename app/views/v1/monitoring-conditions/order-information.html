@@ -22,6 +22,138 @@
 
       <form class="form" action="/install-address-question" method="post">
 
+
+
+            {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-type",
+              fieldset: {
+                legend: {
+                  text: "What is the type of order?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  value: "Civil",
+                  checked: (true if data['order-type'] == 'Civil'),
+                  text: "Civil"
+                },
+                {
+                  value: "Community",
+                  checked: (true if data['order-type'] == 'Community'),
+                  text: "Community"
+                },
+                {
+                  value: "Immigration",
+                  checked: (true if data['order-type'] == 'Immigration'),
+                  text: "Immigration"
+                },
+                {
+                  value: "Post release",
+                  checked: (true if data['order-type'] == 'Post release'),
+                  text: "Post release"
+                },
+                {
+                  value: "Pre trial",
+                  checked: (true if data['order-type'] == 'Pre trial'),
+                  text: "Pre trial"
+                },
+                {
+                  value: "Special",
+                  checked: (true if data['order-type'] == 'Special'),
+                  text: "Special"
+                }
+              ]
+            }) }}
+
+
+
+            {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "What is the description of the order?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  value: "Domestic Abuse Protection Order (DAPO)",
+                  checked: (true if data['order-description'] == 'Domestic Abuse Protection Order (DAPO)'),
+                  text: "Domestic Abuse Protection Order (DAPO)"
+                },
+                {
+                  value: "Domestic Abuse Protection Order on Licence (DAPOL)",
+                  checked: (true if data['order-type'] == 'Domestic Abuse Protection Order on Licence (DAPOL)'),
+                  text: "Domestic Abuse Protection Order on Licence (DAPOL)"
+                },
+                {
+                  value: "Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)",
+                  checked: (true if data['order-description'] == 'Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)'),
+                  text: "Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)"
+                },
+                {
+                  value: "GPS acquisitive crime Home Detention Curfew'",
+                  checked: (true if data['order-description'] == 'GPS acquisitive crime Home Detention Curfew'),
+                  text: "GPS acquisitive crime Home Detention Curfew'"
+                },
+                {
+                  value: "GPS acquisitive crime parole",
+                  checked: (true if data['order-description'] == 'GPS acquisitive crime parole'),
+                  text: "GPS acquisitive crime parole"
+                },
+                 {
+                  divider: "or"
+                },
+                {
+                  value: "Not able to provide this information",
+                  checked: (true if data['order-description'] == 'Not able to provide this information'),
+                  text: "Not able to provide this information",
+                  behaviour: "exclusive"
+                }
+              ]
+            }) }}
+
+             {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-condition",
+              fieldset: {
+                legend: {
+                  text: "What are the conditions of the order?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  value: "Requirement of a community order",
+                  checked: (true if data['order-condition'] == 'Requirement of a community order'),
+                  text: "Requirement of a community order"
+                },
+                {
+                  value: "Licence condition of a custodial order",
+                  checked: (true if data['order-condition'] == 'Licence condition of a custodial order'),
+                  text: "Licence condition of a custodial order"
+                },
+                {
+                  value: "Post-Sentence Supervision Requirement following on from an Adult Custody order",
+                  checked: (true if data['order-condition'] == 'Post-Sentence Supervision Requirement following on from an Adult Custody order'),
+                  text: "Post-Sentence Supervision Requirement following on from an Adult Custody order"
+                },
+                {
+                  value: "Bail order",
+                  checked: (true if data['order-condition'] == 'Bail order'),
+                  text: "Bail order"
+                }
+              ]
+            }) }}
+
+
+
        
 
     {% from "govuk/components/button/macro.njk" import govukButton %}
