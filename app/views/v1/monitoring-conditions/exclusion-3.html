@@ -13,39 +13,53 @@
     <div class="govuk-grid-column-two-thirds">
 
 
-      <form class="form" action="/curfew-times-question" method="post">
+      <form class="form" action="/exclusion-question" method="post">
 
-        
+        <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Monitoring conditions</span>
+        Map of exclusion or inclusion zone
+      </h1>
 
-
-   <span class="govuk-caption-l">Monitoring conditions</span>
+        <p>A map helps us understand the exclusion or inclusion zone better. Use the <a href="https://mapmaker.field-dynamics.co.uk/moj/map/default" target="blank">'map tool (opens in a new tab)'</a> to create a map showing the zone or make your own.</p>
+   
+         
+    
           {{ govukRadios({
             classes: "govuk-radios--inline",
-            name: "curfewtimesquestion",
+            name: "exclusionquestion",
             fieldset: {
               legend: {
-                text: "Do you want to use the standard curfew times for the curfew timetable?",   
-                isPageHeading: true,
-               classes: "govuk-fieldset__legend--l"
+                text: "Do you have a map to upload to show us where the exclusion or inclusion zone is?",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--s"
               }
             },
             hint: {
-                    text: "The standard times are 19:00 to 07:00 the next day. You can change the times or location for any given day on later screens if you need to."
-                  },
+              text: "Select one option"
+            },
             items: [
-           
               {
                 value: "Yes",
-                checked: (true if data['curfewtimesquestion'] == 'Yes'),
-                text: "Yes"
+                text: "Yes",
+                checked: (true if data['exclusionquestion'] == 'Yes'),
+                conditional: {
+                
+                }
               },
               {
                 value: "No",
-                checked: (true if data['curfewtimesquestion'] == 'No'),
-                text: "No"
+                text: "No",
+                checked: (true if data['exclusionquestion'] == 'No'),
+                conditional: {
+                 
+                }
               }
             ]
           }) }}
+
+
+     
+        
 
        
 

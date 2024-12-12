@@ -1,0 +1,129 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible adult details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Monitoring conditions</span>
+        Alcohol monitoring details
+      </h1>
+
+
+      <form class="form" action="/alcohol" method="post">
+
+          {{ govukRadios({
+            name: "type-alcohol",
+            fieldset: {
+              legend: {
+                text: "What type of alcohol monitoring is needed?",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select one option"
+            },
+            items: [
+              {
+                value: "Alcohol level",
+                text: "Alcohol level",
+                checked: (true if data['type-alcohol'] == 'Alcohol level'),
+                conditional: {
+              
+                }
+              },
+              {
+                value: "Alcohol abstinence",
+                text: "Alcohol abstinence",
+                checked: (true if data['type-alcohol'] == 'Alcohol abstinence'),
+                conditional: {
+                 
+                }
+              }
+            ]
+          }) }}
+
+          
+          <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-label govuk-label--s">
+             Where will alcohol base station monitoring equipment be installed?
+          </legend>
+          <div id="address-hint" class="govuk-hint">
+           Select one option
+          </div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            {% if (data['installaddressquestion'] == "Yes") %}
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="whereDoYouLive" name="alcoholaddress" type="radio" value="Contact">
+              <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+                Contact address - 123 Carter Bar
+              </label>
+            </div>
+            {% endif %}
+            {% if (data['installaddressquestion'] == "No") %}
+            
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="whereDoYouLive" name="alcoholaddress" type="radio" value="Contact">
+              <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+               Contact address -
+                123 Carter Bar
+              </label>
+            </div>
+          
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="whereDoYouLive-2" name="alcoholaddress" type="radio" value="Installation">
+              <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
+               Tag installation address - {{ data['installaddressLine1'] }}
+              </label>
+            </div>
+            {% endif %}
+
+            <div class="govuk-radios__divider">or</div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="whereDoYouLive-3" name="alcoholaddress" type="radio" value="At another location or address">
+              <label class="govuk-label govuk-radios__label" for="whereDoYouLive-3">
+               At another location or address
+              </label>
+            </div>
+            
+           
+            
+          </div>
+        </fieldset>
+      </div>
+       
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

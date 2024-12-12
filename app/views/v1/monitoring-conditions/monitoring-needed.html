@@ -29,7 +29,13 @@
                   {{ data['monitoringtype'] }}
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  <p class="govuk-body">                    
+                   {% if (data['monitoringtype'] == "Mandatory attendance monitoring") %}
+                  {{ data['appointment-reason'] }}   
+                   {% endif %}     
+
+                   {% if (data['monitoringtype'] == "Exclusion and inclusion zone monitoring") %}
+                  {{ data['exclusion-name'] }}   
+                   {% endif %}             
                 </dd>  
                 </dd>  
                 <dd class="govuk-summary-list__actions">
@@ -51,7 +57,13 @@
                   {{ data['monitoringtype2'] }}
                 </dt>
                 <dd class="govuk-summary-list__value">
-                  <p class="govuk-body">                    
+                   {% if (data['monitoringtype2'] == "Mandatory attendance monitoring") %}
+                  {{ data['appointment-reason'] }}   
+                   {% endif %}       
+
+                    {% if (data['monitoringtype2'] == "Exclusion and inclusion zone monitoring") %}
+                  {{ data['exclusion-name'] }}   
+                   {% endif %}                    
                 </dd>  
                 </dd>  
                 <dd class="govuk-summary-list__actions">

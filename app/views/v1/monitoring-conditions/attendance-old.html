@@ -1,0 +1,312 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible adult details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l"></span>
+        Monitoring conditions
+      </h1>
+
+
+      <form class="form" action="monitoring-needed" method="post">
+
+        <h2 class="govuk-heading-m">Mandatory attendance monitoring dates</h2>
+
+           <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-label govuk-label--s">
+                What is the date the mandatory attendance monitoring starts?
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 27 3 2020
+              </div>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoring-day" name="attendancestart-day" type="text" inputmode="numeric" value="{{ data['attendancestart-day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoring-month" name="attendancestart-month" type="text" inputmode="numeric" value="{{ data['attendancestart-month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="monitoring-year" name="attendancestart-year" type="text" inputmode="numeric" value="{{ data['attendancestart-year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+            <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-label govuk-label--s">
+                What is the date the mandatory attendance monitoring ends? (optional)
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 27 3 2020
+              </div>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoringend-day" name="attendanceend-day" type="text" inputmode="numeric" value="{{ data['attendanceend-day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoringend-month" name="attendanceend-month" type="text" inputmode="numeric" value="{{ data['attendanceend-month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="monitoringend-year" name="attendanceend-year" type="text" inputmode="numeric" value="{{ data['attendanceend-year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+           <h2 class="govuk-heading-m">Appointment details</h2>
+           
+  
+       {{ govukInput({
+            id: "contact-by-email",
+            name: "appointment-reason",
+            spellcheck: false,
+            value: data['appointment-reason'],
+            classes: "govuk-input",
+            hint: {
+              text: "For example, education or medical appointment"
+            },
+            label: {
+              text: "What is the appointment for?",
+              classes: "govuk-label--s"
+            }
+          }) }}
+
+            {{ govukInput({
+            id: "contact-by-email",
+            name: "appointment-day",
+            spellcheck: false,
+            value: data['appointment-day'],
+            classes: "govuk-input",
+            hint: {
+              text: "For example, On Monday and Wednesday every week "
+            },
+            label: {
+              text: "On what day or days is the appointment?",
+              classes: "govuk-label--s"
+            }
+          }) }}
+
+
+          <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+              <h1 class="govuk-fieldset__heading">
+                What time does the appointment start?
+              </h1>
+            </legend>
+            <div id="passport-issued-hint" class="govuk-hint">
+              For example 09:45 or 15:30 (24 hours)
+            </div>
+            <div class="govuk-date-input" id="passport-issued">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                    Hour
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="appointment-start-hours" type="text" inputmode="numeric" value="{{ data['appointment-start-hours'] }}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <label class="govuk-label govuk-date-input__label">:</label>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                    Minute
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="appointment-start-minutes" type="text" inputmode="numeric" value="{{ data['appointment-start-minutes'] }}">
+                </div>
+              </div>
+              
+            </div>
+          </fieldset>
+        </div>
+
+         <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+              <h1 class="govuk-fieldset__heading">
+                What time does the appointment end?
+              </h1>
+            </legend>
+            <div id="passport-issued-hint" class="govuk-hint">
+              For example 09:45 or 15:30 (24 hours)
+            </div>
+            <div class="govuk-date-input" id="passport-issued">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                    Hour
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="appointment-end-hours" type="text" inputmode="numeric" value="{{ data['appointment-end-hours'] }}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <label class="govuk-label govuk-date-input__label">:</label>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                    Minute
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="appointment-end-minutes" type="text" inputmode="numeric" value="{{ data['appointment-end-minutes'] }}">
+                </div>
+              </div>
+              
+            </div>
+          </fieldset>
+        </div>
+
+        {% call govukFieldset({
+        legend: {
+          text: "What is the address where the appointment will take place?",
+          classes: "govuk-fieldset__legend--s"
+        }
+      }) %}
+
+
+
+        {{ govukInput({
+          label: {
+            text: "Address line 1"
+          },
+          id: "address-line-1",
+          name: "appointmentaddressLine1",
+          value: data['appointmentaddressLine1']
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Address line 2 (optional)"
+          },
+          id: "address-line-2",
+          name: "appointmentaddressLine2",
+          value: data['appointmentaddressLine2']
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Town or city"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "address-town",
+          name: "appointmentaddressTown",
+          value: data['appointmentaddressTown']
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "County (optional)"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "appointmentaddresscounty",
+          value: data['appointmentaddresscounty']
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Postcode"
+          },
+          classes: "govuk-input--width-10",
+          id: "address-postcode",
+          name: "appointmentaddressPostcode",
+          value: data['appointmentaddressPostcode']
+        }) }}
+
+      {% endcall %}   
+
+
+
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "curfewaddressquestion",
+            fieldset: {
+              legend: {
+                text: "Are there any other appointments the device wearer needs to attend?",
+               classes: "govuk-fieldset__legend--m"
+              }
+            },
+            items: [
+           
+              {
+                value: "Yes",
+                text: "Yes"
+              },
+              {
+                value: "No",
+                checked: (true if data['curfewaddressquestion'] == 'No'),
+                text: "No"
+              }
+            ]
+          }) }}
+
+       
+       
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and come back later",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

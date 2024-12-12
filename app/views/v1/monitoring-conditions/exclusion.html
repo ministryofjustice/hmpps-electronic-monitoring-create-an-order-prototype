@@ -16,11 +16,88 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Monitoring conditions</span>
-        Exclusion and inclusion monitoring
+        Exclusion and inclusion monitoring dates
       </h1>
 
 
-      <form class="form" action="monitoring-needed" method="post">
+      <form class="form" action="exclusion-2" method="post">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-label govuk-label--s">
+                What is the date the exclusion and inclusion monitoring starts?
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 27 3 2020
+              </div>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoring-day" name="exclusionstart-day" type="text" inputmode="numeric" value="{{ data['exclusionstart-day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoring-month" name="exclusionstart-month" type="text" inputmode="numeric" value="{{ data['exclusionstart-month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="monitoring-year" name="exclusionstart-year" type="text" inputmode="numeric" value="{{ data['exclusionstart-year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+            <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-label govuk-label--s">
+                What is the date the exclusion and inclusion monitoring ends? (optional)
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 27 3 2020
+              </div>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoringend-day" name="exclusionend-day" type="text" inputmode="numeric" value="{{ data['exclusionend-day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoringend-month" name="exclusionend-month" type="text" inputmode="numeric" value="{{ data['exclusionend-month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="monitoringend-year" name="exclusionend-year" type="text" inputmode="numeric" value="{{ data['exclusionend-year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+       
+
 
        
 
