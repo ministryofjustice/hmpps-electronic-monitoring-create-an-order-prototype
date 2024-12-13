@@ -93,27 +93,13 @@
             </dd>
             <dd class="govuk-summary-list__actions">
                
-                  <a class="govuk-link" href="responsible-officer">Change<span class="govuk-visually-hidden"> What organisation is the responsible officer part of? </span></a>
+                  <a class="govuk-link" href="org-contact">Change<span class="govuk-visually-hidden"> What organisation is the responsible officer part of? </span></a>
                 </li>
                 
             </dd>
           </div>
 
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What is the address of the responsible organisation?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['orgaddressLine1'] }}<br>
-              {{ data['orgaddressTown'] }}<br>
-              {{ data['orgaddressPostcode'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="org-address">Change<span class="govuk-visually-hidden"> WWhat is the address of the responsible organisation?</span></a>
-            </dd>
-          </div>
-
-              <div class="govuk-summary-list__row">
+            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
          What is the responsible organisation's telephone number?
             </dt>
@@ -143,10 +129,21 @@
             </dd>
           </div>
 
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the address of the responsible organisation?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['orgaddressLine1'] }}<br>
+              {{ data['orgaddressTown'] }}<br>
+              {{ data['orgaddressPostcode'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="org-address">Change<span class="govuk-visually-hidden"> WWhat is the address of the responsible organisation?</span></a>
+            </dd>
+          </div>
 
 
-
-      
 
         </dl>
      
