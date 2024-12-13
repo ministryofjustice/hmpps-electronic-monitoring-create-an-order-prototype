@@ -38,6 +38,17 @@
               <a class="govuk-link" href="monitoring-dates">Change<span class="govuk-visually-hidden"> What is the date the monitoring starts? </span></a>
             </dd>
           </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the time the monitoring starts?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['starttime-hours'] }}:{{ data['starttime-minutes'] 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="monitoring-dates">Change<span class="govuk-visually-hidden"> What is the time the monitoring starts? </span></a>
+            </dd>
+          </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the date the monitoring ends? (optional)
@@ -47,6 +58,18 @@
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="monitoring-dates">Change<span class="govuk-visually-hidden"> What is the date the monitoring ends? </span></a>
+            </dd>
+          </div>
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the time the ends? (optional)
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['endtime-hours'] }}:{{ data['endtime-minutes'] 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="monitoring-dates">Change<span class="govuk-visually-hidden"> What is the time the ends? (optional) </span></a>
             </dd>
           </div>
            
