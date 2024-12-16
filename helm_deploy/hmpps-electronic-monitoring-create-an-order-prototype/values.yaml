@@ -1,0 +1,42 @@
+generic-service:
+  nameOverride: hmpps-electronic-monitoring-create-an-order-prototype
+  productId: 'HMPPS529' # productId for the product that this belongs too, i.e. DPS001, see README.md for details
+
+  # the IRSA service account name for accessing AWS resources
+  # serviceAccountName: "hmpps-electronic-monitoring-create-an-order"
+
+  replicaCount: 4
+
+  image:
+    repository: quay.io/hmpps/hmpps-electronic-monitoring-create-an-order-prototype
+    tag: app_version # override at deployment time
+    port: 3000
+
+  ingress:
+    enabled: true
+    host: hmpps-electronic-monitoring-create-an-order-prototype.hmpps.service.justice.gov.uk
+    tlsSecretName: hmpps-ems-cemo-ui-cert
+
+  livenessProbe:
+    httpGet:
+      path: /ping
+
+  readinessProbe:
+    httpGet:
+      path: /ping
+
+  # Environment variables to load into the deployment
+  env:
+    NODE_ENV: 'production'
+
+  # Pre-existing kubernetes secrets to load as environment variables in the deployment.
+  # namespace_secrets:
+  #   [name of kubernetes secret]:
+  #     [name of environment variable as seen by app]: [key of kubernetes secret to load]
+
+  allowlist:
+    groups:
+      - digital_staff_and_mojo
+
+generic-prometheus-alerts:
+  targetApplication: hmpps-electronic-monitoring-create-an-order-dev
