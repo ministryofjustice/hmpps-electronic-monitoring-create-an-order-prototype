@@ -26,7 +26,7 @@
 
        
 
-            <div class="govuk-form-group">
+         <!--   <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
               <legend class="govuk-label govuk-label--s">
                 What is the date the monitoring starts?
@@ -61,7 +61,25 @@
                 </div>
               </div>
             </fieldset>
+          </div>-->
+
+          <div class="moj-datepicker" data-module="moj-date-picker">
+
+            <div class="govuk-form-group">
+              <label class="govuk-label  govuk-label--s" for="date">
+               What is the date the monitoring starts?
+              </label>
+
+              <div id="date-hint" class="govuk-hint">
+                For example, 17/5/2024.
+              </div>
+
+              <input class="govuk-input moj-js-datepicker-input " id="date" name="monitoring-date-start" type="text" aria-describedby="date-hint" autocomplete="off" value="{{ data['monitoring-date-start'] }}">
+
+            </div>
+
           </div>
+
 
 
            <div class="govuk-form-group">
@@ -94,7 +112,7 @@
 
       
 
-            <div class="govuk-form-group">
+       <!--     <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
               <legend class="govuk-label govuk-label--s">
                 What is the date monitoring ends? (optional)
@@ -129,7 +147,25 @@
                 </div>
               </div>
             </fieldset>
+          </div>-->
+
+          <div class="moj-datepicker" data-module="moj-date-picker">
+
+            <div class="govuk-form-group">
+              <label class="govuk-label  govuk-label--s" for="date">
+               What is the date the monitoring ends? (optional)
+              </label>
+
+              <div id="date-hint" class="govuk-hint">
+                For example, 17/5/2024.
+              </div>
+
+              <input class="govuk-input moj-js-datepicker-input " id="date" name="monitoring-date-end" type="text" aria-describedby="date-hint" autocomplete="off" value="{{ data['monitoring-date-end'] }}">
+
+            </div>
+
           </div>
+
            
             
           </div>

@@ -46,25 +46,25 @@
           {% if (data['disability-needs-question'] !== NULL and data['disability-needs-question'] !== '') %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-               Is there anything else we should know about the device wearer’s disability or accessibility needs?
+             Is there anything you want to share about the device wearer’s disability or health condition to help us plan installation?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['disability-needs-question'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="disability-needs">Change<span class="govuk-visually-hidden"> Is there anything else we should know about the device wearer’s disability or accessibility needs?</span></a>
+              <a class="govuk-link" href="disability-needs">Change<span class="govuk-visually-hidden"> Is there anything you want to share about the device wearer’s disability or health condition to help us plan installation?</span></a>
             </dd>
           </div>
           {% if (data['disability-needs-question'] == "Yes") %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-               What should we know about the device wearer's disability or accessibility needs?
+               What should we know about the device wearer's disability or health condition?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['needs'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="disability-needs">Change<span class="govuk-visually-hidden"> What should we know about the device wearer's disability or accessibility needs?</span></a>
+              <a class="govuk-link" href="disability-needs">Change<span class="govuk-visually-hidden"> What should we know about the device wearer's disability or health condition?</span></a>
             </dd>
           </div>
 

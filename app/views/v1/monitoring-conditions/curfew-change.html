@@ -12,41 +12,29 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      
+ 
+ {% if (data['curfewstandard'] == "false") %}     
 
       <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Monitoring conditions</span>
+        Curfew times for the curfew timetable
+      </h1>
+
+      <p>Enter the times to use for the curfew timetable. You can change the times or location for any given day on later screens if you need to.</p>
+
+         <form class="form" action="curfew-4?curfewstandard=true%curfewtimetableday=False" method="post">
+
+ {% else %}
+
+       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Monitoring conditions</span>
         Curfew timetable for {{ data['curfewtimetableday'] }}
       </h1>
 
-
-{% if (data['curfewstandard'] == "false" and data['curfewtimetableday'] == 'Monday') %}
+         <form class="form" action="curfew-4" method="post">
       
-      <form class="form" action="curfew-change?curfewtimetableday=Tuesday" method="post">
+{% endif %}     
 
- {% elseif (data['curfewstandard'] == "false" and data['curfewtimetableday'] == 'Tuesday') %}
-      
-      <form class="form" action="curfew-change?curfewtimetableday=Wednesday" method="post"> 
-
- {% elseif (data['curfewstandard'] == "false" and data['curfewtimetableday'] == 'Wednesday') %}
-      
-      <form class="form" action="curfew-change?curfewtimetableday=Thursday" method="post">   
-
- {% elseif (data['curfewstandard'] == "false" and data['curfewtimetableday'] == 'Thursday') %}
-      
-      <form class="form" action="curfew-change?curfewtimetableday=Friday" method="post">  
-
- {% elseif (data['curfewstandard'] == "false" and data['curfewtimetableday'] == 'Friday') %}
-      
-      <form class="form" action="curfew-change?curfewtimetableday=Saturday" method="post">    
-
-   {% elseif (data['curfewstandard'] == "false" and data['curfewtimetableday'] == 'Saturday') %}
-      
-      <form class="form" action="curfew-change?curfewtimetableday=Sunday" method="post">          
-
-{% else %}
-      <form class="form" action="curfew-4" method="post">
-{% endif %}
 
 
 
@@ -58,13 +46,13 @@
 
       <legend class="govuk-fieldset__legend moj-add-another__title govuk-fieldset__legend--m">
 
-        Curfew details
+        Curfew period
 
       </legend>
 
    <div class="govuk-form-group">
     <fieldset class="govuk-fieldset">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What is the start time of the curfew this day?</legend>
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What is the start time of the curfew?</legend>
 
       <div class="govuk-date-input ">
         <div class="govuk-hint">For example, 19:00 to 07:00.</div>
@@ -197,7 +185,7 @@
     <div class="moj-button-action">
 
       <button type="submit" class="govuk-button govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4" data-module="govuk-button">
-        Add another time
+        Add another curfew period
       </button>
 
     </div>
