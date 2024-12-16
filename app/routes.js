@@ -195,7 +195,7 @@ router.post('/curfew-times-question', function(request, response) {
     if (curfewtimesquestion == "Yes"){
         response.redirect("/v1/monitoring-conditions/curfew-4?curfewtimetableday=False&curfewstandard=true")
     } else {
-        response.redirect("/v1/monitoring-conditions/curfew-change?curfewtimetableday=Monday&curfewstandard=false")
+        response.redirect("/v1/monitoring-conditions/curfew-change?curfewstandard=false")
     }
 })
 

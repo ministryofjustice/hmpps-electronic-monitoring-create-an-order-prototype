@@ -22,6 +22,44 @@
 
       <form class="form" action="curfew-3" method="post">
 
+        <div class="moj-datepicker" data-module="moj-date-picker">
+
+            <div class="govuk-form-group">
+              <label class="govuk-label  govuk-label--s" for="date">
+               What is the date the curfew monitoring starts?
+              </label>
+
+              <div id="date-hint" class="govuk-hint">
+                For example, 17/5/2024.
+              </div>
+
+              <input class="govuk-input moj-js-datepicker-input " id="date" name="curfewstart-date" type="text" aria-describedby="date-hint" autocomplete="off" value="{{ data['curfewstart-date'] }}">
+
+            </div>
+
+          </div>
+
+         <div class="moj-datepicker" data-module="moj-date-picker">
+
+            <div class="govuk-form-group">
+              <label class="govuk-label  govuk-label--s" for="date">
+               What is the date the curfew monitoring ends? (optional)
+              </label>
+
+              <div id="date-hint" class="govuk-hint">
+                For example, 17/5/2024.
+              </div>
+
+              <input class="govuk-input moj-js-datepicker-input " id="date" name="curfewend-date" type="text" aria-describedby="date-hint" autocomplete="off" value="{{ data['curfewend-date'] }}">
+
+            </div>
+
+          </div>
+
+
+
+        <!--
+
 
             <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
@@ -102,7 +140,7 @@
         </fieldset>
       </div>
 
-     
+     -->
 
        
 

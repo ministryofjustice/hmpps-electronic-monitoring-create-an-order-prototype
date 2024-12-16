@@ -32,7 +32,7 @@
               What is the date the monitoring starts?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['monitoringstart-day'] }} {{ data['monitoringstart-month']  | monthName }} {{ data['monitoringstart-year'] }}
+              {{ data['monitoring-date-start'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="monitoring-dates">Change<span class="govuk-visually-hidden"> What is the date the monitoring starts? </span></a>
@@ -43,7 +43,7 @@
               What is the time the monitoring starts?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['starttime-hours'] }}:{{ data['starttime-minutes'] 
+              {{ data['starttime-hours'] }}:{{ data['starttime-minutes'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="monitoring-dates">Change<span class="govuk-visually-hidden"> What is the time the monitoring starts? </span></a>
@@ -54,22 +54,22 @@
               What is the date the monitoring ends? (optional)
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['monitoringend-day'] }} {{ data['monitoringend-month']  | monthName  }} {{ data['monitoringend-year'] }}
+              {{ data['monitoring-date-end'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="monitoring-dates">Change<span class="govuk-visually-hidden"> What is the date the monitoring ends? </span></a>
+              <a class="govuk-link" href="monitoring-dates">Change<span class="govuk-visually-hidden"> What is the date the monitoring ends? (optional) </span></a>
             </dd>
           </div>
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the time the ends? (optional)
+              What is the time the monitoring ends? (optional)
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['endtime-hours'] }}:{{ data['endtime-minutes'] 
+              {{ data['endtime-hours'] }}:{{ data['endtime-minutes'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="monitoring-dates">Change<span class="govuk-visually-hidden"> What is the time the ends? (optional) </span></a>
+              <a class="govuk-link" href="monitoring-dates">Change<span class="govuk-visually-hidden"> What is the time the monitoring ends? (optional) </span></a>
             </dd>
           </div>
            
@@ -170,7 +170,7 @@
               What is the date the curfew monitoring starts?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['curfewstart-day'] }} {{ data['curfewstart-month']  | monthName }} {{ data['curfewstart-year'] }}
+              {{ data['curfewstart-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="curfew-2">Change<span class="govuk-visually-hidden"> What is the date the curfew monitoring starts? </span></a>
@@ -181,7 +181,7 @@
               What is the date the curfew monitoring ends? (optional)
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['curfewend-day'] }} {{ data['curfewend-month']  | monthName  }} {{ data['curfewend-year'] }}
+              {{ data['curfewend-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="curfew-2">Change<span class="govuk-visually-hidden"> What is the date the curfew monitoring ends? </span></a>
@@ -196,7 +196,7 @@
               What is the release date?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['release-day'] }} {{ data['release-month'] | monthName }} {{ data['release-year'] }}
+              {{ data['release-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="curfew-3">Change<span class="govuk-visually-hidden"> What is the release date? </span></a>
@@ -262,81 +262,22 @@
   
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             Monday
+             Contact address - 123 Carter Bar
             </dt>
             <dd class="govuk-summary-list__value">
-             19:00 to 07:00 the next day<br>at Contact address - 123 Carter Bar
+             19:00 Monday to 07:00 Tuesday<br>
+             19:00 Tuesday to 07:00 Wednesday<br>
+             19:00 Wednesday to 07:00 Thursday<br>
+             19:00 Thursday to 07:00 Friday<br>
+             19:00 Friday to 07:00 Saturday<br>
+             19:00 Saturday to 07:00 Sunday<br>
+             19:00 Sunday to 07:00 Monday
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="curfew-4">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
             </dd>
           </div>
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             Tuesday
-            </dt>
-            <dd class="govuk-summary-list__value">
-             19:00 to 07:00 the next day<br>at Contact address - 123 Carter Bar
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="curfew-4">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
-            </dd>
-          </div>
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             Wednesday
-            </dt>
-            <dd class="govuk-summary-list__value">
-             19:00 to 07:00 the next day<br>at Contact address - 123 Carter Bar
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="curfew-4">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
-            </dd>
-          </div>
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             Thursday
-            </dt>
-            <dd class="govuk-summary-list__value">
-             19:00 to 07:00 the next day<br>at Contact address - 123 Carter Bar
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="curfew-4">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
-            </dd>
-          </div>
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             Friday
-            </dt>
-            <dd class="govuk-summary-list__value">
-              19:00 to 07:00 the next day<br>at Contact address - 123 Carter Bar
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="curfew-4">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
-            </dd>
-          </div>
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             Saturday
-            </dt>
-            <dd class="govuk-summary-list__value">
-              19:00 to 07:00 the next day<br>at Contact address - 123 Carter Bar
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="curfew-4">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
-            </dd>
-          </div>
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             Sunday
-            </dt>
-            <dd class="govuk-summary-list__value">
-              19:00 to 07:00 the next day<br>at Contact address - 123 Carter Bar
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="curfew-4">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
-            </dd>
-          </div>
+           
 
         </dl>
       
@@ -353,7 +294,7 @@
               What is the date the exclusion and inclusion monitoring starts?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['exclusionstart-day'] }} {{ data['exclusionstart-month']  | monthName }} {{ data['exclusionstart-year'] }}
+              {{ data['exclusionstart-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="exclusion">Change<span class="govuk-visually-hidden"> What is the date the exclusion and inclusion monitoring starts? </span></a>
@@ -364,7 +305,7 @@
               What is the date the exclusion and inclusion monitoring ends? (optional)
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['exclusionend-day'] }} {{ data['exclusionend-month']  | monthName  }} {{ data['exclusionend-year'] }}
+              {{ data['exclusionend-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="exclusion">Change<span class="govuk-visually-hidden"> What is the date the exclusion and inclusion monitoring ends? </span></a>
@@ -458,7 +399,7 @@
               What is the date the trail monitoring starts?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['trailstart-day'] }} {{ data['trailstart-month']  | monthName }} {{ data['trailstart-year'] }}
+              {{ data['trailstart-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="trail">Change<span class="govuk-visually-hidden"> What is the date the trail monitoring starts? </span></a>
@@ -469,7 +410,7 @@
               What is the date the trail monitoring ends? (optional)
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['trailend-day'] }} {{ data['trailend-month']  | monthName  }} {{ data['trailend-year'] }}
+              {{ data['trailend-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="trail">Change<span class="govuk-visually-hidden"> What is the date the trail monitoring ends? </span></a>
@@ -490,7 +431,7 @@
               What is the date the mandatory attendance monitoring starts?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['attendancestart-day'] }} {{ data['attendancestart-month']  | monthName }} {{ data['attendancestart-year'] }}
+              {{ data['attendancestart-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="attendance">Change<span class="govuk-visually-hidden"> What is the date the mandatory attendance monitoring starts? </span></a>
@@ -501,7 +442,7 @@
               What is the date the mandatory attendance monitoring ends? (optional)
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['attendanceend-day'] }} {{ data['attendanceend-month']  | monthName  }} {{ data['attendanceend-year'] }}
+              {{ data['attendanceend-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="attendance">Change<span class="govuk-visually-hidden"> What is the date the mandatory attendance monitoring ends? </span></a>
@@ -577,7 +518,7 @@
               What is the date the alcohol monitoring starts?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['alcoholmonitoringstart-day'] }} {{ data['alcoholmonitoringstart-month']  | monthName }} {{ data['alcoholmonitoringstart-year'] }}
+              {{ data['alcoholstart-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="alcohol">Change<span class="govuk-visually-hidden"> What is the date the alcohol monitoring starts? </span></a>
@@ -588,7 +529,7 @@
               What is the date the alcohol monitoring ends? (optional)
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['alcoholmonitoringend-day'] }} {{ data['alcoholmonitoringend-month']  | monthName  }} {{ data['alcoholmonitoringend-year'] }}
+              {{ data['alcoholend-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="alcohol">Change<span class="govuk-visually-hidden"> What is the date the alcohol monitoring ends? </span></a>
