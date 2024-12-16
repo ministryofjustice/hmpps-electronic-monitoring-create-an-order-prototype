@@ -149,7 +149,7 @@
       {% endif %}
       {% if (data['installaddressquestion'] == "No") %}
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address" type="checkbox" value="Contact address - 123 Carter Bar">
+        <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address" type="checkbox" {{ checked('curfewstandard', 'true') }} value="Contact address - 123 Carter Bar">
         <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive">
          
           Contact address -
