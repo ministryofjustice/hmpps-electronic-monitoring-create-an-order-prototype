@@ -14,16 +14,16 @@ generic-service:
 
   ingress:
     enabled: true
-    host: hmpps-electronic-monitoring-create-an-order-prototype.hmpps.service.justice.gov.uk
+    host: app-hostname.local # override per environment
     tlsSecretName: hmpps-ems-cemo-ui-cert
 
   livenessProbe:
     httpGet:
-      path: /ping
+      path: /
 
   readinessProbe:
     httpGet:
-      path: /ping
+      path: /
 
   # Environment variables to load into the deployment
   env:
