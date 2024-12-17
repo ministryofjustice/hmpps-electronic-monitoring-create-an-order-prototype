@@ -1,0 +1,53 @@
+{% extends "layouts/moj.html" %}
+
+{% block pageTitle %}
+  Give feedback on Electronic Monitoring - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">Search results</h1>
+
+      <form class="form" action="search-results" method="post">
+
+       <p>1 result found for:<br> <b>{{ data['search-firstname'] }} {{ data['search-lastname'] }}</b> with the date of birth of <b>{{ data['search-dob-day'] }} {{ data['search-dob-month'] | monthName }} {{ data['search-dob-year'] }} {{ data['search-id'] }}</b><br> <a href="search">Search again</a></p>
+
+
+         <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Name of device wearer</th>
+                <th scope="col" class="govuk-table__header">Date of birth</th>
+                <th scope="col" class="govuk-table__header">Date submitted</th>
+                <th scope="col" class="govuk-table__header">Reference</th>
+                <th scope="col" class="govuk-table__header">Status</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="submitted-form?view=true">{{ data['search-firstname'] }} {{ data['search-lastname'] }}</a></td>
+                <td class="govuk-table__cell">{{ data['search-dob-day'] }} {{ data['search-dob-month'] | monthName }} {{ data['search-dob-year'] }}</td>
+                <td class="govuk-table__cell">23 November 2024</td>
+                <td class="govuk-table__cell">12457</td>
+                <td class="govuk-table__cell">Submitted</td>
+              </tr>
+             
+              
+            </tbody>
+          </table>
+
+    
+      
+
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

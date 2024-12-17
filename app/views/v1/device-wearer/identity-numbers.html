@@ -17,7 +17,17 @@
         Identity numbers
       </h1>
 
-      <form class="form" action="personal-details" method="post">
+       {% if (data['cya'] == "true") %}
+
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+        <form class="form" action="personal-details" method="post">
+
+        {% endif %}
+
+     
 
         <p>Identity numbers help us identify the device wearer.</p>
 

@@ -255,6 +255,16 @@ router.post('/photo-question', function(request, response) {
     }
 })
 
+router.post('/edit-form', function(request, response) {
+
+    var editreason = request.session.data['editreason']
+    if (editreason == "Edit the details of the form"){
+        response.redirect("/v1/submitted-form?view=false")
+    } else {
+        response.redirect("/v1/edit-form-delete")
+    }
+})
+
 
 
 // const radioButtonRedirect = require('radio-button-redirect')

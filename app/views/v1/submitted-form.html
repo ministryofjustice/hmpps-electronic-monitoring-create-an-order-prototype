@@ -1,0 +1,225 @@
+{% extends "layouts/moj.html" %}
+
+{% block pageTitle %}
+  Electronic Monitoring notification form - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<!-- Breadcrumb -->
+<a href="dashboard" action="action" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+     <!-- {% set html %}
+        <p class="govuk-notification-banner__heading">
+         This form was submitted on the 14 December 2024.
+        </p>
+      {% endset %}
+
+   {% if (data['view'] == 'true') %}
+
+      {{ govukNotificationBanner({
+        html: html
+      }) }}
+
+    {% else %}
+              
+    {% endif %}   -->
+
+      <h1 class="govuk-heading-l">Electronic Monitoring notification form</h1>
+
+       {% if (data['view'] == 'true') %}
+
+       <p> This form was submitted on the 14 December 2024. You can edit the form and submit it to create a variation.</p>
+
+             <form class="form" action="edit-form" method="post">
+
+
+        {% else %}
+
+         <p> You are creating a variation of a form that was submitted on the 14 December 2024. Edit the sections that you need to change.</p>
+
+
+              <form class="form" action="submit-confirmation?variation=true" method="post">
+              
+       {% endif %}   
+
+
+
+  <!-- <h2 class="govuk-heading-m">Notification form sections</h2>-->
+
+      {% set completedStatus = {
+        text: "Completed"
+      } %}
+
+      {% set viewStatus = {
+        text: ""
+      } %}
+
+      {% set incompleteStatus = {
+        tag: {
+          text: "Incomplete",
+          classes: "govuk-tag--blue"
+        }
+      } %}
+
+ {% if (data['view'] == 'true') %}
+
+
+      {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the responsible organisation"
+            },
+            href: ("organisation/check-answers-view"),
+             status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: (viewStatus)
+          },
+          {
+            title: {
+              text: "Monitoring conditions"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+             status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk information"
+            },
+            href: ("installation/check-answers-view"),
+            status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "Attachments"
+            },
+            href: ("attachments/check-answers-view"),
+            status: ( viewStatus)
+          }
+
+        ]
+      }) }}
+
+      {% else %}
+
+        {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the responsible organisation"
+            },
+            href: ("organisation/check-answers-view"),
+            status: ( completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: ( completedStatus if data['section-1-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Monitoring conditions"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk information"
+            },
+            href: ("installation/check-answers-view"),
+           status: ( completedStatus if data['section-3-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Attachments"
+            },
+            href: ("attachments/check-answers-view"),
+           status: ( completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          }
+
+        ]
+      }) }}
+
+      {% endif%}
+
+       {% if (data['view'] == 'true') %}
+
+          <img src="/public/images/form_download.svg" alt="PDF download icon">
+
+           {{ govukButton({
+          text: "View submitted notification form",
+          href: '#',
+          classes: "govuk-button--secondary"
+        }) }}
+
+
+         
+          {% else %}    
+
+          {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+              {{ govukCharacterCount({
+                name: "edit-text",
+                id: "with-hint",
+                maxlength: 200,
+                label: {
+                  text: "What have you changed in this form?",
+                  classes: "govuk-label--s",
+                  isPageHeading: false
+                },
+                 hint: {
+                  text: "This text will be sent to Serco along with your changes to help them quickly understand what has changed and what they need to do."
+                }
+              }) }}
+ 
+
+          {% endif %}  
+
+
+
+
+      <div class="govuk-!-margin-top-5">
+       <div class="govuk-button-group">
+
+           {% if (data['view'] == 'true') %}
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+           Edit form
+          </button>
+          {% else %}
+              {% if (data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true') %}
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                Submit variation to the form
+              </button>
+              {% else %}
+              <button type="submit" class="govuk-button" disabled data-module="govuk-button">
+                Submit variation to the form
+              </button>
+
+              {% endif %}
+          {% endif %}
+
+
+
+        
+        </div>
+      </div>
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

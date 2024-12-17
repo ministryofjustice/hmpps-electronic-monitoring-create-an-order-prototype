@@ -17,7 +17,15 @@
         Name and preferred name
       </h1>
 
-      <form class="form" action="gender" method="post">
+        {% if (data['cya'] == "true") %}
+
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+        <form class="form" action="gender" method="post">
+
+        {% endif %}
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
         {% from "govuk/components/radios/macro.njk" import govukRadios %}

@@ -1,0 +1,269 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Check your answers - Electronic Monitoring
+{% endblock %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+  {% set html %}
+        <p class="govuk-notification-banner__heading">
+         You are viewing a submitted form. This form was submitted on the 14 December 2024.
+        </p>
+      {% endset %}
+
+   {% if (data['view'] == 'true') %}
+
+      {{ govukNotificationBanner({
+        html: html
+      }) }}
+
+    {% else %}
+              
+    {% endif %}
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the device wearer</span>
+        Check your answers
+      </h1>
+
+  {% if (data['view'] == 'true') %}
+
+   {% else %}
+   <p>Check and save the information about the device wearer.</p>
+              
+    {% endif %}
+
+      
+
+      <form class="form" action="../submitted-form?section-1-complete=true" method="post">
+
+        <h2 class="govuk-heading-m">Personal details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               What identity numbers do you have for the device wearer?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             Not able to provide this information
+            </dd>
+            <dd class="govuk-summary-list__actions">
+                {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+              
+            </dd>
+          </div>
+          
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's first name?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Fred
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's last name?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Bloggs
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Is there a preferred name or alias the device wearer uses that is different to their first name?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+         
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              How does the device wearer describe themselves?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Male
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+         
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's date of birth?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              19 January 1984
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Will the device wearer be 18 years old when the electronic monitoring device is installed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+      
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's telephone number?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              01278 987 987
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+         
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Does the device wearer have a fixed address?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's contact address?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if (data['edited'] == 'true') %}
+              
+               {{ data['contactaddressLine1'] }}<br>
+              {{ data['contactaddressTown'] }}<br>
+              {{ data['contactaddressPostcode'] }}
+
+               {% else %}
+
+               123 Stott Street,<br>
+              Glossop,<br>
+              High Peak,<br>
+              TD15 2SK
+
+              
+
+               {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="contact-address-view">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="contact-address-view">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+
+         
+
+        </dl>
+
+        
+
+
+      <div class="govuk-button-group">
+
+          {% if (data['view'] == 'true') %}
+
+           {{ govukButton({
+          text: "Return to main form menu",
+          href: "../submitted-form"
+        }) }}
+               
+
+         {% else %}
+          {{ govukButton({
+          text: "Save and return to main form menu"
+        }) }}
+
+    
+                    
+          {% endif %}
+       
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

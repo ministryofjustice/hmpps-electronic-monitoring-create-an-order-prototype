@@ -7,7 +7,7 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-l">
         Electronic Monitoring notification forms
@@ -39,8 +39,14 @@
         </h2>
 
         <p>
-          Edit or view your draft and submitted notification forms.
+          Edit or view your draft and submitted notification forms or search for a form someone else has submitted.
         </p>
+
+          {{ govukButton({
+          text: "Search for a submitted form",
+          href: 'search',
+          classes: "govuk-button--secondary"
+        }) }}
 
 
 
@@ -53,8 +59,9 @@
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
                 <th scope="col" class="govuk-table__header">Name of device wearer</th>
-                <th scope="col" class="govuk-table__header">Updated on</th>
+                <th scope="col" class="govuk-table__header">Last updated on</th>
                 <th scope="col" class="govuk-table__header">Reference</th>
+                <th scope="col" class="govuk-table__header">Status</th>
               </tr>
             </thead>
             <tbody class="govuk-table__body">
@@ -62,6 +69,7 @@
                 <td class="govuk-table__cell"><a href="#">David Francis</a></td>
                 <td class="govuk-table__cell">29 November 2024</td>
                 <td class="govuk-table__cell">12453</td>
+                <td class="govuk-table__cell">Draft</td>
               </tr>
             </tbody>
           </table>
@@ -73,20 +81,23 @@
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
                 <th scope="col" class="govuk-table__header">Name of device wearer</th>
-                <th scope="col" class="govuk-table__header">Updated on</th>
+                <th scope="col" class="govuk-table__header">Date submitted</th>
                 <th scope="col" class="govuk-table__header">Reference</th>
+                <th scope="col" class="govuk-table__header">Status</th>
               </tr>
             </thead>
             <tbody class="govuk-table__body">
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="#">Jon Elliot</a></td>
                 <td class="govuk-table__cell">23 November 2024</td>
-                <td class="govuk-table__cell">12476</td>
+                <td class="govuk-table__cell">12490</td>
+                <td class="govuk-table__cell">Variation</td>
               </tr>
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="#">Mike Smith</a></td>
                 <td class="govuk-table__cell">12 November 2024</td>
                 <td class="govuk-table__cell">12490</td>
+                <td class="govuk-table__cell">Submitted</td>
               </tr>
             </tbody>
           </table>
@@ -98,14 +109,14 @@
           {{ govukTabs({
             items: [
               {
-                label: "Draft forms",
+                label: "Your draft forms",
                 id: "past-day",
                 panel: {
                   html: draftFormsHtml
                 }
               },
               {
-                label: "Submitted forms",
+                label: "Your submitted forms",
                 id: "past-week",
                 panel: {
                   html: submittedFormsHtml
