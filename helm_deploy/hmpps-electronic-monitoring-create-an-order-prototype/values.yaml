@@ -24,6 +24,7 @@ generic-service:
   readinessProbe:
     httpGet:
       path: /
+      port: https
 
   # Environment variables to load into the deployment
   env:
