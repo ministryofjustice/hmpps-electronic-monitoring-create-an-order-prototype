@@ -18,9 +18,17 @@
       </h1>
 
     
-     
+      {% if (data['cya'] == "true") %}
 
-      <form class="form" action="contact-address-question" method="post">
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+       <form class="form" action="contact-address-question" method="post">
+
+        {% endif %}
+
+      
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
         {% from "govuk/components/radios/macro.njk" import govukRadios %}

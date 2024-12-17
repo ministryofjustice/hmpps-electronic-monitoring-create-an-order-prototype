@@ -1,0 +1,274 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Check your answers - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+       {% set html %}
+        <p class="govuk-notification-banner__heading">
+         You are viewing a submitted form. This form was submitted on the 14 December 2024.
+        </p>
+      {% endset %}
+
+         {% if (data['view'] == 'true') %}
+
+            {{ govukNotificationBanner({
+              html: html
+            }) }}
+
+          {% else %}
+                    
+          {% endif %}
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Monitoring conditions</span>
+        Check your answers
+      </h1>
+
+      {% if (data['view'] == 'true') %}
+
+
+      {% else %}
+
+      <p>Check and save the information about the monitoring conditions.</p>
+
+      {% endif %}
+
+      <form class="form" action="../submitted-form?section-4-complete=true" method="post">
+
+       
+
+
+    <h2 class="govuk-heading-m">Monitoring details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the monitoring starts?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              23 December 2024
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the time the monitoring starts?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              11:00
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the monitoring ends? (optional)
+            </dt>
+            <dd class="govuk-summary-list__value">
+              23 December 2025
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the time the monitoring ends? (optional)
+            </dt>
+            <dd class="govuk-summary-list__value">
+             11:00
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+           
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the type of the order?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             Civil
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the description of the order?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             Not able to provide this information
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What are the conditions of the order?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Bail order
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+         
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the address where the tag or tags will be installed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             
+              123 Carter Bar<br>
+              Glossop<br>
+              High Peak<br>
+              SK22 2NG
+             
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>  
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What monitoring does the device wearer need?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Trail monitoring
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>     
+         
+ </dl>
+
+ 
+   
+
+
+ <h2 class="govuk-heading-m">Trail monitoring</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the trail monitoring starts?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              23 December 2024
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+              </dd>   
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the trail monitoring ends? (optional)
+            </dt>
+            <dd class="govuk-summary-list__value">
+            23 December 2025
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+         
+       </dl>
+
+
+
+
+ 
+
+
+
+
+      <div class="govuk-button-group">
+         {% if (data['view'] == 'true') %}
+
+           {{ govukButton({
+          text: "Return to main form menu",
+          href: "../submitted-form"
+        }) }}
+               
+
+         {% else %}
+          {{ govukButton({
+          text: "Save and return to main form menu"
+        }) }}
+
+    
+                    
+     {% endif %}
+
+
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

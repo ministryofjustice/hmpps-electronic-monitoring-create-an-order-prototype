@@ -1,0 +1,55 @@
+{% extends "layouts/moj.html" %}
+
+{% block pageTitle %}
+  Give feedback on Electronic Monitoring - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Edit a submtted Electronic Monitoring notification form</h1>
+
+      <form class="form" action="/edit-form" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {{ govukRadios({
+            name: "editreason",
+            fieldset: {
+              legend: {
+                text: "What do you want to do with this form?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+              {
+                value: "Edit the details of the form",
+                text: "Edit the details of the form"
+              },
+              {
+                value: "Cancel this form",
+                text: "Cancel this form"
+              }
+            ]
+          }) }}
+
+
+
+          
+
+
+    <button type="submit" class="govuk-button" data-module="govuk-button" data-govuk-button-init="">
+      Save and continue
+    </button>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

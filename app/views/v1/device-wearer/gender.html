@@ -21,7 +21,17 @@
         Gender helps the person fitting the device use the correct language when talking to the device wearer.
       </p>
 
-      <form class="form" action="age" method="post">
+       {% if (data['cya'] == "true") %}
+
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+        <form class="form" action="age" method="post">
+
+        {% endif %}
+
+      
 
         {% from "govuk/components/input/macro.njk" import govukInput %}
         {% from "govuk/components/radios/macro.njk" import govukRadios %}

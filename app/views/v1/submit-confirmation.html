@@ -15,7 +15,15 @@
       <div class="govuk-grid-column-two-thirds">
         <div class="govuk-panel govuk-panel--confirmation">
           <h1 class="govuk-panel__title">
-            The notification form has been successfully submitted
+             {% if (data['variation'] == 'true') %}
+             The variation to the notification form has been successfully submitted
+
+           {% else %} 
+
+           The notification form has been successfully submitted
+
+           {% endif %} 
+          
           </h1>
           <div class="govuk-panel__body">
             Reference number<br><strong>123654</strong>
@@ -25,11 +33,23 @@
       
         <img src="/public/images/form_download.svg" alt="PDF download icon">
 
+         {% if (data['variation'] == 'true') %}
+
          {{ govukButton({
+          text: "View submitted variation to the notification form",
+          href: '#',
+          classes: "govuk-button--secondary"
+        }) }}
+
+         {% else %} 
+
+           {{ govukButton({
           text: "View submitted notification form",
           href: '#',
           classes: "govuk-button--secondary"
         }) }}
+
+           {% endif %} 
  
 
   <div class="govuk-button-group">
