@@ -59,9 +59,9 @@
         text: ""
       } %}
 
-      {% set incompleteStatus = {
+      {% set tocheckStatus = {
         tag: {
-          text: "Incomplete",
+          text: "To check",
           classes: "govuk-tag--blue"
         }
       } %}
@@ -121,35 +121,35 @@
               text: "About the responsible organisation"
             },
             href: ("organisation/check-answers-view"),
-            status: ( completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
+            status: ( completedStatus if data['section-2-complete'] == 'true' else tocheckStatus)
           },
           {
             title: {
               text: "About the device wearer"
             },
             href: ("device-wearer/check-answers-view"),
-            status: ( completedStatus if data['section-1-complete'] == 'true' else incompleteStatus)
+            status: ( completedStatus if data['section-1-complete'] == 'true' else tocheckStatus)
           },
           {
             title: {
               text: "Monitoring conditions"
             },
             href: ("monitoring-conditions/check-answers-view"),
-            status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
+            status: (completedStatus if data['section-4-complete'] == 'true' else tocheckStatus)
           },
           {
             title: {
               text: "Access needs and installation risk information"
             },
             href: ("installation/check-answers-view"),
-           status: ( completedStatus if data['section-3-complete'] == 'true' else incompleteStatus)
+           status: ( completedStatus if data['section-3-complete'] == 'true' else tocheckStatus)
           },
           {
             title: {
               text: "Attachments"
             },
             href: ("attachments/check-answers-view"),
-           status: ( completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+           status: ( completedStatus if data['section-5-complete'] == 'true' else tocheckStatus)
           }
 
         ]

@@ -19,8 +19,18 @@
        Responsible officer's details
       </h1>
 
+ {% if (data['cya2'] == "true") %}
 
-      <form class="form" action="org-contact" method="post">
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+       <form class="form" action="org-contact" method="post">
+
+        {% endif %}
+
+
+
 
 
 

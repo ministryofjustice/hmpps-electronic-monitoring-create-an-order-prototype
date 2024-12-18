@@ -17,7 +17,15 @@
         Risk at installation additional information
       </h1>
 
-      <form class="form" action="mappa" method="post">
+       {% if (data['cya3'] == "true") %}
+
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+       <form class="form" action="mappa" method="post">
+
+        {% endif %}
 
 
 

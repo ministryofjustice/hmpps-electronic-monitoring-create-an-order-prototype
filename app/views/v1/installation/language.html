@@ -17,7 +17,17 @@
         Language spoken
       </h1>
 
-      <form class="form" action="risk" method="post">
+        {% if (data['cya3'] == "true") %}
+
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+       <form class="form" action="risk" method="post">
+
+        {% endif %}
+
+      
 
 
          {% set languageHtml %}
