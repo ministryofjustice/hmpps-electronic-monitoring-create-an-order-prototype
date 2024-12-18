@@ -17,7 +17,18 @@
       Offence committed
       </h1>
 
-      <form class="form" action="risk-2" method="post">
+       {% if (data['cya3'] == "true") %}
+
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+       <form class="form" action="risk-2" method="post">
+
+        {% endif %}
+
+
+
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 

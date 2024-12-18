@@ -40,7 +40,7 @@
               {{ data['disability'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="disability">Change<span class="govuk-visually-hidden"> Does the device wearer have any of these disabilities or health conditions? </span></a>
+              <a class="govuk-link" href="disability?cya3=true">Change<span class="govuk-visually-hidden"> Does the device wearer have any of these disabilities or health conditions? </span></a>
             </dd>
           </div>
           {% if (data['disability-needs-question'] !== NULL and data['disability-needs-question'] !== '') %}
@@ -52,7 +52,7 @@
               {{ data['disability-needs-question'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="disability-needs">Change<span class="govuk-visually-hidden"> Is there anything you want to share about the device wearer’s disability or health condition to help us plan installation?</span></a>
+              <a class="govuk-link" href="disability-needs?cya3=true">Change<span class="govuk-visually-hidden"> Is there anything you want to share about the device wearer’s disability or health condition to help us plan installation?</span></a>
             </dd>
           </div>
           {% if (data['disability-needs-question'] == "Yes") %}
@@ -64,7 +64,7 @@
               {{ data['needs'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="disability-needs">Change<span class="govuk-visually-hidden"> What should we know about the device wearer's disability or health condition?</span></a>
+              <a class="govuk-link" href="disability-needs?cya3=true">Change<span class="govuk-visually-hidden"> What should we know about the device wearer's disability or health condition?</span></a>
             </dd>
           </div>
 
@@ -79,7 +79,7 @@
               {{ data['wearer-language'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="language">Change<span class="govuk-visually-hidden"> Does the device wearer require an interpreter?</span></a>
+              <a class="govuk-link" href="language?cya3=true">Change<span class="govuk-visually-hidden"> Does the device wearer require an interpreter?</span></a>
             </dd>
           </div>
           {% if (data['wearer-language'] == "Yes") %}
@@ -91,7 +91,7 @@
               {{ data['language'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="language">Change<span class="govuk-visually-hidden"> What language should be used when speaking to the device wearer?</span></a>
+              <a class="govuk-link" href="language?cya3=true">Change<span class="govuk-visually-hidden"> What language should be used when speaking to the device wearer?</span></a>
             </dd>
           </div>
           {% endif %}
@@ -109,7 +109,7 @@
               {{ data['offence'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="risk">Change<span class="govuk-visually-hidden"> What type of offence has been committed by the device wearer?</span></a>
+              <a class="govuk-link" href="risk?cya3=true">Change<span class="govuk-visually-hidden"> What type of offence has been committed by the device wearer?</span></a>
             </dd>
           </div>
 
@@ -121,7 +121,7 @@
               {{ data['risk'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="risk-2">Change<span class="govuk-visually-hidden"> What are the risks that apply to the device wearer?</span></a>
+              <a class="govuk-link" href="risk-2?cya3=true">Change<span class="govuk-visually-hidden"> What are the risks that apply to the device wearer?</span></a>
             </dd>
           </div>
 
@@ -137,7 +137,7 @@
               {{ data['risk-question'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="risk-3">Change<span class="govuk-visually-hidden"> Is there anything else we should know that will help lower risk of violence or threatening behaviour at installation?</span></a>
+              <a class="govuk-link" href="risk-3?cya3=true">Change<span class="govuk-visually-hidden"> Is there anything else we should know that will help lower risk of violence or threatening behaviour at installation?</span></a>
             </dd>
           </div>
           {% if (data['risk-question'] == "Yes") %}
@@ -149,7 +149,7 @@
               {{ data['risk-needs'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="risk-3">Change<span class="govuk-visually-hidden"> What should we know that will help lower risk of violence or threatening behaviour? </span></a>
+              <a class="govuk-link" href="risk-3?cya3=true">Change<span class="govuk-visually-hidden"> What should we know that will help lower risk of violence or threatening behaviour? </span></a>
             </dd>
           </div>
 
@@ -165,7 +165,7 @@
               {{ data['mappaquestion'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="mappa">Change<span class="govuk-visually-hidden"> Is the device wearer a MAPPA offender?</span></a>
+              <a class="govuk-link" href="mappa?cya3=true">Change<span class="govuk-visually-hidden"> Is the device wearer a MAPPA offender?</span></a>
             </dd>
           </div>
           {% if (data['mappaquestion'] == "Yes") %}
@@ -178,7 +178,7 @@
               {{ data['mappa-level'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="mapp-2">Change<span class="govuk-visually-hidden"> Which level of MAPPA applies to the device wearer?</span></a>
+              <a class="govuk-link" href="mappa-2?cya3=true">Change<span class="govuk-visually-hidden"> Which level of MAPPA applies to the device wearer?</span></a>
             </dd>
           </div>
 
@@ -190,7 +190,7 @@
               {{ data['mappa-type'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="risk">Change<span class="govuk-visually-hidden"> What is the MAPPA case type applied to the device wearer?</span></a>
+              <a class="govuk-link" href="mappa-2?cya3=true">Change<span class="govuk-visually-hidden"> What is the MAPPA case type applied to the device wearer?</span></a>
             </dd>
           </div>
 
