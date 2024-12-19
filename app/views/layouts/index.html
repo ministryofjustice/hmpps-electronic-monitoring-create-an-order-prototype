@@ -1,0 +1,63 @@
+{#
+    For guidance on how to use layouts see:
+    https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+    #}
+    {% extends "layouts/main.html" %}
+    
+ 
+
+
+{% block header %}
+ {{ mojHeader({
+  organisationLabel: {
+    text: 'HMPPS',
+    href: '#'
+  },
+  serviceLabel: {
+    text: 'Digital Services',
+    href: '#'
+  },
+  navigation: {
+    label: 'Account navigation',
+    items: [{
+      text: '',
+      href: '',
+      active: true
+    }, {
+      text: '',
+      href: ''
+    }]
+  }
+
+}) }}
+
+    
+    {{ xGovukMasthead({
+    
+      classes: "x-govuk-masthead–large",
+      
+      title: {
+      
+      text: "Electronic Monitoring prototype"
+      
+      },
+      
+      description: {
+      
+      text: "The team's vision is to empower public servants with highly integrated EM 
+              solutions that enhance public safety and reduce recidivism, and in turn help to 
+              build trust in the performance of the Electronic Monitoring service."
+      
+      }
+    
+    }) }}
+
+    {% endblock %}
+
+ 
+    
+    
+    {% block backlink %}
+    
+
+    {% endblock %}
