@@ -1,0 +1,105 @@
+{% extends "layouts/moj.html" %}
+
+{% block pageTitle %}
+  Give feedback on Electronic Monitoring - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+
+
+          <div class="moj-search">
+
+          <form action="search-v2?searchresults=true" method="post">
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <h1 class="govuk-fieldset__heading">
+                    Search for an electronic Monitoring notification form
+                  </h1>
+                </legend>
+
+              <div id="search-hint" class="govuk-hint moj-search__hint ">
+                You can search by the device wearer's name or date of birth.
+              </div>
+
+              <input class="govuk-input moj-search__input " id="search" name="search" type="search" aria-describedby="search-hint" value="{{ data['search'] }} ">
+
+            </div>
+
+            <button type="submit" class="govuk-button moj-search__button " data-module="govuk-button">
+              Search
+            </button>
+
+          </form>
+        </div>
+      </fieldset>
+
+      {% if (data['searchresults'] == "true") %}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  
+
+<div class="govuk-form-group">
+         <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Name of device wearer</th>
+                <th scope="col" class="govuk-table__header">Date of birth</th>
+                <th scope="col" class="govuk-table__header">Date submitted</th>
+                <th scope="col" class="govuk-table__header">Reference</th>
+                <th scope="col" class="govuk-table__header">Status</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false">Fred Bloggs</a></td>
+                <td class="govuk-table__cell">19 January 2001</td>
+                <td class="govuk-table__cell">18 December 2024</td>
+                <td class="govuk-table__cell">12457</td>
+                <td class="govuk-table__cell">Submitted</td>
+              </tr>
+               <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=true">Fred Bloggs</a></td>
+                <td class="govuk-table__cell">5 July 1974</td>
+                <td class="govuk-table__cell">15 November 2024</td>
+                <td class="govuk-table__cell">11546</td>
+                <td class="govuk-table__cell">Submitted</td>
+              </tr>
+               <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="#">Fred Bloggs</a></td>
+                <td class="govuk-table__cell">19 January 2001</td>
+                <td class="govuk-table__cell">2 March 2022</td>
+                <td class="govuk-table__cell">10023</td>
+                <td class="govuk-table__cell">Cancelled</td>
+              </tr>
+             
+              
+            </tbody>
+          </table>
+
+    </div>
+
+      {% else %}
+
+      {% endif %}
+
+
+
+      
+
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}
