@@ -16,7 +16,7 @@
 
       <form class="form" action="search-results" method="post">
 
-       <p>1 result found for:<br> <b>{{ data['search-firstname'] }} {{ data['search-lastname'] }}</b> with the date of birth of <b>{{ data['search-dob-day'] }} {{ data['search-dob-month'] }} {{ data['search-dob-year'] }} {{ data['search-id'] }}</b><br> <a href="search">Search again</a></p>
+       <p>1 result found for:<br> <b>Fred Bloggs</b> with the date of birth of <b>19 January 2001 {{ data['search-id'] }}</b><br> <a href="search">Search again</a></p>
 
 
          <table class="govuk-table">
@@ -31,8 +31,8 @@
             </thead>
             <tbody class="govuk-table__body">
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell"><a href="submitted-form?view=true">{{ data['search-firstname'] }} {{ data['search-lastname'] }}</a></td>
-                <td class="govuk-table__cell">{{ data['search-dob-day'] }} {{ data['search-dob-month'] }} {{ data['search-dob-year'] }}</td>
+                <td class="govuk-table__cell"><a href="submitted-form?view=true">Fred Bloggs</a></td>
+                <td class="govuk-table__cell">19 January 2001</td>
                 <td class="govuk-table__cell">23 November 2024</td>
                 <td class="govuk-table__cell">12457</td>
                 <td class="govuk-table__cell">Submitted</td>
