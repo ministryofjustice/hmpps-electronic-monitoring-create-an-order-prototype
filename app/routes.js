@@ -286,7 +286,7 @@ router.post('/edit-form', function(request, response) {
     if (editreason == "Edit the details of the form"){
         response.redirect("/v1/submitted-form?view=false")
     } else {
-        response.redirect("/v1/edit-form-delete")
+        response.redirect("/v1/edit-form-delete-question")
     }
 })
 

@@ -1,0 +1,91 @@
+{% extends "layouts/moj.html" %}
+
+{% block pageTitle %}
+  Electronic Monitoring Notification forms - Electronic Monitoring
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+    Electronic Monitoring Notification forms
+  </h1>
+
+
+      <form class="form" action="new-form" method="post">
+
+  
+
+      <h2 class="govuk-heading-m">
+          Submit a new notification form
+        </h2>
+
+        
+
+     <!--  <p>
+          [Insert content here - see the
+          <a href="#" target="_blank">help text link (opens in a new tab)]</a>
+        </p>
+-->
+        
+
+        <button type="submit" class="govuk-button" data-module="govuk-button" data-govuk-button-init="">
+          Start new form
+        </button>
+
+      </form>
+
+      <h2 class="govuk-heading-m">
+          View existing notification forms
+        </h2>
+
+        <p>
+          Edit or view your draft and submitted notification forms or search for a form someone else has submitted.
+        </p>
+
+          {{ govukButton({
+          text: "Search for a submitted form",
+          href: 'search-v2?searchresults=false&search=',
+          classes: "govuk-button--secondary"
+        }) }}
+
+ 
+      </form>
+
+   <h2 class="govuk-heading-s">
+          Your draft forms
+        </h2>
+
+
+       <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Name of device wearer</th>
+                <th scope="col" class="govuk-table__header">Date of birth</th>
+                <th scope="col" class="govuk-table__header">Last updated on</th>
+                <th scope="col" class="govuk-table__header">Reference</th>
+                <th scope="col" class="govuk-table__header">Status</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=true&section-5-complete=true">David Francis</a></td>
+                <td class="govuk-table__cell">19 January 1999</td>
+                <td class="govuk-table__cell">29 November 2024</td>
+                <td class="govuk-table__cell">43567</td>
+                <td class="govuk-table__cell">Draft</td>
+              </tr>
+            </tbody>
+          </table>
+
+   
+
+
+
+
+    </div>
+</div>
+
+{% endblock %}

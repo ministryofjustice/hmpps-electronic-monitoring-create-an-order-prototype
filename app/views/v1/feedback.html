@@ -12,7 +12,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">Give feedback on submitting an Electronic Monitoring notification form</h1>
+      <h1 class="govuk-heading-l">Give feedback on the Electronic Monitoring Notification form</h1>
 
       <form class="form" action="feedback-confirmation" method="post">
 
@@ -22,31 +22,32 @@
             name: "feedback",
             fieldset: {
               legend: {
-                text: "Overall how do you feel about the service you received today?",
+                text: "
+                        Overall how did you find completing the form?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--s"
               }
             },
             items: [
               {
-                value: "very-satisfied",
-                text: "Very satisfied"
+                value: "very easy",
+                text: "very easy"
               },
               {
-                value: "satisfied",
-                text: "Satisfied"
+                value: "Easy",
+                text: "Easy"
               },
               {
-                value: "neutral",
-                text: "Neither satisfied or disatisfied"
+                value: "Neither easy or hard",
+                text: "Neither easy or hard"
               },
               {
-                value: "disatisfied",
-                text: "Disatisfied"
+                value: "Hard",
+                text: "Hard"
               },
               {
-                value: "very-disatisfied",
-                text: "Very disatisfied"
+                value: "Very hard",
+                text: "Very hard"
               }
             ]
           }) }}
@@ -62,12 +63,12 @@
                 id: "with-hint",
                 maxlength: 200,
                 label: {
-                  text: "How could we improve this service?",
+                  text: "How could we improve the form to make it easier to complete?",
                   classes: "govuk-label--s",
                   isPageHeading: false
                 },
                 hint: {
-                  text: "Do not include personal information like details of a device wearer"
+                  text: "Don’t include personal details about yourself or anyone else in your answer."
                 }
               }) }}
 

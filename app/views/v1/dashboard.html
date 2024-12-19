@@ -1,7 +1,7 @@
 {% extends "layouts/moj.html" %}
 
 {% block pageTitle %}
-  Electronic Monitoring notification forms - Electronic Monitoring
+  Electronic Monitoring Notification forms - Electronic Monitoring
 {% endblock %}
 
 {% block content %}
@@ -10,7 +10,7 @@
   <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-l">
-        Electronic Monitoring notification forms
+        Electronic Monitoring Notification forms
       </h1>
 
       <form class="form" action="new-form" method="post">
@@ -88,13 +88,13 @@
             </thead>
             <tbody class="govuk-table__body">
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell"><a href="submitted-form?view=true">Fred Bloggs</a></td>
+                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=true">Fred Bloggs</a></td>
                 <td class="govuk-table__cell">23 November 2024</td>
                 <td class="govuk-table__cell">12490</td>
                 <td class="govuk-table__cell">Variation</td>
               </tr>
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell"><a href="submitted-form?view=true">Mike Smith</a></td>
+                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false">Mike Smith</a></td>
                 <td class="govuk-table__cell">12 November 2024</td>
                 <td class="govuk-table__cell">12490</td>
                 <td class="govuk-table__cell">Submitted</td>
