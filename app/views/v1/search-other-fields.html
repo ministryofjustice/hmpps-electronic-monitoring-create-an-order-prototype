@@ -1,0 +1,121 @@
+{% extends "layouts/moj.html" %}
+
+{% block pageTitle %}
+  Give feedback on Electronic Monitoring - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="dashboard" action="action" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Search for a submitted Electronic Monitoring notification form</h1>
+
+      <form class="form" action="search-results" method="post">
+
+         {{ govukInput({
+          label: {
+            text: "Device wearer's first name (optional)",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "search-firstname",
+          name: "search-firstname",
+          spellcheck: false,
+          value: data['search-firstname']
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Device wearer's last name",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "search-lastname",
+          name: "search-lastname",
+          spellcheck: false,
+          value: data['search-lastname']
+        }) }}
+
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-label govuk-label--s">
+                Device wearer's date of birth
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 27 3 2007
+              </div>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="search-dob-day" type="text" inputmode="numeric" value="{{ data['search-dob-day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="search-dob-month" type="text" inputmode="numeric" value="{{ data['search-dob-month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="search-dob-year" type="text" inputmode="numeric" value="{{ data['search-dob-year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+           {{ govukInput({
+          label: {
+            text: "Device wearer's identification number (optional)",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "For example, their NOMIS or Delius identification number"
+          },
+          classes: "govuk-input--width-20",
+          id: "search-wearer-id",
+          name: "search-wearer-id",
+          spellcheck: false,
+          value: data['search-wearer-id']
+        }) }}
+
+          {{ govukInput({
+          label: {
+            text: "Electronic monitoring form reference number (optional)",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: ""
+          },
+          classes: "govuk-input--width-20",
+          id: "search-id",
+          name: "search-id",
+          spellcheck: false,
+          value: data['search-id']
+        }) }}
+
+
+      
+
+    <button type="submit" class="govuk-button" data-module="govuk-button" data-govuk-button-init="">
+      Search
+    </button>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

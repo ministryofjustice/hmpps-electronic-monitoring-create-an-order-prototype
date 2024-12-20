@@ -60,6 +60,27 @@
 
    {% block footer %}
 
+      <!--   <div class="govuk-width-container">
+
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+             {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+              {% set contactHTML %}
+              <p>
+                Coming soon
+              </p>
+
+      
+                {% endset %}
+
+                {{ govukDetails({
+                  summaryText: "Need help with this page?",
+                  html: contactHTML
+                }) }}
+
+            </div>-->
+
       {{ govukFooter({
         meta: {
           items: [

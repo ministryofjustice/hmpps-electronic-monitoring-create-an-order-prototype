@@ -5,114 +5,98 @@
 {% endblock %}
 
 {% block beforeContent %}
-<a href="dashboard" action="action" class="govuk-back-link">Back</a>
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">Search for a submitted Electronic Monitoring notification form</h1>
 
-      <form class="form" action="search-results" method="post">
 
-         {{ govukInput({
-          label: {
-            text: "Device wearer's first name (optional)",
-            classes: "govuk-label--s"
-          },
-          classes: "govuk-input--width-20",
-          id: "search-firstname",
-          name: "search-firstname",
-          spellcheck: false,
-          value: data['search-firstname']
-        }) }}
 
-        {{ govukInput({
-          label: {
-            text: "Device wearer's last name",
-            classes: "govuk-label--s"
-          },
-          classes: "govuk-input--width-20",
-          id: "search-lastname",
-          name: "search-lastname",
-          spellcheck: false,
-          value: data['search-lastname']
-        }) }}
 
-        <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
-              <legend class="govuk-label govuk-label--s">
-                Device wearer's date of birth
-              </legend>
-              <div id="passport-issued-hint" class="govuk-hint">
-                For example, 27 3 2007
+          <div class="moj-search">
+
+          <form action="search?searchresults=true" method="post">
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <h1 class="govuk-fieldset__heading">
+                    Search for an electronic Monitoring notification form
+                  </h1>
+                </legend>
+
+              <div id="search-hint" class="govuk-hint moj-search__hint ">
+                You can search by the device wearer's name or date of birth.
               </div>
-              <div class="govuk-date-input" id="passport-issued">
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
-                      Day
-                    </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="search-dob-day" type="text" inputmode="numeric" value="{{ data['search-dob-day'] }}">
-                  </div>
-                </div>
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
-                      Month
-                    </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="search-dob-month" type="text" inputmode="numeric" value="{{ data['search-dob-month'] }}">
-                  </div>
-                </div>
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
-                      Year
-                    </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="search-dob-year" type="text" inputmode="numeric" value="{{ data['search-dob-year'] }}">
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-          </div>
 
-           {{ govukInput({
-          label: {
-            text: "Device wearer's identification number (optional)",
-            classes: "govuk-label--s"
-          },
-          hint: {
-            text: "For example, their NOMIS or Delius identification number"
-          },
-          classes: "govuk-input--width-20",
-          id: "search-wearer-id",
-          name: "search-wearer-id",
-          spellcheck: false,
-          value: data['search-wearer-id']
-        }) }}
+              <input class="govuk-input moj-search__input " id="search" name="search" type="search" aria-describedby="search-hint" value="{{ data['search'] }} ">
 
-          {{ govukInput({
-          label: {
-            text: "Electronic monitoring form reference number (optional)",
-            classes: "govuk-label--s"
-          },
-          hint: {
-            text: ""
-          },
-          classes: "govuk-input--width-20",
-          id: "search-id",
-          name: "search-id",
-          spellcheck: false,
-          value: data['search-id']
-        }) }}
+            </div>
+
+            <button type="submit" class="govuk-button moj-search__button " data-module="govuk-button">
+              Search
+            </button>
+
+          </form>
+        </div>
+      </fieldset>
+
+      {% if (data['searchresults'] == "true") %}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+  
+
+<div class="govuk-form-group">
+         <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Name of device wearer</th>
+                <th scope="col" class="govuk-table__header">Date of birth</th>
+                <th scope="col" class="govuk-table__header">Date submitted</th>
+                <th scope="col" class="govuk-table__header">Reference</th>
+                <th scope="col" class="govuk-table__header">Status</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false">Fred Bloggs</a></td>
+                <td class="govuk-table__cell">19 January 2001</td>
+                <td class="govuk-table__cell">18 December 2024</td>
+                <td class="govuk-table__cell">12457</td>
+                <td class="govuk-table__cell">Submitted</td>
+              </tr>
+               <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false">Fred Bloggs</a></td>
+                <td class="govuk-table__cell">5 July 1974</td>
+                <td class="govuk-table__cell">15 November 2024</td>
+                <td class="govuk-table__cell">11546</td>
+                <td class="govuk-table__cell">Submitted</td>
+              </tr>
+               <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="#">Fred Bloggs</a></td>
+                <td class="govuk-table__cell">19 January 2001</td>
+                <td class="govuk-table__cell">2 March 2022</td>
+                <td class="govuk-table__cell">10023</td>
+                <td class="govuk-table__cell">Cancelled</td>
+              </tr>
+             
+              
+            </tbody>
+          </table>
+
+    </div>
+
+      {% else %}
+
+      {% endif %}
+
 
 
       
 
-    <button type="submit" class="govuk-button" data-module="govuk-button" data-govuk-button-init="">
-      Search
-    </button>
  
     </form>
 
