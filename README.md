@@ -5,9 +5,9 @@
 ## Electronic Monitoring create an order prototype
 Based on the [GOV.UK Prototype Kit](https://design-system.service.gov.uk/get-started/) and hosted on the [MoJ Cloud Platform](https://design-patterns.service.justice.gov.uk/prototyping/deploy-a-prototype/).
 
-Deployed from main at: TBC
+Deployed from main at: https://hmpps-electronic-monitoring-create-an-order-prototype.hmpps.service.justice.gov.uk/
 
-(Password: tbc)
+Password: 4Tyx3KfWMSvz7n
 
 ## Local Development
 ### Installation
