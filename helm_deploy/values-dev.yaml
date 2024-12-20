@@ -2,7 +2,7 @@
 # Per environment values which override defaults in hmpps-electronic-monitoring-create-an-order/values.yaml
 
 generic-service:
-  replicaCount: 2
+  replicaCount: 1
 
   ingress:
     host: hmpps-electronic-monitoring-create-an-order-prototype.hmpps.service.justice.gov.uk
