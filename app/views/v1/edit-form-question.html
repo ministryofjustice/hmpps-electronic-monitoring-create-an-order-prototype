@@ -12,6 +12,22 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+         {% set html %}
+        <p class="govuk-notification-banner__heading">
+         You are viewing a submitted form. This form was submitted on the 14 December 2024.
+        </p>
+          {% endset %}
+
+       {% if (data['view'] == 'true') %}
+
+          {{ govukNotificationBanner({
+            html: html
+          }) }}
+
+        {% else %}
+                  
+        {% endif %}
+
       <h1 class="govuk-heading-l"> <span class="govuk-caption-l">Information about the variation</span>
       Variation details</h1>
 
@@ -30,35 +46,59 @@
                 For example, 17/5/2024.
               </div>
 
-              <input class="govuk-input moj-js-datepicker-input " id="date" name="variation-date" type="text" aria-describedby="date-hint" autocomplete="off" value="{{ data['variation-date'] }}">
+
+               {% if (data['view'] == 'true') %}
+                  <input class="govuk-input moj-js-datepicker-input " id="date" name="variation-date" type="text" aria-describedby="date-hint" autocomplete="off" disabled value="12/1/2026">
+                {% else %}
+                 <input class="govuk-input moj-js-datepicker-input " id="date" name="variation-date" type="text" aria-describedby="date-hint" autocomplete="off" value="{{ data['variation-date'] }}">
+                          
+                {% endif %}
+
+             
 
             </div>
 
           </div>
 
+              <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+                <h1 class="govuk-label-wrapper">
+                  <label class="govuk-label govuk-label--s" for="with-hint">
+                    What have you changed in this form?
+                  </label>
+                </h1>
+                <div id="with-hint-hint" class="govuk-hint">
+                  This text will be sent to Serco along with your changes to help them quickly understand what has changed and what they need to do.
+                </div>
 
-              {{ govukCharacterCount({
-                name: "edit-text",
-                value: data['edit-text'],
-                id: "with-hint",
-                maxlength: 200,
-                label: {
-                  text: "What have you changed in this form?",
-                  classes: "govuk-label--s",
-                  isPageHeading: false
-                },
-                 hint: {
-                  text: "This text will be sent to Serco along with your changes to help them quickly understand what has changed and what they need to do."
-                }
-              }) }}
+
+               {% if (data['view'] == 'true') %}
+                  <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="edit-text" disabled rows="5" aria-describedby="with-hint-info with-hint-hint">Curfew hours have changed due to Fred getting a new job</textarea>
+                {% else %}
+                 <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="edit-text" rows="5" aria-describedby="with-hint-info with-hint-hint">{{ data['edit-text'] }}</textarea>
+                {% endif %}
+ 
+
+                <div id="with-hint-info" class="govuk-hint govuk-character-count__message">
+                  You can enter up to 200 characters
+                </div>
+              </div>
  
 
           <div class="govuk-button-group">
 
+             {% if (data['view'] == 'true') %}
+                   {{ govukButton({
+                      text: "Return to main form menu",
+                      href: "submitted-form"
+                    }) }}
+                {% else %}
+                  {{ govukButton({
+                    text: "Save and return to main form menu"
+                  }) }}
+                {% endif %}
 
-              {{ govukButton({
-                text: "Save and return to main form menu"
-              }) }}
+
+             
 
           </div>
 

@@ -40,34 +40,33 @@
     
     </div>
     
-    
-    
-    
-    
-    
-    
-    
+ 
     {% block backlink %}
     
     {% endblock %}
     
     {% endblock %}
 
-    {% block footer %}
 
-      {{ govukFooter({
-        meta: {
-          items: [
-            {
-              href: "#",
-              text: "Accessibility statement"
-            },
-            {
-              href: "/manage-prototype/clear-data",
-              text: "Clear data"
-            }
-          ]
-        }
-      }) }}
 
-      {% endblock %}
+   
+            {% block footer %}
+            
+              {{ govukFooter({
+                meta: {
+                  items: [
+                    {
+                      href: "#",
+                      text: "Accessibility statement"
+                    },
+                    {
+                      href: "/manage-prototype/clear-data",
+                      text: "Clear data"
+                    }
+                  ]
+                }
+              }) }}
+
+
+
+              {% endblock %}
