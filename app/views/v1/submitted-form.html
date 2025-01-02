@@ -35,15 +35,137 @@
 
            {% if (data['variation'] == 'false') %}
 
-           <p> This notification form was submitted on the 14 December 2024. You can edit this form to create a variation.</p>
+           {% if (data['view-variation'] == 'false') %}
 
-                 <form class="form" action="edit-form" method="post">
+           <p> This notification form was submitted on the 14 December 2024. You can create a variation of this form or cancel it.</p>
+
+                 <form class="form" action="submitted-form?view=false" method="post">
+
+            {% elseif (data['view-variation'] == 'cancelled') %}
+
+           <p> This notification form was cancelled on the 22 December 2024.</p>
+      
+
             {% else %}
 
-            <p> This notification form was submitted on the 14 December 2024. It is a variation of a <a href="#">form</a> that was submitted on 1 December 2024. </p>
-            <p>You can edit this form to create another variation.</p>
+            <p> This notification form was submitted on the 1 December 2024. There are more recent variations of this form. </p>
 
-                 <form class="form" action="edit-form" method="post">
+            <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    View history of this form
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+
+                 <div class="moj-timeline">
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Variation to the form submitted</h2>
+
+                        <p class="moj-timeline__byline">by Joe Bloggs</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                        <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
+                      </p>
+
+                       <div class="moj-timeline__description"><a href="submitted-form?view-variation=false&variation=true">View submitted form</a></div>
+
+                      
+
+                    </div>
+
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Form submitted</h2>
+
+                        <p class="moj-timeline__byline">by John Smith</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
+                      </p>
+
+                      <div class="moj-timeline__description">
+                        <p>You are viewing this version of the form</p>
+                      </div>
+
+                    </div>
+
+                    
+                  </div>
+
+                </div>
+
+              </details>
+
+            
+            {% endif %}      
+
+
+            {% else %}
+
+            <p> This variation of the notification form was submitted on the 14 December 2024. You can create another variation of this form or cancel it. </p>
+            
+
+            <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    View history of this form
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+
+                 <div class="moj-timeline">
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Variation to the form submitted</h2>
+
+                        <p class="moj-timeline__byline">by Joe Bloggs</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                        <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
+                      </p>
+
+                      <div class="moj-timeline__description">
+                        <p>You are viewing this version of the form</p>
+                      </div>
+
+                    </div>
+
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Form submitted</h2>
+
+                        <p class="moj-timeline__byline">by John Smith</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
+                      </p>
+
+                      <div class="moj-timeline__description"><a href="submitted-form?view-variation=true&variation=false">View submitted form</a></div>
+
+                    </div>
+
+                    
+                  </div>
+
+                </div>
+
+              </details>
+
+                 <form class="form" action="submitted-form?view=false" method="post">
 
             {% endif %} 
 
@@ -90,7 +212,7 @@
         items: [
           {
             title: {
-              text: "About the responsible organisation"
+              text: "About the notifying and responsible organisations"
             },
             href: ("organisation/check-answers-view"),
              status: ( viewStatus)
@@ -125,10 +247,18 @@
           },
           {
             title: {
-              text: "Information about the variation"
+              text: "About the variation"
             },
             href: ("edit-form-question"),
             classes: ("govuk-visually-hidden" if data['variation'] == 'false'),
+            status: ( viewStatus )
+          },
+          {
+            title: {
+              text: "About the cancellation"
+            },
+            href: ("edit-form-delete-question"),
+            classes: ("govuk-visually-hidden" if data['view-variation'] !== 'cancelled'),
             status: ( viewStatus )
           }
 
@@ -142,7 +272,7 @@
         items: [
           {
             title: {
-              text: "About the responsible organisation"
+              text: "About the notifying and responsible organisations"
             },
             href: ("organisation/check-answers-view"),
             status: ( completedStatus if data['section-2-complete'] == 'true' else tocheckStatus)
@@ -177,7 +307,7 @@
           },
           {
             title: {
-              text: "About the variation"
+              text: ("About the variation")
             },
             href: ("edit-form-question"),
            status: ( completedStatus if data['section-6-complete'] == 'true' else incompleteStatus)
@@ -193,7 +323,7 @@
           <img src="/public/images/form_download.svg" alt="PDF download icon">
 
            {{ govukButton({
-          text: ("View submitted variation to the notification form" if data['variation'] == 'true' else "View submitted notification form"),
+          text: ("View submitted notification form" if data['variation'] == 'true' else "View submitted notification form"),
           href: '#',
           classes: "govuk-button--secondary"
         }) }}
@@ -213,9 +343,22 @@
        <div class="govuk-button-group">
 
            {% if (data['view'] == 'true') %}
-          <button type="submit" class="govuk-button" data-module="govuk-button">
-           Edit or cancel form
+
+            {% if (data['view-variation'] == 'true') %}
+
+            {% elseif (data['view-variation'] == 'cancelled') %}
+          
+           {% else %}
+
+           <button type="submit" class="govuk-button" data-module="govuk-button">
+           Create a variation of this form
           </button>
+
+          <a class="govuk-link" href="edit-form-delete-question">Cancel form</a>
+
+            {% endif %}
+
+
           {% else %}
               {% if (data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true') %}
               <button type="submit" class="govuk-button" data-module="govuk-button">
