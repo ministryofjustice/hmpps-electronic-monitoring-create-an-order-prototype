@@ -31,11 +31,15 @@
               html: htmlcancelled
             }) }}
 
-          {% else %}
+          {% elseif (data['view'] == 'true') %}
 
           {{ govukNotificationBanner({
               html: html
             }) }}
+
+          {% else %}
+
+          
                     
           {% endif %}
 
