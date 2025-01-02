@@ -210,7 +210,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Will the device wearer be 18 years old when the electronic monitoring device is installed?
+              Does the device wearer require a responsible adult to be present at installation?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['eighteen'] }}
@@ -220,7 +220,7 @@
             </dd>
           </div>
 
-       {% if (data['eighteen'] == "Yes") %}
+       {% if (data['eighteen'] == "No") %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Does the device wearer have a contact telephone number?
@@ -278,7 +278,7 @@
 
         </dl>
 
-         {% if (data['eighteen'] == "No") %}
+         {% if (data['eighteen'] == "Yes") %}
 
          <h2 class="govuk-heading-m">Responsible adult details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">

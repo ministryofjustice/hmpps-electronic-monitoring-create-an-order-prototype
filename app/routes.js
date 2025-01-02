@@ -96,7 +96,7 @@ router.get('*', function (req, res, next) {
 router.post('/eighteen-answer', function(request, response) {
 
     var eighteen = request.session.data['eighteen']
-    if (eighteen == "Yes"){
+    if (eighteen == "No"){
         response.redirect("/v1/device-wearer/device-wearer-contact")
     } else {
         response.redirect("/v1/device-wearer/responsible-adult")
@@ -277,16 +277,6 @@ router.post('/photo-question', function(request, response) {
         response.redirect("/v1/attachments/photo")
     } else {
         response.redirect("/v1/attachments/check-answers")
-    }
-})
-
-router.post('/edit-form', function(request, response) {
-
-    var editreason = request.session.data['editreason']
-    if (editreason == "Edit the details of the form"){
-        response.redirect("/v1/submitted-form?view=false")
-    } else {
-        response.redirect("/v1/edit-form-delete-question")
     }
 })
 

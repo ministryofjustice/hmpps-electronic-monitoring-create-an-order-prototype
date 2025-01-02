@@ -18,13 +18,24 @@
         </p>
       {% endset %}
 
-         {% if (data['view'] == 'true') %}
+      {% set htmlcancelled %}
+        <p class="govuk-notification-banner__heading">
+         You are viewing a cancelled form. This form was cancelled on the 22 December 2024.
+        </p>
+      {% endset %}
 
-            {{ govukNotificationBanner({
-              html: html
+
+          {% if (data['view-variation'] == 'cancelled') %}
+
+           {{ govukNotificationBanner({
+              html: htmlcancelled
             }) }}
 
           {% else %}
+
+          {{ govukNotificationBanner({
+              html: html
+            }) }}
                     
           {% endif %}
 

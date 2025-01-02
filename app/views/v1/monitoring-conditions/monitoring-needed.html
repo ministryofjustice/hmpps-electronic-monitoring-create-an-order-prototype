@@ -30,12 +30,29 @@
                 </dt>
                 <dd class="govuk-summary-list__value">
                    {% if (data['monitoringtype'] == "Mandatory attendance monitoring") %}
-                  {{ data['appointment-reason'] }}   
+                  {{ data['appointment-reason'] }}   <br>
+                  From {{ data['attendancestart-date'] }} to {{ data['attendanceend-date'] }}
+
                    {% endif %}     
 
                    {% if (data['monitoringtype'] == "Exclusion and inclusion zone monitoring") %}
-                  {{ data['exclusion-name'] }}   
-                   {% endif %}             
+                  {{ data['exclusion-name'] }}   <br>
+                  From {{ data['exclusionstart-date'] }} to {{ data['exclusionend-date'] }}
+                   {% endif %} 
+
+                   {% if (data['monitoringtype'] == "Curfew with electronic monitoring") %}
+                   From {{ data['curfewstart-date'] }} to {{ data['curfewend-date'] }}
+                   {% endif %} 
+
+                    {% if (data['monitoringtype'] == "Trail monitoring") %}
+                     From {{ data['trailstart-date'] }} to {{ data['trailend-date'] }}
+                   {% endif %} 
+
+                   {% if (data['monitoringtype'] == "Alcohol monitoring") %}
+                   From {{ data['alcoholstart-date'] }} to {{ data['alcoholend-date'] }}
+                   {% endif %} 
+
+                            
                 </dd>  
                 </dd>  
                 <dd class="govuk-summary-list__actions">
@@ -58,12 +75,28 @@
                 </dt>
                 <dd class="govuk-summary-list__value">
                    {% if (data['monitoringtype2'] == "Mandatory attendance monitoring") %}
-                  {{ data['appointment-reason'] }}   
+                  {{ data['appointment-reason'] }}   <br>
+                  From {{ data['attendancestart-date'] }} to {{ data['attendanceend-date'] }}
                    {% endif %}       
 
                     {% if (data['monitoringtype2'] == "Exclusion and inclusion zone monitoring") %}
-                  {{ data['exclusion-name'] }}   
-                   {% endif %}                    
+                  {{ data['exclusion-name'] }}   <br>
+                  From {{ data['exclusionstart-date'] }} to {{ data['exclusionend-date'] }}
+                   {% endif %}    
+
+                   {% if (data['monitoringtype2'] == "Curfew with electronic monitoring") %}
+                   From {{ data['curfewstart-date'] }} to {{ data['curfewend-date'] }}
+                   {% endif %} 
+
+                    {% if (data['monitoringtype2'] == "Trail monitoring") %}
+                     From {{ data['trailstart-date'] }} to {{ data['trailend-date'] }}
+                   {% endif %} 
+
+                   {% if (data['monitoringtype2'] == "Alcohol monitoring") %}
+                   From {{ data['alcoholstart-date'] }} to {{ data['alcoholend-date'] }}
+                   {% endif %} 
+
+
                 </dd>  
                 </dd>  
                 <dd class="govuk-summary-list__actions">

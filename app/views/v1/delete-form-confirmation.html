@@ -1,7 +1,7 @@
 {% extends "layouts/moj.html" %}
 
 {% block pageTitle %}
-  The notification form has been deleted - Electronic Monitoring
+  The notification form has been cancelled - Electronic Monitoring
 {% endblock %}
 
 {% block beforeContent %}
@@ -18,16 +18,17 @@
 
            {% if (data['cancelled'] == 'true') %}
             The notification form has been cancelled
+            </h1>
+              <div class="govuk-panel__body">
+                Reference number<br><strong>123654</strong>
+              </div>
 
            {% else %} 
 
            The notification form has been deleted
 
            {% endif %} 
-          </h1>
-          <div class="govuk-panel__body">
-            Reference number<br><strong>123654</strong>
-          </div>
+          
          
         </div>
         
