@@ -35,11 +35,11 @@
       </form>
 
       <h2 class="govuk-heading-m">
-          View existing notification forms
+          View and edit existing notification forms
         </h2>
 
         <p>
-          Edit or view your draft and submitted notification forms or search for a form someone else has submitted.
+          View and edit your draft and submitted notification forms or search for a form someone else has submitted to edit or cancel it.
         </p>
 
           {{ govukButton({
@@ -60,7 +60,6 @@
               <tr class="govuk-table__row">
                 <th scope="col" class="govuk-table__header">Name of device wearer</th>
                 <th scope="col" class="govuk-table__header">Last updated on</th>
-                <th scope="col" class="govuk-table__header">Reference</th>
                 <th scope="col" class="govuk-table__header">Status</th>
               </tr>
             </thead>
@@ -68,14 +67,13 @@
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=true&section-5-complete=true">David Francis</a></td>
                 <td class="govuk-table__cell">29 December 2024</td>
-                <td class="govuk-table__cell">12453</td>
                 <td class="govuk-table__cell">Draft</td>
               </tr>
           <!--     <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false">Bobbie Gibb</a></td>
                 <td class="govuk-table__cell">2 January 2025</td>
                 <td class="govuk-table__cell">12453</td>
-                <td class="govuk-table__cell">Draft variation</td>
+                <td class="govuk-table__cell">Variation draft</td>
               </tr>-->
             </tbody>
           </table>
@@ -87,8 +85,7 @@
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
                 <th scope="col" class="govuk-table__header">Name of device wearer</th>
-                <th scope="col" class="govuk-table__header">Date submitted</th>
-                <th scope="col" class="govuk-table__header">Reference</th>
+                <th scope="col" class="govuk-table__header">Last updated on</th>
                 <th scope="col" class="govuk-table__header">Status</th>
               </tr>
             </thead>
@@ -97,19 +94,16 @@
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=false">Mike Smith</a></td>
                 <td class="govuk-table__cell">12 November 2024</td>
-                <td class="govuk-table__cell">12490</td>
                 <td class="govuk-table__cell">Submitted</td>
               </tr>
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=true&view-variation=false">Fred Bloggs</a></td>
                 <td class="govuk-table__cell">23 November 2024</td>
-                <td class="govuk-table__cell">12490</td>
-                <td class="govuk-table__cell">Variation</td>
+                <td class="govuk-table__cell">Submitted (variation)</td>
               </tr>
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=cancelled">Fred Bloggs</a></td>
                 <td class="govuk-table__cell">20 December 2024</td>
-                <td class="govuk-table__cell">14356</td>
                 <td class="govuk-table__cell">Cancelled</td>
               </tr>
             </tbody>
