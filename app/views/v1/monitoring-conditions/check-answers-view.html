@@ -262,22 +262,33 @@
 
 
       <div class="govuk-button-group">
-         {% if (data['view'] == 'true') %}
+          {% if (data['view'] == 'true') %}
+
+          {{ govukButton({
+          text: "Go to next section",
+          href: "../installation/check-answers-view"
+        }) }}
 
            {{ govukButton({
           text: "Return to main form menu",
-          href: "../submitted-form"
+          href: "../submitted-form",
+          classes: "govuk-button--secondary"
         }) }}
                
 
          {% else %}
-          {{ govukButton({
-          text: "Save and return to main form menu"
+         {{ govukButton({
+          text: "Save and go to next section",
+          href: "../installation/check-answers-view?section-4-complete=true"
         }) }}
 
-    
-                    
-     {% endif %}
+          {{ govukButton({
+          text: "Save and return to main form menu",
+          href: "../submitted-form?section-4-complete=true",
+          classes: "govuk-button--secondary"
+        }) }}
+                
+          {% endif %}
 
 
 

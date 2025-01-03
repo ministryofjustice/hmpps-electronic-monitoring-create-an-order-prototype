@@ -64,7 +64,7 @@
 
       
 
-      <form class="form" action="../submitted-form?section-1-complete=true" method="post">
+      <form class="form" action="" method="post">
 
         <h2 class="govuk-heading-m">Personal details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -259,19 +259,30 @@
 
           {% if (data['view'] == 'true') %}
 
+          {{ govukButton({
+          text: "Go to next section",
+          href: "../monitoring-conditions/check-answers-view"
+        }) }}
+
            {{ govukButton({
           text: "Return to main form menu",
-          href: "../submitted-form"
+          href: "../submitted-form",
+          classes: "govuk-button--secondary"
         }) }}
                
 
          {% else %}
-          {{ govukButton({
-          text: "Save and return to main form menu"
+         {{ govukButton({
+          text: "Save and go to next section",
+          href: "../monitoring-conditions/check-answers-view?section-1-complete=true"
         }) }}
 
-    
-                    
+          {{ govukButton({
+          text: "Save and return to main form menu",
+          href: "../submitted-form?section-1-complete=true",
+          classes: "govuk-button--secondary"
+        }) }}
+                
           {% endif %}
        
 

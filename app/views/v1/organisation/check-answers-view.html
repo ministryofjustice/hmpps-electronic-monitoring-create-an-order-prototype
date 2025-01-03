@@ -62,7 +62,7 @@
 
        
 
-      <form class="form" action="../submitted-form?section-2-complete=true" method="post">
+      <form class="form" action="" method="post">
 
 
        <h2 class="govuk-heading-m">Notifying organisation's details</h2>
@@ -223,23 +223,33 @@
 
 
         <div class="govuk-button-group">
-        {% if (data['view'] == 'true') %}
+         {% if (data['view'] == 'true') %}
+
+          {{ govukButton({
+          text: "Go to next section",
+          href: "../device-wearer/check-answers-view"
+        }) }}
 
            {{ govukButton({
           text: "Return to main form menu",
-          href: "../submitted-form"
+          href: "../submitted-form",
+          classes: "govuk-button--secondary"
         }) }}
                
 
          {% else %}
-          {{ govukButton({
-          text: "Save and return to main form menu"
+         {{ govukButton({
+          text: "Save and go to next section",
+          href: "../device-wearer/check-answers-view?section-2-complete=true"
         }) }}
 
-    
-                    
-     {% endif %}
-
+          {{ govukButton({
+          text: "Save and return to main form menu",
+          href: "../submitted-form?section-2-complete=true",
+          classes: "govuk-button--secondary"
+        }) }}
+                
+          {% endif %}
       </div>
  
     </form>

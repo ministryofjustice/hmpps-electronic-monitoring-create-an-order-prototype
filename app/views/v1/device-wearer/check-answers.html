@@ -24,7 +24,7 @@
 
       <p>Check and save the information about the device wearer.</p>
 
-      <form class="form" action="../monitoring-conditions/monitoring-dates?section-1-complete=true" method="post">
+      <form class="form" action="" method="post">
 
         <h2 class="govuk-heading-m">Personal details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -369,7 +369,8 @@
 
       <div class="govuk-button-group">
         {{ govukButton({
-          text: "Save and go to next section"
+          text: "Save and go to next section",
+          href: ("../monitoring-conditions/check-answers?section-1-complete=true" if data['section-4-complete'] == 'true' else "../monitoring-conditions/monitoring-dates?section-1-complete=true")
         }) }}
 
         {{ govukButton({
