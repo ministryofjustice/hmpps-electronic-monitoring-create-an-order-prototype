@@ -22,7 +22,7 @@
 
        <p>Check and save the information about the notifying and responsible organisations.</p>
 
-      <form class="form" action="../new-form?section-2-complete=true" method="post">
+      <form class="form" action="" method="post">
 
 
          <h2 class="govuk-heading-m">Notifying organisation's details</h2>
@@ -167,12 +167,13 @@
         <div class="govuk-button-group">
         {{ govukButton({
           text: "Save and go to next section",
-          href: "../device-wearer/identity-numbers?section-2-complete=true"
+          href: ("../device-wearer/check-answers?section-2-complete=true" if data['section-1-complete'] == 'true' else "../device-wearer/identity-numbers?section-2-complete=true")
         }) }}
 
         {{ govukButton({
           text: "Save and return to main form menu",
-          classes: "govuk-button--secondary"
+          classes: "govuk-button--secondary",
+          href: "../new-form?section-2-complete=true"
         }) }}
 
         

@@ -62,7 +62,7 @@
 
       {% endif %}
 
-      <form class="form" action="../submitted-form?section-3-complete=true" method="post">
+      <form class="form" action="" method="post">
 
        
 
@@ -162,23 +162,34 @@
         </dl>
       
 
-       
-      {% if (data['view'] == 'true') %}
+        {% if (data['view'] == 'true') %}
+
+          {{ govukButton({
+          text: "Go to next section",
+          href: "../attachments/check-answers-view"
+        }) }}
 
            {{ govukButton({
           text: "Return to main form menu",
-          href: "../submitted-form"
+          href: "../submitted-form",
+          classes: "govuk-button--secondary"
         }) }}
                
 
          {% else %}
-          {{ govukButton({
-          text: "Save and return to main form menu"
+         {{ govukButton({
+          text: "Save and go to next section",
+          href: "../attachments/check-answers-view?section-3-complete=true"
         }) }}
 
-    
-                    
-     {% endif %}
+          {{ govukButton({
+          text: "Save and return to main form menu",
+          href: "../submitted-form?section-3-complete=true",
+          classes: "govuk-button--secondary"
+
+        }) }}
+                
+          {% endif %}
       
 
       </div>

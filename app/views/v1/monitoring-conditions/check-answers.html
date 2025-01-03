@@ -592,7 +592,7 @@
       <div class="govuk-button-group">
         {{ govukButton({
           text: "Save and go to next section",
-          href: "../installation/disability?section-4-complete=true"
+          href: ("../installation/check-answers?section-4-complete=true" if data['section-4-complete'] == 'true' else "../installation/disability?section-4-complete=true")
         }) }}
 
         {{ govukButton({
