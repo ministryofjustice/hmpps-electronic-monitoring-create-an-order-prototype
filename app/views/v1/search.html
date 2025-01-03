@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block beforeContent %}
-<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+<a href="dashboard" action="action" class="govuk-back-link">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -18,7 +18,15 @@
 
           <div class="moj-search">
 
-          <form action="search?searchresults=true" method="post">
+             {% if (data['searchresults'] == 'true') %}
+
+          <form action="search?searchresults=false" method="post">
+
+            {% else %}
+
+            <form action="search?searchresults=true" method="post">
+
+             {% endif %}
 
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset">
@@ -29,7 +37,7 @@
                 </legend>
 
               <div id="search-hint" class="govuk-hint moj-search__hint ">
-                You can search by the device wearer's name or date of birth.
+                You can search by the device wearer's name, date of birth or personal identity number. For example Bob Smith 19/1/1990 NHEFTH
               </div>
 
               <input class="govuk-input moj-search__input " id="search" name="search" type="search" aria-describedby="search-hint" value="{{ data['search'] }} ">
@@ -55,8 +63,8 @@
               <tr class="govuk-table__row">
                 <th scope="col" class="govuk-table__header">Name of device wearer</th>
                 <th scope="col" class="govuk-table__header">Date of birth</th>
-                <th scope="col" class="govuk-table__header">Date submitted</th>
-                <th scope="col" class="govuk-table__header">Reference</th>
+                 <th scope="col" class="govuk-table__header">Town or city</th>
+                <th scope="col" class="govuk-table__header">Last updated on</th>
                 <th scope="col" class="govuk-table__header">Status</th>
               </tr>
             </thead>
@@ -64,22 +72,22 @@
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=false">Fred Bloggs</a></td>
                 <td class="govuk-table__cell">19 January 2001</td>
+                <td class="govuk-table__cell">Glossop</td>
                 <td class="govuk-table__cell">18 December 2024</td>
-                <td class="govuk-table__cell">12457</td>
                 <td class="govuk-table__cell">Submitted</td>
               </tr>
                <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=false">Fred Bloggs</a></td>
                 <td class="govuk-table__cell">5 July 1974</td>
+                <td class="govuk-table__cell">Salford</td>
                 <td class="govuk-table__cell">15 November 2024</td>
-                <td class="govuk-table__cell">11546</td>
                 <td class="govuk-table__cell">Submitted</td>
               </tr>
                <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=cancelled">Fred Bloggs</a></td>
                 <td class="govuk-table__cell">19 January 2001</td>
+                <td class="govuk-table__cell">Glossop</td>
                 <td class="govuk-table__cell">2 March 2022</td>
-                <td class="govuk-table__cell">10023</td>
                 <td class="govuk-table__cell">Cancelled</td>
               </tr>
              
