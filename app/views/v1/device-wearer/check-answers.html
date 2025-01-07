@@ -34,7 +34,7 @@
                What identity numbers do you have for the device wearer?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['identity-numbers'] }} 
+              {{ data['identity-numbers'] or 'Not able to provide this information' }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="identity-numbers?cya1=true">Change<span class="govuk-visually-hidden"> What identity numbers do you have for the device wearer?</span></a>
@@ -130,7 +130,7 @@
               What is the device wearer's first name?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['wearer-firstname'] }}
+              {{ data['wearer-firstname'] or "Fred" }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="personal-details?cya1=true">Change<span class="govuk-visually-hidden"> What is the device wearer's first name?</span></a>
@@ -141,7 +141,7 @@
               What is the device wearer's last name?
             </dt>
             <dd class="govuk-summary-list__value">
-               {{ data['wearer-firstname'] }}
+               {{ data['wearer-firstname'] or "Bloggs" }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="personal-details?cya1=true">Change<span class="govuk-visually-hidden"> What is the device wearer's last name?</span></a>
@@ -152,7 +152,7 @@
              Is there a preferred name or alias the device wearer uses that is different to their first name?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['wearer-alias-question'] }}
+              {{ data['wearer-alias-question'] or 'No' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="personal-details?cya1=true">Change<span class="govuk-visually-hidden"> Does the device wearer have a preferred name or alias that is different to their first name?</span></a>
@@ -177,7 +177,7 @@
               How does the device wearer describe themselves?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['wearer-gender'] }}
+              {{ data['wearer-gender'] or 'Male' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="gender?cya1=true">Change<span class="govuk-visually-hidden"> How does the device wearer describe themselves?</span></a>
@@ -202,7 +202,7 @@
               What is the device wearer's date of birth?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['wearer-dob-day'] }} {{ data['wearer-dob-month']  | monthName }} {{ data['wearer-dob-year'] }}
+              {{ data['wearer-dob-day'] }} {{ data['wearer-dob-month']  | monthName }} {{ data['wearer-dob-year'] or '19 January 1990' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="age?cya1=true">Change<span class="govuk-visually-hidden"> What is the device wearer's date of birth?</span></a>
@@ -213,7 +213,7 @@
               Does the device wearer require a responsible adult to be present at installation?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['eighteen'] }}
+              {{ data['eighteen'] or 'No' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="age?cya1=true">Change<span class="govuk-visually-hidden"> Will the device wearer be 18 years old or over when the electronic monitoring device is installed?</span></a>
@@ -226,7 +226,7 @@
               Does the device wearer have a contact telephone number?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['wearer-tel-question'] }}
+              {{ data['wearer-tel-question'] or 'No' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="device-wearer-contact?cya1=true">Change<span class="govuk-visually-hidden"> Does the device wearer have a contact telephone number?</span></a>
@@ -252,7 +252,7 @@
               Does the device wearer have a fixed address?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['addressquestion'] }}
+              {{ data['addressquestion'] or 'No' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="contact-address-question?cya1=true">Change<span class="govuk-visually-hidden"> Does the device wearer have a fixed address?</span></a>
