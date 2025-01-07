@@ -1,7 +1,7 @@
 {% extends "layouts/moj.html" %}
 
 {% block pageTitle %}
-  Are you sure that you want to create a variation of this notification form? - Electronic Monitoring
+  Are you sure that you want to make changes to this notification form? - Electronic Monitoring
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,7 +12,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">Are you sure that you want to create a variation of this notification form?</h1>
+      <h1 class="govuk-heading-l">Are you sure that you want to make changes to this notification form?</h1>
 
 
 
@@ -21,7 +21,7 @@
 
           <div class="govuk-button-group">
             {{ govukButton({
-              text: "Yes, create variation",
+              text: "Yes, create a new version of the form",
               href: 'submitted-form?view=false',
               classes: "govuk-button--warning"
             }) }}

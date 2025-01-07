@@ -16,7 +16,7 @@
         <div class="govuk-panel govuk-panel--confirmation">
           <h1 class="govuk-panel__title">
              {% if (data['variation'] == 'true') %}
-             The variation to the notification form has been successfully submitted
+             The changes to the notification form have been successfully submitted
 
            {% else %} 
 
@@ -36,7 +36,7 @@
          {% if (data['variation'] == 'true') %}
 
          {{ govukButton({
-          text: "View submitted variation to the notification form",
+          text: "View submitted version of the notification form",
           href: '#',
           classes: "govuk-button--secondary"
         }) }}

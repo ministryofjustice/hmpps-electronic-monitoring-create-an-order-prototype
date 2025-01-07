@@ -37,7 +37,7 @@
 
            {% if (data['view-variation'] == 'false') %}
 
-           <p> This notification form was submitted on the 14 December 2024. You can create a variation of this form or cancel it.</p>
+           <p> This notification form was submitted on the 14 December 2024. You can make a change to this form or cancel it.</p>
 
                  <form class="form" action="edit-form-variation" method="post">
 
@@ -48,7 +48,7 @@
 
             {% else %}
 
-            <p> This notification form was submitted on the 1 December 2024. There are more recent variations of this form. </p>
+            <p> This notification form was submitted on the 1 December 2024. There are more recent versions of this form. </p>
 
             <details class="govuk-details">
                 <summary class="govuk-details__summary">
@@ -62,7 +62,7 @@
                     <div class="moj-timeline__item">
 
                       <div class="moj-timeline__header">
-                        <h2 class="moj-timeline__title">Variation to the form submitted</h2>
+                        <h2 class="moj-timeline__title">Changes to the form submitted</h2>
 
                         <p class="moj-timeline__byline">by Joe Bloggs</p>
 
@@ -110,7 +110,7 @@
 
             {% else %}
 
-            <p> This variation of the notification form was submitted on the 14 December 2024. You can create another variation of this form or cancel it. </p>
+            <p> This version of the notification form was submitted on the 14 December 2024. You can make changes to this form or cancel it. </p>
             
 
             <details class="govuk-details">
@@ -125,7 +125,7 @@
                     <div class="moj-timeline__item">
 
                       <div class="moj-timeline__header">
-                        <h2 class="moj-timeline__title">Variation to the form submitted</h2>
+                        <h2 class="moj-timeline__title">Changes to the form submitted</h2>
 
                         <p class="moj-timeline__byline">by Joe Bloggs</p>
 
@@ -171,7 +171,7 @@
 
         {% else %}
 
-         <p> You are creating a variation of a notification form that was submitted on the 14 December 2024. Edit the sections that you need to change.</p>
+         <p> You are making changes to a notification form that was submitted on the 14 December 2024. Edit the sections that you need to change.</p>
 
 
               <form class="form" action="submit-confirmation?variation=true" method="post">
@@ -247,7 +247,7 @@
           },
           {
             title: {
-              text: "About the variation"
+              text: "About the changes in this version of the form"
             },
             href: ("edit-form-question"),
             classes: ("govuk-visually-hidden" if data['variation'] == 'false'),
@@ -307,7 +307,7 @@
           },
           {
             title: {
-              text: ("About the variation")
+              text: ("About the changes in this version of the form")
             },
             href: ("edit-form-question"),
            status: ( completedStatus if data['section-6-complete'] == 'true' else incompleteStatus)
@@ -351,7 +351,7 @@
            {% else %}
 
            <button type="submit" class="govuk-button" data-module="govuk-button">
-           Create a variation of this form
+           Make changes to this form
           </button>
 
           <a class="govuk-link" href="edit-form-delete-question">Cancel form</a>
@@ -362,16 +362,16 @@
           {% else %}
               {% if (data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true' and data['section-6-complete'] == 'true') %}
               <button type="submit" class="govuk-button" data-module="govuk-button">
-                Submit variation of the form
+                Submit changes to the form
               </button>
 
-              <a class="govuk-link" href="delete-form">Delete variation</a>
+              <a class="govuk-link" href="delete-form">Delete draft</a>
               {% else %}
               <button type="submit" class="govuk-button" disabled data-module="govuk-button">
-                Submit variation of the form
+                Submit changes to the form
               </button>
 
-               <a class="govuk-link" href="delete-form">Delete variation</a>
+               <a class="govuk-link" href="delete-form">Delete draft</a>
 
               {% endif %}
           {% endif %}
