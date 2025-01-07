@@ -108,6 +108,33 @@
           value: data['org-email']
         }) }}
 
+          {{ xGovukAutocomplete({
+                id: "region",
+                name: "region",
+                value: data['region'],
+                allowEmpty: false,
+                label: {
+                  classes: "govuk-label--s",
+                  text: "What region is the responsible organisation in?"
+                },
+
+                items: [
+                  { text: "North East" },
+                  { text: "North West" },
+                  { text: "Yorkshire and The Humber" },
+                  { text: "East Midlands" },
+                  { text: "West Midlands" },
+                  { text: "East of England" },
+                  { text: "London" },
+                  { text: "South East" },
+                  { text: "South West" },
+                  { text: "Wales" }
+                ]
+              }) }}
+        
+
+
+
 
 
      
