@@ -74,9 +74,9 @@
                 </div>
 
                {% if (data['view-variation'] == 'cancelled') %}
-                  <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="edit-text" disabled rows="5" aria-describedby="with-hint-info with-hint-hint">Fred has been recalled to prison due to breaching conditions.</textarea>
+                  <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="cancel-text" disabled rows="5" aria-describedby="with-hint-info with-hint-hint">Fred has been recalled to prison due to breaching conditions.</textarea>
                 {% else %}
-                 <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="edit-text" rows="5" aria-describedby="with-hint-info with-hint-hint">{{ data['edit-text'] }}</textarea>
+                 <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="cancel-text" rows="5" aria-describedby="with-hint-info with-hint-hint">{{ data['cancel-text'] }}</textarea>
                 {% endif %}
 
                      <div id="with-hint-info" class="govuk-hint govuk-character-count__message">

@@ -28,8 +28,8 @@
                   
         {% endif %}
 
-      <h1 class="govuk-heading-l"> <span class="govuk-caption-l">About the variation</span>
-      Variation details</h1>
+      <h1 class="govuk-heading-l"> <span class="govuk-caption-l">About the changes in this version of the form</span>
+      Details of the changes</h1>
 
         <form class="form" action="submitted-form?section-6-complete=true" method="post">
 
@@ -39,7 +39,7 @@
 
              <div class="govuk-form-group">
               <label class="govuk-label  govuk-label--s" for="date">
-               What is the date you want the variation to take effect?
+               What is the date you want the changes to take effect?
               </label>
 
               <div id="date-hint" class="govuk-hint">
@@ -58,12 +58,66 @@
 
             </div>
 
+            
+
+             {{ govukRadios({
+            name: "variation-type",
+            fieldset: {
+              legend: {
+                text: "What have you changed in the form?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select one option"
+            },
+            items: [
+              {
+                value: "A change in curfew hours",
+                checked: (true if data['variation-type'] == 'A change in curfew hours'),
+                disabled: (true if data['view'] == 'true'),
+                text: "A change in curfew hours"
+              },
+              {
+                value: "A change in address",
+                checked: (true if data['variation-type'] == 'A change in address'),
+                disabled: (true if data['view'] == 'true'),
+                text: "A change in address"
+              },
+              {
+                value: "Change to add an exclusion or inclusion zone(s)",
+                checked: (true if data['variation-type'] == 'Change to add an exclusion or inclusion zone(s)'),
+                disabled: (true if data['view'] == 'true'),
+                text: "Change to add an exclusion or inclusion zone(s)"
+              },
+              {
+                value: "Change to an existing exclusion or inclusion zone(s)",
+                checked: (true if data['variation-type'] == 'Change to an existing exclusion or inclusion zone(s)'),
+                disabled: (true if data['view'] == 'true'),
+                text: "Change to an existing exclusion or inclusion zone(s)"
+                
+              },
+
+              {
+                divider: "or"
+              },
+              {
+                value: "I have changed something else in the form",
+                checked: (true if data['variation-type'] == 'I have changed something else in the form'),
+                disabled: (true if data['view'] == 'true'),
+                text: "I have changed something else in the form",
+                behaviour: "exclusive"
+              }
+            ]
+          }) }}
+
           </div>
 
               <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
                 <h1 class="govuk-label-wrapper">
                   <label class="govuk-label govuk-label--s" for="with-hint">
-                    What have you changed in this form?
+                    Enter more information on what you have changed
                   </label>
                 </h1>
                 <div id="with-hint-hint" class="govuk-hint">
