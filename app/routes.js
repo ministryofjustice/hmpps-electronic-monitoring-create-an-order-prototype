@@ -96,10 +96,10 @@ router.get('*', function (req, res, next) {
 router.post('/eighteen-answer', function(request, response) {
 
     var eighteen = request.session.data['eighteen']
-    if (eighteen == "No"){
-        response.redirect("/v1/device-wearer/device-wearer-contact")
-    } else {
+    if (eighteen == "Yes"){
         response.redirect("/v1/device-wearer/responsible-adult")
+    } else {
+        response.redirect("/v1/device-wearer/device-wearer-contact")
     }
 })
 

@@ -37,7 +37,7 @@
               Does the device wearer have any of these disabilities or health conditions? 
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['disability'] }}
+              {{ data['disability'] or 'The device wearer does not have any of these disabilities or health conditions' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="disability?cya3=true">Change<span class="govuk-visually-hidden"> Does the device wearer have any of these disabilities or health conditions? </span></a>
@@ -76,7 +76,7 @@
                Does the device wearer require an interpreter?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['wearer-language'] }}
+              {{ data['wearer-language'] or 'No' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="language?cya3=true">Change<span class="govuk-visually-hidden"> Does the device wearer require an interpreter?</span></a>
@@ -106,7 +106,7 @@
               What type of offence has been committed by the device wearer?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['offence'] }}
+              {{ data['offence'] or 'The offence committed is not relevant to the risk of installation' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="risk?cya3=true">Change<span class="govuk-visually-hidden"> What type of offence has been committed by the device wearer?</span></a>
@@ -118,7 +118,7 @@
              What are the risks that apply to the device wearer?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['risk'] }}
+              {{ data['risk'] or 'There are no risks that apply to the device wearer' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="risk-2?cya3=true">Change<span class="govuk-visually-hidden"> What are the risks that apply to the device wearer?</span></a>
@@ -134,7 +134,7 @@
                Is there anything else we should know that will help lower risk of violence or threatening behaviour at installation?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['risk-question'] }}
+              {{ data['risk-question'] or 'No' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="risk-3?cya3=true">Change<span class="govuk-visually-hidden"> Is there anything else we should know that will help lower risk of violence or threatening behaviour at installation?</span></a>
@@ -162,7 +162,7 @@
               Is the device wearer a MAPPA offender?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['mappaquestion'] }}
+              {{ data['mappaquestion'] or 'No' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="mappa?cya3=true">Change<span class="govuk-visually-hidden"> Is the device wearer a MAPPA offender?</span></a>

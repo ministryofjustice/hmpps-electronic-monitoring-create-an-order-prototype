@@ -32,7 +32,7 @@
               What is the date the monitoring starts?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['monitoring-date-start'] }} 
+              {{ data['monitoring-date-start'] or "12/01/2025" }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="monitoring-dates?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the monitoring starts? </span></a>
@@ -43,7 +43,7 @@
               What is the time the monitoring starts?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['starttime-hours'] }}:{{ data['starttime-minutes'] }}
+              {{ data['starttime-hours'] or "13" }}:{{ data['starttime-minutes'] or "00" }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="monitoring-dates?cya4=true">Change<span class="govuk-visually-hidden"> What is the time the monitoring starts? </span></a>
@@ -54,7 +54,7 @@
               What is the date the monitoring ends? (optional)
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['monitoring-date-end'] }} 
+              {{ data['monitoring-date-end'] or "12/01/2026" }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="monitoring-dates?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the monitoring ends? (optional) </span></a>
@@ -66,7 +66,7 @@
               What is the time the monitoring ends? (optional)
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['endtime-hours'] }}:{{ data['endtime-minutes'] }}
+              {{ data['endtime-hours']  or "13"  }}:{{ data['endtime-minutes']  or "00"  }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="monitoring-dates?cya4=true">Change<span class="govuk-visually-hidden"> What is the time the monitoring ends? (optional) </span></a>
@@ -78,7 +78,7 @@
               What is the type of the order?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['order-type'] }}
+              {{ data['order-type'] or 'Civil' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
@@ -89,7 +89,7 @@
               What is the description of the order?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['order-description'] }}
+              {{ data['order-description'] or "Not able to provide this information" }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> What is the description of the order? </span></a>
@@ -100,7 +100,7 @@
               What are the conditions of the order?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['order-conditions'] }}
+              {{ data['order-conditions'] or 'Requirement of a community order' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> What are the conditions of the order? </span></a>
@@ -132,7 +132,7 @@
               What monitoring does the device wearer need?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['monitoringtype'] }}<br>
+              {{ data['monitoringtype'] or 'Trail monitoring' }}<br>
               {{ data['monitoringtype2'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -388,7 +388,7 @@
 
    {% endif %}   
    
-    {% if (data['monitoringtype'] == "Trail monitoring" or data['monitoringtype'] == "Trail monitoring") %}
+    {% if (data['monitoringtype'] == "Trail monitoring" or data['monitoringtype'] == "Trail monitoring") or data['monitoringtype'] !== NULL or data['monitoringtype'] !== '' %}
 
  <h2 class="govuk-heading-m">Trail monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -399,7 +399,7 @@
               What is the date the trail monitoring starts?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['trailstart-date'] }} 
+              {{ data['trailstart-date'] or '12/01/2025' }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="trail?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the trail monitoring starts? </span></a>

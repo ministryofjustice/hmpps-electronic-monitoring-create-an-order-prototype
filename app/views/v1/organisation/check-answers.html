@@ -35,7 +35,7 @@
           What is the email address for your team?
             </dt>
             <dd class="govuk-summary-list__value">
-             {{ data['team-email'] }}
+             {{ data['team-email'] or "centralteam@homeoffice.org" }}
             </dd>
             <dd class="govuk-summary-list__actions">
                
@@ -56,7 +56,7 @@
           What is the responsible officer's first name?
             </dt>
             <dd class="govuk-summary-list__value">
-             {{ data['officer-firstname'] }}
+             {{ data['officer-firstname'] or 'Bob' }}
             </dd>
             <dd class="govuk-summary-list__actions">
                
@@ -70,7 +70,7 @@
           What is the responsible officer's last name?
             </dt>
             <dd class="govuk-summary-list__value">
-           {{ data['officer-lastname'] }}
+           {{ data['officer-lastname'] or 'Brown' }}
             </dd>
             <dd class="govuk-summary-list__actions">
                
@@ -84,7 +84,7 @@
          What is the responsible officer's telephone number?
             </dt>
             <dd class="govuk-summary-list__value">
-             {{ data['officer-tel'] }}
+             {{ data['officer-tel'] or '01245 765 432'}}
             </dd>
             <dd class="govuk-summary-list__actions">
                
@@ -99,7 +99,7 @@
          What organisation is the responsible officer part of?
             </dt>
             <dd class="govuk-summary-list__value">
-             {{ data['officer-org'] }}
+             {{ data['officer-org'] or 'Home Office' }}
             </dd>
             <dd class="govuk-summary-list__actions">
                
@@ -114,7 +114,7 @@
          What is the responsible organisation's telephone number?
             </dt>
             <dd class="govuk-summary-list__value">
-             {{ data['org-tel'] }}
+             {{ data['org-tel'] or "01267 876 567" }}
             </dd>
             <dd class="govuk-summary-list__actions">
                
@@ -129,7 +129,7 @@
          What is the responsible organisation's email address?
             </dt>
             <dd class="govuk-summary-list__value">
-             {{ data['org-email'] }}
+             {{ data['org-email'] or 'centralteam@homeoffice.org' }}
             </dd>
             <dd class="govuk-summary-list__actions">
                
@@ -144,9 +144,9 @@
               What is the address of the responsible organisation?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['orgaddressLine1'] }}<br>
-              {{ data['orgaddressTown'] }}<br>
-              {{ data['orgaddressPostcode'] }}
+              {{ data['orgaddressLine1'] or '123 Main Street' }}<br>
+              {{ data['orgaddressTown'] or 'Manchester' }}<br>
+              {{ data['orgaddressPostcode'] or 'M14 6JJ' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="org-address?cya2=true">Change<span class="govuk-visually-hidden"> WWhat is the address of the responsible organisation?</span></a>
