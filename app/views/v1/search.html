@@ -18,15 +18,11 @@
 
           <div class="moj-search">
 
-             {% if (data['searchresults'] == 'true') %}
-
-          <form action="search?searchresults=false" method="post">
-
-            {% else %}
+            
 
             <form action="search?searchresults=true" method="post">
 
-             {% endif %}
+        
 
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset">
@@ -38,7 +34,7 @@
 
               <div id="search-hint" class="govuk-hint moj-search__hint ">
                 You can search by the device wearer's name, date of birth or personal identity number.
-                <br>For example Bob Smith 19/1/1990 NHEFTH
+                <br>For example Matthew Jones 19/01/1990
               </div>
 
               <input class="govuk-input moj-search__input " id="search" name="search" type="search" aria-describedby="search-hint" value="{{ data['search'] }} ">
@@ -55,8 +51,40 @@
 
       {% if (data['searchresults'] == "true") %}
 
+      {% if (data['search'] == "ermintrude jones") %}
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+       <h2 class="govuk-heading-m">There are no results for 'Ermintrude Jones'</h2>
+
+      <p>Search by the full first and last name - and how it appears in the service, for example Tom Smith-Johnson. </p>
+
+      <p>Check the date of birth is the correct format. For example, 19/01/1990.</p>
+
+      <p>The Electronic Monitoring Notification form might not be in the system if it was created before [DATE]. It this is the case then [ACTION].</p>
+    
+
+      {% elseif (data['search'] == "" or data['search'] == " " or data['search'] == "  " or data['search'] == NULL) %}
+
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-  
+
+      <h2 class="govuk-heading-m">You have not entered any search terms</h2>
+
+      <p>  Enter a search term, which needs to be either one or a combination of the:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        
+       <li>first and last name of the device wearer, for example Matthew Jones</li>
+       <li>the device wearer's date of birth. For example 19/01/1990</li>
+       <li>a personal identity number, for example their NOMIS ID, Delius ID or PNC number</li>
+
+      </ul>  
+
+      {% else %}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
 
 <div class="govuk-form-group">
          <table class="govuk-table">
@@ -98,7 +126,11 @@
 
     </div>
 
+      {% endif %}
+
       {% else %}
+
+
 
       {% endif %}
 
