@@ -17,16 +17,18 @@
         
         <input class="govuk-input govuk-input--width-20" id="username" name="username" type="text" autofocus="autofocus" autocomplete="username" data-element-id="username" aria-describedby="username-error">
       </div>
-      <div class="govuk-form-group">
-        <label class="govuk-label" for="password">Password</label>
-        
-        <div class="show-password">
-          <input class="govuk-input govuk-input--width-20" id="password" name="password" type="password" autocomplete="current-password" data-element-id="password" aria-describedby="password-error">
-          <button type="button" id="show-password" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-            Show<span class="govuk-visually-hidden"> password</span>
-          </button>
-        </div>
-      </div>
+  
+
+      {% from "govuk/components/password-input/macro.njk" import govukPasswordInput %}
+
+        {{ govukPasswordInput({
+          label: {
+            text: "Password"
+          },
+          classes: "govuk-input--width-20",
+          id: "password-input",
+          name: "password"
+        }) }}
   
 
     <button type="submit" class="govuk-button" data-module="govuk-button" data-govuk-button-init="">

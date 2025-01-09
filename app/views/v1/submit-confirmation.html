@@ -4,11 +4,52 @@
  The notification form has been successfully submitted - Electronic Monitoring
 {% endblock %}
 
+{% block scripts %}
+
+<!-- Spinner --->
+  <script>
+      document.onreadystatechange = function () {
+         if (document.readyState !== "complete") {
+            document.getElementById("content-hide").style.visibility = "hidden";
+            document.getElementById("loading_indicator").style.visibility = "visible";
+         } else {
+            setTimeout(() => {
+               document.getElementById("loading_indicator").style.display ="none";
+               document.getElementById("content-hide").style.visibility = "visible";
+            }, 2000)
+         }
+      };
+   </script>
+   <script>
+     $(document).ready(function() {
+      $("#content-hide").css("display", "block");
+    });
+  </script>
+
+{% endblock %}  
+
 {% block beforeContent %}
 
 {% endblock %}
     
 {% block content %}
+
+<div id='loading_indicator'>
+  <div class="hods-loading-spinner">
+  <div
+    class="hods-loading-spinner__spinner"
+    aria-live="polite"
+    role="status"
+  ></div>
+  <div class="hods-loading-spinner__content">
+    <h1 class="govuk-heading-m">Submitting the form ...</h1>
+  </div>
+</div>
+</div>
+
+
+<div id='content-hide'> 
+
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper govuk-main-wrapper--l" id="main-content" role="main">
     <div class="govuk-grid-row">
@@ -58,12 +99,15 @@
           href: "dashboard"
         }) }}
        
-</div>
+  </div>
 
 <p><a href="feedback">What did you think of this service? (takes 30 seconds)</a></p>
       </div>
     </div>
   </main>
 </div>
+
+</div>
+
 
 {% endblock %}

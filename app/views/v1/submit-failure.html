@@ -1,0 +1,64 @@
+{% extends "layouts/moj.html" %}
+
+{% block pageTitle %}
+ The notification form has failed to submit - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+    
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper govuk-main-wrapper--l" id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation" style="background-color: #d4351c;">
+          <h1 class="govuk-panel__title">
+           
+            The notification form failed to submit
+
+          </h1>
+
+        </div>
+
+
+        <h2 class="govuk-heading-s">What you need to do</h2>
+
+
+        <p>You need to download a PDF copy of your form and email it to:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>hoieorders@ems.co.uk if you work at the Home Office </li>
+          <li>EMNotifications@ems.co.uk if you work in any other service or department</li>
+        </ul>
+        
+        <p>You must put XXXX in the subject line of the email.</p>  
+    
+        <img src="/public/images/form_download.svg" alt="PDF download icon">
+
+
+           {{ govukButton({
+          text: "View and download notification form",
+          href: '#',
+          classes: "govuk-button--secondary"
+        }) }}
+
+
+ 
+
+  <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Back to your notification forms",
+          href: "dashboard"
+        }) }}
+       
+</div>
+
+<p><a href="feedback">What did you think of this service? (takes 30 seconds)</a></p>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

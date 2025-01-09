@@ -29,10 +29,26 @@
 
         {% endif %}
 
+        {{ govukInput({
+            id: "wearer-telephone",
+            name: "wearer-telephone",
+            type: "tel",
+            spellcheck: false,
+            value: data['wearer-telephone'],
+            classes: "govuk-input--width-20",
+            label: {
+              text: "What is the device wearer's telephone number?",
+              classes: "govuk-fieldset__legend--s"
+            },
+            hint: {
+              text: "Provide either a landline or mobile number"
+            }
+          }) }}
+
      
 
 
-
+     <!--
          {% set telHtml %}
           {{ govukInput({
             id: "wearer-telephone",
@@ -50,7 +66,7 @@
           }) }}
           {% endset -%}
 
-         
+    
 
           {{ govukRadios({
             name: "wearer-tel-question",
@@ -80,7 +96,7 @@
               }
             ]
           }) }}
-
+        -->
 
        
 
