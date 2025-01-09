@@ -1,0 +1,61 @@
+{% extends "layouts/moj.html" %}
+
+{% block pageTitle %}
+ The notification form has failed to submit - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+    
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper govuk-main-wrapper--l" id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+           
+            The notification form partially submitted
+
+          </h1>
+           <div class="govuk-panel__body">
+            Reference number<br><strong>123654</strong>
+          </div>
+
+        </div>
+
+       <h2 class="govuk-heading-s">What this means</h2>
+
+
+        <p>The important information in the form has been submitted successfully.</p>
+
+        <p>There was an issue sending the licence document or photo ID. This will not affect your request for electronic tagging.</p>
+      
+        <img src="/public/images/form_download.svg" alt="PDF download icon">
+
+
+           {{ govukButton({
+          text: "View submitted notification form",
+          href: '#',
+          classes: "govuk-button--secondary"
+        }) }}
+
+
+ 
+
+  <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Back to your notification forms",
+          href: "dashboard"
+        }) }}
+       
+</div>
+
+<p><a href="feedback">What did you think of this service? (takes 30 seconds)</a></p>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

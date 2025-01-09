@@ -202,7 +202,7 @@
               What is the device wearer's date of birth?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['wearer-dob-day'] }} {{ data['wearer-dob-month']  | monthName }} {{ data['wearer-dob-year'] or '19 January 1990' }}
+              19 January 1990
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="age?cya1=true">Change<span class="govuk-visually-hidden"> What is the device wearer's date of birth?</span></a>
@@ -220,8 +220,8 @@
             </dd>
           </div>
 
-       {% if (data['eighteen'] == "No") %}
-          <div class="govuk-summary-list__row">
+     
+         <!-- <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Does the device wearer have a contact telephone number?
             </dt>
@@ -231,9 +231,8 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="device-wearer-contact?cya1=true">Change<span class="govuk-visually-hidden"> Does the device wearer have a contact telephone number?</span></a>
             </dd>
-          </div>
+          </div>-->
 
-          {% if (data['wearer-tel-question'] == "Yes") %}
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the device wearer's telephone number?
@@ -245,8 +244,8 @@
               <a class="govuk-link" href="device-wearer-contact?cya1=true">Change<span class="govuk-visually-hidden"> What is the device wearer's telephone number?</span></a>
             </dd>
           </div>
-          {% endif %}
-          {% endif %}
+      
+ 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Does the device wearer have a fixed address?
