@@ -61,7 +61,15 @@
 
       <p>Check the date of birth is the correct format. For example, 19/01/1990.</p>
 
-      <p>The Electronic Monitoring Notification form might not be in the system if it was created before [DATE]. It this is the case then [ACTION].</p>
+      <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-visually-hidden">Warning</span>
+            You can only search for Electronic Monitoring Notification forms that were created in the online service. To change or cancel a notification form that was sent by email <a href="">tell us of about a change to a form</a>.
+          </strong>
+        </div>
+
+      <p></p>
     
 
       {% elseif (data['search'] == "" or data['search'] == " " or data['search'] == "  " or data['search'] == NULL) %}
