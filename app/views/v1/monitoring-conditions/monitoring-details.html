@@ -33,7 +33,7 @@
       }) }}
 
 
-     {% elseif (data['eighteen'] == "No") %}
+     {% elseif (data['eighteen'] == "Yes") %}
 
 
       {{ govukInsetText({
@@ -86,9 +86,17 @@
                 text: "Trail monitoring"
               },
               {
+                value: "Trail monitoring (Home Office)",
+                checked: (true if data['monitoringtype'] == 'Trail monitoring (Home Office)'),
+                hint: {
+                  text: "For the Home Office only. Fitted GPS tracking or non-fitted devices to record the movements of the device wearer throughout the day. "
+                },
+                text: "Trail monitoring (Home Office)"
+              },
+              {
                 value: "Alcohol monitoring",
                 checked: (true if data['monitoringtype'] == 'Alcohol monitoring'),
-                disabled: (true if data['eighteen'] == 'No'),
+                disabled: (true if data['eighteen'] == 'Yes'),
                 hint: {
                   text: "The device wearer's levels of alcohol or abstinence from alcohol is monitored."
                 },

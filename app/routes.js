@@ -177,7 +177,9 @@ router.post('/monitoring-type', function(request, response) {
     } else if (monitoringtype == "Exclusion and inclusion zone monitoring"){
         response.redirect("/v1/monitoring-conditions/exclusion")   
     } else if (monitoringtype == "Trail monitoring"){
-        response.redirect("/v1/monitoring-conditions/trail")   
+        response.redirect("/v1/monitoring-conditions/trail") 
+    } else if (monitoringtype == "Trail monitoring (Home Office)"){
+        response.redirect("/v1/monitoring-conditions/trail")    
     } else if (monitoringtype == "Mandatory attendance monitoring"){
         response.redirect("/v1/monitoring-conditions/attendance")      
     } else {
@@ -195,6 +197,8 @@ router.post('/monitoring-type2', function(request, response) {
         response.redirect("/v1/monitoring-conditions/exclusion")   
     } else if (monitoringtype2 == "Trail monitoring"){
         response.redirect("/v1/monitoring-conditions/trail")   
+    } else if (monitoringtype2 == "Trail monitoring (Home Office)"){
+        response.redirect("/v1/monitoring-conditions/trail")  
     } else if (monitoringtype2 == "Mandatory attendance monitoring"){
         response.redirect("/v1/monitoring-conditions/attendance")      
     } else {

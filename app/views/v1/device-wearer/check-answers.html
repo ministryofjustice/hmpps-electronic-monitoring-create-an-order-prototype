@@ -238,7 +238,7 @@
               What is the device wearer's telephone number?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['wearer-telephone'] }}
+              {{ data['wearer-telephone'] or '01234 567 890' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="device-wearer-contact?cya1=true">Change<span class="govuk-visually-hidden"> What is the device wearer's telephone number?</span></a>
@@ -369,7 +369,7 @@
       <div class="govuk-button-group">
         {{ govukButton({
           text: "Save and go to next section",
-          href: ("../monitoring-conditions/check-answers?section-1-complete=true" if data['section-4-complete'] == 'true' else "../monitoring-conditions/monitoring-dates?section-1-complete=true")
+          href: ("../monitoring-conditions/check-answers?section-1-complete=true" if data['section-4-complete'] == 'true' else "../monitoring-conditions/order-information?section-1-complete=true")
         }) }}
 
         {{ govukButton({
