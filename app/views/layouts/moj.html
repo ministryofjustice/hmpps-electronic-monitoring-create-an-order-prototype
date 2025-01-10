@@ -4,7 +4,7 @@
     #}
     {% extends "layouts/main.html" %}
     
-    {% block header %}
+{% block header %}
     
     {%- from "moj/components/header/macro.njk" import mojHeader -%}
 
@@ -50,23 +50,23 @@
 
 
    
-            {% block footer %}
-            
-              {{ govukFooter({
-                meta: {
-                  items: [
-                    {
-                      href: "#",
-                      text: "Accessibility statement"
-                    },
-                    {
-                      href: "/manage-prototype/clear-data",
-                      text: "Clear data"
-                    }
-                  ]
-                }
-              }) }}
+    {% block footer %}
+    
+      {{ govukFooter({
+        meta: {
+          items: [
+            {
+              href: "#",
+              text: "Accessibility statement"
+            },
+            {
+              href: "/manage-prototype/clear-data",
+              text: "Clear data"
+            }
+          ]
+        }
+      }) }}
 
 
 
-              {% endblock %}
+      {% endblock %}
