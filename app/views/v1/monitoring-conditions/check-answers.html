@@ -27,6 +27,42 @@
     <h2 class="govuk-heading-m">Monitoring details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+          
+           
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the type of the order?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['order-type'] or 'Civil' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the description of the order?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['order-description'] or "Not able to provide this information" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> What is the description of the order? </span></a>
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What are the conditions of the order?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['order-conditions'] or 'Requirement of a community order' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> What are the conditions of the order? </span></a>
+            </dd>
+          </div>
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the date the monitoring starts?
@@ -70,40 +106,6 @@
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="monitoring-dates?cya4=true">Change<span class="govuk-visually-hidden"> What is the time the monitoring ends? (optional) </span></a>
-            </dd>
-          </div>
-           
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What is the type of the order?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['order-type'] or 'Civil' }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What is the description of the order?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['order-description'] or "Not able to provide this information" }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> What is the description of the order? </span></a>
-            </dd>
-          </div>
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What are the conditions of the order?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['order-conditions'] or 'Requirement of a community order' }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> What are the conditions of the order? </span></a>
             </dd>
           </div>
          
@@ -388,9 +390,17 @@
 
    {% endif %}   
    
-    {% if (data['monitoringtype'] == "Trail monitoring" or data['monitoringtype'] == "Trail monitoring") or data['monitoringtype'] !== NULL or data['monitoringtype'] !== '' %}
+    {% if (data['monitoringtype'] == "Trail monitoring" or data['monitoringtype'] == "Trail monitoring (Home Office)" or data['monitoringtype2'] == "Trail monitoring") or data['monitoringtype'] !== NULL or data['monitoringtype'] !== '' %}
 
- <h2 class="govuk-heading-m">Trail monitoring</h2>
+ <h2 class="govuk-heading-m">
+
+  {% if (data['monitoringtype'] == "Trail monitoring (Home Office)") %}
+   Trail monitoring (Home Office)
+  {% else %}
+    Trail monitoring
+  {% endif %}
+
+</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
 
@@ -416,6 +426,23 @@
               <a class="govuk-link" href="trail?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the trail monitoring ends? </span></a>
             </dd>
           </div>
+
+          {% if (data['monitoringtype'] == "Trail monitoring (Home Office)") %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What type of trail monitoring device is needed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['type-trail'] or 'A fitted GPS tag'}} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="trail?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the trail monitoring ends? </span></a>
+            </dd>
+          </div>
+
+          {% endif %}  
+
          
        </dl>
 

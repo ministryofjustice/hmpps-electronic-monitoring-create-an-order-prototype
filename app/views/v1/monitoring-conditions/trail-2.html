@@ -1,0 +1,78 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible adult details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Monitoring conditions</span>
+       Trail monitoring (Home Office) device
+      </h1>
+
+      <form class="form" action="monitoring-needed" method="post">
+ 
+            {{ govukRadios({
+            name: "type-trail",
+            fieldset: {
+              legend: {
+                text: "What type of trail monitoring device is needed?",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select one option"
+            },
+            items: [
+              {
+                value: "A fitted GPS tag",
+                text: "A fitted GPS tag",
+                checked: (true if data['type-trail'] == 'A fitted GPS tag'),
+                conditional: {
+              
+                }
+              },
+              {
+                value: "A non-fitted device",
+                text: "A non-fitted device",
+                checked: (true if data['type-trail'] == 'A non-fitted device'),
+                conditional: {
+                 
+                }
+              }
+            ]
+          }) }}
+      
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and return to main form menu",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

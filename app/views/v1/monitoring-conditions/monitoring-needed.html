@@ -30,26 +30,26 @@
                 </dt>
                 <dd class="govuk-summary-list__value">
                    {% if (data['monitoringtype'] == "Mandatory attendance monitoring") %}
-                  {{ data['appointment-reason'] }}   <br>
-                  From {{ data['attendancestart-date'] }} to {{ data['attendanceend-date'] }}
+                  {{ data['appointment-reason'] or 'Anger management meetings' }}   <br>
+                  From {{ data['attendancestart-date'] or '12/12/2024' }} to {{ data['attendanceend-date' or '12/12/2025'] }}
 
                    {% endif %}     
 
                    {% if (data['monitoringtype'] == "Exclusion and inclusion zone monitoring") %}
-                  {{ data['exclusion-name'] }}   <br>
-                  From {{ data['exclusionstart-date'] }} to {{ data['exclusionend-date'] }}
+                  {{ data['exclusion-name'] or 'Partners house' }}   <br>
+                  From {{ data['exclusionstart-date'] or '12/12/2024' }} to {{ data['exclusionend-date'] or '12/12/2025' }}
                    {% endif %} 
 
                    {% if (data['monitoringtype'] == "Curfew with electronic monitoring") %}
-                   From {{ data['curfewstart-date'] }} to {{ data['curfewend-date'] }}
+                   From {{ data['curfewstart-date'] or '12/12/2024' }} to {{ data['curfewend-date'] or '12/06/2025' }}
                    {% endif %} 
 
-                    {% if (data['monitoringtype'] == "Trail monitoring") %}
-                     From {{ data['trailstart-date'] }} to {{ data['trailend-date'] }}
+                    {% if (data['monitoringtype'] == "Trail monitoring") or (data['monitoringtype'] == "Trail monitoring (Home Office)")%}
+                     From {{ data['trailstart-date'] or '12/12/2024' }} to {{ data['trailend-date'] or '12/12/2025' }}
                    {% endif %} 
 
                    {% if (data['monitoringtype'] == "Alcohol monitoring") %}
-                   From {{ data['alcoholstart-date'] }} to {{ data['alcoholend-date'] }}
+                   From {{ data['alcoholstart-date'] or '12/12/2024'  }} to {{ data['alcoholend-date'] or '12/12/2025'  }}
                    {% endif %} 
 
                             
@@ -74,26 +74,27 @@
                   {{ data['monitoringtype2'] }}
                 </dt>
                 <dd class="govuk-summary-list__value">
-                   {% if (data['monitoringtype2'] == "Mandatory attendance monitoring") %}
-                  {{ data['appointment-reason'] }}   <br>
-                  From {{ data['attendancestart-date'] }} to {{ data['attendanceend-date'] }}
-                   {% endif %}       
+                  {% if (data['monitoringtype2'] == "Mandatory attendance monitoring") %}
+                  {{ data['appointment-reason'] or 'Anger management meetings' }}   <br>
+                  From {{ data['attendancestart-date'] or '12/12/2024' }} to {{ data['attendanceend-date' or '12/12/2025'] }}
 
-                    {% if (data['monitoringtype2'] == "Exclusion and inclusion zone monitoring") %}
-                  {{ data['exclusion-name'] }}   <br>
-                  From {{ data['exclusionstart-date'] }} to {{ data['exclusionend-date'] }}
-                   {% endif %}    
+                   {% endif %}     
+
+                   {% if (data['monitoringtype2'] == "Exclusion and inclusion zone monitoring") %}
+                  {{ data['exclusion-name'] or 'Partners house' }}   <br>
+                  From {{ data['exclusionstart-date'] or '12/12/2024' }} to {{ data['exclusionend-date'] or '12/12/2025' }}
+                   {% endif %} 
 
                    {% if (data['monitoringtype2'] == "Curfew with electronic monitoring") %}
-                   From {{ data['curfewstart-date'] }} to {{ data['curfewend-date'] }}
+                   From {{ data['curfewstart-date'] or '12/12/2024' }} to {{ data['curfewend-date'] or '12/06/2025' }}
                    {% endif %} 
 
                     {% if (data['monitoringtype2'] == "Trail monitoring") %}
-                     From {{ data['trailstart-date'] }} to {{ data['trailend-date'] }}
+                     From {{ data['trailstart-date'] or '12/12/2024' }} to {{ data['trailend-date'] or '12/12/2025' }}
                    {% endif %} 
 
                    {% if (data['monitoringtype2'] == "Alcohol monitoring") %}
-                   From {{ data['alcoholstart-date'] }} to {{ data['alcoholend-date'] }}
+                   From {{ data['alcoholstart-date'] or '12/12/2024'  }} to {{ data['alcoholend-date'] or '12/12/2025'  }}
                    {% endif %} 
 
 

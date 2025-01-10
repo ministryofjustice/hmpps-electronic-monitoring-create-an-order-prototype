@@ -26,7 +26,7 @@
 
         {% else %}
 
-       <form class="form" action="order-information" method="post">
+       <form class="form" action="/install-address-question" method="post">
 
         {% endif %}
 
@@ -161,7 +161,12 @@
 
             <div class="govuk-form-group">
               <label class="govuk-label  govuk-label--s" for="date">
+               {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}
                What is the date the monitoring ends? (optional)
+               {% else %}
+               What is the date the monitoring ends? 
+               {% endif %}
+
               </label>
 
               <div id="date-hint" class="govuk-hint">
@@ -182,7 +187,15 @@
        
         <div id="curfewTimes-form" class="govuk-form-group">
     <fieldset class="govuk-fieldset">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What is the time the monitoring ends? (optional)</legend>
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+
+              {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}
+               What is the time the monitoring ends? (optional)
+               {% else %}
+               What is the time the monitoring ends? 
+               {% endif %}
+
+    </legend>
 
       <div class="govuk-date-input ">
         <div class="govuk-hint">For example, 19:00 or 07:00.</div>
