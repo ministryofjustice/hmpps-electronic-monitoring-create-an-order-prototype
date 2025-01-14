@@ -29,7 +29,7 @@
               
     {% endif %}   -->
 
-      <h1 class="govuk-heading-l">Electronic Monitoring Notification form</h1>
+      <h1 class="govuk-heading-l">Electronic Monitoring Notification form for Fred Bloggs</h1>
 
        {% if (data['view'] == 'true') %}
 
@@ -37,7 +37,7 @@
 
            {% if (data['view-variation'] == 'false') %}
 
-           <p> This notification form was submitted on the 14 December 2024. You can make a change to this form or cancel it.</p>
+           <p> This notification form was submitted on the 14 December 2024. You can make a change to this form or end all monitoring for the device wearer.</p>
 
                  <form class="form" action="edit-form-variation" method="post">
 
@@ -48,7 +48,7 @@
 
             {% else %}
 
-            <p> This notification form was submitted on the 1 December 2024. There are more recent versions of this form. </p>
+            <p> This notification form was submitted on the 1 December 2024. You can't make changes to it because there are more recent versions of this form. </p>
 
             <details class="govuk-details">
                 <summary class="govuk-details__summary">
@@ -72,7 +72,8 @@
                         <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
                       </p>
 
-                       <div class="moj-timeline__description"><a href="submitted-form?view-variation=false&variation=true">View submitted form</a></div>
+                       <div class="moj-timeline__description govuk-!-padding-bottom-4"><a href="submitted-form?view-variation=false&variation=true">View the most recent version of this form</a>.<br>
+                       </div>
 
                       
 
@@ -91,8 +92,8 @@
                         <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
                       </p>
 
-                      <div class="moj-timeline__description">
-                        <p>You are viewing this version of the form</p>
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4">
+                        <p>You are viewing this version of the form.</p>
                       </div>
 
                     </div>
@@ -110,7 +111,7 @@
 
             {% else %}
 
-            <p> This version of the notification form was submitted on the 14 December 2024. You can make changes to this form or cancel it. </p>
+            <p> This version of the notification form was submitted on the 14 December 2024. You can make changes to this form or end all monitoring for the device wearer. </p>
             
 
             <details class="govuk-details">
@@ -135,8 +136,8 @@
                         <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
                       </p>
 
-                      <div class="moj-timeline__description">
-                        <p>You are viewing this version of the form</p>
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4">
+                        <p>You are viewing the most recent version of the form.</p>
                       </div>
 
                     </div>
@@ -154,7 +155,7 @@
                         <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
                       </p>
 
-                      <div class="moj-timeline__description"><a href="submitted-form?view-variation=true&variation=false">View submitted form</a></div>
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4"><a href="submitted-form?view-variation=true&variation=false">View submitted form</a></div>
 
                     </div>
 
@@ -354,7 +355,7 @@
            Make changes to this form
           </button>
 
-          <a class="govuk-link" href="edit-form-delete-question">Cancel form</a>
+          <a class="govuk-link" href="edit-form-delete-question">End all monitoring</a>
 
             {% endif %}
 
