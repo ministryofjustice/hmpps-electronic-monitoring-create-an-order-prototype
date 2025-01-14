@@ -90,17 +90,23 @@
 
       {% else %}
 
-      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+   
+
+</div>
+ <div class="govuk-grid-column-full">
+
+     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
 
-
-<div class="govuk-form-group">
+      <div class="govuk-form-group">
          <table class="govuk-table">
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
                 <th scope="col" class="govuk-table__header">Name of device wearer</th>
                 <th scope="col" class="govuk-table__header">Date of birth</th>
                  <th scope="col" class="govuk-table__header">Town or city</th>
+                 <th scope="col" class="govuk-table__header">Start date</th>
+                 <th scope="col" class="govuk-table__header">End date</th>
                 <th scope="col" class="govuk-table__header">Last updated on</th>
                 <th scope="col" class="govuk-table__header">Status</th>
               </tr>
@@ -111,28 +117,35 @@
                 <td class="govuk-table__cell">19/01/2001</td>
                 <td class="govuk-table__cell">Glossop</td>
                 <td class="govuk-table__cell">18/12/2024</td>
+                <td class="govuk-table__cell">18/12/2025</td>
+                <td class="govuk-table__cell">10/12/2024</td>
                 <td class="govuk-table__cell">Submitted</td>
               </tr>
                <tr class="govuk-table__row">
-                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=false">Fred Bloggs</a></td>
+                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=true&view-variation=false">Fred Bloggs</a></td>
                 <td class="govuk-table__cell">5/6/1974</td>
                 <td class="govuk-table__cell">Salford</td>
-                <td class="govuk-table__cell">15/11/2024</td>
+                <td class="govuk-table__cell">01/09/2024</td>
+                <td class="govuk-table__cell">01/09/2025</td>
+                <td class="govuk-table__cell">15/01/2025</td>
                 <td class="govuk-table__cell">Submitted</td>
               </tr>
                <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=cancelled">Fred Bloggs</a></td>
                 <td class="govuk-table__cell">19/01/2001</td>
                 <td class="govuk-table__cell">Glossop</td>
-                <td class="govuk-table__cell">2/03/2022</td>
-                <td class="govuk-table__cell">Cancelled</td>
+                <td class="govuk-table__cell">01/12/2021</td>
+                <td class="govuk-table__cell">18/07/2022</td>
+                <td class="govuk-table__cell">02/03/2022</td>
+                <td class="govuk-table__cell">Ended early</td>
               </tr>
              
               
             </tbody>
           </table>
 
-    </div>
+      </div>
+  </div>
 
       {% endif %}
 

@@ -60,7 +60,7 @@
 
             
 
-             {{ govukRadios({
+             {{ govukCheckboxes({
             name: "variation-type",
             fieldset: {
               legend: {
@@ -73,29 +73,30 @@
               text: "Select one option"
             },
             items: [
+             
               {
-                value: "A change in curfew hours",
-                checked: (true if data['variation-type'] == 'A change in curfew hours'),
+                value: "The device wearer's address or the installation address",
+                checked: (true if data['variation-type'] == "The device wearer's address or the installation address"),
                 disabled: (true if data['view'] == 'true'),
-                text: "A change in curfew hours"
+                text: "The device wearer's address or the installation address"
+              },
+               {
+                value: "The curfew hours",
+                checked: (true if data['variation-type'] == 'The curfew hours'),
+                disabled: (true if data['view'] == 'true'),
+                text: "The curfew hours"
               },
               {
-                value: "A change in address",
-                checked: (true if data['variation-type'] == 'A change in address'),
+                value: "Added an exclusion or inclusion zone(s)",
+                checked: (true if data['variation-type'] == 'Added an exclusion or inclusion zone(s)'),
                 disabled: (true if data['view'] == 'true'),
-                text: "A change in address"
+                text: "Added an exclusion or inclusion zone(s)"
               },
               {
-                value: "Change to add an exclusion or inclusion zone(s)",
-                checked: (true if data['variation-type'] == 'Change to add an exclusion or inclusion zone(s)'),
+                value: "Change or removed an existing exclusion or inclusion zone(s)",
+                checked: (true if data['variation-type'] == 'Change or removed an existing exclusion or inclusion zone(s)'),
                 disabled: (true if data['view'] == 'true'),
-                text: "Change to add an exclusion or inclusion zone(s)"
-              },
-              {
-                value: "Change to an existing exclusion or inclusion zone(s)",
-                checked: (true if data['variation-type'] == 'Change to an existing exclusion or inclusion zone(s)'),
-                disabled: (true if data['view'] == 'true'),
-                text: "Change to an existing exclusion or inclusion zone(s)"
+                text: "Change or removed an existing exclusion or inclusion zone(s)"
                 
               },
 

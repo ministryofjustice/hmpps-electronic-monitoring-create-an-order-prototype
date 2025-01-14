@@ -12,16 +12,16 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">Are you sure that you want to cancel this submitted Electronic Monitoring notification form?</h1>
+      <h1 class="govuk-heading-l">Are you sure that you want to end all monitoring for Fred Bloggs?</h1>
 
-      <p>This will also cancel all the Electronic Monitoring tags for the device wearer within the form.</p>
+
 
 
         {% from "govuk/components/button/macro.njk" import govukButton %}
 
           <div class="govuk-button-group">
             {{ govukButton({
-              text: "Yes, cancel form",
+              text: "Yes, end all monitoring",
               href: 'delete-form-confirmation?cancelled=true',
               classes: "govuk-button--warning"
             }) }}
