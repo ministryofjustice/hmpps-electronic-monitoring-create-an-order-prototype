@@ -12,6 +12,35 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+         {% set html %}
+        <p class="govuk-notification-banner__heading">
+         You are viewing a submitted form. This form was submitted on the 14 December 2024.
+        </p>
+      {% endset %}
+
+      {% set htmlcancelled %}
+        <p class="govuk-notification-banner__heading">
+         You are viewing a cancelled form. This form was cancelled on the 22 December 2024.
+        </p>
+      {% endset %}
+
+
+          {% if (data['view-variation'] == 'cancelled') %}
+
+           {{ govukNotificationBanner({
+              html: htmlcancelled
+            }) }}
+
+          {% elseif (data['view'] == 'true') %}
+
+          {{ govukNotificationBanner({
+              html: html
+            }) }}
+
+          {% else %}
+
+           {% endif %}
+
       
 
       <h1 class="govuk-heading-l">
@@ -20,7 +49,17 @@
       </h1>
 
 
-      <form class="form" action="/monitoring-list" method="post">
+        {% if (data['view'] == 'false') %}
+
+           <form class="form" action="/monitoring-list-edit" method="post">
+
+          {% else %}
+
+           <form class="form" action="/monitoring-list" method="post">
+
+           {% endif %}
+
+   
 
           <dl class="govuk-summary-list">
        
@@ -89,7 +128,7 @@
                    From {{ data['curfewstart-date'] or '12/12/2024' }} to {{ data['curfewend-date'] or '12/06/2025' }}
                    {% endif %} 
 
-                    {% if (data['monitoringtype2'] == "Trail monitoring") %}
+                    {% if (data['monitoringtype2'] == "Trail monitoring" or (data['monitoringtype2'] == "Trail monitoring (Home Office)")) %}
                      From {{ data['trailstart-date'] or '12/12/2024' }} to {{ data['trailend-date'] or '12/12/2025' }}
                    {% endif %} 
 
@@ -145,15 +184,26 @@
     {% from "govuk/components/button/macro.njk" import govukButton %}
 
       <div class="govuk-button-group">
-        {{ govukButton({
-          text: "Save and continue"
-        }) }}
+            {% if (data['view'] == 'true') %}
 
-        {{ govukButton({
-          text: "Save and return to main form menu",
-          href: '../new-form',
-          classes: "govuk-button--secondary"
-        }) }}
+                {{ govukButton({
+                text: "Return to check your answers",
+                href: 'check-answers-view'
+              }) }}
+
+          {% else %}
+
+             {{ govukButton({
+                text: "Save and continue"
+              }) }}
+
+              {{ govukButton({
+                text: "Save and return to main form menu",
+                href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
+                classes: "govuk-button--secondary"
+              }) }}
+
+           {% endif %}   
 
       </div>
  

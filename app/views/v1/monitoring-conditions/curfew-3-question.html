@@ -58,7 +58,7 @@
 
         {{ govukButton({
           text: "Save and return to main form menu",
-          href: '../new-form',
+          href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
         }) }}
 

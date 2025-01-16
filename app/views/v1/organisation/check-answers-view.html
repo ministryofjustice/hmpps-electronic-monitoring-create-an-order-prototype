@@ -99,13 +99,13 @@
           What is the responsible officer's first name?
             </dt>
             <dd class="govuk-summary-list__value">
-             Fred
+             {{ data['officer-firstname'] or 'Bob' }}
             </dd>
             <dd class="govuk-summary-list__actions">
                {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                 <a class="govuk-link" href="responsible-officer-view">View<span class="govuk-visually-hidden"> </span></a>
                 {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                  <a class="govuk-link" href="responsible-officer-view">Change<span class="govuk-visually-hidden"> </span></a>                  
                 {% endif %}
             </dd>
           </div>
@@ -114,13 +114,13 @@
           What is the responsible officer's last name?
             </dt>
             <dd class="govuk-summary-list__value">
-           Bloggs
+           {{ data['officer-lastname'] or 'Brown' }}
             </dd>
             <dd class="govuk-summary-list__actions">
                {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                 <a class="govuk-link" href="responsible-officer-view">View<span class="govuk-visually-hidden"> </span></a>
                 {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                  <a class="govuk-link" href="responsible-officer-view">Change<span class="govuk-visually-hidden"> </span></a>                  
                 {% endif %}
                 
             </dd>
@@ -130,13 +130,13 @@
          What is the responsible officer's telephone number?
             </dt>
             <dd class="govuk-summary-list__value">
-             01289 377 587
+            {{ data['officer-tel'] or '01245 765 432'}}
             </dd>
             <dd class="govuk-summary-list__actions">
                {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                 <a class="govuk-link" href="responsible-officer-view">View<span class="govuk-visually-hidden"> </span></a>
                 {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                  <a class="govuk-link" href="responsible-officer-view">Change<span class="govuk-visually-hidden"> </span></a>                  
                 {% endif %}
                 
             </dd>

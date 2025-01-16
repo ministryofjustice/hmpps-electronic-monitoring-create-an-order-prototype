@@ -19,20 +19,7 @@
       Contact details for the responsible officer
       </h1>
 
- {% if (data['cya2'] == "true") %}
-
-        <form class="form" action="check-answers" method="post">
-
-        {% else %}
-
-       <form class="form" action="org-contact" method="post">
-
-        {% endif %}
-
-
-
-
-
+       <form class="form" action="check-answers-view" method="post">
 
            {{ govukInput({
           label: {
@@ -43,7 +30,8 @@
           id: "officer-firstname",
           name: "officer-firstname",
           spellcheck: false,
-          value: data['officer-firstname']
+          disabled: (true if data['view'] == 'true' else false),
+          value: data['officer-firstname'] or 'Bob'
         }) }}
 
         {{ govukInput({
@@ -55,7 +43,8 @@
           id: "officer-lastname",
           name: "officer-lastname",
           spellcheck: false,
-          value: data['officer-lastname']
+          disabled: (true if data['view'] == 'true' else false),
+          value: data['officer-lastname'] or 'Brown'
         }) }}
 
         {{ govukInput({
@@ -67,7 +56,8 @@
           id: "officer-tel",
           name: "officer-tel",
           spellcheck: false,
-          value: data['officer-tel']
+          disabled: (true if data['view'] == 'true' else false),
+          value: data['officer-tel'] or '01245 765 432'
         }) }}
        
 

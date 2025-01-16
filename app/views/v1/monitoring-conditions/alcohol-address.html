@@ -27,6 +27,8 @@
 
 
 
+
+
       {% call govukFieldset({
         legend: {
           text: "What is the address where the alcohol monitoring base station will be installed?",
@@ -98,7 +100,7 @@
 
         {{ govukButton({
           text: "Save and return to main form menu",
-          href: '../new-form',
+           href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
         }) }}
 

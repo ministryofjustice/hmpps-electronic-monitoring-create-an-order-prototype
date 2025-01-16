@@ -1,0 +1,31 @@
+{% extends "layouts/moj-signedout.html" %}
+
+{% set pageName="Sign in - Electronic Monitoring" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Create or change an Electronic Monitoring Notification form</h1>
+
+    <form class="form" method="post">
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut cursus urna non urna sodales tempor. Sed iaculis ultricies elementum. Duis ullamcorper sapien id diam vulputate, id tincidunt quam fermentum. Ut lectus elit, feugiat egestas vestibulum eu, egestas maximus tortor. Donec ut felis ut mi blandit interdum eu ac ex.</p>
+
+      <h2 class="govuk-heading-s">Header text</h2>
+
+      <p>Nulla lacus elit, accumsan lobortis libero sed, lacinia dignissim nunc. Suspendisse facilisis turpis pretium mauris convallis iaculis. Sed et justo mollis ipsum elementum luctus. Praesent ut risus feugiat, suscipit mauris sit amet, maximus velit. Fusce ornare lorem eget vestibulum vehicula. Proin egestas rhoncus mauris, in condimentum metus congue vitae. In efficitur nec augue sed volutpat. </p>
+
+
+     {{ govukButton({
+        text: "Start now",
+        href: "signin",
+        isStartButton: true
+      }) }}
+
+    
+  </div>
+</div>
+
+{% endblock %}

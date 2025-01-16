@@ -145,7 +145,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the monitoring ends? (optional)
+              What is the date the monitoring ends? 
             </dt>
             <dd class="govuk-summary-list__value">
               23 December 2025
@@ -161,7 +161,7 @@
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the time the monitoring ends? (optional)
+              What is the time the monitoring ends? 
             </dt>
             <dd class="govuk-summary-list__value">
              11:00
@@ -201,7 +201,82 @@
               What monitoring does the device wearer need?
             </dt>
             <dd class="govuk-summary-list__value">
-              Trail monitoring
+              Curfew with electronic monitoring<br>
+              {{ data['monitoringtype2'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="monitoring-needed?monitoringtype=Curfew with electronic monitoring">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>     
+         
+ </dl>
+
+ <h2 class="govuk-heading-m">Curfew with electronic monitoring</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Are there any other addresses where the device wearer will spend curfew hours?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfewaddressquestion'] or 'No'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+          {% if (data['curfewaddressquestion'] == 'Yes') %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Other addresses the device wearer will spend curfew hours
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfewaddressname'] }}<br>
+              {{ data['curfewaddressLine1'] }}<br>
+              {{ data['curfewaddressTown'] }}<br>
+              {{ data['curfewaddressPostcode'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+            {% endif %}
+
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the curfew monitoring starts?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfewstart-date'] or '18/12/2024' }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the curfew monitoring ends? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfewend-date'] or '18/12/2025' }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               {% if (data['view'] == 'true') %}
@@ -210,15 +285,270 @@
                   <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
                 {% endif %}
             </dd>
-          </div>     
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the release date?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['release-date'] or '18/12/2024' }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the start time for curfew this day?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['release-starttime-hours'] or '19' }}:{{ data['release-starttime-minutes'] or '00' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the end time for curfew?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['release-endtime-hours'] or "07" }}:{{ data['release-endtime-hours'] or '00' }} {{ data['curfew-same-next-day'] or 'The next day' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What address will the device wearer be at during curfew hours on their day of release?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if (data['release-address'] == "Contact") %}
+
+              123 Carter Bar<br>
+              Glossop<br>
+              High Peak<br>
+              SK22 2NG</p>
+
+              {% elseif (data['release-address'] == "Installation") %}
+
+
+              {{ data['installaddressLine1'] }}<br>
+              {{ data['installaddressTown'] }}<br>
+              {{ data['installaddressPostcode'] }}
          
- </dl>
+              {% else %}
+              {{ data['curfewaddressname'] or '123 Carter Bar' }}<br>
+              {{ data['curfewaddressLine1'] or 'Glossop' }}<br>
+              {{ data['curfewaddressTown'] or 'High Peak'}}<br>
+              {{ data['curfewaddressPostcode'] or 'SK22 2NG' }}
+              {% endif %}
 
- 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+        </dl>
+        
+    <h2 class="govuk-heading-m">Curfew timetable</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+  
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             123 Carter Bar
+            </dt>
+            <dd class="govuk-summary-list__value">
+             
+                 {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Monday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Tuesday
+                {% else %} 
+                    19:00 Monday until 07:00 Tuesday
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Tuesday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Wednesday
+                {% else %} 
+                    19:00 Tuesday until 07:00 Wednesday
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Wednesday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Thursday
+                {% else %} 
+                    19:00 Wednesday until 07:00 Thursday
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Thursday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Friday
+                {% else %} 
+                    19:00 Thursday until 07:00 Friday
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Friday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Saturday
+                {% else %} 
+                    19:00 Friday until 07:00 Saturday
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Saturday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Sunday
+                {% else %} 
+                    19:00 Saturday until 07:00 Sunday
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Sunday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Monday
+                {% else %} 
+                    19:00 Sunday until 07:00 Monday
+                 {% endif %} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="curfew-4">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="curfew-4">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+           
+
+        </dl>
+
+
+        {% if (data['monitoringtype2'] == "Exclusion and inclusion zone monitoring") %}
+
+ <h2 class="govuk-heading-m">Exclusion and inclusion zone monitoring</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+
+    <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the exclusion and inclusion monitoring starts?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['exclusionstart-date'] or '12/12/2024' }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What is the date the exclusion and inclusion monitoring starts? </span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the exclusion and inclusion monitoring ends? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['exclusionend-date'] or '12/12/2025 '}} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What is the date the exclusion and inclusion monitoring ends? </span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Is the monitoring for an exclusion or inclusion zone?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['exclusion-type'] or 'Exclusion zone' }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> Is the monitoring for an exclusion or inclusion zone?</span></a>
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What name would you give to the exclusion or inclusion zone?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['exclusion-name'] or "Partner's house" }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What name would you give to the exclusion or inclusion zone?</span></a>
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Where is the exclusion or inclusion zone?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['exclusion-description'] or "2 miles from the partner's property" }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> Where is the exclusion or inclusion zone?</span></a>
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              When must the exclusion or inclusion zone be followed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['exclusion-dates'] or 'At all times' }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> When must the exclusion or inclusion zone be followed?</span></a>
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you have a map to upload to show us where the exclusion or inclusion zone is?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['exclusionquestion'] or 'No' }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> Do you have a map to upload to show us where the exclusion or inclusion zone is?</span></a>
+            </dd>
+          </div>
+
+         {% if (data['exclusionquestion'] == "Yes") %}
+
+         <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Map of the exclusion or inclusion zone
+            </dt>
+            <dd class="govuk-summary-list__value">
+             <a href="#">{{ data['map'] }}</a>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden">Map of the exclusion or inclusion zone</span></a>
+            </dd>
+          </div>
+
+         {% endif %}  
+       </dl>
+
+
+
+   {% endif %}   
    
+    {% if (data['monitoringtype2'] == "Trail monitoring" or data['monitoringtype2'] == "Trail monitoring (Home Office)") %}
 
+ <h2 class="govuk-heading-m">
 
- <h2 class="govuk-heading-m">Trail monitoring</h2>
+  {% if (data['monitoringtype'] == "Trail monitoring (Home Office)") %}
+   Trail monitoring (Home Office)
+  {% else %}
+    Trail monitoring
+  {% endif %}
+
+</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
 
@@ -227,33 +557,207 @@
               What is the date the trail monitoring starts?
             </dt>
             <dd class="govuk-summary-list__value">
-              23 December 2024
+              {{ data['trailstart-date'] or '12/01/2025' }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-             {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
-                {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
-                {% endif %}
-              </dd>   
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What is the date the trail monitoring starts? </span></a>
+            </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the trail monitoring ends? (optional)
+              What is the date the trail monitoring ends? 
             </dt>
             <dd class="govuk-summary-list__value">
-            23 December 2025
+              {{ data['trailend-date'] or '12/07/2025' }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
-                {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
-                {% endif %}
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What is the date the trail monitoring ends? </span></a>
             </dd>
           </div>
+
+          {% if (data['monitoringtype'] == "Trail monitoring (Home Office)") %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What type of trail monitoring device is needed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['type-trail'] or 'A fitted GPS tag' }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What is the date the trail monitoring ends? </span></a>
+            </dd>
+          </div>
+
+          {% endif %}  
+
          
        </dl>
+
+   {% endif %}   
+
+    {% if (data['monitoringtype2'] == "Mandatory attendance monitoring") %}
+
+ <h2 class="govuk-heading-m">Mandatory attendance monitoring</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+         <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the mandatory attendance monitoring starts?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['attendancestart-date'] }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What is the date the mandatory attendance monitoring starts? </span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the mandatory attendance monitoring ends? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['attendanceend-date'] }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What is the date the mandatory attendance monitoring ends? </span></a>
+            </dd>
+          </div>
+  
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             What is the appointment for?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['appointment-reason'] }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What is the appointment for?</span></a>
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            What time does the appointment start?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['appointment-start-hours'] }}:{{ data['appointment-start-minutes'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What time does the appointment start?</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           What time does the appointment end?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['appointment-end-hours'] }}:{{ data['appointment-end-minutes'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What time does the appointment end?</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the address where the appointment will take place?
+            </dt>
+            <dd class="govuk-summary-list__value">
+           
+              {{ data['appointmentaddressLine1'] }}<br>
+              {{ data['appointmentaddressTown'] }}<br>
+              {{ data['appointmentaddressPostcode'] }}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What is the address where the appointment will take place? </span></a>
+            </dd>
+          </div>
+
+
+       </dl>    
+
+   {% endif %}    
+
+    {% if (data['monitoringtype2'] == "Alcohol monitoring") %}
+
+ <h2 class="govuk-heading-m">Alcohol monitoring</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+
+   
+
+         
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the alcohol monitoring starts?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['alcoholstart-date'] }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What is the date the alcohol monitoring starts? </span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the alcohol monitoring ends? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['alcoholend-date'] }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What is the date the alcohol monitoring ends? </span></a>
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Which type of alcohol monitoring is needed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['type-alcohol'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What type of alcohol monitoring is needed? </span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Where will alcohol base station monitoring equipment be installed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if (data['alcoholaddress'] == "Contact") %}
+
+              123 Carter Bar<br>
+              Glossop<br>
+              High Peak<br>
+              SK22 2NG</p>
+
+              {% elseif (data['alcoholaddress'] == "Installation") %}
+
+
+              {{ data['installaddressLine1'] }}<br>
+              {{ data['installaddressTown'] }}<br>
+              {{ data['installaddressPostcode'] }}
+         
+              {% else %}
+              {{ data['alcoholaddressLine1'] }}<br>
+              {{ data['alcoholaddressTown'] }}<br>
+              {{ data['alcoholaddressPostcode'] }}
+              {% endif %}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden">  Where will alcohol base station monitoring equipment be installed? </span></a>
+            </dd>
+          </div>
+
+
+
+       </dl>
+
+   {% endif %}  
+
 
 
 
