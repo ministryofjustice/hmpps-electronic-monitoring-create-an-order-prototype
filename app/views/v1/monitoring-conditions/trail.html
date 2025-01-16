@@ -17,7 +17,7 @@
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Monitoring conditions</span>
 
-        {% if (data['monitoringtype'] == "Trail monitoring (Home Office)") %}
+        {% if (data['monitoringtype'] == "Trail monitoring (Home Office)"or data['monitoringtype2'] == "Trail monitoring (Home Office)") %}
          Trail monitoring (Home Office) dates
          {% else %}
          Trail monitoring dates
@@ -27,7 +27,7 @@
       </h1>
 
   
-      {% if (data['monitoringtype'] == "Trail monitoring (Home Office)") %}
+      {% if (data['monitoringtype'] == "Trail monitoring (Home Office)" or data['monitoringtype2'] == "Trail monitoring (Home Office)") %}
          <form class="form" action="trail-2" method="post">
          {% else %}
          <form class="form" action="monitoring-needed" method="post">
@@ -166,7 +166,7 @@
 
         {{ govukButton({
           text: "Save and return to main form menu",
-          href: '../new-form',
+           href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
         }) }}
 

@@ -19,14 +19,14 @@
         Alcohol monitoring details
       </h1>
 
-
-      <form class="form" action="/alcohol" method="post">
+  <form class="form" action="/alcohol" method="post">
+  
 
           {{ govukRadios({
             name: "type-alcohol",
             fieldset: {
               legend: {
-                text: "What type of alcohol monitoring is needed?",
+                text: "Which type of alcohol monitoring is needed?",
                 classes: "govuk-fieldset__legend--s"
               }
             },
@@ -37,6 +37,9 @@
               {
                 value: "Alcohol level",
                 text: "Alcohol level",
+                hint: {
+                  text: "Requires the device wearer to limit their alcohol use."
+                },
                 checked: (true if data['type-alcohol'] == 'Alcohol level'),
                 conditional: {
               
@@ -45,6 +48,9 @@
               {
                 value: "Alcohol abstinence",
                 text: "Alcohol abstinence",
+                hint: {
+                  text: "Requires the device wearer to totally abstain from alcohol."
+                },
                 checked: (true if data['type-alcohol'] == 'Alcohol abstinence'),
                 conditional: {
                  
@@ -116,7 +122,7 @@
 
         {{ govukButton({
           text: "Save and return to main form menu",
-          href: '../new-form',
+           href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
         }) }}
 

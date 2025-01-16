@@ -222,7 +222,7 @@ router.post('/curfew-times-question', function(request, response) {
 
     var curfewtimesquestion = request.session.data['curfewtimesquestion']
     if (curfewtimesquestion == "Yes"){
-        response.redirect("/v1/monitoring-conditions/curfew-4?curfewtimetableday=False&curfewstandard=true")
+        response.redirect("/v1/monitoring-conditions/curfew-4?curfewtimetableday=false&curfewstandard=true")
     } else {
         response.redirect("/v1/monitoring-conditions/curfew-change?curfewstandard=false")
     }
@@ -238,6 +238,8 @@ router.post('/alcohol', function(request, response) {
         response.redirect("/v1/monitoring-conditions/monitoring-needed")
     }
 })
+
+
 
 router.post('/exclusion-question', function(request, response) {
 
@@ -259,6 +261,16 @@ router.post('/monitoring-list', function(request, response) {
         response.redirect("/v1/monitoring-conditions/monitoring-details2")
     } else {
         response.redirect("/v1/monitoring-conditions/check-answers")
+    }
+})
+
+router.post('/monitoring-list-edit', function(request, response) {
+
+    var monitoringtypesquestion = request.session.data['monitoringtypesquestion']
+    if (monitoringtypesquestion == "Yes"){
+        response.redirect("/v1/monitoring-conditions/monitoring-details2")
+    } else {
+        response.redirect("/v1/monitoring-conditions/check-answers-view")
     }
 })
 

@@ -87,7 +87,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the monitoring ends? (optional)
+              What is the date the monitoring ends? 
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['monitoring-date-end'] or "12/01/2026" }} 
@@ -99,7 +99,7 @@
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the time the monitoring ends? (optional)
+              What is the time the monitoring ends? 
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['endtime-hours']  or "13"  }}:{{ data['endtime-minutes']  or "00"  }}
@@ -152,6 +152,20 @@
 
    
 
+         <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Are there any other addresses where the device wearer will spend curfew hours?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfewaddressquestion'] or 'No'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="curfew?cya4=true">Change<span class="govuk-visually-hidden"> What is the address where the device wearer will spend curfew hours? </span></a>
+            </dd>
+          </div>
+
+          {% if (data['curfewaddressquestion'] == 'Yes') %}
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Other addresses the device wearer will spend curfew hours
@@ -166,6 +180,7 @@
               <a class="govuk-link" href="curfew?cya4=true">Change<span class="govuk-visually-hidden"> What is the address where the device wearer will spend curfew hours? </span></a>
             </dd>
           </div>
+            {% endif %}
 
              <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -180,7 +195,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the curfew monitoring ends? (optional)
+              What is the date the curfew monitoring ends? 
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['curfewend-date'] }} 
@@ -264,16 +279,52 @@
   
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             Contact address - 123 Carter Bar
+             123 Carter Bar
             </dt>
             <dd class="govuk-summary-list__value">
-             19:00 Monday to 07:00 Tuesday<br>
-             19:00 Tuesday to 07:00 Wednesday<br>
-             19:00 Wednesday to 07:00 Thursday<br>
-             19:00 Thursday to 07:00 Friday<br>
-             19:00 Friday to 07:00 Saturday<br>
-             19:00 Saturday to 07:00 Sunday<br>
-             19:00 Sunday to 07:00 Monday
+           
+
+                 {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Monday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Tuesday
+                {% else %} 
+                    19:00 Monday until 07:00 Tuesday
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Tuesday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Wednesday
+                {% else %} 
+                    19:00 Tuesday until 07:00 Wednesday
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Wednesday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Thursday
+                {% else %} 
+                    19:00 Wednesday until 07:00 Thursday
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Thursday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Friday
+                {% else %} 
+                    19:00 Thursday until 07:00 Friday
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Friday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Saturday
+                {% else %} 
+                    19:00 Friday until 07:00 Saturday
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Saturday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Sunday
+                {% else %} 
+                    19:00 Saturday until 07:00 Sunday
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Sunday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Monday
+                {% else %} 
+                    19:00 Sunday until 07:00 Monday
+                 {% endif %} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="curfew-4?cya4=true">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
@@ -304,7 +355,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the exclusion and inclusion monitoring ends? (optional)
+              What is the date the exclusion and inclusion monitoring ends? 
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['exclusionend-date'] }} 
@@ -390,7 +441,7 @@
 
    {% endif %}   
    
-    {% if (data['monitoringtype'] == "Trail monitoring" or data['monitoringtype'] == "Trail monitoring (Home Office)" or data['monitoringtype2'] == "Trail monitoring") or data['monitoringtype'] !== NULL or data['monitoringtype'] !== '' %}
+    {% if (data['monitoringtype'] == "Trail monitoring" or data['monitoringtype'] == "Trail monitoring (Home Office)" or data['monitoringtype2'] == "Trail monitoring" or data['monitoringtype2'] == "Trail monitoring (Home Office)" or data['monitoringtype'] == NULL or data['monitoringtype'] == '') %}
 
  <h2 class="govuk-heading-m">
 
@@ -466,7 +517,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the mandatory attendance monitoring ends? (optional)
+              What is the date the mandatory attendance monitoring ends? 
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['attendanceend-date'] }} 
@@ -553,7 +604,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the alcohol monitoring ends? (optional)
+              What is the date the alcohol monitoring ends? 
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['alcoholend-date'] }} 
@@ -564,7 +615,7 @@
           </div>
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What type of alcohol monitoring is needed?
+              Which type of alcohol monitoring is needed?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['type-alcohol'] }}

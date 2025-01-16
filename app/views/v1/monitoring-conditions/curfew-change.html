@@ -22,7 +22,7 @@
 
       <p>Enter the times to use for the curfew timetable. You can change the times or location for any given day on later screens if you need to.</p>
 
-         <form class="form" action="curfew-4?curfewstandard=true%curfewtimetableday=False" method="post">
+         <form class="form" action="curfew-4?curfewtimetableday=false" method="post">
 
  {% else %}
 
@@ -140,16 +140,16 @@
     <div class="govuk-checkboxes" data-module="govuk-checkboxes">
       {% if (data['installaddressquestion'] == "Yes") %}
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address" type="checkbox" {{ checked('curfewstandard', 'true') }} value="Contact address - 123 Carter Bar">
+        <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address" type="checkbox" {{ checked('curfewstandard', 'true') }} value="123 Carter Bar">
         <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive">
           123 Carter Bar
         </label>
       </div>
       
-      {% endif %}
-      {% if (data['installaddressquestion'] == "No") %}
+     
+      {% elseif (data['installaddressquestion'] == "No") %}
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address" type="checkbox" {{ checked('curfewstandard', 'true') }} value="Contact address - 123 Carter Bar">
+        <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address" type="checkbox" {{ checked('curfewstandard', 'true') }} value="123 Carter Bar">
         <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive">
          
           
@@ -162,14 +162,23 @@
          Tag installation address - {{ data['installaddressLine1'] }}
         </label>
       </div>
-      {% endif %}
-      {% if (data['addcurfewaddress'] == "Yes") %}
+    
+      {% elseif (data['addcurfewaddress'] == "Yes") %}
       <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="whereDoYouLive-3" name="day-address" type="checkbox" value="{{ data['curfewaddressname'] }} - {{ data['curfewaddressLine1'] }}">
         <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive-3">
           {{ data['curfewaddressname'] }} - {{ data['curfewaddressLine1'] }}
         </label>
       </div>
+      {% else %}
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address" type="checkbox" {{ checked('curfewstandard', 'true') }} value="123 Carter Bar">
+        <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive">
+          123 Carter Bar
+        </label>
+      </div>
+
+
       {% endif %}
       
     </div>
@@ -211,7 +220,7 @@
 
         {{ govukButton({
           text: "Save and return to main form menu",
-          href: '../new-form',
+          href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
         }) }}
 

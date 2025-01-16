@@ -19,7 +19,13 @@
        Trail monitoring (Home Office) device
       </h1>
 
-      <form class="form" action="monitoring-needed" method="post">
+      
+
+       <form class="form" action="monitoring-needed" method="post">
+
+
+
+
  
             {{ govukRadios({
             name: "type-trail",
@@ -65,7 +71,7 @@
 
         {{ govukButton({
           text: "Save and return to main form menu",
-          href: '../new-form',
+           href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
         }) }}
 
