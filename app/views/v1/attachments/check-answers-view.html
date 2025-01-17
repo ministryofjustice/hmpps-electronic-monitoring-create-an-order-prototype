@@ -67,7 +67,7 @@
              Do you have a licence document to upload?
             </dt>
             <dd class="govuk-summary-list__value">
-             No
+             Yes
             </dd>
             <dd class="govuk-summary-list__actions">
               {% if (data['view'] == 'true') %}
@@ -75,6 +75,25 @@
                 {% else %}
                   <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
                 {% endif %}
+            </dd>
+          </div>
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Licence
+            </dt>
+            <dd class="govuk-summary-list__value">
+             <a href="#">{{ data['licence'] or 'Murphy - licence 3245' }}</a>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               <ul class="govuk-summary-list__actions-list">
+                <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link" href="#">Delete<span class="govuk-visually-hidden"> Licence </span></a>
+                </li>
+                <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> Licence </span></a>
+                </li>
+              </ul>
             </dd>
           </div>
           
