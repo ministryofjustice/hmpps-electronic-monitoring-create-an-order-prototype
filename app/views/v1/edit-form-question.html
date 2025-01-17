@@ -70,7 +70,7 @@
               }
             },
             hint: {
-              text: "Select one option"
+              text: ""
             },
             items: [
              
@@ -98,17 +98,12 @@
                 disabled: (true if data['view'] == 'true'),
                 text: "Change or removed an existing exclusion or inclusion zone(s)"
                 
-              },
-
-              {
-                divider: "or"
-              },
+              },     
               {
                 value: "I have changed something else in the form",
                 checked: (true if data['variation-type'] == 'I have changed something else in the form'),
                 disabled: (true if data['view'] == 'true'),
-                text: "I have changed something else in the form",
-                behaviour: "exclusive"
+                text: "I have changed something else in the form"
               }
             ]
           }) }}

@@ -13,8 +13,14 @@
     <div class="govuk-grid-column-two-thirds">
 
 
+        {% if (data['view'] == 'false') %}
+           <form class="form" action="check-answers-view" method="post">
 
-      <form class="form" action="photo-question" method="post">
+         {% else %}
+            <form class="form" action="photo-question" method="post">
+
+           {% endif %}
+     
 
         <span class="govuk-caption-l">Attachments</span>
 
@@ -40,7 +46,7 @@
 
         {{ govukButton({
           text: "Save and return to main form menu",
-          href: '../new-form',
+           href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
         }) }}
 
