@@ -19,10 +19,12 @@
 
     
       <p class="govuk-body">Contact address:</p>
-      <p>123 Carter Bar<br>
-          Glossop<br>
-          High Peak<br>
-          SK22 2NG</p>
+        <p>
+        {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
+        {{ data['contactaddressTown'] or "Glossop" }}<br>
+        {{ data['contactaddressCounty'] or "High Peak" }}<br>
+        {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
+        </p>
      
 
       <form class="form" action="/installation-address" method="post">

@@ -140,20 +140,18 @@
     <div class="govuk-checkboxes" data-module="govuk-checkboxes">
       {% if (data['installaddressquestion'] == "Yes") %}
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address" type="checkbox" {{ checked('curfewstandard', 'true') }} value="123 Carter Bar">
+        <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address" type="checkbox" {{ checked('curfewstandard', 'true') }} value="{{ data['contactaddressLine1'] or "123 Carter Bar" }}">
         <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive">
-          123 Carter Bar
+         {{ data['contactaddressLine1'] or "123 Carter Bar" }}
         </label>
       </div>
       
      
       {% elseif (data['installaddressquestion'] == "No") %}
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address" type="checkbox" {{ checked('curfewstandard', 'true') }} value="123 Carter Bar">
+        <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address" type="checkbox" {{ checked('curfewstandard', 'true') }} value="{{ data['contactaddressLine1'] or "123 Carter Bar" }}">
         <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive">
-         
-          
-          123 Carter Bar
+         {{ data['contactaddressLine1'] or "123 Carter Bar" }}
         </label>
       </div>
       <div class="govuk-checkboxes__item">
@@ -172,9 +170,9 @@
       </div>
       {% else %}
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address" type="checkbox" {{ checked('curfewstandard', 'true') }} value="123 Carter Bar">
+        <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address" type="checkbox" {{ checked('curfewstandard', 'true') }} value="{{ data['contactaddressLine1'] or "123 Carter Bar" }}">
         <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive">
-          123 Carter Bar
+          {{ data['contactaddressLine1'] or "123 Carter Bar" }}
         </label>
       </div>
 

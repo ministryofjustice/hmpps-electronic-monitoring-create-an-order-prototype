@@ -32,10 +32,12 @@
                 <dd class="govuk-summary-list__value">
 
 
-                  <p class="govuk-body">123 Carter Bar<br>
-                                        Glossop<br>
-                                        High Peak<br>
-                                        SK22 2NG</p>
+                  <p class="govuk-body">
+                    {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
+                    {{ data['contactaddressTown'] or "Glossop" }}<br>
+                    {{ data['contactaddressCounty'] or "High Peak" }}<br>
+                    {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
+                  </p>
                 </dd>
                 <dd class="govuk-summary-list__actions">
                   <ul class="govuk-summary-list__actions-list">
@@ -57,10 +59,12 @@
                 <dd class="govuk-summary-list__value">
 
 
-                  <p class="govuk-body">123 Carter Bar<br>
-                                        Glossop<br>
-                                        High Peak<br>
-                                        SK22 2NG</p>
+                   <p class="govuk-body">
+                    {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
+                    {{ data['contactaddressTown'] or "Glossop" }}<br>
+                    {{ data['contactaddressCounty'] or "High Peak" }}<br>
+                    {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
+                  </p>
                 </dd>
                 <dd class="govuk-summary-list__actions">
                   <ul class="govuk-summary-list__actions-list">

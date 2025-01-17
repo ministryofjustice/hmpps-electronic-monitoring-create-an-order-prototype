@@ -32,6 +32,8 @@
 
       {# To switch between the completed and incomplete statues, use some inline logic within the component below, like this: "status: (completedStatus if ... else incompleteStatus)" #}
 
+       {% if (data['newform'] == 'true') %}
+
       {{ govukTaskList({
         idPrefix: "first-section",
         items: [
@@ -74,13 +76,71 @@
         ]
       }) }}
 
+      {% else %}
+
+       {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the notifying and responsible organisations"
+            },
+            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/org-details"),
+            status: (completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers" if data['section-1-complete'] == 'true' else "device-wearer/identity-numbers"),
+            status: (completedStatus if data['section-1-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Monitoring conditions"
+            },
+            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "monitoring-conditions/order-information"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk information"
+            },
+            href: ("installation/check-answers" if data['section-3-complete'] == 'true' else "installation/disability"),
+            status: (completedStatus if data['section-3-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Attachments"
+            },
+            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/licence-question"),
+            status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: ("About the changes in this version of the form")
+            },
+            href: ("edit-form-question"),
+           status: ( completedStatus if data['section-6-complete'] == 'true' else incompleteStatus)
+          }
+
+        ]
+      }) }}
+
+      {% endif %}
+
 
 
 
       <div class="govuk-!-margin-top-5">
        <div class="govuk-button-group">
 
-           {% if (data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true') %}
+
+           {% if (data['newform'] == 'true' and data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true') %}
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Submit form
+          </button>
+          {% elseif (data['newform'] == 'false' and data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true' and data['section-6-complete'] == 'true') %}
           <button type="submit" class="govuk-button" data-module="govuk-button">
             Submit form
           </button>
