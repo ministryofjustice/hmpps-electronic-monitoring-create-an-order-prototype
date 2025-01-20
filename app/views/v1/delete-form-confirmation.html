@@ -42,7 +42,7 @@
     role="status"
   ></div>
   <div class="hods-loading-spinner__content">
-    <h1 class="govuk-heading-m">Submitting the notification form ...</h1>
+    <h1 class="govuk-heading-m">Submitting the order form ...</h1>
   </div>
 </div>
 </div>
@@ -58,7 +58,7 @@
           <h1 class="govuk-panel__title">
 
            {% if (data['cancelled'] == 'true') %}
-           Notification to end monitoring early has been successfully submitted
+           Order to end monitoring early has been successfully submitted
             </h1>
               <div class="govuk-panel__body">
                 Reference number<br><strong>123654</strong>
@@ -66,16 +66,28 @@
 
            {% else %} 
 
-           The notification form has been deleted
+           The order form has been deleted
 
            {% endif %} 
           
          
         </div>
+
+         {% if (data['cancelled'] == 'true') %}
+
+         <img src="/public/images/form_download.svg" alt="PDF download icon">
+
+         {{ govukButton({
+          text: "View ended form",
+          href: '#',
+          classes: "govuk-button--secondary"
+        }) }}
+
+         {% endif %} 
         
         <div class="govuk-button-group">
         {{ govukButton({
-          text: "Back to your notification forms",
+          text: "Back to your forms",
           href: "dashboard"
         }) }}
        

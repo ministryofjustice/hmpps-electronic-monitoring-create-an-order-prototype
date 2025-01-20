@@ -74,7 +74,7 @@
                What identity numbers do you have for the device wearer?
             </dt>
             <dd class="govuk-summary-list__value">
-             Not able to provide this information
+             NOMIS ID
             </dd>
             <dd class="govuk-summary-list__actions">
                 {% if (data['view'] == 'true') %}
@@ -83,6 +83,21 @@
                   <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
                 {% endif %}
               
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               NOMIS ID
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['nomis'] or "BDNRTVBC" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
             </dd>
           </div>
           
