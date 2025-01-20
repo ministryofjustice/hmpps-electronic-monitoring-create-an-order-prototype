@@ -55,7 +55,7 @@
 
      {% if (data['view'] == 'true') %}
       {% else %}
-      <p>Change the times or location for any given day or <a href='curfew-3-question'>change the times of all days</a> </p>
+      <p>Change the times or location for any given day or <a href='curfew-3-question?Monday=false&Tuesday=false&Wednesday=false&Thursday=false&Friday=false&Saturday=false&Sunday=false'>change the times of all days</a> </p>
       {% endif %}
 
 
@@ -88,224 +88,201 @@
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
               
-                 {% if (data['curfewtimetableday'] == "Monday") %}
-                 {{ data['curfewchange-starttime-hours'] }}:{{ data['curfewchange-starttime-minutes'] }} Monday
+                 {% if (data['curfewtimetableday'] == "true" and data['Monday'] == "true") %}
+                 {{ data['curfewchange-starttimeMonday-hours'] }}:{{ data['curfewchange-starttimeMonday-minutes'] }} Monday
 
-                {% elseif (data['curfewstandard'] == "false") %}
+                {% else %}
                  {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Monday
-                 {% else %} 
-
-                 19:00 Monday
+               
 
                  {% endif %}  </th>
                 <td class="govuk-table__cell">
-                  {% if (data['curfewtimetableday'] == "Monday") %}
-                 until {{ data['curfewchange-endtime-hours'] }}:{{ data['curfewchange-endtime-minutes'] }} Tuesday
-
-                {% elseif (data['curfewstandard'] == "false") %}
+                  {% if (data['curfewtimetableday'] == "true" and data['Monday'] == "true") %}
+                 until {{ data['curfewchange-endtimeMonday-hours'] }}:{{ data['curfewchange-endtimeMonday-minutes'] }} Tuesday
+                {% else %}
                  until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Tuesday
-                 {% else %} 
-
-                 until 07:00 Tuesday
-
+               
                  {% endif %} 
                 </td>
                 <td class="govuk-table__cell">
-                {% if (data['curfewtimetableday'] == "Monday") %}
-                   {{ data['day-address'] }}
-                {% elseif (data['curfewstandard'] == "false") %}
-                   {{ data['day-address'] }}
+                {% if (data['curfewtimetableday'] == "true" and data['Monday'] == "true") %}
+                   {{ data['day-addressMonday'] }}
+                {% elseif (data['curfewstandard'] == "true") %}  
+                    {{ data['contactaddressLine1']  or "123 Carter Bar" }}
                 {% else %}
-                {{ data['contactaddressLine1'] or "123 Carter Bar" }}
+                   {{ data['day-address'] }}
                  {% endif %}  </td>
                 <td class="govuk-table__cell">
                   {% if (data['view'] == 'true') %}
 
                   {% else %}
-                  <a class="govuk-link" href="curfew-change?curfewtimetableday=Monday&curfewstandard=true&day=Monday">Change<span class="govuk-visually-hidden"> name</span></a>
+                  <a class="govuk-link" href="curfew-change?curfewtimetableday=true&day=Monday&Monday=true">Change<span class="govuk-visually-hidden"> name</span></a>
                   {% endif %}  
                 </td>
               </tr>
 
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
-                  {% if (data['curfewtimetableday'] == "Tuesday") %}
-                 {{ data['curfewchange-starttime-hours'] }}:{{ data['curfewchange-starttime-minutes'] }} Tuesday
+                  {% if (data['curfewtimetableday'] == "true" and data['Tuesday'] == "true") %}
+                 {{ data['curfewchange-starttimeTuesday-hours'] }}:{{ data['curfewchange-starttimeTuesday-minutes'] }} Tuesday
 
-                {% elseif (data['curfewstandard'] == "false") %}
+                {% else %}
                  {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Tuesday
-                 {% else %} 
-
-                 19:00 Tuesday
+                 
 
                  {% endif %}  </th>
                 <td class="govuk-table__cell">
-                  {% if (data['curfewtimetableday'] == "Tuesday") %}
-                 until {{ data['curfewchange-endtime-hours'] }}:{{ data['curfewchange-endtime-minutes'] }} Wednesday
+                  {% if (data['curfewtimetableday'] == "true" and data['Tuesday'] == "true") %}
+                 until {{ data['curfewchange-endtimeTuesday-hours'] }}:{{ data['curfewchange-endtimeTuesday-minutes'] }} Wednesday
 
-                {% elseif (data['curfewstandard'] == "false") %}
+                {% else %}
                  until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Wednesday
-                 {% else %} 
-
-                 until 07:00 Wednesday
+                
 
                  {% endif %}  
                 </td>
                 <td class="govuk-table__cell">
-                 {% if (data['curfewtimetableday'] == "Tuesday") %}
-                   {{ data['day-address'] }}
-                {% elseif (data['curfewstandard'] == "false") %}
-                   {{ data['day-address'] }}
+                 {% if (data['curfewtimetableday'] == "true" and data['Tuesday'] == "true") %}
+                   {{ data['day-addressTuesday'] }}
+                {% elseif (data['curfewstandard'] == "true") %}  
+                    {{ data['contactaddressLine1']  or "123 Carter Bar" }}
                 {% else %}
-                {{ data['contactaddressLine1'] or "123 Carter Bar" }}
-                 {% endif %} </td>
+                   {{ data['day-address'] }}
+                 {% endif %}
+                  </td>
                 <td class="govuk-table__cell">
                   {% if (data['view'] == 'true') %}
 
                   {% else %}
-                  <a class="govuk-link" href="curfew-change?curfewtimetableday=Tuesday">Change<span class="govuk-visually-hidden"> name</span></a>
+                  <a class="govuk-link" href="curfew-change?curfewtimetableday=true&day=Tuesday&Tuesday=true">Change<span class="govuk-visually-hidden"> name</span></a>
                   {% endif %}  
                 </td>
               </tr>
 
                <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
-                  {% if (data['curfewtimetableday'] == "Wednesday") %}
-                 {{ data['curfewchange-starttime-hours'] }}:{{ data['curfewchange-starttime-minutes'] }} Wednesday
+                  {% if (data['curfewtimetableday'] == "true" and data['Wednesday'] == "true") %}
+                 {{ data['curfewchange-starttimeWednesday-hours'] }}:{{ data['curfewchange-starttimeWednesday-minutes'] }} Wednesday
 
-                {% elseif (data['curfewstandard'] == "false") %}
+                {% else %}
                  {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Wednesday
-                 {% else %} 
-
-                 19:00 Wednesday
+                
 
                  {% endif %}  </th>
                 <td class="govuk-table__cell">
-                   {% if (data['curfewtimetableday'] == "Wednesday") %}
-                 until {{ data['curfewchange-endtime-hours'] }}:{{ data['curfewchange-endtime-minutes'] }} Thursday
+                  {% if (data['curfewtimetableday'] == "true" and data['Wednesday'] == "true") %}
+                 until {{ data['curfewchange-endtimeWednesday-hours'] }}:{{ data['curfewchange-endtimeWednesday-minutes'] }} Thursday
 
-                {% elseif (data['curfewstandard'] == "false") %}
+                {% else %}
                  until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Thursday
-                 {% else %} 
-
-                 until 07:00 Thursday
+              
 
                  {% endif %}  
                 </td>
                 <td class="govuk-table__cell">
-                 {% if (data['curfewtimetableday'] == "Wednesday") %}
-                   {{ data['day-address'] }}
-                {% elseif (data['curfewstandard'] == "false") %}
-                   {{ data['day-address'] }}
+                {% if (data['curfewtimetableday'] == "true" and data['Wednesday'] == "true") %}
+                   {{ data['day-addressWednesday'] }}
+                {% elseif (data['curfewstandard'] == "true") %}  
+                    {{ data['contactaddressLine1']  or "123 Carter Bar" }}
                 {% else %}
-                {{ data['contactaddressLine1'] or "123 Carter Bar" }}
+                   {{ data['day-address'] }}
                  {% endif %} </td>
                 <td class="govuk-table__cell">
                   {% if (data['view'] == 'true') %}
 
                   {% else %}
-                  <a class="govuk-link" href="curfew-change?curfewtimetableday=Wednesday">Change<span class="govuk-visually-hidden"> name</span></a>
+                  <a class="govuk-link" href="curfew-change?curfewtimetableday=true&day=Wednesday&Wednesday=true">Change<span class="govuk-visually-hidden"> name</span></a>
                   {% endif %}  
                 </td>
               </tr>
 
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
-                  {% if (data['curfewtimetableday'] == "Thursday") %}
-                 {{ data['curfewchange-starttime-hours'] }}:{{ data['curfewchange-starttime-minutes'] }} Thursday
+                  {% if (data['curfewtimetableday'] == "true" and data['Thursday'] == "true") %}
+                 {{ data['curfewchange-starttimeThursday-hours'] }}:{{ data['curfewchange-starttimeThursday-minutes'] }} Thursday
 
-                {% elseif (data['curfewstandard'] == "false") %}
+                {% else %}
                  {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Thursday
-                 {% else %} 
-
-                 19:00 Thursday
+                
 
                  {% endif %}  </th>
                 <td class="govuk-table__cell">
-                   {% if (data['curfewtimetableday'] == "Thursday") %}
-                 until {{ data['curfewchange-endtime-hours'] }}:{{ data['curfewchange-endtime-minutes'] }} Friday
+                 {% if (data['curfewtimetableday'] == "true" and data['Thursday'] == "true") %}
+                 until {{ data['curfewchange-endtimeThursday-hours'] }}:{{ data['curfewchange-endtimeThursday-minutes'] }} Friday
 
-                {% elseif (data['curfewstandard'] == "false") %}
+                {% else%}
                  until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Friday
-                 {% else %} 
-
-                 until 07:00 Friday
+              
 
                  {% endif %}  
                 </td>
                 <td class="govuk-table__cell">
-                 {% if (data['curfewtimetableday'] == "Thursday") %}
-                   {{ data['day-address'] }}
-                {% elseif (data['curfewstandard'] == "false") %}
-                   {{ data['day-address'] }}
+                {% if (data['curfewtimetableday'] == "true" and data['Thursday'] == "true") %}
+                   {{ data['day-addressThursday'] }}
+                {% elseif (data['curfewstandard'] == "true") %}  
+                    {{ data['contactaddressLine1']  or "123 Carter Bar" }}
                 {% else %}
-                {{ data['contactaddressLine1'] or "123 Carter Bar" }}
+                   {{ data['day-address'] }}
                  {% endif %} </td>
                 <td class="govuk-table__cell">
                   {% if (data['view'] == 'true') %}
 
                   {% else %}
-                  <a class="govuk-link" href="curfew-change?curfewtimetableday=Thursday">Change<span class="govuk-visually-hidden"> name</span></a>
+                  <a class="govuk-link" href="curfew-change?curfewtimetableday=true&day=Thursday&Thursday=true">Change<span class="govuk-visually-hidden"> name</span></a>
                   {% endif %}  
                 </td>
               </tr>
 
                <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
-                  {% if (data['curfewtimetableday'] == "Friday") %}
-                 {{ data['curfewchange-starttime-hours'] }}:{{ data['curfewchange-starttime-minutes'] }} Friday
+                  {% if (data['curfewtimetableday'] == "true" and data['Friday'] == "true") %}
+                 {{ data['curfewchange-starttimeFriday-hours'] }}:{{ data['curfewchange-starttimeFriday-minutes'] }} Friday
 
-                {% elseif (data['curfewstandard'] == "false") %}
+                {% else %}
                  {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Friday
-                 {% else %} 
-
-                 19:00 Friday
+               
 
                  {% endif %}  </th>
                 <td class="govuk-table__cell">
-                   {% if (data['curfewtimetableday'] == "Friday") %}
-                 until {{ data['curfewchange-endtime-hours'] }}:{{ data['curfewchange-endtime-minutes'] }} Saturday
+                  {% if (data['curfewtimetableday'] == "true" and data['Friday'] == "true") %}
+                 until {{ data['curfewchange-endtimeFriday-hours'] }}:{{ data['curfewchange-endtimeFriday-minutes'] }} Saturday
 
-                {% elseif (data['curfewstandard'] == "false") %}
+                {% else %}
                  until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Saturday
-                 {% else %} 
-
-                 until 07:00 Saturday
+             
 
                  {% endif %}   
                 </td>
                 <td class="govuk-table__cell">
-                 {% if (data['curfewtimetableday'] == "Friday") %}
-                   {{ data['day-address'] }}
-                {% elseif (data['curfewstandard'] == "false") %}
-                   {{ data['day-address'] }}
+                 {% if (data['curfewtimetableday'] == "true" and data['Friday'] == "true") %}
+                   {{ data['day-addressFriday'] }}
+                {% elseif (data['curfewstandard'] == "true") %}  
+                    {{ data['contactaddressLine1']  or "123 Carter Bar" }}
                 {% else %}
-                {{ data['contactaddressLine1'] or "123 Carter Bar" }}
-                 {% endif %} </td>
+                   {{ data['day-address'] }}
+                 {% endif %}  </td>
                 <td class="govuk-table__cell">
                   {% if (data['view'] == 'true') %}
 
                   {% else %}
-                  <a class="govuk-link" href="curfew-change?curfewtimetableday=Friday">Change<span class="govuk-visually-hidden"> name</span></a>
+                  <a class="govuk-link" href="curfew-change?curfewtimetableday=true&day=Friday&Friday=true">Change<span class="govuk-visually-hidden"> name</span></a>
                   {% endif %}  
                 </td>
               </tr>
 
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
-                  {% if (data['curfewtimetableday'] == "Saturday") %}
-                 {{ data['curfewchange-starttime-hours'] }}:{{ data['curfewchange-starttime-minutes'] }} Saturday
+                  {% if (data['curfewtimetableday'] == "true" and data['Saturday'] == "true") %}
+                 {{ data['curfewchange-starttimeSaturday-hours'] }}:{{ data['curfewchange-starttimeSaturday-minutes'] }} Saturday
 
-                {% elseif (data['curfewstandard'] == "false") %}
+                {% else %}
                  {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Saturday
-                 {% else %} 
-
-                 19:00 Saturday
+              
 
                  {% endif %}  </th>
                 <td class="govuk-table__cell">
-                  {% if (data['curfewtimetableday'] == "Saturday") %}
-                 until {{ data['curfewchange-endtime-hours'] }}:{{ data['curfewchange-endtime-minutes'] }} Sunday
+                  {% if (data['curfewtimetableday'] == "true" and data['Saturday'] == "true") %}
+                 until {{ data['curfewchange-endtimeSaturday-hours'] }}:{{ data['curfewchange-endtimeSaturday-minutes'] }} Sunday
 
                 {% elseif (data['curfewstandard'] == "false") %}
                  until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Sunday
@@ -316,59 +293,55 @@
                  {% endif %}  
                 </td>
                 <td class="govuk-table__cell">
-                 {% if (data['curfewtimetableday'] == "Saturday") %}
-                   {{ data['day-address'] }}
-                {% elseif (data['curfewstandard'] == "false") %}
-                   {{ data['day-address'] }}
+                 {% if (data['curfewtimetableday'] == "true" and data['Saturday'] == "true") %}
+                   {{ data['day-addressSaturday'] }}
+                {% elseif (data['curfewstandard'] == "true") %}  
+                    {{ data['contactaddressLine1']  or "123 Carter Bar" }}
                 {% else %}
-                {{ data['contactaddressLine1'] or "123 Carter Bar" }}
-                 {% endif %}  </td>
+                   {{ data['day-address'] }}
+                 {% endif %} </td>
                 <td class="govuk-table__cell">
                   {% if (data['view'] == 'true') %}
 
                   {% else %}
-                  <a class="govuk-link" href="curfew-change?curfewtimetableday=Saturday">Change<span class="govuk-visually-hidden"> name</span></a>
+                  <a class="govuk-link" href="curfew-change?curfewtimetableday=true&day=Saturday&Saturday=true">Change<span class="govuk-visually-hidden"> name</span></a>
                   {% endif %}  
                 </td>
               </tr>
 
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
-                  {% if (data['curfewtimetableday'] == "Sunday") %}
-                 {{ data['curfewchange-starttime-hours'] }}:{{ data['curfewchange-starttime-minutes'] }} Sunday
+                  {% if (data['curfewtimetableday'] == "true" and data['Sunday'] == "true") %}
+                 {{ data['curfewchange-starttimeSunday-hours'] }}:{{ data['curfewchange-starttimeSunday-minutes'] }} Sunday
 
-                {% elseif (data['curfewstandard'] == "false") %}
+                {% else %}
                  {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Sunday
-                 {% else %} 
-
-                 19:00 Sunday
+              
 
                  {% endif %}  </th>
                 <td class="govuk-table__cell">
-                   {% if (data['curfewtimetableday'] == "Sunday") %}
-                 until {{ data['curfewchange-endtime-hours'] }}:{{ data['curfewchange-endtime-minutes'] }} Monday
+                  {% if (data['curfewtimetableday'] == "true" and data['Sunday'] == "true") %}
+                 until {{ data['curfewchange-endtimeSunday-hours'] }}:{{ data['curfewchange-endtimeSunday-minutes'] }} Monday
 
-                {% elseif (data['curfewstandard'] == "false") %}
+                {% else %}
                  until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Monday
-                 {% else %} 
-
-                 until 07:00 Monday
+            
 
                  {% endif %} 
                 </td>
                 <td class="govuk-table__cell">
-                 {% if (data['curfewtimetableday'] == "Sunday") %}
-                   {{ data['day-address'] }}
-                {% elseif (data['curfewstandard'] == "false") %}
-                   {{ data['day-address'] }}
+                 {% if (data['curfewtimetableday'] == "true" and data['Sunday'] == "true") %}
+                   {{ data['day-addressSunday'] }}
+               {% elseif (data['curfewstandard'] == "true") %}  
+                    {{ data['contactaddressLine1']  or "123 Carter Bar" }}
                 {% else %}
-                {{ data['contactaddressLine1'] or "123 Carter Bar" }}
+                   {{ data['day-address'] }}
                  {% endif %} </td>
                 <td class="govuk-table__cell">
                   {% if (data['view'] == 'true') %}
 
                   {% else %}
-                  <a class="govuk-link" href="curfew-change?curfewtimetableday=Sunday">Change<span class="govuk-visually-hidden"> name</span></a>
+                  <a class="govuk-link" href="curfew-change?curfewtimetableday=true&day=Sunday&Sunday=true">Change<span class="govuk-visually-hidden"> name</span></a>
                   {% endif %}  
                 </td>
               </tr>
