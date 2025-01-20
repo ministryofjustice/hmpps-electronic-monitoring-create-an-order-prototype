@@ -1,0 +1,778 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible adult details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+     
+
+      {% set htmlpdf %}
+        <p class="govuk-notification-banner__heading">
+         This form summary page can be downloaded as a PDF for your records.
+        </p>
+      {% endset %}
+
+
+
+
+           {{ govukNotificationBanner({
+              html: htmlpdf
+            }) }}
+
+    
+
+        {{ mojPageHeaderActions({
+          heading: {
+            text: 'Submitted Electronic Monitoring Form',
+            classes: 'govuk-heading-xl'
+          },
+          items: [{
+            text: 'Download PDF',
+            classes: 'govuk-button'
+          }]
+        }) }}
+  
+
+      <form class="form" action="" method="post">
+
+       <h2 class="govuk-heading-l">About the notifying and responsible organisations</h2>      
+
+
+       <h2 class="govuk-heading-m">Notifying organisation's details</h2>
+
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+          What is the email address for your team?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             team1@hmpc.northumberland.com
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+                
+            </dd>
+          </div>
+
+
+             </dl>
+
+     <h2 class="govuk-heading-m">Responsible officer's details</h2>
+
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+          What is the responsible officer's first name?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['officer-firstname'] or 'Bob' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="responsible-officer- "> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="responsible-officer- "> <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+          What is the responsible officer's last name?
+            </dt>
+            <dd class="govuk-summary-list__value">
+           {{ data['officer-lastname'] or 'Brown' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="responsible-officer- "> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="responsible-officer- "> <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+                
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+         What is the responsible officer's telephone number?
+            </dt>
+            <dd class="govuk-summary-list__value">
+            {{ data['officer-tel'] or '01245 765 432'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="responsible-officer- "> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="responsible-officer- "> <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+                
+            </dd>
+          </div>
+
+        </dl>
+
+    <h2 class="govuk-heading-m">Responsible organisation's details</h2>
+
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+         What organisation is the responsible officer part of?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             Probation
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+                
+            </dd>
+          </div>
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+         What is the responsible organisation's telephone number?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             01278 457 675
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+                
+            </dd>
+          </div>
+
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+         What is the responsible organisation's email address?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             probationteam@probation.gov.uk
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+                
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the address of the responsible organisation?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              123a Allerdean Street,<br>
+              Newcastle upon Tyne,<br>
+              NE11 9FD
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+
+
+        </dl>
+
+ <h2 class="govuk-heading-l">About the device wearer</h2>
+
+         <h2 class="govuk-heading-m">Personal details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               What identity numbers do you have for the device wearer?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             Not able to provide this information
+            </dd>
+            <dd class="govuk-summary-list__actions">
+                {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+              
+            </dd>
+          </div>
+          
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's first name?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             David
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's last name?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Murphy
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Is there a preferred name or alias the device wearer uses that is different to their first name?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+         
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              How does the device wearer describe themselves?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Male
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+         
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's date of birth?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              19 January 1984
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Does the device wearer require a responsible adult to be present at installation?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+      
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's telephone number?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              01278 987 987
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+         
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Does the device wearer have a fixed address?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's contact address?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if (data['edited'] == 'true') %}
+              
+               {{ data['contactaddressLine1'] }}<br>
+              {{ data['contactaddressTown'] }}<br>
+              {{ data['contactaddressPostcode'] }}
+
+               {% else %}
+
+               123 Stott Street,<br>
+              Glossop,<br>
+              High Peak,<br>
+              TD15 2SK
+
+              
+
+               {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="contact-address- "> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="contact-address- ">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+
+         
+
+        </dl>
+
+    <h2 class="govuk-heading-l">Monitoring conditions</h2>
+
+          <h2 class="govuk-heading-m">Monitoring details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+        
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the type of the order?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             Civil
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the description of the order?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             Not able to provide this information
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What are the conditions of the order?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Bail order
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the monitoring starts?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              23 December 2024
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the time the monitoring starts?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              11:00
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the monitoring ends? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              23 December 2025
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the time the monitoring ends? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+             11:00
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+           
+         
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the address where the tag or tags will be installed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             
+              123 Carter Bar<br>
+              Glossop<br>
+              High Peak<br>
+              SK22 2NG
+             
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>  
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What monitoring does the device wearer need?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Trail monitoring<br>
+              {{ data['monitoringtype2'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="monitoring-needed?monitoringtype=Curfew with electronic monitoring">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>     
+         
+ </dl>
+
+ <h2 class="govuk-heading-m">
+
+  {% if (data['monitoringtype'] == "Trail monitoring (Home Office)") %}
+   Trail monitoring (Home Office)
+  {% else %}
+    Trail monitoring
+  {% endif %}
+
+</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the trail monitoring starts?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['trailstart-date'] or '12/01/2025' }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> What is the date the trail monitoring starts? </span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the date the trail monitoring ends? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['trailend-date'] or '12/07/2025' }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> What is the date the trail monitoring ends? </span></a>
+            </dd>
+          </div>
+
+          {% if (data['monitoringtype'] == "Trail monitoring (Home Office)") %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What type of trail monitoring device is needed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['type-trail'] or 'A fitted GPS tag' }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> What is the date the trail monitoring ends? </span></a>
+            </dd>
+          </div>
+
+          {% endif %}  
+
+         
+       </dl>
+
+ 
+ 
+          <h2 class="govuk-heading-l">Access needs and installation risk information</h2>
+
+        <h2 class="govuk-heading-m">Device wearer's access needs</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Does the device wearer have any of these disabilities or health conditions? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+             The device wearer does not have any of these disabilities or health conditions
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Does the device wearer require an interpreter?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+         
+ </dl>
+
+ <h2 class="govuk-heading-m">Installation risk</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What type of offence has been committed by the device wearer?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Criminal damage and arson
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             What are the risks that apply to the device wearer?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              There are no risks that apply to the device wearer
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+         
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Is the device wearer a MAPPA offender?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+         
+
+
+        </dl>
+
+         <h2 class="govuk-heading-l">Attachments</h2>
+
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Do you have a licence document to upload?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Licence
+            </dt>
+            <dd class="govuk-summary-list__value">
+             <a href="#">{{ data['licence'] or 'Murphy - licence 3245' }}</a>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               <ul class="govuk-summary-list__actions-list">
+                  <a class="govuk-link" href="licence">  <span class="govuk-visually-hidden"> Licence </span></a>         
+              </ul>
+            </dd>
+          </div>
+          
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Do you have a photo identification document to upload?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data[' '] == 'true') %}
+                 <a class="govuk-link" href="#"> <span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">  <span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          
+
+        </dl>
+     
+
+
+
+
+     
+        
+
+       
+
+
+
+
+         <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Return to main form menu",
+          href: "submitted-form"
+        }) }}
+       
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}
