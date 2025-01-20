@@ -29,7 +29,7 @@
               
     {% endif %}   -->
 
-      <h1 class="govuk-heading-l">Electronic Monitoring Notification form for {{ data['fullname'] or "David Murphy" }}</h1>
+      <h1 class="govuk-heading-l">Electronic Monitoring Order for {{ data['fullname'] or "David Murphy" }}</h1>
 
        {% if (data['view'] == 'true') %}
 
@@ -40,18 +40,18 @@
         
 
 
-           <p> This notification form was submitted on the 14 December 2024. You can make a change to this form or end all monitoring for the device wearer.</p>
+           <p> This form was submitted on the 14 December 2024. You can make a change to this form or end all monitoring for the device wearer.</p>
 
                  <form class="form" action="edit-form-variation" method="post">
 
             {% elseif (data['view-variation'] == 'cancelled') %}
 
-           <p> This notification form was cancelled on the 22 December 2024.</p>
+           <p> This form was cancelled on the 22 December 2024.</p>
       
 
             {% else %}
 
-            <p> This notification form was submitted on the 1 December 2024. You can't make changes to it because there are more recent versions of this form. </p>
+            <p> This form was submitted on the 1 December 2024. You can't make changes to it because there are more recent versions of this form. </p>
 
             <details class="govuk-details">
                 <summary class="govuk-details__summary">
@@ -114,7 +114,7 @@
 
             {% else %}
 
-            <p> This version of the notification form was submitted on the 20 January 2025. You can make changes to this form or end all monitoring for the device wearer. </p>
+            <p> This version of the form was submitted on the 20 January 2025. You can make changes to this form or end all monitoring for the device wearer. </p>
             
 
             <details class="govuk-details">
@@ -175,7 +175,7 @@
 
         {% else %}
 
-         <p> You are making changes to a notification form that was submitted on the 14 December 2024. Edit the sections that you need to change.</p>
+         <p> You are making changes to a form that was submitted on the 14 December 2024. Edit the sections that you need to change.</p>
 
 
               <form class="form" action="submit-confirmation?variation=true" method="post">
@@ -327,7 +327,7 @@
           <img src="/public/images/form_download.svg" alt="PDF download icon">
 
            {{ govukButton({
-          text: ("View submitted notification form" if data['variation'] == 'true' else "View submitted notification form"),
+          text: ("View submitted form" if data['variation'] == 'true' else "View submitted form"),
           href: 'submitted-form-all',
           classes: "govuk-button--secondary"
         }) }}
