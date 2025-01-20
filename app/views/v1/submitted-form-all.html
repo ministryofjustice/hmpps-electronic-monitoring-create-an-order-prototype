@@ -43,6 +43,40 @@
 
       <form class="form" action="" method="post">
 
+        <h2 class="govuk-heading-l">Form details</h2>      
+
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Status
+            </dt>
+            <dd class="govuk-summary-list__value">
+             Submitted
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Reference number
+            </dt>
+            <dd class="govuk-summary-list__value">
+            123654
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                
+            </dd>
+          </div>
+
+
+             </dl>
+
+
        <h2 class="govuk-heading-l">About the notifying and responsible organisations</h2>      
 
 
@@ -750,18 +784,59 @@
           
 
         </dl>
+
+{% if (data['variation'] == 'true') %}
+
+ <h2 class="govuk-heading-l">Details of the changes</h2>      
+
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           What is the date you want the change to take effect?
+            </dt>
+            <dd class="govuk-summary-list__value">
+            12/01/2025
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            What have you changed in the form?
+            </dt>
+            <dd class="govuk-summary-list__value">
+            The device wearer's address or the installation address
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Enter more information on what you have changed
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Moved house, no change in risk
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                
+            </dd>
+          </div>
+
+
+             </dl>
+
+
+
+
+ {% endif %}
      
-
-
-
-
-     
-        
-
-       
-
-
-
 
          <div class="govuk-button-group">
          {{ govukButton({
