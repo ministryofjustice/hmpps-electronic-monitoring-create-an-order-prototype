@@ -1,0 +1,147 @@
+{% extends "layouts/moj-signedout-service.html" %}
+
+{% block pageTitle %}
+  Give feedback on Electronic Monitoring - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+  .govuk-width-container {
+  max-width: 1420px;
+}
+
+.moj-header__container {
+  max-width: 1420px;
+}
+
+.govuk-grid-column-one-third {
+    width: 22%;
+}
+
+.govuk-grid-column-two-thirds {
+    width: 78%;
+}
+
+
+</style>  
+
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+
+    {{ mojSideNavigation({
+      label: 'Side navigation',
+      items: [{
+        text: 'Overview',
+        href: '#1',
+        active: true
+      }, {
+        text: 'Getting ready to use the EMO online service',
+        href: '#2'
+      }, {
+        text: 'Getting your account set up ',
+        href: '#3'
+      }, {
+        text: 'Logging in to your account',
+        href: '#2'
+      }, {
+        text: 'Submitting a new EMO form',
+        href: '#2'
+      }, {
+        text: 'Clarifications and queries on submitted forms ',
+        href: '#2'
+      }, {
+        text: 'Making changes to submitted forms  ',
+        href: '#2'
+      }, {
+        text: 'Problems submitting forms through the online service  ',
+        href: '#2'
+      }, {
+        text: 'Getting help ',
+        href: '#2'
+      }, {
+        text: 'Glossary of terms ',
+        href: '#2'
+      }
+
+      ]
+    }) }}
+
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+
+      
+      <h1 class="govuk-heading-l">Overview</h1>
+
+       <h2 class="govuk-heading-m"> What is the Apply for an Electronic Monitoring Order (EMO) online service </h2> 
+
+       <p> The Apply for an Electronic Monitoring (EMO) online service allows you to submit applications for electronic monitoring devices or to make alterations to existing monitoring conditions where devices have been installed. </p>
+
+       <p> The EMO online service replaces the current process of completing document forms and submitting them by email. </p> 
+
+       <p> The online service allows you to provide information via an online form. The information in the form is electronically submitted to the Service Provider (Serco). Serco will review the submitted form and will contact your team if they need more information. When they have all the information needed, it is passed on to the installation team to fit the required devices.  </p>
+         
+       <p> The online service allows you to: </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>create a new application form </li>
+          <li>save drafts so you can return to it when you need to</li>
+          <li>attach key documents such as licence documentation, maps of exclusion or inclusion zones as per of the monitoring requirement, and photo identification </li>
+          <li>securely and safely submit forms to the installation team </li>
+          <li>view forms that you have submitted  </li>
+          <li>make changes to existing monitoring conditions for a device wearer </li>
+        </ul>
+
+        <h2 class="govuk-heading-m">The need for a digital service </h2>
+
+        <p>The aim of the EMO online service is for users to find it easy to submit a request for electronic monitoring devices to be installed, as well as, ensuring all required information is collected to reduce the need for clarification processes.  </p>
+
+        <p>The Apply for an Electronic Monitoring Order Product Team (EMO Product Team) researched current processes including how information is requested, what information is required by Serco to process a request, and current processes for dealing with missing information, errors and changes to monitoring conditions. They engaged with service owners, users and teams to gather information on the current process and user experience.  </p>
+
+        <p>The EMO Product Team found inconsistencies in the process that could be improved with a digital solution. Through creating an online form, we can ensure all information required by Serco and the installer is collected, reducing the need for clarification of information processes after the forms are submitted.  </p>
+
+        <p>The EMO Product Team also found they could improve overall user experience of submitting information. The EMO online service consolidates all request forms into one online version with improvements made to the process of collecting data, data processing and simplifying the language used throughout the form. </p>
+
+        <h2 class="govuk-heading-m">Designing a EMO online service</h2>  
+
+        <p>The EMO Product Team have carried out extensive research to design a form that collects essential information required to install electronic monitoring devices.  </p>
+
+        <p>They have digitised the process and improved the user experience of submitting information to generate an order to ensure a device is installed or change monitoring conditions on a device already installed. </p>
+
+        <p>They have worked with key teams involved in the installation and notification process to ensure we collect all data required to install devices. You may find that some questions have been removed or added due to this research. </p>
+
+        <h2 class="govuk-heading-m">Is the EMO online service the same as the current process? </h3>
+
+        <p>The aim of the EMO online service is the same as the current process; to raise a request for electronic monitoring devices to be installed or monitoring conditions are updated on currently installed devices. There are some changes you will experience:  
+
+        <h3 class="govuk-heading-s">One form </h3>
+
+        <p>All document forms have been amalgamated into one online form. There is no need to select the right form for the request you are making as you will complete the same online form for all requests. This includes making changes to currently installed devices.  </p>
+
+        <h3 class="govuk-heading-s">No need to email forms </h3>
+
+        <p>You no longer need to email completed forms as the online form will electronically submit your answers to Serco. You will be able to send attachments, such as licences and photo ID, with your submitted form. The only exception to this is when the online service is not working. Follow the guidance in 'Problems submitting forms through the online service'.</p>
+
+        <h3 class="govuk-heading-s">Easier to use </h3>
+
+        <p> You will notice changes in the language used, order of questions and how we collect responses. The questions in the form make collecting data easier as we’ve introduced multiple choice, yes/no questions and added tips to help you know what answer is expected in free text boxes. You will also clearly see which questions are mandatory and optional, to help with easily completing the required information for your request.  </p>
+
+        <h3 class="govuk-heading-s">Continually improving the EMO online service</h3> 
+        <p>The EMO Product Team will be continually improving the EMO online service following user feedback. </p>  
+
+        <p>If you would like to share your experience, you are welcome to submit comments via our <a href="#">feedback form</a>.</p>
+
+  </div>  
+
+</div>
+
+
+{% endblock %}
