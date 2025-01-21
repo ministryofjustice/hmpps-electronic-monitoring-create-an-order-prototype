@@ -1,20 +1,89 @@
-{% extends "layouts/moj.html" %}
+{% extends "layouts/moj-signedout-service.html" %}
 
 {% block pageTitle %}
   Give feedback on Electronic Monitoring - Electronic Monitoring
 {% endblock %}
 
 {% block beforeContent %}
-<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">Guidance and help to create and change an Electronic Monitoring Notification form</h1>
+<style>
 
-      <p>Coming soon.</p>
-    </div>
+  .govuk-width-container {
+  max-width: 1420px;
+}
+
+.moj-header__container {
+  max-width: 1420px;
+}
+
+.govuk-grid-column-one-third {
+    width: 22%;
+}
+
+.govuk-grid-column-two-thirds {
+    width: 78%;
+}
+
+
+</style>  
+
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+
+    {{ mojSideNavigation({
+      label: 'Side navigation',
+      items: [{
+        text: 'Overview',
+        href: '#1',
+        active: true
+      }, {
+        text: 'Getting ready to use the CEMO online service',
+        href: '#2'
+      }, {
+        text: 'Getting your account set up ',
+        href: '#3'
+      }, {
+        text: 'Logging in to your account',
+        href: '#2'
+      }, {
+        text: 'Submitting a new CEMO form',
+        href: '#2'
+      }, {
+        text: 'Clarifications and queries on submitted forms ',
+        href: '#2'
+      }, {
+        text: 'Making changes to submitted forms  ',
+        href: '#2'
+      }, {
+        text: 'Problems submitting forms through the online service  ',
+        href: '#2'
+      }, {
+        text: 'Getting help ',
+        href: '#2'
+      }, {
+        text: 'Glossary of terms ',
+        href: '#2'
+      }
+
+      ]
+    }) }}
+
   </div>
+
+  <div class="govuk-grid-column-two-thirds">
+
+      
+      <h1 class="govuk-heading-l">Using the Apply for an Electronic Monitoring Order (EMO) online service </h1>
+
+  </div>  
+
+</div>
+
+
 {% endblock %}
