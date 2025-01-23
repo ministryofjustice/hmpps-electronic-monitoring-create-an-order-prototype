@@ -358,7 +358,14 @@
            Make changes to this form
           </button>
 
-          <a class="govuk-link" href="edit-form-delete-question">End all monitoring</a>
+         {{ govukButton({
+            text: "End all monitoring",
+            classes: "govuk-button--secondary",
+            href: "edit-form-delete-question"
+            }) }}
+
+
+
 
             {% endif %}
 

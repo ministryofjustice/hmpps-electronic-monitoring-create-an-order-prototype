@@ -24,7 +24,7 @@
 
           <dl class="govuk-summary-list">
 
-             {% if (data['installaddressquestion'] == "Yes") %}
+             {% if (data['installaddressquestion'] == "Yes" or data['installaddressquestion'] == NULL ) %}
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   Contact address
