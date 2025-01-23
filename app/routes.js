@@ -106,7 +106,7 @@ router.post('/eighteen-answer', function(request, response) {
 router.post('/contact-address', function(request, response) {
 
     var addressquestion = request.session.data['addressquestion']
-    if (addressquestion == "Yes, they have a fixed address"){
+    if (addressquestion == "Yes"){
         response.redirect("/v1/device-wearer/contact-address")
     } else {
         response.redirect("/v1/device-wearer/check-answers")
@@ -214,7 +214,7 @@ router.post('/curfew-address-question', function(request, response) {
     if (curfewaddressquestion == "Yes"){
         response.redirect("/v1/monitoring-conditions/curfew-address")
     } else {
-        response.redirect("/v1/monitoring-conditions/curfew-2")
+        response.redirect("/v1/monitoring-conditions/curfew-boundary")
     }
 })
 

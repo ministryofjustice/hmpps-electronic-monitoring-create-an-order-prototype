@@ -89,7 +89,7 @@
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What is the start time of the curfew this day?</legend>
 
       <div class="govuk-date-input ">
-        <div class="govuk-hint">For example, 19:00 to 07:00.</div>
+        <div class="govuk-hint">For example, 19:00 to 07:00 (24 hours).</div>
         
 
         
@@ -117,7 +117,7 @@
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What is the end time of the curfew?</legend>
 
       <div class="govuk-date-input ">
-        <div class="govuk-hint">For example, 19:00 to 07:00.</div>
+        <div class="govuk-hint">For example, 19:00 to 07:00 (24 hours).</div>
         
 
         <div class="govuk-date-input__item">
@@ -155,7 +155,7 @@
      Select one option
     </div>
     <div class="govuk-radios" data-module="govuk-radios">
-      {% if (data['installaddressquestion'] == "Yes") %}
+      {% if (data['installaddressquestion'] == "Yes" or data['installaddressquestion'] == NULL ) %}
       <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="whereDoYouLive" name="release-address" type="radio" value="Contact">
         <label class="govuk-label govuk-radios__label" for="whereDoYouLive">

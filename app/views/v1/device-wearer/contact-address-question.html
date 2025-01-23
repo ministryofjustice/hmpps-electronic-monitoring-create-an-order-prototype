@@ -22,6 +22,7 @@
 
           {{ govukRadios({
             name: "addressquestion",
+            classes: "govuk-radios--inline",
             fieldset: {
               legend: {
                 text: "Does the device wearer have a fixed address?",
@@ -34,14 +35,14 @@
             items: [
            
               {
-                value: "Yes, they have a fixed address",
-                checked: (true if data['addressquestion'] == 'Yes, they have a fixed address'),
-                text: "Yes, they have a fixed address"
+                value: "Yes",
+                checked: (true if data['addressquestion'] == 'Yes'),
+                text: "Yes"
               },
               {
-                value: "No, they have no fixed address",
-                checked: (true if data['addressquestion'] == 'No, they have no fixed address'),
-                text: "No, they have no fixed address"
+                value: "No",
+                checked: (true if data['addressquestion'] == 'No'),
+                text: "No"
               }
             ]
           }) }}
