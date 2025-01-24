@@ -115,7 +115,7 @@
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the monitoring starts?
+              What is the date the overall monitoring period starts?
             </dt>
             <dd class="govuk-summary-list__value">
               23 December 2024
@@ -130,7 +130,7 @@
           </div>
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the time the monitoring starts?
+              What is the time the overall monitoring period starts?
             </dt>
             <dd class="govuk-summary-list__value">
               11:00
@@ -145,7 +145,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the monitoring ends? 
+             What is the date the overall monitoring period ends?
             </dt>
             <dd class="govuk-summary-list__value">
               23 December 2025
@@ -161,7 +161,7 @@
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the time the monitoring ends? 
+              What is the time the overall monitoring period ends? 
             </dt>
             <dd class="govuk-summary-list__value">
              11:00
@@ -319,7 +319,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the start time for curfew this day?
+              What is the start time for curfew  on the day of release?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['release-starttime-hours'] or '19' }}:{{ data['release-starttime-minutes'] or '00' }}
@@ -334,7 +334,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the end time for curfew?
+              What is the end time for curfew on the day of release?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['release-endtime-hours'] or "07" }}:{{ data['release-endtime-hours'] or '00' }} {{ data['curfew-same-next-day'] or 'The next day' }}

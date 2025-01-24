@@ -65,7 +65,7 @@
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the monitoring starts?
+              What is the date the overall monitoring period starts?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['monitoring-date-start'] or "12/01/2025" }} 
@@ -76,7 +76,7 @@
           </div>
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the time the monitoring starts?
+              What is the time the overall monitoring period starts?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['starttime-hours'] or "13" }}:{{ data['starttime-minutes'] or "00" }}
@@ -87,7 +87,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the monitoring ends? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What is the date the overall monitoring period ends? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['monitoring-date-end'] or "12/01/2026" }} 
@@ -99,7 +99,7 @@
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the time the monitoring ends? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What is the time the overall monitoring period ends? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             </dt>
             <dd class="govuk-summary-list__value">
@@ -232,7 +232,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the start time for curfew this day?
+              What is the start time for curfew on the day of release?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['release-starttime-hours'] }}:{{ data['release-starttime-minutes'] }}
@@ -243,7 +243,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the end time for curfew?
+              What is the end time for curfew on the day of release?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['release-endtime-hours'] }}:{{ data['release-endtime-hours'] }} {{ data['curfew-same-next-day'] }}
