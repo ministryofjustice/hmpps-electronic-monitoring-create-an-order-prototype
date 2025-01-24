@@ -147,29 +147,14 @@
     </div>
     <div class="govuk-checkboxes" data-module="govuk-checkboxes">
      {% if (data['curfewtimetableday'] == "true") %} 
-            {% if (data['installaddressquestion'] == "Yes" or data['installaddressquestion'] == NULL ) %}
-            <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address{{ data['day'] }}" type="checkbox" checked value="{{ data['contactaddressLine1'] or "123 Carter Bar" }}">
-              <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive">
-               {{ data['contactaddressLine1'] or "123 Carter Bar" }}
-              </label>
-            </div>
-             {% endif %}
            
-            {% if (data['installaddressquestion'] == "No") %}
+
             <div class="govuk-checkboxes__item">
               <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address{{ data['day'] }}" type="checkbox" checked value="{{ data['contactaddressLine1'] or "123 Carter Bar" }}">
               <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive">
                {{ data['contactaddressLine1'] or "123 Carter Bar" }}
               </label>
-            </div>
-            <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="whereDoYouLive-2" name="day-address{{ data['day'] }}" type="checkbox" value="Tag installation address - {{ data['installaddressLine1'] }}">
-              <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive-2">
-               Tag installation address - {{ data['installaddressLine1'] }}
-              </label>
-            </div>
-            {% endif %}
+            </div>  
           
             {% if (data['addcurfewaddress'] == "Yes") %}
             <div class="govuk-checkboxes__item">
@@ -180,29 +165,13 @@
             </div>
             {% endif %}
     {% elseif (data['curfewstandard'] == "false") %}
-            {% if (data['installaddressquestion'] == "Yes" or data['installaddressquestion'] == NULL ) %}
+            
             <div class="govuk-checkboxes__item">
               <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address" type="checkbox" value="{{ data['contactaddressLine1'] or "123 Carter Bar" }}">
               <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive">
                {{ data['contactaddressLine1'] or "123 Carter Bar" }}
               </label>
-            </div>
-             {% endif %}
-           
-            {% if (data['installaddressquestion'] == "No") %}
-            <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address" type="checkbox" value="{{ data['contactaddressLine1'] or "123 Carter Bar" }}">
-              <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive">
-               {{ data['contactaddressLine1'] or "123 Carter Bar" }}
-              </label>
-            </div>
-            <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="whereDoYouLive-2" name="day-address" type="checkbox" value="Tag installation address - {{ data['installaddressLine1'] }}">
-              <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive-2">
-               Tag installation address - {{ data['installaddressLine1'] }}
-              </label>
-            </div>
-            {% endif %}
+            </div>    
           
             {% if (data['addcurfewaddress'] == "Yes") %}
             <div class="govuk-checkboxes__item">

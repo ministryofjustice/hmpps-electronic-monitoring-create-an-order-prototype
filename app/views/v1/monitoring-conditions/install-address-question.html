@@ -26,8 +26,15 @@
         {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
         </p>
      
+     {% if (data['monitoringtypeadded'] == "Yes") %}
+
+     <form class="form" action="/installation-address2" method="post">
+
+     {% else %}
 
       <form class="form" action="/installation-address" method="post">
+
+     {% endif %}   
 
           {{ govukRadios({
             classes: "govuk-radios--inline",

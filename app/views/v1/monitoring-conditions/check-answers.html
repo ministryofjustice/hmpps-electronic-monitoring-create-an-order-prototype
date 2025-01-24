@@ -87,7 +87,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the monitoring ends? 
+              What is the date the monitoring ends? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['monitoring-date-end'] or "12/01/2026" }} 
@@ -99,7 +99,8 @@
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the time the monitoring ends? 
+              What is the time the monitoring ends? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+            </dt>
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['endtime-hours']  or "13"  }}:{{ data['endtime-minutes']  or "00"  }}
@@ -109,26 +110,6 @@
             </dd>
           </div>
          
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What is the address where the tag or tags will be installed?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if (data['installaddressquestion'] == "No") %}
-              {{ data['installaddressLine1'] }}<br>
-              {{ data['installaddressTown'] }}<br>
-              {{ data['installaddressPostcode'] }}
-              {% else %}
-              123 Carter Bar<br>
-              Glossop<br>
-              High Peak<br>
-              SK22 2NG
-              {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="install-address-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
-            </dd>
-          </div>  
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What monitoring does the device wearer need?
@@ -182,6 +163,34 @@
           </div>
             {% endif %}
 
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Does the standard curfew address boundary apply to all curfew addresses?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfew-boundary-question'] or "Yes" }}
+               
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="curfew-boundary?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+            </dd>
+          </div>  
+
+          {% if (data['curfew-boundary-question'] == 'No') %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Enter details of what the curfew address boundary should include
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfew-boundary'] or "Patio up to the lawn" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="curfew-boundary?cya4=true">Change<span class="govuk-visually-hidden"> What is the address where the device wearer will spend curfew hours? </span></a>
+            </dd>
+          </div>
+            {% endif %}
+
              <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the date the curfew monitoring starts?
@@ -195,7 +204,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the curfew monitoring ends? 
+              What is the date the curfew monitoring ends? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['curfewend-date'] }} 
@@ -343,8 +352,29 @@
  <h2 class="govuk-heading-m">Exclusion and inclusion zone monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the address where the tag or tags will be installed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if (data['installaddressquestion'] == "No") %}
+              {{ data['installaddressLine1'] }}<br>
+              {{ data['installaddressTown'] }}<br>
+              {{ data['installaddressPostcode'] }}
+              {% else %}
+             {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
+              {{ data['contactaddressTown'] or "Glossop" }}<br>
+              {{ data['contactaddressCounty'] or "High Peak" }}<br>
+              {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="install-address-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+            </dd>
+          </div>  
 
-    <div class="govuk-summary-list__row">
+
+          <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the date the exclusion and inclusion monitoring starts?
             </dt>
@@ -357,7 +387,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the exclusion and inclusion monitoring ends? 
+              What is the date the exclusion and inclusion monitoring ends? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['exclusionend-date'] }} 
@@ -456,6 +486,26 @@
 </h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the address where the tag or tags will be installed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if (data['installaddressquestion'] == "No") %}
+              {{ data['installaddressLine1'] }}<br>
+              {{ data['installaddressTown'] }}<br>
+              {{ data['installaddressPostcode'] }}
+              {% else %}
+             {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
+              {{ data['contactaddressTown'] or "Glossop" }}<br>
+              {{ data['contactaddressCounty'] or "High Peak" }}<br>
+              {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="install-address-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+            </dd>
+          </div>  
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -470,7 +520,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the trail monitoring ends? (optional)
+              What is the date the trail monitoring ends? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['trailend-date'] }} 
@@ -506,6 +556,27 @@
  <h2 class="govuk-heading-m">Mandatory attendance monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the address where the tag or tags will be installed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if (data['installaddressquestion'] == "No") %}
+              {{ data['installaddressLine1'] }}<br>
+              {{ data['installaddressTown'] }}<br>
+              {{ data['installaddressPostcode'] }}
+              {% else %}
+             {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
+              {{ data['contactaddressTown'] or "Glossop" }}<br>
+              {{ data['contactaddressCounty'] or "High Peak" }}<br>
+              {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="install-address-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+            </dd>
+          </div>  
+
          <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the date the mandatory attendance monitoring starts?
@@ -519,7 +590,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the mandatory attendance monitoring ends? 
+              What is the date the mandatory attendance monitoring ends? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['attendanceend-date'] }} 
@@ -554,7 +625,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-           What time does the appointment end?
+           What time does the appointment end? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['appointment-end-hours'] }}:{{ data['appointment-end-minutes'] }}
@@ -589,6 +660,27 @@
  <h2 class="govuk-heading-m">Alcohol monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the address where the tag or tags will be installed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if (data['installaddressquestion'] == "No") %}
+              {{ data['installaddressLine1'] }}<br>
+              {{ data['installaddressTown'] }}<br>
+              {{ data['installaddressPostcode'] }}
+              {% else %}
+             {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
+              {{ data['contactaddressTown'] or "Glossop" }}<br>
+              {{ data['contactaddressCounty'] or "High Peak" }}<br>
+              {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="install-address-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+            </dd>
+          </div>  
+
 
    
 
@@ -606,7 +698,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the alcohol monitoring ends? 
+              What is the date the alcohol monitoring ends? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['alcoholend-date'] }} 
@@ -633,10 +725,10 @@
             <dd class="govuk-summary-list__value">
               {% if (data['alcoholaddress'] == "Contact") %}
 
-              123 Carter Bar<br>
-              Glossop<br>
-              High Peak<br>
-              SK22 2NG</p>
+              {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
+              {{ data['contactaddressTown'] or "Glossop" }}<br>
+              {{ data['contactaddressCounty'] or "High Peak" }}<br>
+              {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
 
               {% elseif (data['alcoholaddress'] == "Installation") %}
 

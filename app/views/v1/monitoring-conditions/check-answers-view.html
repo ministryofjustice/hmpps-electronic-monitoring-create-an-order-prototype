@@ -176,26 +176,7 @@
           </div>
            
          
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What is the address where the tag or tags will be installed?
-            </dt>
-            <dd class="govuk-summary-list__value">
-             
-              123 Carter Bar<br>
-              Glossop<br>
-              High Peak<br>
-              SK22 2NG
-             
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
-                {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
-                {% endif %}
-            </dd>
-          </div>  
+          
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What monitoring does the device wearer need?
@@ -252,6 +233,34 @@
                 {% else %}
                   <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
                 {% endif %}
+            </dd>
+          </div>
+            {% endif %}
+
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Does the standard curfew address boundary apply to all curfew addresses?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfew-boundary-question'] or "Yes" }}
+               
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+            </dd>
+          </div>  
+
+          {% if (data['curfew-boundary-question'] == 'No') %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Enter details of what the curfew address boundary should include
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfew-boundary'] or "Patio up to the lawn" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What is the address where the device wearer will spend curfew hours? </span></a>
             </dd>
           </div>
             {% endif %}
@@ -444,6 +453,33 @@
  <h2 class="govuk-heading-m">Exclusion and inclusion zone monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the address where the tag or tags will be installed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             
+               {% if (data['installaddressquestion'] == "No") %}
+              {{ data['installaddressLine1'] }}<br>
+              {{ data['installaddressTown'] }}<br>
+              {{ data['installaddressPostcode'] }}
+              {% else %}
+             {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
+              {{ data['contactaddressTown'] or "Glossop" }}<br>
+              {{ data['contactaddressCounty'] or "High Peak" }}<br>
+              {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
+              {% endif %}
+             
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>  
+
 
     <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -557,6 +593,33 @@
 </h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the address where the tag or tags will be installed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             
+               {% if (data['installaddressquestion'] == "No") %}
+              {{ data['installaddressLine1'] }}<br>
+              {{ data['installaddressTown'] }}<br>
+              {{ data['installaddressPostcode'] }}
+              {% else %}
+             {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
+              {{ data['contactaddressTown'] or "Glossop" }}<br>
+              {{ data['contactaddressCounty'] or "High Peak" }}<br>
+              {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
+              {% endif %}
+             
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>  
+
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -605,7 +668,37 @@
     {% if (data['monitoringtype2'] == "Mandatory attendance monitoring") %}
 
  <h2 class="govuk-heading-m">Mandatory attendance monitoring</h2>
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+   <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+         <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the address where the tag or tags will be installed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             
+               {% if (data['installaddressquestion'] == "No") %}
+              {{ data['installaddressLine1'] }}<br>
+              {{ data['installaddressTown'] }}<br>
+              {{ data['installaddressPostcode'] }}
+              {% else %}
+             {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
+              {{ data['contactaddressTown'] or "Glossop" }}<br>
+              {{ data['contactaddressCounty'] or "High Peak" }}<br>
+              {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
+              {% endif %}
+             
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>  
+
+      
 
          <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -690,6 +783,33 @@
  <h2 class="govuk-heading-m">Alcohol monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the address where the tag or tags will be installed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             
+               {% if (data['installaddressquestion'] == "No") %}
+              {{ data['installaddressLine1'] }}<br>
+              {{ data['installaddressTown'] }}<br>
+              {{ data['installaddressPostcode'] }}
+              {% else %}
+             {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
+              {{ data['contactaddressTown'] or "Glossop" }}<br>
+              {{ data['contactaddressCounty'] or "High Peak" }}<br>
+              {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
+              {% endif %}
+             
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>  
+
 
    
 
@@ -734,10 +854,10 @@
             <dd class="govuk-summary-list__value">
               {% if (data['alcoholaddress'] == "Contact") %}
 
-              123 Carter Bar<br>
-              Glossop<br>
-              High Peak<br>
-              SK22 2NG</p>
+              {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
+              {{ data['contactaddressTown'] or "Glossop" }}<br>
+              {{ data['contactaddressCounty'] or "High Peak" }}<br>
+              {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
 
               {% elseif (data['alcoholaddress'] == "Installation") %}
 
