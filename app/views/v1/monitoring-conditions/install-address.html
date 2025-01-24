@@ -19,15 +19,15 @@
         Add tag installation address
       </h1>
 
-  {% if (data['cya4'] == "true") %}
+     {% if (data['monitoringtypeadded'] == "Yes") %}
 
-        <form class="form" action="check-answers" method="post">
+       <form class="form" action="/monitoring-type2" method="post">
 
-        {% else %}
+      {% else %}
 
-       <form class="form" action="monitoring-details" method="post">
+      <form class="form" action="/monitoring-type" method="post">
 
-        {% endif %}
+      {% endif %}
 
   
 

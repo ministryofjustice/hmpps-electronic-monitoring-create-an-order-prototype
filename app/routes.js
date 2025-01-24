@@ -160,11 +160,69 @@ router.post('/installation-address', function(request, response) {
 
 
     var installaddressquestion = request.session.data['installaddressquestion']
+    var monitoringtype = request.session.data['monitoringtype']
     
     if (installaddressquestion == "No"){
         response.redirect("/v1/monitoring-conditions/install-address")   
+    } else if (monitoringtype == "Exclusion and inclusion zone monitoring"){
+        response.redirect("/v1/monitoring-conditions/exclusion")   
+    } else if (monitoringtype == "Trail monitoring"){
+        response.redirect("/v1/monitoring-conditions/trail") 
+    } else if (monitoringtype == "Trail monitoring (Home Office)"){
+        response.redirect("/v1/monitoring-conditions/trail")    
+    } else if (monitoringtype == "Mandatory attendance monitoring"){
+        response.redirect("/v1/monitoring-conditions/attendance")      
     } else {
-        response.redirect("/v1/monitoring-conditions/monitoring-details")
+        response.redirect("/v1/monitoring-conditions/alcohol")
+    }
+})
+
+router.post('/installation-address2', function(request, response) {
+
+
+    var installaddressquestion = request.session.data['installaddressquestion']
+    var monitoringtype2 = request.session.data['monitoringtype2']
+    
+    if (installaddressquestion == "No"){
+        response.redirect("/v1/monitoring-conditions/install-address")   
+    } else if (monitoringtype2 == "Exclusion and inclusion zone monitoring"){
+        response.redirect("/v1/monitoring-conditions/exclusion")   
+    } else if (monitoringtype2 == "Trail monitoring"){
+        response.redirect("/v1/monitoring-conditions/trail") 
+    } else if (monitoringtype2 == "Trail monitoring (Home Office)"){
+        response.redirect("/v1/monitoring-conditions/trail")    
+    } else if (monitoringtype2 == "Mandatory attendance monitoring"){
+        response.redirect("/v1/monitoring-conditions/attendance")      
+    } else {
+        response.redirect("/v1/monitoring-conditions/alcohol")
+    }
+})
+
+router.post('/monitoring-question', function(request, response) {
+
+    var monitoringtype = request.session.data['monitoringtype']
+    var addressquestion = request.session.data['addressquestion']
+    
+    if (monitoringtype == "Curfew with electronic monitoring"){
+        response.redirect("/v1/monitoring-conditions/curfew")   
+    } else if (addressquestion == "No"){
+        response.redirect("/v1/monitoring-conditions/install-address")   
+    } else {
+        response.redirect("/v1/monitoring-conditions/install-address-question")
+    }
+})
+
+router.post('/monitoring-question2', function(request, response) {
+
+    var monitoringtype2 = request.session.data['monitoringtype2']
+    var addressquestion = request.session.data['addressquestion']
+    
+    if (monitoringtype2 == "Curfew with electronic monitoring"){
+        response.redirect("/v1/monitoring-conditions/curfew")   
+    } else if (addressquestion == "No"){
+        response.redirect("/v1/monitoring-conditions/install-address")   
+    } else {
+        response.redirect("/v1/monitoring-conditions/install-address-question")
     }
 })
 

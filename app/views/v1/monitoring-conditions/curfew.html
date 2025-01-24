@@ -24,7 +24,7 @@
 
           <dl class="govuk-summary-list">
 
-             {% if (data['installaddressquestion'] == "Yes" or data['installaddressquestion'] == NULL ) %}
+           
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                   Contact address
@@ -47,56 +47,7 @@
                   </ul>
                 </dd>
               </div>
-              {% endif %}
-              {% if (data['installaddressquestion'] == "No") %}
-              {% if  data['addressquestion'] == "No, they have no fixed address" %}
-              {% else %}
-                <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                 
-                   Contact address
-                </dt>
-                <dd class="govuk-summary-list__value">
-
-
-                   <p class="govuk-body">
-                    {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
-                    {{ data['contactaddressTown'] or "Glossop" }}<br>
-                    {{ data['contactaddressCounty'] or "High Peak" }}<br>
-                    {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
-                  </p>
-                </dd>
-                <dd class="govuk-summary-list__actions">
-                  <ul class="govuk-summary-list__actions-list">
-                   
-                     
-                 
-                  </ul>
-                </dd>
-              </div>
-              {% endif %}
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">
-                  Tag installation address
-                </dt>
-                <dd class="govuk-summary-list__value">
-                  <p class="govuk-body">
-                    {{ data['installaddressLine1'] }}<br>
-                    {{ data['installaddressTown'] }}<br>
-                    {{ data['installaddressPostcode'] }}
-                </dd>
-                
-                </dd>
-                
-                <dd class="govuk-summary-list__actions">
-                  <ul class="govuk-summary-list__actions-list">
-                   
-                      <a class="govuk-link" href="install-address-question">Change<span class="govuk-visually-hidden"> contact details</span></a>
-                 
-                  </ul>
-                </dd>
-              </div>
-              {% endif %}
+            
               {% if (data['addcurfewaddress'] == "Yes") %}
                 <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
