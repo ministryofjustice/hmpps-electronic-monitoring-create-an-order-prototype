@@ -30,7 +30,7 @@
             name: "disability",
             fieldset: {
               legend: {
-                text: "Does the device wearer have any of these disabilities or health conditions? ",
+                text: "Does the device wearer have any of the disabilities or health conditions listed? ",
                 classes: "govuk-fieldset__legend--s"
 
               }
@@ -89,17 +89,17 @@
               }
             },
               {
-                value: "Another disability, health condition or impairment affecting daily life",
+                value: "The device wearer has a disability or health condition not listed",
                 checked: (true if data['disability'] == 'Another disability, health condition or impairment affecting daily life'),
-                text: "Another disability, health condition or impairment affecting daily life"
+                text: "The device wearer has a disability or health condition not listed"
               },
               {
                 divider: "or"
               },
               {
                 value: "The device wearer does not have any of these disabilities or health conditions",
-                checked: (true if data['disability'] == 'The device wearer does not have any of these disabilities or health conditions'),
-                text: "The device wearer does not have any of these disabilities or health conditions",
+                checked: (true if data['disability'] == 'The device wearer does not have any of the disabilities or health conditions listed'),
+                text: "The device wearer does not have any of the disabilities or health conditions listed",
                 behaviour: "exclusive"
               },
               {
