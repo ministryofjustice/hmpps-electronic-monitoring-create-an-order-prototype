@@ -54,7 +54,7 @@
             name: "curfew-boundary-question",
             fieldset: {
               legend: {
-                text: "Does the standard curfew address boundary apply to all curfew addresses?",
+                text: "Do you want to change the standard curfew address boundary of “front door to back door” for any of the curfew addresses?",
                 classes: "govuk-fieldset__legend--s"
               }
             },
@@ -67,7 +67,7 @@
                 text: "Yes",
                 checked: (true if data['curfew-boundary-question'] == 'Yes'),
                 conditional: {
-                  
+                  html: boundaryHtml
                 }
               },
               {
@@ -75,7 +75,7 @@
                 text: "No",
                 checked: (true if data['curfew-boundary-question'] == 'No'),
                 conditional: {
-                 html: boundaryHtml
+                 
                 }
               }
             ]

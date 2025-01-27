@@ -115,7 +115,7 @@ router.post('/contact-address', function(request, response) {
 router.post('/disability', function(request, response) {
 
     var disability = request.session.data['disability']
-    if (disability == "The device wearer does not have any of these disabilities or health conditions"){
+    if (disability == "The device wearer does not have any of the disabilities or health conditions listed"){
         response.redirect("/v1/installation/language")
     } else if (disability == "Not able to provide this information"){
         response.redirect("/v1/installation/language")    

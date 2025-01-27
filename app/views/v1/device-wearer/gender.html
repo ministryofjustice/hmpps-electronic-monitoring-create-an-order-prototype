@@ -21,6 +21,8 @@
         Gender helps the person fitting the device use the correct language when talking to the device wearer.
       </p>
 
+      <p>Select how the device wearer identifies and describes themselves. The device wearer's gender can be different to their sex registered at birth.</p>
+
        {% if (data['cya1'] == "true") %}
 
         <form class="form" action="check-answers" method="post">
@@ -56,7 +58,7 @@
             name: "wearer-gender",
             fieldset: {
               legend: {
-                text: "How does the device wearer describe themselves?",
+                text: "What is the device wearer's gender?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--s"
               }
@@ -76,9 +78,9 @@
                 text: "Female"
               },
               {
-                value: "Non binary",
-                checked: (true if data['wearer-gender'] == 'Non binary'),
-                text: "Non binary"
+                value: "Nonbinary",
+                checked: (true if data['wearer-gender'] == 'Nonbinary'),
+                text: "Nonbinary"
               },
               {
                 value: "Self identify",

@@ -162,7 +162,7 @@
           {% if (data['wearer-alias-question'] == "Yes") %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the device wearer's preferred name or alias?
+              What is the device wearer's preferred name?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['wearer-alias'] }}
@@ -174,7 +174,7 @@
           {% endif %}
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              How does the device wearer describe themselves?
+              How does the device wearer's gender'?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['wearer-gender'] or 'Male' }}
@@ -210,7 +210,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Does the device wearer require a responsible adult to be present at installation?
+              Is a responsible adult required?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['eighteen'] or 'No' }}
