@@ -260,7 +260,11 @@
               {{ data['curfew-boundary'] or "Patio up to the lawn" }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What is the address where the device wearer will spend curfew hours? </span></a>
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
             </dd>
           </div>
             {% endif %}

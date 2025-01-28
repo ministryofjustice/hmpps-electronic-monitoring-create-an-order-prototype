@@ -149,7 +149,7 @@ router.post('/install-address-question', function(request, response) {
 
     var addressquestion = request.session.data['addressquestion']
     
-    if (addressquestion == "No, they have no fixed address"){
+    if (addressquestion == "No"){
         response.redirect("/v1/monitoring-conditions/install-address")   
     } else {
         response.redirect("/v1/monitoring-conditions/install-address-question")
@@ -351,6 +351,16 @@ router.post('/photo-question', function(request, response) {
         response.redirect("/v1/attachments/photo")
     } else {
         response.redirect("/v1/attachments/check-answers")
+    }
+})
+
+router.post('/equipmentaddressquestion', function(request, response) {
+
+    var equipmentaddressquestion = request.session.data['equipmentaddressquestion']
+    if (equipmentaddressquestion == "No"){
+        response.redirect("/v1/edit-form-delete-addaddress")
+    } else {
+        response.redirect("/v1/edit-form-delete")
     }
 })
 

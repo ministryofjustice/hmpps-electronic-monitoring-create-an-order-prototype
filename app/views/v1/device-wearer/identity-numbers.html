@@ -43,7 +43,7 @@
           value: data['nomis'],
           classes: "govuk-!-width-two-thirds",
           label: {
-            text: "NOMIS ID"
+            text: "Enter NOMIS"
           }
         }) }}
         {% endset -%}
@@ -55,7 +55,7 @@
           value: data['wearer-pnc'],
           classes: "govuk-!-width-two-thirds",
           label: {
-            text: "PNC ID"
+            text: "Enter PNC"
           }
         }) }}
         {% endset -%}
@@ -67,7 +67,7 @@
           classes: "govuk-!-width-two-thirds",
           value: data['delius'],
           label: {
-            text: "Delius ID"
+            text: "Enter Delius ID"
           }
         }) }}
         {% endset -%}
@@ -79,7 +79,7 @@
           classes: "govuk-!-width-two-thirds",
           value: data['prison'],
           label: {
-            text: "Prison number"
+            text: "Enter Prison number"
           }
         }) }}
         {% endset -%}
@@ -91,7 +91,7 @@
           value: data['ho'],
           classes: "govuk-!-width-two-thirds",
           label: {
-            text: "Home Office reference number"
+            text: "Enter Home Office Reference Number"
           }
         }) }}
         {% endset -%}
@@ -103,7 +103,7 @@
           value: data['ccrn'],
           classes: "govuk-!-width-two-thirds",
           label: {
-            text: "Court Case Reference number"
+            text: "Enter Court Case Reference Number"
           }
         }) }}
         {% endset -%}
@@ -117,21 +117,21 @@
             }
           },
           hint: {
-            text: "Select all options that you have"
+            text: "Select and enter all identity numbers"
           },
           items: [
             {
-              value: "National Offender Management Information System (NOMIS) ID",
+              value: "National Offender Management Information System (NOMIS)",
               checked: (true if data['nomis'] !== NULL and data['nomis'] !== ''),
-              text: "National Offender Management Information System (NOMIS) ID",
+              text: "National Offender Management Information System (NOMIS)",
               conditional: {
                 html: nomisHtml
               }
             },
             {
-              value: "Police National Computer (PNC) ID",
+              value: "Police National Computer (PNC)",
               checked: (true if data['pnc'] !== NULL and data['pnc'] !== ''),
-              text: "Police National Computer (PNC) ID",
+              text: "Police National Computer (PNC)",
               conditional: {
                 html: pncHtml
               }
@@ -153,17 +153,17 @@
               }
             },
             {
-              value: "Home Office reference number",
+              value: "Home Office Reference Number",
               checked: (true if data['ho'] !== NULL and data['ho'] !== ''),
-              text: "Home Office reference number",
+              text: "Home Office Reference Number",
               conditional: {
                 html: hoHtml
               }
             },
             {
-              value: "Court Case Reference number (CCRN)",
+              value: "Court Case Reference Number (CCRN)",
               checked: (true if data['ccrn'] !== NULL and data['ccrn'] !== ''),
-              text: "Court Case Reference number (CCRN)",
+              text: "Court Case Reference Number (CCRN)",
               conditional: {
                 html: urnHtml
               }

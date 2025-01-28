@@ -1,0 +1,104 @@
+{% extends "layouts/moj.html" %}
+
+{% block pageTitle %}
+  Are you sure that you want to delete this draft notification form? - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+ <form class="form" action="/equipmentaddressquestion" method="post">
+      <h1 class="govuk-heading-l">Add monitoring equipment address</h1>
+
+            {% call govukFieldset({
+        legend: {
+          text: "What is the address where monitoring equipment should be collected?",
+          classes: "govuk-fieldset__legend--s"
+        }
+      }) %}
+
+
+
+        {{ govukInput({
+          label: {
+            text: "Address line 1"
+          },
+          id: "address-line-1",
+          name: "equipmentaddressLine1",
+          value: data['equipmentaddressLine1']
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Address line 2 (optional)"
+          },
+          id: "address-line-2",
+          name: "equipmentaddressLine2",
+          value: data['equipmentaddressLine2']
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Town or city"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "address-town",
+          name: "equipmentaddressTown",
+          value: data['equipmentaddressTown']
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "County (optional)"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "equipmentaddresscounty",
+          value: data['equipmentaddresscounty']
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "Postcode"
+          },
+          classes: "govuk-input--width-10",
+          id: "address-postcode",
+          name: "equipmentaddressPostcode",
+          value: data['equipmentaddressPostcode']
+        }) }}
+
+      {% endcall %}   
+
+
+                    
+
+
+
+     
+
+
+           <div class="govuk-button-group">
+
+
+
+             {{ govukButton({
+              text: "Save and continue",
+              href: "edit-form-delete"
+            }) }}
+
+     
+       
+
+      </div>
+
+    </form>
+
+        
+
+        </div>
+      </div>
+{% endblock %}
