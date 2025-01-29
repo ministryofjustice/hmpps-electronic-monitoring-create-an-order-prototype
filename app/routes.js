@@ -358,9 +358,9 @@ router.post('/equipmentaddressquestion', function(request, response) {
 
     var equipmentaddressquestion = request.session.data['equipmentaddressquestion']
     if (equipmentaddressquestion == "No"){
-        response.redirect("/v1/edit-form-delete-addaddress")
+        response.redirect("/v1/variations/edit-form-delete-addaddress")
     } else {
-        response.redirect("/v1/edit-form-delete")
+        response.redirect("/v1/variations/edit-form-delete")
     }
 })
 

@@ -1,4 +1,4 @@
-{% extends "layouts/moj.html" %}
+{% extends "layouts/moj-level2.html" %}
 
 {% block pageTitle %}
   Are you sure that you want to make changes to this notification form? - Electronic Monitoring
@@ -22,13 +22,13 @@
           <div class="govuk-button-group">
             {{ govukButton({
               text: "Yes, create a new version of the form",
-              href: 'submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false',
+              href: '../submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false',
               classes: "govuk-button--warning"
             }) }}
 
             {{ govukButton({
               text: "No and return to form",
-              href: 'submitted-form?view=true',
+              href: '../submitted-form?view=true',
               classes: "govuk-button--secondary"
             }) }}
           </div>

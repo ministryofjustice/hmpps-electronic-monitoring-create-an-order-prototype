@@ -1,4 +1,4 @@
-{% extends "layouts/moj.html" %}
+{% extends "layouts/moj-level2.html" %}
 
 {% block pageTitle %}
   Are you sure that you want to delete this draft notification form? - Electronic Monitoring
@@ -37,7 +37,7 @@
 
         {% else %}   
 
-         <form class="form" action="submitted-form?section-6-complete=true" method="post">
+         <form class="form" action="../submitted-form?section-6-complete=true" method="post">
 
 
          {% endif %}  
@@ -216,7 +216,7 @@
              {% if (data['view'] == 'true') %}
                    {{ govukButton({
                       text: "Return to main form menu",
-                      href: "submitted-form"
+                      href: "../submitted-form"
                     }) }}
                 {% else %}
                   {{ govukButton({

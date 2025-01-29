@@ -31,31 +31,27 @@
               html: htmlcancelled
             }) }}
 
+              <h1 class="govuk-heading-l">
+                <span class="govuk-caption-l">About the cancellation</span>
+                Check your answers
+              </h1>
+
           {% elseif (data['view'] == 'true') %}
 
           {{ govukNotificationBanner({
               html: html
             }) }}
 
-          {% else %}
+              <h1 class="govuk-heading-l">
+                <span class="govuk-caption-l">About the cancellation</span>
+                Check your answers
+              </h1>
 
-          
+               <p>Check and save the information about the cancellation.</p>
+      
                     
           {% endif %}
-
-      
-
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">Attachments</span>
-        Check your answers
-      </h1>
-
-{% if (data['view'] == 'true') %}
-
-   {% else %}
-
-       <p>Check and save the information about the documents you have uploaded and attached to the form.</p>
-    {% endif %}    
+  
 
       <form class="form" action="../submitted-form?section-5-complete=true" method="post">
 
@@ -64,10 +60,10 @@
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             Do you have a licence document to upload?
+             What is the date you want the change to take effect?
             </dt>
             <dd class="govuk-summary-list__value">
-             Yes
+             12/02/2025
             </dd>
             <dd class="govuk-summary-list__actions">
               {% if (data['view'] == 'true') %}
@@ -80,14 +76,18 @@
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Licence
+              Why are you ending all monitoring for the device wearer?
             </dt>
             <dd class="govuk-summary-list__value">
-             <a href="#">{{ data['licence'] or 'Murphy - licence 3245' }}</a>
+              Offender has been recalled to prison due to breaching conditions.
             </dd>
             <dd class="govuk-summary-list__actions">
                <ul class="govuk-summary-list__actions-list">
-                  <a class="govuk-link" href="licence">Change<span class="govuk-visually-hidden"> Licence </span></a>         
+                 {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
               </ul>
             </dd>
           </div>
@@ -95,10 +95,13 @@
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             Do you have a photo identification document to upload?
+             What is the address where any tags and monitoring equipment should be collected?
             </dt>
             <dd class="govuk-summary-list__value">
-             No
+            {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
+            {{ data['contactaddressTown'] or "Glossop" }}<br>
+            {{ data['contactaddressCounty'] or "High Peak" }}<br>
+            {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
             </dd>
             <dd class="govuk-summary-list__actions">
               {% if (data['view'] == 'true') %}

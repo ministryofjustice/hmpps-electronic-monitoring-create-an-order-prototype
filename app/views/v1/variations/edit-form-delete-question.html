@@ -1,4 +1,4 @@
-{% extends "layouts/moj.html" %}
+{% extends "layouts/moj-level2.html" %}
 
 {% block pageTitle %}
   Are you sure that you want to delete this draft notification form? - Electronic Monitoring
@@ -74,7 +74,7 @@
                 </div>
 
                {% if (data['view-variation'] == 'cancelled') %}
-                  <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="cancel-text" disabled rows="5" aria-describedby="with-hint-info with-hint-hint">Fred has been recalled to prison due to breaching conditions.</textarea>
+                  <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="cancel-text" disabled rows="5" aria-describedby="with-hint-info with-hint-hint">Offender has been recalled to prison due to breaching conditions.</textarea>
                 {% else %}
                  <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="cancel-text" rows="5" aria-describedby="with-hint-info with-hint-hint">{{ data['cancel-text'] }}</textarea>
                 {% endif %}
@@ -92,7 +92,7 @@
       {% if (data['view-variation'] == 'cancelled') %}
               {{ govukButton({
                   text: "Return to main form menu",
-                  href: "submitted-form"
+                  href: "../submitted-form"
                 }) }}
 
          {% else %}
@@ -101,6 +101,12 @@
               text: "Save and continue",
               href: 'edit-form-delete-question-2'
             }) }}
+
+             {{ govukButton({
+                text: "Save and return to main form menu",
+                href: '../submitted-form',
+                classes: "govuk-button--secondary"
+              }) }}
 
               {% endif %}
 
