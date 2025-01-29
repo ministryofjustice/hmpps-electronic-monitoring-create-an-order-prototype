@@ -48,7 +48,7 @@
           {% if (data['nomis'] !== NULL and data['nomis'] !== '') %}
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-               NOMIS ID
+               NOMIS
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['nomis'] }}
@@ -61,7 +61,7 @@
           {% if (data['pnc'] !== NULL and data['pnc'] !== '') %}
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-               PNC ID
+               PNC
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['pnc'] }}
@@ -87,7 +87,7 @@
           {% if (data['prison'] !== NULL and data['prison'] !== '') %}
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-               Prison number
+               Prison Number
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['prison'] }}
@@ -100,7 +100,7 @@
           {% if (data['ho'] !== NULL and data['ho'] !== '') %}
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-               Home Office reference number
+               Compliance and Enforcement Person Reference (CEPR)
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['ho'] }}
@@ -113,7 +113,7 @@
            {% if (data['urn'] !== NULL and data['urn'] !== '') %}
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-               URN ID number
+               URN ID Number
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['urn'] }}
@@ -174,7 +174,7 @@
           {% endif %}
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              How does the device wearer's gender'?
+             What is the device wearer's gender?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['wearer-gender'] or 'Male' }}
