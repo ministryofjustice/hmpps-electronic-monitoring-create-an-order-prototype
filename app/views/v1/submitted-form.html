@@ -37,12 +37,9 @@
 
            {% if (data['view-variation'] == 'false') %}
 
-        
-
-
            <p> This form was submitted on the 14 December 2024. You can make a change to this form or end all monitoring for the device wearer.</p>
 
-                 <form class="form" action="edit-form-variation" method="post">
+                 <form class="form" action="variations/edit-form-variation" method="post">
 
             {% elseif (data['view-variation'] == 'cancelled') %}
 
@@ -53,60 +50,7 @@
 
             <p> This form was submitted on the 1 December 2024. You can't make changes to it because there are more recent versions of this form. </p>
 
-            <details class="govuk-details">
-                <summary class="govuk-details__summary">
-                  <span class="govuk-details__summary-text">
-                    View history of this form
-                  </span>
-                </summary>
-                <div class="govuk-details__text">
-
-                 <div class="moj-timeline">
-                    <div class="moj-timeline__item">
-
-                      <div class="moj-timeline__header">
-                        <h2 class="moj-timeline__title">Changes to the form submitted</h2>
-
-                        <p class="moj-timeline__byline">by Joe Bloggs</p>
-
-                      </div>
-
-                      <p class="moj-timeline__date">
-                        <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
-                      </p>
-
-                       <div class="moj-timeline__description govuk-!-padding-bottom-4"><a href="submitted-form?view-variation=false&variation=true">View the most recent version of this form</a>.<br>
-                       </div>
-
-                      
-
-                    </div>
-
-                    <div class="moj-timeline__item">
-
-                      <div class="moj-timeline__header">
-                        <h2 class="moj-timeline__title">Form submitted</h2>
-
-                        <p class="moj-timeline__byline">by John Smith</p>
-
-                      </div>
-
-                      <p class="moj-timeline__date">
-                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
-                      </p>
-
-                      <div class="moj-timeline__description govuk-!-padding-bottom-4">
-                        <p>You are viewing this version of the form.</p>
-                      </div>
-
-                    </div>
-
-                    
-                  </div>
-
-                </div>
-
-              </details>
+            
 
             
             {% endif %}      
@@ -117,59 +61,9 @@
             <p> This version of the form was submitted on the 20 January 2025. You can make changes to this form or end all monitoring for the device wearer. </p>
             
 
-            <details class="govuk-details">
-                <summary class="govuk-details__summary">
-                  <span class="govuk-details__summary-text">
-                    View history of this form
-                  </span>
-                </summary>
-                <div class="govuk-details__text">
+           
 
-                 <div class="moj-timeline">
-                    <div class="moj-timeline__item">
-
-                      <div class="moj-timeline__header">
-                        <h2 class="moj-timeline__title">Changes to the form submitted</h2>
-
-                        <p class="moj-timeline__byline">by Joe Bloggs</p>
-
-                      </div>
-
-                      <p class="moj-timeline__date">
-                        <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
-                      </p>
-
-                      <div class="moj-timeline__description govuk-!-padding-bottom-4">
-                        <p>You are viewing the most recent version of the form.</p>
-                      </div>
-
-                    </div>
-
-                    <div class="moj-timeline__item">
-
-                      <div class="moj-timeline__header">
-                        <h2 class="moj-timeline__title">Form submitted</h2>
-
-                        <p class="moj-timeline__byline">by John Smith</p>
-
-                      </div>
-
-                      <p class="moj-timeline__date">
-                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
-                      </p>
-
-                      <div class="moj-timeline__description govuk-!-padding-bottom-4"><a href="submitted-form?view-variation=true&variation=false">View submitted form</a></div>
-
-                    </div>
-
-                    
-                  </div>
-
-                </div>
-
-              </details>
-
-                 <form class="form" action="edit-form-variation" method="post">
+                 <form class="form" action="variations/edit-form-variation" method="post">
 
             {% endif %} 
 
@@ -253,7 +147,7 @@
             title: {
               text: "About the changes in this version of the form"
             },
-            href: ("edit-form-question"),
+            href: ("variations/edit-form-question"),
             classes: ("govuk-visually-hidden" if data['variation'] == 'false'),
             status: ( viewStatus )
           },
@@ -261,7 +155,7 @@
             title: {
               text: "About the cancellation"
             },
-            href: ("edit-form-delete-question"),
+            href: ("variations/check-answers-view"),
             classes: ("govuk-visually-hidden" if data['view-variation'] !== 'cancelled'),
             status: ( viewStatus )
           }
@@ -313,7 +207,7 @@
             title: {
               text: ("About the changes in this version of the form")
             },
-            href: ("edit-form-question"),
+            href: ("variations/edit-form-question"),
            status: ( completedStatus if data['section-6-complete'] == 'true' else incompleteStatus)
           }
 
@@ -328,7 +222,7 @@
 
            {{ govukButton({
           text: ("View submitted form" if data['variation'] == 'true' else "View submitted form"),
-          href: 'submitted-form-all',
+          href: 'variations/submitted-form-all',
           classes: "govuk-button--secondary"
         }) }}
 
@@ -361,11 +255,8 @@
          {{ govukButton({
             text: "End all monitoring",
             classes: "govuk-button--secondary",
-            href: "edit-form-delete-question"
+            href: "variations/edit-form-delete-question"
             }) }}
-
-
-
 
             {% endif %}
 
@@ -386,14 +277,114 @@
 
               {% endif %}
           {% endif %}
-
-
-
         
         </div>
       </div>
     </form>
 
     </div>
+    <div class="govuk-grid-column-one-third govuk-!-static-padding-left-9">
+
+
+       {% if (data['view'] == 'true') %}
+
+           {% if (data['variation'] == 'false') %}
+
+           {% if (data['view-variation'] == 'true') %}
+
+                <div class="moj-timeline">
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Changes to the form submitted</h2>
+
+                        <p class="moj-timeline__byline">by Joe Bloggs</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                        <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
+                      </p>
+
+                       <div class="moj-timeline__description govuk-!-padding-bottom-4"><a href="submitted-form?view-variation=false&variation=true">View the most recent version of this form</a>.<br>
+                       </div>
+
+                      
+
+                    </div>
+
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Form submitted</h2>
+
+                        <p class="moj-timeline__byline">by John Smith</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
+                      </p>
+
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4">
+                        <p>You are viewing this version of the form.</p>
+                      </div>
+
+                    </div>
+
+                    
+                  </div>
+
+
+           
+
+                 {% endif %}
+        
+                 {% else %}
+
+                  <div class="moj-timeline">
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Changes to the form submitted</h2>
+
+                        <p class="moj-timeline__byline">by Joe Bloggs</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                        <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
+                      </p>
+
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4">
+                        <p>You are viewing the most recent version of the form.</p>
+                      </div>
+
+                    </div>
+
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Form submitted</h2>
+
+                        <p class="moj-timeline__byline">by John Smith</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
+                      </p>
+
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4"><a href="submitted-form?view-variation=true&variation=false">View submitted form</a></div>
+
+                    </div>  
+                  </div>
+      
+             
+
+              {% endif %}
+          {% endif %}    
+
+    </div>  
   </div>
 {% endblock %}

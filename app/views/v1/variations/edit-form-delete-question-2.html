@@ -1,4 +1,4 @@
-{% extends "layouts/moj.html" %}
+{% extends "layouts/moj-level2.html" %}
 
 {% block pageTitle %}
   Are you sure that you want to delete this draft notification form? - Electronic Monitoring
@@ -13,7 +13,7 @@
     <div class="govuk-grid-column-two-thirds">
 
  <form class="form" action="/equipmentaddressquestion" method="post">
-      <h1 class="govuk-heading-l">Monitoring equipment address</h1>
+      <h1 class="govuk-heading-l">Monitoring equipment collection address</h1>
 
        <p class="govuk-body">Contact address:</p>
         <p>
@@ -28,7 +28,7 @@
             name: "equipmentaddressquestion",
             fieldset: {
               legend: {
-                text: "Is this the address where the monitoring equipment should be collected",
+                text: "Is this the address where any tags and monitoring equipment should be collected",
                classes: "govuk-fieldset__legend--s"
               }
             },
@@ -61,6 +61,12 @@
              {{ govukButton({
               text: "Save and continue"
             }) }}
+
+             {{ govukButton({
+                text: "Save and return to main form menu",
+                href: '../submitted-form',
+                classes: "govuk-button--secondary"
+              }) }}
 
      
        
