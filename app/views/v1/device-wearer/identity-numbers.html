@@ -91,7 +91,7 @@
           value: data['ho'],
           classes: "govuk-!-width-two-thirds",
           label: {
-            text: "Enter Home Office Reference Number"
+            text: "Enter CEPR"
           }
         }) }}
         {% endset -%}
@@ -153,9 +153,9 @@
               }
             },
             {
-              value: "Home Office Reference Number",
+              value: "Compliance and Enforcement Person Reference (CEPR)",
               checked: (true if data['ho'] !== NULL and data['ho'] !== ''),
-              text: "Home Office Reference Number",
+              text: "Compliance and Enforcement Person Reference (CEPR)",
               conditional: {
                 html: hoHtml
               }
