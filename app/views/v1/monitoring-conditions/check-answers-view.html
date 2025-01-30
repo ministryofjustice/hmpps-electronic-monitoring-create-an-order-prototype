@@ -246,8 +246,11 @@
                
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> Installation address </span></a>
-            </dd>
+                {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}            </dd>
           </div>  
 
           {% if (data['curfew-boundary-question'] == 'No') %}

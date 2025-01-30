@@ -15,24 +15,24 @@
       
 
       <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">About the notifying and responsible organisations</span>
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
         Check your answers
       </h1>
 
 
-       <p>Check and save the information about the notifying and responsible organisations.</p>
+       <p>Check and save the information about the Notifying and Responsible Organisations.</p>
 
       <form class="form" action="" method="post">
 
 
-         <h2 class="govuk-heading-m">Notifying organisation's details</h2>
+         <h2 class="govuk-heading-m">Notifying Organisation's details</h2>
 
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-          What is the email address for your team?
+          What is your team's email address?
             </dt>
             <dd class="govuk-summary-list__value">
              {{ data['team-email'] or "centralteam@homeoffice.org" }}
@@ -47,13 +47,13 @@
 
         </dl>
 
-     <h2 class="govuk-heading-m">Responsible officer's details</h2>
+     <h2 class="govuk-heading-m">Responsible Officer's details</h2>
 
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-          What is the responsible officer's first name?
+          What is the Responsible Officer's first name?
             </dt>
             <dd class="govuk-summary-list__value">
              {{ data['officer-firstname'] or 'Bob' }}
@@ -67,7 +67,7 @@
           </div>
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-          What is the responsible officer's last name?
+          What is the Responsible Officer's last name?
             </dt>
             <dd class="govuk-summary-list__value">
            {{ data['officer-lastname'] or 'Brown' }}
@@ -81,7 +81,7 @@
           </div>
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-         What is the responsible officer's telephone number?
+         What is the Responsible Officer's telephone number?
             </dt>
             <dd class="govuk-summary-list__value">
              {{ data['officer-tel'] or '01245 765 432'}}
@@ -96,14 +96,14 @@
 
       </dl>
 
-         <h2 class="govuk-heading-m">Responsible organisation's details</h2>
+         <h2 class="govuk-heading-m">Responsible Organisation's details</h2>
 
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">  
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-         What organisation is the responsible officer part of?
+         What is the Responsible Officer's organisation?
             </dt>
             <dd class="govuk-summary-list__value">
              {{ data['officer-org'] or 'Home Office' }}
@@ -118,7 +118,7 @@
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-         What is the responsible organisation's telephone number?
+         What is the Responsible Organisation's telephone number?
             </dt>
             <dd class="govuk-summary-list__value">
              {{ data['org-tel'] or "01267 876 567" }}
@@ -133,7 +133,7 @@
 
              <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-         What is the responsible organisation's email address?
+         What is the Responsible Organisation's email address?
             </dt>
             <dd class="govuk-summary-list__value">
              {{ data['org-email'] or 'centralteam@homeoffice.org' }}
@@ -148,7 +148,7 @@
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-         What region is the responsible organisation in?
+         What is the  Responsible Organisation's region?
             </dt>
             <dd class="govuk-summary-list__value">
              {{ data['region'] or 'North West' }}
@@ -163,7 +163,7 @@
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the address of the responsible organisation?
+              What is the Responsible Organisation's address?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['orgaddressLine1'] or '123 Main Street' }}<br>
