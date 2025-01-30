@@ -15,8 +15,8 @@
       
 
       <h1 class="govuk-heading-l">
-       <span class="govuk-caption-l">About the notifying and responsible organisations</span>
-       Responsible organisation's details
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+       Responsible Organisation's details
       </h1>
 
   {% if (data['cya2'] == "true") %}
@@ -38,7 +38,7 @@
             name: "officer-org",
             fieldset: {
               legend: {
-                text: "What organisation is the responsible officer part of?",
+                text: "What is the Responsible Officer's organisation?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--s"
               }
@@ -85,7 +85,7 @@
 
            {{ govukInput({
           label: {
-            text: "What is the responsible organisation's telephone number?",
+            text: "What is the Responsible Organisation's telephone number?",
             classes: "govuk-label--s"
           },
           classes: "govuk-input--width-20",
@@ -98,7 +98,7 @@
 
         {{ govukInput({
           label: {
-            text: "What is the responsible organisation's email address?",
+            text: "What is the Responsible Organisation's email address?",
             classes: "govuk-label--s"
           },
           classes: "govuk-input--width-20",
@@ -115,7 +115,7 @@
                 allowEmpty: false,
                 label: {
                   classes: "govuk-label--s",
-                  text: "What region is the responsible organisation in?"
+                  text: "What is the Responsible Organisation's region? "
                 },
 
                 items: [

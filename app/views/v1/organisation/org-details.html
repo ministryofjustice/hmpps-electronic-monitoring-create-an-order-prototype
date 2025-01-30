@@ -15,8 +15,8 @@
       
 
       <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">About the notifying and responsible organisations</span>
-       Contact details for the notifying organisation
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+       Contact details for the Notifying Organisation
       </h1>
 
         {% if (data['cya2'] == "true") %}
@@ -35,12 +35,11 @@
 
            {{ govukInput({
           label: {
-            text: "What is the email address for your team?",
+            text: "What is your team's email address?",
             classes: "govuk-label--s"
             },
             hint: {
-              text: "For example, provide an email address for a shared mailbox that your team has access to.
-                      Do not provide a personal email address."
+              text: "The email address for your team's shared mailbox. Do not provide a personal email address."
             },
           
           classes: "govuk-input--width-20",
