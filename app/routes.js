@@ -127,7 +127,7 @@ router.post('/disability', function(request, response) {
 router.post('/risk', function(request, response) {
 
     var risk = request.session.data['risk']
-    if (risk == "There are no risks that apply to the device wearer"){
+    if (risk == "There are no risks that the installer should be aware of"){
         response.redirect("/v1/installation/mappa")  
     } else {
         response.redirect("/v1/installation/risk-3")

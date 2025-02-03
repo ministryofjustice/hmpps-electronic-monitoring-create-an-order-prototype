@@ -22,7 +22,7 @@
             <div class="moj-button-group moj-button-group--inline">
 
               <button type="submit" class="govuk-button" data-module="govuk-button">
-                Start new form
+                Start new order form
               </button>
 
               
@@ -47,7 +47,7 @@
           <ul class="govuk-tabs__list">
             <li class="govuk-tabs__list-item">
               <a class="govuk-tabs__tab" href="#submitted">
-               Submitted forms
+               Existing forms
               </a>
             </li>
             <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
@@ -96,12 +96,12 @@
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset">
                  <label class="govuk-label--m moj-search__label govuk-!-font-weight-bold" for="search">
-                    Find a submitted form
+                    Find an existing order form
                   </label>
 
               <div id="search-hint" class="govuk-hint moj-search__hint ">
-                You can search by the device wearer's name, date of birth or personal identity number. 
-                <br>For example Bob Smith 19/1/1990 NHEFTH
+                You can search by the device wearer's name or personal identity number. 
+                <br>For example Bob Smith NHEFTH
               </div>
 
               <input class="govuk-input moj-search__input" id="search" name="search" type="search" aria-describedby="search-hint" value="{{ data['search'] }} ">
@@ -129,7 +129,7 @@
 
       <p>Search by the full first and last name - and how it appears in the service, for example Tom Smith-Johnson. </p>
 
-      <p>Check the date of birth is the correct format. For example, 19/01/1990.</p>
+      <p>Check the personal identity number is in the correct form. For example, their NOMIS, Delius ID, PNC number or Compliance and Enforcement Person Reference (CEPR).</p>
 
       <div class="govuk-warning-text">
           <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -153,8 +153,7 @@
       <ul class="govuk-list govuk-list--bullet">
         
        <li>first and last name of the device wearer, for example Matthew Jones</li>
-       <li>the device wearer's date of birth. For example 19/01/1990</li>
-       <li>a personal identity number, for example their NOMIS ID, Delius ID, PNC number or Home Office reference number</li>
+       <li>a personal identity number, for example, their NOMIS, Delius ID, PNC number or Compliance and Enforcement Person Reference (CEPR)</li>
 
       </ul>  
 

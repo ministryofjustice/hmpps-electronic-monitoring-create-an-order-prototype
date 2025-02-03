@@ -25,7 +25,7 @@
             name: "risk",
             fieldset: {
               legend: {
-                text: "What risks should the device fitter be aware of at installation?",
+                text: "What risks should the installer be aware of?",
                 isPageHeading: false,
                 classes: "govuk-fieldset__legend--s"
               }
@@ -115,9 +115,9 @@
                 divider: "or"
               },
               {
-                value: "There are no risks that apply to the device wearer",
-                checked: (true if data['risk'] == 'There are no risks that apply to the device wearer'),
-                text: "There are no risks that apply to the device wearer",
+                value: "There are no risks that the installer should be aware of",
+                checked: (true if data['risk'] == 'There are no risks that the installer should be aware of'),
+                text: "There are no risks that the installer should be aware of",
                 behaviour: "exclusive"
               }
             ]

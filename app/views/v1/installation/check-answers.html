@@ -103,7 +103,7 @@
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What type of offence has been committed by the device wearer?
+             What type of offence did the device wearer commit? 
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['offence'] or 'The offence committed is not relevant to the risk of installation' }}
@@ -115,7 +115,7 @@
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             What risks apply to the device wearer that the device fitter should be aware of at installation?
+             What risks should the installer be aware of?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['risk'] or 'There are no risks that apply to the device wearer' }}
@@ -131,19 +131,19 @@
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-               Is there anything else we should know that will help lower risk of violence or threatening behaviour at installation?
+               Is there anything else the installer should know that will help lower risk of violence or threatening behaviour?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['risk-question'] or 'No' }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="risk-3?cya3=true">Change<span class="govuk-visually-hidden"> Is there anything else we should know that will help lower risk of violence or threatening behaviour at installation?</span></a>
+              <a class="govuk-link" href="risk-3?cya3=true">Change<span class="govuk-visually-hidden"> Is there anything else the installer should know that will help lower risk of violence or threatening behaviour?</span></a>
             </dd>
           </div>
           {% if (data['risk-question'] == "Yes") %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-               What should we know that will help lower risk of violence or threatening behaviour?
+               What else should the installer know?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['risk-needs'] }}

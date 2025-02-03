@@ -33,7 +33,7 @@
 {% endblock %}
     
 {% block content %}
-
+ {% if (data['cancelled'] == 'true') %}
 <div id='loading_indicator'>
   <div class="hods-loading-spinner">
   <div
@@ -42,13 +42,15 @@
     role="status"
   ></div>
   <div class="hods-loading-spinner__content">
-    <h1 class="govuk-heading-m">Submitting the order form ...</h1>
+    <h1 class="govuk-heading-m">Submitting the order to end all monitoring ...</h1>
   </div>
 </div>
 </div>
 
 
 <div id='content-hide'> 
+
+   {% endif %}
 
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper govuk-main-wrapper--l" id="main-content" role="main">
