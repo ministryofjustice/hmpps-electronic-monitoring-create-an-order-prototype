@@ -13,14 +13,14 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">Monitoring conditions</span>
+        <span class="govuk-caption-l">Electronic monitoring required</span>
         Monitoring type
       </h1>
 
       {% if (data['addressquestion'] == "No" and data['eighteen'] == "No") %}
 
       {{ govukInsetText({
-        text: "Curfew with electronic monitoring is not an option because the device wearer does not have a fixed address. Alcohol monitoring is not an option because the device wearer will not be 18 years old or older when the electronic monitoring device is installed."
+        text: "Curfew is not an option because the device wearer does not have a fixed address. Alcohol monitoring is not an option because the device wearer will not be 18 years old or older when the electronic monitoring device is installed."
       }) }}
 
 
@@ -29,7 +29,7 @@
  
 
       {{ govukInsetText({
-        text: "Curfew with electronic monitoring is not an option because the device wearer does not have a fixed address."
+        text: "Curfew is not an option because the device wearer does not have a fixed address."
       }) }}
 
 
@@ -51,7 +51,7 @@
             name: "monitoringtype2",
             fieldset: {
               legend: {
-                text: "What monitoring does the device wearer need?",
+                text: "What monitoring is required?",
                 classes: "govuk-fieldset__legend--s"
 
               }
@@ -61,17 +61,17 @@
             },
             items: [
               {
-                value: "Curfew with electronic monitoring",
-                disabled: (true if data['monitoringtype'] == 'Curfew with electronic monitoring' or data['addressquestion'] == 'No'),
+                value: "Curfew",
+                disabled: (true if data['monitoringtype'] == 'Curfew' or data['addressquestion'] == 'No'),
                 hint: {
-                  text: "The device wearer must stay inside an address at specific times during the day and night."
+                  text: "Monitoring the device wearer adheres to set times and days that they must remain at a location."
                 },
-                text: "Curfew with electronic monitoring"
+                text: "Curfew"
               },
               {
                 value: "Exclusion and inclusion zone monitoring",
                 hint: {
-                  text: "The device wearer must not enter identified areas or can only enter identified areas at specified times."
+                  text: "Prevents the device wearer entering areas or visiting locations at set times."
                 },
                 text: "Exclusion and inclusion zone monitoring"
               },
@@ -79,7 +79,7 @@
                 value: "Trail monitoring",
                 disabled: (true if data['monitoringtype'] == 'Trail monitoring'),
                 hint: {
-                  text: "GPS tracking will record the movements of the device wearer throughout the day. Must be monitored if the device wearer is part of the Acquisitive Crime Project."
+                  text: "Recording and gathering data on movements of the device wearer throughout the day.  Must be selected if the device wearer is part of the Acquisitive Crime Project."
                 },
                 text: "Trail monitoring"
               },
@@ -87,23 +87,23 @@
                 value: "Trail monitoring (Home Office)",
                 disabled: (true if data['monitoringtype'] == 'Trail monitoring (Home Office)' or data['monitoringtype'] == 'Trail monitoring'),
                 hint: {
-                  text: "For the Home Office only. Fitted GPS tracking or non-fitted devices to record the movements of the device wearer throughout the day. "
+                  text: "Recording and gathering data on movements of the device wearer throughout the day. "
                 },
-                text: "Trail monitoring (Home Office)"
+                text: "Trail monitoring (Home Office only)"
               },
               {
                 value: "Alcohol monitoring",
                 disabled: (true if data['monitoringtype'] == 'Alcohol monitoring' or data['eighteen'] == 'Yes'),
        
                 hint: {
-                  text: "The device wearer's levels of alcohol or abstinence from alcohol is monitored."
+                  text: "Measuring alcohol levels of the device wearer or recording they are abstaining from drinking alcohol."
                 },
                 text: "Alcohol monitoring"
               },
               {
                 value: "Mandatory attendance monitoring",
                 hint: {
-                  text: "Attendance of the device wearer at appointments is monitored."
+                  text: "Recording the device wearer's attendance at arranged meetings or places."
                 },
                 text: "Mandatory attendance monitoring"
               }

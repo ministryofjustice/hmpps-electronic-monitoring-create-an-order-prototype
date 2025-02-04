@@ -14,17 +14,17 @@
 
       <form class="form" action="check-answers" method="post">
 
-           <span class="govuk-caption-l">Attachments</span>
+           <span class="govuk-caption-l">Additional documents</span>
              {{ govukFileUpload({
             id: "photo",
             name: "photo",
             isPageHeading: true,
             label: {
-              text: "Upload the photo identification document",
+              text: "Upload a copy of the photo identification document",
               classes: 'govuk-label--l'
             },
             hint: {
-              text: 'You can upload the licence as a scanned copy or photo of the original. The file must be a PDF, PNG, JPEG or JPG and under 10MB in size. '
+              text: 'Upload a scanned copy or photo of the original photo identification. The file must be a PDF, PNG, JPEG or JPG and under 10MB in size. '
             }
           }) }}
        

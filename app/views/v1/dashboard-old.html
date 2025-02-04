@@ -1,0 +1,138 @@
+{% extends "layouts/moj.html" %}
+
+{% block pageTitle %}
+  Electronic Monitoring Notification forms - Electronic Monitoring
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Electronic Monitoring Order forms
+      </h1>
+
+      <form class="form" action="new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&view=none&newform=true" method="post">
+
+        <h2 class="govuk-heading-m">
+          Submit a new form
+        </h2>
+
+        
+
+     <!--  <p>
+          [Insert content here - see the
+          <a href="#" target="_blank">help text link (opens in a new tab)]</a>
+        </p>
+-->
+        
+
+        <button type="submit" class="govuk-button" data-module="govuk-button" data-govuk-button-init="">
+          Start new order form
+        </button>
+
+      </form>
+
+      <h2 class="govuk-heading-m">
+          View and edit existing forms
+        </h2>
+
+        <p>
+          View and edit your draft and submitted notification forms or search for a form someone else has submitted to change or cancel it.
+        </p>
+
+          {{ govukButton({
+          text: "Search for a submitted form",
+          href: 'search?searchresults=false&search=',
+          classes: "govuk-button--secondary"
+        }) }}
+
+
+
+          {% from "govuk/components/tabs/macro.njk" import govukTabs %}
+          {% from "govuk/components/table/macro.njk" import govukTable %}
+
+          {% set draftFormsHtml %}
+      
+          <table class="govuk-table  govuk-table--small-text-until-tablet">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Name</th>
+                <th scope="col" class="govuk-table__header">Last updated on</th>
+                <th scope="col" class="govuk-table__header">Status</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=true&section-5-complete=true&newform=true">David Francis</a></td>
+                <td class="govuk-table__cell">29/12/2024</td>
+                <td class="govuk-table__cell">Draft</td>
+              </tr>
+         <!-- <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false">Bobbie Gibb</a></td>
+                <td class="govuk-table__cell">2 January 2025</td>
+                <td class="govuk-table__cell">12453</td>
+                <td class="govuk-table__cell">Variation draft</td>
+              </tr>-->
+            </tbody>
+          </table>
+          {% endset -%}
+
+          {% set submittedFormsHtml %}
+    
+         <table class="govuk-table govuk-table--small-text-until-tablet">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Name</th>
+                <th scope="col" class="govuk-table__header">Last updated on</th>
+                <th scope="col" class="govuk-table__header">Status</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=false&fullname=Mike Smith&newform=true">Mike Smith</a></td>
+                <td class="govuk-table__cell">12/11/2024</td>
+                <td class="govuk-table__cell">Submitted</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=true&view-variation=false&fullname=David Murphy&newform=true">David Murphy</a></td>
+                <td class="govuk-table__cell">20/01/2025</td>
+                <td class="govuk-table__cell">Submitted</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=cancelled&fullname=John Cooper&newform=true">John Cooper</a></td>
+                <td class="govuk-table__cell">20/12/2024</td>
+                <td class="govuk-table__cell">Cancelled</td>
+              </tr>
+            </tbody>
+          </table>
+          {% endset -%}
+
+       
+          
+
+          {{ govukTabs({
+            items: [
+              {
+                label: "Your draft forms",
+                id: "past-day",
+                panel: {
+                  html: draftFormsHtml
+                }
+              },
+              {
+                label: "Your submitted forms",
+                id: "past-week",
+                panel: {
+                  html: submittedFormsHtml
+                }
+              }
+            ]
+          }) }}
+
+    </div>
+</div>
+
+{% endblock %}

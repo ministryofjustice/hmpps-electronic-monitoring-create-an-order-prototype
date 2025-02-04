@@ -203,7 +203,7 @@ router.post('/monitoring-question', function(request, response) {
     var monitoringtype = request.session.data['monitoringtype']
     var addressquestion = request.session.data['addressquestion']
     
-    if (monitoringtype == "Curfew with electronic monitoring"){
+    if (monitoringtype == "Curfew"){
         response.redirect("/v1/monitoring-conditions/curfew")   
     } else if (addressquestion == "No"){
         response.redirect("/v1/monitoring-conditions/install-address")   
@@ -217,7 +217,7 @@ router.post('/monitoring-question2', function(request, response) {
     var monitoringtype2 = request.session.data['monitoringtype2']
     var addressquestion = request.session.data['addressquestion']
     
-    if (monitoringtype2 == "Curfew with electronic monitoring"){
+    if (monitoringtype2 == "Curfew"){
         response.redirect("/v1/monitoring-conditions/curfew")   
     } else if (addressquestion == "No"){
         response.redirect("/v1/monitoring-conditions/install-address")   
@@ -230,7 +230,7 @@ router.post('/monitoring-type', function(request, response) {
 
     var monitoringtype = request.session.data['monitoringtype']
     
-    if (monitoringtype == "Curfew with electronic monitoring"){
+    if (monitoringtype == "Curfew"){
         response.redirect("/v1/monitoring-conditions/curfew")   
     } else if (monitoringtype == "Exclusion and inclusion zone monitoring"){
         response.redirect("/v1/monitoring-conditions/exclusion")   
@@ -249,7 +249,7 @@ router.post('/monitoring-type2', function(request, response) {
 
     var monitoringtype2 = request.session.data['monitoringtype2']
     
-    if (monitoringtype2 == "Curfew with electronic monitoring"){
+    if (monitoringtype2 == "Curfew"){
         response.redirect("/v1/monitoring-conditions/curfew")   
     } else if (monitoringtype2 == "Exclusion and inclusion zone monitoring"){
         response.redirect("/v1/monitoring-conditions/exclusion")   

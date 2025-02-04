@@ -45,7 +45,7 @@
 
           
       <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">Monitoring conditions</span>
+        <span class="govuk-caption-l">Electronic monitoring required</span>
         Check your answers
       </h1>
 
@@ -115,7 +115,7 @@
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the overall monitoring period starts?
+              What is the start date for monitoring?
             </dt>
             <dd class="govuk-summary-list__value">
               23 December 2024
@@ -130,7 +130,7 @@
           </div>
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the time the overall monitoring period starts?
+              What is the start time on the first day of monitoring?
             </dt>
             <dd class="govuk-summary-list__value">
               11:00
@@ -145,7 +145,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             What is the date the overall monitoring period ends?
+             What is the end date of monitoring ?
             </dt>
             <dd class="govuk-summary-list__value">
               23 December 2025
@@ -161,7 +161,7 @@
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the time the overall monitoring period ends? 
+            What is the end time on the last day of monitoring?
             </dt>
             <dd class="govuk-summary-list__value">
              11:00
@@ -179,7 +179,7 @@
           
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What monitoring does the device wearer need?
+              What monitoring is required?
             </dt>
             <dd class="govuk-summary-list__value">
               Curfew with electronic monitoring<br>
@@ -196,7 +196,7 @@
          
  </dl>
 
- <h2 class="govuk-heading-m">Curfew with electronic monitoring</h2>
+ <h2 class="govuk-heading-m">Curfew</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
            <div class="govuk-summary-list__row">
@@ -274,7 +274,7 @@
 
              <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the curfew monitoring starts?
+              What date does curfew start?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['curfewstart-date'] or '18/12/2024' }} 
@@ -289,7 +289,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the curfew monitoring ends? 
+              What date does curfew end? 
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['curfewend-date'] or '18/12/2025' }} 
@@ -305,13 +305,13 @@
 
         </dl>
 
-            <h2 class="govuk-heading-m">Curfew on the day of release</h2>
+            <h2 class="govuk-heading-m">Curfew on release day</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the release date?
+             What date is the device wearer released from custody?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['release-date'] or '18/12/2024' }} 
@@ -326,7 +326,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the start time for curfew  on the day of release?
+             On the day of release, what time does the curfew start?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['release-starttime-hours'] or '19' }}:{{ data['release-starttime-minutes'] or '00' }}
@@ -341,7 +341,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the end time for curfew on the day of release?
+              On the day of release, what time does the curfew end?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['release-endtime-hours'] or "07" }}:{{ data['release-endtime-hours'] or '00' }} {{ data['curfew-same-next-day'] or 'The next day' }}
@@ -356,7 +356,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             Where will the device wearer be staying during curfew hours on their release day?
+             On the day of release, where will the device wearer be during curfew hours?
             </dt>
             <dd class="govuk-summary-list__value">
               {% if (data['release-address'] == "Contact") %}
@@ -490,7 +490,7 @@
 
     <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the exclusion and inclusion monitoring starts?
+              What date does exclusion and inclusion monitoring start?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['exclusionstart-date'] or '12/12/2024' }} 
@@ -501,7 +501,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the exclusion and inclusion monitoring ends? 
+              What date does exclusion and inclusion monitoring end? 
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['exclusionend-date'] or '12/12/2025 '}} 
@@ -630,7 +630,7 @@
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the trail monitoring starts?
+              What date does trail monitoring start?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['trailstart-date'] or '12/01/2025' }} 
@@ -641,7 +641,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the trail monitoring ends? 
+              What date does trail monitoring end? 
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['trailend-date'] or '12/07/2025' }} 
@@ -709,7 +709,7 @@
 
          <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the mandatory attendance monitoring starts?
+              What date does mandatory attendance monitoring start?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['attendancestart-date'] }} 
@@ -720,7 +720,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the mandatory attendance monitoring ends? 
+              What date does mandatory attendance monitoring end? 
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['attendanceend-date'] }} 
@@ -766,7 +766,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the address where the appointment will take place?
+              At what address will the appointment take place?
             </dt>
             <dd class="govuk-summary-list__value">
            
@@ -823,7 +823,7 @@
          
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the alcohol monitoring starts?
+              What date does alcohol monitoring start?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['alcoholstart-date'] }} 
@@ -834,7 +834,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date the alcohol monitoring ends? 
+              What date does alcohol monitoring end? 
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['alcoholend-date'] }} 

@@ -15,13 +15,11 @@
       
 
       <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">Monitoring conditions</span>
+        <span class="govuk-caption-l">Electronic monitoring required</span>
         Monitoring dates
       </h1>
 
-      <p>These monitoring dates are for the overall monitoring period. You should enter the earliest start date and end date here. </p>
-
-      <p>When you add a monitoring type, for example an alcohol monitoring tag, you will be able to add different dates for the monitoring period for that type of tag.</p>
+      
 
     
   {% if (data['cya4'] == "true") %}
@@ -79,11 +77,11 @@
 
             <div class="govuk-form-group">
               <label class="govuk-label  govuk-label--s" for="date">
-               What is the date the overall monitoring period starts?
+               What is the start date for monitoring?
               </label>
 
               <div id="date-hint" class="govuk-hint">
-                For example, 17/5/2024.
+                For example, 17/5/2024.  If more than one type of monitoring is required, provide the start date of when the first type of monitoring begins.
               </div>
 
               <input class="govuk-input moj-js-datepicker-input " id="date" name="monitoring-date-start" type="text" aria-describedby="date-hint" autocomplete="off" value="{{ data['monitoring-date-start'] }}">
@@ -96,10 +94,10 @@
 
            <div class="govuk-form-group">
     <fieldset class="govuk-fieldset">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What is the time  the overall monitoring period starts?</legend>
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What is the start time on the first day of monitoring?</legend>
 
       <div class="govuk-date-input ">
-        <div class="govuk-hint">For example, 19:00 or 07:00.</div>
+        <div class="govuk-hint">Enter time using a 24 hour clock. For example, enter 14:30 instead of 2:30pm</div>
         
 
         
@@ -166,15 +164,15 @@
             <div class="govuk-form-group">
               <label class="govuk-label  govuk-label--s" for="date">
                {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}
-               What is the date the monitoring ends? (optional)
+               What is the end date of monitoring? (optional)
                {% else %}
-               What is the date the overall monitoring period ends? 
+               What is the end date of monitoring? 
                {% endif %}
 
               </label>
 
               <div id="date-hint" class="govuk-hint">
-                For example, 17/5/2024.
+                For example, 17/5/2024.  If more than one type of monitoring is required, provide the date when all monitoring finishes.
               </div>
 
               <input class="govuk-input moj-js-datepicker-input " id="date" name="monitoring-date-end" type="text" aria-describedby="date-hint" autocomplete="off" value="{{ data['monitoring-date-end'] }}">
@@ -194,15 +192,15 @@
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
 
               {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}
-               What is the time the overall monitoring period ends? (optional)
+               What is the end time on the last day of monitoring? (optional)
                {% else %}
-               What is the time the overall monitoring period ends? 
+               What is the end time on the last day of monitoring?
                {% endif %}
 
     </legend>
 
       <div class="govuk-date-input ">
-        <div class="govuk-hint">For example, 19:00 or 07:00.</div>
+        <div class="govuk-hint">Enter time using a 24 hour clock. For example, enter 14:30 instead of 2:30pm</div>
         
 
         <div class="govuk-date-input__item">
