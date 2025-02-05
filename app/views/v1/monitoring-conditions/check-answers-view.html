@@ -69,7 +69,7 @@
         
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the type of the order?
+              What is the order type?
             </dt>
             <dd class="govuk-summary-list__value">
              Civil
@@ -84,7 +84,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the description of the order?
+              What is the order type description?
             </dt>
             <dd class="govuk-summary-list__value">
              Not able to provide this information
@@ -99,7 +99,7 @@
           </div>
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What are the conditions of the order?
+              What are the order type conditions?
             </dt>
             <dd class="govuk-summary-list__value">
               Bail order
@@ -115,7 +115,7 @@
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the start date for monitoring?
+              What is the date for the first day of all monitoring?
             </dt>
             <dd class="govuk-summary-list__value">
               23 December 2024
@@ -145,7 +145,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             What is the end date of monitoring ?
+             What is the date when all monitoring ends?
             </dt>
             <dd class="govuk-summary-list__value">
               23 December 2025
@@ -179,7 +179,7 @@
           
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What monitoring is required?
+              What monitoring does the device wearer need?
             </dt>
             <dd class="govuk-summary-list__value">
               Curfew with electronic monitoring<br>
@@ -845,7 +845,7 @@
           </div>
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Which type of alcohol monitoring is needed?
+              What alcohol monitoring does the device wearer need?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['type-alcohol'] }}
@@ -856,7 +856,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-               Where will alcohol base station monitoring equipment be installed?
+               What is the address of the base station? 
             </dt>
             <dd class="govuk-summary-list__value">
               {% if (data['alcoholaddress'] == "Contact") %}
@@ -922,7 +922,7 @@
         }) }}
 
           {{ govukButton({
-          text: "Save and return to main form menu",
+          text: "Save as draft",
           href: "../submitted-form?section-4-complete=true",
           classes: "govuk-button--secondary"
         }) }}

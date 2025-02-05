@@ -28,7 +28,7 @@
             name: "map",
             isPageHeading: true,
             label: {
-              text: "Upload your map showing the inclusion or exclusion zone",
+              text: "Upload your map showing the inclusion zone",
               classes: 'govuk-label--l'
             },
             hint: {
@@ -44,7 +44,7 @@
         }) }}
 
         {{ govukButton({
-          text: "Save and return to main form menu",
+          text: "Save as draft",
            href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
         }) }}

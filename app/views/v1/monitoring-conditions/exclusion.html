@@ -16,7 +16,7 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
-        Exclusion and inclusion monitoring dates
+        Exclusion monitoring dates
       </h1>
 
 
@@ -33,7 +33,7 @@
 
              <div class="govuk-form-group">
               <label class="govuk-label  govuk-label--s" for="date">
-               What date does exclusion and inclusion monitoring start?
+               What date does exclusion monitoring start?
               </label>
 
               <div id="date-hint" class="govuk-hint">
@@ -52,9 +52,9 @@
               <label class="govuk-label  govuk-label--s" for="date">
               
                {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}
-               What date does exclusion and inclusion monitoring end? (optional)
+               What date does exclusion monitoring end? (optional)
                {% else %}
-               What date does exclusion and inclusion monitoring end? 
+               What date does exclusion monitoring end? 
                {% endif %}
               </label>
 
@@ -158,7 +158,7 @@
         }) }}
 
         {{ govukButton({
-          text: "Save and return to main form menu",
+          text: "Save as draft",
            href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
         }) }}

@@ -42,7 +42,7 @@
     role="status"
   ></div>
   <div class="hods-loading-spinner__content">
-    <h1 class="govuk-heading-m">Submitting the order form ...</h1>
+    <h1 class="govuk-heading-m">Submitting the form ...</h1>
   </div>
 </div>
 </div>
@@ -57,11 +57,11 @@
         <div class="govuk-panel govuk-panel--confirmation">
           <h1 class="govuk-panel__title">
              {% if (data['variation'] == 'true') %}
-             The changes to the order form have been successfully submitted
+             Changes to the form successfully submitted
 
            {% else %} 
 
-           The order form has been successfully submitted
+           Application form successfully submitted
 
            {% endif %} 
           
@@ -77,7 +77,7 @@
          {% if (data['variation'] == 'true') %}
 
          {{ govukButton({
-          text: "View submitted form",
+          text: "View and download completed application form",
           href: 'submitted-form-all',
           classes: "govuk-button--secondary"
         }) }}
@@ -85,7 +85,7 @@
          {% else %} 
 
            {{ govukButton({
-          text: "View submitted form",
+          text: "View and download completed application form",
           href: 'submitted-form-all',
           classes: "govuk-button--secondary"
         }) }}
@@ -95,7 +95,7 @@
 
   <div class="govuk-button-group">
         {{ govukButton({
-          text: "Back to your order forms",
+          text: "Back to start",
           href: "dashboard"
         }) }}
        

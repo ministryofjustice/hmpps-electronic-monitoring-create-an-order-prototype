@@ -164,7 +164,7 @@ router.post('/installation-address', function(request, response) {
     
     if (installaddressquestion == "No"){
         response.redirect("/v1/monitoring-conditions/install-address")   
-    } else if (monitoringtype == "Exclusion and inclusion zone monitoring"){
+    } else if (monitoringtype == "Exclusion zone monitoring"){
         response.redirect("/v1/monitoring-conditions/exclusion")   
     } else if (monitoringtype == "Trail monitoring"){
         response.redirect("/v1/monitoring-conditions/trail") 
@@ -185,7 +185,7 @@ router.post('/installation-address2', function(request, response) {
     
     if (installaddressquestion == "No"){
         response.redirect("/v1/monitoring-conditions/install-address")   
-    } else if (monitoringtype2 == "Exclusion and inclusion zone monitoring"){
+    } else if (monitoringtype2 == "Exclusion zone monitoring"){
         response.redirect("/v1/monitoring-conditions/exclusion")   
     } else if (monitoringtype2 == "Trail monitoring"){
         response.redirect("/v1/monitoring-conditions/trail") 
@@ -232,7 +232,7 @@ router.post('/monitoring-type', function(request, response) {
     
     if (monitoringtype == "Curfew"){
         response.redirect("/v1/monitoring-conditions/curfew")   
-    } else if (monitoringtype == "Exclusion and inclusion zone monitoring"){
+    } else if (monitoringtype == "Exclusion zone monitoring"){
         response.redirect("/v1/monitoring-conditions/exclusion")   
     } else if (monitoringtype == "Trail monitoring"){
         response.redirect("/v1/monitoring-conditions/trail") 
@@ -251,7 +251,7 @@ router.post('/monitoring-type2', function(request, response) {
     
     if (monitoringtype2 == "Curfew"){
         response.redirect("/v1/monitoring-conditions/curfew")   
-    } else if (monitoringtype2 == "Exclusion and inclusion zone monitoring"){
+    } else if (monitoringtype2 == "Exclusion zone monitoring"){
         response.redirect("/v1/monitoring-conditions/exclusion")   
     } else if (monitoringtype2 == "Trail monitoring"){
         response.redirect("/v1/monitoring-conditions/trail")   

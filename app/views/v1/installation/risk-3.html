@@ -36,10 +36,10 @@
             spellcheck: false,
             value: data['risk-needs'],
             hint: {
-              text: "Include details about the device wearer's behaviour and if there are risks at the installation property they should know about."
+              text: "Provide additional risk information about the device wearer's behaviour or the installation address."
             },
             label: {
-              text: "What else should the installer know?"
+              text: "What other risks should the installer be aware of?"
             }
           }) }}
           {% endset -%}
@@ -50,7 +50,7 @@
             name: "risk-question",
             fieldset: {
               legend: {
-                text: " Is there anything else the installer should know that will help lower risk of violence or threatening behaviour?",
+                text: " Are there other risks to be aware of?",
                 classes: "govuk-fieldset__legend--s"
               }
             },
@@ -91,7 +91,7 @@
         }) }}
 
         {{ govukButton({
-          text: "Save and return to main form menu",
+          text: "Save as draft",
           href: '../new-form',
           classes: "govuk-button--secondary"
         }) }}

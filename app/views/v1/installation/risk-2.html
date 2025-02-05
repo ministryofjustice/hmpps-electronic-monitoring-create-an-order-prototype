@@ -17,6 +17,8 @@
        Risk at installation
       </h1>
 
+      <p>Risks relate to the device wearer's behaviour and installation address. </p>
+
       <form class="form" action="/risk" method="post">
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -25,7 +27,7 @@
             name: "risk",
             fieldset: {
               legend: {
-                text: "What risks should the installer be aware of?",
+                text: "At installation what are the possible risks?",
                 isPageHeading: false,
                 classes: "govuk-fieldset__legend--s"
               }
@@ -35,24 +37,30 @@
             },
             items: [
               {
-                value: "Threats of violence",
-                checked: (true if data['risk'] == 'Threats of violence'),
-                text: "Threats of violence"
+                value: "Violent behaviour or threats of violence",
+                checked: (true if data['risk'] == 'Violent behaviour or threats of violence'),
+                text: "Violent behaviour or threats of violence"
               },
               {
-                value: "Sexual offences",
-                checked: (true if data['risk'] == 'Sexual offences'),
-                text: "Sexual offences"
+                value: "Sex offender",
+                checked: (true if data['risk'] == 'Sex offender'),
+                text: "Sex offender"
               },
               {
-                value: "Risk to specific gender",
-                checked: (true if data['risk'] == 'Risk to specific gender'),
-                text: "Risk to specific gender"
+                value: "Offensive towards someone because of their sex or gender",
+                checked: (true if data['risk'] == 'Offensive towards someone because of their sex or gender'),
+                text: "Offensive towards someone because of their sex or gender"
               },
               {
-                value: "Racial abuse or threats",
-                checked: (true if data['risk'] == 'Racial abuse or threats'),
-                text: "Racial abuse or threats"
+                value: "Offensive towards someone because of their race, nationality, ethnicity or national origin",
+                checked: (true if data['risk'] == 'Offensive towards someone because of their race, nationality, ethnicity or national origin'),
+                text: "Offensive towards someone because of their race, nationality, ethnicity or national origin"
+              },
+
+              {
+                value: "Offensive towards someone because of their sexual orientation",
+                checked: (true if data['risk'] == 'Offensive towards someone because of their sexual orientation'),
+                text: "Offensive towards someone because of their sexual orientation"
               },
               {
                 value: "History of substance abuse",
@@ -64,11 +72,7 @@
                 checked: (true if data['risk'] == 'Diversity concerns (mental health issues, learning difficulties etc)'),
                 text: "Diversity concerns (mental health issues, learning difficulties etc)"
               },
-              {
-                value: "Dangerous dogs/pets at premises",
-                checked: (true if data['risk'] == 'Dangerous dogs/pets at premises'),
-                text: "Dangerous dogs/pets at premises"
-              },
+              
               {
                 value: "Managed through IOM",
                 checked: (true if data['risk'] == 'Managed through IOM'),
@@ -80,31 +84,22 @@
                 text: "Safeguarding issues"
               },
               {
-                value: "Other occupants who pose a risk to staff",
-                checked: (true if data['risk'] == 'Other occupants who pose a risk to staff'),
-                text: "Other occupants who pose a risk to staff"
+                value: "Another person or people living at the property who are threatening or violent",
+                checked: (true if data['risk'] == 'Another person or people living at the property who are threatening or violent'),
+                text: "Another person or people living at the property who are threatening or violent"
+              },
+              {
+                value: "Children under the age of 18 are living at the property",
+                checked: (true if data['risk'] == 'Children under the age of 18 are living at the property'),
+                text: "Children under the age of 18 are living at the property"
+              },
+              {
+                value: "Animals at the property, for example dogs",
+                checked: (true if data['risk'] == 'Animals at the property, for example dogs'),
+                text: "Animals at the property, for example dogs"
               },
               
-              {
-                value: "Homophobic views",
-                checked: (true if data['risk'] == 'Homophobic views'),
-                text: "Homophobic views"
-              },
-              {
-                value: "Offence risks",
-                checked: (true if data['risk'] == 'Offence risks'),
-                text: "Offence risks"
-              },
-              {
-                value: "Postcode risk",
-                checked: (true if data['risk'] == 'Postcode risk'),
-                text: "Postcode risk"
-              },
-              {
-                value: "Under 18 living at the property",
-                checked: (true if data['risk'] == 'Under 18 living at the property'),
-                text: "Under 18 living at the property"
-              },
+              
               {
                 value: "Other known risks",
                 checked: (true if data['risk'] == 'Other known risks'),
@@ -134,7 +129,7 @@
         }) }}
 
         {{ govukButton({
-          text: "Save and return to main form menu",
+          text: "Save as draft",
           href: '../new-form',
           classes: "govuk-button--secondary"
         }) }}

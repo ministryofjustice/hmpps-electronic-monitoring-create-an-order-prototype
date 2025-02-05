@@ -17,10 +17,10 @@
 
         <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
-        Map of exclusion or inclusion zone
+        Map of exclusion zone
       </h1>
 
-        <p>A map helps us understand the exclusion or inclusion zone better. Use the <a href="https://mapmaker.field-dynamics.co.uk/moj/map/default" target="blank">'map tool (opens in a new tab)'</a> to create a map showing the zone or make your own.</p>
+        <p>A map helps us understand the exclusion zone better. Use the <a href="https://mapmaker.field-dynamics.co.uk/moj/map/default" target="blank">'map tool (opens in a new tab)'</a> to create a map showing the zone or make your own.</p>
    
          
     
@@ -29,7 +29,7 @@
             name: "exclusionquestion",
             fieldset: {
               legend: {
-                text: "Do you have a map to upload to show us where the exclusion or inclusion zone is?",
+                text: "Do you have a map to upload to show us where the exclusion zone is?",
                 isPageHeading: false,
                 classes: "govuk-fieldset__legend--s"
               }
@@ -71,7 +71,7 @@
         }) }}
 
         {{ govukButton({
-          text: "Save and return to main form menu",
+          text: "Save as draft",
            href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
         }) }}

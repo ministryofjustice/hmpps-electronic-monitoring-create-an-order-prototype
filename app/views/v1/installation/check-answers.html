@@ -115,7 +115,7 @@
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             What risks should the installer be aware of?
+             At installation what are the possible risks?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['risk'] or 'There are no risks that apply to the device wearer' }}
@@ -131,7 +131,7 @@
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-               Is there anything else the installer should know that will help lower risk of violence or threatening behaviour?
+               Are there other risks to be aware of?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['risk-question'] or 'No' }}
@@ -210,7 +210,7 @@
         }) }}
 
         {{ govukButton({
-          text: "Save and return to main form menu",
+          text: "Save as draft",
           classes: "govuk-button--secondary",
           href: "../new-form?section-3-complete=true"
         }) }}

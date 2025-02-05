@@ -16,37 +16,34 @@
         <div class="govuk-panel govuk-panel--confirmation" style="background-color: #d4351c;">
           <h1 class="govuk-panel__title">
            
-            The order form failed to submit
+            Failed to submit application
 
           </h1>
 
         </div>
 
 
-        <h2 class="govuk-heading-s">What you need to do</h2>
+        <h2 class="govuk-heading-s">You need to apply a different way</h2>
 
-        <p>You need to create a new email as follows:</p>
+        <p>Your application form and attachments failed to submit due to a technical problem.</p>
 
-        <ul class="govuk-list govuk-list--bullet">
-          <li>Download and attach the order form  </li>
-          <li>Attach documents such as the licence or photo ID if required </li>
-          <li>In the body of the email explain why you are emailing the form. For example, the form failed to submit when you used the online form</li>
-          <li>Include your team contact details and team email address so we can contact you if there are any problems </li>
-        </ul>
 
-        <p>You need to send the email to:</p>
+
+        <p>Download and submit your application form by email to:</p>
 
         <ul class="govuk-list govuk-list--bullet">
           <li><a href="mailto:hoieorders@ems.co.uk">hoieorders@ems.co.uk</a> if you work at the Home Office </li>
           <li><a href="mailto:EMNotifications@ems.co.uk">EMNotifications@ems.co.uk</a> if you work in any other service or department</li>
         </ul>
+
+        <p>If required, send a copy of the licence and photo identification with your application form.</p>
       
     
         <img src="/public/images/form_download.svg" alt="PDF download icon">
 
 
            {{ govukButton({
-          text: "View and download order form",
+          text: "View and download completed application form",
           href: '#',
           classes: "govuk-button--secondary"
         }) }}
@@ -56,7 +53,7 @@
 
   <div class="govuk-button-group">
         {{ govukButton({
-          text: "Back to your order forms",
+          text: "Back to start",
           href: "dashboard"
         }) }}
        

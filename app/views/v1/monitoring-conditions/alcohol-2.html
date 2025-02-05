@@ -26,7 +26,7 @@
             name: "type-alcohol",
             fieldset: {
               legend: {
-                text: "Which type of alcohol monitoring is needed?",
+                text: "What alcohol monitoring does the device wearer need?",
                 classes: "govuk-fieldset__legend--s"
               }
             },
@@ -38,7 +38,7 @@
                 value: "Alcohol level",
                 text: "Alcohol level",
                 hint: {
-                  text: "Requires the device wearer to limit their alcohol use."
+                  text: "Monitoring levels of alcohol consumed"
                 },
                 checked: (true if data['type-alcohol'] == 'Alcohol level'),
                 conditional: {
@@ -49,7 +49,7 @@
                 value: "Alcohol abstinence",
                 text: "Alcohol abstinence",
                 hint: {
-                  text: "Requires the device wearer to totally abstain from alcohol."
+                  text: "Monitoring that alcohol is not consumed"
                 },
                 checked: (true if data['type-alcohol'] == 'Alcohol abstinence'),
                 conditional: {
@@ -63,10 +63,10 @@
           <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
           <legend class="govuk-label govuk-label--s">
-             Where will alcohol base station monitoring equipment be installed?
+             What is the address of the base station? 
           </legend>
           <div id="address-hint" class="govuk-hint">
-           Select one option
+           The device wearer must attend the base station address at a certain time every day to send over data.
           </div>
           <div class="govuk-radios" data-module="govuk-radios">
             {% if (data['installaddressquestion'] == "Yes") %}
@@ -121,7 +121,7 @@
         }) }}
 
         {{ govukButton({
-          text: "Save and return to main form menu",
+          text: "Save as draft",
            href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
         }) }}

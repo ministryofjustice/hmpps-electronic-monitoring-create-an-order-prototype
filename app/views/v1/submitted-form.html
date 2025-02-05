@@ -221,7 +221,7 @@
           <img src="/public/images/form_download.svg" alt="PDF download icon">
 
            {{ govukButton({
-          text: ("View submitted form" if data['variation'] == 'true' else "View submitted form"),
+          text: ("View and download completed application form" if data['variation'] == 'true' else "View and download completed application form"),
           href: 'submitted-form-all',
           classes: "govuk-button--secondary"
         }) }}

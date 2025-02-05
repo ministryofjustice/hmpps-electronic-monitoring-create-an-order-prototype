@@ -42,7 +42,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the order description?
+              What is the order type description?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['order-description'] or "Not able to provide this information" }}
@@ -53,7 +53,7 @@
           </div>
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What are the order conditions?
+              What are the order type conditions?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['order-conditions'] or 'Requirement of a community order' }}
@@ -65,7 +65,7 @@
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the start date for monitoring?
+              What is the date for the first day of all monitoring?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['monitoring-date-start'] or "12/01/2025" }} 
@@ -87,7 +87,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the end date of monitoring? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What is the date when all monitoring ends? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['monitoring-date-end'] or "12/01/2026" }} 
@@ -112,7 +112,7 @@
          
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What monitoring is required?
+              What monitoring does the device wearer need?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['monitoringtype'] or 'Trail monitoring' }}<br>
@@ -347,9 +347,9 @@
       
 {% endif %}
 
- {% if (data['monitoringtype'] == "Exclusion and inclusion zone monitoring" or data['monitoringtype2'] == "Exclusion and inclusion zone monitoring") %}
+ {% if (data['monitoringtype'] == "Exclusion zone monitoring" or data['monitoringtype2'] == "Exclusion zone monitoring") %}
 
- <h2 class="govuk-heading-m">Exclusion and inclusion zone monitoring</h2>
+ <h2 class="govuk-heading-m">Exclusion zone monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
            <div class="govuk-summary-list__row">
@@ -376,7 +376,7 @@
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What date does exclusion and inclusion monitoring start?
+              What date does exclusion monitoring start?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['exclusionstart-date'] }} 
@@ -387,7 +387,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What date does exclusion and inclusion monitoring end? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What date does exclusion monitoring end? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['exclusionend-date'] }} 
@@ -396,7 +396,7 @@
               <a class="govuk-link" href="exclusion?cya4=true">Change<span class="govuk-visually-hidden"> What is the end date for exclusion and inclusion monitoring? </span></a>
             </dd>
           </div>
-          <div class="govuk-summary-list__row">
+        <!--  <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Is the monitoring for an exclusion or inclusion zone?
             </dt>
@@ -406,10 +406,10 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="exclusion-2?cya4=true">Change<span class="govuk-visually-hidden"> Is the monitoring for an exclusion or inclusion zone?</span></a>
             </dd>
-          </div>
+          </div>-->
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What name would you give to the exclusion or inclusion zone?
+              What name would you give to the exclusion zone?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['exclusion-name'] }} 
@@ -420,7 +420,7 @@
           </div>
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Where is the exclusion or inclusion zone?
+              Where is the exclusion zone?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['exclusion-description'] }} 
@@ -431,7 +431,7 @@
           </div>
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              When must the exclusion or inclusion zone be followed?
+              When must the exclusion zone be followed?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['exclusion-dates'] }} 
@@ -442,7 +442,7 @@
           </div>
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Do you have a map to upload to show us where the exclusion or inclusion zone is?
+              Do you have a map to upload to show us where the exclusion zone is?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['exclusionquestion'] }} 
@@ -456,7 +456,7 @@
 
          <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Map of the exclusion or inclusion zone
+              Map of the exclusion zone
             </dt>
             <dd class="govuk-summary-list__value">
              <a href="#">{{ data['map'] }}</a>
@@ -720,7 +720,7 @@
           </div>
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Which type of alcohol monitoring is needed?
+              What alcohol monitoring does the device wearer need?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['type-alcohol'] }}
@@ -731,7 +731,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-               Where will alcohol base station monitoring equipment be installed?
+               What is the address of the base station? 
             </dt>
             <dd class="govuk-summary-list__value">
               {% if (data['alcoholaddress'] == "Contact") %}
@@ -779,7 +779,7 @@
         }) }}
 
         {{ govukButton({
-          text: "Save and return to main form menu",
+          text: "Save as draft",
           classes: "govuk-button--secondary"
         }) }}
 

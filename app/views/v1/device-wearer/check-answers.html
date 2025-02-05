@@ -318,10 +318,9 @@
             </dd>
           </div>
 
-           {% if (data['relationship'] == "Other") %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Relationship to the device wearer
+              Describe their relationship to device wearer
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['relationship-other'] }}
@@ -330,7 +329,7 @@
               <a class="govuk-link" href="responsible-adult?cya1=true">Change<span class="govuk-visually-hidden"> Relationship to the device wearer</span></a>
             </dd>
           </div>
-          {% endif %}
+  
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -374,7 +373,7 @@
         }) }}
 
         {{ govukButton({
-          text: "Save and return to main form menu",
+          text: "Save as draft",
           classes: "govuk-button--secondary",
           href: "../new-form?section-1-complete=true"
         }) }}

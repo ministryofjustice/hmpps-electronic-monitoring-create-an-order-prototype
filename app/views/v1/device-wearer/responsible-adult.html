@@ -64,18 +64,7 @@
 
 
 
-         {% set relationshipHtml %}
-          {{ govukInput({
-            id: "relationship-other",
-            name: "relationship-other",
-            spellcheck: false,
-            value: data['relationship-other'],
-            classes: "govuk-input--width-20",
-            label: {
-              text: "Describe their relationship to device wearer"
-            }
-          }) }}
-          {% endset -%}
+       
 
          
 
@@ -100,21 +89,23 @@
                 value: "Guardian",
                 checked: (true if data['relationship'] == 'Guardian'),
                 text: "Guardian"
-              },
-              {
-                value: "Social worker",
-                checked: (true if data['relationship'] == 'Social worker'),
-                text: "Social worker"
-              },
-              {
-                value: "Other",
-                checked: (true if data['relationship'] == 'Other'),
-                text: "Other",
-                conditional: {
-                  html: relationshipHtml
-                }
               }
             ]
+          }) }}
+
+          {{ govukInput({
+            id: "relationship-other",
+            name: "relationship-other",
+            spellcheck: false,
+            value: data['relationship-other'],
+            classes: "govuk-input--width-20",
+            label: {
+              text: "Describe their relationship to device wearer",
+              classes: "govuk-label--s"
+            },
+            hint: {
+                text: "For example Dad or Social worker"
+              }
           }) }}
 
 
@@ -128,7 +119,7 @@
         }) }}
 
         {{ govukButton({
-          text: "Save and return to main form menu",
+          text: "Save as draft",
           href: '../new-form',
           classes: "govuk-button--secondary"
         }) }}
