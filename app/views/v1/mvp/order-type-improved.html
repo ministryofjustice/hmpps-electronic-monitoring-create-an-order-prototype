@@ -18,21 +18,8 @@
         <span class="govuk-caption-l">Electronic monitoring required</span>
         Order information
       </h1>
-
-        {% if (data['cya4'] == "true") %}
-
-        <form class="form" action="check-answers" method="post">
-
-        {% else %}
-
        
-      <form class="form" action="monitoring-dates" method="post">
-
-        {% endif %}
-
-
-
-
+      <form class="form" action="order-sentence" method="post">
 
 
             {{ govukRadios({
@@ -86,7 +73,7 @@
               name: "order-description",
               fieldset: {
                 legend: {
-                  text: "Is the device wearer part of any pilots?",
+                  text: "Is the device wearer part of any of these pilots?",
                   isPageHeading: false,
                   classes: "govuk-fieldset__legend--s"
                 }
@@ -176,7 +163,7 @@
 
         {{ govukButton({
           text: "Save as draft",
-          href: '../new-form',
+          href: '#',
           classes: "govuk-button--secondary"
         }) }}
 

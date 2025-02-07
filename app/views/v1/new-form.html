@@ -13,7 +13,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">Electronic Monitoring Order form</h1>
+      <h1 class="govuk-heading-l">Electronic Monitoring application form</h1>
 
       <form class="form" action="submit-confirmation?variation=false" method="post">
 
@@ -41,35 +41,35 @@
             title: {
               text: "About the Notifying and Responsible Organisations"
             },
-            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/org-details"),
+            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/org-details?cya2=false"),
             status: (completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
           },
           {
             title: {
               text: "About the device wearer"
             },
-            href: ("device-wearer/check-answers" if data['section-1-complete'] == 'true' else "device-wearer/identity-numbers"),
+            href: ("device-wearer/check-answers" if data['section-1-complete'] == 'true' else "device-wearer/identity-numbers?cya1=false"),
             status: (completedStatus if data['section-1-complete'] == 'true' else incompleteStatus)
           },
           {
             title: {
               text: "Electronic monitoring required"
             },
-            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "monitoring-conditions/order-information"),
+            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "monitoring-conditions/order-information?cya4=false"),
             status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
           },
           {
             title: {
               text: "Access needs and installation risk information"
             },
-            href: ("installation/check-answers" if data['section-3-complete'] == 'true' else "installation/disability"),
+            href: ("installation/check-answers" if data['section-3-complete'] == 'true' else "installation/disability?cya3=false"),
             status: (completedStatus if data['section-3-complete'] == 'true' else incompleteStatus)
           },
           {
             title: {
               text: "Additional documents"
             },
-            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/licence-question"),
+            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/licence-question?cya5=false"),
             status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
           }
 

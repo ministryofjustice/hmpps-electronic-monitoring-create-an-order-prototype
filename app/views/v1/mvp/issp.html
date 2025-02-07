@@ -1,0 +1,81 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        Is the device wearer on the Intensive Supervision and Surveillance Programme (ISSP)?
+      </h1>
+
+        {% if (data['cya4'] == "true") %}
+
+        <form class="form" action="#" method="post">
+
+        {% else %}
+
+       
+      <form class="form" action="#" method="post">
+
+        {% endif %}
+
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  name: "issp",
+  fieldset: {
+    legend: {
+      text: "Is the device wearer on the Intensive Supervision and Surveillance Programme (ISSP)?",
+      isPageHeading: false,
+      classes: "govuk-visually-hidden"
+    }
+  },
+  hint: {
+    text: "This program is only applicable to young offenders between 10-17 years old."
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: (true if data['issp'] == 'Yes')
+    },
+    {
+      value: "No",
+      text: "No",
+      checked: (true if data['issp'] == 'No')
+    }
+  ]
+}) }}
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '#',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

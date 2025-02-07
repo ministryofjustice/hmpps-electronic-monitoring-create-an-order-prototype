@@ -24,11 +24,23 @@
         </p>
       {% endset %}
 
+       {% set htmlfail %}
+        <p class="govuk-notification-banner__heading">
+         This form failed to submit on 14 December 2024. This was due to a technical problem. For more information <a href="https://ministryofjustice.github.io/hmpps-electronic-monitoring-create-an-order-docs/problems-submitting-forms.html#problems-submitting-forms">View the guidance (opens in a new tab)</a>.
+        </p>
+      {% endset %}
+
 
           {% if (data['view-variation'] == 'cancelled') %}
 
            {{ govukNotificationBanner({
               html: htmlcancelled
+            }) }}
+
+              {% elseif (data['view-variation'] == 'fail') %}
+
+           {{ govukNotificationBanner({
+              html: htmlfail
             }) }}
 
           {% elseif (data['view'] == 'true') %}
@@ -84,10 +96,10 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the order type description?
+              Is the device wearer part of any pilots?
             </dt>
             <dd class="govuk-summary-list__value">
-             Not able to provide this information
+             They are not part of any of these pilots
             </dd>
             <dd class="govuk-summary-list__actions">
               {% if (data['view'] == 'true') %}

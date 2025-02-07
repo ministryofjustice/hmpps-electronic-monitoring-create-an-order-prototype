@@ -74,12 +74,12 @@
 
                    {% endif %}     
 
-                   {% if (data['monitoringtype'] == "Exclusion and inclusion zone monitoring") %}
+                   {% if (data['monitoringtype'] == "Exclusion zone monitoring") %}
                   {{ data['exclusion-name'] or 'Partners house' }}   <br>
                   From {{ data['exclusionstart-date'] or '12/12/2024' }} to {{ data['exclusionend-date'] or '12/12/2025' }}
                    {% endif %} 
 
-                   {% if (data['monitoringtype'] == "Curfew with electronic monitoring") %}
+                   {% if (data['monitoringtype'] == "Curfew") %}
                    From {{ data['curfewstart-date'] or '12/12/2024' }} to {{ data['curfewend-date'] or '12/06/2025' }}
                    {% endif %} 
 
@@ -119,12 +119,12 @@
 
                    {% endif %}     
 
-                   {% if (data['monitoringtype2'] == "Exclusion and inclusion zone monitoring") %}
+                   {% if (data['monitoringtype2'] == "Exclusion zone monitoring") %}
                   {{ data['exclusion-name'] or 'Partners house' }}   <br>
                   From {{ data['exclusionstart-date'] or '12/12/2024' }} to {{ data['exclusionend-date'] or '12/12/2025' }}
                    {% endif %} 
 
-                   {% if (data['monitoringtype2'] == "Curfew with electronic monitoring") %}
+                   {% if (data['monitoringtype2'] == "Curfew") %}
                    From {{ data['curfewstart-date'] or '12/12/2024' }} to {{ data['curfewend-date'] or '12/06/2025' }}
                    {% endif %} 
 

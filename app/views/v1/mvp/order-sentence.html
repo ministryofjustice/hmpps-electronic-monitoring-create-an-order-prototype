@@ -1,0 +1,156 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        Sentence type
+      </h1>
+
+        {% if (data['cya4'] == "true") %}
+
+        <form class="form" action="issp" method="post">
+
+        {% else %}
+
+       
+      <form class="form" action="issp" method="post">
+
+        {% endif %}
+
+
+
+{% if (data['order-type'] == "Post release") %}
+ 
+
+            {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-sentence",
+              fieldset: {
+                legend: {
+                  text: "What type of sentence has the device wearer been given?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  value: "Home Detention Curfew (HDC)",
+                  checked: (true if data['order-sentence'] == 'Home Detention Curfew (HDC)'),
+                  text: "Home Detention Curfew (HDC)"
+                },
+                {
+                  value: "Detention & Training Order",
+                  checked: (true if data['order-sentence'] == 'Detention & Training Order'),
+                  text: "Detention & Training Order"
+                },
+                {
+                  value: "Standard Determinate Sentence",
+                  checked: (true if data['order-sentence'] == 'Standard Determinate Sentence'),
+                  text: "Standard Determinate Sentence"
+                },
+                {
+                  value: "Life Sentence",
+                  checked: (true if data['order-sentence'] == 'Life Sentence'),
+                  text: "Life Sentence"
+                },
+                {
+                  value: "Extended Determinate Sentence",
+                  checked: (true if data['order-sentence'] == 'Extended Determinate Sentence'),
+                  text: "Extended Determinate Sentence"
+                },
+                {
+                  value: "Section 236A Special Custodial Sentences for Offenders of Particular Concern (SOPC)",
+                  checked: (true if data['order-sentence'] == 'Section 236A Special Custodial Sentences for Offenders of Particular Concern (SOPC)'),
+                  text: "Section 236A Special Custodial Sentences for Offenders of Particular Concern (SOPC)"
+                },
+                {
+                  value: "Section 227/228 Extended Sentence for Public Protection (EPP)",
+                  checked: (true if data['order-sentence'] == 'Section 227/228 Extended Sentence for Public Protection (EPP)'),
+                  text: "Section 227/228 Extended Sentence for Public Protection (EPP)"
+                },
+                {
+                  value: "Section 85 Extended Sentences",
+                  checked: (true if data['order-sentence'] == 'Section 85 Extended Sentences'),
+                  text: "Section 85 Extended Sentences"
+                },
+                {
+                  value: "Electronic Monitoring as a Licence Variation",
+                  checked: (true if data['order-sentence'] == 'Electronic Monitoring as a Licence Variation'),
+                  text: "Electronic Monitoring as a Licence Variation"
+                },
+                {
+                  divider: "or"
+                },
+                {
+                  value: "They have been given a different sentence",
+                  checked: (true if data['order-sentence'] == 'They have been given a different sentence'),
+                  text: "They have been given a different sentence"
+                }
+              ]
+            }) }}
+
+
+ {% else %}
+
+
+            {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-sentence",
+              fieldset: {
+                legend: {
+                  text: "What type of sentence has the device wearer been given?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  value: "Coming soon",
+                  checked: (true if data['order-type'] == 'Coming soon'),
+                  text: "Coming soon"
+                }
+              ]
+            }) }}
+
+
+
+
+
+ {% endif %}
+          
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '#',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

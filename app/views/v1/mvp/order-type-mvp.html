@@ -1,0 +1,621 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Monitoring conditions - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l"></span>
+        Monitoring conditions
+      </h1>
+
+
+      <form class="form" action="#" method="post">
+
+         <h2 class="govuk-heading-m">When should the monitoring take place</h2>
+
+       <fieldset class="govuk-fieldset">
+  
+
+
+
+    
+
+
+  <div id="startDate-form" class="govuk-form-group">
+
+    
+
+      <div class="form-date govuk-form-group">
+        
+
+
+
+
+  
+<div class="govuk-form-group">
+
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="startDate-hint">
+    
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+    
+      Enter the date for when monitoring starts
+    
+    </legend>
+    
+  
+    <div id="startDate-hint" class="govuk-hint">
+      For example, 21 05 2032
+    </div>
+  
+  
+    <div class="govuk-date-input" id="startDate">
+      
+      
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="startDate-day">
+            Day
+          </label>
+        
+        
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="startDate-day" name="startDate[day]" type="text" value="" inputmode="numeric">
+        
+        </div>
+      </div>
+      
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="startDate-month">
+            Month
+          </label>
+        
+        
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="startDate-month" name="startDate[month]" type="text" value="" inputmode="numeric">
+        
+        </div>
+      </div>
+      
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="startDate-year">
+            Year
+          </label>
+        
+        
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="startDate-year" name="startDate[year]" type="text" value="" inputmode="numeric">
+        
+        </div>
+      </div>
+      
+      
+    </div>
+  
+  </fieldset>
+
+</div>
+
+      </div>
+
+
+
+      <div class="form-time govuk-form-group ">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Enter the time for when monitoring starts</legend>
+
+          
+            <div class="govuk-hint">
+              For example, 14 : 30
+            </div>
+          
+
+          
+
+         <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+             <label class="govuk-label govuk-date-input__label" for="starttime-hours"><span class="govuk-visually-hidden">End</span> Hour</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="starttime-hours" name="starttime-hours" value="">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <label class="govuk-label govuk-date-input__label">:</label>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+            <label class="govuk-label govuk-date-input__label" for="starttime-minutes"><span class="govuk-visually-hidden">Start</span> Minutes</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="starttime-minutes" name="starttime-minutes" value="">
+          </div>
+        </div>
+      </div>
+
+  </div>
+
+
+    
+
+
+  <div id="endDate-form" class="govuk-form-group">
+
+    
+
+      <div class="form-date govuk-form-group">
+        
+
+
+
+
+  
+<div class="govuk-form-group">
+
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="endDate-hint">
+    
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+    
+      Enter the date for when monitoring ends (optional)
+    
+    </legend>
+    
+  
+    <div id="endDate-hint" class="govuk-hint">
+      For example, 21 05 2032
+    </div>
+  
+  
+    <div class="govuk-date-input" id="endDate">
+      
+      
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="endDate-day">
+            Day
+          </label>
+        
+        
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="endDate-day" name="endDate[day]" type="text" value="" inputmode="numeric">
+        
+        </div>
+      </div>
+      
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="endDate-month">
+            Month
+          </label>
+        
+        
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="endDate-month" name="endDate[month]" type="text" value="" inputmode="numeric">
+        
+        </div>
+      </div>
+      
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="endDate-year">
+            Year
+          </label>
+        
+        
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="endDate-year" name="endDate[year]" type="text" value="" inputmode="numeric">
+        
+        </div>
+      </div>
+      
+      
+    </div>
+  
+  </fieldset>
+
+</div>
+
+      </div>
+
+
+
+      <div class="form-time govuk-form-group ">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Enter the time for when monitoring ends (optional)</legend>
+
+          
+            <div class="govuk-hint">
+              For example, 14 : 30
+            </div>
+          
+
+          
+
+           <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+             <label class="govuk-label govuk-date-input__label" for="starttime-hours"><span class="govuk-visually-hidden">End</span> Hour</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="starttime-hours" name="starttime-hours" value="">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <label class="govuk-label govuk-date-input__label">:</label>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+            <label class="govuk-label govuk-date-input__label" for="starttime-minutes"><span class="govuk-visually-hidden">Start</span> Minutes</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="starttime-minutes" name="starttime-minutes" value="">
+          </div>
+        </div>
+      </div>
+
+  
+
+</fieldset>
+
+<fieldset class="govuk-fieldset">
+  
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+  
+    Order information
+  
+  </legend>
+  
+
+    
+
+
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="orderType">
+    Select order type
+  </label>
+
+
+
+  <select class="govuk-select" id="orderType" name="orderType">
+  
+    
+    <option value="">Select</option>
+    
+  
+    
+    <option value="CIVIL">Civil</option>
+    
+  
+    
+    <option value="COMMUNITY">Community</option>
+    
+  
+    
+    <option value="IMMIGRATION">Immigration</option>
+    
+  
+    
+    <option value="POST_RELEASE">Post Release</option>
+    
+  
+    
+    <option value="PRE_TRIAL">Pre-Trial</option>
+    
+  
+    
+    <option value="SPECIAL">Special</option>
+    
+  
+  </select>
+
+</div>
+
+
+    
+
+
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="orderTypeDescription">
+   Select pilot device wearer is part of
+  </label>
+
+
+
+  <select class="govuk-select" id="orderTypeDescription" name="orderTypeDescription">
+  
+    
+    <option value="">Select</option>
+    
+  
+    
+    <option value="DAPO">DAPO</option>
+    
+  
+    
+    <option value="DAPOL">DAPOL</option>
+    
+  
+    
+    <option value="DAPOL_HDC">DAPOL HDC</option>
+    
+  
+    
+    <option value="GPS_ACQUISITIVE_CRIME_HDC">GPS Acquisitive Crime HDC</option>
+    
+  
+    
+    <option value="GPS_ACQUISITIVE_CRIME_PAROLE">GPS Acquisitive Crime Parole</option>
+
+    <option value="GPS_ACQUISITIVE_CRIME_PAROLE">They are not part of any of these pilots</option>
+    
+  
+  </select>
+
+</div>
+
+
+    
+
+
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="conditionType">
+    Select condition type
+  </label>
+
+
+
+  <select class="govuk-select" id="conditionType" name="conditionType">
+ 
+    <option value="">Select</option>
+    
+    <option value="REQUIREMENT_OF_A_COMMUNITY_ORDER">Requirement of a Community Order</option>
+    
+  
+    
+    <option value="LICENSE_CONDITION_OF_A_CUSTODIAL_ORDER">License Condition of a Custodial Order</option>
+    
+  
+    
+    <option value="POST_SENTENCE_SUPERVISION_REQUIREMENT">Post-Sentence Supervision Requirement following on from an Adult Custody order</option>
+    
+  
+    
+    <option value="BAIL_ORDER">Bail Order</option>
+    
+  
+  </select>
+
+</div>
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="conditionType">
+    Select type of sentence
+  </label>
+
+
+
+  <select class="govuk-select" id="conditionType" name="conditionType">    
+    <option value="">Select</option>  
+    <option value="REQUIREMENT_OF_A_COMMUNITY_ORDER">Home Detention Curfew (HDC)</option>
+    <option value="LICENSE_CONDITION_OF_A_CUSTODIAL_ORDER">Detention & Training Order</option>
+    <option value="POST_SENTENCE_SUPERVISION_REQUIREMENT">Standard Determinate Sentence</option>  
+    <option value="BAIL_ORDER">Life Sentence</option>
+    <option value="BAIL_ORDER">Extended Determinate Sentence</option>
+    <option value="BAIL_ORDER">Section 236A Special Custodial Sentences for Offenders of Particular Concern (SOPC)</option>
+    <option value="BAIL_ORDER">Section 227/228 Extended Sentence for Public Protection (EPP)</option>
+    <option value="BAIL_ORDER">Section 85 Extended Sentences </option>
+    <option value="BAIL_ORDER">Electronic Monitoring as a Licence Variation</option>
+    <option value="BAIL_ORDER">They have been given a different sentence</option>
+  </select>
+
+</div>
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  name: "changedName",
+  fieldset: {
+    legend: {
+      text: "Is the device wearer on the Intensive Supervision and Surveillance Programme (ISSP)?",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: "This program is only applicable to young offenders between 10-17 years old."
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes"
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+
+  
+
+</fieldset>
+
+<fieldset class="govuk-fieldset">
+  
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+  
+    Monitoring required
+  
+  </legend>
+  
+
+    
+
+
+
+
+<div class="govuk-form-group">
+
+  <fieldset class="govuk-fieldset" aria-describedby="monitoringRequired-hint">
+    
+    <legend class="govuk-fieldset__legend">
+    
+      What monitoring does the device wearer need?
+    
+    </legend>
+    
+  
+    <div id="monitoringRequired-hint" class="govuk-hint">
+      Select all that apply.
+    </div>
+  
+  
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes" data-govuk-checkboxes-init="">
+      
+      
+        
+    
+    
+      
+      
+      
+      
+      
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="monitoringRequired" name="monitoringRequired" type="checkbox" value="curfew" aria-describedby="monitoringRequired-item-hint">
+        <label class="govuk-label govuk-checkboxes__label" for="monitoringRequired">
+          Curfew with electronic monitoring
+        </label>
+        
+        <div id="monitoringRequired-item-hint" class="govuk-hint govuk-checkboxes__hint">
+          The device wearer must stay inside an address at specific times during the day and night.
+        </div>
+        
+      </div>
+      
+    
+  
+      
+        
+    
+    
+      
+      
+      
+      
+      
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="monitoringRequired-2" name="monitoringRequired" type="checkbox" value="exclusionZone" aria-describedby="monitoringRequired-2-item-hint">
+        <label class="govuk-label govuk-checkboxes__label" for="monitoringRequired-2">
+          Exclusion and inclusion zone monitoring
+        </label>
+        
+        <div id="monitoringRequired-2-item-hint" class="govuk-hint govuk-checkboxes__hint">
+          The device wearer must not enter identified areas or can only enter identified areas at specified times.
+        </div>
+        
+      </div>
+      
+    
+  
+      
+        
+    
+    
+      
+      
+      
+      
+      
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="monitoringRequired-3" name="monitoringRequired" type="checkbox" value="trail" aria-describedby="monitoringRequired-3-item-hint">
+        <label class="govuk-label govuk-checkboxes__label" for="monitoringRequired-3">
+          Trail monitoring
+        </label>
+        
+        <div id="monitoringRequired-3-item-hint" class="govuk-hint govuk-checkboxes__hint">
+          GPS tracking will record the movements of the device wearer throughout the day. Must be monitored if the device wearer is part of the Acquisitive Crime Project.
+        </div>
+        
+      </div>
+      
+    
+  
+      
+        
+    
+    
+      
+      
+      
+      
+      
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="monitoringRequired-4" name="monitoringRequired" type="checkbox" value="mandatoryAttendance" aria-describedby="monitoringRequired-4-item-hint">
+        <label class="govuk-label govuk-checkboxes__label" for="monitoringRequired-4">
+          Mandatory attendance monitoring
+        </label>
+        
+        <div id="monitoringRequired-4-item-hint" class="govuk-hint govuk-checkboxes__hint">
+          Attendance of the device wearer at appointments is monitored.
+        </div>
+        
+      </div>
+      
+    
+  
+      
+        
+    
+    
+      
+      
+      
+      
+      
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="monitoringRequired-5" name="monitoringRequired" type="checkbox" value="alcohol" aria-describedby="monitoringRequired-5-item-hint">
+        <label class="govuk-label govuk-checkboxes__label" for="monitoringRequired-5">
+          Alcohol monitoring
+        </label>
+        
+        <div id="monitoringRequired-5-item-hint" class="govuk-hint govuk-checkboxes__hint">
+          The device wearer's levels of alcohol or abstinence from alcohol is monitored.
+        </div>
+        
+      </div>
+      
+    
+  
+      
+      
+    </div>
+  
+  </fieldset>
+
+</div>
+
+  
+
+</fieldset>
+     
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save and return back to form section menu",
+          href: '#',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

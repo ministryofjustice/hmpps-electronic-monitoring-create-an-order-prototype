@@ -25,7 +25,7 @@
 
         {% else %}
 
-       <form class="form" action="org-address" method="post">
+       <form class="form" action="region" method="post">
 
         {% endif %}
 
@@ -108,7 +108,7 @@
           value: data['org-email']
         }) }}
 
-          {{ xGovukAutocomplete({
+  <!--        {{ xGovukAutocomplete({
                 id: "region",
                 name: "region",
                 value: data['region'],
@@ -130,15 +130,8 @@
                   { text: "South West" },
                   { text: "Wales" }
                 ]
-              }) }}
+              }) }}-->
         
-
-
-
-
-
-     
-
        
 
     {% from "govuk/components/button/macro.njk" import govukButton %}

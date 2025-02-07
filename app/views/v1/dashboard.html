@@ -71,14 +71,20 @@
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=true&section-5-complete=true&newform=true">David Francis</a></td>
                 <td class="govuk-table__cell">29/12/2024</td>
-                <td class="govuk-table__cell">Draft</td>
+                <td class="govuk-table__cell">
+                  {{govukTag({
+                      text: "Draft"
+                    })}}</td>
               </tr>
-         <!-- <tr class="govuk-table__row">
-                <td class="govuk-table__cell"><a href="submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false">Bobbie Gibb</a></td>
-                <td class="govuk-table__cell">2 January 2025</td>
-                <td class="govuk-table__cell">12453</td>
-                <td class="govuk-table__cell">Variation draft</td>
-              </tr>-->
+         <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=fail&fullname=Bobbie%20Gibb&newform=true">Bobbie Gibb</a></td>
+                <td class="govuk-table__cell">01/02/2025</td>
+                <td class="govuk-table__cell">
+                {{govukTag({
+                  text: "Failed to submit",
+                  classes: "govuk-tag--red"
+                })}}</td>
+              </tr>
             </tbody>
           </table>
 
@@ -129,7 +135,7 @@
 
       <p>Search by the full first and last name - and how it appears in the service, for example Tom Smith-Johnson. </p>
 
-      <p>Check the personal identity number is in the correct form. For example, their NOMIS, Delius ID, PNC number or Compliance and Enforcement Person Reference (CEPR).</p>
+      <p>Check the personal identity number is in the correct format. For example, their NOMIS, Delius ID, PNC number or Compliance and Enforcement Person Reference (CEPR).</p>
 
       <div class="govuk-warning-text">
           <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -183,7 +189,11 @@
                       <td class="govuk-table__cell">18/12/2024</td>
                       <td class="govuk-table__cell">18/12/2025</td>
                       <td class="govuk-table__cell">14/12/2024</td>
-                      <td class="govuk-table__cell">Submitted</td>
+                      <td class="govuk-table__cell">
+                      {{govukTag({
+                        text: "Submitted",
+                        classes: "govuk-tag--green"
+                      })}}</td>
                     </tr>
                      <tr class="govuk-table__row">
                       <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=true&view-variation=false&fullname=David Murphy&newform=true">David Murphy</a></td>
@@ -192,7 +202,11 @@
                       <td class="govuk-table__cell">01/09/2024</td>
                       <td class="govuk-table__cell">01/09/2025</td>
                       <td class="govuk-table__cell">15/01/2025</td>
-                      <td class="govuk-table__cell">Submitted</td>
+                      <td class="govuk-table__cell">
+                      {{govukTag({
+                        text: "Submitted",
+                        classes: "govuk-tag--green"
+                      })}}</td>
                     </tr>
                      <tr class="govuk-table__row">
                       <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=cancelled&fullname=David Murphy&newform=true">David Murphy</a></td>
@@ -201,7 +215,11 @@
                       <td class="govuk-table__cell">01/12/2021</td>
                       <td class="govuk-table__cell">18/07/2022</td>
                       <td class="govuk-table__cell">02/03/2022</td>
-                      <td class="govuk-table__cell">Ended early</td>
+                      <td class="govuk-table__cell">
+                       {{govukTag({
+                        text: "Ended early",
+                        classes: "govuk-tag--grey"
+                      })}}</td>
                     </tr>
                    
                     
