@@ -145,7 +145,7 @@
                 
             </dd>
           </div>
-
+ {% if (data['officer-org'] == "Probation" or data['officer-org'] == "Youth Justice Service (YJS)" or data['officer-org'] == "Youth Custody Service (YCS)")  %}
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
          What is the Responsible Organisation's region?
@@ -160,6 +160,8 @@
                 
             </dd>
           </div>
+
+    {% endif %}       
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">

@@ -31,7 +31,7 @@
 
 
 
-
+  {% if (data['org-contact'] == "Probation") %}
        
 
           {{ govukRadios({
@@ -119,6 +119,100 @@
             ]
           }) }}
 
+  {% else %}
+
+   {{ govukRadios({
+            name: "region",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's region?",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select one option"
+            },
+            items: [
+              {
+                value: "East Midlands",
+                checked: (true if data['region'] == 'East Midlands'),
+                text: "East Midlands"
+                
+              },
+              {
+                value: "East of England",
+                checked: (true if data['region'] == 'East of England'),
+                text: "East of England"
+                
+              },
+              {
+                value: "Greater Manchester",
+                checked: (true if data['region'] == 'Greater Manchester'),
+                text: "Greater Manchester"
+                
+              },
+              {
+                value: "Kent, Surrey & Sussex",
+                checked: (true if data['region'] == 'Kent, Surrey & Sussex'),
+                text: "Kent, Surrey & Sussex"
+                
+              },
+              {
+                value: "London Community/Suspended Sentence",
+                checked: (true if data['region'] == 'London Community/Suspended Sentence'),
+                text: "London Community/Suspended Sentence"
+                
+              },
+              {
+                value: "London Licences",
+                checked: (true if data['region'] == 'London Licences'),
+                text: "London Licences"
+                
+              },
+              {
+                value: "North East",
+                checked: (true if data['region'] == 'North East'),
+                text: "North East"
+              },
+              {
+                value: "North West",
+                checked: (true if data['region'] == 'North West'),
+                text: "North West"
+              },
+              {
+                value: "South Central",
+                checked: (true if data['region'] == 'South East'),
+                text: "South East"
+                
+              },
+              {
+                value: "South West",
+                checked: (true if data['region'] == 'South West'),
+                text: "South West"
+                
+              },
+              {
+                value: "Wales",
+                checked: (true if data['region'] == 'Wales'),
+                text: "Wales"
+                
+              },
+              {
+                value: "West Midlands",
+                checked: (true if data['region'] == 'West Midlands'),
+                text: "West Midlands"
+                
+              },
+              {
+                value: "Yorkshire and The Humber",
+                checked: (true if data['region'] == 'Yorkshire and The Humber'),
+                text: "Yorkshire and The Humber"
+              }
+            ]
+          }) }}
+
+  {% endif %}
 
     {% from "govuk/components/button/macro.njk" import govukButton %}
 

@@ -16,17 +16,17 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
-        Sentence type
+        What type of sentence has the device wearer been given?
       </h1>
 
         {% if (data['cya4'] == "true") %}
 
-        <form class="form" action="issp" method="post">
+        <form class="form" action="/order-sentence" method="post">
 
         {% else %}
 
        
-      <form class="form" action="issp" method="post">
+      <form class="form" action="/order-sentence" method="post">
 
         {% endif %}
 
@@ -42,7 +42,7 @@
                 legend: {
                   text: "What type of sentence has the device wearer been given?",
                   isPageHeading: false,
-                  classes: "govuk-fieldset__legend--s"
+                  classes: "govuk-visually-hidden"
                 }
               },
               items: [
@@ -90,20 +90,12 @@
                   value: "Electronic Monitoring as a Licence Variation",
                   checked: (true if data['order-sentence'] == 'Electronic Monitoring as a Licence Variation'),
                   text: "Electronic Monitoring as a Licence Variation"
-                },
-                {
-                  divider: "or"
-                },
-                {
-                  value: "They have been given a different sentence",
-                  checked: (true if data['order-sentence'] == 'They have been given a different sentence'),
-                  text: "They have been given a different sentence"
                 }
               ]
             }) }}
 
 
- {% else %}
+{% elseif (data['order-type'] == "Pre trial") %}
 
 
             {{ govukRadios({
@@ -113,19 +105,69 @@
                 legend: {
                   text: "What type of sentence has the device wearer been given?",
                   isPageHeading: false,
-                  classes: "govuk-fieldset__legend--s"
+                  classes: "govuk-visually-hidden"
                 }
               },
               items: [
                 {
-                  value: "Coming soon",
-                  checked: (true if data['order-type'] == 'Coming soon'),
-                  text: "Coming soon"
+                  value: "Bail",
+                  checked: (true if data['order-type'] == 'Bail'),
+                  text: "Bail"
+                },
+                {
+                  value: "Bail Supervision & Support",
+                  checked: (true if data['order-type'] == 'Bail Supervision & Support'),
+                  text: "Bail Supervision & Support"
+                },
+                {
+                  value: "Bail Remand to Local Authority Accommodation (RLAA)",
+                  checked: (true if data['order-type'] == 'Bail Remand to Local Authority Accommodation (RLAA)'),
+                  text: "Bail Remand to Local Authority Accommodation (RLAA)"
+                },
+                {
+                  value: "Domestic Abuse Protection Order (DAPO)",
+                  checked: (true if data['order-type'] == 'Domestic Abuse Protection Order (DAPO)'),
+                  text: "Domestic Abuse Protection Order (DAPO)"
                 }
               ]
             }) }}
 
+{% elseif (data['order-type'] == "Community") %}
 
+
+           {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-sentence",
+              fieldset: {
+                legend: {
+                  text: "What type of sentence has the device wearer been given?",
+                  isPageHeading: false,
+                  classes: "govuk-visually-hidden"
+                }
+              },
+              items: [
+                {
+                  value: "Community",
+                  checked: (true if data['order-type'] == 'Community'),
+                  text: "Community"
+                },
+                {
+                  value: "Community Supervision Default Order",
+                  checked: (true if data['order-type'] == 'Community Supervision Default Order'),
+                  text: "Community Supervision Default Order"
+                },
+                {
+                  value: "Community Suspended Sentence",
+                  checked: (true if data['order-type'] == 'Community Suspended Sentence'),
+                  text: "Community Suspended Sentence"
+                },
+                {
+                  value: "Community Youth Rehabilitation Order (YRO)",
+                  checked: (true if data['order-type'] == 'Community Youth Rehabilitation Order (YRO)'),
+                  text: "Community Youth Rehabilitation Order (YRO)"
+                }
+              ]
+            }) }}
 
 
 

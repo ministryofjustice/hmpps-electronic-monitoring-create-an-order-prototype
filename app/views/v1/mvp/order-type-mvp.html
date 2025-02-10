@@ -392,8 +392,6 @@
     Select type of sentence
   </label>
 
-
-
   <select class="govuk-select" id="conditionType" name="conditionType">    
     <option value="">Select</option>  
     <option value="REQUIREMENT_OF_A_COMMUNITY_ORDER">Home Detention Curfew (HDC)</option>
@@ -404,15 +402,22 @@
     <option value="BAIL_ORDER">Section 236A Special Custodial Sentences for Offenders of Particular Concern (SOPC)</option>
     <option value="BAIL_ORDER">Section 227/228 Extended Sentence for Public Protection (EPP)</option>
     <option value="BAIL_ORDER">Section 85 Extended Sentences </option>
-    <option value="BAIL_ORDER">Electronic Monitoring as a Licence Variation</option>
-    <option value="BAIL_ORDER">They have been given a different sentence</option>
+    <option value="BAIL_ORDER">Immigration bail</option>
+    <option value="BAIL_ORDER">Bail</option>
+    <option value="BAIL_ORDER">Bail Supervision & Support</option>
+    <option value="BAIL_ORDER">Bail Remand to Local Authority Accommodation (RLAA)</option>
+    <option value="BAIL_ORDER">Domestic Abuse Protection Order (DAPO)</option>
+    <option value="BAIL_ORDER">Community</option>
+    <option value="BAIL_ORDER">Community Supervision Default Order</option>
+    <option value="BAIL_ORDER">Community Suspended Sentence</option>
+    <option value="BAIL_ORDER">Community Youth Rehabilitation Order (YRO)</option>
   </select>
 
 </div>
 
 {{ govukRadios({
-  classes: "govuk-radios--inline",
-  name: "changedName",
+  classes: "govuk-radios",
+  name: "issp",
   fieldset: {
     legend: {
       text: "Is the device wearer on the Intensive Supervision and Surveillance Programme (ISSP)?",
@@ -425,12 +430,57 @@
   },
   items: [
     {
-      value: "yes",
-      text: "Yes"
+      value: "Yes",
+      text: "Yes",
+      checked: (true if data['issp'] == 'Yes')
     },
     {
-      value: "no",
-      text: "No"
+      value: "No",
+      text: "No",
+      checked: (true if data['issp'] == 'No')
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "Not able to provide this information",
+      text: "Not able to provide this information",
+      checked: (true if data['issp'] == 'Not able to provide this information')
+    }
+  ]
+}) }}
+
+{{ govukRadios({
+  classes: "govuk-radios",
+  name: "prarr",
+  fieldset: {
+    legend: {
+      text: "Is the device wearer being released under P-RARR?",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    text: ""
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes",
+      checked: (true if data['prarr'] == 'Yes')
+    },
+    {
+      value: "No",
+      text: "No",
+      checked: (true if data['prarr'] == 'No')
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "Not able to provide this information",
+      text: "Not able to provide this information",
+      checked: (true if data['prarr'] == 'Not able to provide this information')
     }
   ]
 }) }}

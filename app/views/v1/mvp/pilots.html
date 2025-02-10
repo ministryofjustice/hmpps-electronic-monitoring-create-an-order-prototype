@@ -16,55 +16,10 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
-        Order information
+        Is the device wearer part of any of these pilots?
       </h1>
        
-      <form class="form" action="order-sentence" method="post">
-
-
-            {{ govukRadios({
-              classes: "govuk-radios",
-              name: "order-type",
-              fieldset: {
-                legend: {
-                  text: "What is the order type?",
-                  isPageHeading: false,
-                  classes: "govuk-fieldset__legend--s"
-                }
-              },
-              items: [
-                {
-                  value: "Civil",
-                  checked: (true if data['order-type'] == 'Civil'),
-                  text: "Civil"
-                },
-                {
-                  value: "Community",
-                  checked: (true if data['order-type'] == 'Community'),
-                  text: "Community"
-                },
-                {
-                  value: "Immigration",
-                  checked: (true if data['order-type'] == 'Immigration'),
-                  text: "Immigration"
-                },
-                {
-                  value: "Post release",
-                  checked: (true if data['order-type'] == 'Post release'),
-                  text: "Post release"
-                },
-                {
-                  value: "Pre trial",
-                  checked: (true if data['order-type'] == 'Pre trial'),
-                  text: "Pre trial"
-                },
-                {
-                  value: "Special",
-                  checked: (true if data['order-type'] == 'Special'),
-                  text: "Special"
-                }
-              ]
-            }) }}
+      <form class="form" action="/pilots" method="post">
 
 
 
@@ -75,7 +30,7 @@
                 legend: {
                   text: "Is the device wearer part of any of these pilots?",
                   isPageHeading: false,
-                  classes: "govuk-fieldset__legend--s"
+                  classes: "govuk-visually-hidden"
                 }
               },
               items: [
@@ -116,41 +71,7 @@
               ]
             }) }}
 
-             {{ govukRadios({
-              classes: "govuk-radios",
-              name: "order-condition",
-              fieldset: {
-                legend: {
-                  text: "What are the order type conditions?",
-                  isPageHeading: false,
-                  classes: "govuk-fieldset__legend--s"
-                }
-              },
-              items: [
-                {
-                  value: "Requirement of a community order",
-                  checked: (true if data['order-condition'] == 'Requirement of a community order'),
-                  text: "Requirement of a community order"
-                },
-                {
-                  value: "Licence condition of a custodial order",
-                  checked: (true if data['order-condition'] == 'Licence condition of a custodial order'),
-                  text: "Licence condition of a custodial order"
-                },
-                {
-                  value: "Post-Sentence Supervision Requirement following on from an Adult Custody order",
-                  checked: (true if data['order-condition'] == 'Post-Sentence Supervision Requirement following on from an Adult Custody order'),
-                  text: "Post-Sentence Supervision Requirement following on from an Adult Custody order"
-                },
-                {
-                  value: "Bail order",
-                  checked: (true if data['order-condition'] == 'Bail order'),
-                  text: "Bail order"
-                }
-              ]
-            }) }}
-
-
+            
 
        
 

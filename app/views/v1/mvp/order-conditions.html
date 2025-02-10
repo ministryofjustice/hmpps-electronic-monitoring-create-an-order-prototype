@@ -1,0 +1,116 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        What are the order type conditions?
+      </h1>
+       
+      <form class="form" action="/order-conditions" method="post">
+
+
+{% if (data['order-type'] == "Post release") %}
+
+             {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-condition",
+              fieldset: {
+                legend: {
+                  text: "What are the order type conditions?",
+                  isPageHeading: false,
+                  classes: "govuk-visually-hidden"
+                }
+              },
+              items: [
+                {
+                  value: "Requirement of a community order",
+                  checked: (true if data['order-condition'] == 'Requirement of a community order'),
+                  text: "Requirement of a community order"
+                },
+                {
+                  value: "Licence condition of a custodial order",
+                  checked: (true if data['order-condition'] == 'Licence condition of a custodial order'),
+                  text: "Licence condition of a custodial order"
+                },
+                {
+                  value: "Post-Sentence Supervision Requirement following on from an Adult Custody order",
+                  checked: (true if data['order-condition'] == 'Post-Sentence Supervision Requirement following on from an Adult Custody order'),
+                  text: "Post-Sentence Supervision Requirement following on from an Adult Custody order"
+                }
+              ]
+            }) }}
+
+{% else %}
+
+        {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-condition",
+              fieldset: {
+                legend: {
+                  text: "What are the order type conditions?",
+                  isPageHeading: false,
+                  classes: "govuk-visually-hidden"
+                }
+              },
+              items: [
+                {
+                  value: "Requirement of a community order",
+                  checked: (true if data['order-condition'] == 'Requirement of a community order'),
+                  text: "Requirement of a community order"
+                },
+                {
+                  value: "Licence condition of a custodial order",
+                  checked: (true if data['order-condition'] == 'Licence condition of a custodial order'),
+                  text: "Licence condition of a custodial order"
+                },
+                {
+                  value: "Post-Sentence Supervision Requirement following on from an Adult Custody order",
+                  checked: (true if data['order-condition'] == 'Post-Sentence Supervision Requirement following on from an Adult Custody order'),
+                  text: "Post-Sentence Supervision Requirement following on from an Adult Custody order"
+                },
+                {
+                  value: "Bail order",
+                  checked: (true if data['order-condition'] == 'Bail order'),
+                  text: "Bail order"
+                }
+              ]
+            }) }}
+
+
+{% endif %}
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '#',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

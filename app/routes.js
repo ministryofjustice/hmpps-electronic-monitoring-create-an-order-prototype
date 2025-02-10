@@ -364,6 +364,73 @@ router.post('/equipmentaddressquestion', function(request, response) {
     }
 })
 
+router.post('/region', function(request, response) {
+
+    var officerorg = request.session.data['officer-org']
+    if (officerorg == "Probation"){
+        response.redirect("/v1/organisation/region")
+    } else if (officerorg == "Youth Justice Service (YJS)"){
+        response.redirect("/v1/organisation/region")
+    } else if (officerorg == "Youth Custody Service (YCS)"){
+        response.redirect("/v1/organisation/region")    
+    } else {
+        response.redirect("/v1/organisation/org-address")
+    }
+})
+
+router.post('/order-type', function(request, response) {
+
+    var ordertype = request.session.data['order-type']
+    if (ordertype == "Pre trial"){
+        response.redirect("/v1/mvp/pilots")
+    } else if (ordertype == "Post release"){
+        response.redirect("/v1/mvp/pilots") 
+    } else if (ordertype == "Community"){
+        response.redirect("/v1/mvp/order-sentence") 
+     } else if (ordertype == "Special"){
+        response.redirect("/v1/mvp/order-conditions")     
+    } else {
+        response.redirect("/v1/mvp/issp")
+    }
+})
+
+
+
+
+router.post('/pilots', function(request, response) {
+
+    var ordertype = request.session.data['order-type']
+    if (ordertype == "Community"){
+        response.redirect("/v1/mvp/order-sentence")
+    } else if (ordertype == "Post release"){
+        response.redirect("/v1/mvp/order-conditions")
+    } else if (ordertype == "Pre trial"){
+        response.redirect("/v1/mvp/order-sentence")    
+    } else {
+        response.redirect("/v1/mvp/issp")
+    }
+})
+
+router.post('/order-conditions', function(request, response) {
+
+    var ordertype = request.session.data['order-type']
+    if (ordertype == "Post release"){
+        response.redirect("/v1/mvp/order-sentence") 
+    } else {
+        response.redirect("/v1/mvp/issp")
+    }
+})
+
+router.post('/order-sentence', function(request, response) {
+
+    var ordertype = request.session.data['order-type']
+    if (ordertype == "Post release"){
+        response.redirect("/v1/mvp/order-prrar") 
+    } else {
+        response.redirect("/v1/mvp/issp")
+    }
+})
+
 
 
 // const radioButtonRedirect = require('radio-button-redirect')

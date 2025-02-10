@@ -24,7 +24,7 @@
        
 
 
-    <h2 class="govuk-heading-m">Monitoring details</h2>
+    <h2 class="govuk-heading-m">Order information</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
           
@@ -40,6 +40,7 @@
               <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
             </dd>
           </div>
+ 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Is the device wearer part of any pilots?
@@ -51,6 +52,7 @@
               <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> What is the description of the order? </span></a>
             </dd>
           </div>
+       
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What are the order type conditions?
@@ -62,6 +64,51 @@
               <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> What are the conditions of the order? </span></a>
             </dd>
           </div>
+         
+    <!--      <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What type of sentence has the device wearer been given?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['order-sentence'] or 'Standard Determinate Sentence' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="order-conditions?cya4=true">Change<span class="govuk-visually-hidden"> WWhat type of sentence has the device wearer been given? </span></a>
+            </dd>
+          </div>-->
+
+         
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Is the device wearer on the Intensive Supervision and Surveillance Programme (ISSP)?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['issp'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> Is the device wearer on the Intensive Supervision and Surveillance Programme (ISSP)? </span></a>
+            </dd>
+          </div>
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Is the device wearer being released under P-RARR?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['prarr'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> Is the device wearer being released under P-RARR? </span></a>
+            </dd>
+          </div>
+
+        </dl>
+
+    <h2 class="govuk-heading-m">Monitoring details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+   
+
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
