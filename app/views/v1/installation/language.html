@@ -31,49 +31,9 @@
 
 
          {% set languageHtml %}
-          {{ xGovukAutocomplete({
-                id: "language",
-                name: "language",
-                value: data['language'],
-                allowEmpty: false,
-                label: {
-                  classes: "govuk-label",
-                  text: "Select language required when speaking to the device wearer"
-                },
 
-                items: [
-                  { text: "Mandarin Chinese" },
-                  { text: "Spanish" },
-                  { text: "English" },
-                  { text: "Hindi" },
-                  { text: "Bengali" },
-                  { text: "Portugese" },
-                  { text: "Russian" },
-                  { text: "Japanese" },
-                  { text: "Vietnamese" },
-                  { text: "Turkish" },
-                  { text: "Wu Chinese" },
-                  { text: "Marathi" },
-                  { text: "Telugu" },
-                  { text: "Punjabi" },
-                  { text: "Korean" },
-                  { text: "Tamil" },
-                  { text: "Arabic" },
-                  { text: "German" },
-                  { text: "French" },
-                  { text: "Urdu" },
-                  { text: "Italian" },
-                  { text: "Iranian Persian" },
-                  { text: "Javanese" },
-                  { text: "Slovakian" },
-                  { text: "Swahili" },
-                  { text: "Croatian" },
-                  { text: "Dutch" },
-                  { text: "Greek" },
-                  { text: "Albanian" },
-                  { text: "Welsh" }
-                ]
-              }) }}
+          {% include "/includes/language.html" %}
+        
           {% endset -%}
 
          

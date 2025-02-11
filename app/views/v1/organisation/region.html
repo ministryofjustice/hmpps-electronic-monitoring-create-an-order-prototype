@@ -31,14 +31,14 @@
 
 
 
-  {% if (data['org-contact'] == "Probation") %}
+  {% if (data['officer-org'] == "Probation") %}
        
 
           {{ govukRadios({
             name: "region",
             fieldset: {
               legend: {
-                text: "What is the Responsible Organisation's region?",
+                text: "What is the Probation region?",
                 isPageHeading: false,
                 classes: "govuk-fieldset__legend--s"
               }
@@ -125,7 +125,7 @@
             name: "region",
             fieldset: {
               legend: {
-                text: "What is the Responsible Organisation's region?",
+                text: "What is the Youth Justice Service (YJS) region?",
                 isPageHeading: false,
                 classes: "govuk-fieldset__legend--s"
               }
