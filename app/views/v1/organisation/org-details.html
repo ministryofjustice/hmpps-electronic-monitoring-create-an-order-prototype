@@ -16,7 +16,7 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
-       Contact details for the Notifying Organisation
+       Notifying Organisation's details
       </h1>
 
         {% if (data['cya2'] == "true") %}
@@ -33,21 +33,110 @@
 
 
 
-           {{ govukInput({
-          label: {
-            text: "What is your team's email address?",
-            classes: "govuk-label--s"
-            },
-            hint: {
-              text: "The email address for your team's shared mailbox. Do not provide a personal email address."
-            },
-          
-          classes: "govuk-input--width-20",
-          id: "team-email",
-          name: "team-email",
-          spellcheck: false,
-          value: data['team-email']
-        }) }}
+         
+
+           {% set courtsHtml %}
+
+           {% include "/includes/court.html" %}
+            
+           
+            {% endset -%}
+
+            {% set crowncourtsHtml %}
+
+             {% include "/includes/crown-court.html" %}
+            
+           
+            {% endset -%}
+
+            {% set prison2Html %}
+
+             {% include "/includes/prison.html" %}
+            
+            {% endset -%}
+
+
+
+            {{ govukRadios({
+              name: "notifying-org",
+              fieldset: {
+                legend: {
+                  text: " What organisation or related organisation are you part of?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: "Select one option"
+              },
+              items: [
+                {
+                  value: "Crown Court",
+                  text: "Crown Court",
+                  checked: (true if data['notifying-org'] == 'Crown Court'),
+                  conditional: {
+                    html: crowncourtsHtml
+                  }
+                },
+                {
+                  value: "Family Court",
+                  text: "Family Court",
+                  checked: (true if data['notifying-org'] == 'Family Court'),
+                  conditional: {
+                    html: courtsHtml
+                  }
+                },
+                {
+                  value: "Home Office",
+                  text: "Home Office",
+                  checked: (true if data['notifying-org'] == 'Home Office')
+                },
+                
+                {
+                  value: "Magistrates Court",
+                  checked: (true if data['notifying-org'] == 'Magistrates Court'),
+                  text: "Magistrates Court",
+                  conditional: {
+                    html: courtsHtml
+                  }
+                },
+                {
+                  value: "Prison",
+                  checked: (true if data['notifying-org'] == 'Prison'),
+                  text: "Prison",
+                  conditional: {
+                    html: prison2Html
+                  }
+                },
+                {
+                  value: "Probation",
+                  checked: (true if data['notifying-org'] == 'Probation'),
+                  text: "Probation"
+                },
+                {
+                  value: "Scottish Court",
+                  checked: (true if data['notifying-org'] == 'Scottish Court'),
+                  text: "Scottish Court"
+                }
+              ]
+            }) }}
+
+
+              {{ govukInput({
+                  label: {
+                    text: "What is your team's email address?",
+                    classes: "govuk-label--s"
+                    },
+                    hint: {
+                      text: "The email address for your team's shared mailbox. Do not provide a personal email address."
+                    },
+                  
+                  classes: "govuk-input--width-20",
+                  id: "team-email",
+                  name: "team-email",
+                  spellcheck: false,
+                  value: data['team-email']
+                }) }}
 
         
 

@@ -30,6 +30,41 @@
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               What organisation or related organisation are you part of?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['notifying-org'] or "Crown Court" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               
+                  <a class="govuk-link" href="org-details?cya2=true">Change<span class="govuk-visually-hidden"> What organisation are you part of? </span></a>
+                </li>
+                
+            </dd>
+          </div>
+           {% if (data['notifying-org'] == "Home Office" or data['notifying-org'] == "Probation" or data['notifying-org'] == "Scottish Court")  %}
+
+            {% else  %}
+
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Name of the {{ data['notifying-org'] }}
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Low Newton Prison and Young Offender Institution
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               
+                  <a class="govuk-link" href="org-details?cya2=true">Change<span class="govuk-visually-hidden"> What organisation are you part of? </span></a>
+                </li>
+                
+            </dd>
+          </div>
+
+            {% endif  %}
+
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
           What is your team's email address?
