@@ -165,7 +165,9 @@ router.post('/installation-address', function(request, response) {
     if (installaddressquestion == "No"){
         response.redirect("/v1/monitoring-conditions/install-address")   
     } else if (monitoringtype == "Exclusion zone monitoring"){
-        response.redirect("/v1/monitoring-conditions/exclusion")   
+        response.redirect("/v1/monitoring-conditions/exclusion") 
+    } else if (monitoringtype == "Inclusion zone monitoring"){
+        response.redirect("/v1/monitoring-conditions/inclusion")       
     } else if (monitoringtype == "Trail monitoring"){
         response.redirect("/v1/monitoring-conditions/trail") 
     } else if (monitoringtype == "Trail monitoring (Home Office)"){
@@ -187,6 +189,8 @@ router.post('/installation-address2', function(request, response) {
         response.redirect("/v1/monitoring-conditions/install-address")   
     } else if (monitoringtype2 == "Exclusion zone monitoring"){
         response.redirect("/v1/monitoring-conditions/exclusion")   
+    } else if (monitoringtype2 == "Inclusion zone monitoring"){
+        response.redirect("/v1/monitoring-conditions/inclusion") 
     } else if (monitoringtype2 == "Trail monitoring"){
         response.redirect("/v1/monitoring-conditions/trail") 
     } else if (monitoringtype2 == "Trail monitoring (Home Office)"){
@@ -233,7 +237,9 @@ router.post('/monitoring-type', function(request, response) {
     if (monitoringtype == "Curfew"){
         response.redirect("/v1/monitoring-conditions/curfew")   
     } else if (monitoringtype == "Exclusion zone monitoring"){
-        response.redirect("/v1/monitoring-conditions/exclusion")   
+        response.redirect("/v1/monitoring-conditions/exclusion")  
+    } else if (monitoringtype == "Inclusion zone monitoring"){
+        response.redirect("/v1/monitoring-conditions/inclusion")  
     } else if (monitoringtype == "Trail monitoring"){
         response.redirect("/v1/monitoring-conditions/trail") 
     } else if (monitoringtype == "Trail monitoring (Home Office)"){
@@ -252,7 +258,9 @@ router.post('/monitoring-type2', function(request, response) {
     if (monitoringtype2 == "Curfew"){
         response.redirect("/v1/monitoring-conditions/curfew")   
     } else if (monitoringtype2 == "Exclusion zone monitoring"){
-        response.redirect("/v1/monitoring-conditions/exclusion")   
+        response.redirect("/v1/monitoring-conditions/exclusion") 
+    } else if (monitoringtype2 == "Inclusion zone monitoring"){
+        response.redirect("/v1/monitoring-conditions/inclusion")       
     } else if (monitoringtype2 == "Trail monitoring"){
         response.redirect("/v1/monitoring-conditions/trail")   
     } else if (monitoringtype2 == "Trail monitoring (Home Office)"){
@@ -304,6 +312,16 @@ router.post('/exclusion-question', function(request, response) {
     var exclusionquestion = request.session.data['exclusionquestion']
     if (exclusionquestion == "Yes"){
         response.redirect("/v1/monitoring-conditions/exclusion-4")
+    } else {
+        response.redirect("/v1/monitoring-conditions/monitoring-needed")
+    }
+})
+
+router.post('/inclusion-question', function(request, response) {
+
+    var exclusionquestion = request.session.data['exclusionquestion']
+    if (exclusionquestion == "Yes"){
+        response.redirect("/v1/monitoring-conditions/inclusion-4")
     } else {
         response.redirect("/v1/monitoring-conditions/monitoring-needed")
     }

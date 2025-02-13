@@ -85,13 +85,7 @@
                     html: courtsHtml
                   }
                 },
-                {
-                  value: "Home Office",
-                  text: "Home Office",
-                  checked: (true if data['notifying-org'] == 'Home Office')
-                },
-                
-                {
+                 {
                   value: "Magistrates Court",
                   checked: (true if data['notifying-org'] == 'Magistrates Court'),
                   text: "Magistrates Court",
@@ -99,6 +93,18 @@
                     html: courtsHtml
                   }
                 },
+                 {
+                  value: "Scottish Court",
+                  checked: (true if data['notifying-org'] == 'Scottish Court'),
+                  text: "Scottish Court"
+                },
+                {
+                  value: "Home Office",
+                  text: "Home Office",
+                  checked: (true if data['notifying-org'] == 'Home Office')
+                },
+                
+               
                 {
                   value: "Prisons",
                   checked: (true if data['notifying-org'] == 'Prisons'),
@@ -108,14 +114,14 @@
                   }
                 },
                 {
+                  value: "Youth Custody Service (YCS)",
+                  checked: (true if data['notifying-org'] == 'Youth Custody Service (YCS)'),
+                  text: "Youth Custody Service (YCS)"
+                },
+                {
                   value: "Probation",
                   checked: (true if data['notifying-org'] == 'Probation'),
                   text: "Probation"
-                },
-                {
-                  value: "Scottish Court",
-                  checked: (true if data['notifying-org'] == 'Scottish Court'),
-                  text: "Scottish Court"
                 }
               ]
             }) }}

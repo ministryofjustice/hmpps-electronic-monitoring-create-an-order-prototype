@@ -96,6 +96,18 @@
         }) }}
         {% endset -%}
 
+         {% set ho2Html %}
+        {{ govukInput({
+          id: "ho2",
+          name: "ho2",
+          value: data['ho2'],
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: "Enter Home Office Reference Number"
+          }
+        }) }}
+        {% endset -%}
+
          {% set urnHtml %}
         {{ govukInput({
           id: "ccrn",
@@ -104,6 +116,18 @@
           classes: "govuk-!-width-two-thirds",
           label: {
             text: "Enter Court Case Reference Number"
+          }
+        }) }}
+        {% endset -%}
+
+           {% set mrnHtml %}
+        {{ govukInput({
+          id: "mrn",
+          name: "mrn",
+          value: data['mrn'],
+          classes: "govuk-!-width-two-thirds",
+          label: {
+            text: "Enter Magistrate Court Reference Number"
           }
         }) }}
         {% endset -%}
@@ -153,6 +177,14 @@
               }
             },
             {
+              value: "Home Office Reference Number",
+              checked: (true if data['ho2'] !== NULL and data['ho2'] !== ''),
+              text: "Home Office Reference Number",
+              conditional: {
+                html: ho2Html
+              }
+            },
+            {
               value: "Compliance and Enforcement Person Reference (CEPR)",
               checked: (true if data['ho'] !== NULL and data['ho'] !== ''),
               text: "Compliance and Enforcement Person Reference (CEPR)",
@@ -166,6 +198,14 @@
               text: "Court Case Reference Number (CCRN)",
               conditional: {
                 html: urnHtml
+              }
+            },
+            {
+              value: "Magistrate Court Reference Number",
+              checked: (true if data['mrn'] !== NULL and data['mrn'] !== ''),
+              text: "Magistrate Court Reference Number (MCRN)",
+              conditional: {
+                html: mrnHtml
               }
             },
             {

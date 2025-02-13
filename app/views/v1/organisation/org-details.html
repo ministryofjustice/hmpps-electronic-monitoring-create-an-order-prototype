@@ -79,19 +79,13 @@
                   }
                 },
                 {
-                  value: "Family Court",
-                  text: "Family Court",
-                  checked: (true if data['notifying-org'] == 'Family Court'),
+                  value: "Family and Civil Court",
+                  text: "Family and Civil Court",
+                  checked: (true if data['notifying-org'] == 'Family and Civil Court'),
                   conditional: {
                     html: courtsHtml
                   }
                 },
-                {
-                  value: "Home Office",
-                  text: "Home Office",
-                  checked: (true if data['notifying-org'] == 'Home Office')
-                },
-                
                 {
                   value: "Magistrates Court",
                   checked: (true if data['notifying-org'] == 'Magistrates Court'),
@@ -100,6 +94,18 @@
                     html: courtsHtml
                   }
                 },
+                 {
+                  value: "Scottish Court",
+                  checked: (true if data['notifying-org'] == 'Scottish Court'),
+                  text: "Scottish Court"
+                },
+                {
+                  value: "Home Office",
+                  text: "Home Office",
+                  checked: (true if data['notifying-org'] == 'Home Office')
+                },
+                
+                
                 {
                   value: "Prison",
                   checked: (true if data['notifying-org'] == 'Prison'),
@@ -109,14 +115,14 @@
                   }
                 },
                 {
+                  value: "Youth Custody Service (YCS)",
+                  checked: (true if data['notifying-org'] == 'Youth Custody Service (YCS)'),
+                  text: "Youth Custody Service (YCS)"
+                },
+                {
                   value: "Probation",
                   checked: (true if data['notifying-org'] == 'Probation'),
                   text: "Probation"
-                },
-                {
-                  value: "Scottish Court",
-                  checked: (true if data['notifying-org'] == 'Scottish Court'),
-                  text: "Scottish Court"
                 }
               ]
             }) }}

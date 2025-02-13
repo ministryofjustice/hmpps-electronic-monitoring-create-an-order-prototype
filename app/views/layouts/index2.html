@@ -1,0 +1,63 @@
+{#
+    For guidance on how to use layouts see:
+    https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+    #}
+    {% extends "layouts/main.html" %}
+    
+ 
+
+
+{% block header %}
+ {{ mojHeader({
+  organisationLabel: {
+    text: 'HMPPS',
+    href: '#'
+  },
+  serviceLabel: {
+    text: 'Digital Services',
+    href: '#'
+  },
+  navigation: {
+    label: 'Account navigation',
+    items: [{
+      text: '',
+      href: '',
+      active: true
+    }, {
+      text: '',
+      href: ''
+    }]
+  }
+
+}) }}
+
+    
+    {{ xGovukMasthead({
+    
+      classes: "x-govuk-masthead–large",
+      
+      title: {
+      
+      text: "Adding order type description to the Electronic Monitoring Order form"
+      
+      },
+      
+      description: {
+      
+      text: ""
+      
+      }
+    
+    }) }}
+
+
+
+    {% block backlink %}
+    
+    {% endblock %}
+
+    {% endblock %}
+
+    
+
+

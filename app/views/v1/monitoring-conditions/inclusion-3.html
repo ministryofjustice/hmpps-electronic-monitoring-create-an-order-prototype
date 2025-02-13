@@ -1,0 +1,85 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Map of exclusion or inclusion zone - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <form class="form" action="/inclusion-question" method="post">
+
+        <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        Map of inclusion zone
+      </h1>
+
+        <p>A map helps us understand the inclusion zone better. Use the <a href="https://mapmaker.field-dynamics.co.uk/moj/map/default" target="blank">'map tool (opens in a new tab)'</a> to create a map showing the zone or make your own.</p>
+   
+         
+    
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "exclusionquestion",
+            fieldset: {
+              legend: {
+                text: "Do you have a map to upload to show us where the inclusion zone is?",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select one option"
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['exclusionquestion'] == 'Yes'),
+                conditional: {
+                
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (true if data['exclusionquestion'] == 'No'),
+                conditional: {
+                 
+                }
+              }
+            ]
+          }) }}
+
+
+     
+        
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+           href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

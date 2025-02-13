@@ -82,12 +82,19 @@ Details of the changes - Electronic Monitoring
               text: ""
             },
             items: [
+
              
               {
-                value: "The device wearer's address or the installation address",
-                checked: (true if data['variation-type'] == "The device wearer's address or the installation address"),
+                value: "The device wearer's address",
+                checked: (true if data['variation-type'] == "The device wearer's address"),
                 disabled: (true if data['view'] == 'true'),
-                text: "The device wearer's address or the installation address"
+                text: "The device wearer's address"
+              },
+              {
+                value: "The device wearer's personal details",
+                checked: (true if data['variation-type'] == "The device wearer's personal details"),
+                disabled: (true if data['view'] == 'true'),
+                text: "The device wearer's personal details"
               },
                {
                 value: "The curfew hours",
@@ -96,16 +103,23 @@ Details of the changes - Electronic Monitoring
                 text: "The curfew hours"
               },
               {
-                value: "Added an exclusion or inclusion zone(s)",
-                checked: (true if data['variation-type'] == 'Added an exclusion or inclusion zone(s)'),
+                value: "Added an exclusion zone",
+                checked: (true if data['variation-type'] == 'Added an exclusion zone'),
                 disabled: (true if data['view'] == 'true'),
-                text: "Added an exclusion or inclusion zone(s)"
+                text: "Added an exclusion zone"
               },
               {
-                value: "Change or removed an existing exclusion or inclusion zone(s)",
-                checked: (true if data['variation-type'] == 'Change or removed an existing exclusion or inclusion zone(s)'),
+                value: "Changed an enforceable condition",
+                checked: (true if data['variation-type'] == 'Changed an enforceable condition'),
                 disabled: (true if data['view'] == 'true'),
-                text: "Change or removed an existing exclusion or inclusion zone(s)"
+                text: "Changed an enforceable condition"
+                
+              },     
+               {
+                value: "Change to a device type",
+                checked: (true if data['variation-type'] == 'Change to a device type'),
+                disabled: (true if data['view'] == 'true'),
+                text: "Change to a device type"
                 
               },     
               {
@@ -140,10 +154,16 @@ Details of the changes - Electronic Monitoring
             items: [
              
               {
-                value: "The device wearer's address or the installation address",
-                checked: (true if data['variation-type'] == "The device wearer's address or the installation address"),
+                value: "The device wearer's address",
+                checked: (true if data['variation-type'] == "The device wearer's address"),
                 disabled: (true if data['view'] == 'true'),
-                text: "The device wearer's address or the installation address"
+                text: "The device wearer's address"
+              },
+               {
+                value: "The device wearer's personal details",
+                checked: (true if data['variation-type'] == "The device wearer's personal details"),
+                disabled: (true if data['view'] == 'true'),
+                text: "The device wearer's personal details"
               },
                {
                 value: "The curfew hours",
@@ -152,16 +172,23 @@ Details of the changes - Electronic Monitoring
                 text: "The curfew hours"
               },
               {
-                value: "Added an exclusion or inclusion zone(s)",
-                checked: (true if data['variation-type'] == 'Added an exclusion or inclusion zone(s)'),
+                value: "Added an exclusion zone",
+                checked: (true if data['variation-type'] == 'Added an exclusion zone(s)'),
                 disabled: (true if data['view'] == 'true'),
                 text: "Added an exclusion or inclusion zone(s)"
               },
               {
-                value: "Change or removed an existing exclusion or inclusion zone(s)",
-                checked: (true if data['variation-type'] == 'Change or removed an existing exclusion or inclusion zone(s)'),
+                value: "Changed an enforceable condition",
+                checked: (true if data['variation-type'] == 'Changed an enforceable condition'),
                 disabled: (true if data['view'] == 'true'),
-                text: "Change or removed an existing exclusion or inclusion zone(s)"
+                text: "Changed an enforceable condition"
+                
+              },   
+               {
+                value: "Change to a device type",
+                checked: (true if data['variation-type'] == 'Change to a device type'),
+                disabled: (true if data['view'] == 'true'),
+                text: "Change to a device type"
                 
               },     
               {

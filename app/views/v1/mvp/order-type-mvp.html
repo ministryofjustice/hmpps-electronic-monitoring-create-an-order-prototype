@@ -315,7 +315,7 @@
 
 <div class="govuk-form-group">
   <label class="govuk-label" for="orderTypeDescription">
-   Select pilot device wearer is part of
+   Select pilot device wearer is part of (optional)
   </label>
 
 
@@ -345,7 +345,6 @@
     
     <option value="GPS_ACQUISITIVE_CRIME_PAROLE">GPS Acquisitive Crime Parole</option>
 
-    <option value="GPS_ACQUISITIVE_CRIME_PAROLE">They are not part of any of these pilots</option>
     
   
   </select>
@@ -389,31 +388,22 @@
 
 <div class="govuk-form-group">
   <label class="govuk-label" for="conditionType">
-    Select type of sentence
+    Select type of sentence (optional)
   </label>
 
   <select class="govuk-select" id="conditionType" name="conditionType">    
     <option value="">Select</option>  
-    <option value="REQUIREMENT_OF_A_COMMUNITY_ORDER">Home Detention Curfew (HDC)</option>
-    <option value="LICENSE_CONDITION_OF_A_CUSTODIAL_ORDER">Detention & Training Order</option>
-    <option value="POST_SENTENCE_SUPERVISION_REQUIREMENT">Standard Determinate Sentence</option>  
-    <option value="BAIL_ORDER">Life Sentence</option>
-    <option value="BAIL_ORDER">Extended Determinate Sentence</option>
-    <option value="BAIL_ORDER">Section 236A Special Custodial Sentences for Offenders of Particular Concern (SOPC)</option>
-    <option value="BAIL_ORDER">Section 227/228 Extended Sentence for Public Protection (EPP)</option>
-    <option value="BAIL_ORDER">Section 85 Extended Sentences </option>
-    <option value="BAIL_ORDER">Immigration bail</option>
-    <option value="BAIL_ORDER">Bail</option>
-    <option value="BAIL_ORDER">Bail Supervision & Support</option>
-    <option value="BAIL_ORDER">Bail Remand to Local Authority Accommodation (RLAA)</option>
-    <option value="BAIL_ORDER">Domestic Abuse Protection Order (DAPO)</option>
-    <option value="BAIL_ORDER">Community</option>
-    <option value="BAIL_ORDER">Community Supervision Default Order</option>
-    <option value="BAIL_ORDER">Community Suspended Sentence</option>
-    <option value="BAIL_ORDER">Community Youth Rehabilitation Order (YRO)</option>
+    <option value="Extended Determinate Sentence">Extended Determinate Sentence</option>
+    <option value="Imprisonment for Public Protection (IPP)">Imprisonment for Public Protection (IPP) </option>
+    <option value="Life Sentence">Life Sentence</option>
+    <option value="Section 236A Special Custodial Sentences for Offenders of Particular Concern (SOPC)">Section 236A Special Custodial Sentences for Offenders of Particular Concern (SOPC)</option>
+    <option value="Section 227/228 Extended Sentence for Public Protection (EPP)">Section 227/228 Extended Sentence for Public Protection (EPP)</option>
+    <option value="Section 85 Extended Sentences">Section 85 Extended Sentences </option>
+    <option value="Standard Determinate Sentence">Standard Determinate Sentence</option> 
   </select>
 
 </div>
+
 
 {{ govukRadios({
   classes: "govuk-radios",

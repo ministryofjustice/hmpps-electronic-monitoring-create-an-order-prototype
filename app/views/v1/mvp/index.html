@@ -1,0 +1,63 @@
+{% extends "layouts/index2.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+
+<div class="govuk-width-container">
+ <main class="govuk-main-wrapper">
+  <div class="govuk-grid-row">
+   <div class="govuk-grid-column-two-thirds">
+
+
+
+           <p> This prototype includes improvements to add questions to the form to enable SERCO to determine the order type description.</p>
+
+           <p>It also adds the new released under P-RARR question. This is a separate requirement but affects the same pages.</p>
+    
+
+              <p>View the <a href="https://justiceuk.sharepoint.com/:x:/r/sites/CEMO2/Shared%20Documents/All%20General/CEMO%20Order%20Type%20Description%20Mapping%20updated%2012022025.xlsx?d=wf584e7fd0a37407fbb283a51d07899fd&csf=1&web=1&e=FT01FM">SERCO order type description mapping spreadsheet</a> to see mapping that the service needs to solve.</p>
+
+              <p>The new fields that need to be added are:</p>
+
+              <ul class="govuk-list govuk-list--bullet">
+                <li>Notifying organisation (needed to conditionally display name fields)</li>
+                <li>Notifying organisation name (only relevant for prisons, crown courts and courts Notifying Organisation types)</li>
+                <li>Responsible organisation region (only relevant for youth and probation Responsible Organisation types)</li>
+                <li>ISSP question</li>
+                <li>Sentence Type (only relevant for Post release Order type)</li>
+                <li><s>Form type</s> (<a href="https://justiceuk.sharepoint.com/:x:/r/sites/CEMO2/Shared%20Documents/All%20General/CEMO%20Order%20Type%20Description%20Mapping%20updated%2012022025%20-%20LR.xlsx?d=w84120a11b1534ae79b1c8431771887b2&csf=1&web=1&e=aQFO1n">can be inferred from other questions</a>)</li>
+                <li>Released under P-RARR question (only relevant for Post release Order type) </li>
+                
+              </ul>
+
+
+             <p> Key pages MVP:</p>
+
+              <ul class="govuk-list govuk-list--bullet">
+                <li><a class="govuk-link" href="interested-parties-mvp">Interested parties</a></li>
+                <li><a class="govuk-link" id="oauth2-client-microsoft" href="order-type-mvp">Monitoring conditions</a></li>
+
+              </ul>
+
+               <p> Key pages day 2:</p>
+
+              <ul class="govuk-list govuk-list--bullet">
+                <li><a class="govuk-link" href="/v1/organisation/org-details">Notifying organisation's details</a></li>
+                <li><a class="govuk-link" href="/v1/organisation/org-contact">Responsible Organisation's details</a></li>
+                <li><a class="govuk-link" href="/v1/organisation/region">Responsible Organisation's region (conditional)</a></li>
+                <li><a class="govuk-link" href="/v1/monitoring-conditions/order-information">Order information</a></li>
+                <li><a class="govuk-link" id="oauth2-client-microsoft" href="order-type">Conditional journey for order information</a></li>
+
+              </ul>
+
+           
+
+    
+    </div>
+  </div>
+</main>
+</div>
+
+{% endblock %}

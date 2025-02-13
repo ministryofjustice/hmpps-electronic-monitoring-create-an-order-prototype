@@ -14,10 +14,7 @@
 
       
 
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">Electronic monitoring required</span>
-        What type of sentence has the device wearer been given?
-      </h1>
+    
 
         {% if (data['cya4'] == "true") %}
 
@@ -33,7 +30,11 @@
 
 
 {% if (data['order-type'] == "Post release") %}
- 
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        What type of sentence has the device wearer been given?
+      </h1>
 
             {{ govukRadios({
               classes: "govuk-radios",
@@ -47,29 +48,19 @@
               },
               items: [
                 {
-                  value: "Home Detention Curfew (HDC)",
-                  checked: (true if data['order-sentence'] == 'Home Detention Curfew (HDC)'),
-                  text: "Home Detention Curfew (HDC)"
+                  value: "Extended Determinate Sentence",
+                  checked: (true if data['order-sentence'] == 'Extended Determinate Sentence'),
+                  text: "Extended Determinate Sentence"
                 },
                 {
-                  value: "Detention & Training Order",
-                  checked: (true if data['order-sentence'] == 'Detention & Training Order'),
-                  text: "Detention & Training Order"
-                },
-                {
-                  value: "Standard Determinate Sentence",
-                  checked: (true if data['order-sentence'] == 'Standard Determinate Sentence'),
-                  text: "Standard Determinate Sentence"
+                  value: "Imprisonment for Public Protection (IPP)",
+                  checked: (true if data['order-sentence'] == 'Imprisonment for Public Protection (IPP)'),
+                  text: "Imprisonment for Public Protection (IPP)"
                 },
                 {
                   value: "Life Sentence",
                   checked: (true if data['order-sentence'] == 'Life Sentence'),
                   text: "Life Sentence"
-                },
-                {
-                  value: "Extended Determinate Sentence",
-                  checked: (true if data['order-sentence'] == 'Extended Determinate Sentence'),
-                  text: "Extended Determinate Sentence"
                 },
                 {
                   value: "Section 236A Special Custodial Sentences for Offenders of Particular Concern (SOPC)",
@@ -87,15 +78,20 @@
                   text: "Section 85 Extended Sentences"
                 },
                 {
-                  value: "Electronic Monitoring as a Licence Variation",
-                  checked: (true if data['order-sentence'] == 'Electronic Monitoring as a Licence Variation'),
-                  text: "Electronic Monitoring as a Licence Variation"
+                  value: "Standard Determinate Sentence",
+                  checked: (true if data['order-sentence'] == 'Standard Determinate Sentence'),
+                  text: "Standard Determinate Sentence"
                 }
               ]
             }) }}
 
 
 {% elseif (data['order-type'] == "Pre trial") %}
+
+  <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        What order has the device wearer been given?
+      </h1>
 
 
             {{ govukRadios({
@@ -123,16 +119,16 @@
                   value: "Bail Remand to Local Authority Accommodation (RLAA)",
                   checked: (true if data['order-type'] == 'Bail Remand to Local Authority Accommodation (RLAA)'),
                   text: "Bail Remand to Local Authority Accommodation (RLAA)"
-                },
-                {
-                  value: "Domestic Abuse Protection Order (DAPO)",
-                  checked: (true if data['order-type'] == 'Domestic Abuse Protection Order (DAPO)'),
-                  text: "Domestic Abuse Protection Order (DAPO)"
                 }
               ]
             }) }}
 
 {% elseif (data['order-type'] == "Community") %}
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        What type of sentence has the device wearer been given?
+      </h1>
 
 
            {{ govukRadios({

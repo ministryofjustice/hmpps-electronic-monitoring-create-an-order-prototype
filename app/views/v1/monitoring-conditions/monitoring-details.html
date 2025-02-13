@@ -78,6 +78,14 @@
                 text: "Exclusion zone monitoring"
               },
               {
+                value: "Inclusion zone monitoring",
+                checked: (true if data['monitoringtype'] == 'Inclusion zone monitoring'),
+                hint: {
+                  text: "Prevents the device wearer leaving areas or locations at set times."
+                },
+                text: "Inclusion zone monitoring"
+              },
+              {
                 value: "Trail monitoring",
                 checked: (true if data['monitoringtype'] == 'Trail monitoring'),
                 hint: {
