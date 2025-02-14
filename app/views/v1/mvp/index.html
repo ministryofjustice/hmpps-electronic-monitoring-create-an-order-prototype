@@ -12,12 +12,21 @@
 
 
 
-           <p> This prototype includes improvements to add questions to the form to enable SERCO to determine the order type description.</p>
+           <p> This prototype includes improvements to add questions to the form to enable SERCO to determine the order type description for post release order types.</p>
 
            <p>It also adds the new released under P-RARR question. This is a separate requirement but affects the same pages.</p>
-    
 
-              <p>View the <a href="https://justiceuk.sharepoint.com/:x:/r/sites/CEMO2/Shared%20Documents/All%20General/CEMO%20Order%20Type%20Description%20Mapping%20updated%2012022025.xlsx?d=wf584e7fd0a37407fbb283a51d07899fd&csf=1&web=1&e=FT01FM">SERCO order type description mapping spreadsheet</a> to see mapping that the service needs to solve.</p>
+            <p>View the <a href="https://justiceuk.sharepoint.com/:x:/r/sites/CEMO2/Shared%20Documents/All%20General/CEMO%20Order%20Type%20Description%20Mapping%20updated%2012022025.xlsx?d=wf584e7fd0a37407fbb283a51d07899fd&csf=1&web=1&e=FT01FM">SERCO order type description mapping spreadsheet</a> to see mapping that the service needs to solve.</p>
+
+            {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+              {{ govukInsetText({
+                text: "Further analysis is required for community and bail order types before these users go live. The day 2 prototype includes possible additional questions needed for these order types."
+              }) }}
+
+
+
+             
 
               <p>The new fields that need to be added are:</p>
 
@@ -41,16 +50,22 @@
 
               </ul>
 
-               <p> Key pages day 2:</p>
+               <p> Key pages with MVP+:</p>
 
               <ul class="govuk-list govuk-list--bullet">
                 <li><a class="govuk-link" href="/v1/organisation/org-details">Notifying organisation's details</a></li>
                 <li><a class="govuk-link" href="/v1/organisation/org-contact">Responsible Organisation's details</a></li>
                 <li><a class="govuk-link" href="/v1/organisation/region">Responsible Organisation's region (conditional)</a></li>
                 <li><a class="govuk-link" href="/v1/monitoring-conditions/order-information">Order information</a></li>
-                <li><a class="govuk-link" id="oauth2-client-microsoft" href="order-type">Conditional journey for order information</a></li>
+                
 
               </ul>
+
+              <p> Key pages with day 2 improvements:</p>
+
+               <ul class="govuk-list govuk-list--bullet">
+              <li><a class="govuk-link" id="oauth2-client-microsoft" href="order-type">Conditional journey for order information</a></li>
+               </ul>
 
            
 
