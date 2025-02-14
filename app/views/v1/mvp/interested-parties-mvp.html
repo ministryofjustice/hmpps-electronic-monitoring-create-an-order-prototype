@@ -99,6 +99,11 @@
                   text: "Scottish Court"
                 },
                 {
+                  value: "Military Court",
+                  checked: (true if data['notifying-org'] == 'Military Court'),
+                  text: "Military Court"
+                },
+                {
                   value: "Home Office",
                   text: "Home Office",
                   checked: (true if data['notifying-org'] == 'Home Office')
@@ -340,20 +345,7 @@
     text: "Select one option"
   },
   items: [
-    {
-      value: "Youth Justice Service (YJS)",
-      text: "Youth Justice Service (YJS)",
-      conditional: {
-        html: yjsHtml
-      }
-    },
-    {
-      value: "Youth Custody Service (YCS)",
-      text: "Youth Custody Service (YCS)",
-      conditional: {
-        html: yjsHtml
-      }
-    },
+   
     {
       value: "Probation",
       text: "Probation",
@@ -373,6 +365,13 @@
     {
       value: "Police",
       text: "Police"
+    },
+     {
+      value: "Youth Justice Service (YJS)",
+      text: "Youth Justice Service (YJS)",
+      conditional: {
+        html: yjsHtml
+      }
     }
   ]
 }) }}

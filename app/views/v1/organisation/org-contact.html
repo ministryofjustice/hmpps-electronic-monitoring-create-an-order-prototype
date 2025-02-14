@@ -38,11 +38,7 @@
               text: "Select one option"
             },
             items: [
-              {
-                value: "Youth Justice Service (YJS)",
-                checked: (true if data['officer-org'] == 'Youth Justice Service (YJS)'),
-                text: "Youth Justice Service (YJS)"
-              },
+             
               
               {
                 value: "Probation",
@@ -66,6 +62,11 @@
                 checked: (true if data['officer-org'] == 'Police'),
                 text: "Police"
                 
+              },
+               {
+                value: "Youth Justice Service (YJS)",
+                checked: (true if data['officer-org'] == 'Youth Justice Service (YJS)'),
+                text: "Youth Justice Service (YJS)"
               }
             ]
           }) }}
