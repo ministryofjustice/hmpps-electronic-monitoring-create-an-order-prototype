@@ -65,7 +65,7 @@
             </dd>
           </div>
          
-    <!--      <div class="govuk-summary-list__row">
+      <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What type of sentence has the device wearer been given?
             </dt>
@@ -75,7 +75,7 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="order-conditions?cya4=true">Change<span class="govuk-visually-hidden"> WWhat type of sentence has the device wearer been given? </span></a>
             </dd>
-          </div>-->
+          </div>
 
          
           <div class="govuk-summary-list__row">
@@ -90,9 +90,21 @@
             </dd>
           </div>
 
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Is the device wearer being released on a Home Detention Curfew (HDC)?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['hdc'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> Has the device wearer been released on a Home Detention Curfew (HDC)?</span></a>
+            </dd>
+          </div>
+
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             Is the device wearer being released under P-RARR?
+            Is the device wearer being released under a Presumptive Risk Assessed Release Review P-RARR?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['prarr'] or 'No' }}

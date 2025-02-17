@@ -16,7 +16,7 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
-        Is the device wearer being released under P-RARR?
+        Release conditions
       </h1>
 
         {% if (data['cya4'] == "true") %}
@@ -30,41 +30,76 @@
 
         {% endif %}
 
+        {{ govukRadios({
+          classes: "govuk-radios",
+          name: "hdc",
+          fieldset: {
+            legend: {
+              text: "Is the device wearer being released on a Home Detention Curfew (HDC)?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: (true if data['hdc'] == 'Yes')
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: (true if data['hdc'] == 'No')
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "Not able to provide this information",
+              text: "Not able to provide this information",
+              checked: (true if data['hdc'] == 'Not able to provide this information')
+            }
+          ]
+        }) }}
 
-{{ govukRadios({
-  classes: "govuk-radios",
-  name: "prarr",
-  fieldset: {
-    legend: {
-      text: "Is the device wearer being released under P-RARR?",
-      isPageHeading: false,
-      classes: "govuk-visually-hidden"
-    }
-  },
-  hint: {
-    text: ""
-  },
-  items: [
-    {
-      value: "Yes",
-      text: "Yes",
-      checked: (true if data['prarr'] == 'Yes')
-    },
-    {
-      value: "No",
-      text: "No",
-      checked: (true if data['prarr'] == 'No')
-    },
-    {
-      divider: "or"
-    },
-    {
-      value: "Not able to provide this information",
-      text: "Not able to provide this information",
-      checked: (true if data['prarr'] == 'Not able to provide this information')
-    }
-  ]
-}) }}
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          name: "prarr",
+          fieldset: {
+            legend: {
+              text: "Is the device wearer being released under a Presumptive Risk Assessed Release Review P-RARR?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: (true if data['prarr'] == 'Yes')
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: (true if data['prarr'] == 'No')
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "Not able to provide this information",
+              text: "Not able to provide this information",
+              checked: (true if data['prarr'] == 'Not able to provide this information')
+            }
+          ]
+        }) }}
        
 
     {% from "govuk/components/button/macro.njk" import govukButton %}
