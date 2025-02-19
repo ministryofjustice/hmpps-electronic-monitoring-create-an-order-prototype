@@ -16,6 +16,8 @@
         <p class="govuk-notification-banner__heading">
          You are viewing a submitted form. This form was submitted on the 14 December 2024.
         </p>
+
+        
       {% endset %}
 
       {% set htmlcancelled %}
@@ -56,15 +58,22 @@
           {% endif %}
 
           
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">Electronic monitoring required</span>
-        Check your answers
-      </h1>
+    
 
       {% if (data['view'] == 'true') %}
 
+        <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        View answers
+      </h1>
+
 
       {% else %}
+
+        <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        Check your answers
+      </h1>
 
       <p>Check and save the information about the monitoring conditions.</p>
 

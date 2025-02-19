@@ -16,12 +16,13 @@
         <p class="govuk-notification-banner__heading">
          You are viewing a submitted form. This form was submitted on the 14 December 2024.
         </p>
+
       {% endset %}
 
       {% set htmlcancelled %}
         <p class="govuk-notification-banner__heading">
          You are viewing a cancelled form. This form was cancelled on the 22 December 2024.
-        </p>
+        </p>   
       {% endset %}
 
        {% set htmlfail %}
@@ -56,15 +57,22 @@
           {% endif %}
       
 
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
-        Check your answers
-      </h1>
+   
 
       {% if (data['view'] == 'true') %}
 
+         <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+        View answers
+      </h1>
+
 
       {% else %}
+
+         <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+        Check your answers
+      </h1>
 
      <p>Check and save the information about the Notifying and Responsible Organisations.</p>
                     

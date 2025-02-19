@@ -110,6 +110,8 @@
                 <br>For example Bob Smith NHEFTH
               </div>
 
+             
+
               <input class="govuk-input moj-search__input" id="search" name="search" type="search" aria-describedby="search-hint" value="{{ data['search'] }} ">
 
             </div>
@@ -122,6 +124,33 @@
         
       </fieldset>
       </div>
+
+      {% if (data['searchresults'] != "true") %}
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+       <details class="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  What personal identity numbers can I search by?
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">You can search by:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>National Offender Management Information System (NOMIS)</li>
+                  <li>Police National Computer (PNC)</li>
+                  <li>Delius ID</li>
+                  <li>Prison number</li>
+                  <li>Home Office Reference Number</li>
+                  <li>Compliance and Enforcement Person Reference (CEPR)</li>
+                  <li>Court Case Reference Number (CCRN)</li>
+                  <li>Magistrate Court Reference Number (MCRN)</li>
+                </ul>
+              </div>
+            </details>
+
+      {% endif %}
    
 
      {% if (data['searchresults'] == "true") %}
@@ -135,7 +164,9 @@
 
       <p>Search by the full first and last name - and how it appears in the service, for example Tom Smith-Johnson. </p>
 
-      <p>Check the personal identity number is in the correct format. For example, their NOMIS, Delius ID, PNC number or Compliance and Enforcement Person Reference (CEPR).</p>
+      <p>Check the personal identity number is in the correct format. For example, their NOMIS, Delius ID or Compliance and Enforcement Person Reference (CEPR).</p>
+
+
 
       <div class="govuk-warning-text">
           <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -159,9 +190,31 @@
       <ul class="govuk-list govuk-list--bullet">
         
        <li>first and last name of the device wearer, for example Matthew Jones</li>
-       <li>a personal identity number, for example, their NOMIS, Delius ID, PNC number or Compliance and Enforcement Person Reference (CEPR)</li>
+       <li>a personal identity number, for example, their NOMIS, Delius ID or Compliance and Enforcement Person Reference (CEPR)</li>
 
       </ul>  
+
+        <details class="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  What personal identity numbers can I search by?
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">You can search by:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>National Offender Management Information System (NOMIS)</li>
+                  <li>Police National Computer (PNC)</li>
+                  <li>Delius ID</li>
+                  <li>Prison number</li>
+                  <li>Home Office Reference Number</li>
+                  <li>Compliance and Enforcement Person Reference (CEPR)</li>
+                  <li>Court Case Reference Number (CCRN)</li>
+                  <li>Magistrate Court Reference Number (MCRN)</li>
+                </ul>
+              </div>
+            </details>
+
 
       {% else %}
 
@@ -174,6 +227,7 @@
                     <tr class="govuk-table__row">
                       <th scope="col" class="govuk-table__header">Name</th>
                       <th scope="col" class="govuk-table__header">Date of birth</th>
+                       <th scope="col" class="govuk-table__header">Personal ID</th>
                        <th scope="col" class="govuk-table__header">Town or city</th>
                        <th scope="col" class="govuk-table__header">Start date</th>
                        <th scope="col" class="govuk-table__header">End date</th>
@@ -185,6 +239,7 @@
                     <tr class="govuk-table__row">
                       <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=false&fullname=David Murphy&newform=true">David Murphy</a></td>
                       <td class="govuk-table__cell">19/01/2001</td>
+                      <td class="govuk-table__cell">AYEDFE</td>
                       <td class="govuk-table__cell">Glossop</td>
                       <td class="govuk-table__cell">18/12/2024</td>
                       <td class="govuk-table__cell">18/12/2025</td>
@@ -198,6 +253,7 @@
                      <tr class="govuk-table__row">
                       <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=true&view-variation=false&fullname=David Murphy&newform=true">David Murphy</a></td>
                       <td class="govuk-table__cell">5/6/1974</td>
+                      <td class="govuk-table__cell">JHADCT</td>
                       <td class="govuk-table__cell">Salford</td>
                       <td class="govuk-table__cell">01/09/2024</td>
                       <td class="govuk-table__cell">01/09/2025</td>
@@ -211,6 +267,7 @@
                      <tr class="govuk-table__row">
                       <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=cancelled&fullname=David Murphy&newform=true">David Murphy</a></td>
                       <td class="govuk-table__cell">19/01/2001</td>
+                      <td class="govuk-table__cell">FACRDF<br>D125433</td>
                       <td class="govuk-table__cell">Glossop</td>
                       <td class="govuk-table__cell">01/12/2021</td>
                       <td class="govuk-table__cell">18/07/2022</td>
@@ -227,6 +284,8 @@
                 </table>
 
               </div>
+
+
 
                   {% endif %}
 

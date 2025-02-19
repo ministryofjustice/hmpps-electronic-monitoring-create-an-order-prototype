@@ -13,6 +13,8 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+
+
      <!-- {% set html %}
         <p class="govuk-notification-banner__heading">
          This form was submitted on the 14 December 2024.
@@ -37,14 +39,14 @@
 
            {% if (data['view-variation'] == 'false') %}
 
-           <p> This form was submitted on the 14 December 2024. You can make a change to this form or end all monitoring for the device wearer.</p>
+           <p> You can make a change to this form or end all monitoring for the device wearer.</p>
 
                  <form class="form" action="variations/edit-form-variation" method="post">
 
             {% elseif (data['view-variation'] == 'fail') %}
 
             <div class="govuk-inset-text">
-              <p>Your application form and attachments failed to submit on 14 December 2024. This was due to a technical problem. For more information <a href="https://ministryofjustice.github.io/hmpps-electronic-monitoring-create-an-order-docs/problems-submitting-forms.html#problems-submitting-forms">View the guidance (opens in a new tab)</a>.</p>
+              <p>Your application form and attachments failed to submit. This was due to a technical problem. For more information <a href="https://ministryofjustice.github.io/hmpps-electronic-monitoring-create-an-order-docs/problems-submitting-forms.html#problems-submitting-forms">View the guidance (opens in a new tab)</a>.</p>
 
             
 
@@ -52,12 +54,12 @@
 
             {% elseif (data['view-variation'] == 'cancelled') %}
 
-           <p> This form was cancelled on the 22 December 2024.</p>
+           <p> You can't make changes to this form because all monitoring has ended early.</p>
       
 
             {% else %}
 
-            <p> This form was submitted on the 1 December 2024. You can't make changes to it because there are more recent versions of this form. </p>
+            <p> You can't make changes to this form because there are more recent versions of it. </p>
 
             
 
@@ -67,7 +69,7 @@
 
             {% else %}
 
-            <p> This version of the form was submitted on the 20 January 2025. You can make changes to this form or end all monitoring for the device wearer. </p>
+            <p> You can make changes to this form or end all monitoring for the device wearer. </p>
             
 
            
@@ -227,7 +229,7 @@
 
        {% if (data['view'] == 'true') %}
 
-          <img src="/public/images/form_download.svg" alt="PDF download icon">
+      <img src="/public/images/form_download.svg" alt="PDF download icon" style="width:62px;height:85px;">
 
            {{ govukButton({
           text: ("View and download completed application form" if data['variation'] == 'true' else "View and download completed application form"),
@@ -266,7 +268,7 @@
          {{ govukButton({
             text: "End all monitoring",
             classes: "govuk-button--secondary",
-            href: "variations/edit-form-delete-question"
+            href: "variations/edit-form-delete-question-2"
             }) }}
 
             {% endif %}
@@ -296,14 +298,108 @@
     </div>
     <div class="govuk-grid-column-one-third govuk-!-static-padding-left-9">
 
-
-       {% if (data['view'] == 'true') %}
+        {% if (data['view'] == 'true') %}
 
            {% if (data['variation'] == 'false') %}
 
-           {% if (data['view-variation'] == 'true') %}
+           {% if (data['view-variation'] == 'false') %}
 
-                <div class="moj-timeline">
+            <div class="moj-timeline">
+                   
+
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                  
+                     <h2 class="moj-timeline__title">Form submitted</h2>   
+
+ 
+
+                        <p class="moj-timeline__byline">by John Smith</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
+                      </p>
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4">
+                        <p>You are viewing this version of the form.</p>
+                       </div> 
+
+                    </div>  
+                  </div>
+
+            {% elseif (data['view-variation'] == 'fail') %}
+
+             <div class="moj-timeline">
+                   
+
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                   
+                        <h2 class="moj-timeline__title">Form failed to submit</h2>
+                   
+
+                        <p class="moj-timeline__byline">by John Smith</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
+                      </p>
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4">
+                        <p>You are viewing this version of the form.</p>
+                      </div>  
+
+                    </div>  
+                  </div>
+
+            {% elseif (data['view-variation'] == 'cancelled') %}
+
+             <div class="moj-timeline">
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">All monitoring ended early</h2>
+
+                        <p class="moj-timeline__byline">by Joe Bloggs</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                        <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
+                      </p>
+
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4">
+                        <p>You are viewing this version of the form.</p>
+                      </div>
+
+                    </div>
+
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Form submitted</h2>
+
+                        <p class="moj-timeline__byline">by John Smith</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
+                      </p>
+
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4"><a href="#">View submitted form</a></div>
+
+                    </div>  
+                  </div>
+
+      
+
+            {% else %}
+
+            <div class="moj-timeline">
                     <div class="moj-timeline__item">
 
                       <div class="moj-timeline__header">
@@ -344,56 +440,15 @@
                     
                   </div>
 
-                  {% elseif (data['view-variation'] == 'fail') %}
+            
 
-                 {% elseif (data['view-variation'] == 'cancelled') %} 
-
-                  <div class="moj-timeline">
-                    <div class="moj-timeline__item">
-
-                      <div class="moj-timeline__header">
-                        <h2 class="moj-timeline__title">All monitoring ended early</h2>
-
-                        <p class="moj-timeline__byline">by Joe Bloggs</p>
-
-                      </div>
-
-                      <p class="moj-timeline__date">
-                        <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
-                      </p>
-
-                      <div class="moj-timeline__description govuk-!-padding-bottom-4">
-                        <p>You are viewing the most recent version of the form.</p>
-                      </div>
-
-                    </div>
-
-                    <div class="moj-timeline__item">
-
-                      <div class="moj-timeline__header">
-                        <h2 class="moj-timeline__title">Form submitted</h2>
-
-                        <p class="moj-timeline__byline">by John Smith</p>
-
-                      </div>
-
-                      <p class="moj-timeline__date">
-                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
-                      </p>
-
-                      <div class="moj-timeline__description govuk-!-padding-bottom-4"><a href="#">View submitted form</a></div>
-
-                    </div>  
-                  </div>
+            
+            {% endif %}      
 
 
-           
+            {% else %}
 
-                 {% endif %}
-        
-                 {% else %}
-
-                  <div class="moj-timeline">
+             <div class="moj-timeline">
                     <div class="moj-timeline__item">
 
                       <div class="moj-timeline__header">
@@ -431,10 +486,21 @@
                     </div>  
                   </div>
       
-             
 
-              {% endif %}
-          {% endif %}    
+            {% endif %} 
+
+        {% else %}
+
+         
+              
+       {% endif %}   
+
+
+
+
+
+
+
 
     </div>  
   </div>

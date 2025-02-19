@@ -62,9 +62,9 @@
            {% if (data['cancelled'] == 'true') %}
            Application to end monitoring early has been successfully submitted
             </h1>
-              <div class="govuk-panel__body">
+           <!--   <div class="govuk-panel__body">
                 Reference number<br><strong>123654</strong>
-              </div>
+              </div>-->
 
            {% else %} 
 
@@ -80,7 +80,7 @@
          <img src="/public/images/form_download.svg" alt="PDF download icon">
 
          {{ govukButton({
-          text: "View ended form",
+          text: "View and download ended application form",
           href: '#',
           classes: "govuk-button--secondary"
         }) }}

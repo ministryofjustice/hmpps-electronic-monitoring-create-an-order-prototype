@@ -57,14 +57,21 @@
 
       
 
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">Additional documents</span>
-        Check your answers
-      </h1>
+
 
 {% if (data['view'] == 'true') %}
 
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Additional documents</span>
+        View answers
+      </h1>
+
    {% else %}
+
+         <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Additional documents</span>
+        Check your answers
+      </h1>
 
        <p>Check and save the information about the documents you have uploaded and attached to the form.</p>
     {% endif %}    

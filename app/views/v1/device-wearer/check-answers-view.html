@@ -62,14 +62,20 @@
                     
           {% endif %}
 
-      <h1 class="govuk-heading-l">
+  {% if (data['view'] == 'true') %}
+
+   <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the device wearer</span>
+        View answers
+      </h1>
+
+   {% else %}
+
+    <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">About the device wearer</span>
         Check your answers
       </h1>
 
-  {% if (data['view'] == 'true') %}
-
-   {% else %}
    <p>Check and save the information about the device wearer.</p>
               
     {% endif %}

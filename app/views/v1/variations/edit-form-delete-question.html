@@ -66,11 +66,11 @@
                <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
                 <h1 class="govuk-label-wrapper">
                   <label class="govuk-label govuk-label--s" for="with-hint">
-                    Why are you ending all monitoring for the device wearer?
+                    What else should the installer be aware of?
                   </label>
                 </h1>
                 <div id="with-hint-hint" class="govuk-hint">
-                  This text will be sent with your changes to help the device fitter quickly understand what has changed and what they need to do.
+                  This text will be sent with your changes to help the installer quickly understand what has changed and what they need to do. You can include further information on picking up equipment.
                 </div>
 
                {% if (data['view-variation'] == 'cancelled') %}
@@ -99,14 +99,14 @@
 
              {{ govukButton({
               text: "Save and continue",
-              href: 'edit-form-delete-question-2'
+              href: 'edit-form-delete'
             }) }}
 
-             <!--  {{ govukButton({
+            {{ govukButton({
               text: "Cancel",
               href: '../submitted-form',
               classes: "govuk-button--secondary"
-            }) }} -->
+            }) }} 
 
 
               {% endif %}
