@@ -22,6 +22,7 @@
       <form class="form" action="/pilots" method="post">
 
 
+{% if (data['order-type'] == "Post release") %}
 
             {{ govukRadios({
               classes: "govuk-radios",
@@ -34,11 +35,7 @@
                 }
               },
               items: [
-                {
-                  value: "Domestic Abuse Protection Order (DAPO)",
-                  checked: (true if data['order-description'] == 'Domestic Abuse Protection Order (DAPO)'),
-                  text: "Domestic Abuse Protection Order (DAPO)"
-                },
+               
                 {
                   value: "Domestic Abuse Protection Order on Licence (DAPOL)",
                   checked: (true if data['order-type'] == 'Domestic Abuse Protection Order on Licence (DAPOL)'),
@@ -71,7 +68,38 @@
               ]
             }) }}
 
-            
+    {% else %}    
+
+        {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "Is the device wearer part of any of these pilots?",
+                  isPageHeading: false,
+                  classes: "govuk-visually-hidden"
+                }
+              },
+              items: [
+                {
+                  value: "Domestic Abuse Protection Order (DAPO)",
+                  checked: (true if data['order-description'] == 'Domestic Abuse Protection Order (DAPO)'),
+                  text: "Domestic Abuse Protection Order (DAPO)"
+                },
+                 {
+                  divider: "or"
+                },
+                {
+                  value: "They are not part of any of these pilots",
+                  checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
+                  text: "They are not part of any of these pilots",
+                  behaviour: "exclusive"
+                }
+              ]
+            }) }}
+
+
+    {% endif %}    
 
        
 
