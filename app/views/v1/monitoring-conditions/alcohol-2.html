@@ -76,6 +76,29 @@
                 {{ data['contactaddressLine1'] or "123 Carter Bar" }}
               </label>
             </div>
+             <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="whereDoYouLive" name="alcoholaddress" type="radio" value="At a probation office" data-aria-controls="conditional-contact">
+                <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+                  At a probation office
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="contact-by-email">
+                    Enter name of probation office
+                  </label>
+                  <input class="govuk-input" id="contact-by-email" name="contactByEmail" type="email" spellcheck="false" autocomplete="email">
+                </div>
+              </div>
+               <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="whereDoYouLive" name="alcoholaddress" type="radio" value="At a prison" data-aria-controls="conditional-contact2">
+                <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+                  At a prison
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact2">
+                {% include "/includes/prison.html" %}
+              </div>
             {% endif %}
             {% if (data['installaddressquestion'] == "No") %}
             
@@ -93,6 +116,20 @@
                Tag installation address - {{ data['installaddressLine1'] }}
               </label>
             </div>
+             <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="whereDoYouLive" name="alcoholaddress" type="radio" value="At a probation office" data-aria-controls="conditional-contact">
+                <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+                  At a probation office
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="contact-by-email">
+                    Enter name of probation office
+                  </label>
+                  <input class="govuk-input" id="contact-by-email" name="contactByEmail" type="email" spellcheck="false" autocomplete="email">
+                </div>
+              </div>
             {% endif %}
 
             <div class="govuk-radios__divider">or</div>

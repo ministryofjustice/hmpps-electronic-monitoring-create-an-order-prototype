@@ -127,7 +127,7 @@
           value: data['mrn'],
           classes: "govuk-!-width-two-thirds",
           label: {
-            text: "Enter Magistrate Court Reference Number"
+            text: "Enter Magistrate Court Case Reference Number"
           }
         }) }}
         {% endset -%}
@@ -201,9 +201,9 @@
               }
             },
             {
-              value: "Magistrate Court Reference Number",
+              value: "Magistrate Court Case Reference Number",
               checked: (true if data['mrn'] !== NULL and data['mrn'] !== ''),
-              text: "Magistrate Court Reference Number (MCRN)",
+              text: "Magistrate Court Case Reference Number (MCRN)",
               conditional: {
                 html: mrnHtml
               }
