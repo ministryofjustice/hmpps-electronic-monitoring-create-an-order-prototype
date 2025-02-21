@@ -70,6 +70,30 @@
                 text: "Select one option"
               },
               items: [
+                 {
+                  value: "Prison",
+                  checked: (true if data['notifying-org'] == 'Prison'),
+                  text: "Prison",
+                  conditional: {
+                    html: prison2Html
+                  }
+                },
+               
+                {
+                  value: "Probation",
+                  checked: (true if data['notifying-org'] == 'Probation'),
+                  text: "Probation"
+                },
+                {
+                  value: "Home Office",
+                  text: "Home Office",
+                  checked: (true if data['notifying-org'] == 'Home Office')
+                },
+                 {
+                  value: "Youth Custody Service (YCS)",
+                  checked: (true if data['notifying-org'] == 'Youth Custody Service (YCS)'),
+                  text: "Youth Custody Service (YCS)"
+                },
                 {
                   value: "Crown Court",
                   text: "Crown Court",
@@ -103,33 +127,8 @@
                   value: "Military Court",
                   checked: (true if data['notifying-org'] == 'Military Court'),
                   text: "Military Court"
-                },
-                {
-                  value: "Home Office",
-                  text: "Home Office",
-                  checked: (true if data['notifying-org'] == 'Home Office')
-                },
-                
-                
-                {
-                  value: "Prison",
-                  checked: (true if data['notifying-org'] == 'Prison'),
-                  text: "Prison",
-                  conditional: {
-                    html: prison2Html
-                  }
-                },
-               
-                {
-                  value: "Probation",
-                  checked: (true if data['notifying-org'] == 'Probation'),
-                  text: "Probation"
-                },
-                 {
-                  value: "Youth Custody Service (YCS)",
-                  checked: (true if data['notifying-org'] == 'Youth Custody Service (YCS)'),
-                  text: "Youth Custody Service (YCS)"
-                }
+                }  
+
               ]
             }) }}
 
