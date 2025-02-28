@@ -19,16 +19,12 @@
         Release conditions
       </h1>
 
-        {% if (data['cya4'] == "true") %}
-
-        <form class="form" action="issp" method="post">
-
-        {% else %}
+ 
 
        
-      <form class="form" action="issp" method="post">
+      <form class="form" action="order-issp" method="post">
 
-        {% endif %}
+
 
         {{ govukRadios({
           classes: "govuk-radios",

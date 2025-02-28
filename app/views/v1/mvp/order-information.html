@@ -1,0 +1,365 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        Order information
+      </h1>
+
+        {% if (data['cya4'] == "true") %}
+
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+       
+      <form class="form" action="monitoring-dates" method="post">
+
+        {% endif %}
+
+
+
+
+
+
+            {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-type",
+              fieldset: {
+                legend: {
+                  text: "What is the order type?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  value: "Civil",
+                  checked: (true if data['order-type'] == 'Civil'),
+                  text: "Civil"
+                },
+                {
+                  value: "Community",
+                  checked: (true if data['order-type'] == 'Community'),
+                  text: "Community"
+                },
+                {
+                  value: "Immigration",
+                  checked: (true if data['order-type'] == 'Immigration'),
+                  text: "Immigration"
+                },
+                {
+                  value: "Post release",
+                  checked: (true if data['order-type'] == 'Post release'),
+                  text: "Post release"
+                },
+                {
+                  value: "Pre trial",
+                  checked: (true if data['order-type'] == 'Pre trial'),
+                  text: "Pre trial"
+                },
+                {
+                  value: "Special",
+                  checked: (true if data['order-type'] == 'Special'),
+                  text: "Special"
+                }
+              ]
+            }) }}
+
+
+
+
+
+
+            {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "What pilot project is the device wearer part of?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  value: "Domestic Abuse Protection Order (DAPO)",
+                  checked: (true if data['order-description'] == 'Domestic Abuse Protection Order (DAPO)'),
+                  text: "Domestic Abuse Protection Order (DAPO)"
+                },
+                {
+                  value: "Domestic Abuse Perpetrator on Licence  (DAPOL)",
+                  checked: (true if data['order-type'] == 'Domestic Abuse Perpetrator on Licence (DAPOL)'),
+                  text: "Domestic Abuse Perpetrator on Licence (DAPOL)"
+                },
+                {
+                  value: "Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)",
+                  checked: (true if data['order-description'] == 'Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)'),
+                  text: "Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)"
+                },
+                {
+                  value: "GPS acquisitive crime Home Detention Curfew",
+                  checked: (true if data['order-description'] == 'GPS acquisitive crime Home Detention Curfew'),
+                  text: "GPS acquisitive crime Home Detention Curfew"
+                },
+                {
+                  value: "GPS acquisitive crime parole",
+                  checked: (true if data['order-description'] == 'GPS acquisitive crime parole'),
+                  text: "GPS acquisitive crime parole"
+                },
+                 {
+                  divider: "or"
+                },
+                {
+                  value: "They are not part of any of these pilots",
+                  checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
+                  text: "They are not part of any of these pilots",
+                  behaviour: "exclusive"
+                }
+              ]
+            }) }}
+
+
+
+
+             {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-condition",
+              fieldset: {
+                legend: {
+                  text: "What are the order type conditions?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  value: "Requirement of a community order",
+                  checked: (true if data['order-condition'] == 'Requirement of a community order'),
+                  text: "Requirement of a community order"
+                },
+                {
+                  value: "Licence condition of a custodial order",
+                  checked: (true if data['order-condition'] == 'Licence condition of a custodial order'),
+                  text: "Licence condition of a custodial order"
+                },
+                {
+                  value: "Post-Sentence Supervision Requirement following on from an Adult Custody order",
+                  checked: (true if data['order-condition'] == 'Post-Sentence Supervision Requirement following on from an Adult Custody order'),
+                  text: "Post-Sentence Supervision Requirement following on from an Adult Custody order"
+                },
+                {
+                  value: "Bail order",
+                  checked: (true if data['order-condition'] == 'Bail order'),
+                  text: "Bail order"
+                }
+              ]
+            }) }}
+
+
+
+
+          {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-sentence",
+              fieldset: {
+                legend: {
+                  text: "What type of sentence has the device wearer been given?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  value: "Extended Determinate Sentence",
+                  checked: (true if data['order-sentence'] == 'Extended Determinate Sentence'),
+                  text: "Extended Determinate Sentence"
+                },
+                {
+                  value: "Imprisonment for Public Protection (IPP)",
+                  checked: (true if data['order-sentence'] == 'Imprisonment for Public Protection (IPP)'),
+                  text: "Imprisonment for Public Protection (IPP)"
+                },
+                {
+                  value: "Life Sentence",
+                  checked: (true if data['order-sentence'] == 'Life Sentence'),
+                  text: "Life Sentence"
+                },
+                {
+                  value: "Section 236A Special Custodial Sentences for Offenders of Particular Concern (SOPC)",
+                  checked: (true if data['order-sentence'] == 'Section 236A Special Custodial Sentences for Offenders of Particular Concern (SOPC)'),
+                  text: "Section 236A Special Custodial Sentences for Offenders of Particular Concern (SOPC)"
+                },
+                {
+                  value: "Section 227/228 Extended Sentence for Public Protection (EPP)",
+                  checked: (true if data['order-sentence'] == 'Section 227/228 Extended Sentence for Public Protection (EPP)'),
+                  text: "Section 227/228 Extended Sentence for Public Protection (EPP)"
+                },
+                {
+                  value: "Section 85 Extended Sentences",
+                  checked: (true if data['order-sentence'] == 'Section 85 Extended Sentences'),
+                  text: "Section 85 Extended Sentences"
+                },
+                {
+                  value: "Standard Determinate Sentence",
+                  checked: (true if data['order-sentence'] == 'Standard Determinate Sentence'),
+                  text: "Standard Determinate Sentence"
+                },
+                 {
+                  divider: "or"
+                },
+                {
+                  value: "Not able to provide this information",
+                  text: "Not able to provide this information",
+                  checked: (true if data['order-sentence'] == 'Not able to provide this information')
+                }
+              ]
+            }) }}
+
+
+
+
+           
+            {{ govukRadios({
+              classes: "govuk-radios",
+              name: "hdc",
+              fieldset: {
+                legend: {
+                  text: "Is the device wearer on a Home Detention Curfew (HDC)?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: ""
+              },
+              items: [
+                {
+                  value: "Yes",
+                  text: "Yes",
+                  checked: (true if data['hdc'] == 'Yes')
+                },
+                {
+                  value: "No",
+                  text: "No",
+                  checked: (true if data['hdc'] == 'No')
+                },
+                {
+                  divider: "or"
+                },
+                {
+                  value: "Not able to provide this information",
+                  text: "Not able to provide this information",
+                  checked: (true if data['hdc'] == 'Not able to provide this information')
+                }
+              ]
+            }) }}
+
+            {{ govukRadios({
+              classes: "govuk-radios",
+              name: "prarr",
+              fieldset: {
+                legend: {
+                  text: "Has the device wearer been released on a Presumptive Risk Assessed Release Review (P-RARR)?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: ""
+              },
+              items: [
+                {
+                  value: "Yes",
+                  text: "Yes",
+                  checked: (true if data['prarr'] == 'Yes')
+                },
+                {
+                  value: "No",
+                  text: "No",
+                  checked: (true if data['prarr'] == 'No')
+                },
+                {
+                  divider: "or"
+                },
+                {
+                  value: "Not able to provide this information",
+                  text: "Not able to provide this information",
+                  checked: (true if data['prarr'] == 'Not able to provide this information')
+                }
+              ]
+            }) }}
+
+             {{ govukRadios({
+              classes: "govuk-radios",
+              name: "issp",
+              fieldset: {
+                legend: {
+                  text: "Is the device wearer on the Intensive Supervision and Surveillance Programme (ISSP)?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: "ISSP is for device wearers between the ages of 10-17"
+              },
+              items: [
+                {
+                  value: "Yes",
+                  text: "Yes",
+                  checked: (true if data['issp'] == 'Yes')
+                },
+                {
+                  value: "No",
+                  text: "No",
+                  checked: (true if data['issp'] == 'No')
+                },
+                {
+                  divider: "or"
+                },
+                {
+                  value: "Not able to provide this information",
+                  text: "Not able to provide this information",
+                  checked: (true if data['issp'] == 'Not able to provide this information')
+                }
+              ]
+            }) }}
+
+
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

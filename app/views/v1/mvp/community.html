@@ -1,0 +1,128 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+       Community order information
+      </h1>
+
+        {% if (data['cya4'] == "true") %}
+
+        <form class="form" action="end2" method="post">
+
+        {% else %}
+
+       
+      <form class="form" action="end2" method="post">
+
+        {% endif %}
+
+              {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-sentence",
+              fieldset: {
+                legend: {
+                  text: "What type of sentence has the device wearer been given?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  value: "Community",
+                  checked: (true if data['order-type'] == 'Community'),
+                  text: "Community"
+                },
+                {
+                  value: "Community Supervision Default Order",
+                  checked: (true if data['order-type'] == 'Community Supervision Default Order'),
+                  text: "Community Supervision Default Order"
+                },
+                {
+                  value: "Community Suspended Sentence",
+                  checked: (true if data['order-type'] == 'Community Suspended Sentence'),
+                  text: "Community Suspended Sentence"
+                },
+                {
+                  value: "Community Youth Rehabilitation Order (YRO)",
+                  checked: (true if data['order-type'] == 'Community Youth Rehabilitation Order (YRO)'),
+                  text: "Community Youth Rehabilitation Order (YRO)"
+                }
+              ]
+            }) }}
+
+
+
+            
+            {{ govukRadios({
+              classes: "govuk-radios",
+              name: "issp",
+              fieldset: {
+                legend: {
+                  text: "Is the device wearer on the Intensive Supervision and Surveillance Programme (ISSP)?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: "ISSP is for device wearers between the ages of 10-17"
+              },
+              items: [
+                {
+                  value: "Yes",
+                  text: "Yes",
+                  checked: (true if data['issp'] == 'Yes')
+                },
+                {
+                  value: "No",
+                  text: "No",
+                  checked: (true if data['issp'] == 'No')
+                },
+                {
+                  divider: "or"
+                },
+                {
+                  value: "Not able to provide this information",
+                  text: "Not able to provide this information",
+                  checked: (true if data['issp'] == 'Not able to provide this information')
+                }
+              ]
+            }) }}
+
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

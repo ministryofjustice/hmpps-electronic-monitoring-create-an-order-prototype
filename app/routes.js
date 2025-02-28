@@ -400,17 +400,35 @@ router.post('/order-type', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     if (ordertype == "Civil"){
-        response.redirect("/v1/mvp/pilots")
+        response.redirect("/v1/monitoring-conditions/order-pilots")
     } else if (ordertype == "Post release"){
-        response.redirect("/v1/mvp/pilots") 
+        response.redirect("/v1/monitoring-conditions/order-pilots") 
     } else if (ordertype == "Community"){
-        response.redirect("/v1/mvp/order-sentence") 
+        response.redirect("/v1/monitoring-conditions/order-sentence") 
     } else if (ordertype == "Special"){
         response.redirect("/v1/mvp/order-conditions") 
     } else if (ordertype == "Pre trial"){
-        response.redirect("/v1/mvp/order-sentence")          
+        response.redirect("/v1/monitoring-conditions/order-sentence")          
     } else {
-        response.redirect("/v1/mvp/issp")
+        response.redirect("/v1/monitoring-conditions/monitoring-dates")
+    }
+})
+
+router.post('/order-type2', function(request, response) {
+
+    var ordertype = request.session.data['order-type']
+    if (ordertype == "Civil"){
+        response.redirect("/v1/mvp/civil")
+    } else if (ordertype == "Post release"){
+        response.redirect("/v1/mvp/postrelease") 
+    } else if (ordertype == "Community"){
+        response.redirect("/v1/mvp/community") 
+    } else if (ordertype == "Special"){
+        response.redirect("/v1/mvp/special") 
+    } else if (ordertype == "Pre trial"){
+        response.redirect("/v1/mvp/pretrial")          
+    } else {
+        response.redirect("/v1/mvp/end2")
     }
 })
 
@@ -420,12 +438,10 @@ router.post('/order-type', function(request, response) {
 router.post('/pilots', function(request, response) {
 
     var ordertype = request.session.data['order-type']
-    if (ordertype == "Community"){
-        response.redirect("/v1/mvp/order-sentence")
-    } else if (ordertype == "Post release"){
-        response.redirect("/v1/mvp/order-conditions")
+    if (ordertype == "Post release"){
+        response.redirect("/v1/monitoring-conditions/order-conditions")
     } else {
-        response.redirect("/v1/mvp/issp")
+        response.redirect("/v1/monitoring-conditions/monitoring-dates")
     }
 })
 
@@ -433,9 +449,9 @@ router.post('/order-conditions', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     if (ordertype == "Post release"){
-        response.redirect("/v1/mvp/order-sentence") 
+        response.redirect("/v1/monitoring-conditions/order-sentence") 
     } else {
-        response.redirect("/v1/mvp/issp")
+        response.redirect("/v1/monitoring-conditions/monitoring-dates")
     }
 })
 
@@ -443,9 +459,9 @@ router.post('/order-sentence', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     if (ordertype == "Post release"){
-        response.redirect("/v1/mvp/order-prrar") 
+        response.redirect("/v1/monitoring-conditions/order-prrar") 
     } else {
-        response.redirect("/v1/mvp/issp")
+        response.redirect("/v1/monitoring-conditions/order-issp")
     }
 })
 

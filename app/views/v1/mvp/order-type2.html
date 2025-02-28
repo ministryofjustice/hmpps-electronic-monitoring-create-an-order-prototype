@@ -19,7 +19,7 @@
         What is the order type?
       </h1>
        
-      <form class="form" action="/order-type" method="post">
+      <form class="form" action="/order-type2" method="post">
 
 
             {{ govukRadios({
@@ -34,21 +34,6 @@
               },
               items: [
                 {
-                  value: "Civil",
-                  checked: (true if data['order-type'] == 'Civil'),
-                  text: "Civil"
-                },
-                {
-                  value: "Community",
-                  checked: (true if data['order-type'] == 'Community'),
-                  text: "Community"
-                },
-                {
-                  value: "Immigration",
-                  checked: (true if data['order-type'] == 'Immigration'),
-                  text: "Immigration"
-                },
-                {
                   value: "Post release",
                   checked: (true if data['order-type'] == 'Post release'),
                   text: "Post release"
@@ -57,6 +42,21 @@
                   value: "Pre trial",
                   checked: (true if data['order-type'] == 'Pre trial'),
                   text: "Pre trial"
+                },
+                {
+                  value: "Immigration",
+                  checked: (true if data['order-type'] == 'Immigration'),
+                  text: "Immigration"
+                },
+                 {
+                  value: "Community",
+                  checked: (true if data['order-type'] == 'Community'),
+                  text: "Community"
+                },
+                {
+                  value: "Civil",
+                  checked: (true if data['order-type'] == 'Civil'),
+                  text: "Civil"
                 },
                 {
                   value: "Special",

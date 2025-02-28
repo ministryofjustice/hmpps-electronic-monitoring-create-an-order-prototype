@@ -16,17 +16,11 @@
 
     
 
-        {% if (data['cya4'] == "true") %}
-
-        <form class="form" action="/order-sentence" method="post">
-
-        {% else %}
-
+  
        
       <form class="form" action="/order-sentence" method="post">
 
-        {% endif %}
-
+  
 
 
 {% if (data['order-type'] == "Post release") %}
@@ -99,7 +93,7 @@
               name: "order-sentence",
               fieldset: {
                 legend: {
-                  text: "What type of sentence has the device wearer been given?",
+                  text: "What order has the device wearer been given?",
                   isPageHeading: false,
                   classes: "govuk-visually-hidden"
                 }

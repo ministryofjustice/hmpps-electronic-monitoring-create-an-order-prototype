@@ -19,20 +19,15 @@
         Is the device wearer on the Intensive Supervision and Surveillance Programme (ISSP)?
       </h1>
 
-        {% if (data['cya4'] == "true") %}
-
-        <form class="form" action="monitoring-dates" method="post">
-
-        {% else %}
 
        
       <form class="form" action="monitoring-dates" method="post">
 
-        {% endif %}
+
 
 
 {{ govukRadios({
-  classes: "govuk-radios",
+  classes: "govuk-radios--inline",
   name: "issp",
   fieldset: {
     legend: {
@@ -42,7 +37,7 @@
     }
   },
   hint: {
-    text: "This program is only applicable to young offenders between 10-17 years old."
+    text: "ISSP is for device wearers between the ages of 10-17"
   },
   items: [
     {
@@ -54,14 +49,6 @@
       value: "No",
       text: "No",
       checked: (true if data['issp'] == 'No')
-    },
-    {
-      divider: "or"
-    },
-    {
-      value: "Not able to provide this information",
-      text: "Not able to provide this information",
-      checked: (true if data['issp'] == 'Not able to provide this information')
     }
   ]
 }) }}
@@ -76,7 +63,7 @@
 
         {{ govukButton({
           text: "Save as draft",
-          href: '../new-form',
+          href: '#',
           classes: "govuk-button--secondary"
         }) }}
 
