@@ -20,7 +20,6 @@
       </h1>
 
 
-       <p>Check and save the information about the Notifying and Responsible Organisations.</p>
 
       <form class="form" action="" method="post">
 
@@ -50,7 +49,7 @@
 
              <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Name of the {{ data['notifying-org'] }}
+              Name of the {{ data['notifying-org'] or 'prison' }}
             </dt>
             <dd class="govuk-summary-list__value">
             Low Newton Prison and Young Offender Institution
