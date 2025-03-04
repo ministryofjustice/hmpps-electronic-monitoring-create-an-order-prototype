@@ -14,7 +14,7 @@
 
       {% set html %}
         <p class="govuk-notification-banner__heading">
-         You are viewing a form where all monitoring has been ended. This form was changed on the 22 December 2024.
+         You are viewing a form where all monitoring has ended.
         </p>
       {% endset %}
 
@@ -24,13 +24,13 @@
               html: html
             }) }}
 
-             <h1 class="govuk-heading-l"> <span class="govuk-caption-l">About why all monitoring was ended early</span>
+             <h1 class="govuk-heading-l"> <span class="govuk-caption-l">About the changes in this version of the form</span>
       Details of the changes</h1>
 
           {% else %}
 
 
-      <h1 class="govuk-heading-l">End all monitoring for {{ data['fullname'] or "David Murphy" }}</h1>
+      <h1 class="govuk-heading-l">Details of the changes</h1>
                     
           {% endif %}
 
@@ -66,15 +66,15 @@
                <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
                 <h1 class="govuk-label-wrapper">
                   <label class="govuk-label govuk-label--s" for="with-hint">
-                    What else should the installer be aware of?
+                    Enter more information on what has changed
                   </label>
                 </h1>
-                <div id="with-hint-hint" class="govuk-hint">
-                  This text will be sent with your changes to help the installer quickly understand what has changed and what they need to do. For example, further information on when the monitoring equipment can be collected.
+                 <div id="with-hint-hint" class="govuk-hint">
+                  This text will be sent with your changes to help the installer quickly understand what has changed and what they need to do.
                 </div>
 
                {% if (data['view-variation'] == 'cancelled') %}
-                  <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="cancel-text" disabled rows="5" aria-describedby="with-hint-info with-hint-hint">Offender has been recalled to prison due to breaching conditions.</textarea>
+                  <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="cancel-text" disabled rows="5" aria-describedby="with-hint-info with-hint-hint">Offender has been recalled to prison due to breaching conditions. Monitoring equipment at device wearer's fixed address.</textarea>
                 {% else %}
                  <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="cancel-text" rows="5" aria-describedby="with-hint-info with-hint-hint">{{ data['cancel-text'] }}</textarea>
                 {% endif %}
@@ -92,7 +92,7 @@
       {% if (data['view-variation'] == 'cancelled') %}
               {{ govukButton({
                   text: "Return to main form menu",
-                  href: "../submitted-form"
+                  href: "../submitted-form?view=true&variation=false&view-variation=cancelled&fullname=David Murphy&newform=true"
                 }) }}
 
          {% else %}

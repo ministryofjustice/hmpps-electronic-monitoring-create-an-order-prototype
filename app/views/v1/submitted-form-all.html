@@ -10,11 +10,11 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-two-thirds">
 
      
 
-      {% set htmlpdf %}
+    <!--  {% set htmlpdf %}
         <p class="govuk-notification-banner__heading">
          This form summary page can be downloaded as a PDF for your records.
         </p>
@@ -25,24 +25,30 @@
 
            {{ govukNotificationBanner({
               html: htmlpdf
-            }) }}
+            }) }} 
 
     
 
         {{ mojPageHeaderActions({
           heading: {
-            text: 'Submitted Electronic Order Form',
+            text: 'Electronic Monitoring Order Form summary',
             classes: 'govuk-heading-xl'
           },
           items: [{
-            text: 'Download PDF',
+            text: 'Download a copy of your answers',
             classes: 'govuk-button'
           }]
-        }) }}
+        }) }}-->
 
-      </div>  
-  
-      <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-xl">
+      Electronic Monitoring Order Form summary</h1>
+
+      {{ govukButton({
+              text: "Download a copy of your answers",
+              href: '#'
+            }) }}
+
+   
 
       <form class="form" action="" method="post">
 
@@ -855,8 +861,15 @@
          <div class="govuk-button-group">
          {{ govukButton({
           text: "Back to start",
-          href: "dashboard"
+          href: "dashboard",
+          classes: "govuk-button--secondary"
         }) }}
+
+         {{ govukButton({
+              text: "Download a copy of your answers",
+              href: '#',
+              classes: "govuk-button--secondary"
+            }) }}
        
       </div>
  

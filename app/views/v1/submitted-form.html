@@ -54,7 +54,7 @@
 
             {% elseif (data['view-variation'] == 'cancelled') %}
 
-           <p> You can't make changes to this form because all monitoring has ended early.</p>
+           <p> You can't make changes to this form because monitoring has ended early.</p>
       
 
             {% else %}
@@ -164,9 +164,9 @@
           },
           {
             title: {
-              text: "About the changes to end all monitoring early"
+              text: "About the changes in this version of the form"
             },
-            href: ("variations/check-answers-view"),
+            href: ("variations/edit-form-delete-question"),
             classes: ("govuk-visually-hidden" if data['view-variation'] !== 'cancelled'),
             status: ( viewStatus )
           }
@@ -361,7 +361,7 @@
                     <div class="moj-timeline__item">
 
                       <div class="moj-timeline__header">
-                        <h2 class="moj-timeline__title">All monitoring ended early</h2>
+                        <h2 class="moj-timeline__title">Monitoring ended early</h2>
 
                     <!--    <p class="moj-timeline__byline">by Joe Bloggs</p>-->
 
