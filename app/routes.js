@@ -385,7 +385,7 @@ router.post('/equipmentaddressquestion', function(request, response) {
 router.post('/region', function(request, response) {
 
     var officerorg = request.session.data['officer-org']
-    if (officerorg == "Probation"){
+    if (officerorg == "Probation service"){
         response.redirect("/v1/organisation/region")
     } else if (officerorg == "Youth Justice Service (YJS)"){
         response.redirect("/v1/organisation/region")
