@@ -67,7 +67,7 @@
           classes: "govuk-!-width-two-thirds",
           value: data['delius'],
           label: {
-            text: "Enter Delius ID"
+            text: "Enter NDelius ID"
           }
         }) }}
         {% endset -%}
@@ -163,7 +163,7 @@
             {
               value: "Delius ID",
               checked: (true if data['delius'] !== NULL and data['delius'] !== ''),
-              text: "Delius ID",
+              text: "NDelius ID",
               conditional: {
                 html: deliusHtml
               }
