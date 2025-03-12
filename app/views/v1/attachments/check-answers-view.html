@@ -90,7 +90,7 @@
             </dd>
             <dd class="govuk-summary-list__actions">
               {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
                 {% else %}
                   <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
                 {% endif %}
@@ -106,7 +106,11 @@
             </dd>
             <dd class="govuk-summary-list__actions">
                <ul class="govuk-summary-list__actions-list">
-                  <a class="govuk-link" href="licence">Change<span class="govuk-visually-hidden"> Licence </span></a>         
+                 {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}         
               </ul>
             </dd>
           </div>
@@ -121,7 +125,7 @@
             </dd>
             <dd class="govuk-summary-list__actions">
               {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#">View<span class="govuk-visually-hidden"> </span></a>
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
                 {% else %}
                   <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
                 {% endif %}
