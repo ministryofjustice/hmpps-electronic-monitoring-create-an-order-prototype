@@ -12,10 +12,11 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">Are you sure that you want to make changes to this order form for {{ data['fullname'] or "David Murphy" }}?</h1>
+      <h1 class="govuk-heading-l">Are you sure that you want to make changes to the EMO application form for {{ data['fullname'] or "David Murphy" }}?</h1>
 
+    
       
-         <dl class="govuk-summary-list">
+         <!--    <dl class="govuk-summary-list">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Date of birth
@@ -27,7 +28,7 @@
               <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> name</span></a>
             </dd>
           </div>
-       <!--   <div class="govuk-summary-list__row">
+      <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               NOMIS ID
             </dt>
@@ -41,8 +42,9 @@
          
         </dl>
 
-        <!--<p>You must ensure the license or court order has been updated before you make changes to this order form.</p>-->
+         <p>Check and update the licence or court order before making changes to the EMO application form.</p>
 
+         <p>You can make changes to the EMO application form now if the information you are changing isn't included in the licence or court order.</p>
 
 
 
@@ -50,13 +52,13 @@
 
           <div class="govuk-button-group">
             {{ govukButton({
-              text: "Yes, create a new version of the form",
+              text: "Yes, make changes",
               href: '../submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false',
               classes: "govuk-button--warning"
             }) }}
 
             {{ govukButton({
-              text: "Cancel and return to form",
+              text: "Cancel and return back to form",
               href: '../submitted-form?view=true',
               classes: "govuk-button--secondary"
             }) }}
