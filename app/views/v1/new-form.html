@@ -69,7 +69,7 @@
             title: {
               text: "Additional documents"
             },
-            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/licence-question?cya5=false"),
+            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/licence?cya5=false"),
             status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
           }
 
@@ -113,7 +113,7 @@
             title: {
               text: "Additional documents"
             },
-            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/licence-question"),
+            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/licence"),
             status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
           },
           {

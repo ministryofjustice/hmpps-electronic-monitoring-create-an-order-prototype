@@ -16,22 +16,26 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
-       Responsible Organisation's region
+       Responsible Organisation's details
       </h1>
 
-  {% if (data['cya2'] == "true") %}
 
         <form class="form" action="check-answers" method="post">
 
-        {% else %}
-
-       <form class="form" action="org-address" method="post">
-
-        {% endif %}
-
-
 
   {% if (data['officer-org'] == "Probation service") %}
+
+           {{ govukInput({
+          label: {
+            text: "What is the Responsible Organisation's Probation Delivery Unit (PDU) email address?",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "pdu-email",
+          name: "pdu-email",
+          spellcheck: false,
+          value: data['pdu-email']
+        }) }}
        
 
           {{ govukRadios({
@@ -118,6 +122,8 @@
               }
             ]
           }) }}
+
+
 
   {% else %}
 

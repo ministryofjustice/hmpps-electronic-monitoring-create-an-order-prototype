@@ -178,6 +178,23 @@
                 
             </dd>
           </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+         What is the Responsible Officer's team contact email address? (optional)
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['org-email'] or 'centralteam@homeoffice.org' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+                {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="responsible-officer-view"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="responsible-officer-view">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+                </li>
+                
+            </dd>
+          </div>
 
         </dl>
 
@@ -202,7 +219,7 @@
                 
             </dd>
           </div>
-
+<!--
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
          What is the Responsible Organisation's telephone number? (optional)
@@ -235,7 +252,7 @@
                 {% endif %}
                 
             </dd>
-          </div>
+          </div>-->
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -253,7 +270,7 @@
             </dd>
           </div>
 
-          <div class="govuk-summary-list__row">
+     <!--     <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the Responsible Organisation's address?  (optional)
             </dt>
@@ -270,7 +287,7 @@
                 {% endif %}
             </dd>
           </div>
-
+-->
 
 
         </dl>

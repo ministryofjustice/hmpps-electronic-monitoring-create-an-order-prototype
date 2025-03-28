@@ -127,10 +127,12 @@ router.post('/disability', function(request, response) {
 router.post('/risk', function(request, response) {
 
     var risk = request.session.data['risk']
-    if (risk == "There are no risks that the installer should be aware of"){
+    var notifyingorg = request.session.data['notifying-org']
+
+    if (notifyingorg == "Home Office") {
         response.redirect("/v1/installation/mappa")  
     } else {
-        response.redirect("/v1/installation/risk-3")
+        response.redirect("/v1/installation/check-answers")
     }
 })
 
@@ -392,7 +394,7 @@ router.post('/region', function(request, response) {
     } else if (officerorg == "Youth Custody Service (YCS)"){
         response.redirect("/v1/organisation/region")    
     } else {
-        response.redirect("/v1/organisation/org-address")
+        response.redirect("/v1/organisation/check-answers")
     }
 })
 

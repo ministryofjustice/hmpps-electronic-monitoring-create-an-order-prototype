@@ -156,6 +156,8 @@
           {% endif %}
           {% endif %}
 
+            {% if (data['notifying-org'] == "Home Office") %}
+
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Is the device wearer a MAPPA offender?
@@ -193,6 +195,7 @@
             </dd>
           </div>
 
+           {% endif %}
            {% endif %}
 
 

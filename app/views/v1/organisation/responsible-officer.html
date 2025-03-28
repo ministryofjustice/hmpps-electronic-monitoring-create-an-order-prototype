@@ -71,7 +71,20 @@
           spellcheck: false,
           value: data['officer-tel']
         }) }}
-       
+
+        {{ govukInput({
+          label: {
+            text: "What is the Responsible Officer's team contact email address? (optional)",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "org-email",
+          name: "org-email",
+          spellcheck: false,
+          value: data['org-email']
+        }) }}
+
+
 
     {% from "govuk/components/button/macro.njk" import govukButton %}
 
