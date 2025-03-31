@@ -24,6 +24,23 @@
 
         <span class="govuk-caption-l">Additional documents</span>
 
+         {% if (data['notifying-org'] == 'Home Office') %}
+
+          {{ govukFileUpload({
+            id: "licence",
+            name: "licence",
+            isPageHeading: true,
+            label: {
+              text: "Upload a copy of the Grant of Bail document (optional)",
+              classes: 'govuk-label--l'
+            },
+            hint: {
+              text: 'Upload a scanned copy or photo of the Grant of Bail document. The file must be a PDF, PNG, JPEG or JPG and under 10MB in size. For Secretary of state immigration bail cases you do not need to upload a document.'
+            }
+          }) }}
+
+          {% else %}
+
           {{ govukFileUpload({
             id: "licence",
             name: "licence",
@@ -36,6 +53,8 @@
               text: 'Upload a scanned copy or photo of the original licence or court order document. The file must be a PDF, PNG, JPEG or JPG and under 10MB in size. '
             }
           }) }}
+
+           {% endif %}
 
 
 
