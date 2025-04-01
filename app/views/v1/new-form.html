@@ -15,7 +15,17 @@
 
       <h1 class="govuk-heading-l">Electronic Monitoring application form</h1>
 
+      
+
+        {% if (data['submit-failure'] == "true")  %} 
+
+         <form class="form" action="submit-failure" method="post"> 
+
+         {% else  %}
+
       <form class="form" action="submit-confirmation?variation=false" method="post">
+
+         {% endif  %}
 
   <!-- <h2 class="govuk-heading-m">Notification form sections</h2>-->
 

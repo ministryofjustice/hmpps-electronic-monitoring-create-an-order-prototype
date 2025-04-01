@@ -43,10 +43,11 @@
           <h1 class="govuk-heading-xl">
       Electronic Monitoring Order Form summary</h1>
 
-      {{ govukButton({
-              text: "Download a copy of your answers",
-              href: '#'
-            }) }}
+
+
+            <a type="submit" href="/public/images/submitted_form.pdf" download style="text-decoration: none" class="govuk-button" data-module="govuk-button">
+            Download a copy of your answers
+          </a>
 
    
 
@@ -62,7 +63,11 @@
             Status
             </dt>
             <dd class="govuk-summary-list__value">
+            {% if (data['submit-failure'] == "true")  %} 
+              Failed to submit
+            {% else  %} 
              Submitted
+            {% endif  %} 
             </dd>
             <dd class="govuk-summary-list__actions">
              
@@ -74,7 +79,12 @@
             Type
             </dt>
             <dd class="govuk-summary-list__value">
+               {% if (data['submit-failure'] == "true")  %} 
+              Failed to submit
+            {% else  %} 
              Submitted form
+            {% endif  %} 
+          
             </dd>
             <dd class="govuk-summary-list__actions">
                 
@@ -865,12 +875,12 @@
           classes: "govuk-button--secondary"
         }) }}
 
-         {{ govukButton({
-              text: "Download a copy of your answers",
-              href: '#',
-              classes: "govuk-button--secondary"
-            }) }}
+   
        
+          <a type="submit" href="/public/images/submitted_form.pdf" download style="text-decoration: none" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Download a copy of your answers
+          </a>
+
       </div>
  
     </form>
