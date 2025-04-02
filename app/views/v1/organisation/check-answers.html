@@ -196,24 +196,7 @@
           </div>-->
 
 
-  {% if (data['officer-org'] == "Probation service") %}
 
-  <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-         What is the Responsible Organisation's Probation Delivery Unit (PDU) email address?
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {{ data['pdu-email'] or 'newcastle@probation.com' }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-               
-                  <a class="govuk-link" href="region?cya2=true">Change<span class="govuk-visually-hidden">  What is the Responsible Organisation's Probation Delivery Unit (PDU) email address? </span></a>
-                </li>
-                
-            </dd>
-          </div>
-
-   {% endif %} 
 
     {% if (data['officer-org'] == "Probation service" or data['officer-org'] == "Youth Justice Service (YJS)" or data['officer-org'] == "Youth Custody Service (YCS)") %}
 
@@ -233,7 +216,26 @@
             </dd>
           </div>
 
-    {% endif %}       
+    {% endif %}   
+
+      {% if (data['officer-org'] == "Probation service") %}
+
+  <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+         Select the Probation Delivery Unit (PDU)
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['pdu'] or 'Newcastle' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               
+                  <a class="govuk-link" href="region?cya2=true">Change<span class="govuk-visually-hidden">  What is the Responsible Organisation's Probation Delivery Unit (PDU)? </span></a>
+                </li>
+                
+            </dd>
+          </div>
+
+   {% endif %}     
 
     <!--      <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">

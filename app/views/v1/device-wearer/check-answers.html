@@ -140,7 +140,7 @@
               What is the device wearer's last name?
             </dt>
             <dd class="govuk-summary-list__value">
-               {{ data['wearer-firstname'] or "Bloggs" }}
+               {{ data['wearer-lastname'] or "Bloggs" }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="personal-details?cya1=true">Change<span class="govuk-visually-hidden"> What is the device wearer's last name?</span></a>
@@ -257,7 +257,7 @@
               <a class="govuk-link" href="contact-address-question?cya1=true">Change<span class="govuk-visually-hidden"> Does the device wearer have a fixed address?</span></a>
             </dd>
           </div>
-          {% if (data['addressquestion'] == "Yes, they have a fixed address") %}
+          {% if (data['addressquestion'] == "Yes") %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the device wearer's contact address?
@@ -316,19 +316,6 @@
               <a class="govuk-link" href="responsible-adult?cya1=true">Change<span class="govuk-visually-hidden"> What is the responsible adult's relationship to the device wearer?</span></a>
             </dd>
           </div>
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Describe their relationship to device wearer
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['relationship-other'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="responsible-adult?cya1=true">Change<span class="govuk-visually-hidden"> Relationship to the device wearer</span></a>
-            </dd>
-          </div>
-  
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">

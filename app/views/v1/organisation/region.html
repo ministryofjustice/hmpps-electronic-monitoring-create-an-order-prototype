@@ -25,18 +25,9 @@
 
   {% if (data['officer-org'] == "Probation service") %}
 
-           {{ govukInput({
-          label: {
-            text: "What is the Responsible Organisation's Probation Delivery Unit (PDU) email address?",
-            classes: "govuk-label--s"
-          },
-          classes: "govuk-input--width-20",
-          id: "pdu-email",
-          name: "pdu-email",
-          spellcheck: false,
-          value: data['pdu-email']
-        }) }}
+      
        
+
 
           {{ govukRadios({
             name: "region",
@@ -123,7 +114,7 @@
             ]
           }) }}
 
-
+         {% include "/includes/pdu.html" %}
 
   {% else %}
 

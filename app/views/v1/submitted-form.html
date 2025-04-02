@@ -31,7 +31,15 @@
               
     {% endif %}   -->
 
+     {% if (data['view-variation'] == 'fail') %}
+
+     <h1 class="govuk-heading-l">Electronic Monitoring application for {{ data['wearer-firstname'] or "Bobbie" }} {{ data['wearer-lastname'] or "Gibbs" }}</h1>
+
+      {% else %}
+
       <h1 class="govuk-heading-l">Electronic Monitoring application for {{ data['fullname'] or "David Murphy" }}</h1>
+
+      {% endif %}
 
        {% if (data['view'] == 'true') %}
 

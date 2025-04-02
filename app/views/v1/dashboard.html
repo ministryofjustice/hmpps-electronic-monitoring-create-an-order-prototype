@@ -77,7 +77,7 @@
                     })}}</td>
               </tr>
          <tr class="govuk-table__row">
-                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=fail&fullname=Bobbie%20Gibb&newform=true">Bobbie Gibb</a></td>
+                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=fail&newform=true">{{ data['wearer-firstname'] or "Bobbie" }} {{ data['wearer-lastname'] or "Gibbs" }}</a></td>
                 <td class="govuk-table__cell">01/02/2025</td>
                 <td class="govuk-table__cell">
                 {{govukTag({
