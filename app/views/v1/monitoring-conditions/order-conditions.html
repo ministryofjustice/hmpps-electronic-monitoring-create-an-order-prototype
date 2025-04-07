@@ -16,7 +16,7 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
-        What are the order type conditions?
+        Which order is the monitoring condition a part of?
       </h1>
        
       <form class="form" action="/order-conditions" method="post">
@@ -29,7 +29,7 @@
               name: "order-condition",
               fieldset: {
                 legend: {
-                  text: "What are the order type conditions?",
+                  text: "Which order is the monitoring condition a part of?",
                   isPageHeading: false,
                   classes: "govuk-visually-hidden"
                 }
@@ -38,17 +38,26 @@
                 {
                   value: "Requirement of a community order",
                   checked: (true if data['order-condition'] == 'Requirement of a community order'),
-                  text: "Requirement of a community order"
+                  text: "Requirement of a community order",
+                   hint: {
+                    text: "Monitoring requirements are part of a Community Order, a Suspended Sentence Order, or a Youth Rehabilitation Order."
+                  }
                 },
                 {
                   value: "Licence condition of a custodial order",
                   checked: (true if data['order-condition'] == 'Licence condition of a custodial order'),
-                  text: "Licence condition of a custodial order"
+                  text: "Licence condition of a custodial order",
+                   hint: {
+                    text: "Device wearer is being released from prison before their sentence is complete. They are subject to specific licence conditions that include monitoring."
+                  }
                 },
                 {
                   value: "Post-Sentence Supervision Requirement following on from an Adult Custody order",
                   checked: (true if data['order-condition'] == 'Post-Sentence Supervision Requirement following on from an Adult Custody order'),
-                  text: "Post-Sentence Supervision Requirement following on from an Adult Custody order"
+                  text: "Post-Sentence Supervision Requirement following on from an Adult Custody order",
+                   hint: {
+                    text: "Device wearer is being released from a standard determinate custodial sentence of less than 2 years and their licence period is complete. They are subject to post-sentence supervision requirements that include monitoring."
+                  }
                 }
               ]
             }) }}
