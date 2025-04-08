@@ -114,6 +114,14 @@
                 checked: (true if data['risk'] == 'There are no risks that the installer should be aware of'),
                 text: "There are no risks that the installer should be aware of",
                 behaviour: "exclusive"
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "Not able to provide this information",
+                checked: (true if data['risk'] == 'Not able to provide this information'),
+                text: "Not able to provide this information"
               }
             ]
           }) }}
