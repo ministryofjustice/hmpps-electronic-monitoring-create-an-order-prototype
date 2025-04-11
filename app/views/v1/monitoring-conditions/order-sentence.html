@@ -42,6 +42,11 @@
               },
               items: [
                 {
+                  value: "Standard Determinate Sentence",
+                  checked: (true if data['order-sentence'] == 'Standard Determinate Sentence'),
+                  text: "Standard Determinate Sentence"
+                },
+                {
                   value: "Extended Determinate Sentence",
                   checked: (true if data['order-sentence'] == 'Extended Determinate Sentence'),
                   text: "Extended Determinate Sentence"
@@ -70,11 +75,6 @@
                   value: "Section 85 Extended Sentences",
                   checked: (true if data['order-sentence'] == 'Section 85 Extended Sentences'),
                   text: "Section 85 Extended Sentences"
-                },
-                {
-                  value: "Standard Determinate Sentence",
-                  checked: (true if data['order-sentence'] == 'Standard Determinate Sentence'),
-                  text: "Standard Determinate Sentence"
                 }
               ]
             }) }}
