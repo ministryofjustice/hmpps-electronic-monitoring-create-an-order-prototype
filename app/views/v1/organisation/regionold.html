@@ -16,17 +16,17 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
-       Responsible Organisation's region
+       Responsible Organisation's details
       </h1>
 
 
+        <form class="form" action="check-answers" method="post">
 
 
   {% if (data['officer-org'] == "Probation service") %}
 
       
-   
-<form class="form" action="region2" method="post">    
+       
 
 
           {{ govukRadios({
@@ -114,11 +114,9 @@
             ]
           }) }}
 
-        
+         {% include "/includes/pdu.html" %}
+
   {% else %}
-
-
-   <form class="form" action="check-answers" method="post">
 
    {{ govukRadios({
             name: "region",

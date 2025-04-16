@@ -30,7 +30,7 @@
            
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the order type?
+               What condition is the electronic monitoring part of?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['order-type'] or 'Post release' }}
@@ -56,21 +56,7 @@
 
          {% endif  %}
 
-        {% if (data['order-type'] == "Post release" or data['order-type'] == "Special")  %}  
-       
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What are the order type conditions?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['order-conditions'] or 'Requirement of a community order' }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="order-conditions?cya4=true">Change<span class="govuk-visually-hidden"> What are the conditions of the order? </span></a>
-            </dd>
-          </div>
-
-        {% endif  %}
+      
 
         {% if (data['order-type'] == "Post release" or data['order-type'] == "Pre trial" or data['order-type'] == "Community")  %} 
          
@@ -87,6 +73,38 @@
           </div>
 
           {% endif  %}
+
+            {% if (data['order-type'] == "Post release" or data['order-type'] == "Special")  %}  
+       
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Is the device wearer being released from prison early on licence?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['order-condition'] or 'Yes' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="order-conditions?cya4=true">Change<span class="govuk-visually-hidden"> What are the conditions of the order? </span></a>
+            </dd>
+          </div>
+
+        {% endif  %}
+
+             {% if (data['order-condition'] == "Yes")  %}  
+       
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             At what stage in their licence period is the device wearer?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['order-conditions2'] or 'It is due to start soon or has recently started' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="order-conditions2?cya4=true">Change<span class="govuk-visually-hidden"> At what stage in their licence period are they? </span></a>
+            </dd>
+          </div>
+
+        {% endif  %}
 
         {% if (data['order-type'] == "Post release")  %} 
 

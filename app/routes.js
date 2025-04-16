@@ -441,7 +441,7 @@ router.post('/pilots', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     if (ordertype == "Post release"){
-        response.redirect("/v1/monitoring-conditions/order-conditions")
+        response.redirect("/v1/monitoring-conditions/order-sentence")
     } else {
         response.redirect("/v1/monitoring-conditions/monitoring-dates")
     }
@@ -449,11 +449,11 @@ router.post('/pilots', function(request, response) {
 
 router.post('/order-conditions', function(request, response) {
 
-    var ordertype = request.session.data['order-type']
-    if (ordertype == "Post release"){
-        response.redirect("/v1/monitoring-conditions/order-sentence") 
+    var ordercondition = request.session.data['order-condition']
+    if (ordercondition == "Yes"){
+        response.redirect("/v1/monitoring-conditions/order-conditions2") 
     } else {
-        response.redirect("/v1/monitoring-conditions/monitoring-dates")
+        response.redirect("/v1/monitoring-conditions/order-prrar")
     }
 })
 
@@ -461,7 +461,7 @@ router.post('/order-sentence', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     if (ordertype == "Post release"){
-        response.redirect("/v1/monitoring-conditions/order-prrar") 
+        response.redirect("/v1/monitoring-conditions/order-conditions") 
     } else {
         response.redirect("/v1/monitoring-conditions/order-issp")
     }

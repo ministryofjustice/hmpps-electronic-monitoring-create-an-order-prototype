@@ -89,7 +89,7 @@
         
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the order type?
+               What condition is the electronic monitoring part of?
             </dt>
             <dd class="govuk-summary-list__value">
              Civil
@@ -119,10 +119,10 @@
           </div>
                   <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What are the order type conditions?
+              Are they being released from prison early on licence?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['order-conditions'] or 'Requirement of a community order' }}
+              {{ data['order-conditions'] or 'Yes' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               {% if (data['view'] == 'true') %}

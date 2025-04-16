@@ -16,15 +16,14 @@
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
-        Which order is the monitoring condition a part of?
+        Is the device wearer being released from prison early on licence?
       </h1>
        
       <form class="form" action="/order-conditions" method="post">
 
 
-{% if (data['order-type'] == "Post release") %}
 
-             {{ govukRadios({
+     <!--        {{ govukRadios({
               classes: "govuk-radios",
               name: "order-condition",
               fieldset: {
@@ -40,7 +39,7 @@
                   checked: (true if data['order-condition'] == 'Requirement of a community order'),
                   text: "Requirement of a community order",
                    hint: {
-                    text: "Monitoring requirements are part of a Community Order, a Suspended Sentence Order, or a Youth Rehabilitation Order."
+                    text: "Monitoring conditions are part of a Community Order, a Suspended Sentence Order, or a Youth Rehabilitation Order."
                   }
                 },
                 {
@@ -48,7 +47,7 @@
                   checked: (true if data['order-condition'] == 'Licence condition of a custodial order'),
                   text: "Licence condition of a custodial order",
                    hint: {
-                    text: "Device wearer is being released from prison before their sentence is complete. They are subject to specific licence conditions that include monitoring."
+                    text: "Device wearer is being released from prison before their sentence is complete. They are subject to specific licence conditions that include monitoring conditions."
                   }
                 },
                 {
@@ -56,50 +55,46 @@
                   checked: (true if data['order-condition'] == 'Post-Sentence Supervision Requirement following on from an Adult Custody order'),
                   text: "Post-Sentence Supervision Requirement following on from an Adult Custody order",
                    hint: {
-                    text: "Device wearer is being released from a standard determinate custodial sentence of less than 2 years and their licence period is complete. They are subject to post-sentence supervision requirements that include monitoring."
+                    text: "Device wearer is being released from a standard determinate custodial sentence of less than 2 years and their licence period is complete. They are subject to post-sentence supervision requirements that include monitoring conditions."
                   }
                 }
               ]
-            }) }}
+            }) }} -->
 
-{% else %}
-
-        {{ govukRadios({
-              classes: "govuk-radios",
+             {{ govukRadios({
+              classes: "govuk-radios--inline",
               name: "order-condition",
               fieldset: {
                 legend: {
-                  text: "What are the order type conditions?",
+                  text: "Is the device wearer being released from prison early on licence?",
                   isPageHeading: false,
                   classes: "govuk-visually-hidden"
                 }
               },
               items: [
+               
                 {
-                  value: "Requirement of a community order",
-                  checked: (true if data['order-condition'] == 'Requirement of a community order'),
-                  text: "Requirement of a community order"
+                  value: "Yes",
+                  checked: (true if data['order-condition'] == 'Yes'),
+                  text: "Yes",
+                   hint: {
+                    text: ""
+                  }
                 },
                 {
-                  value: "Licence condition of a custodial order",
-                  checked: (true if data['order-condition'] == 'Licence condition of a custodial order'),
-                  text: "Licence condition of a custodial order"
-                },
-                {
-                  value: "Post-Sentence Supervision Requirement following on from an Adult Custody order",
-                  checked: (true if data['order-condition'] == 'Post-Sentence Supervision Requirement following on from an Adult Custody order'),
-                  text: "Post-Sentence Supervision Requirement following on from an Adult Custody order"
-                },
-                {
-                  value: "Bail order",
-                  checked: (true if data['order-condition'] == 'Bail order'),
-                  text: "Bail order"
+                  value: "No",
+                  checked: (true if data['order-condition'] == 'No'),
+                  text: "No ",
+                   hint: {
+                    text: ""
+                  }
                 }
               ]
             }) }}
 
 
-{% endif %}
+
+
 
        
 

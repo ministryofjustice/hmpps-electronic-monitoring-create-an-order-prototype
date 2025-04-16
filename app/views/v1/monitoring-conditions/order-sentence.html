@@ -100,11 +100,6 @@
               },
               items: [
                 {
-                  value: "Bail",
-                  checked: (true if data['order-type'] == 'Bail'),
-                  text: "Bail"
-                },
-                {
                   value: "Bail Supervision & Support",
                   checked: (true if data['order-type'] == 'Bail Supervision & Support'),
                   text: "Bail Supervision & Support"
@@ -113,6 +108,14 @@
                   value: "Bail Remand to Local Authority Accommodation (RLAA)",
                   checked: (true if data['order-type'] == 'Bail Remand to Local Authority Accommodation (RLAA)'),
                   text: "Bail Remand to Local Authority Accommodation (RLAA)"
+                },
+                {
+                  divider: "or"
+                },
+                {
+                  value: "They have not been given one of these types of bail",
+                  checked: (true if data['order-type'] == 'They have not been given one of these  types of bail'),
+                  text: "They have not been given one of these  types of bail"
                 }
               ]
             }) }}
@@ -136,25 +139,29 @@
                 }
               },
               items: [
+                
                 {
-                  value: "Community",
-                  checked: (true if data['order-type'] == 'Community'),
-                  text: "Community"
+                  value: "Supervision Default Order",
+                  checked: (true if data['order-type'] == 'Supervision Default Order'),
+                  text: "Supervision Default Order"
                 },
                 {
-                  value: "Community Supervision Default Order",
-                  checked: (true if data['order-type'] == 'Community Supervision Default Order'),
-                  text: "Community Supervision Default Order"
+                  value: "Suspended Sentence",
+                  checked: (true if data['order-type'] == 'Suspended Sentence'),
+                  text: "Suspended Sentence"
                 },
                 {
-                  value: "Community Suspended Sentence",
-                  checked: (true if data['order-type'] == 'Community Suspended Sentence'),
-                  text: "Community Suspended Sentence"
+                  value: "Youth Rehabilitation Order (YRO)",
+                  checked: (true if data['order-type'] == 'Youth Rehabilitation Order (YRO)'),
+                  text: "Youth Rehabilitation Order (YRO)"
                 },
                 {
-                  value: "Community Youth Rehabilitation Order (YRO)",
-                  checked: (true if data['order-type'] == 'Community Youth Rehabilitation Order (YRO)'),
-                  text: "Community Youth Rehabilitation Order (YRO)"
+                  divider: "or"
+                },
+                {
+                  value: "They have not been given one of these sentences",
+                  checked: (true if data['order-type'] == 'They have not been given one of these sentences'),
+                  text: "They have not been given one of these sentences"
                 }
               ]
             }) }}

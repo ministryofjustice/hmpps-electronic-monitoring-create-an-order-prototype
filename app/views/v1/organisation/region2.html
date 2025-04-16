@@ -1,0 +1,163 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible organisation's details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+       Responsible Organisation's Probation Delivery Unit 
+      </h1>
+   <form class="form" action="check-answers" method="post">
+
+
+
+  {% if (data['region'] == "East Midlands") %}
+
+
+
+          {{ govukRadios({
+            name: "pdu",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's Probation Delivery Unit (PDU)?",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Derbyshire",
+                checked: (true if data['pdu'] == 'Derbyshire'),
+                text: "Derbyshire"
+                
+              },
+              {
+                value: "Derby City",
+                checked: (true if data['pdu'] == 'Derby City'),
+                text: "Derby City"
+                
+              },
+              {
+                value: "Leicester, Leicestershire and Rutland",
+                checked: (true if data['pdu'] == 'Leicester, Leicestershire and Rutland'),
+                text: "Leicester, Leicestershire and Rutland"
+                
+              },
+              {
+                value: "East and West Lincolnshire ",
+                checked: (true if data['pdu'] == 'East and West Lincolnshire '),
+                text: "East and West Lincolnshire "
+                
+              },
+              {
+                value: "Nottinghamshire",
+                checked: (true if data['pdu'] == 'Nottinghamshire'),
+                text: "Nottinghamshire"
+                
+              },
+              {
+                value: "Nottingham City",
+                checked: (true if data['region'] == 'Nottingham City'),
+                text: "Nottingham City"
+              }
+            ]
+          }) }}
+
+        
+  {% else %}
+
+
+
+
+   {{ govukRadios({
+            name: "region",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's Probation Delivery Unit (PDU)?",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "County Durham and Darlington",
+                checked: (true if data['region'] == 'County Durham and Darlington'),
+                text: "County Durham and Darlington"
+                
+              },
+              {
+                value: "Sunderland",
+                checked: (true if data['region'] == 'Sunderland'),
+                text: "Sunderland"
+                
+              },
+              {
+                value: "Stockton and Hartlepool",
+                checked: (true if data['region'] == 'Stockton and Hartlepool'),
+                text: "Stockton and Hartlepool"
+                
+              },
+              {
+                value: "Redcar, Cleveland and Middlesbrough,
+                checked: (true if data['region'] == 'Redcar, Cleveland and Middlesbrough'),
+                text: "Redcar, Cleveland and Middlesbrough"
+                
+              },
+              {
+                value: "North Tyneside and Northumberland",
+                checked: (true if data['region'] == 'North Tyneside and Northumberland'),
+                text: "North Tyneside and Northumberland"
+                
+              },
+              {
+                value: "Gateshead and South Tyneside",
+                checked: (true if data['region'] == 'Gateshead and South Tyneside'),
+                text: "Gateshead and South Tyneside"
+              },
+              {
+                value: "Newcastle upon Tyne",
+                checked: (true if data['region'] == 'Newcastle upon Tyne'),
+                text: "Newcastle upon Tyne"
+              }
+            ]
+          }) }}
+
+  {% endif %}
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

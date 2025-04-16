@@ -1,0 +1,85 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        At what stage in their licence period is the device wearer?
+      </h1>
+       
+      <form class="form" action="order-prrar" method="post">
+
+   
+
+
+
+
+             {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-condition2",
+              fieldset: {
+                legend: {
+                  text: "At what stage in their licence period is the device wearer?",
+                  isPageHeading: false,
+                  classes: "govuk-visually-hidden"
+                }
+              },
+              items: [
+               
+                {
+                  value: "Their licence period is due to start soon or they are on licence",
+                  checked: (true if data['order-condition2'] == 'Their licence period is due to start soon or they are on licence'),
+                  text: "Their licence period is due to start soon or they are on licence",
+                   hint: {
+                    text: ""
+                  }
+                },
+                {
+                  value: "Their licence period has ended",
+                  checked: (true if data['order-condition2'] == 'Their licence period has ended'),
+                  text: "Their licence period has ended",
+                   hint: {
+                    text: " "
+                  }
+                }
+              ]
+            }) }}
+
+
+
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '#',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}
