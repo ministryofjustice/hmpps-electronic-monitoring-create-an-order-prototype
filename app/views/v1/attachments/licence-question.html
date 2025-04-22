@@ -18,7 +18,44 @@
    
          
         <span class="govuk-caption-l">Additional documents</span>
+
+         {% if (data['notifying-org'] == 'Home Office') %}
           {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "licencequestion",
+            fieldset: {
+              legend: {
+                text: "Do you have a Grant of Bail document to upload?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: "Select one option"
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['licencequestion'] == 'Yes'),
+                conditional: {
+                
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (true if data['licencequestion'] == 'No'),
+                conditional: {
+                 
+                }
+              }
+            ]
+          }) }}
+
+     {% else %}
+
+       {{ govukRadios({
             classes: "govuk-radios--inline",
             name: "licencequestion",
             fieldset: {
@@ -50,6 +87,8 @@
               }
             ]
           }) }}
+
+    {% endif %}
 
 
      

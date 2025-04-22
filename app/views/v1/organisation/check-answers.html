@@ -128,20 +128,7 @@
             </dd>
           </div>
 
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-         What is the Responsible Officers's team contact email address? (optional)
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {{ data['org-email'] or 'centralteam@homeoffice.org' }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-               
-                  <a class="govuk-link" href="org-contact?cya2=true">Change<span class="govuk-visually-hidden">  What is the responsible organisation's email address? </span></a>
-                </li>
-                
-            </dd>
-          </div>
+        
 
       </dl>
 
@@ -160,6 +147,22 @@
             <dd class="govuk-summary-list__actions">
                
                   <a class="govuk-link" href="org-contact?cya2=true">Change<span class="govuk-visually-hidden"> What organisation is the responsible officer part of? </span></a>
+                </li>
+                
+            </dd>
+          </div>
+
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+         What is the Responsible Organisation's email address? (optional)
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['org-email'] or 'centralteam@homeoffice.org' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               
+                  <a class="govuk-link" href="org-contact?cya2=true">Change<span class="govuk-visually-hidden">  What is the responsible organisation's email address? </span></a>
                 </li>
                 
             </dd>

@@ -123,6 +123,21 @@
                 ]
               }) }}-->
         
+               {{ govukInput({
+          label: {
+            text: "What is the Responsible Organisation's email address? (optional)",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "Provide an email address that can be used to contact the Responsible Organisation if the Responsible Officer is unavaliable."
+          },
+          classes: "govuk-input--width-20",
+          id: "org-email",
+          name: "org-email",
+          spellcheck: false,
+          value: data['org-email']
+        }) }}
+
        
 
     {% from "govuk/components/button/macro.njk" import govukButton %}
