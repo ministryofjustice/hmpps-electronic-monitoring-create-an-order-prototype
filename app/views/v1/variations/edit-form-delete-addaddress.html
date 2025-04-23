@@ -13,12 +13,15 @@
     <div class="govuk-grid-column-two-thirds">
 
  <form class="form" action="/equipmentaddressquestion" method="post">
-      <h1 class="govuk-heading-l">Add monitoring equipment collection address</h1>
+
+  <!--
+      <h1 class="govuk-heading-l">Add monitoring equipment collection address</h1>-->
 
             {% call govukFieldset({
         legend: {
-          text: "What is the address where the tags and monitoring equipment should be collected?",
-          classes: "govuk-fieldset__legend--s"
+          text: "Where should the monitoring equipment be collected?",
+                isPageHeading: true,
+         classes: "govuk-fieldset__legend--l"
         }
       }) %}
 

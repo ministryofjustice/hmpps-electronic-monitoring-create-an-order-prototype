@@ -12,12 +12,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      
+          <span class="govuk-caption-l">Electronic monitoring required</span>
 
-      <h1 class="govuk-heading-l">
+   <!--   <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
         Is the device wearer being released from prison early on licence?
-      </h1>
+      </h1>-->
        
       <form class="form" action="/order-conditions" method="post">
 
@@ -67,8 +67,8 @@
               fieldset: {
                 legend: {
                   text: "Is the device wearer being released from prison early on licence?",
-                  isPageHeading: false,
-                  classes: "govuk-visually-hidden"
+                  isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
                 }
               },
               items: [
@@ -107,7 +107,7 @@
 
         {{ govukButton({
           text: "Save as draft",
-          href: '#',
+          href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
         }) }}
 

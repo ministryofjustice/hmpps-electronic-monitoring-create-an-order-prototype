@@ -12,16 +12,18 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">About the device wearer</span>
-        Gender
-      </h1>
+      <span class="govuk-caption-l">About the device wearer</span>
 
-      <p>
+  <!--    <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the device wearer</span>
+       What is the device wearer's gender?
+      </h1>-->
+
+     <!-- <p>
         Gender helps the installer use the correct language when talking to the device wearer.
       </p>
 
-      <p>Select how the device wearer identifies and describes themselves. The device wearer's gender can be different to their sex registered at birth.</p>
+      <p>Select how the device wearer identifies and describes themselves. The device wearer's gender can be different to their sex registered at birth.</p>-->
 
        {% if (data['cya1'] == "true") %}
 
@@ -60,11 +62,11 @@
               legend: {
                 text: "What is the device wearer's gender?",
                 isPageHeading: true,
-                classes: "govuk-fieldset__legend--s"
+                classes: "govuk-fieldset__legend--l"
               }
             },
             hint: {
-              text: ""
+              text: "Gender can be different to their sex registered at birth."
             },
             items: [
               {

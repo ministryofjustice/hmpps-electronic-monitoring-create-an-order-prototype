@@ -45,7 +45,7 @@
           {% if (data['disability-needs-question'] !== NULL and data['disability-needs-question'] !== '') %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             Is there anything you want to share about the device wearer’s disability or health condition to help us plan installation?
+             Is there anything we need to know about the device wearer’s disability or health condition?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['disability-needs-question'] }}
@@ -142,7 +142,7 @@
           {% if (data['risk-question'] == "Yes") %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-               What else should the installer know?
+              What other risks are there to be aware of?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['risk-needs'] }}

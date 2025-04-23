@@ -12,12 +12,14 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">About the device wearer</span>
-        Contacting the device wearer
-      </h1>
+      <span class="govuk-caption-l">About the device wearer</span>
 
-      <p>The contact number can be the number of an Approved Premises (AP).</p>
+    <!--  <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the device wearer</span>
+        Does the device wearer have a contact telephone number?
+      </h1>-->
+
+  
     
       {% if (data['cya1'] == "true") %}
 
@@ -73,11 +75,11 @@
             fieldset: {
               legend: {
                 text: "Does the device wearer have a contact telephone number?",
-               classes: "govuk-fieldset__legend--s"
+               classes: "govuk-fieldset__legend--l"
               }
             },
             hint: {
-              text: ""
+              text: "The contact number can be the number of an Approved Premises (AP)."
             },
             items: [
            

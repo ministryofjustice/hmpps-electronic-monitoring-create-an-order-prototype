@@ -12,12 +12,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      
+       <span class="govuk-caption-l">Electronic monitoring required</span>
 
-      <h1 class="govuk-heading-l">
+     <!-- <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
         Add tag installation address
-      </h1>
+      </h1>-->
 
     
 
@@ -35,8 +35,9 @@
 
       {% call govukFieldset({
         legend: {
-          text: "What is the address where the tag or tags will be installed?",
-          classes: "govuk-fieldset__legend--s"
+          text: "Where will the installation of the electronic monitoring device take place?",
+          isPageHeading: true,
+         classes: "govuk-fieldset__legend--l"
         }
       }) %}
 

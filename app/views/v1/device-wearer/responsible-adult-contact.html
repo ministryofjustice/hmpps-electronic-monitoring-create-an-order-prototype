@@ -12,10 +12,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
+    <span class="govuk-caption-l">About the device wearer</span>
+
+    <!--  <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">About the device wearer</span>
-        Contacting the responsible adult
-      </h1>
+       Does the responsible adult have a contact telephone number?
+      </h1>-->
 
     
       {% if (data['cya1'] == "true") %}
@@ -60,7 +62,7 @@
             fieldset: {
               legend: {
                 text: "Does the responsible adult have a contact telephone number?",
-               classes: "govuk-fieldset__legend--s"
+               classes: "govuk-fieldset__legend--l"
               }
             },
             hint: {

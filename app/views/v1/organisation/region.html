@@ -13,16 +13,13 @@
     <div class="govuk-grid-column-two-thirds">
 
       
-
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
-       Responsible Organisation's region
-      </h1>
-
-
-
-
   {% if (data['officer-org'] == "Probation service") %}
+
+   <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+   <!--   <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+      What is the Probation region?
+      </h1>-->
 
       
    
@@ -34,8 +31,8 @@
             fieldset: {
               legend: {
                 text: "What is the Probation region?",
-                isPageHeading: false,
-                classes: "govuk-fieldset__legend--s"
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
               }
             },
             hint: {
@@ -120,13 +117,20 @@
 
    <form class="form" action="check-answers" method="post">
 
+  <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+  <!--    <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+      What is the Youth Justice Service (YJS) region?
+      </h1>-->
+
+
    {{ govukRadios({
             name: "region",
             fieldset: {
               legend: {
                 text: "What is the Youth Justice Service (YJS) region?",
-                isPageHeading: false,
-                classes: "govuk-fieldset__legend--s"
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
               }
             },
             hint: {

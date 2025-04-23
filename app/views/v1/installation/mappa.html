@@ -12,10 +12,11 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
+ <span class="govuk-caption-l">Access needs and installation risk</span>
+   <!--   <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Access needs and installation risk</span>
         Multi-Agency Public Protection Arrangements (MAPPA)
-      </h1>
+      </h1>-->
 
       <form class="form" action="/mappa" method="post">
 
@@ -26,8 +27,9 @@
             name: "mappaquestion",
             fieldset: {
               legend: {
-                text: "Is the device wearer a MAPPA offender?",
-                classes: "govuk-fieldset__legend--s"
+                text: "Is the device wearer a Multi-Agency Public Protection Arrangements (MAPPA) offender?",
+                isPageHeading: true,
+         classes: "govuk-fieldset__legend--l"
               }
             },
             hint: {

@@ -12,11 +12,13 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Access needs and installation risk</span>
+
+    <!--  <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Access needs and installation risk</span>
         Risk at installation additional information
       </h1>
-
+-->
       
 
        <form class="form" action="/risk" method="post">
@@ -34,7 +36,7 @@
               text: "Provide additional risk information about the device wearer's behaviour or the installation address."
             },
             label: {
-              text: "What other risks should the installer be aware of?"
+              text: "What other risks are there to be aware of?"
             }
           }) }}
           {% endset -%}
@@ -46,7 +48,8 @@
             fieldset: {
               legend: {
                 text: " Are there other risks to be aware of?",
-                classes: "govuk-fieldset__legend--s"
+                 isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
               }
             },
             hint: {

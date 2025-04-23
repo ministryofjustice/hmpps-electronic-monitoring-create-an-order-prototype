@@ -12,9 +12,9 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
+        <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
-        Monitoring type
+        What monitoring does the device wearer need?
       </h1>
 
     {% if (data['addressquestion'] == "No" and data['eighteen'] == "No") %}
@@ -52,7 +52,8 @@
             fieldset: {
               legend: {
                 text: "What monitoring does the device wearer need?",
-                classes: "govuk-fieldset__legend--s"
+                isPageHeading: true,
+                classes: "govuk-visually-hidden"
 
               }
             },

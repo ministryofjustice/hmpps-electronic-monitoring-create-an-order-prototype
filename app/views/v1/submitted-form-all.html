@@ -69,6 +69,9 @@
             <dd class="govuk-summary-list__value">
             {% if (data['submit-failure'] == "true")  %} 
               Failed to submit
+
+            {% elseif (data['variation'] == 'true') %}
+               Submitted with changes
             {% else  %} 
              Submitted
             {% endif  %} 
@@ -109,6 +112,58 @@
 
 
              </dl>
+
+             {% if (data['variation'] == 'true') %}
+
+ <h2 class="govuk-heading-l">About the changes in this version of the form</h2>      
+
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           What is the date you want the changes to take effect?
+            </dt>
+            <dd class="govuk-summary-list__value">
+            12/01/2025
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            What have you changed in the form?
+            </dt>
+            <dd class="govuk-summary-list__value">
+            The device wearer's address or the installation address
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Enter more information on what you have changed
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Moved house, no change in risk
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                
+            </dd>
+          </div>
+
+
+             </dl>
+
+
+
+
+ {% endif %}
 
 
 
@@ -1771,57 +1826,7 @@
 
         </dl>
 
-{% if (data['variation'] == 'true') %}
 
- <h2 class="govuk-heading-l">Details of the s</h2>      
-
-
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-           What is the date you want the  to take effect?
-            </dt>
-            <dd class="govuk-summary-list__value">
-            12/01/2025
-            </dd>
-            <dd class="govuk-summary-list__actions">
-             
-                
-            </dd>
-          </div>
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-            What have you d in the form?
-            </dt>
-            <dd class="govuk-summary-list__value">
-            The device wearer's address or the installation address
-            </dd>
-            <dd class="govuk-summary-list__actions">
-             
-                
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-            Enter more information on what you have d
-            </dt>
-            <dd class="govuk-summary-list__value">
-            Moved house, no  in risk
-            </dd>
-            <dd class="govuk-summary-list__actions">
-             
-                
-            </dd>
-          </div>
-
-
-             </dl>
-
-
-
-
- {% endif %}
      
 
          <div class="govuk-button-group">

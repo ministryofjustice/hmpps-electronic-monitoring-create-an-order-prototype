@@ -12,12 +12,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      
+          <span class="govuk-caption-l">Electronic monitoring required</span>
 
-      <h1 class="govuk-heading-l">
+     <!-- <h1 class="govuk-heading-l">
          <span class="govuk-caption-l">Electronic monitoring required</span>
-        Add alcohol monitoring base station installation address
-      </h1>
+       What is the address where the alcohol monitoring base station will be installed?
+      </h1>-->
 
 
 
@@ -31,8 +31,9 @@
 
       {% call govukFieldset({
         legend: {
-          text: "What is the address where the alcohol monitoring base station will be installed?",
-          classes: "govuk-fieldset__legend--s"
+          text: "What is the address of the base station?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
         }
       }) %}
 

@@ -13,11 +13,11 @@
     <div class="govuk-grid-column-two-thirds">
 
       
-
-      <h1 class="govuk-heading-l">
+<span class="govuk-caption-l">Electronic monitoring required</span>
+    <!--  <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
         Appointment address
-      </h1>
+      </h1>-->
 
 
    
@@ -33,7 +33,8 @@
         {% call govukFieldset({
         legend: {
           text: "At what address will the appointment take place?",
-          classes: "govuk-fieldset__legend--s"
+          isPageHeading: true,
+         classes: "govuk-fieldset__legend--l"
         }
       }) %}
 

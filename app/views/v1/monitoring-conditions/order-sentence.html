@@ -25,10 +25,12 @@
 
 {% if (data['order-type'] == "Post release") %}
 
-      <h1 class="govuk-heading-l">
+    <span class="govuk-caption-l">Electronic monitoring required</span>
+
+    <!--  <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
         What type of sentence has the device wearer been given?
-      </h1>
+      </h1>-->
 
             {{ govukRadios({
               classes: "govuk-radios",
@@ -36,8 +38,8 @@
               fieldset: {
                 legend: {
                   text: "What type of sentence has the device wearer been given?",
-                  isPageHeading: false,
-                  classes: "govuk-visually-hidden"
+                   isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
                 }
               },
               items: [
@@ -82,10 +84,12 @@
 
 {% elseif (data['order-type'] == "Pre trial") %}
 
-  <h1 class="govuk-heading-l">
+    <span class="govuk-caption-l">Electronic monitoring required</span>
+
+ <!-- <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
         What type of bail has the device wearer been given?
-      </h1>
+      </h1>-->
 
 
             {{ govukRadios({
@@ -94,8 +98,8 @@
               fieldset: {
                 legend: {
                   text: "What type of bail has the device wearer been given?",
-                  isPageHeading: false,
-                  classes: "govuk-visually-hidden"
+                   isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
                 }
               },
               items: [
@@ -122,10 +126,12 @@
 
 {% elseif (data['order-type'] == "Community") %}
 
-      <h1 class="govuk-heading-l">
+    <span class="govuk-caption-l">Electronic monitoring required</span>
+
+     <!-- <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
         What type of sentence has the device wearer been given?
-      </h1>
+      </h1>-->
 
 
            {{ govukRadios({
@@ -134,8 +140,8 @@
               fieldset: {
                 legend: {
                   text: "What type of sentence has the device wearer been given?",
-                  isPageHeading: false,
-                  classes: "govuk-visually-hidden"
+                   isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
                 }
               },
               items: [
@@ -182,7 +188,7 @@
 
         {{ govukButton({
           text: "Save as draft",
-          href: '#',
+          href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
         }) }}
 

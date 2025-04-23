@@ -12,10 +12,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
+       <span class="govuk-caption-l">Access needs and installation risk</span>
+
+    <!--  <h1 class="govuk-heading-l">
        <span class="govuk-caption-l">Access needs and installation risk</span>
       Offence committed
-      </h1>
+      </h1>-->
 
        {% if (data['cya3'] == "true") %}
 
@@ -37,8 +39,8 @@
             fieldset: {
               legend: {
                 text: "What type of offence did the device wearer commit?",
-                isPageHeading: false,
-                classes: "govuk-fieldset__legend--s"
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
               }
             },
             hint: {

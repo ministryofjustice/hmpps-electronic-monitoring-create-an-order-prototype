@@ -12,10 +12,12 @@
       <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">About the device wearer</span>
+
+    <!--  <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">About the device wearer</span>
-        Identity numbers
-      </h1>
+        What identity numbers do you have for the device wearer?
+      </h1>-->
 
        {% if (data['cya1'] == "true") %}
 
@@ -29,7 +31,7 @@
 
      
 
-        <p>Identity numbers help us identify the device wearer.</p>
+
 
 
         {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
@@ -137,11 +139,11 @@
           fieldset: {
             legend: {
               text: "What identity numbers do you have for the device wearer?",
-              classes: "govuk-fieldset__legend--s"
+              classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
-            text: "Select and enter all identity numbers"
+            text: "Select and enter all identity numbers that you have for the device wearer."
           },
           items: [
             {

@@ -14,10 +14,11 @@
 
       
 
-      <h1 class="govuk-heading-l">
+       <span class="govuk-caption-l">Electronic monitoring required</span>
+       <!--   <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
         What pilot project is the device wearer part of?
-      </h1>
+      </h1>-->
        
       <form class="form" action="/pilots" method="post">
 
@@ -30,8 +31,8 @@
               fieldset: {
                 legend: {
                   text: "What pilot project is the device wearer part of?",
-                  isPageHeading: false,
-                  classes: "govuk-visually-hidden"
+                  isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
                 }
               },
               items: [
@@ -76,8 +77,8 @@
               fieldset: {
                 legend: {
                   text: "What pilot project is the device wearer part of?",
-                  isPageHeading: false,
-                  classes: "govuk-visually-hidden"
+                   isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
                 }
               },
               items: [
@@ -112,7 +113,7 @@
 
         {{ govukButton({
           text: "Save as draft",
-          href: '#',
+          href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
         }) }}
 
