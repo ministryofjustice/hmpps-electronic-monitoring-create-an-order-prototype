@@ -19,49 +19,55 @@
         Is the device wearer being released from prison early on licence?
       </h1>-->
        
-      <form class="form" action="/order-conditions" method="post">
+    <!--  <form class="form" action="/order-conditions" method="post">-->
 
+      <form class="form" action="order-prrar" method="post">
 
-
-     <!--        {{ govukRadios({
-              classes: "govuk-radios",
-              name: "order-condition",
-              fieldset: {
-                legend: {
-                  text: "Which order is the monitoring condition a part of?",
-                  isPageHeading: false,
-                  classes: "govuk-visually-hidden"
-                }
-              },
-              items: [
-                {
+        <!--   {
                   value: "Requirement of a community order",
                   checked: (true if data['order-condition'] == 'Requirement of a community order'),
                   text: "Requirement of a community order",
                    hint: {
                     text: "Monitoring conditions are part of a Community Order, a Suspended Sentence Order, or a Youth Rehabilitation Order."
                   }
-                },
+                },-->
+
+         {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-condition",
+              fieldset: {
+                legend: {
+                  text: "What condition is the monitoring part of?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--l"
+                }
+              },
+
+            hint: {
+              text: "This is on the device wearer's licence."
+            },
+              items: [
+             
                 {
-                  value: "Licence condition of a custodial order",
-                  checked: (true if data['order-condition'] == 'Licence condition of a custodial order'),
-                  text: "Licence condition of a custodial order",
+                  value: "Licence condition ",
+                  checked: (true if data['order-condition'] == 'Licence condition '),
+                  text: "Licence condition",
                    hint: {
                     text: "Device wearer is being released from prison before their sentence is complete. They are subject to specific licence conditions that include monitoring conditions."
                   }
                 },
                 {
-                  value: "Post-Sentence Supervision Requirement following on from an Adult Custody order",
-                  checked: (true if data['order-condition'] == 'Post-Sentence Supervision Requirement following on from an Adult Custody order'),
-                  text: "Post-Sentence Supervision Requirement following on from an Adult Custody order",
+                  value: "Post-Sentence Supervision Requirement",
+                  checked: (true if data['order-condition'] == 'Post-Sentence Supervision Requirement '),
+                  text: "Post-Sentence Supervision Requirement",
                    hint: {
-                    text: "Device wearer is being released from a standard determinate custodial sentence of less than 2 years and their licence period is complete. They are subject to post-sentence supervision requirements that include monitoring conditions."
+                    text: "Device wearer licence period is complete. They are being released from a standard determinate custodial sentence of less than 2 years. They are subject to post-sentence supervision requirements that include monitoring conditions."
                   }
                 }
               ]
-            }) }} -->
+            }) }} 
 
-             {{ govukRadios({
+          <!--   {{ govukRadios({
               classes: "govuk-radios--inline",
               name: "order-condition",
               fieldset: {
@@ -90,7 +96,7 @@
                   }
                 }
               ]
-            }) }}
+            }) }} -->
 
 
 

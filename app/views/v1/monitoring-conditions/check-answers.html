@@ -30,7 +30,7 @@
            
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-               What condition is the electronic monitoring part of?
+              What is the order type?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['order-type'] or 'Post release' }}
@@ -78,10 +78,10 @@
        
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             Has the device wearer been released from prison before their sentence is complete 'on licence'?
+             What condition is the monitoring part of?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['order-condition'] or 'Yes' }}
+              {{ data['order-condition'] or 'Licence condition' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="order-conditions?cya4=true">Change<span class="govuk-visually-hidden"> What are the conditions of the order? </span></a>
@@ -90,7 +90,7 @@
 
         {% endif  %}
 
-             {% if (data['order-condition'] == "Yes")  %}  
+         <!--    {% if (data['order-condition'] == "Yes")  %}  
        
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -104,7 +104,7 @@
             </dd>
           </div>
 
-        {% endif  %}
+        {% endif  %}-->
 
         {% if (data['order-type'] == "Post release")  %} 
 
@@ -172,7 +172,7 @@
           </div>
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the start time on the first day of monitoring?
+              What is the start time on the first day of monitoring? (optional)
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['starttime-hours'] or "13" }}:{{ data['starttime-minutes'] or "00" }}
@@ -195,7 +195,7 @@
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the end time on the last day of monitoring? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What is the end time on the last day of monitoring? (optional)
             </dt>
             </dt>
             <dd class="govuk-summary-list__value">

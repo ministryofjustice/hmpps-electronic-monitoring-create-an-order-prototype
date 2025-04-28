@@ -20,6 +20,8 @@
       </h1>-->
    <form class="form" action="check-answers" method="post">
 
+   
+
 
 
   {% if (data['region'] == "East Midlands") %}
@@ -77,14 +79,640 @@
             ]
           }) }}
 
-        
-  {% else %}
-
-
+  {% elseif (data['region'] == "East of England") %}
 
 
    {{ govukRadios({
-            name: "region",
+            name: "pdu",
+            fieldset: {
+              legend: {
+                text: "What is the Probation Delivery Unit (PDU)?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Bedfordshire",
+                checked: (true if data['pdu'] == 'Bedfordshire'),
+                text: "Bedfordshire"
+                
+              },
+              {
+                value: "Cambridgeshire",
+                checked: (true if data['pdu'] == 'Cambridgeshire'),
+                text: "Cambridgeshire"
+                
+              },
+              {
+                value: "Essex North",
+                checked: (true if data['pdu'] == 'Essex North'),
+                text: "Essex North"
+                
+              },
+              {
+                value: "Essex South",
+                checked: (true if data['pdu'] == 'Essex South'),
+                text: "Essex South"
+                
+              },
+              {
+                value: "Hertfordshire",
+                checked: (true if data['pdu'] == 'Hertfordshire'),
+                text: "Hertfordshire"
+                
+              },
+              {
+                value: "Norfolk",
+                checked: (true if data['pdu'] == 'Norfolk'),
+                text: "Norfolk"
+              },
+              {
+                value: "Northamptonshire",
+                checked: (true if data['pdu'] == 'Northamptonshire'),
+                text: "Northamptonshire"
+              },
+              {
+                value: "Suffolk",
+                checked: (true if data['pdu'] == 'Suffolk'),
+                text: "Suffolk"
+              }
+            ]
+          }) }}
+
+
+  
+ {% elseif (data['region'] == "Greater Manchester") %}
+
+
+   {{ govukRadios({
+            name: "pdu",
+            fieldset: {
+              legend: {
+                text: "What is the Probation Delivery Unit (PDU)?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Bolton",
+                checked: (true if data['pdu'] == 'Bolton'),
+                text: "Bolton"
+                
+              },
+              {
+                value: "Bury and Rochdale",
+                checked: (true if data['pdu'] == 'Bury and Rochdale'),
+                text: "Bury and Rochdale"
+                
+              },
+              {
+                value: "Manchester North",
+                checked: (true if data['pdu'] == 'Manchester North'),
+                text: "Manchester North"
+                
+              },
+              {
+                value: "Manchester South",
+                checked: (true if data['pdu'] == 'Manchester South'),
+                text: "Manchester South"
+                
+              },
+              {
+                value: "Oldham",
+                checked: (true if data['pdu'] == 'Oldham'),
+                text: "Oldham"
+                
+              },
+              {
+                value: "Salford",
+                checked: (true if data['pdu'] == 'Salford'),
+                text: "Salford"
+              },
+              {
+                value: "Stockport and Trafford",
+                checked: (true if data['pdu'] == 'Stockport and Trafford'),
+                text: "Stockport and Trafford"
+              },
+              {
+                value: "Tameside",
+                checked: (true if data['pdu'] == 'Tameside'),
+                text: "Tameside"
+              },
+              {
+                value: "Wigan",
+                checked: (true if data['pdu'] == 'Wigan'),
+                text: "Wigan"
+              }
+            ]
+          }) }}
+                
+ {% elseif (data['region'] == "Kent, Surrey & Sussex") %}
+
+
+   {{ govukRadios({
+            name: "pdu",
+            fieldset: {
+              legend: {
+                text: "What is the Probation Delivery Unit (PDU)?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "East Sussex",
+                checked: (true if data['pdu'] == 'East Sussex'),
+                text: "East Sussex"
+                
+              },
+              {
+                value: "East Kent",
+                checked: (true if data['pdu'] == 'East Kent'),
+                text: "East Kent"
+                
+              },
+              {
+                value: "Surrey",
+                checked: (true if data['pdu'] == 'Surrey'),
+                text: "Surrey"
+                
+              },
+              {
+                value: "West Kent",
+                checked: (true if data['pdu'] == 'West Kent'),
+                text: "West Kent"
+                
+              },
+              {
+                value: "West Sussex",
+                checked: (true if data['pdu'] == 'West Sussex'),
+                text: "West Sussex"
+                
+              }
+            ]
+          }) }}     
+
+ {% elseif (data['region'] == "London") %}
+
+
+   {{ govukRadios({
+            name: "pdu",
+            fieldset: {
+              legend: {
+                text: "What is the Probation Delivery Unit (PDU)?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Barking and Dagenham and Havering",
+                checked: (true if data['pdu'] == 'Barking and Dagenham and Havering'),
+                text: "Barking and Dagenham and Havering"
+                
+              },
+              {
+                value: "Brent",
+                checked: (true if data['pdu'] == 'Brent'),
+                text: "Brent"
+                
+              },
+              {
+                value: "Camden & Islington",
+                checked: (true if data['pdu'] == 'Camden & Islington'),
+                text: "Camden & Islington"
+                
+              },
+              {
+                value: "Croydon",
+                checked: (true if data['pdu'] == 'Croydon'),
+                text: "Croydon"
+                
+              },
+              {
+                value: "Ealing and Hillingdon",
+                checked: (true if data['pdu'] == 'Ealing and Hillingdon'),
+                text: "Ealing and Hillingdon"
+                
+              },
+              {
+                value: "Enfield and Haringey",
+                checked: (true if data['pdu'] == 'Enfield and Haringey'),
+                text: "Enfield and Haringey"
+              },
+              {
+                value: "Greenwich and Bexley",
+                checked: (true if data['pdu'] == 'Greenwich and Bexley'),
+                text: "Greenwich and Bexley"
+              },
+              {
+                value: "Hackney and City",
+                checked: (true if data['pdu'] == 'Hackney and City'),
+                text: "Hackney and City"
+              },
+              {
+                value: "Hammersmith, Fulham, Kensington, Chelsea and Westminster",
+                checked: (true if data['pdu'] == 'Hammersmith, Fulham, Kensington, Chelsea and Westminster'),
+                text: "Hammersmith, Fulham, Kensington, Chelsea and Westminster"
+              },
+              {
+                value: "Harrow and Barnet",
+                checked: (true if data['pdu'] == 'Harrow and Barnet'),
+                text: "Harrow and Barnet"
+              },
+              {
+                value: "Kingston, Richmond and Hounslow",
+                checked: (true if data['pdu'] == 'Kingston, Richmond and Hounslow'),
+                text: "Kingston, Richmond and Hounslow"
+              },
+              {
+                value: "Lambeth",
+                checked: (true if data['pdu'] == 'Lambeth'),
+                text: "Lambeth"
+              },
+              {
+                value: "Lewisham and Bromley",
+                checked: (true if data['pdu'] == 'Lewisham and Bromley'),
+                text: "Lewisham and Bromley"
+              },
+              {
+                value: "Newham",
+                checked: (true if data['pdu'] == 'Newham'),
+                text: "Newham"
+              },
+              {
+                value: "Redbridge and Waltham Forest",
+                checked: (true if data['pdu'] == 'Redbridge and Waltham Forest'),
+                text: "Redbridge and Waltham Forest"
+              },
+              {
+                value: "Southwark",
+                checked: (true if data['pdu'] == 'Southwark'),
+                text: "Southwark"
+              },
+              {
+                value: "Tower Hamlets",
+                checked: (true if data['pdu'] == 'Tower Hamlets'),
+                text: "Tower Hamlets"
+              },
+              {
+                value: "Wandsworth, Merton and Sutton",
+                checked: (true if data['pdu'] == 'Wandsworth, Merton and Sutton'),
+                text: "Wandsworth, Merton and Sutton"
+              }
+            ]
+          }) }}    
+
+  {% elseif (data['region'] == "North West") %}
+
+
+   {{ govukRadios({
+            name: "pdu",
+            fieldset: {
+              legend: {
+                text: "What is the Probation Delivery Unit (PDU)?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Blackburn",
+                checked: (true if data['pdu'] == 'Blackburn'),
+                text: "Blackburn"
+                
+              },
+              {
+                value: "Central Lancashire",
+                checked: (true if data['pdu'] == 'Central Lancashire'),
+                text: "Central Lancashire"
+                
+              },
+              {
+                value: "Cheshire East",
+                checked: (true if data['pdu'] == 'Cheshire East'),
+                text: "Cheshire East"
+                
+              },
+              {
+                value: "Cheshire West",
+                checked: (true if data['pdu'] == 'Cheshire West'),
+                text: "Cheshire West"
+                
+              },
+              {
+                value: "Cumbria",
+                checked: (true if data['pdu'] == 'Cumbria'),
+                text: "Cumbria"
+                
+              },
+              {
+                value: "East Lancashire",
+                checked: (true if data['pdu'] == 'East Lancashire'),
+                text: "East Lancashire"
+              },
+              {
+                value: "Warrington and Halton",
+                checked: (true if data['pdu'] == 'Warrington and Halton'),
+                text: "Warrington and Halton"
+              },
+              {
+                value: "Liverpool North",
+                checked: (true if data['pdu'] == 'Liverpool North'),
+                text: "Liverpool North"
+              },
+              {
+                value: "Liverpool South",
+                checked: (true if data['pdu'] == 'Liverpool South'),
+                text: "Liverpool South"
+              },
+              {
+                value: "North West Lancashire",
+                checked: (true if data['pdu'] == 'North West Lancashire'),
+                text: "North West Lancashire"
+              },
+              {
+                value: "Sefton & Merseyside Womens",
+                checked: (true if data['pdu'] == 'Sefton & Merseyside Womens'),
+                text: "Sefton & Merseyside Womens"
+              },
+              {
+                value: "Wirral & ISC Team",
+                checked: (true if data['pdu'] == 'Wirral & ISC Team'),
+                text: "Wirral & ISC Team"
+              },
+              {
+                value: "Knoswley & St Helens",
+                checked: (true if data['pdu'] == 'Knoswley & St Helens'),
+                text: "Knoswley & St Helens"
+              }
+            ]
+          }) }}        
+
+
+  {% elseif (data['region'] == "South Central") %}
+
+
+   {{ govukRadios({
+            name: "pdu",
+            fieldset: {
+              legend: {
+                text: "What is the Probation Delivery Unit (PDU)?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Buckinghamshire and Milton Keynes",
+                checked: (true if data['pdu'] == 'Buckinghamshire and Milton Keynes'),
+                text: "Buckinghamshire and Milton Keynes"
+                
+              },
+              {
+                value: "East Berkshire",
+                checked: (true if data['pdu'] == 'East Berkshire'),
+                text: "East Berkshire"
+                
+              },
+              {
+                value: "Hampshire North and East",
+                checked: (true if data['pdu'] == 'Hampshire North and East'),
+                text: "Hampshire North and East"
+                
+              },
+              {
+                value: "Oxfordshire",
+                checked: (true if data['pdu'] == 'Oxfordshire'),
+                text: "Oxfordshire"
+                
+              },
+              {
+                value: "Hampshire South West",
+                checked: (true if data['pdu'] == 'Hampshire South West'),
+                text: "Hampshire South West"
+                
+              },
+              {
+                value: "Hampshire South and Isle of Wight",
+                checked: (true if data['pdu'] == 'Hampshire South and Isle of Wight'),
+                text: "Hampshire South and Isle of Wight"
+              },
+              {
+                value: "West Berkshire",
+                checked: (true if data['pdu'] == 'West Berkshire'),
+                text: "West Berkshire"
+              }
+            ]
+          }) }}   
+
+
+{% elseif (data['region'] == "South West") %}
+
+
+   {{ govukRadios({
+            name: "pdu",
+            fieldset: {
+              legend: {
+                text: "What is the Probation Delivery Unit (PDU)?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Bath and North Somerset",
+                checked: (true if data['pdu'] == 'Bath and North Somerset'),
+                text: "Bath and North Somerset"
+                
+              },
+              {
+                value: "Bristol and South Gloucestershire",
+                checked: (true if data['pdu'] == 'Bristol and South Gloucestershire'),
+                text: "Bristol and South Gloucestershire"
+                
+              },
+              {
+                value: "Cornwall and Isles of Scilly",
+                checked: (true if data['pdu'] == 'Cornwall and Isles of Scilly'),
+                text: "Cornwall and Isles of Scilly"
+                
+              },
+              {
+                value: "Devon and Torbay",
+                checked: (true if data['pdu'] == 'Devon and Torbay'),
+                text: "Devon and Torbay"
+                
+              },
+              {
+                value: "Dorset",
+                checked: (true if data['pdu'] == 'Dorset'),
+                text: "Dorset"
+                
+              },
+              {
+                value: "Gloucestershire",
+                checked: (true if data['pdu'] == 'Gloucestershire'),
+                text: "Gloucestershire"
+              },
+              {
+                value: "Plymouth",
+                checked: (true if data['pdu'] == 'Plymouth'),
+                text: "Plymouth"
+              },
+              {
+                value: "Somerset",
+                checked: (true if data['pdu'] == 'Somerset'),
+                text: "Somerset"
+              },
+              {
+                value: "Swindon and Wiltshire",
+                checked: (true if data['pdu'] == 'Swindon and Wiltshire'),
+                text: "Swindon and Wiltshire"
+              }
+            ]
+          }) }}  
+
+
+  {% elseif (data['region'] == "Wales") %}
+
+
+   {{ govukRadios({
+            name: "pdu",
+            fieldset: {
+              legend: {
+                text: "What is the Probation Delivery Unit (PDU)?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Cardiff and the Vale",
+                checked: (true if data['pdu'] == 'Cardiff and the Vale'),
+                text: "Cardiff and the Vale"
+                
+              },
+              {
+                value: "Cwm Taf Morgannwg",
+                checked: (true if data['pdu'] == 'Cwm Taf Morgannwg'),
+                text: "Cwm Taf Morgannwg"
+                
+              },
+              {
+                value: "Dyfed Powys",
+                checked: (true if data['pdu'] == 'Dyfed Powys'),
+                text: "Dyfed Powys"
+                
+              },
+              {
+                value: "Gwent",
+                checked: (true if data['pdu'] == 'Gwent'),
+                text: "Gwent"
+                
+              },
+              {
+                value: "North Wales",
+                checked: (true if data['pdu'] == 'North Wales'),
+                text: "North Wales"
+                
+              },
+              {
+                value: "Swansea, Neath Port-Talbot",
+                checked: (true if data['pdu'] == 'Swansea, Neath Port-Talbot'),
+                text: "Swansea, Neath Port-Talbot"
+              }
+            ]
+          }) }}       
+
+
+ {% elseif (data['region'] == "West Midlands") %}
+
+
+   {{ govukRadios({
+            name: "pdu",
+            fieldset: {
+              legend: {
+                text: "What is the Probation Delivery Unit (PDU)?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Derby City",
+                checked: (true if data['pdu'] == 'Derby City'),
+                text: "Derby City"
+                
+              },
+              {
+                value: "Derbyshire",
+                checked: (true if data['pdu'] == 'Derbyshire'),
+                text: "Derbyshire"
+                
+              },
+              {
+                value: "Leicester, Leicestershire and Rutland",
+                checked: (true if data['pdu'] == 'Leicester, Leicestershire and Rutland'),
+                text: "Leicester, Leicestershire and Rutland"
+                
+              },
+              {
+                value: "East and West Lincolnshire ",
+                checked: (true if data['pdu'] == 'East and West Lincolnshire '),
+                text: "East and West Lincolnshire "
+                
+              },
+              {
+                value: "Nottingham City",
+                checked: (true if data['pdu'] == 'Nottingham City'),
+                text: "Nottingham City"
+                
+              },
+              {
+                value: "Nottinghamshire",
+                checked: (true if data['pdu'] == 'Nottinghamshire'),
+                text: "Nottinghamshire"
+              }
+            ]
+          }) }}                    
+                                    
+
+        
+  {% elseif (data['region'] == "North East") %}
+
+
+   {{ govukRadios({
+            name: "pdu",
             fieldset: {
               legend: {
                 text: "What is the Probation Delivery Unit (PDU)?",
@@ -98,48 +726,128 @@
             items: [
               {
                 value: "County Durham and Darlington",
-                checked: (true if data['region'] == 'County Durham and Darlington'),
+                checked: (true if data['pdu'] == 'County Durham and Darlington'),
                 text: "County Durham and Darlington"
                 
               },
               {
                 value: "Sunderland",
-                checked: (true if data['region'] == 'Sunderland'),
+                checked: (true if data['pdu'] == 'Sunderland'),
                 text: "Sunderland"
                 
               },
               {
                 value: "Stockton and Hartlepool",
-                checked: (true if data['region'] == 'Stockton and Hartlepool'),
+                checked: (true if data['pdu'] == 'Stockton and Hartlepool'),
                 text: "Stockton and Hartlepool"
                 
               },
               {
                 value: "Redcar, Cleveland and Middlesbrough",
-                checked: (true if data['region'] == 'Redcar, Cleveland and Middlesbrough'),
+                checked: (true if data['pdu'] == 'Redcar, Cleveland and Middlesbrough'),
                 text: "Redcar, Cleveland and Middlesbrough"
                 
               },
               {
                 value: "North Tyneside and Northumberland",
-                checked: (true if data['region'] == 'North Tyneside and Northumberland'),
+                checked: (true if data['pdu'] == 'North Tyneside and Northumberland'),
                 text: "North Tyneside and Northumberland"
                 
               },
               {
                 value: "Gateshead and South Tyneside",
-                checked: (true if data['region'] == 'Gateshead and South Tyneside'),
+                checked: (true if data['pdu'] == 'Gateshead and South Tyneside'),
                 text: "Gateshead and South Tyneside"
               },
               {
                 value: "Newcastle upon Tyne",
-                checked: (true if data['region'] == 'Newcastle upon Tyne'),
+                checked: (true if data['pdu'] == 'Newcastle upon Tyne'),
                 text: "Newcastle upon Tyne"
               }
             ]
           }) }}
 
+   {% else %}     
+
+   {{ govukRadios({
+            name: "pdu",
+            fieldset: {
+              legend: {
+                text: "What is the Probation Delivery Unit (PDU)?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Barnsley and Rotherham",
+                checked: (true if data['pdu'] == 'Barnsley and Rotherham'),
+                text: "Barnsley and Rotherham"
+                
+              },
+              {
+                value: "Bradford and Calderdale",
+                checked: (true if data['pdu'] == 'Bradford and Calderdale'),
+                text: "Bradford and Calderdale"
+                
+              },
+              {
+                value: "Doncaster",
+                checked: (true if data['pdu'] == 'Doncaster'),
+                text: "Doncaster"
+                
+              },
+              {
+                value: "Hull and East Riding",
+                checked: (true if data['pdu'] == 'Hull and East Riding'),
+                text: "Hull and East Riding"
+                
+              },
+              {
+                value: "Kirklees",
+                checked: (true if data['pdu'] == 'Kirklees'),
+                text: "Kirklees"
+                
+              },
+              {
+                value: "Leeds",
+                checked: (true if data['pdu'] == 'Leeds'),
+                text: "Leeds"
+              },
+              {
+                value: "North and North East Lincs",
+                checked: (true if data['pdu'] == 'North and North East Lincs'),
+                text: "North and North East Lincs"
+              },
+              {
+                value: "North Yorkshire",
+                checked: (true if data['pdu'] == 'North Yorkshire'),
+                text: "North Yorkshire"
+              },
+              {
+                value: "Sheffield",
+                checked: (true if data['pdu'] == 'Sheffield'),
+                text: "Sheffield"
+              },
+              {
+                value: "York",
+                checked: (true if data['pdu'] == 'York'),
+                text: "York"
+              },
+              {
+                value: "Wakefield",
+                checked: (true if data['pdu'] == 'Wakefield'),
+                text: "Wakefield"
+              }
+            ]
+          }) }}              
+
   {% endif %}
+
+
 
     {% from "govuk/components/button/macro.njk" import govukButton %}
 
