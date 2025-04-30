@@ -128,6 +128,21 @@
             </dd>
           </div>
 
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+         What is the Responsible Officer's email address?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['officer-email'] or 'bob.brown@homeoffice.org'}}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               
+                  <a class="govuk-link" href="responsible-officer?cya2=true">Change<span class="govuk-visually-hidden"> What is the responsible officer's email address? </span></a>
+                </li>
+                
+            </dd>
+          </div>
+
         
 
       </dl>
@@ -206,7 +221,7 @@
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-         What is the Responsible Organisation's region?
+         What is the {{ data['officer-org'] or 'Probation' }} region?
             </dt>
             <dd class="govuk-summary-list__value">
              {{ data['region'] or 'North West' }}
