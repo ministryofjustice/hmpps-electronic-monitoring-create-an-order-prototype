@@ -19,19 +19,10 @@
         Add tag installation address
       </h1>-->
 
-    
 
-     {% if (data['monitoringtypeadded'] == "Yes") %}
 
-       <form class="form" action="/monitoring-type2" method="post">
+      <form class="form" action="appointment-question" method="post">
 
-      {% else %}
-
-      <form class="form" action="/monitoring-type" method="post">
-
-      {% endif %}
-
-  
 
       {% call govukFieldset({
         legend: {

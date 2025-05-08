@@ -147,6 +147,14 @@
           },
           items: [
             {
+              value: "Prison number",
+              checked: (true if data['prison'] !== NULL and data['prison'] !== ''),
+              text: "Prison number",
+              conditional: {
+                html: prisonHtml
+              }
+            },
+            {
               value: "National Offender Management Information System (NOMIS)",
               checked: (true if data['nomis'] !== NULL and data['nomis'] !== ''),
               text: "National Offender Management Information System (NOMIS)",
@@ -170,14 +178,7 @@
                 html: deliusHtml
               }
             },
-            {
-              value: "Prison number",
-              checked: (true if data['prison'] !== NULL and data['prison'] !== ''),
-              text: "Prison number",
-              conditional: {
-                html: prisonHtml
-              }
-            },
+            
             {
               value: "Home Office Reference Number",
               checked: (true if data['ho2'] !== NULL and data['ho2'] !== ''),

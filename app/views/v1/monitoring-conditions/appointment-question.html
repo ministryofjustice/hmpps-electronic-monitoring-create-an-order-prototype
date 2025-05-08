@@ -1,7 +1,7 @@
 {% extends "layouts/moj-level2.html" %}
 
 {% block pageTitle %}
-  Installation address - Electronic Monitoring
+  Do you want to use the standard curfew times for the curfew timetable? - Electronic Monitoring
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,49 +12,49 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">Electronic monitoring required</span>
-        Installation address
-      </h1>
 
-    
-      <p class="govuk-body">Contact address:</p>
-        <p>
-        {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
-        {{ data['contactaddressTown'] or "Glossop" }}<br>
-        {{ data['contactaddressCounty'] or "High Peak" }}<br>
-        {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
-        </p>
- 
+     {% if (data['monitoringtypeadded'] == "Yes") %}
 
-      <form class="form" action="/install-address-question2" method="post">
+     <form class="form" action="/appointment-address2" method="post">
 
- 
+     {% else %}
 
+      <form class="form" action="/appointment-address" method="post">
+
+     {% endif %}   
+
+
+        
+
+
+   <span class="govuk-caption-l">Electronic monitoring required</span>
           {{ govukRadios({
             classes: "govuk-radios--inline",
-            name: "installaddressquestion",
+            name: "appointmentquestion",
             fieldset: {
               legend: {
-                text: "Is this where the installation of the electronic monitoring device take place?",
-               classes: "govuk-fieldset__legend--s"
+                text: "Do you know when installation of the electronic monitoring device will take place?",   
+                isPageHeading: true,
+               classes: "govuk-fieldset__legend--l"
               }
             },
+            hint: {
+                    text: ""
+                  },
             items: [
            
               {
                 value: "Yes",
-                checked: (true if data['installaddressquestion'] == 'Yes'),
+                checked: (true if data['appointmentquestion'] == 'Yes'),
                 text: "Yes"
               },
               {
                 value: "No",
-                checked: (true if data['installaddressquestion'] == 'No'),
+                checked: (true if data['appointmentquestion'] == 'No'),
                 text: "No"
               }
             ]
           }) }}
-
 
        
 
@@ -67,7 +67,7 @@
 
         {{ govukButton({
           text: "Save as draft",
-          href: '../new-form',
+          href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
         }) }}
 

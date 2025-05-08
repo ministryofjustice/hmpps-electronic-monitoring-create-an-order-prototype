@@ -158,6 +158,18 @@ router.post('/install-address-question', function(request, response) {
     }
 })
 
+router.post('/install-address-question2', function(request, response) {
+
+
+    var installaddressquestion = request.session.data['installaddressquestion']
+    
+    if (installaddressquestion == "No"){
+        response.redirect("/v1/monitoring-conditions/install-address")   
+    } else {
+        response.redirect("/v1/monitoring-conditions/appointment-question")
+    }
+})
+
 router.post('/installation-address', function(request, response) {
 
 
@@ -189,6 +201,52 @@ router.post('/installation-address2', function(request, response) {
     
     if (installaddressquestion == "No"){
         response.redirect("/v1/monitoring-conditions/install-address")   
+    } else if (monitoringtype2 == "Exclusion zone monitoring"){
+        response.redirect("/v1/monitoring-conditions/exclusion")   
+    } else if (monitoringtype2 == "Inclusion zone monitoring"){
+        response.redirect("/v1/monitoring-conditions/inclusion") 
+    } else if (monitoringtype2 == "Trail monitoring"){
+        response.redirect("/v1/monitoring-conditions/trail") 
+    } else if (monitoringtype2 == "Trail monitoring (Home Office)"){
+        response.redirect("/v1/monitoring-conditions/trail")    
+    } else if (monitoringtype2 == "Mandatory attendance monitoring"){
+        response.redirect("/v1/monitoring-conditions/attendance")      
+    } else {
+        response.redirect("/v1/monitoring-conditions/alcohol")
+    }
+})
+
+router.post('/appointment-address', function(request, response) {
+
+
+    var appointmentquestion = request.session.data['appointmentquestion']
+    var monitoringtype = request.session.data['monitoringtype']
+    
+    if (appointmentquestion == "Yes"){
+        response.redirect("/v1/monitoring-conditions/appointment-details")   
+    } else if (monitoringtype == "Exclusion zone monitoring"){
+        response.redirect("/v1/monitoring-conditions/exclusion") 
+    } else if (monitoringtype == "Inclusion zone monitoring"){
+        response.redirect("/v1/monitoring-conditions/inclusion")       
+    } else if (monitoringtype == "Trail monitoring"){
+        response.redirect("/v1/monitoring-conditions/trail") 
+    } else if (monitoringtype == "Trail monitoring (Home Office)"){
+        response.redirect("/v1/monitoring-conditions/trail")    
+    } else if (monitoringtype == "Mandatory attendance monitoring"){
+        response.redirect("/v1/monitoring-conditions/attendance")      
+    } else {
+        response.redirect("/v1/monitoring-conditions/alcohol")
+    }
+})
+
+router.post('/appointment-address2', function(request, response) {
+
+
+    var appointmentquestion = request.session.data['appointmentquestion']
+    var monitoringtype2 = request.session.data['monitoringtype2']
+    
+    if (appointmentquestion == "Yes"){
+        response.redirect("/v1/monitoring-conditions/appointment-details")   
     } else if (monitoringtype2 == "Exclusion zone monitoring"){
         response.redirect("/v1/monitoring-conditions/exclusion")   
     } else if (monitoringtype2 == "Inclusion zone monitoring"){

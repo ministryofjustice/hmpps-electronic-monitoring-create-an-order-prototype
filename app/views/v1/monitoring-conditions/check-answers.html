@@ -450,7 +450,7 @@
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the address where the tag or tags will be installed?
+              Where will the installation of the electronic monitoring device take place?
             </dt>
             <dd class="govuk-summary-list__value">
               {% if (data['installaddressquestion'] == "No") %}
@@ -468,6 +468,30 @@
               <a class="govuk-link" href="install-address-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
             </dd>
           </div>  
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Do you know when installation of the electronic monitoring device will take place?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['appointmentquestion'] or "No" }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="appointment-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+            </dd>
+          </div>  
+           {% if (data['appointmentquestion'] == "Yes") %}
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             When will the installation of the electronic monitoring device take place?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['installation-date'] }} at {{ data['installation-hours'] }}:{{ data['installation-minutes'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="appointment-details?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+            </dd>
+          </div>  
+            {% endif %}  
 
 
           <div class="govuk-summary-list__row">
@@ -584,7 +608,7 @@
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the address where the tag or tags will be installed?
+              Where will the installation of the electronic monitoring device take place?
             </dt>
             <dd class="govuk-summary-list__value">
               {% if (data['installaddressquestion'] == "No") %}
@@ -598,10 +622,32 @@
               {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
               {% endif %}
             </dd>
+           </div>
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Do you know when installation of the electronic monitoring device will take place?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['appointmentquestion'] or "No" }} 
+            </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="install-address-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+              <a class="govuk-link" href="appointment-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
             </dd>
           </div>  
+           {% if (data['appointmentquestion'] == "Yes") %}
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             When will the installation of the electronic monitoring device take place?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['installation-date'] }} at {{ data['installation-hours'] }}:{{ data['installation-minutes'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="appointment-details?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+            </dd>
+          </div>  
+            {% endif %}  
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -654,7 +700,7 @@
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the address where the tag or tags will be installed?
+             Where will the installation of the electronic monitoring device take place?
             </dt>
             <dd class="govuk-summary-list__value">
               {% if (data['installaddressquestion'] == "No") %}
@@ -672,6 +718,30 @@
               <a class="govuk-link" href="install-address-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
             </dd>
           </div>  
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Do you know when installation of the electronic monitoring device will take place?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['appointmentquestion'] or "No" }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="appointment-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+            </dd>
+          </div>  
+           {% if (data['appointmentquestion'] == "Yes") %}
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             When will the installation of the electronic monitoring device take place?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['installation-date'] }} at {{ data['installation-hours'] }}:{{ data['installation-minutes'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="appointment-details?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+            </dd>
+          </div>  
+            {% endif %}  
 
          <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -769,7 +839,7 @@
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the address where the tag or tags will be installed?
+              Where will the installation of the electronic monitoring device take place?
             </dt>
             <dd class="govuk-summary-list__value">
               {% if (data['installaddressquestion'] == "No") %}
@@ -787,6 +857,31 @@
               <a class="govuk-link" href="install-address-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
             </dd>
           </div>  
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Do you know when installation of the electronic monitoring device will take place?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['appointmentquestion'] or "No" }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="appointment-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+            </dd>
+          </div>  
+           {% if (data['appointmentquestion'] == "Yes") %}
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             When will the installation of the electronic monitoring device take place?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['installation-date'] }} at {{ data['installation-hours'] }}:{{ data['installation-minutes'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="appointment-details?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+            </dd>
+          </div>  
+            {% endif %}  
 
 
    

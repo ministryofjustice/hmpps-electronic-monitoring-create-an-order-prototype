@@ -1,0 +1,104 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Add tag installation address - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+       Installation appointment
+      </h1>
+
+    
+
+     {% if (data['monitoringtypeadded'] == "Yes") %}
+
+       <form class="form" action="/monitoring-type2" method="post">
+
+      {% else %}
+
+      <form class="form" action="/monitoring-type" method="post">
+
+      {% endif %}
+
+  
+
+    <div class="moj-datepicker" data-module="moj-date-picker">
+
+            <div class="govuk-form-group">
+              <label class="govuk-label  govuk-label--s" for="date">
+               What is the date installation will take place?
+              </label>
+
+              <div id="date-hint" class="govuk-hint">
+                For example, 17/5/2024.
+              </div>
+
+              <input class="govuk-input moj-js-datepicker-input " id="date" name="installation-date" type="text" aria-describedby="date-hint" autocomplete="off" value="{{ data['installation-date'] }}">
+
+            </div>
+
+          </div>
+
+
+
+           <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What is the time installation will take place?</legend>
+
+      <div class="govuk-date-input ">
+        <div class="govuk-hint">Enter time using a 24 hour clock. For example, enter 14:30 instead of 2:30pm</div>
+        
+
+        
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+             <label class="govuk-label govuk-date-input__label" for="installation-hours"><span class="govuk-visually-hidden">End</span> Hour</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="installation-hours" name="installation-hours" value="{{ data['installation-hours'] }}">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <label class="govuk-label govuk-date-input__label">:</label>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+            <label class="govuk-label govuk-date-input__label" for="installation-minutes"><span class="govuk-visually-hidden">Start</span> Minutes</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="installation-minutes" name="installation-minutes" value="{{ data['installation-minutes'] }}">
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+        
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}
