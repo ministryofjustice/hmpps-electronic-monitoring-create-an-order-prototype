@@ -1,0 +1,103 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Risk at installation additional information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Access needs and installation risk</span>
+
+    <!--  <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Access needs and installation risk</span>
+        Risk at installation additional information
+      </h1>
+-->
+      
+
+       <form class="form" action="risk-2" method="post">
+
+
+
+
+          {% set offenceHtml %}
+          {{ govukTextarea({
+            id: "needs",
+            name: "offence-needs",
+            spellcheck: false,
+            value: data['offence-needs'],
+            hint: {
+              text: ""
+            },
+            label: {
+              text: "Provide additional risk information about the device wearer's offence."
+            }
+          }) }}
+          {% endset -%}
+
+         
+
+          {{ govukRadios({
+            name: "offence-question",
+            fieldset: {
+              legend: {
+                text: " Is there any other information to be aware of about the offence committed?",
+                 isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['offence-question'] == 'Yes'),
+                conditional: {
+                  html: offenceHtml
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (true if data['offence-question'] == 'No'),
+                conditional: {
+                 
+                }
+              }
+            ]
+          }) }}
+
+
+         
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

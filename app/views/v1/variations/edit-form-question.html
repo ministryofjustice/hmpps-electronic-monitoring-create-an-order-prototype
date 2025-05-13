@@ -67,7 +67,7 @@ Details of the changes - Electronic Monitoring
 
             </div>
 
-        {% if (data['newform'] == 'false') %}    
+
 
              {{ govukCheckboxes({
             name: "variation-type",
@@ -103,100 +103,40 @@ Details of the changes - Electronic Monitoring
                 text: "The curfew hours"
               },
               {
-                value: "Added an exclusion zone",
-                checked: (true if data['variation-type'] == 'Added an exclusion zone'),
+                value: "Change to an Exclusion Zone(s)",
+                checked: (true if data['variation-type'] == 'Change to an Exclusion Zone(s)'),
                 disabled: (true if data['view'] == 'true'),
-                text: "Added an exclusion zone"
+                text: "Change to an Exclusion Zone(s)"
               },
+              
               {
-                value: "Changed an exclusion zone",
-                checked: (true if data['variation-type'] == 'Changed an exclusion zone'),
+                value: "Change to a device type",
+                checked: (true if data['variation-type'] == 'Change to a device type'),
                 disabled: (true if data['view'] == 'true'),
-                text: "Changed an exclusion zone"
-              },        
+                text: "Change to a device type"
+              },   
               {
-                value: "I have changed something else in the form",
-                checked: (true if data['variation-type'] == 'I have changed something else in the form'),
+                value: "Change to Enforceable Condition",
+                checked: (true if data['variation-type'] == 'Change to Enforceable Condition'),
                 disabled: (true if data['view'] == 'true'),
-                text: "I have changed something else in the form"
+                text: "Change to Enforceable Condition"
+              },   
+              {
+                value: "I am suspending monitoring for the device wearer",
+                checked: (true if data['variation-type'] == 'I am suspending monitoring for the device wearer'),
+                disabled: (true if data['view'] == 'true'),
+                text: "I am suspending monitoring for the device wearer"
               },     
               {
-                value: "I am suspending monitoring for the device wearer",
-                checked: (true if data['variation-type'] == 'I am suspending monitoring for the device wearer'),
+                value: "I have changed something else in the form due to an administration error",
+                checked: (true if data['variation-type'] == 'I have changed something else in the form due to an administration error'),
                 disabled: (true if data['view'] == 'true'),
-                text: "I am suspending monitoring for the device wearer"
+                text: "I have changed something else in the form due to an administration error"
               }
             ]
           }) }}
 
-         {% else %}
-
-            {{ govukCheckboxes({
-            name: "variation-type",
-            fieldset: {
-              legend: {
-                text: "What have you changed in the form?",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--s"
-              }
-            },
-            hint: {
-              text: ""
-            },
-            items: [
-             
-              {
-                value: "The device wearer's address",
-                checked: (true if data['variation-type'] == "The device wearer's address"),
-                disabled: (true if data['view'] == 'true'),
-                text: "The device wearer's address"
-              },
-               {
-                value: "The device wearer's personal details",
-                checked: (true if data['variation-type'] == "The device wearer's personal details"),
-                disabled: (true if data['view'] == 'true'),
-                text: "The device wearer's personal details"
-              },
-               {
-                value: "The curfew hours",
-                checked: (true if data['variation-type'] == 'The curfew hours'),
-                disabled: (true if data['view'] == 'true'),
-                text: "The curfew hours"
-              },
-              {
-                value: "Added an exclusion zone",
-                checked: (true if data['variation-type'] == 'Added an exclusion zone'),
-                disabled: (true if data['view'] == 'true'),
-                text: "Added an exclusion zone"
-              },
-              {
-                value: "Changed an exclusion zone",
-                checked: (true if data['variation-type'] == 'Changed an exclusion zone'),
-                disabled: (true if data['view'] == 'true'),
-                text: "Changed an exclusion zone"
-                
-              },   
-                  
-              {
-                value: "I am suspending monitoring for the device wearer",
-                checked: (true if data['variation-type'] == 'I am suspending monitoring for the device wearer'),
-                disabled: (true if data['view'] == 'true'),
-                text: "I am suspending monitoring for the device wearer"
-              },
-
-              {
-                value: "I have changed something else in the form",
-                checked: (true if data['variation-type'] == 'I have changed something else in the form'),
-                disabled: (true if data['view'] == 'true'),
-                text: "I have changed something else in the form"
-              }
-            ]
-          }) }}
-
-
-
-         {% endif %}
-
+     
     
 
           </div>
@@ -236,6 +176,8 @@ Details of the changes - Electronic Monitoring
                   {{ govukButton({
                     text: "Save and return to main form menu"
                   }) }}
+
+
                 {% endif %}
 
 

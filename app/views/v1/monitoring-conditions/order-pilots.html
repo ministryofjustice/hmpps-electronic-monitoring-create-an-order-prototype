@@ -48,6 +48,11 @@
                   text: "Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)"
                 },
                 {
+                  value: "Domestic Abuse Perpetrator on Licence Project",
+                  checked: (true if data['order-description'] == 'Domestic Abuse Perpetrator on Licence Project'),
+                  text: "Domestic Abuse Perpetrator on Licence Project"
+                },
+                {
                   value: "GPS acquisitive crime Home Detention Curfew",
                   checked: (true if data['order-description'] == 'GPS acquisitive crime Home Detention Curfew'),
                   text: "GPS acquisitive crime Home Detention Curfew"
@@ -57,6 +62,17 @@
                   checked: (true if data['order-description'] == 'GPS acquisitive crime parole'),
                   text: "GPS acquisitive crime parole"
                 },
+                {
+                  value: "Acquisitive Crime Project",
+                  checked: (true if data['order-description'] == 'Acquisitive Crime Project'),
+                  text: "Acquisitive Crime Project"
+                },
+                {
+                  value: "Licence Variation Project",
+                  checked: (true if data['order-description'] == 'Licence Variation Project'),
+                  text: "Licence Variation Project"
+                },
+
                  {
                   divider: "or"
                 },
@@ -64,6 +80,15 @@
                   value: "They are not part of any of these pilots",
                   checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
                   text: "They are not part of any of these pilots",
+                  behaviour: "exclusive"
+                },
+                 {
+                  divider: "or"
+                },
+                {
+                  value: "Not able to provide this information",
+                  checked: (true if data['order-description'] == 'Not able to provide this information'),
+                  text: "Not able to provide this information",
                   behaviour: "exclusive"
                 }
               ]
@@ -94,6 +119,15 @@
                   value: "They are not part of any of these pilots",
                   checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
                   text: "They are not part of any of these pilots",
+                  behaviour: "exclusive"
+                },
+                 {
+                  divider: "or"
+                },
+                {
+                  value: "Not able to provide this information",
+                  checked: (true if data['order-description'] == 'Not able to provide this information'),
+                  text: "Not able to provide this information",
                   behaviour: "exclusive"
                 }
               ]

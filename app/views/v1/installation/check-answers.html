@@ -111,6 +111,33 @@
               <a class="govuk-link" href="risk?cya3=true">Change<span class="govuk-visually-hidden"> What type of offence has been committed by the device wearer?</span></a>
             </dd>
           </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Is there any other information to be aware of about the offence committed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['offence-question'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="risk-1?cya3=true">Change<span class="govuk-visually-hidden">   Is there any other information to be aware of about the offence committed?</span></a>
+            </dd>
+          </div>
+
+          {% if (data['offence-question'] == "Yes") %}
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Provide additional risk information about the device wearer's offence.
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['offence-needs'] or '' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="risk-1?cya3=true">Change<span class="govuk-visually-hidden"> Provide additional risk information about the device wearer's offence.</span></a>
+            </dd>
+          </div>
+
+          {% endif %}
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">

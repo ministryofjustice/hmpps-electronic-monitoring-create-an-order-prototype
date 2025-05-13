@@ -140,6 +140,21 @@
                 {% endif %}
             </dd>
           </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Is there any other information to be aware of about the offence committed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['offence-question'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
