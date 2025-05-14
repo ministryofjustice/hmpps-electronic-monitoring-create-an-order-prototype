@@ -96,6 +96,14 @@
                 value: "Guardian",
                 checked: (true if data['relationship'] == 'Guardian'),
                 text: "Guardian"
+              },
+              {
+                value: "Other",
+                checked: (true if data['relationship'] == 'Other'),
+                text: "Other",
+                conditional: {
+                html: otherHtml
+              }
               }
             ]
           }) }}
