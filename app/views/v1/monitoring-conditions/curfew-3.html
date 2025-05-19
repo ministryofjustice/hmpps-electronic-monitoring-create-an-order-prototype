@@ -114,7 +114,7 @@
 
        <div id="curfewTimes-form" class="govuk-form-group">
     <fieldset class="govuk-fieldset">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">On the day of release, what time does the curfew end?</legend>
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">On the day after release, what time does the curfew end?</legend>
 
       <div class="govuk-date-input ">
         <div class="govuk-hint">Enter time using a 24 hour clock. For example 07:00 instead of 7:00am.</div>
@@ -135,13 +135,7 @@
               <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="release-endtime-minutes" name="release-endtime-minutes" value="{{ data['release-endtime-minutes'] }}">
           </div>
         </div>
-        <div class="govuk-date-input__item">
-           <select class="govuk-select" id="sort" disabled name="curfew-same-next-day">
-            <option value="The same day">The same day</option>
-            <option value="The next day" selected>The next day</option>
- 
-          </select>
-        </div>
+        
       </div>
     </fieldset>
   </div>
