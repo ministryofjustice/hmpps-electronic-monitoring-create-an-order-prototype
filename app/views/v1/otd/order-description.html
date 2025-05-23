@@ -1,0 +1,361 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+          <span class="govuk-caption-l">Electronic monitoring required</span>
+
+  
+       
+      <form class="form" action="#" method="post">
+
+
+  {% if (data['order-type'] == "Post release") %}
+         {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "   What is the order type description?",
+                  isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+                }
+              },
+              items: [
+                {
+                  value: "Adult Home Detention Curfew (HDC)",
+                  checked: (true if data['order-description'] == 'Adult Home Detention Curfew (HDC)'),
+                  text: "Adult Home Detention Curfew (HDC)"
+               
+                },
+                 {
+                  value: "Domestic Abuse Perpetrators on Licence (DAPOL)",
+                  checked: (true if data['order-description'] == 'Domestic Abuse Perpetrators on Licence (DAPOL)'),
+                  text: "Domestic Abuse Perpetrators on Licence (DAPOL)"
+               
+                },
+                 {
+                  value: "Electronic Monitoring Aquisitive Crime On Licence",
+                  checked: (true if data['order-description'] == 'Electronic Monitoring Aquisitive Crime On Licence'),
+                  text: "Electronic Monitoring Aquisitive Crime On Licence"
+               
+                },
+                 {
+                  value: "EMAC (EM Acquisitive Crime)",
+                  checked: (true if data['order-description'] == 'EMAC (EM Acquisitive Crime)'),
+                  text: "EMAC (EM Acquisitive Crime)"
+               
+                },
+                 {
+                  value: "Electronic Monitoring as a Licence Variation",
+                  checked: (true if data['order-description'] == 'Electronic Monitoring as a Licence Variation'),
+                  text: "Electronic Monitoring as a Licence Variation"
+               
+                },
+                 {
+                  value: "Extended Sentence",
+                  checked: (true if data['order-description'] == 'Extended Sentence'),
+                  text: "Extended Sentence"
+               
+                },
+                 {
+                  value: "Home Detention Curfew Domestic Abuse Perpetrators on Licence (HDC DAPOL)",
+                  checked: (true if data['order-description'] == 'Home Detention Curfew Domestic Abuse Perpetrators on Licence (HDC DAPOL)'),
+                  text: "Home Detention Curfew Domestic Abuse Perpetrators on Licence (HDC DAPOL)"
+               
+                },
+                 {
+                  value: "Home Detention Curfew Electronic Monitoring Acquisitive Crime",
+                  checked: (true if data['order-description'] == 'Home Detention Curfew Electronic Monitoring Acquisitive Crime'),
+                  text: "Home Detention Curfew Electronic Monitoring Acquisitive Crime"
+               
+                },
+                 {
+                  value: "Home Detention Curfew with Alcohol Monitoring (HDC with AM)",
+                  checked: (true if data['order-description'] == 'Home Detention Curfew with Alcohol Monitoring (HDC with AM)'),
+                  text: "Home Detention Curfew with Alcohol Monitoring (HDC with AM)"
+               
+                },
+                 {
+                  value: "Lifer/IPP (Indeterminate Public Protection Service) / Indeterminate Sentence",
+                  checked: (true if data['order-description'] == 'Lifer/IPP (Indeterminate Public Protection Service) / Indeterminate Sentence'),
+                  text: "Lifer/IPP (Indeterminate Public Protection Service) / Indeterminate Sentence"
+               
+                },
+                 {
+                  value: "Parole",
+                  checked: (true if data['order-description'] == 'Parole'),
+                  text: "Parole"
+               
+                },
+                 {
+                  value: "Parole Licence with Alcohol Monitoring",
+                  checked: (true if data['order-description'] == 'Parole Licence with Alcohol Monitoring'),
+                  text: "Parole Licence with Alcohol Monitoring"
+               
+                },
+                 {
+                  value: "Release on Licence with Alcohol Monitoring",
+                  checked: (true if data['order-description'] == 'Release on Licence with Alcohol Monitoring'),
+                  text: "Release on Licence with Alcohol Monitoring"
+               
+                },
+                 {
+                  value: "Home Detention Curfew Transferred from Scotland / Scottish HDC case",
+                  checked: (true if data['order-description'] == 'Home Detention Curfew Transferred from Scotland / Scottish HDC case'),
+                  text: "Home Detention Curfew Transferred from Scotland / Scottish HDC case"
+               
+                },
+                 {
+                  value: "Youth Detention and Training Order",
+                  checked: (true if data['order-description'] == 'Youth Detention and Training Order'),
+                  text: "Youth Detention and Training Order"
+               
+                },
+                 {
+                  value: "Youth DTO ISSP",
+                  checked: (true if data['order-description'] == 'Youth DTO ISSP'),
+                  text: "Youth DTO ISSP"
+               
+                },
+                 {
+                  value: "Youth Home Detention Curfew (HDC)",
+                  checked: (true if data['order-description'] == 'Youth Home Detention Curfew (HDC)'),
+                  text: "Youth Home Detention Curfew (HDC)"
+               
+                }
+              ]
+            }) }}
+
+      {% elseif (data['order-type'] == "Community") %}
+
+              {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "   What is the order type description?",
+                  isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+                }
+              },
+              items: [
+                {
+                  value: "Community Order",
+                  checked: (true if data['order-description'] == 'Community Order'),
+                  text: "Community Order"
+               
+                },
+                 {
+                  value: "Suspended sentence",
+                  checked: (true if data['order-description'] == 'Suspended sentence'),
+                  text: "Suspended sentence"
+               
+                },
+                 {
+                  value: "Deferred Sentence",
+                  checked: (true if data['order-description'] == 'Deferred Sentence'),
+                  text: "Deferred Sentence"
+               
+                },
+                 {
+                  value: "Supervision Default order",
+                  checked: (true if data['order-description'] == 'Supervision Default order'),
+                  text: "Supervision Default order"
+               
+                },
+                 {
+                  value: "Youth Rehabilitation Order",
+                  checked: (true if data['order-description'] == 'Youth Rehabilitation Order'),
+                  text: "Youth Rehabilitation Order"
+               
+                },
+                 {
+                  value: "Youth Rehabilitation Order with ISS",
+                  checked: (true if data['order-description'] == 'Youth Rehabilitation Order with ISS'),
+                  text: "Youth Rehabilitation Order with ISS"
+               
+                },
+                 {
+                  value: "Youth Default Order",
+                  checked: (true if data['order-description'] == 'Youth Default Order'),
+                  text: "Youth Default Order"
+               
+                }
+              ]
+            }) }}
+
+      {% elseif (data['order-type'] == "Pre trial") %}
+
+        {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "   What is the order type description?",
+                  isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+                }
+              },
+              items: [
+                {
+                  value: "Conditional Bail",
+                  checked: (true if data['order-description'] == 'Conditional Bail'),
+                  text: "Conditional Bail"
+               
+                },
+                 {
+                  value: "Extradition",
+                  checked: (true if data['order-description'] == 'Extradition'),
+                  text: "Extradition"
+               
+                },
+                 {
+                  value: "Bail ISSP",
+                  checked: (true if data['order-description'] == 'Bail ISSP'),
+                  text: "Bail ISSP"
+               
+                },
+                 {
+                  value: "RLAA (Remanded Into Remand to Local Authority Accomodation)",
+                  checked: (true if data['order-description'] == 'RLAA (Remanded Into Remand to Local Authority Accomodation)'),
+                  text: "RLAA (Remanded Into Remand to Local Authority Accomodation)"
+               
+                }
+              ]
+            }) }}
+
+      {% elseif (data['order-type'] == "Civil") %}
+
+            {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "   What is the order type description?",
+                  isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+                }
+              },
+              items: [
+                {
+                  value: "DAPO (Domestic Abuse Protection Order)",
+                  checked: (true if data['order-description'] == 'DAPO (Domestic Abuse Protection Order)'),
+                  text: "DAPO (Domestic Abuse Protection Order)"
+               
+                }
+              ]
+            }) }}
+
+      {% elseif (data['order-type'] == "Immigration") %}
+
+                    {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "   What is the order type description?",
+                  isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+                }
+              },
+              items: [
+                {
+                  value: "Immigration Order - CCD (Criminal Casework Directorate)",
+                  checked: (true if data['order-description'] == 'Immigration Order - CCD (Criminal Casework Directorate)'),
+                  text: "Immigration Order - CCD (Criminal Casework Directorate)"
+               
+                },
+                 {
+                  value: "Immigration Order - Standard",
+                  checked: (true if data['order-description'] == 'Immigration Order - Standard'),
+                  text: "Immigration Order - Standard"
+               
+                },
+                 {
+                  value: "GPS Immigration Order FNO (Foreign National Offender)",
+                  checked: (true if data['order-description'] == 'GPS Immigration Order FNO (Foreign National Offender)'),
+                  text: "GPS Immigration Order FNO (Foreign National Offender)"
+               
+                },
+                 {
+                  value: "GPS Immigration Order - CCD (Criminal Casework Directorate)",
+                  checked: (true if data['order-description'] == 'GPS Immigration Order - CCD (Criminal Casework Directorate)'),
+                  text: "GPS Immigration Order - CCD (Criminal Casework Directorate)"
+               
+                },
+                 {
+                  value: "GPS Immigration Order - Standard",
+                  checked: (true if data['order-description'] == 'GPS Immigration Order - Standard'),
+                  text: "GPS Immigration Order - Standard"
+               
+                },
+                 {
+                  value: "GPS Immigration order – CCD NI (Criminal Casework Directorate)",
+                  checked: (true if data['order-description'] == 'GPS Immigration order – CCD NI (Criminal Casework Directorate)'),
+                  text: "GPS Immigration order – CCD NI (Criminal Casework Directorate)"
+               
+                },
+                 {
+                  value: "GPS Immigration order Scotland",
+                  checked: (true if data['order-description'] == 'GPS Immigration order Scotland'),
+                  text: "GPS Immigration order Scotland"
+               
+                },
+                 {
+                  value: "GPS Immigration Order – CCD NFD (Criminal Casework Directorate)",
+                  checked: (true if data['order-description'] == 'GPS Immigration Order – CCD NFD (Criminal Casework Directorate)'),
+                  text: "GPS Immigration Order – CCD NFD (Criminal Casework Directorate)"
+               
+                },
+                 {
+                  value: "CCD NFD NI (Non Fitted Device)",
+                  checked: (true if data['order-description'] == 'CCD NFD NI (Non Fitted Device)'),
+                  text: "CCD NFD NI (Non Fitted Device)"
+               
+                },
+                 {
+                  value: "CCD NFD Scotland (Non Fitted Device)",
+                  checked: (true if data['order-description'] == 'CCD NFD Scotland (Non Fitted Device)'),
+                  text: "CCD NFD Scotland (Non Fitted Device)"
+               
+                }
+              ]
+            }) }}
+
+      {% else %}
+
+
+
+      {% endif %}
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -42,22 +42,6 @@
                   }
                 },
                 {
-                  value: "Pre trial",
-                  checked: (true if data['order-type'] == 'Pre trial'),
-                  text: "Bail",
-                  hint: {
-                    text: "Monitoring is a condition of bail."
-                  }
-                },
-                {
-                  value: "Immigration",
-                  checked: (true if data['order-type'] == 'Immigration'),
-                  text: "Immigration",
-                  hint: {
-                    text: "Monitoring is a condition of immigration bail (Home office only)."
-                  }
-                },
-                 {
                   value: "Community",
                   checked: (true if data['order-type'] == 'Community'),
                   text: "Community",
@@ -66,11 +50,29 @@
                   }
                 },
                 {
+                  value: "Pre trial",
+                  checked: (true if data['order-type'] == 'Pre trial'),
+                  text: "Bail",
+                  hint: {
+                    text: "Monitoring is a condition of bail."
+                  }
+                },
+                
+                 
+                {
                   value: "Civil",
                   checked: (true if data['order-type'] == 'Civil'),
                   text: "Civil",
                   hint: {
                     text: "Monitoring is a condition of a civil court order, rather than a criminal one."
+                  }
+                },
+                {
+                  value: "Immigration",
+                  checked: (true if data['order-type'] == 'Immigration'),
+                  text: "Immigration",
+                  hint: {
+                    text: "Monitoring is a condition of immigration bail (Home office only)."
                   }
                 }
               ]

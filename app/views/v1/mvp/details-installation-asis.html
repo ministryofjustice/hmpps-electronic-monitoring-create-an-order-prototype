@@ -1,0 +1,525 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+ 
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Risk information</span>
+        Details for installation
+      </h1>
+
+      <fieldset class="govuk-fieldset">
+  
+
+</fieldset>
+
+
+      <p>
+        
+      </p>
+
+      <form action="" method="post">
+        <input type="hidden" name="_csrf" value="98aaa74b59df8c022eaebf7d82dc18fcbc26d6f34ca2d74632b251f43942e00585e09e4113ebf3e9d0b3d2ab9987ccc330242c8b29090168f76ed562383ca0488bf68e4d5ef9c2f599af8e5b864ed86279b9be6f7d217124fcb01b2c55b6e6e2b663dcd62b0ac610b4f9c8db692a436f7f8dbff075723bb8e055721d4399ba20">
+
+        
+ {{ govukCheckboxes({
+            name: "offence",
+            fieldset: {
+              legend: {
+                text: "What type of offence did the device wearer commit? (optional)",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select all that apply"
+            },
+            items: [
+              {
+                value: "Violence against the person",
+                checked: (true if data['offence'] == 'Violence against the person'),
+                text: "Violence against the person"
+              },
+              {
+                value: "Sexual offences",
+                checked: (true if data['offence'] == 'Sexual offences'),
+                text: "Sexual offences"
+              },
+              {
+                value: "Robbery",
+                checked: (true if data['offence'] == 'Robbery'),
+                text: "Robbery"
+              },
+              {
+                value: "Theft offences",
+                checked: (true if data['offence'] == 'Theft offences'),
+                text: "Theft offences"
+              },
+              {
+                value: "Criminal damage and arson",
+                checked: (true if data['offence'] == 'Criminal damage and arson'),
+                text: "Criminal damage and arson"
+              },
+              {
+                value: "Drug offences",
+                checked: (true if data['offence'] == 'Drug offences'),
+                text: "Drug offences"
+              },
+              {
+                value: "Possession of weapons",
+                checked: (true if data['offence'] == 'Possession of weapons'),
+                text: "Possession of weapons"
+              },
+              {
+                value: "Public order offences",
+                checked: (true if data['offence'] == 'Public order offences'),
+                text: "Public order offences"
+              },
+              {
+                value: "Miscellaneous crimes against society",
+                checked: (true if data['offence'] == 'Miscellaneous crimes against society'),
+                text: "Miscellaneous crimes against society"
+              },
+              {
+                value: "Fraud offences",
+                checked: (true if data['offence'] == 'Fraud offences'),
+                text: "Fraud offences"
+              },
+              {
+                value: "Summary non-motoring",
+                checked: (true if data['offence'] == 'Summary non-motoring'),
+                text: "Summary non-motoring"
+              },
+              {
+                value: "Summary motoring",
+                checked: (true if data['offence'] == 'Summary motoring'),
+                text: "Summary motoring"
+              },
+
+              {
+                divider: "or"
+              },
+              {
+                value: "Offence not recorded",
+                checked: (true if data['offence'] == 'Offence not recorded'),
+                text: "Offence not recorded"
+              }
+            ]
+          }) }}
+  
+
+
+  
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-label--s" for="riskDetails">
+    Any other information to be aware of about the offence committed? (optional)
+  </label>
+
+  
+  
+  <div id="riskDetails-hint" class="govuk-hint">
+    Provide additional risk information about the device wearer's offence.
+  </div>
+
+
+
+  <textarea class="govuk-textarea" id="riskDetails" name="riskDetails" rows="5" aria-describedby="riskDetails-hint"></textarea>
+
+</div>
+
+
+<div class="govuk-form-group">
+
+  <fieldset class="govuk-fieldset" aria-describedby="riskCategory-hint">
+    
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+    
+      At installation what are the possible risks from the device wearer's behaviour? 
+    
+    </legend>
+    
+  
+    <div id="riskCategory-hint" class="govuk-hint">
+     Check if there are any alerts for the device wearer. Select all that apply
+    </div>
+  
+  
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes" data-govuk-checkboxes-init="">
+      
+      
+        
+    
+    
+      
+      
+      
+      
+      
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="riskCategory" name="riskCategory[]" type="checkbox" value="THREATS_OF_VIOLENCE">
+        <label class="govuk-label govuk-checkboxes__label" for="riskCategory">
+          Violent behaviour or threats of violence
+        </label>
+        
+      </div>
+      
+    
+  
+      
+        
+    
+    
+      
+      
+      
+      
+      
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="riskCategory-2" name="riskCategory[]" type="checkbox" value="SEXUAL_OFFENCES">
+        <label class="govuk-label govuk-checkboxes__label" for="riskCategory-2">
+          Sex offender
+        </label>
+        
+      </div>
+      
+    
+  
+      
+        
+    
+    
+      
+      
+      
+      
+      
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="riskCategory-3" name="riskCategory[]" type="checkbox" value="RISK_TO_GENDER">
+        <label class="govuk-label govuk-checkboxes__label" for="riskCategory-3">
+          Offensive towards someone because of their sex or gender
+        </label>
+        
+      </div>
+      
+    
+  
+      
+        
+    
+    
+      
+      
+      
+      
+      
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="riskCategory-4" name="riskCategory[]" type="checkbox" value="RACIAL_ABUSE_OR_THREATS">
+        <label class="govuk-label govuk-checkboxes__label" for="riskCategory-4">
+          Offensive towards someone because of their race, nationality, ethnicity or national origin
+        </label>
+        
+      </div>
+      
+    
+  
+      
+        
+    
+    
+      
+      
+      
+      
+      
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="riskCategory-5" name="riskCategory[]" type="checkbox" value="HOMOPHOBIC_VIEWS">
+        <label class="govuk-label govuk-checkboxes__label" for="riskCategory-5">
+          Offensive towards someone because of their sexual orientation
+        </label>
+        
+      </div>
+      
+    
+  
+     <div class="govuk-checkboxes__divider">or</div>
+        
+    
+    
+      
+      
+      
+      
+      
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="riskCategory-6" name="riskCategory[]" type="checkbox" data-behaviour="exclusive" value="HISTORY_OF_SUBSTANCE_ABUSE">
+        <label class="govuk-label govuk-checkboxes__label" for="riskCategory-6">      
+          There are no risks that the installer should be aware of
+        </label>
+        
+      </div>
+      
+    
+  
+      
+        
+    
+    
+      
+      
+        
+    
+    
+      
+  
+      
+        
+    
+    
+      
+      
+      
+   
+        
+    
+    
+      
+      
+      
+      
+  
+    
+  
+      
+      
+    </div>
+  
+  </fieldset>
+
+</div>
+
+  
+ 
+
+
+
+<div class="govuk-form-group">
+
+  <fieldset class="govuk-fieldset" aria-describedby="riskCategory-hint">
+    
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+    
+      At installation what are the possible risks at the installation address? (optional)
+    
+    </legend>
+    
+  
+    <div id="riskCategory-hint" class="govuk-hint">
+      Risks relate to the device wearer's behaviour and installation address. Select all that apply
+    </div>
+  
+  
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes" data-govuk-checkboxes-init="">
+      
+
+ 
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="riskCategory-6" name="riskCategory[]" type="checkbox" value="HISTORY_OF_SUBSTANCE_ABUSE">
+        <label class="govuk-label govuk-checkboxes__label" for="riskCategory-6">
+          History of substance abuse
+        </label>
+        
+      </div>
+      
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="riskCategory-7" name="riskCategory[]" type="checkbox" value="DIVERSITY_CONCERNS">
+        <label class="govuk-label govuk-checkboxes__label" for="riskCategory-7">
+          Diversity concerns (mental health issues, learning difficulties etc)
+        </label>
+        
+      </div>
+      
+    
+      
+      
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="riskCategory-8" name="riskCategory[]" type="checkbox" value="IOM">
+        <label class="govuk-label govuk-checkboxes__label" for="riskCategory-8">
+          Managed through IOM
+        </label>
+        
+      </div>
+      
+   
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="riskCategory-9" name="riskCategory[]" type="checkbox" value="SAFEGUARDING_ISSUE">
+        <label class="govuk-label govuk-checkboxes__label" for="riskCategory-9">
+          Safeguarding adult
+        </label>
+        
+      </div>
+
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="riskCategory-9" name="riskCategory[]" type="checkbox" value="SAFEGUARDING_ISSUE">
+        <label class="govuk-label govuk-checkboxes__label" for="riskCategory-9">
+          Safeguarding child
+        </label>
+        
+      </div>
+
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="riskCategory-9" name="riskCategory[]" type="checkbox" value="SAFEGUARDING_ISSUE">
+        <label class="govuk-label govuk-checkboxes__label" for="riskCategory-9">
+          Safeguarding domestic abuse
+        </label>
+        
+      </div>
+
+      
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="riskCategory-10" name="riskCategory[]" type="checkbox" value="OTHER_OCCUPANTS">
+        <label class="govuk-label govuk-checkboxes__label" for="riskCategory-10">
+          Another person or people living at the property who are threatening or violent
+        </label>
+        
+      </div>
+      
+    
+  
+      
+        
+    
+    
+      
+      
+      
+      
+      
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="riskCategory-11" name="riskCategory[]" type="checkbox" value="UNDER_18">
+        <label class="govuk-label govuk-checkboxes__label" for="riskCategory-11">
+          Children under the age of 18 are living at the property
+        </label>
+        
+      </div>
+      
+    
+  
+      
+        
+    
+    
+      
+      
+      
+      
+      
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="riskCategory-12" name="riskCategory[]" type="checkbox" value="DANGEROUS_ANIMALS">
+        <label class="govuk-label govuk-checkboxes__label" for="riskCategory-12">
+          Animals at the property, for example dogs
+        </label>
+        
+      </div>
+      
+    
+  
+      
+        
+    
+    
+      
+      
+      
+      
+      
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="riskCategory-13" name="riskCategory[]" type="checkbox" value="OTHER_RISKS">
+        <label class="govuk-label govuk-checkboxes__label" for="riskCategory-13">
+          Other known risks
+        </label>
+        
+      </div>
+      
+    
+  
+      
+      
+    </div>
+  
+  </fieldset>
+
+</div>
+
+
+  
+
+
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-label--s" for="riskDetails">
+    Any other risks to be aware of? (optional)
+  </label>
+
+  
+  
+  <div id="riskDetails-hint" class="govuk-hint">
+    Provide additional risk information about the device wearer's behaviour or the installation address.
+  </div>
+
+
+
+  <textarea class="govuk-textarea" id="riskDetails" name="riskDetails" rows="5" aria-describedby="riskDetails-hint"></textarea>
+
+</div>
+
+
+  
+
+
+
+        <div class="govuk-button-group">
+          
+            
+  
+    
+  
+
+<button value="continue" type="submit" name="action" class="govuk-button" data-module="govuk-button" data-govuk-button-init="">
+  Save and continue
+</button>
+
+
+            
+  
+
+  
+    
+  
+
+<button value="back" type="submit" name="action" class="govuk-button govuk-button--secondary" data-module="govuk-button" data-govuk-button-init="">
+  Save as draft
+</button>
+
+          
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}
