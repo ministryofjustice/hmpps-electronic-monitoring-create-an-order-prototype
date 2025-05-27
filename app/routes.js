@@ -525,6 +525,16 @@ router.post('/order-sentence', function(request, response) {
     }
 })
 
+router.post('/order-description', function(request, response) {
+
+    var ordertype = request.session.data['order-type']
+    if (ordertype == "Post release"){
+        response.redirect("/v1/otd/hdc") 
+    } else {
+        response.redirect("/v1/otd/order-description")
+    }
+})
+
 
 
 // const radioButtonRedirect = require('radio-button-redirect')

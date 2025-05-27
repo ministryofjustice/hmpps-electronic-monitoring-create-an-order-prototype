@@ -19,7 +19,7 @@
       <form class="form" action="#" method="post">
 
 
-  {% if (data['order-type'] == "Post release") %}
+  {% if (data['order-type'] == "Post release") and (data['hdc'] == "Yes") %}
          {{ govukRadios({
               classes: "govuk-radios",
               name: "order-description",
@@ -37,6 +37,55 @@
                   text: "Adult Home Detention Curfew (HDC)"
                
                 },
+                
+                 {
+                  value: "Home Detention Curfew Domestic Abuse Perpetrators on Licence (HDC DAPOL)",
+                  checked: (true if data['order-description'] == 'Home Detention Curfew Domestic Abuse Perpetrators on Licence (HDC DAPOL)'),
+                  text: "Home Detention Curfew Domestic Abuse Perpetrators on Licence (HDC DAPOL)"
+               
+                },
+                 {
+                  value: "Home Detention Curfew Electronic Monitoring Acquisitive Crime",
+                  checked: (true if data['order-description'] == 'Home Detention Curfew Electronic Monitoring Acquisitive Crime'),
+                  text: "Home Detention Curfew Electronic Monitoring Acquisitive Crime"
+               
+                },
+                 {
+                  value: "Home Detention Curfew with Alcohol Monitoring (HDC with AM)",
+                  checked: (true if data['order-description'] == 'Home Detention Curfew with Alcohol Monitoring (HDC with AM)'),
+                  text: "Home Detention Curfew with Alcohol Monitoring (HDC with AM)"
+               
+                },
+               
+                 {
+                  value: "Home Detention Curfew Transferred from Scotland / Scottish HDC case",
+                  checked: (true if data['order-description'] == 'Home Detention Curfew Transferred from Scotland / Scottish HDC case'),
+                  text: "Home Detention Curfew Transferred from Scotland / Scottish HDC case"
+               
+                },
+              
+                 {
+                  value: "Youth Home Detention Curfew (HDC)",
+                  checked: (true if data['order-description'] == 'Youth Home Detention Curfew (HDC)'),
+                  text: "Youth Home Detention Curfew (HDC)"
+               
+                }
+              ]
+            }) }}
+
+      {% elseif (data['order-type'] == "Post release") and (data['hdc'] == "No") %}
+         {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "   What is the order type description?",
+                  isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+                }
+              },
+              items: [
+               
                  {
                   value: "Domestic Abuse Perpetrators on Licence (DAPOL)",
                   checked: (true if data['order-description'] == 'Domestic Abuse Perpetrators on Licence (DAPOL)'),
@@ -67,24 +116,7 @@
                   text: "Extended Sentence"
                
                 },
-                 {
-                  value: "Home Detention Curfew Domestic Abuse Perpetrators on Licence (HDC DAPOL)",
-                  checked: (true if data['order-description'] == 'Home Detention Curfew Domestic Abuse Perpetrators on Licence (HDC DAPOL)'),
-                  text: "Home Detention Curfew Domestic Abuse Perpetrators on Licence (HDC DAPOL)"
-               
-                },
-                 {
-                  value: "Home Detention Curfew Electronic Monitoring Acquisitive Crime",
-                  checked: (true if data['order-description'] == 'Home Detention Curfew Electronic Monitoring Acquisitive Crime'),
-                  text: "Home Detention Curfew Electronic Monitoring Acquisitive Crime"
-               
-                },
-                 {
-                  value: "Home Detention Curfew with Alcohol Monitoring (HDC with AM)",
-                  checked: (true if data['order-description'] == 'Home Detention Curfew with Alcohol Monitoring (HDC with AM)'),
-                  text: "Home Detention Curfew with Alcohol Monitoring (HDC with AM)"
-               
-                },
+                 
                  {
                   value: "Lifer/IPP (Indeterminate Public Protection Service) / Indeterminate Sentence",
                   checked: (true if data['order-description'] == 'Lifer/IPP (Indeterminate Public Protection Service) / Indeterminate Sentence'),
@@ -109,12 +141,7 @@
                   text: "Release on Licence with Alcohol Monitoring"
                
                 },
-                 {
-                  value: "Home Detention Curfew Transferred from Scotland / Scottish HDC case",
-                  checked: (true if data['order-description'] == 'Home Detention Curfew Transferred from Scotland / Scottish HDC case'),
-                  text: "Home Detention Curfew Transferred from Scotland / Scottish HDC case"
-               
-                },
+                
                  {
                   value: "Youth Detention and Training Order",
                   checked: (true if data['order-description'] == 'Youth Detention and Training Order'),
@@ -126,15 +153,10 @@
                   checked: (true if data['order-description'] == 'Youth DTO ISSP'),
                   text: "Youth DTO ISSP"
                
-                },
-                 {
-                  value: "Youth Home Detention Curfew (HDC)",
-                  checked: (true if data['order-description'] == 'Youth Home Detention Curfew (HDC)'),
-                  text: "Youth Home Detention Curfew (HDC)"
-               
                 }
               ]
             }) }}
+      
 
       {% elseif (data['order-type'] == "Community") %}
 

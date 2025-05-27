@@ -43,6 +43,13 @@
            
             {% endset -%}
 
+             {% set youthcourtsHtml %}
+
+           {% include "/includes/youthcourt.html" %}
+            
+           
+            {% endset -%}
+
             {% set crowncourtsHtml %}
 
              {% include "/includes/crown-court.html" %}
@@ -117,6 +124,14 @@
                   text: "Magistrates Court",
                   conditional: {
                     html: courtsHtml
+                  }
+                },
+                 {
+                  value: "Youth Court",
+                  checked: (true if data['notifying-org'] == 'Youth Court'),
+                  text: "Youth Court",
+                  conditional: {
+                    html: youthcourtsHtml
                   }
                 },
                  {
