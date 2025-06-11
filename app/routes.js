@@ -216,7 +216,7 @@ router.post('/installation-address2', function(request, response) {
     }
 })
 
-router.post('/appointment-address', function(request, response) {
+router.post('/appointment-addressold', function(request, response) {
 
 
     var appointmentquestion = request.session.data['appointmentquestion']
@@ -239,7 +239,25 @@ router.post('/appointment-address', function(request, response) {
     }
 })
 
-router.post('/appointment-address2', function(request, response) {
+router.post('/appointment-address', function(request, response) {
+    var appointmentquestion = request.session.data['appointmentquestion']
+    var monitoringtype = request.session.data['monitoringtype']
+   
+    
+    if (appointmentquestion == "At a prison"){
+        response.redirect("/v1/monitoring-conditions/appointment-details")  
+    } else if (appointmentquestion == "At a probation office"){
+        response.redirect("/v1/monitoring-conditions/appointment-details") 
+    } else if (appointmentquestion == "At another address"){
+        response.redirect("/v1/monitoring-conditions/install-address") 
+    } else if (monitoringtype == "Trail monitoring (Home Office)"){
+        response.redirect("/v1/monitoring-conditions/trail")                 
+    } else {
+        response.redirect("/v1/monitoring-conditions/alcohol")
+    }
+})
+
+router.post('/appointment-address2old', function(request, response) {
 
 
     var appointmentquestion = request.session.data['appointmentquestion']
@@ -262,7 +280,9 @@ router.post('/appointment-address2', function(request, response) {
     }
 })
 
-router.post('/monitoring-question', function(request, response) {
+
+
+router.post('/monitoring-questionold', function(request, response) {
 
     var monitoringtype = request.session.data['monitoringtype']
     var addressquestion = request.session.data['addressquestion']
@@ -276,7 +296,26 @@ router.post('/monitoring-question', function(request, response) {
     }
 })
 
-router.post('/monitoring-question2', function(request, response) {
+router.post('/monitoring-question', function(request, response) {
+
+    var monitoringtype = request.session.data['monitoringtype']
+    var addressquestion = request.session.data['addressquestion']
+
+    
+    if (monitoringtype == "Curfew"){
+        response.redirect("/v1/monitoring-conditions/curfew")     
+    } else if (monitoringtype == "Alcohol monitoring"){
+    response.redirect("/v1/monitoring-conditions/appointment-question") 
+    } else if (monitoringtype == "Trail monitoring (Home Office)"){
+    response.redirect("/v1/monitoring-conditions/appointment-question") 
+    } else if (addressquestion == "No"){
+    response.redirect("/v1/monitoring-conditions/install-address")   
+    } else {
+    response.redirect("/v1/monitoring-conditions/install-address-question")
+    }
+})
+
+router.post('/monitoring-question2old', function(request, response) {
 
     var monitoringtype2 = request.session.data['monitoringtype2']
     var addressquestion = request.session.data['addressquestion']
@@ -287,6 +326,18 @@ router.post('/monitoring-question2', function(request, response) {
         response.redirect("/v1/monitoring-conditions/install-address")   
     } else {
         response.redirect("/v1/monitoring-conditions/install-address-question")
+    }
+})
+
+router.post('/monitoring-question2', function(request, response) {
+
+    var monitoringtype2 = request.session.data['monitoringtype2']
+
+    
+    if (monitoringtype2 == "Curfew"){
+        response.redirect("/v1/monitoring-conditions/curfew")     
+    } else {
+        response.redirect("/v1/monitoring-conditions/appointment-question")
     }
 })
 

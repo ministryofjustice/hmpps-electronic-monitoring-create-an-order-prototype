@@ -19,14 +19,37 @@
         Add tag installation address
       </h1>-->
 
+    
+  {% if (data['cya4'] == "true") %}
+
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+         <form class="form" action="/monitoring-type" method="post">
+
+        {% endif %}
+
+    
+<!-- USED IF INSTALL ADDRESS IS PER MONITORING TYPE
 
 
-      <form class="form" action="appointment-question" method="post">
+
+      {% if (data['monitoringtypeadded'] == "Yes") %}
+
+       <form class="form" action="/monitoring-type2" method="post">
+
+      {% else %}
+
+      <form class="form" action="/monitoring-type" method="post">
+
+      {% endif %}
+-->
 
 
       {% call govukFieldset({
         legend: {
-          text: "Where will the installation of the electronic monitoring device take place?",
+          text: "At what address will installation of the electronic monitoring device take place?",
           isPageHeading: true,
          classes: "govuk-fieldset__legend--l"
         }

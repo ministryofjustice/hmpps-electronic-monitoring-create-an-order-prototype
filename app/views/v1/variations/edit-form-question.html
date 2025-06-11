@@ -69,7 +69,7 @@ Details of the changes - Electronic Monitoring
 
 
 
-             {{ govukCheckboxes({
+             {{ govukRadios({
             name: "variation-type",
             fieldset: {
               legend: {
@@ -103,10 +103,16 @@ Details of the changes - Electronic Monitoring
                 text: "The curfew hours"
               },
               {
-                value: "Change to an Exclusion Zone(s)",
-                checked: (true if data['variation-type'] == 'Change to an Exclusion Zone(s)'),
+                value: "Change to an existing exclusion zone(s)",
+                checked: (true if data['variation-type'] == 'Change to an existing exclusion zone(s)'),
                 disabled: (true if data['view'] == 'true'),
-                text: "Change to an Exclusion Zone(s)"
+                text: "Change to an existing exclusion zone(s)"
+              },
+               {
+                value: "Change to add an exclusion zone(s)",
+                checked: (true if data['variation-type'] == 'Change to add an exclusion zone(s)'),
+                disabled: (true if data['view'] == 'true'),
+                text: "Change to add an exclusion zone(s)"
               },
               
               {
@@ -116,22 +122,34 @@ Details of the changes - Electronic Monitoring
                 text: "Change to a device type"
               },   
               {
-                value: "Change to Enforceable Condition",
-                checked: (true if data['variation-type'] == 'Change to Enforceable Condition'),
+                value: "Change to enforceable condition",
+                checked: (true if data['variation-type'] == 'Change to enforceable condition'),
                 disabled: (true if data['view'] == 'true'),
-                text: "Change to Enforceable Condition"
+                text: "Change to enforceable condition"
               },   
               {
                 value: "I am suspending monitoring for the device wearer",
                 checked: (true if data['variation-type'] == 'I am suspending monitoring for the device wearer'),
                 disabled: (true if data['view'] == 'true'),
                 text: "I am suspending monitoring for the device wearer"
-              },     
-              {
-                value: "I have changed something else in the form due to an administration error",
-                checked: (true if data['variation-type'] == 'I have changed something else in the form due to an administration error'),
+              },   
+               {
+                value: "I am ending all monitoring for the device wearer",
+                checked: (true if data['variation-type'] == 'I am ending all monitoring for the device wearer'),
                 disabled: (true if data['view'] == 'true'),
-                text: "I have changed something else in the form due to an administration error"
+                text: "I am ending all monitoring for the device wearer"
+              },  
+              {
+                value: "I have changed something due to an administration error",
+                checked: (true if data['variation-type'] == 'I have changed something due to an administration error'),
+                disabled: (true if data['view'] == 'true'),
+                text: "I have changed something due to an administration error"
+              },
+               {
+                value: "I have changed something else in the form",
+                checked: (true if data['variation-type'] == 'I have changed something else in the form'),
+                disabled: (true if data['view'] == 'true'),
+                text: "I have changed something else in the form"
               }
             ]
           }) }}

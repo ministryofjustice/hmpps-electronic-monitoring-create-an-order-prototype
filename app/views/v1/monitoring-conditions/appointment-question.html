@@ -13,27 +13,17 @@
     <div class="govuk-grid-column-two-thirds">
 
 
-     {% if (data['monitoringtypeadded'] == "Yes") %}
-
-     <form class="form" action="/appointment-address2" method="post">
-
-     {% else %}
-
-      <form class="form" action="/appointment-address" method="post">
-
-     {% endif %}   
 
 
-        
-
+ <form class="form" action="/appointment-address" method="post">
 
    <span class="govuk-caption-l">Electronic monitoring required</span>
           {{ govukRadios({
-            classes: "govuk-radios--inline",
+            classes: "govuk-radios",
             name: "appointmentquestion",
             fieldset: {
               legend: {
-                text: "Do you know the date and time when installation of the electronic monitoring device will take place?",   
+                text: "Where will installation of the electronic monitoring device take place?",   
                 isPageHeading: true,
                classes: "govuk-fieldset__legend--l"
               }
@@ -42,16 +32,27 @@
                     text: ""
                   },
             items: [
+
+              {
+              value: "123 Glossop Road, Little Hayfield, High Peak, SK22 2NG",
+              checked: (true if data['appointmentquestion'] == '123 Glossop Road, Little Hayfield, High Peak, SK22 2NG'),
+              text: "123 Glossop Road, Little Hayfield, High Peak, SK22 2NG"
+              },
            
               {
-                value: "Yes",
-                checked: (true if data['appointmentquestion'] == 'Yes'),
-                text: "Yes"
+                value: "At a prison",
+                checked: (true if data['appointmentquestion'] == 'At a prison'),
+                text: "At a prison"
               },
               {
-                value: "No",
-                checked: (true if data['appointmentquestion'] == 'No'),
-                text: "No"
+                value: "At a probation office",
+                checked: (true if data['appointmentquestion'] == 'At a probation office'),
+                text: "At a probation office"
+              },
+              {
+                value: "At another address",
+                checked: (true if data['appointmentquestion'] == 'At another address'),
+                text: "At another address"
               }
             ]
           }) }}

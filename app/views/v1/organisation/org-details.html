@@ -63,6 +63,27 @@
             
             {% endset -%}
 
+             {% set militarycourtsHtml %}
+
+           {% include "/includes/militarycourt.html" %}
+            
+           
+            {% endset -%}
+
+             {% set probationHtml %}
+
+           {% include "/includes/probation.html" %}
+            
+           
+            {% endset -%}
+
+             {% set ycsHtml %}
+
+           {% include "/includes/ycs.html" %}
+            
+           
+            {% endset -%}
+
 
 
             {{ govukRadios({
@@ -90,17 +111,19 @@
                 {
                   value: "Probation service",
                   checked: (true if data['notifying-org'] == 'Probation service'),
-                  text: "Probation service"
+                  text: "Probation service",
+                  conditional: {
+                    html: probationHtml
+                  }
                 },
-                {
-                  value: "Home Office",
-                  text: "Home Office",
-                  checked: (true if data['notifying-org'] == 'Home Office')
-                },
+               
                  {
                   value: "Youth Custody Service (YCS)",
                   checked: (true if data['notifying-org'] == 'Youth Custody Service (YCS)'),
-                  text: "Youth Custody Service (YCS)"
+                  text: "Youth Custody Service (YCS)",
+                  conditional: {
+                    html: ycsHtml
+                  }
                 },
                 {
                   value: "Crown Court",
@@ -111,14 +134,6 @@
                   }
                 },
                 {
-                  value: "Family and Civil Court",
-                  text: "Family and Civil Court",
-                  checked: (true if data['notifying-org'] == 'Family and Civil Court'),
-                  conditional: {
-                    html: courtsHtml
-                  }
-                },
-                {
                   value: "Magistrates Court",
                   checked: (true if data['notifying-org'] == 'Magistrates Court'),
                   text: "Magistrates Court",
@@ -126,6 +141,23 @@
                     html: courtsHtml
                   }
                 },
+                {
+                  value: "Family Court",
+                  text: "Family Court",
+                  checked: (true if data['notifying-org'] == 'Family Court'),
+                  conditional: {
+                    html: courtsHtml
+                  }
+                },
+                {
+                  value: "Civil and County Court",
+                  text: "Civil and County Court",
+                  checked: (true if data['notifying-org'] == 'Civil and County Court'),
+                  conditional: {
+                    html: courtsHtml
+                  }
+                },
+                
                  {
                   value: "Youth Court",
                   checked: (true if data['notifying-org'] == 'Youth Court'),
@@ -142,8 +174,16 @@
                 {
                   value: "Military Court",
                   checked: (true if data['notifying-org'] == 'Military Court'),
-                  text: "Military Court"
-                }  
+                  text: "Military Court",
+                  conditional: {
+                    html: militarycourtsHtml
+                  }
+                }, 
+                {
+                  value: "Home Office",
+                  text: "Home Office",
+                  checked: (true if data['notifying-org'] == 'Home Office')
+                }
 
               ]
             }) }}

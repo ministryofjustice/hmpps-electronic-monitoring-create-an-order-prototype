@@ -443,14 +443,56 @@
       
 {% endif %}
 
- {% if (data['monitoringtype'] == "Exclusion zone monitoring" or data['monitoringtype2'] == "Exclusion zone monitoring") %}
+{% if (data['monitoringtype'] != "Curfew" or data['monitoringtype2'] != "Curfew") %}
 
- <h2 class="govuk-heading-m">Exclusion zone monitoring</h2>
+<h2 class="govuk-heading-m">Installation address</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+          {% if (data['monitoringtype'] != "Alcohol monitoring" or data['monitoringtype2'] != "Alcohol monitoring") %}
+
+          
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           Where will installation of the electronic monitoring device take place?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['appointmentquestion'] or "123 Glossop Road, Little Hayfield, High Peak, SK22 2NG" }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="appointment-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+            </dd>
+          </div>  
+           {% if (data['appointmentquestion'] == "At a prison") or (data['appointmentquestion'] == "At a probation office") %}
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            What is the name of the place where installation will take place?
+            </dt>
+            <dd class="govuk-summary-list__value">
+            {{ data[' tag-source-location'] or "New Hall Prison" }}
+            </dd>
+             <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="appointment-details?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+            </dd>
+          </div>  
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Where will the installation of the electronic monitoring device take place?
+             When does installation take place?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['installation-date'] or '12/06/2025'}} at {{ data['installation-hours'] or '12' }}:{{ data['installation-minutes'] or '00' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="appointment-details?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+            </dd>
+          </div> 
+
+          {% endif %}   
+
+            {% if (data['appointmentquestion'] != "123 Glossop Road, Little Hayfield, High Peak, SK22 2NG") %}
+
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            At what address will installation of the electronic monitoring device take place?
             </dt>
             <dd class="govuk-summary-list__value">
               {% if (data['installaddressquestion'] == "No") %}
@@ -465,35 +507,22 @@
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="install-address-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+              <a class="govuk-link" href="install-address?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
             </dd>
           </div>  
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-            Do you know when installation of the electronic monitoring device will take place?
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {{ data['appointmentquestion'] or "No" }} 
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="appointment-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
-            </dd>
-          </div>  
-           {% if (data['appointmentquestion'] == "Yes") %}
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             When will the installation of the electronic monitoring device take place?
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {{ data['installation-date'] }} at {{ data['installation-hours'] }}:{{ data['installation-minutes'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="appointment-details?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
-            </dd>
-          </div>  
+
+          {% endif %}   
+
+
             {% endif %}  
+        </dl>   
 
+     {% endif %}    
 
+ {% if (data['monitoringtype'] == "Exclusion zone monitoring" or data['monitoringtype2'] == "Exclusion zone monitoring") %}
+
+ <h2 class="govuk-heading-m">Exclusion zone monitoring</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What date does exclusion monitoring start?
@@ -606,48 +635,7 @@
 </h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Where will the installation of the electronic monitoring device take place?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if (data['installaddressquestion'] == "No") %}
-              {{ data['installaddressLine1'] }}<br>
-              {{ data['installaddressTown'] }}<br>
-              {{ data['installaddressPostcode'] }}
-              {% else %}
-             {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
-              {{ data['contactaddressTown'] or "Glossop" }}<br>
-              {{ data['contactaddressCounty'] or "High Peak" }}<br>
-              {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
-              {% endif %}
-            </dd>
-           </div>
-
-            <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-            Do you know when installation of the electronic monitoring device will take place?
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {{ data['appointmentquestion'] or "No" }} 
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="appointment-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
-            </dd>
-          </div>  
-           {% if (data['appointmentquestion'] == "Yes") %}
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             When will the installation of the electronic monitoring device take place?
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {{ data['installation-date'] }} at {{ data['installation-hours'] }}:{{ data['installation-minutes'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="appointment-details?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
-            </dd>
-          </div>  
-            {% endif %}  
+         
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -698,50 +686,8 @@
  <h2 class="govuk-heading-m">Mandatory attendance monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             Where will the installation of the electronic monitoring device take place?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if (data['installaddressquestion'] == "No") %}
-              {{ data['installaddressLine1'] }}<br>
-              {{ data['installaddressTown'] }}<br>
-              {{ data['installaddressPostcode'] }}
-              {% else %}
-             {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
-              {{ data['contactaddressTown'] or "Glossop" }}<br>
-              {{ data['contactaddressCounty'] or "High Peak" }}<br>
-              {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
-              {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="install-address-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
-            </dd>
-          </div>  
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-            Do you know when installation of the electronic monitoring device will take place?
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {{ data['appointmentquestion'] or "No" }} 
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="appointment-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
-            </dd>
-          </div>  
-           {% if (data['appointmentquestion'] == "Yes") %}
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             When will the installation of the electronic monitoring device take place?
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {{ data['installation-date'] }} at {{ data['installation-hours'] }}:{{ data['installation-minutes'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="appointment-details?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
-            </dd>
-          </div>  
-            {% endif %}  
+         
+         
 
          <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -837,54 +783,7 @@
  <h2 class="govuk-heading-m">Alcohol monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Where will the installation of the electronic monitoring device take place?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if (data['installaddressquestion'] == "No") %}
-              {{ data['installaddressLine1'] }}<br>
-              {{ data['installaddressTown'] }}<br>
-              {{ data['installaddressPostcode'] }}
-              {% else %}
-             {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
-              {{ data['contactaddressTown'] or "Glossop" }}<br>
-              {{ data['contactaddressCounty'] or "High Peak" }}<br>
-              {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
-              {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="install-address-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
-            </dd>
-          </div>  
-
-            <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-            Do you know when installation of the electronic monitoring device will take place?
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {{ data['appointmentquestion'] or "No" }} 
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="appointment-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
-            </dd>
-          </div>  
-           {% if (data['appointmentquestion'] == "Yes") %}
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             When will the installation of the electronic monitoring device take place?
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {{ data['installation-date'] }} at {{ data['installation-hours'] }}:{{ data['installation-minutes'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="appointment-details?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
-            </dd>
-          </div>  
-            {% endif %}  
-
-
-   
+         
 
          
           <div class="govuk-summary-list__row">

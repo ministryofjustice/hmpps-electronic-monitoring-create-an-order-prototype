@@ -25,18 +25,31 @@
         {{ data['contactaddressCounty'] or "High Peak" }}<br>
         {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
         </p>
- 
 
-      <form class="form" action="/install-address-question2" method="post">
 
+ <form class="form" action="/installation-address" method="post">
+    
+<!-- USED IF INSTALL ADDRESS IS PER MONITORING TYPE
  
+ 
+      {% if (data['monitoringtypeadded'] == "Yes") %}
+
+       <form class="form" action="/installation-address2" method="post">
+
+          {% else %}
+
+      <form class="form" action="/installation-address" method="post">
+
+     {% endif %}
+
+-->
 
           {{ govukRadios({
             classes: "govuk-radios--inline",
             name: "installaddressquestion",
             fieldset: {
               legend: {
-                text: "Is this where the installation of the electronic monitoring device take place?",
+                text: "Is this where the installation of the electronic monitoring device will take place?",
                classes: "govuk-fieldset__legend--s"
               }
             },
