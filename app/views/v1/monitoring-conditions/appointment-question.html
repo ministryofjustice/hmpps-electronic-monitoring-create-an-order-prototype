@@ -18,6 +18,52 @@
  <form class="form" action="/appointment-address" method="post">
 
    <span class="govuk-caption-l">Electronic monitoring required</span>
+
+  {% if (data['addressquestion'] == "No") %}
+
+          {{ govukRadios({
+            classes: "govuk-radios",
+            name: "appointmentquestion",
+            fieldset: {
+              legend: {
+                text: "Where will installation of the electronic monitoring device take place?",   
+                isPageHeading: true,
+               classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+                    text: ""
+                  },
+            items: [
+
+              {
+              value: "Device wearer has no fixed address",
+              checked: (true if data['appointmentquestion'] == 'Device wearer has no fixed address'),
+              disabled: (true if data['addressquestion'] == 'No'),
+              text: "Device wearer has no fixed address"
+              },
+           
+              {
+                value: "At a prison",
+                checked: (true if data['appointmentquestion'] == 'At a prison'),
+                text: "At a prison"
+              },
+              {
+                value: "At a probation office",
+                checked: (true if data['appointmentquestion'] == 'At a probation office'),
+                text: "At a probation office"
+              },
+              {
+                value: "At another address",
+                checked: (true if data['appointmentquestion'] == 'At another address'),
+                text: "At another address"
+              }
+            ]
+          }) }}
+
+  {% else %}    
+
+
           {{ govukRadios({
             classes: "govuk-radios",
             name: "appointmentquestion",
@@ -57,7 +103,7 @@
             ]
           }) }}
 
-       
+  {% endif %} 
 
     {% from "govuk/components/button/macro.njk" import govukButton %}
 
