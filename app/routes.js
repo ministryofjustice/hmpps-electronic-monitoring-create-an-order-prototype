@@ -586,6 +586,16 @@ router.post('/order-description', function(request, response) {
     }
 })
 
+router.post('/hdc', function(request, response) {
+
+    var hdc = request.session.data['hdc']
+    if (hdc == "No"){
+        response.redirect("/v1/otd/sentence-type") 
+    } else {
+        response.redirect("/v1/otd/order-description")
+    }
+})
+
 
 
 // const radioButtonRedirect = require('radio-button-redirect')

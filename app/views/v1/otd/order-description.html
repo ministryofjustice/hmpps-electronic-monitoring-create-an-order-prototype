@@ -73,7 +73,51 @@
               ]
             }) }}
 
-      {% elseif (data['order-type'] == "Post release") and (data['hdc'] == "No") %}
+      {% elseif (data['order-type'] == "Post release") and (data['hdc'] == "No") and (data['sentencetype'] == "The sentence the device wearer has been given is not listed") %}
+
+         {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "   What is the order type description?",
+                  isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+                }
+              },
+              items: [
+               
+             
+                 {
+                  value: "Extended Sentence",
+                  checked: (true if data['order-description'] == 'Extended Sentence'),
+                  text: "Extended Sentence"
+               
+                },
+                 
+                 {
+                  value: "Lifer/IPP (Indeterminate Public Protection Service) / Indeterminate Sentence",
+                  checked: (true if data['order-description'] == 'Lifer/IPP (Indeterminate Public Protection Service) / Indeterminate Sentence'),
+                  text: "Lifer/IPP (Indeterminate Public Protection Service) / Indeterminate Sentence"
+               
+                },
+                 {
+                  value: "Parole",
+                  checked: (true if data['order-description'] == 'Parole'),
+                  text: "Parole"
+               
+                },
+                 {
+                  value: "Parole Licence with Alcohol Monitoring",
+                  checked: (true if data['order-description'] == 'Parole Licence with Alcohol Monitoring'),
+                  text: "Parole Licence with Alcohol Monitoring"
+               
+                }
+              ]
+            }) }}
+
+       {% elseif (data['order-type'] == "Post release") and (data['hdc'] == "No") and (data['sentencetype'] == "Standard Determinate Sentence") %}
+      
          {{ govukRadios({
               classes: "govuk-radios",
               name: "order-description",
@@ -111,36 +155,26 @@
                
                 },
                  {
-                  value: "Extended Sentence",
-                  checked: (true if data['order-description'] == 'Extended Sentence'),
-                  text: "Extended Sentence"
-               
-                },
-                 
-                 {
-                  value: "Lifer/IPP (Indeterminate Public Protection Service) / Indeterminate Sentence",
-                  checked: (true if data['order-description'] == 'Lifer/IPP (Indeterminate Public Protection Service) / Indeterminate Sentence'),
-                  text: "Lifer/IPP (Indeterminate Public Protection Service) / Indeterminate Sentence"
-               
-                },
-                 {
-                  value: "Parole",
-                  checked: (true if data['order-description'] == 'Parole'),
-                  text: "Parole"
-               
-                },
-                 {
-                  value: "Parole Licence with Alcohol Monitoring",
-                  checked: (true if data['order-description'] == 'Parole Licence with Alcohol Monitoring'),
-                  text: "Parole Licence with Alcohol Monitoring"
-               
-                },
-                 {
                   value: "Release on Licence with Alcohol Monitoring",
                   checked: (true if data['order-description'] == 'Release on Licence with Alcohol Monitoring'),
                   text: "Release on Licence with Alcohol Monitoring"
-               
-                },
+                }
+              ]
+            }) }}
+            
+       {% elseif (data['order-type'] == "Post release") and (data['hdc'] == "No") and (data['sentencetype'] == "Detention and Training Order") %}
+      
+         {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "   What is the order type description?",
+                  isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+                }
+              },
+              items: [
                 
                  {
                   value: "Youth Detention and Training Order",
@@ -155,7 +189,7 @@
                
                 }
               ]
-            }) }}
+            }) }}            
       
 
       {% elseif (data['order-type'] == "Community") %}
