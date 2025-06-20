@@ -156,39 +156,34 @@
             </dd>
           </div>
 
+         
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-            At installation what are the possible risks?
+             At installation what are the possible risks from the device wearer's behaviour?
             </dt>
             <dd class="govuk-summary-list__value">
-              There are no risks that the installer should be aware of
+              {{ data['risk'] or 'There are no risks that the installer should be aware of' }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
-                {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
-                {% endif %}
+              <a class="govuk-link" href="risk-2?cya3=true">Change<span class="govuk-visually-hidden"> What are the risks that apply to the device wearer?</span></a>
             </dd>
           </div>
-
-         
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Is the device wearer a MAPPA offender?
+             At installation what are the possible risks at the installation address?
             </dt>
             <dd class="govuk-summary-list__value">
-              No
+              {{ data['risk'] or 'There are no risks that the installer should be aware of' }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
-                {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
-                {% endif %}
+              <a class="govuk-link" href="risk-2b?cya3=true">Change<span class="govuk-visually-hidden"> What are the risks that apply to the device wearer?</span></a>
             </dd>
           </div>
+
+
+         
+
          
 
 

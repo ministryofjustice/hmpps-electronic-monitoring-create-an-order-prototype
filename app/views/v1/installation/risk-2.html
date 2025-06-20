@@ -23,7 +23,7 @@
 
       <p>Risks relate to the device wearer's behaviour and installation address. </p>-->
 
-      <form class="form" action="risk-3" method="post">
+      <form class="form" action="risk-2b" method="post">
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -31,13 +31,13 @@
             name: "risk",
             fieldset: {
               legend: {
-                text: "At installation what are the possible risks?",
+                text: "At installation what are the possible risks from the device wearer's behaviour?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--l"
               }
             },
              hint: {
-              text: "Risks relate to the device wearer's behaviour and installation address. Select all that apply"
+              text: "Check if there are any alerts for the device wearer. Select all that apply"
             },
             items: [
               {
@@ -66,49 +66,7 @@
                 checked: (true if data['risk'] == 'Offensive towards someone because of their sexual orientation'),
                 text: "Offensive towards someone because of their sexual orientation"
               },
-              {
-                value: "History of substance abuse",
-                checked: (true if data['risk'] == 'History of substance abuse'),
-                text: "History of substance abuse"
-              },
-              {
-                value: "Diversity concerns (mental health issues, learning difficulties etc)",
-                checked: (true if data['risk'] == 'Diversity concerns (mental health issues, learning difficulties etc)'),
-                text: "Diversity concerns (mental health issues, learning difficulties etc)"
-              },
               
-              {
-                value: "Managed through IOM",
-                checked: (true if data['risk'] == 'Managed through IOM'),
-                text: "Managed through IOM"
-              },
-              {
-                value: "Safeguarding issues",
-                checked: (true if data['risk'] == 'Safeguarding issues'),
-                text: "Safeguarding issues"
-              },
-              {
-                value: "Another person or people living at the property who are threatening or violent",
-                checked: (true if data['risk'] == 'Another person or people living at the property who are threatening or violent'),
-                text: "Another person or people living at the property who are threatening or violent"
-              },
-              {
-                value: "Children under the age of 18 are living at the property",
-                checked: (true if data['risk'] == 'Children under the age of 18 are living at the property'),
-                text: "Children under the age of 18 are living at the property"
-              },
-              {
-                value: "Animals at the property, for example dogs",
-                checked: (true if data['risk'] == 'Animals at the property, for example dogs'),
-                text: "Animals at the property, for example dogs"
-              },
-              
-              
-              {
-                value: "Other known risks",
-                checked: (true if data['risk'] == 'Other known risks'),
-                text: "Other known risks"
-              },
 
               {
                 divider: "or"
@@ -118,14 +76,6 @@
                 checked: (true if data['risk'] == 'There are no risks that the installer should be aware of'),
                 text: "There are no risks that the installer should be aware of",
                 behaviour: "exclusive"
-              },
-              {
-                divider: "or"
-              },
-              {
-                value: "Not able to provide this information",
-                checked: (true if data['risk'] == 'Not able to provide this information'),
-                text: "Not able to provide this information"
               }
             ]
           }) }}
