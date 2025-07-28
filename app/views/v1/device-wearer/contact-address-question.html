@@ -13,12 +13,28 @@
     <div class="govuk-grid-column-two-thirds">
 
       
-      <span class="govuk-caption-l">About the device wearer</span>
+    
 
-   <!--   <h1 class="govuk-heading-l">
+     <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">About the device wearer</span>
-        Does the device wearer have a fixed address?
-      </h1>-->
+        Fixed address
+      </h1>
+
+   
+
+     <p>  A fixed address is the address the device wearer has registered as their home address. It can be temporary accommodation, an Approved Premises (AP), a fixed tenancy or a permanent address.</p> 
+
+    <p>  A fixed address is required to process all monitoring orders apart from those that include Alcohol monitoring or where the device wearer is part of the Acquisitive Crime (AC) Project.</p>
+
+
+
+    <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-visually-hidden">Warning</span>
+   For all other orders do not raise the order until you have the device wearer's address. If the address isn’t available at the time of release, probation will be responsible for the order.
+  </strong>
+</div>
      
 
       <form class="form" action="/contact-address" method="post">
@@ -29,11 +45,11 @@
             fieldset: {
               legend: {
                 text: "Does the device wearer have a fixed address?",
-               classes: "govuk-fieldset__legend--l"
+               classes: "govuk-fieldset__legend--s"
               }
             },
             hint: {
-              text: "An address the device wearer has registered as their home address. It can be temporary accommodation, an Approved Premises (AP), a fixed tenancy or a permanent address. If they are registered as homeless, select 'No'."
+              text: ""
             },
             items: [
            
