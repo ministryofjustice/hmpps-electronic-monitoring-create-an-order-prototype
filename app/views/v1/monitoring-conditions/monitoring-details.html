@@ -20,7 +20,7 @@
     {% if (data['addressquestion'] == "No" and data['eighteen'] == "No") %}
 
       {{ govukInsetText({
-        text: "Some monitoring types are not possible because the device wearer has no fixed address. Alcohol monitoring is not an option because the device wearer is not 18 years old or older when the electronic monitoring device is installed."
+        text: "Some monitoring types can't be selected because the device wearer has no fixed address. Alcohol monitoring is not an option because the device wearer is not 18 years old or older when the electronic monitoring device is installed."
       }) }}
 
 
@@ -29,7 +29,7 @@
  
 
       {{ govukInsetText({
-        text: "Some monitoring types are not possible because the device wearer has no fixed address."
+        text: "Some monitoring types can't be selected because the device wearer has no fixed address. "
       }) }}
 
 
@@ -42,7 +42,7 @@
 
      {% endif %}  
 
-      <form class="form" action="/monitoring-question" method="post">
+      <form class="form" action="/monitoring-type" method="post">
     
      
 
@@ -85,7 +85,7 @@
                 checked: (true if data['monitoringtype'] == 'Trail monitoring'),
                 disabled: (true if data['addressquestion'] == 'No'),
                 hint: {
-                  text: "Recording and gathering data on movements of the device wearer throughout the day. Trail monitoring must be selected if the device wearer is part of the Acquisitive Crime Project."
+                  text: "Recording and gathering data on movements of the device wearer throughout the day."
                 },
                 text: "Trail monitoring"
               },

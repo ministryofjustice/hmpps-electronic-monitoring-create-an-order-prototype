@@ -70,8 +70,7 @@
             {% if (data['submit-failure'] == "true")  %} 
               Failed to submit
 
-            {% elseif (data['variation'] == 'true') %}
-               Submitted with changes
+            
             {% else  %} 
              Submitted
             {% endif  %} 
@@ -86,10 +85,11 @@
             Type
             </dt>
             <dd class="govuk-summary-list__value">
-               {% if (data['submit-failure'] == "true")  %} 
-              Failed to submit
+             
+              {% if (data['variation'] == 'true') %}
+               Change to an order 
             {% else  %} 
-             Submitted form
+            New order
             {% endif  %} 
           
             </dd>
@@ -103,6 +103,30 @@
             </dt>
             <dd class="govuk-summary-list__value">
             123654
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Date submitted
+            </dt>
+            <dd class="govuk-summary-list__value">
+            12/07/2025, 12:34
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Submitted by
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Ada Lovelace
             </dd>
             <dd class="govuk-summary-list__actions">
              

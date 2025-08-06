@@ -354,11 +354,11 @@ router.post('/monitoring-type', function(request, response) {
     } else if (monitoringtype == "Trail monitoring"){
         response.redirect("/v1/monitoring-conditions/trail") 
     } else if (monitoringtype == "Trail monitoring (Home Office)"){
-        response.redirect("/v1/monitoring-conditions/trail")    
+        response.redirect("/v1/monitoring-conditions/appointment-question")    
     } else if (monitoringtype == "Mandatory attendance monitoring"){
         response.redirect("/v1/monitoring-conditions/attendance")      
     } else {
-        response.redirect("/v1/monitoring-conditions/alcohol")
+        response.redirect("/v1/monitoring-conditions/appointment-question")
     }
 })
 
@@ -375,11 +375,11 @@ router.post('/monitoring-type2', function(request, response) {
     } else if (monitoringtype2 == "Trail monitoring"){
         response.redirect("/v1/monitoring-conditions/trail")   
     } else if (monitoringtype2 == "Trail monitoring (Home Office)"){
-        response.redirect("/v1/monitoring-conditions/trail")  
+        response.redirect("/v1/monitoring-conditions/appointment-question")  
     } else if (monitoringtype2 == "Mandatory attendance monitoring"){
         response.redirect("/v1/monitoring-conditions/attendance")      
     } else {
-        response.redirect("/v1/monitoring-conditions/alcohol")
+        response.redirect("/v1/monitoring-conditions/appointment-question")
     }
 })
 
