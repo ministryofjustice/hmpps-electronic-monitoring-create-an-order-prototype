@@ -13,7 +13,7 @@
     <div class="govuk-grid-column-two-thirds">
 
 
-      <form class="form" action="/alcohol-dates-question" method="post">
+      <form class="form" action="/curfew-dates-question" method="post">
 
         
 
@@ -21,10 +21,10 @@
    <span class="govuk-caption-l">Electronic monitoring required</span>
           {{ govukRadios({
             classes: "govuk-radios--inline",
-            name: "alcoholdatesquestion",
+            name: "curfewdatesquestion",
             fieldset: {
               legend: {
-                text: "Are the alcohol monitoring dates from 12 August 2025 to 12 March 2026?",   
+                text: "Are the curfew dates from 12 August 2025 to 12 March 2026?",   
                 isPageHeading: true,
                classes: "govuk-fieldset__legend--l"
               }
@@ -36,12 +36,12 @@
            
               {
                 value: "Yes",
-                checked: (true if data['alcoholdatesquestion'] == 'Yes'),
+                checked: (true if data['curfewdatesquestion'] == 'Yes'),
                 text: "Yes"
               },
               {
                 value: "No",
-                checked: (true if data['alcoholdatesquestion'] == 'No'),
+                checked: (true if data['curfewdatesquestion'] == 'No'),
                 text: "No"
               }
             ]

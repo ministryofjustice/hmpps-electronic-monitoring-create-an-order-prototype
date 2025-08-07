@@ -170,17 +170,7 @@
               <a class="govuk-link" href="monitoring-dates?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the monitoring starts? </span></a>
             </dd>
           </div>
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What is the start time on the first day of monitoring? (optional)
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['starttime-hours'] or "13" }}:{{ data['starttime-minutes'] or "00" }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="monitoring-dates?cya4=true">Change<span class="govuk-visually-hidden"> What is the time the monitoring starts? </span></a>
-            </dd>
-          </div>
+          
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the date when all monitoring ends? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
@@ -193,18 +183,7 @@
             </dd>
           </div>
 
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What is the end time on the last day of monitoring? (optional)
-            </dt>
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['endtime-hours']  or "13"  }}:{{ data['endtime-minutes']  or "00"  }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="monitoring-dates?cya4=true">Change<span class="govuk-visually-hidden"> What is the time the monitoring ends? (optional) </span></a>
-            </dd>
-          </div>
+          
          
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -315,7 +294,7 @@
     <h2 class="govuk-heading-m">Curfew on the day of release</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-          <div class="govuk-summary-list__row">
+       <!--   <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What date is the device wearer released from custody?
             </dt>
@@ -325,7 +304,7 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="curfew-3?cya4=true">Change<span class="govuk-visually-hidden"> What is the release date? </span></a>
             </dd>
-          </div>
+          </div>-->
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               On the day of release, what time does the curfew start?
@@ -443,7 +422,7 @@
       
 {% endif %}
 
-{% if (data['monitoringtype'] != "Curfew" or data['monitoringtype2'] != "Curfew") %}
+   {% if (data['monitoringtype'] == "Alcohol monitoring" or data['monitoringtype2'] == "Alcohol monitoring") %}
 
 <h2 class="govuk-heading-m">Installation address</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -531,7 +510,7 @@
               {{ data['exclusionstart-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="exclusion?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the exclusion and inclusion monitoring starts? </span></a>
+              <a class="govuk-link" href="exclusion-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the exclusion and inclusion monitoring starts? </span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -542,7 +521,7 @@
               {{ data['exclusionend-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="exclusion?cya4=true">Change<span class="govuk-visually-hidden"> What is the end date for exclusion and inclusion monitoring? </span></a>
+              <a class="govuk-link" href="exclusion-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the end date for exclusion and inclusion monitoring? </span></a>
             </dd>
           </div>
         <!--  <div class="govuk-summary-list__row">
@@ -645,7 +624,7 @@
               {{ data['trailstart-date'] or '12/01/2025' }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="trail?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the trail monitoring starts? </span></a>
+              <a class="govuk-link" href="trail-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the trail monitoring starts? </span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -656,7 +635,7 @@
               {{ data['trailend-date'] or '12/01/2026' }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="trail?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the trail monitoring ends? </span></a>
+              <a class="govuk-link" href="trail-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the trail monitoring ends? </span></a>
             </dd>
           </div>
 
@@ -697,7 +676,7 @@
               {{ data['attendancestart-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="attendance?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the mandatory attendance monitoring starts? </span></a>
+              <a class="govuk-link" href="attendance-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the mandatory attendance monitoring starts? </span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -708,7 +687,7 @@
               {{ data['attendanceend-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="attendance?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the mandatory attendance monitoring ends? </span></a>
+              <a class="govuk-link" href="attendance-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the mandatory attendance monitoring ends? </span></a>
             </dd>
           </div>
   
@@ -794,7 +773,7 @@
               {{ data['alcoholstart-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="alcohol?cya4=true">Change<span class="govuk-visually-hidden"> What date does alcohol monitoring start? </span></a>
+              <a class="govuk-link" href="alcohol-1?cya4=true">Change<span class="govuk-visually-hidden"> What date does alcohol monitoring start? </span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -805,7 +784,7 @@
               {{ data['alcoholend-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="alcohol?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the alcohol monitoring ends? </span></a>
+              <a class="govuk-link" href="alcohol-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the alcohol monitoring ends? </span></a>
             </dd>
           </div>
            <div class="govuk-summary-list__row">

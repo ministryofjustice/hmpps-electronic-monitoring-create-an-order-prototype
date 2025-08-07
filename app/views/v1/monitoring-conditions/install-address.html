@@ -20,31 +20,19 @@
       </h1>-->
 
     
-  {% if (data['cya4'] == "true") %}
-
-        <form class="form" action="check-answers" method="post">
-
-        {% else %}
-
-         <form class="form" action="/monitoring-type" method="post">
-
-        {% endif %}
-
-    
-<!-- USED IF INSTALL ADDRESS IS PER MONITORING TYPE
 
 
 
       {% if (data['monitoringtypeadded'] == "Yes") %}
 
-       <form class="form" action="/monitoring-type2" method="post">
+       <form class="form" action="/install-type2" method="post">
 
       {% else %}
 
-      <form class="form" action="/monitoring-type" method="post">
+      <form class="form" action="/install-type" method="post">
 
       {% endif %}
--->
+
 
 
       {% call govukFieldset({

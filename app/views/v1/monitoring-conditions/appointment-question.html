@@ -12,10 +12,18 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+     {% if (data['monitoringtypeadded'] == "Yes") %}
+
+       <form class="form" action="/appointment-address2" method="post">
+
+      {% else %}
+
+      <form class="form" action="/appointment-address" method="post">
+
+      {% endif %}
 
 
 
- <form class="form" action="/appointment-address" method="post">
 
    <span class="govuk-caption-l">Electronic monitoring required</span>
 
