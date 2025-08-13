@@ -1,0 +1,126 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+          <span class="govuk-caption-l">Electronic monitoring required</span>
+
+   <!--   <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        Is the device wearer being released from prison early on licence?
+      </h1>-->
+       
+    <!--  <form class="form" action="/order-conditions" method="post">-->
+
+      <form class="form" action="order-prrar" method="post">
+
+        <!--   {
+                  value: "Requirement of a community order",
+                  checked: (true if data['order-condition'] == 'Requirement of a community order'),
+                  text: "Requirement of a community order",
+                   hint: {
+                    text: "Monitoring conditions are part of a Community Order, a Suspended Sentence Order, or a Youth Rehabilitation Order."
+                  }
+                },-->
+
+         {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-condition",
+              fieldset: {
+                legend: {
+                  text: "What condition is the monitoring part of?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--l"
+                }
+              },
+
+            hint: {
+              text: "This is on the device wearer's licence."
+            },
+              items: [
+             
+                {
+                  value: "Licence condition ",
+                  checked: (true if data['order-condition'] == 'Licence condition '),
+                  text: "Licence condition",
+                   hint: {
+                    text: "Device wearer is being released from prison before their sentence is complete. They are subject to specific licence conditions that include monitoring conditions."
+                  }
+                },
+                {
+                  value: "Post-Sentence Supervision Requirement",
+                  checked: (true if data['order-condition'] == 'Post-Sentence Supervision Requirement '),
+                  text: "Post-Sentence Supervision Requirement",
+                   hint: {
+                    text: "Device wearer licence period is complete. They are being released from a standard determinate custodial sentence of less than 2 years. They are subject to post-sentence supervision requirements that include monitoring conditions."
+                  }
+                }
+              ]
+            }) }} 
+
+          <!--   {{ govukRadios({
+              classes: "govuk-radios--inline",
+              name: "order-condition",
+              fieldset: {
+                legend: {
+                  text: "Has the device wearer been released from prison before their sentence is complete 'on licence'?",
+                  isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+                }
+              },
+              items: [
+               
+                {
+                  value: "Yes",
+                  checked: (true if data['order-condition'] == 'Yes'),
+                  text: "Yes",
+                   hint: {
+                    text: ""
+                  }
+                },
+                {
+                  value: "No",
+                  checked: (true if data['order-condition'] == 'No'),
+                  text: "No ",
+                   hint: {
+                    text: ""
+                  }
+                }
+              ]
+            }) }} -->
+
+
+
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

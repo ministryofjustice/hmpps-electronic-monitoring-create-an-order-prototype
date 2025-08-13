@@ -65,11 +65,13 @@ Details of the changes - Electronic Monitoring
 
              
 
-            </div>
+         </div>
+
+       </div>
 
 
 
-             {{ govukRadios({
+       <!--      {{ govukRadios({
             name: "variation-type",
             fieldset: {
               legend: {
@@ -148,10 +150,63 @@ Details of the changes - Electronic Monitoring
             ]
           }) }}
 
+        -->
+
+            {{ govukRadios({
+            name: "variation-type",
+            fieldset: {
+              legend: {
+                text: "Why are you making changes to the form?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+
+             
+              {
+                value: "I need monitoring equipment installed at a new address",
+                checked: (true if data['variation-type'] == "I need monitoring equipment installed at a new address"),
+                disabled: (true if data['view'] == 'true'),
+                text: "I need monitoring equipment installed at a new address"
+              },
+              {
+                value: "I need monitoring equipment reinstalled",
+                checked: (true if data['variation-type'] == "I need monitoring equipment reinstalled"),
+                disabled: (true if data['view'] == 'true'),
+                text: "I need monitoring equipment reinstalled"
+              },
+               {
+                value: "I have changed the Responsible Officer or Responsible Organisation details",
+                checked: (true if data['variation-type'] == 'I have changed the Responsible Officer or Responsible Organisation details'),
+                disabled: (true if data['view'] == 'true'),
+                text: "I have changed the Responsible Officer or Responsible Organisation details"
+              },
+               {
+                value: "I am ending all monitoring for the device wearer",
+                checked: (true if data['variation-type'] == 'I am ending all monitoring for the device wearer'),
+                disabled: (true if data['view'] == 'true'),
+                text: "I am ending all monitoring for the device wearer"
+              },
+               {
+                value: "I have changed something else in the form",
+                checked: (true if data['variation-type'] == 'I have changed something else in the form'),
+                disabled: (true if data['view'] == 'true'),
+                text: "I have changed something else in the form"
+              }
+            ]
+          }) }}
+
+     
+
+
      
     
 
-          </div>
+       
 
               <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
                 <h1 class="govuk-label-wrapper">

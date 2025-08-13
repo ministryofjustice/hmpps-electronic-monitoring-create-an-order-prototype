@@ -1,4 +1,4 @@
-{% extends "layouts/moj-level2.html" %}
+ {% extends "layouts/moj-level2.html" %}
 
 {% block pageTitle %}
    Order information - Electronic Monitoring
@@ -12,38 +12,19 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-       <span class="govuk-caption-l">Electronic monitoring required</span>
+          <span class="govuk-caption-l">Electronic monitoring required</span>
 
-  <!--    <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">Electronic monitoring required</span>
-        Release conditions
-      </h1>
--->
- 
-       {% if (data['cya4'] == "true") %}
-
-        <form class="form" action="check-answers" method="post">
-
-        {% else %}
-
-       <form class="form" action="monitoring-dates" method="post">
-
-        {% endif %}
-
+  
        
+      <form class="form" action="order-description" method="post">
 
 
-
-
-      
-
-
-        {{ govukRadios({
+       {{ govukRadios({
           classes: "govuk-radios",
-          name: "prarr",
+          name: "sentencetype",
           fieldset: {
             legend: {
-              text: "Has the device wearer been released on a Presumptive Risk Assessed Release Review (P-RARR)?",
+              text: "What type of sentence has the device wearer been given?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
@@ -53,25 +34,26 @@
           },
           items: [
             {
-              value: "Yes",
-              text: "Yes",
-              checked: (true if data['prarr'] == 'Yes')
+              value: "Standard Determinate Sentence",
+              text: "Standard Determinate Sentence",
+              checked: (true if data['sentencetype'] == 'Standard Determinate Sentence')
             },
             {
-              value: "No",
-              text: "No",
-              checked: (true if data['prarr'] == 'No')
+              value: "Detention and Training Order",
+              text: "Detention and Training Order (DTO)",
+              checked: (true if data['sentencetype'] == 'Detention and Training Order')
             },
             {
               divider: "or"
             },
             {
-              value: "Not able to provide this information",
-              text: "Not able to provide this information",
-              checked: (true if data['prarr'] == 'Not able to provide this information')
+              value: "The sentence the device wearer has been given is not listed",
+              text: "The sentence the device wearer has been given is not listed",
+              checked: (true if data['sentencetype'] == 'The sentence the device wearer has been given is not listed')
             }
           ]
         }) }}
+     
        
 
     {% from "govuk/components/button/macro.njk" import govukButton %}

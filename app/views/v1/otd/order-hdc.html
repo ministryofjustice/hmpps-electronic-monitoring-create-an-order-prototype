@@ -16,15 +16,15 @@
 
   
        
-      <form class="form" action="order-description" method="post">
+      <form class="form" action="/hdc" method="post">
 
 
        {{ govukRadios({
-          classes: "govuk-radios",
-          name: "sentencetype",
+          classes: "govuk-radios--inline",
+          name: "hdc",
           fieldset: {
             legend: {
-              text: "What type of sentence has the device wearer been given?",
+              text: "Is the device wearer on a Home Detention Curfew (HDC)?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
@@ -34,22 +34,14 @@
           },
           items: [
             {
-              value: "Standard Determinate Sentence",
-              text: "Standard Determinate Sentence",
-              checked: (true if data['sentencetype'] == 'Standard Determinate Sentence')
+              value: "Yes",
+              text: "Yes",
+              checked: (true if data['hdc'] == 'Yes')
             },
             {
-              value: "Detention and Training Order",
-              text: "Detention and Training Order (DTO)",
-              checked: (true if data['sentencetype'] == 'Detention and Training Order')
-            },
-            {
-              divider: "or"
-            },
-            {
-              value: "The sentence the device wearer has been given is not listed",
-              text: "The sentence the device wearer has been given is not listed",
-              checked: (true if data['sentencetype'] == 'The sentence the device wearer has been given is not listed')
+              value: "No",
+              text: "No",
+              checked: (true if data['hdc'] == 'No')
             }
           ]
         }) }}

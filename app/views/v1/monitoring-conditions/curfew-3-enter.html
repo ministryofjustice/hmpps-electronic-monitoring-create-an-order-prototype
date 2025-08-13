@@ -1,0 +1,192 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+ Curfew for the day of release - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        Curfew on release day
+      </h1>
+
+
+
+
+       <form class="form" action="curfew-3-question" method="post">
+
+
+
+
+    <!--       <div class="moj-datepicker" data-module="moj-date-picker">
+
+
+             <div class="govuk-form-group">
+              <label class="govuk-label  govuk-label--s" for="date">
+               What date is the device wearer released from custody?
+              </label>
+
+              <div id="date-hint" class="govuk-hint">
+                For example, 17/5/2024.
+              </div>
+
+              <input class="govuk-input moj-js-datepicker-input " id="date" name="release-date" type="text" aria-describedby="date-hint" autocomplete="off" value="{{ data['release-date'] }}">
+
+            </div>
+
+          </div>
+
+      <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-label govuk-label--s">
+                What is the date the device wearer will be released from custody?
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 27 3 2020
+              </div>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="release-day" type="text" inputmode="numeric" value="{{ data['release-day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="release-month" type="text" inputmode="numeric" value="{{ data['release-month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="release-year" type="text" inputmode="numeric" value="{{ data['release-year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>-->
+
+
+       
+    <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">On the day of release, what time does the curfew start?</legend>
+
+      <div class="govuk-date-input ">
+        <div class="govuk-hint">Enter time using a 24 hour clock. For example 19:00 instead of 7:00pm.</div>
+        
+
+        
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+             <label class="govuk-label govuk-date-input__label" for="release-starttime-hours"><span class="govuk-visually-hidden">End</span> Hour</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="release-starttime-hours" name="release-starttime-hours" value="{{ data['release-starttime-hours'] }}">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <label class="govuk-label govuk-date-input__label">:</label>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+            <label class="govuk-label govuk-date-input__label" for="release-starttime-minutes"><span class="govuk-visually-hidden">Start</span> Minutes</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="release-starttime-minutes" name="release-starttime-minutes" value="{{ data['release-starttime-minutes'] }}">
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+       <div id="curfewTimes-form" class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">On the day after release, what time does the curfew end?</legend>
+
+      <div class="govuk-date-input ">
+        <div class="govuk-hint">Enter time using a 24 hour clock. For example 07:00 instead of 7:00am.</div>
+        
+
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+             <label class="govuk-label govuk-date-input__label" for="release-endtime-hours"><span class="govuk-visually-hidden">End</span> Hour</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="release-endtime-hours" name="release-endtime-hours" value="{{ data['release-endtime-hours'] }}">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <label class="govuk-label govuk-date-input__label">:</label>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+            <label class="govuk-label govuk-date-input__label" for="release-endtime-minutes"><span class="govuk-visually-hidden">Start</span> Minutes</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="release-endtime-minutes" name="release-endtime-minutes" value="{{ data['release-endtime-minutes'] }}">
+          </div>
+        </div>
+        
+      </div>
+    </fieldset>
+  </div>
+  
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-label govuk-label--s">
+        On the day of release, where will the device wearer be during curfew hours?
+    </legend>
+    <div id="address-hint" class="govuk-hint">
+     Select one option
+    </div>
+    <div class="govuk-radios" data-module="govuk-radios">
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="whereDoYouLive" name="release-address" type="radio" value="Contact">
+        <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+          {{ data['contactaddressLine1'] or "123 Carter Bar" }}
+        </label>
+      </div>
+      {% if (data['addcurfewaddress'] == "Yes") %}
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="whereDoYouLive-3" name="release-address" type="radio" value="{{ data['curfewaddressname'] }}">
+        <label class="govuk-label govuk-radios__label" for="whereDoYouLive-3">
+          {{ data['curfewaddressname'] }} - {{ data['curfewaddressLine1'] }}
+        </label>
+      </div>
+      {% endif %}
+      
+    </div>
+  </fieldset>
+</div>
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

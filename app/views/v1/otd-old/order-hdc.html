@@ -12,7 +12,9 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-       <span class="govuk-caption-l">Electronic monitoring required</span>
+      
+
+         <span class="govuk-caption-l">Electronic monitoring required</span>
 
   <!--    <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
@@ -20,30 +22,20 @@
       </h1>
 -->
  
-       {% if (data['cya4'] == "true") %}
 
-        <form class="form" action="check-answers" method="post">
-
-        {% else %}
-
-       <form class="form" action="monitoring-dates" method="post">
-
-        {% endif %}
+ 
 
        
+      <form class="form" action="order-issp" method="post">
 
-
-
-
-      
 
 
         {{ govukRadios({
           classes: "govuk-radios",
-          name: "prarr",
+          name: "hdc",
           fieldset: {
             legend: {
-              text: "Has the device wearer been released on a Presumptive Risk Assessed Release Review (P-RARR)?",
+              text: "Is the device wearer on a Home Detention Curfew (HDC)?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
@@ -55,12 +47,12 @@
             {
               value: "Yes",
               text: "Yes",
-              checked: (true if data['prarr'] == 'Yes')
+              checked: (true if data['hdc'] == 'Yes')
             },
             {
               value: "No",
               text: "No",
-              checked: (true if data['prarr'] == 'No')
+              checked: (true if data['hdc'] == 'No')
             },
             {
               divider: "or"
@@ -68,10 +60,13 @@
             {
               value: "Not able to provide this information",
               text: "Not able to provide this information",
-              checked: (true if data['prarr'] == 'Not able to provide this information')
+              checked: (true if data['hdc'] == 'Not able to provide this information')
             }
           ]
         }) }}
+
+
+      
        
 
     {% from "govuk/components/button/macro.njk" import govukButton %}

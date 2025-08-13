@@ -640,13 +640,13 @@ router.post('/order-sentence', function(request, response) {
     }
 })
 
-router.post('/order-description', function(request, response) {
+router.post('/order-information', function(request, response) {
 
     var ordertype = request.session.data['order-type']
-    if (ordertype == "Post release"){
-        response.redirect("/v1/otd/hdc") 
+    if (ordertype == "Release from prison"){
+        response.redirect("/v1/monitoring-conditions/order-hdc") 
     } else {
-        response.redirect("/v1/otd/order-description")
+        response.redirect("/v1/monitoring-conditions/order-description")
     }
 })
 
@@ -654,9 +654,19 @@ router.post('/hdc', function(request, response) {
 
     var hdc = request.session.data['hdc']
     if (hdc == "No"){
-        response.redirect("/v1/otd/sentence-type") 
+        response.redirect("/v1/monitoring-conditions/order-sentence-type") 
     } else {
-        response.redirect("/v1/otd/order-description")
+        response.redirect("/v1/monitoring-conditions/order-description")
+    }
+})
+
+router.post('/order-description', function(request, response) {
+
+    var ordertype = request.session.data['order-type']
+    if (ordertype == "Release from prison"){
+        response.redirect("/v1/monitoring-conditions/order-conditions") 
+    } else {
+        response.redirect("/v1/monitoring-conditions/monitoring-dates")
     }
 })
 
@@ -667,6 +677,16 @@ router.post('/curfew-dates-question', function(request, response) {
         response.redirect("/v1/monitoring-conditions/curfew-2") 
     } else {
         response.redirect("/v1/monitoring-conditions/curfew-3")
+    }
+})
+
+router.post('/curfew-release-question', function(request, response) {
+
+    var curfewreleasequestion = request.session.data['curfewreleasequestion']
+    if (curfewreleasequestion == "No"){
+        response.redirect("/v1/monitoring-conditions/curfew-3-enter") 
+    } else {
+        response.redirect("/v1/monitoring-conditions/curfew-3-question")
     }
 })
 

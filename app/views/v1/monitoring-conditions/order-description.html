@@ -16,10 +16,10 @@
 
   
        
-      <form class="form" action="../monitoring-conditions/monitoring-dates" method="post">
+      <form class="form" action="/order-description" method="post">
 
 
-  {% if (data['order-type'] == "Post release") and (data['hdc'] == "Yes") %}
+  {% if (data['order-type'] == "Release from prison") and (data['hdc'] == "Yes") %}
          {{ govukRadios({
               classes: "govuk-radios",
               name: "order-description",
@@ -73,7 +73,7 @@
               ]
             }) }}
 
-      {% elseif (data['order-type'] == "Post release") and (data['hdc'] == "No") and (data['sentencetype'] == "The sentence the device wearer has been given is not listed") %}
+      {% elseif (data['order-type'] == "Release from prison") and (data['hdc'] == "No") and (data['sentencetype'] == "The sentence the device wearer has been given is not listed") %}
 
          {{ govukRadios({
               classes: "govuk-radios",
@@ -116,7 +116,7 @@
               ]
             }) }}
 
-       {% elseif (data['order-type'] == "Post release") and (data['hdc'] == "No") and (data['sentencetype'] == "Standard Determinate Sentence") %}
+       {% elseif (data['order-type'] == "Release from prison") and (data['hdc'] == "No") and (data['sentencetype'] == "Standard Determinate Sentence") %}
       
          {{ govukRadios({
               classes: "govuk-radios",
@@ -157,7 +157,7 @@
               ]
             }) }}
             
-       {% elseif (data['order-type'] == "Post release") and (data['hdc'] == "No") and (data['sentencetype'] == "Detention and Training Order") %}
+       {% elseif (data['order-type'] == "Release from prison") and (data['hdc'] == "No") and (data['sentencetype'] == "Detention and Training Order") %}
       
          {{ govukRadios({
               classes: "govuk-radios",
