@@ -23,7 +23,7 @@
 
          {% else  %}
 
-      <form class="form" action="submit-confirmation?variation=false" method="post">
+      <form class="form" action="/new-form" method="post">
 
          {% endif  %}
 
@@ -144,6 +144,8 @@
 
       <div class="govuk-!-margin-top-5">
        <div class="govuk-button-group">
+
+         <input type="hidden" id="email-address" name="emailAddress" value="lisa.rae2@justice.gov.uk">
 
 
            {% if (data['newform'] == 'true' and data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true') %}
