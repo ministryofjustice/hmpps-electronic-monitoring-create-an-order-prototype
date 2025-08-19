@@ -207,33 +207,7 @@
           </div>
             {% endif %}
 
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Do you want to change the standard curfew address boundary of “front door to back door” for any of the curfew addresses?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['curfew-boundary-question'] or "No" }}
-               
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="curfew-boundary?cya4=true">Change<span class="govuk-visually-hidden"> Do you want to change the standard curfew address boundary of “front door to back door” for any of the curfew addresses? </span></a>
-            </dd>
-          </div>  
-
-          {% if (data['curfew-boundary-question'] == 'No') %}
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Enter details of what the curfew address boundary should include
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['curfew-boundary'] or "Patio up to the lawn" }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="curfew-boundary?cya4=true">Change<span class="govuk-visually-hidden"> What is the address where the device wearer will spend curfew hours? </span></a>
-            </dd>
-          </div>
-            {% endif %}
+         
 
              <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -385,6 +359,33 @@
               <a class="govuk-link" href="curfew-4?cya4=true">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
             </dd>
           </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you want to change the standard curfew address boundary of “front door to back door” for any of the curfew addresses?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfew-boundary-question'] or "No" }}
+               
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="curfew-boundary?cya4=true">Change<span class="govuk-visually-hidden"> Do you want to change the standard curfew address boundary of “front door to back door” for any of the curfew addresses? </span></a>
+            </dd>
+          </div>  
+
+          {% if (data['curfew-boundary-question'] == 'No') %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Enter details of what the curfew address boundary should include
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfew-boundary'] or "Patio up to the lawn" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="curfew-boundary?cya4=true">Change<span class="govuk-visually-hidden"> What is the address where the device wearer will spend curfew hours? </span></a>
+            </dd>
+          </div>
+            {% endif %}
            
 
         </dl>

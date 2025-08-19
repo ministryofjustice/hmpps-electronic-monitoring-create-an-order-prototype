@@ -451,7 +451,7 @@ router.post('/curfew-address-question', function(request, response) {
     if (curfewaddressquestion == "Yes"){
         response.redirect("/v1/monitoring-conditions/curfew-address")
     } else {
-        response.redirect("/v1/monitoring-conditions/curfew-boundary")
+        response.redirect("/v1/monitoring-conditions/curfew-1")
     }
 })
 

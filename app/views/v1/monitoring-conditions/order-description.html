@@ -149,10 +149,13 @@
                   text: "Release on Licence with Alcohol Monitoring"
                 },
                 {
-                  value: "Electronic Monitoring as a Licence Variation (Probation only)",
-                  checked: (true if data['order-description'] == 'Electronic Monitoring as a Licence Variation (Probation only)'),
-                  text: "Electronic Monitoring as a Licence Variation (Probation only)"
-               
+                  value: "Electronic Monitoring as a Licence Variation",
+                  checked: (true if data['order-description'] == 'Electronic Monitoring as a Licence Variation'),
+                  text: "Electronic Monitoring as a Licence Variation",
+                  hint: {
+                  text: "This option is only for Probation and not for device wearer's being release from a prison."
+                }
+                         
                 }
               ]
             }) }}

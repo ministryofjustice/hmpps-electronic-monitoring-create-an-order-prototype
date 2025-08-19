@@ -1,0 +1,70 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Are you sure that you want to make changes to this notification form? - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    
+         
+          {{ govukRadios({
+            name: "type-change",
+            fieldset: {
+              legend: {
+                text: "Why are you making changes to the form?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+
+             
+              {
+                value: "Issue with a new order",
+                checked: (true if data['type-change'] == "Issue with a new order"),
+                hint: {
+                  text: "You have received an email asking you to correct information that was wrong or missing in an order you have recently submitted."
+                },
+                text: "Issue with a new order"
+              },
+              {
+                value: "Change to an existing order",
+                checked: (true if data['type-change'] == "Change to an existing order"),
+                hint: {
+                  text: "You need to tell us about something that has changed. For example, the device wearer has moved house."
+                },
+                text: "Change to an existing order"
+              }
+            ]
+          }) }}
+
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Save and continue",
+              href: '../submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false',
+              classes: "govuk-button"
+            }) }}
+
+            {{ govukButton({
+              text: "Cancel and return back to form",
+              href: '../submitted-form?view=true',
+              classes: "govuk-button--secondary"
+            }) }}
+          </div>
+     
+        </div>
+      </div>
+{% endblock %}
