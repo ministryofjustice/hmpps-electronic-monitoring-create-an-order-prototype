@@ -85,9 +85,11 @@
             Type
             </dt>
             <dd class="govuk-summary-list__value">
-             
-              {% if (data['variation'] == 'true') %}
-               Change to an order 
+
+            {% if (data['clarification'] == 'true') %}
+            Clarification due to issue with order   
+            {% elseif (data['variation'] == 'true') %}
+            Change to an order 
             {% else  %} 
             New order
             {% endif  %} 
@@ -140,9 +142,11 @@
              {% if (data['variation'] == 'true') %}
 
  <h2 class="govuk-heading-l">About the changes in this version of the form</h2>      
-
+            
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+            {% if (data['clarification'] == 'false') %}
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -161,25 +165,44 @@
             What have you changed in the form?
             </dt>
             <dd class="govuk-summary-list__value">
-            The device wearer's address or the installation address
+           I have changed something else in the form
             </dd>
             <dd class="govuk-summary-list__actions">
              
                 
             </dd>
           </div>
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
             Enter more information on what you have changed
             </dt>
             <dd class="govuk-summary-list__value">
-            Moved house, no change in risk
+           Moved house, no change in risk
             </dd>
             <dd class="govuk-summary-list__actions">
              
                 
             </dd>
           </div>
+
+          {% else %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Enter more information on what you have changed
+            </dt>
+            <dd class="govuk-summary-list__value">
+            
+             Received an email saying I was missing information on the type of pilot so checked with the COM and added DAPOL.
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                
+            </dd>
+          </div>
+
+           {% endif %}
 
 
              </dl>

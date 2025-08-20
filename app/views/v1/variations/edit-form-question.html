@@ -40,8 +40,11 @@ Details of the changes - Electronic Monitoring
          <form class="form" action="../submitted-form?section-6-complete=true" method="post">
 
 
-         {% endif %}  
+      {% endif %}  
 
+      {% if (data['clarification'] == 'true') %}
+
+      {% else %}  
 
          <div class="moj-datepicker" data-module="moj-date-picker">
 
@@ -201,7 +204,7 @@ Details of the changes - Electronic Monitoring
           }) }}
 
      
-
+ {% endif %}  
 
      
     
