@@ -182,7 +182,53 @@
         ]
       }) }}
 
+      {% elseif (data['clarification'] == 'true')  %}
+
+        {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the Notifying and Responsible Organisations"
+            },
+            href: ("organisation/check-answers-view"),
+            status: ( completedStatus if data['section-2-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: ( completedStatus if data['section-1-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers-view"),
+           status: ( completedStatus if data['section-3-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers-view"),
+           status: ( completedStatus if data['section-5-complete'] == 'true' else tocheckStatus)
+          }
+
+        ]
+      }) }}
+
       {% else %}
+
+
 
         {{ govukTaskList({
         idPrefix: "first-section",
@@ -228,12 +274,13 @@
             },
             href: ("variations/edit-form-question"),
            status: ( completedStatus if data['section-6-complete'] == 'true' else incompleteStatus)
+
           }
 
         ]
       }) }}
 
-      {% endif%}
+      {% endif %}
 
        {% if (data['view'] == 'true') %}
 
@@ -282,8 +329,8 @@
             {% endif %}
 
 
-          {% else %}
-              {% if (data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true' and data['section-6-complete'] == 'true') %}
+          {% elseif (data['clarification'] == 'true') %}
+              {% if (data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true') %}
               <button type="submit" class="govuk-button" data-module="govuk-button">
                 Submit changes to the form
               </button>
@@ -297,6 +344,22 @@
                <a class="govuk-link" href="delete-form">Delete draft</a>
 
               {% endif %}
+
+             {% elseif (data['clarification'] == 'false') %}
+              {% if (data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true' and data['section-6-complete'] == 'true') %}
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                Submit changes to the form
+              </button>
+          
+              <a class="govuk-link" href="delete-form">Delete draft</a>
+              {% else %}
+              <button type="submit" class="govuk-button" disabled data-module="govuk-button">
+                Submit changes to the form
+              </button>
+
+               <a class="govuk-link" href="delete-form">Delete draft</a>
+
+              {% endif %}   
           {% endif %}
         
         </div>

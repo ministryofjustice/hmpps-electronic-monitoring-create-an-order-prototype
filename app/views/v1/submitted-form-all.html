@@ -87,7 +87,7 @@
             <dd class="govuk-summary-list__value">
 
             {% if (data['clarification'] == 'true') %}
-            Clarification due to issue with order   
+            Clarification of issues with new order 
             {% elseif (data['variation'] == 'true') %}
             Change to an order 
             {% else  %} 
@@ -140,13 +140,14 @@
              </dl>
 
              {% if (data['variation'] == 'true') %}
+            {% if (data['clarification'] == 'false') %}
 
  <h2 class="govuk-heading-l">About the changes in this version of the form</h2>      
             
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-            {% if (data['clarification'] == 'false') %}
+          
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -188,19 +189,7 @@
 
           {% else %}
 
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-            Enter more information on what you have changed
-            </dt>
-            <dd class="govuk-summary-list__value">
-            
-             Received an email saying I was missing information on the type of pilot so checked with the COM and added DAPOL.
-            </dd>
-            <dd class="govuk-summary-list__actions">
-             
-                
-            </dd>
-          </div>
+
 
            {% endif %}
 
