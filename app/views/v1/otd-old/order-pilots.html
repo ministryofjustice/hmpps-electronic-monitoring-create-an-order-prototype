@@ -22,8 +22,12 @@
        
       <form class="form" action="/pilots" method="post">
 
+         {% set warningHtml %}
+           <p class="govuk-body">This pilot is only for probation practitioners varying a licence in response to an escalation of risk or as an alternative to recall.</p>
+            {% endset -%}
 
-{% if (data['order-type'] == "Post release") %}
+
+{% if (data['order-type'] == "Post release") and (data['hdc'] == "No") %}
 
             {{ govukRadios({
               classes: "govuk-radios",
@@ -43,14 +47,43 @@
                   text: "Domestic Abuse Perpetrator on Licence (DAPOL)"
                 },
                 {
+                  value: "GPS acquisitive crime",
+                  checked: (true if data['order-description'] == 'GPS acquisitive crime parole'),
+                  text: "GPS acquisitive crime"
+                },
+                {
+                  value: "Licence Variation Project (probation only)",
+                  checked: (true if data['order-description'] == 'Licence Variation Project (probation only)'),
+                  text: "Licence Variation Project (probation only)",
+                  conditional: {
+                    html: warningHtml
+                  }
+                }
+              ]
+            }) }}
+
+    {% elseif (data['order-type'] == "Post release") and (data['hdc'] == "Yes") %}
+
+
+   
+
+            {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "What pilot project is the device wearer part of?",
+                  isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+                }
+              },
+              items: [
+               
+              
+                {
                   value: "Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)",
                   checked: (true if data['order-description'] == 'Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)'),
                   text: "Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)"
-                },
-                {
-                  value: "Domestic Abuse Perpetrator on Licence Project",
-                  checked: (true if data['order-description'] == 'Domestic Abuse Perpetrator on Licence Project'),
-                  text: "Domestic Abuse Perpetrator on Licence Project"
                 },
                 {
                   value: "GPS acquisitive crime Home Detention Curfew",
@@ -58,19 +91,12 @@
                   text: "GPS acquisitive crime Home Detention Curfew"
                 },
                 {
-                  value: "GPS acquisitive crime parole",
-                  checked: (true if data['order-description'] == 'GPS acquisitive crime parole'),
-                  text: "GPS acquisitive crime parole"
-                },
-                {
-                  value: "Acquisitive Crime Project",
-                  checked: (true if data['order-description'] == 'Acquisitive Crime Project'),
-                  text: "Acquisitive Crime Project"
-                },
-                {
-                  value: "Licence Variation Project",
-                  checked: (true if data['order-description'] == 'Licence Variation Project'),
-                  text: "Licence Variation Project"
+                  value: "Licence Variation Project (Probation only)",
+                  checked: (true if data['order-description'] == 'Licence Variation Project (Probation only)'),
+                  text: "Licence Variation Project (Probation only)",
+                  conditional: {
+                      html: warningHtml
+                    }
                 },
 
                  {
@@ -83,9 +109,9 @@
                   behaviour: "exclusive"
                 }
               ]
-            }) }}
+            }) }}        
 
-    {% else %}    
+    {% elseif (data['order-type'] == "Civil") %}    
 
         {{ govukRadios({
               classes: "govuk-radios",
@@ -102,15 +128,6 @@
                   value: "Domestic Abuse Protection Order (DAPO)",
                   checked: (true if data['order-description'] == 'Domestic Abuse Protection Order (DAPO)'),
                   text: "Domestic Abuse Protection Order (DAPO)"
-                },
-                 {
-                  divider: "or"
-                },
-                {
-                  value: "They are not part of any of these pilots",
-                  checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
-                  text: "They are not part of any of these pilots",
-                  behaviour: "exclusive"
                 }
               ]
             }) }}

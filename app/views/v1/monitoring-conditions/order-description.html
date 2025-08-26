@@ -18,6 +18,10 @@
        
       <form class="form" action="/order-description" method="post">
 
+         {% set warningHtml %}
+           <p class="govuk-body">This pilot is only for probation practitioners varying a licence in response to an escalation of risk or as an alternative to recall.</p>
+            {% endset -%}
+
 
   {% if (data['order-type'] == "Release from prison") and (data['hdc'] == "Yes") %}
          {{ govukRadios({
@@ -151,11 +155,11 @@
                 {
                   value: "Electronic Monitoring as a Licence Variation",
                   checked: (true if data['order-description'] == 'Electronic Monitoring as a Licence Variation'),
-                  text: "Electronic Monitoring as a Licence Variation",
-                  hint: {
-                  text: "This is only for Probation."
-                }
-                         
+                  text: "Electronic Monitoring as a Licence Variation (Probation only)",
+                  conditional: {
+                    html: warningHtml
+                  }
+                    
                 }
               ]
             }) }}

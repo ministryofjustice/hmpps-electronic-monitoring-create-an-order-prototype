@@ -634,7 +634,7 @@ router.post('/order-sentence', function(request, response) {
     if (ordertype != "Post release"){
         response.redirect("/v1/otd-old/order-issp") 
     } else if (ordersentence == "Standard Determinate Sentence") {
-        response.redirect("/v1/otd-old/order-pilots")
+        response.redirect("/v1/otd-old/order-hdc")
     } else {
         response.redirect("/v1/otd-old/order-conditions")
     }
