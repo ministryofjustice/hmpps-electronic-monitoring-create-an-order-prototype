@@ -571,17 +571,17 @@ router.post('/order-type', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     if (ordertype == "Civil"){
-        response.redirect("/v1/monitoring-conditions/order-pilots")
+        response.redirect("/v1/otd-old/order-pilots")
     } else if (ordertype == "Post release"){
-        response.redirect("/v1/monitoring-conditions/order-sentence") 
+        response.redirect("/v1/otd-old/order-sentence") 
     } else if (ordertype == "Community"){
-        response.redirect("/v1/monitoring-conditions/order-sentence") 
+        response.redirect("/v1/otd-old/order-sentence") 
     } else if (ordertype == "Special"){
         response.redirect("/v1/mvp/order-conditions") 
     } else if (ordertype == "Pre trial"){
-        response.redirect("/v1/monitoring-conditions/order-sentence")          
+        response.redirect("/v1/otd-old/order-sentence")          
     } else {
-        response.redirect("/v1/monitoring-conditions/monitoring-dates")
+        response.redirect("/v1/otd-old/monitoring-dates")
     }
 })
 
@@ -610,9 +610,9 @@ router.post('/pilots', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     if (ordertype == "Post release"){
-        response.redirect("/v1/monitoring-conditions/order-conditions")
+        response.redirect("/v1/otd-old/order-conditions")
     } else {
-        response.redirect("/v1/monitoring-conditions/monitoring-dates")
+        response.redirect("/v1/otd-old/monitoring-dates")
     }
 })
 
@@ -632,11 +632,11 @@ router.post('/order-sentence', function(request, response) {
     var ordersentence = request.session.data['order-sentence']
 
     if (ordertype != "Post release"){
-        response.redirect("/v1/monitoring-conditions/order-issp") 
+        response.redirect("/v1/otd-old/order-issp") 
     } else if (ordersentence == "Standard Determinate Sentence") {
-        response.redirect("/v1/monitoring-conditions/order-pilots")
+        response.redirect("/v1/otd-old/order-pilots")
     } else {
-        response.redirect("/v1/monitoring-conditions/order-conditions")
+        response.redirect("/v1/otd-old/order-conditions")
     }
 })
 
