@@ -15,7 +15,7 @@
   
         <form class="form" action="../submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false" method="post">
          
-          {{ govukRadios({
+ <!--         {{ govukRadios({
             name: "clarification",
             fieldset: {
               legend: {
@@ -30,14 +30,7 @@
             items: [
 
              
-              {
-                value: "true",
-                checked: (true if data['type-change'] == "true"),
-                hint: {
-                  text: "You have received an email asking you to correct information that was wrong or missing in an order you have recently submitted."
-                },
-                text: "Issue with a new order"
-              },
+             
               {
                 value: "false",
                 checked: (true if data['type-change'] == "false"),
@@ -45,6 +38,45 @@
                   text: "You need to tell us about something that has changed. For example, the device wearer has moved house."
                 },
                 text: "Change to an existing order"
+              },
+               {
+                value: "true",
+                checked: (true if data['type-change'] == "true"),
+                hint: {
+                  text: "You have received an email asking you to correct information that was wrong or missing in an order you have recently submitted."
+                },
+                text: "Issue with a new order"
+              }
+            ]
+          }) }} -->
+
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "clarification",
+            fieldset: {
+              legend: {
+                text: "Are you making changes to this form because the original was rejected by email?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+
+             
+              {
+                value: "true",
+                checked: (true if data['type-change'] == "true"),
+                
+                text: "Yes"
+              },
+              {
+                value: "false",
+                checked: (true if data['type-change'] == "false"),
+               
+                text: "No"
               }
             ]
           }) }}
