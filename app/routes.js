@@ -581,7 +581,7 @@ router.post('/order-type', function(request, response) {
     } else if (ordertype == "Pre trial"){
         response.redirect("/v1/otd-old/order-sentence")          
     } else {
-        response.redirect("/v1/otd-old/monitoring-dates")
+        response.redirect("/v1/monitoring-conditions/monitoring-dates")
     }
 })
 
@@ -612,7 +612,7 @@ router.post('/pilots', function(request, response) {
     if (ordertype == "Post release"){
         response.redirect("/v1/otd-old/order-conditions")
     } else {
-        response.redirect("/v1/otd-old/monitoring-dates")
+        response.redirect("/v1/monitoring-conditions/monitoring-dates")
     }
 })
 

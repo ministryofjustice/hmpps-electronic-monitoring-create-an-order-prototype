@@ -65,7 +65,7 @@
             title: {
               text: "Electronic monitoring required"
             },
-            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "monitoring-conditions/order-information?cya4=false"),
+            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "./otd-old/order-information?cya4=false"),
             status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
           },
           {
@@ -109,7 +109,7 @@
             title: {
               text: "Electronic monitoring required"
             },
-            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "monitoring-conditions/order-information"),
+            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "./otd-old/order-information"),
             status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
           },
           {
