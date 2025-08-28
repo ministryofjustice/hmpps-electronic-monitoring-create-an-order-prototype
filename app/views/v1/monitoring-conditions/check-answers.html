@@ -261,7 +261,7 @@
           
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date when all monitoring ends? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What is the date when all monitoring ends? {% if (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['monitoring-date-end'] or "12/01/2026" }} 
@@ -341,7 +341,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What date does curfew end? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What date does curfew end? {% if (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['curfewend-date'] }} 
@@ -604,7 +604,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What date does exclusion monitoring end? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What date does exclusion monitoring end? {% if (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['exclusionend-date'] }} 
@@ -718,7 +718,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What date does trail monitoring end? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What date does trail monitoring end? {% if (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['trailend-date'] or '12/01/2026' }} 
@@ -770,7 +770,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What date does mandatory attendance monitoring end? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What date does mandatory attendance monitoring end? {% if (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['attendanceend-date'] }} 
@@ -816,7 +816,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-           What time does the appointment end? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+           What time does the appointment end? {% if (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['appointment-end-hours'] }}:{{ data['appointment-end-minutes'] }}
@@ -867,7 +867,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What date does alcohol monitoring end? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What date does alcohol monitoring end? {% if (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['alcoholend-date'] }} 
