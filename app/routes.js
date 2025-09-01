@@ -571,7 +571,7 @@ router.post('/order-type', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     if (ordertype == "Civil"){
-        response.redirect("/v1/otd-old/order-pilots")
+        response.redirect("/v1/monitoring-conditions/monitoring-dates")
     } else if (ordertype == "Post release"){
         response.redirect("/v1/otd-old/order-sentence") 
     } else if (ordertype == "Community"){
@@ -609,8 +609,12 @@ router.post('/order-type2', function(request, response) {
 router.post('/pilots', function(request, response) {
 
     var ordertype = request.session.data['order-type']
-    if (ordertype == "Post release"){
-        response.redirect("/v1/otd-old/order-conditions")
+    var orderdescription = request.session.data['order-description']
+    if (orderdescription == "GPS acquisitive crime"){
+        response.redirect("/v1/otd-old/order-aq")
+
+ } else if (ordertype == "Post release") {
+        response.redirect("/v1/otd-old/order-prrar")    
     } else {
         response.redirect("/v1/monitoring-conditions/monitoring-dates")
     }
@@ -635,8 +639,20 @@ router.post('/order-sentence', function(request, response) {
         response.redirect("/v1/otd-old/order-issp") 
     } else if (ordersentence == "Standard Determinate Sentence") {
         response.redirect("/v1/otd-old/order-hdc")
+     
     } else {
-        response.redirect("/v1/otd-old/order-conditions")
+        response.redirect("/v1/otd-old/order-prrar")
+    }
+})
+
+router.post('/order-hdc', function(request, response) {
+
+  
+    var ordersentence = request.session.data['order-sentence']
+    if (ordersentence == "Detention and Training Order (DTO)"){
+        response.redirect("/v1/otd-old/order-prrar") 
+    } else {
+        response.redirect("/v1/otd-old/order-pilots")
     }
 })
 

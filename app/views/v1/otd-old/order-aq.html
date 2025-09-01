@@ -1,0 +1,121 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+       <span class="govuk-caption-l">Electronic monitoring required</span>
+       <!--   <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        What pilot project is the device wearer part of?
+      </h1>-->
+
+
+       
+      <form class="form" action="order-prrar" method="post">
+
+
+
+            {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-aq",
+              fieldset: {
+                legend: {
+                  text: "What type of offence did the device wearer commit?",
+                  isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+                }
+              },
+
+            hint: {
+              text: "To be eligible for the GPS acquisitive crime pilot the device wearer must have committed an acquisitive offence. It does not need to be their main or index offence."
+            },
+              items: [
+               
+                {
+                  value: "Burglary in a Dwelling - Indictable only",
+                  checked: (true if data['order-aq'] == 'Burglary in a Dwelling - Indictable only'),
+                  text: "Burglary in a Dwelling - Indictable only"
+                },
+                {
+                  value: "Burglary in a Dwelling - Triable either way",
+                  checked: (true if data['order-aq'] == 'Burglary in a Dwelling - Triable either way'),
+                  text: "Burglary in a Dwelling - Triable either way"
+                },
+                {
+                  value: "Aggravated Burglary in a Dwelling",
+                  checked: (true if data['order-aq'] == 'Aggravated Burglary in a Dwelling'),
+                  text: "Aggravated Burglary in a Dwelling"
+                },
+                {
+                  value: "Burglary in a Building other than a Dwelling - Indictable only",
+                  checked: (true if data['order-aq'] == 'Burglary in a Building other than a Dwelling - Indictable only'),
+                  text: "Burglary in a Building other than a Dwelling - Indictable only"
+                },
+                {
+                  value: "Burglary in a Building other than a Dwelling - Triable either way",
+                  checked: (true if data['order-aq'] == 'Burglary in a Building other than a Dwelling - Triable either way'),
+                  text: "Burglary in a Building other than a Dwelling - Triable either way"
+                },
+                {
+                  value: "Aggravated Burglary in a Building not a Dwelling",
+                  checked: (true if data['order-aq'] == 'Aggravated Burglary in a Building not a Dwelling'),
+                  text: "Aggravated Burglary in a Building not a Dwelling"
+                },
+                {
+                  value: "Theft from the Person of Another",
+                  checked: (true if data['order-aq'] == 'Theft from the Person of Another'),
+                  text: "Theft from the Person of Another"
+                },
+                {
+                  value: "Theft from a Vehicle",
+                  checked: (true if data['order-aq'] == 'Theft from a Vehicle'),
+                  text: "Theft from a Vehicle"
+                },
+                {
+                  value: "Theft from a Motor Vehicle (excluding aggravated vehicle taking) - Triable either way (MOT)",
+                  checked: (true if data['order-aq'] == 'Theft from a Motor Vehicle (excl. aggravated vehicle taking) - Triable either way (MOT)'),
+                  text: "Theft from a Motor Vehicle (excl. aggravated vehicle taking) - Triable either way (MOT)"
+                },
+                {
+                  value: "Robbery",
+                  checked: (true if data['order-aq'] == 'Robbery'),
+                  text: "Robbery"
+                }
+              ]
+            }) }}
+
+    
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}
