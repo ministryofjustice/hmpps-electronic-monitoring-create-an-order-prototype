@@ -29,7 +29,7 @@
             {% endset -%}
 
 
-{% if (data['order-type'] == "Post release") and (data['hdc'] == "No") %}
+{% if (data['order-type'] == "Post release") %}
 
             {{ govukRadios({
               classes: "govuk-radios",
@@ -57,18 +57,28 @@
                   checked: (true if data['order-description'] == 'GPS acquisitive crime'),
                   text: "GPS acquisitive crime"
                 },
-                {
-                  value: "Licence Variation Project (probation only)",
-                  checked: (true if data['order-description'] == 'Licence Variation Project (probation only)'),
-                  text: "Licence Variation Project (probation only)",
+                 {
+                  value: "Licence Variation Project (Probation only)",
+                  checked: (true if data['order-description'] == 'Licence Variation Project (Probation only)'),
+                  text: "Licence Variation Project (Probation only)",
                   conditional: {
-                    html: warningHtml
-                  }
+                      html: warningHtml
+                    }
+                },
+
+                 {
+                  divider: "or"
+                },
+                {
+                  value: "They are not part of any of these pilots",
+                  checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
+                  text: "They are not part of any of these pilots",
+                  behaviour: "exclusive"
                 }
               ]
             }) }}
 
-    {% elseif (data['order-type'] == "Post release") and (data['hdc'] == "Yes") %}
+    {% elseif (data['order-type'] == "Post release") and (data['hdc'] == "x") %}
 
 
    
