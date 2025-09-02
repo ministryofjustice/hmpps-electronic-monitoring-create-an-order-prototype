@@ -11,14 +11,24 @@
 
 {% block content %}
   <div class="govuk-grid-row">
+
     <div class="govuk-grid-column-two-thirds">
 
 
 
      <!-- {% set html %}
+
         <p class="govuk-notification-banner__heading">
          This form was submitted on the 14 December 2024.
+
+         <div class="govuk-button-group">
+           <button type="submit" class="govuk-button" data-module="govuk-button" data-govuk-button-init="">
+           Make changes to this form
+          </button>    
+        </div>
+
         </p>
+
       {% endset %}
 
    {% if (data['view'] == 'true') %}
@@ -284,13 +294,13 @@
 
        {% if (data['view'] == 'true') %}
 
-      <img src="/public/images/form_download.svg" alt="PDF download icon" style="width:62px;height:85px;">
+  <!--    <img src="/public/images/form_download.svg" alt="PDF download icon" style="width:62px;height:85px;">
 
            {{ govukButton({
           text: ("View and download completed application form" if data['variation'] == 'true' else "View and download completed application form"),
           href: 'submitted-form-all',
           classes: "govuk-button--secondary"
-        }) }}
+        }) }}-->
 
 
          
@@ -310,9 +320,30 @@
 
             {% if (data['view-variation'] == 'true') %}
 
+            {{ govukButton({
+            text: "View and download form",
+            classes: "govuk-button--secondary",
+            href: "submitted-form-all"
+            }) }}
+
+
             {% elseif (data['view-variation'] == 'cancelled') %}
 
+            {{ govukButton({
+            text: "View and download form",
+            classes: "govuk-button--secondary",
+            href: "submitted-form-all"
+            }) }}
+
+
             {% elseif (data['view-variation'] == 'fail') %}
+
+            {{ govukButton({
+            text: "View and download form",
+            classes: "govuk-button--secondary",
+            href: "submitted-form-all"
+            }) }}
+
           
            {% else %}
 
@@ -320,11 +351,17 @@
            Make changes to this form
           </button>
 
-         {{ govukButton({
+           {{ govukButton({
+            text: "View and download form",
+            classes: "govuk-button--secondary",
+            href: "submitted-form-all"
+            }) }}
+
+     <!--    {{ govukButton({
             text: "End all monitoring",
             classes: "govuk-button--secondary",
             href: "variations/edit-form-delete-question-2"
-            }) }}
+            }) }}-->
 
             {% endif %}
 

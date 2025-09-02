@@ -85,6 +85,7 @@
             {% endif %}    
           </div>       
         </div>
+         
         
       </div>
     </fieldset>
@@ -125,13 +126,21 @@
             {% endif %}
           </div>
         </div>
-    <!--    <div class="govuk-date-input__item">
-           <select class="govuk-select" id="sort" name="curfew-same-next-day">
+       <div class="govuk-date-input__item">
+          <!--   <select class="govuk-select" id="sort" name="curfew-same-next-day">
             <option value="the same day">The same day</option>
             <option value="the next day" selected>The next day</option>
+
+          {% if (data['day'] == "Monday") %}
+            <option value="the same day">Monday</option>
+            <option value="the next day" selected>Tuesday</option>
+            {% elseif (data['day'] == "Tuesday") %}
+            <option value="the same day">Tuesday</option>
+            <option value="the next day" selected>Wednesday</option>
+            {% endif %}-->
  
           </select>
-        </div>-->
+        </div>
       </div>
     </fieldset>
   </div>

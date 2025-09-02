@@ -635,8 +635,14 @@ router.post('/order-sentence', function(request, response) {
     var ordertype = request.session.data['order-type']
     var ordersentence = request.session.data['order-sentence']
 
-    if (ordertype != "Post release"){
+    if (ordertype == "Pre trial"){
         response.redirect("/v1/otd-old/order-issp") 
+    } else if (ordersentence == "Youth Rehabilitation Order (YRO)") {
+        response.redirect("/v1/otd-old/order-issp")  
+    } else if (ordersentence == "Detention and Training Order (DTO)") {
+        response.redirect("/v1/otd-old/order-issp")      
+    } else if (ordertype == "Community") {
+        response.redirect("/v1/monitoring-conditions/monitoring-dates")        
     } else if (ordersentence == "Standard Determinate Sentence") {
         response.redirect("/v1/otd-old/order-hdc")
      
@@ -653,6 +659,17 @@ router.post('/order-hdc', function(request, response) {
         response.redirect("/v1/otd-old/order-prrar") 
     } else {
         response.redirect("/v1/otd-old/order-pilots")
+    }
+})
+
+router.post('/order-issp', function(request, response) {
+
+  
+    var ordersentence = request.session.data['order-sentence']
+    if (ordersentence == "Detention and Training Order (DTO)"){
+        response.redirect("/v1/otd-old/order-prrar") 
+    } else {
+        response.redirect("/v1/monitoring-conditions/monitoring-dates")
     }
 })
 
