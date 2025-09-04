@@ -12,12 +12,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      
+           <span class="govuk-caption-l">Electronic monitoring required</span>
 
-      <h1 class="govuk-heading-l">
+  <!--    <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
         Alcohol monitoring details
-      </h1>
+      </h1>-->
 
   <form class="form" action="/alcohol" method="post">
   
@@ -27,7 +27,8 @@
             fieldset: {
               legend: {
                 text: "What alcohol monitoring does the device wearer need?",
-                classes: "govuk-fieldset__legend--s"
+                classes: "govuk-fieldset__legend--l",
+                isPageHeading: true
               }
             },
             hint: {

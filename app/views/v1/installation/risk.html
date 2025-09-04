@@ -34,7 +34,7 @@
 
      
 
-          {{ govukCheckboxes({
+          {{ govukRadios({
             name: "offence",
             fieldset: {
               legend: {
@@ -44,7 +44,7 @@
               }
             },
             hint: {
-              text: ""
+              text: "If more than one offence committed, select the main offence"
             },
             items: [
               {
@@ -115,14 +115,6 @@
                 value: "Offence not recorded",
                 checked: (true if data['offence'] == 'Offence not recorded'),
                 text: "Offence not recorded"
-              },
-              {
-                divider: "or"
-              },
-              {
-                value: "The offence committed is not relevant to the risk of installation",
-                checked: (true if data['risk'] == 'The offence committed is not relevant to the risk of installation'),
-                text: "The offence committed is not relevant to the risk of installation"
               }
             ]
           }) }}

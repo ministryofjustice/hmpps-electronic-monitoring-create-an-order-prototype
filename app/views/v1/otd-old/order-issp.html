@@ -27,7 +27,7 @@
 
 
 {{ govukRadios({
-  classes: "govuk-radios",
+  classes: "govuk-radios--inline",
   name: "issp",
   fieldset: {
     legend: {
@@ -49,14 +49,6 @@
       value: "No",
       text: "No",
       checked: (true if data['issp'] == 'No')
-    },
-    {
-      divider: "or"
-    },
-    {
-      value: "Not able to provide this information",
-      text: "Not able to provide this information",
-      checked: (true if data['issp'] == 'Not able to provide this information')
     }
   ]
 }) }}

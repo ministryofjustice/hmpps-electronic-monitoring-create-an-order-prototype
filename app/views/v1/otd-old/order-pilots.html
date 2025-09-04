@@ -29,7 +29,7 @@
             {% endset -%}
 
 
-{% if (data['order-type'] == "Post release") %}
+{% if (data['order-type'] == "Post release") and (data['hdc'] == "No") %}
 
             {{ govukRadios({
               classes: "govuk-radios",
@@ -70,15 +70,15 @@
                   divider: "or"
                 },
                 {
-                  value: "They are not part of any of these pilots",
-                  checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
-                  text: "They are not part of any of these pilots",
+                  value: "They have Alcohol Monitoring on Licence (AML) as a licence condition",
+                  checked: (true if data['order-description'] == 'They have Alcohol Monitoring on Licence (AML) as a licence condition'),
+                  text: "They have Alcohol Monitoring on Licence (AML) as a licence condition",
                   behaviour: "exclusive"
                 }
               ]
             }) }}
 
-    {% elseif (data['order-type'] == "Post release") and (data['hdc'] == "x") %}
+    {% elseif (data['order-type'] == "Post release") and (data['hdc'] == "Yes") %}
 
 
    

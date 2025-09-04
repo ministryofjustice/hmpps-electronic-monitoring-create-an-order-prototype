@@ -697,7 +697,7 @@ router.post('/order-description', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     if (ordertype == "Release from prison"){
-        response.redirect("/v1/monitoring-conditions/order-conditions") 
+        response.redirect("/v1/monitoring-conditions/order-prrar") 
     } else {
         response.redirect("/v1/monitoring-conditions/monitoring-dates")
     }

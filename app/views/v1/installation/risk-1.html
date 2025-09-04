@@ -27,6 +27,8 @@
 
 
           {% set offenceHtml %}
+
+
           {{ govukTextarea({
             id: "needs",
             name: "offence-needs",
@@ -53,8 +55,9 @@
               }
             },
             hint: {
-              text: ""
+              text: "If the device wearer is part of the acquisitive crime pilot add details of their theft, robbery, or burglary offences."
             },
+
             items: [
               {
                 value: "Yes",
