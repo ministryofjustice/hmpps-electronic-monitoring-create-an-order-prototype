@@ -645,7 +645,6 @@ router.post('/order-sentence', function(request, response) {
         response.redirect("/v1/monitoring-conditions/monitoring-dates")        
     } else if (ordersentence == "Standard Determinate Sentence") {
         response.redirect("/v1/otd-old/order-hdc")
-     
     } else {
         response.redirect("/v1/otd-old/order-prrar")
     }
@@ -655,7 +654,7 @@ router.post('/order-hdc', function(request, response) {
 
   
     var ordersentence = request.session.data['order-sentence']
-    if (ordersentence == "Detention and Training Order (DTO)"){
+    if (ordersentence == "Section 250 / Section 91"){
         response.redirect("/v1/otd-old/order-prrar") 
     } else {
         response.redirect("/v1/otd-old/order-pilots")

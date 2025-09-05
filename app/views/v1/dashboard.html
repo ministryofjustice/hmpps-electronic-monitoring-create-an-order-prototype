@@ -57,26 +57,28 @@
             </li>  
             <li class="govuk-tabs__list-item">
               <a class="govuk-tabs__tab" href="#submitted">
-              Change a submitted form
+              Submitted forms
               </a>
             </li>
             
           </ul>
 
-       <div class="govuk-tabs__panel" id="draft">   
+       <div class="govuk-tabs__panel" id="draft" style="height: 100px">   
+
+        <div class="govuk-grid-column-two-thirds">
 
            <table class="govuk-table  govuk-table--small-text-until-tablet">
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
                 <th scope="col" class="govuk-table__header">Name</th>
-                <th scope="col" class="govuk-table__header">Last updated</th>
+          
                 <th scope="col" class="govuk-table__header">Status</th>
               </tr>
             </thead>
             <tbody class="govuk-table__body">
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=true&section-5-complete=true&newform=true">David Francis</a></td>
-                <td class="govuk-table__cell">29/12/2024</td>
+               
                 <td class="govuk-table__cell">
                   {{govukTag({
                       text: "Draft"
@@ -94,7 +96,7 @@
             </tbody>
           </table>
 
-
+        </div>
 
       </div>
 
