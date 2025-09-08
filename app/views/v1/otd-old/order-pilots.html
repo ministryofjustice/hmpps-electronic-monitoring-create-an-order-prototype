@@ -14,11 +14,24 @@
 
       
 
-       <span class="govuk-caption-l">Electronic monitoring required</span>
-       <!--   <h1 class="govuk-heading-l">
+         <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
         What pilot project is the device wearer part of?
-      </h1>-->
+      </h1>
+
+     {% if (data['region'] == "North East") %}
+
+
+      {{ govukInsetText({
+        text: "The device wearer is in the North East probation region. To be eligible for the DAPOL pilot they must live in an in-scope region."
+      }) }}
+
+      {% else %}  
+
+      <p>This is on Create and Vary a Licence (CVL) on the page you print the licence.</p>
+
+
+     {% endif %}  
 
 
        
@@ -38,17 +51,18 @@
                 legend: {
                   text: "What pilot project is the device wearer part of?",
                   isPageHeading: true,
-                classes: "govuk-fieldset__legend--l"
+                classes: "govuk-visually-hidden"
                 }
               },
 
             hint: {
-              text: "This is on Create and Vary a Licence (CVL) on the page you print the licence"
+              text: ""
             },
               items: [
                
                 {
                   value: "Domestic Abuse Perpetrator on Licence (DAPOL)",
+                  disabled: (true if data['region'] == 'North East'),
                   checked: (true if data['order-description'] == 'Domestic Abuse Perpetrator on Licence (DAPOL)'),
                   text: "Domestic Abuse Perpetrator on Licence (DAPOL)"
                 },
@@ -90,24 +104,25 @@
                 legend: {
                   text: "What pilot project is the device wearer part of?",
                   isPageHeading: true,
-                classes: "govuk-fieldset__legend--l"
+                classes: "govuk-visually-hidden"
                 }
               },
                hint: {
-              text: "This is on Create and Vary a Licence (CVL) on the page you print the licence"
+              text: ""
             },
               items: [
                
               
                 {
-                  value: "Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)",
-                  checked: (true if data['order-description'] == 'Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)'),
-                  text: "Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)"
+                  value: "Domestic Abuse Perpetrator on Licence (DAPOL)",
+                  disabled: (true if data['region'] == 'North East'),
+                  checked: (true if data['order-description'] == 'Domestic Abuse Perpetrator on Licence (DAPOL)'),
+                  text: "Domestic Abuse Perpetrator on Licence (DAPOL)"
                 },
                 {
                   value: "GPS acquisitive crime",
                   checked: (true if data['order-description'] == 'GPS acquisitive crime'),
-                  text: "GPS acquisitive crime Home Detention Curfew"
+                  text: "GPS acquisitive crime"
                 },
                 {
                   value: "Licence Variation Project (Probation only)",

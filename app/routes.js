@@ -611,12 +611,22 @@ router.post('/pilots', function(request, response) {
     var ordertype = request.session.data['order-type']
     var orderdescription = request.session.data['order-description']
     if (orderdescription == "GPS acquisitive crime"){
-        response.redirect("/v1/otd-old/order-aq")
+        response.redirect("/v1/otd-old/order-aq-region")         
 
- } else if (ordertype == "Post release") {
+  } else if (ordertype == "Post release") {
         response.redirect("/v1/otd-old/order-prrar")    
-    } else {
+   } else {
         response.redirect("/v1/monitoring-conditions/monitoring-dates")
+    }
+})
+
+router.post('/order-region', function(request, response) {
+
+    var orderdescription = request.session.data['order-description']
+    if (orderdescription == "GPS acquisitive crime"){
+        response.redirect("/v1/otd-old/order-aq") 
+    } else {
+        response.redirect("/v1/otd-old/order-prrar")
     }
 })
 

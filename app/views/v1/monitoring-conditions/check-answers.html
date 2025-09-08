@@ -169,9 +169,41 @@
               {{ data['order-description'] or 'Domestic Abuse Perpetrators on Licence (DAPOL)' }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="../otd-old/order-pilot?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
+              <a class="govuk-link" href="../otd-old/order-pilots?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
             </dd>
           </div>
+
+           {% if (data['order-description'] == "GPS acquisitive crime") %} 
+
+                <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Which police force area does the device wearer live in? 
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['region-eligibility'] or 'Durham' }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="../otd-old/order-aq-region?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
+              </dd>
+            </div>
+
+           {% endif  %}
+
+           {% if (data['order-description'] == "GPS acquisitive crime")   %} 
+
+           <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                What type of acquisitive crime offence did the device wearer commit?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['order-aq'] or 'Theft from a Vehicle' }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="../otd-old/order-aq?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
+              </dd>
+            </div>
+
+           {% endif  %}
 
           {% endif  %}
 
@@ -193,34 +225,7 @@
 
           {% endif  %}
 
-          {% if (data['order-type'] == "Post release") %}    
-
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             What condition is the monitoring part of?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['order-condition'] or 'Licence condition' }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="../otd-old/order-conditions?cya4=true">Change<span class="govuk-visually-hidden"> What are the conditions of the order? </span></a>
-            </dd>
-          </div>
-
-
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-            Has the device wearer been released on a Presumptive Risk Assessed Release Review (P-RARR)?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['prarr'] or 'No' }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="../otd-old/order-prarr?cya4=true">Change<span class="govuk-visually-hidden"> Is the device wearer being released under P-RARR? </span></a>
-            </dd>
-          </div>
-
-         {% endif  %}
+       
 
           {% if (data['order-sentence'] == "Detention and Training Order (DTO)") or (data['order-sentence'] == "Youth Rehabilitation Order (YRO)") or (data['order-type'] == "Pre trial") %}  
 
@@ -238,6 +243,24 @@
       
 
           {% endif  %}
+
+             {% if (data['order-type'] == "Post release") %}    
+
+       
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Has the device wearer been released on a Presumptive Risk Assessed Release Review (P-RARR)?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['prarr'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="../otd-old/order-prarr?cya4=true">Change<span class="govuk-visually-hidden"> Is the device wearer being released under P-RARR? </span></a>
+            </dd>
+          </div>
+
+         {% endif  %}
 
         </dl>
 
