@@ -1,0 +1,269 @@
+{% extends "layouts/moj.html" %}
+
+
+
+{% block pageTitle %}
+  Electronic Monitoring application forms - Electronic Monitoring
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+         <form class="form" action="new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&view=none&newform=true" method="post">
+
+        <div class="moj-page-header-actions">
+          <div class="moj-page-header-actions__title">
+            <h1 class="govuk-heading-xl">Electronic Monitoring Order (EMO) forms</h1>
+          </div>
+
+          <div class="moj-page-header-actions__actions">
+            <div class="moj-button-group moj-button-group--inline">
+
+            <!--  <button type="submit" class="govuk-button" data-module="govuk-button">
+                Start new form
+              </button>-->
+
+              
+
+            </div>
+          </div>
+
+        </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+                Start new form
+              </button>
+
+      </form>
+
+      {{ mojSubNavigation({
+        label: "Sub navigation",
+        items: [{
+          text: "Draft forms",
+          href: "dashboard1"
+        }, {
+          text: "Submitted forms",
+          href: "#3",
+          active: true
+
+        }]
+      }) }}
+
+
+ <div class="moj-search" style="width: 75%">
+
+            <form action="dashboard2?searchresults=true#submitted" method="post">
+    
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                 <label class="govuk-label moj-search__label govuk-!-font-weight-bold" for="search">
+                   Search for a submitted form
+                  </label>
+
+              <div id="search-hint" class="govuk-hint moj-search__hint ">
+               Enter the device wearer's name or personal identity number. <br>
+                For example Bob Smith NHEFTH.
+              </div>
+
+             
+
+              <input class="govuk-input moj-search__input" id="search" name="search" type="search" aria-describedby="search-hint" value="{{ data['search'] }} ">
+
+            </div>
+
+            <button style="margin-bottom:0px ; margin-left:10px" class="govuk-button govuk-button--secondary moj-search__button">
+              Search
+            </button>
+
+          </form>
+        
+      </fieldset>
+      </div>
+
+      {% if (data['searchresults'] != "true") %}
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+       <details class="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  What's a personal identity number?
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">A personal identity number is:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>National Offender Management Information System (NOMIS)</li>
+                  <li>Police National Computer (PNC)</li>
+                  <li>NDelius ID</li>
+                  <li>Prison number</li>
+                  <li>Home Office Reference Number</li>
+                  <li>Compliance and Enforcement Person Reference (CEPR)</li>
+                  <li>Court Case Reference Number (CCRN)</li>
+                  <li>Magistrate Court Reference Number (MCRN)</li>
+                </ul>
+              </div>
+            </details>
+
+      {% endif %}
+   
+
+     {% if (data['searchresults'] == "true") %}
+
+
+      {% if (data['search'] == "mohammed mulin" or data['search'] == "Mohammed mulin" or data['search'] == " mohammed mulin" or data['search'] == "mohammed mulin ") or data['search'] == "mohammed mulin  " or data['search'] == "mohammed" or data['search'] == "Mohammed" %}
+
+        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+       <h2 class="govuk-heading-s">No results found for 'Mohammed Mulin'</h2>
+
+      <p>Check spelling is correct and numbers are in the right place.</p>
+
+      <p>Try searching using the device wearer's personal ID number, full name or both.</p>
+
+
+      <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-visually-hidden">Warning</span>
+            <h2 class="govuk-heading-s">Can't find what you are looking for?</h2>
+            If the form is not listed in search results, it may be an emailed form so not available online.
+            <br>
+            
+            <a href="new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false">Tell us about changes to form a sent by email</a>.
+          </strong>
+        </div>
+
+      <p></p>
+    
+
+      {% elseif (data['search'] == "" or data['search'] == " " or data['search'] == "  " or data['search'] == NULL) %}
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h2 class="govuk-heading-s">You have not entered any search terms</h2>
+
+      <p>Try searching using the device wearer's:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        
+       <li>first name and surname</li>
+       <li>personal ID number</li>
+       <li>full name and personal ID number</li>
+      </ul>  
+
+       <p>Check spelling is correct and numbers are in the right place.</p>
+
+        <details class="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  What's a personal identity number?
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                <p class="govuk-body">A personal identity number is:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>National Offender Management Information System (NOMIS)</li>
+                  <li>Police National Computer (PNC)</li>
+                  <li>Delius ID</li>
+                  <li>Prison number</li>
+                  <li>Home Office Reference Number</li>
+                  <li>Compliance and Enforcement Person Reference (CEPR)</li>
+                  <li>Court Case Reference Number (CCRN)</li>
+                  <li>Magistrate Court Reference Number (MCRN)</li>
+                </ul>
+              </div>
+            </details>
+
+
+      {% else %}
+
+           <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+            <div class="govuk-form-group">
+               <table class="govuk-table  govuk-table--small-text-until-tablet">
+                  <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                      <th scope="col" class="govuk-table__header">Name</th>
+                      <th scope="col" class="govuk-table__header">Date of birth</th>
+                       <th scope="col" class="govuk-table__header">Personal ID number</th>
+                       <th scope="col" class="govuk-table__header">Town or city</th>
+                       <th scope="col" class="govuk-table__header">Start date</th>
+                       <th scope="col" class="govuk-table__header">End date</th>
+                      <th scope="col" class="govuk-table__header">Last updated</th>
+                 <!--     <th scope="col" class="govuk-table__header">Status</th>-->
+                    </tr>
+                  </thead>
+                  <tbody class="govuk-table__body">
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=false&fullname=David Murphy&newform=true&clarification=false">David Murphy</a></td>
+                      <td class="govuk-table__cell">19/01/2001</td>
+                      <td class="govuk-table__cell">AYEDFE</td>
+                      <td class="govuk-table__cell">Glossop</td>
+                      <td class="govuk-table__cell">18/12/2024</td>
+                      <td class="govuk-table__cell">18/12/2025</td>
+                      <td class="govuk-table__cell">14/12/2024</td>
+                 <!--      <td class="govuk-table__cell">
+                      {{govukTag({
+                        text: "In progress",
+                        classes: "govuk-tag--green"
+                      })}}</td>-->
+                    </tr>
+                     <tr class="govuk-table__row">
+                      <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=true&view-variation=false&fullname=David Murphy&newform=true&clarification=false">David Murphy</a></td>
+                      <td class="govuk-table__cell">05/06/1974</td>
+                      <td class="govuk-table__cell">JHADCT</td>
+                      <td class="govuk-table__cell">Salford</td>
+                      <td class="govuk-table__cell">01/09/2024</td>
+                      <td class="govuk-table__cell">01/09/2025</td>
+                      <td class="govuk-table__cell">15/01/2025</td>
+                <!--       <td class="govuk-table__cell">
+                      {{govukTag({
+                        text: "In progress",
+                        classes: "govuk-tag--green"
+                      })}}</td>-->
+                    </tr>
+                     <tr class="govuk-table__row">
+                      <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=cancelled&fullname=David Murphy&newform=true&clarification=false">David Murphy</a></td>
+                      <td class="govuk-table__cell">21/04/1990</td>
+                      <td class="govuk-table__cell">FACRDF<br>D125433</td>
+                      <td class="govuk-table__cell">Birchwood</td>
+                      <td class="govuk-table__cell">01/12/2021</td>
+                      <td class="govuk-table__cell">18/07/2022</td>
+                      <td class="govuk-table__cell">02/03/2022</td>
+                <!--       <td class="govuk-table__cell">
+                       {{govukTag({
+                        text: "Ended",
+                        classes: "govuk-tag--grey"
+                      })}}</td>-->
+                    </tr>
+                    
+                   
+                    
+                  </tbody>
+                </table>
+
+              </div>
+
+
+
+                  {% endif %}
+
+            </div>
+
+       {% endif %}
+
+
+
+       
+      
+       
+        
+         
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "layouts/moj.html" %}
+
+
+
+{% block pageTitle %}
+  Electronic Monitoring application forms - Electronic Monitoring
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+         <form class="form" action="new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&view=none&newform=true" method="post">
+
+        <div class="moj-page-header-actions">
+          <div class="moj-page-header-actions__title">
+            <h1 class="govuk-heading-xl">Electronic Monitoring Order (EMO) forms</h1>
+          </div>
+
+          <div class="moj-page-header-actions__actions">
+            <div class="moj-button-group moj-button-group--inline">
+
+            <!--  <button type="submit" class="govuk-button" data-module="govuk-button">
+                Start new form
+              </button>-->
+
+              
+
+            </div>
+          </div>
+
+        </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+                Start new form
+              </button>
+
+      </form>
+
+      {{ mojSubNavigation({
+        label: "Sub navigation",
+        items: [{
+          text: "Draft forms",
+          href: "#1",
+          active: true
+        }, {
+          text: "Submitted forms",
+          href: "dashboard2"
+        }]
+      }) }}
+
+
+
+      
+           <table class="govuk-table  govuk-table--small-text-until-tablet">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Name</th>
+          
+                <th scope="col" class="govuk-table__header">Status</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=true&section-5-complete=true&newform=true">David Francis</a></td>
+               
+                <td class="govuk-table__cell">
+                  {{govukTag({
+                      text: "Draft"
+                    })}}</td>
+              </tr>
+    <!--     <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=fail&newform=true">{{ data['wearer-firstname'] or "Bobbie" }} {{ data['wearer-lastname'] or "Gibbs" }}</a></td>
+                <td class="govuk-table__cell">01/02/2025</td>
+                <td class="govuk-table__cell">
+                {{govukTag({
+                  text: "Failed to submit",
+                  classes: "govuk-tag--red"
+                })}}</td>
+              </tr>-->
+            </tbody>
+          </table>
+
+
+
+  
+        
+         
+    </div>
+</div>
+
+{% endblock %}
