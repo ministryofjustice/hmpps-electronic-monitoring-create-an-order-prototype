@@ -38,27 +38,81 @@
 
       </form>
 
-      {{ mojSubNavigation({
-        label: "Sub navigation",
-        items: [{
-          text: "Draft forms",
-          href: "dashboard"
-        }, {
-          text: "Submitted forms",
-          href: "#3",
-          active: true
-
-        }]
-      }) }}
+  
+      <!--  <p>
+          View and edit your draft forms or search for a form someone else has submitted to edit or cancel it.
+        </p>-->
 
 
- <div class="moj-search" style="width: 75%">
+          <div class="govuk-tabs" data-module="govuk-tabs">
+          <h2 class="govuk-tabs__title">
+            Contents
+          </h2>
 
-            <form action="dashboard2?searchresults=true#submitted" method="post">
+          <ul class="govuk-tabs__list">
+            <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+              <a class="govuk-tabs__tab" href="?searchresults=false#draft">
+                Draft forms
+              </a>
+            </li>  
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" href="#submitted">
+              Submitted forms
+              </a>
+            </li>
+            
+          </ul>
+
+       <div class="govuk-tabs__panel" id="draft" style="min-height: 100px">   
+
+        <div class="govuk-grid-column-two-thirds">
+
+      
+           <table class="govuk-table  govuk-table--small-text-until-tablet">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Name</th>
+          
+                <th scope="col" class="govuk-table__header">Status</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=true&section-5-complete=true&newform=true">David Francis</a></td>
+               
+                <td class="govuk-table__cell">
+                  {{govukTag({
+                      text: "Draft"
+                    })}}</td>
+              </tr>
+    <!--     <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=fail&newform=true">{{ data['wearer-firstname'] or "Bobbie" }} {{ data['wearer-lastname'] or "Gibbs" }}</a></td>
+                <td class="govuk-table__cell">01/02/2025</td>
+                <td class="govuk-table__cell">
+                {{govukTag({
+                  text: "Failed to submit",
+                  classes: "govuk-tag--red"
+                })}}</td>
+              </tr>-->
+            </tbody>
+          </table>
+
+        </div>
+
+      </div>
+
+     <div class="govuk-tabs__panel" id="submitted">   
+
+
+
+      
+        <div class="moj-search" style="width: 75%">
+
+            <form action="dashboard?searchresults=true#submitted" method="post">
     
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset">
-                 <label class="govuk-label moj-search__label govuk-!-font-weight-bold" for="search">
+                 <label class="govuk-label--m moj-search__label govuk-!-font-weight-bold" for="search">
                    Search for a submitted form
                   </label>
 
@@ -73,7 +127,7 @@
 
             </div>
 
-            <button style="margin-bottom:0px ; margin-left:10px" class="govuk-button govuk-button--secondary moj-search__button">
+            <button style="margin-bottom:0px" class="govuk-button govuk-button--secondary moj-search__button">
               Search
             </button>
 
@@ -117,7 +171,7 @@
 
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-       <h2 class="govuk-heading-s">No results found for 'Mohammed Mulin'</h2>
+       <h2 class="govuk-heading-m">No results found for 'Mohammed Mulin'</h2>
 
       <p>Check spelling is correct and numbers are in the right place.</p>
 
@@ -143,7 +197,7 @@
 
       <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-      <h2 class="govuk-heading-s">You have not entered any search terms</h2>
+      <h2 class="govuk-heading-m">You have not entered any search terms</h2>
 
       <p>Try searching using the device wearer's:</p>
 
@@ -255,12 +309,6 @@
             </div>
 
        {% endif %}
-
-
-
-       
-      
-       
         
          
     </div>
