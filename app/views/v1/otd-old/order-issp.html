@@ -31,13 +31,13 @@
   name: "issp",
   fieldset: {
     legend: {
-      text: "Is the device wearer on the Intensive Supervision and Surveillance Programme (ISSP)?",
+      text: "Is the device wearer on the Intensive Supervision and Surveillance Programme (ISS)?",
       isPageHeading: true,
       classes: "govuk-fieldset__legend--l"
     }
   },
   hint: {
-    text: "ISSP is for device wearers between the ages of 10-17"
+    text: "ISS is for device wearers between the ages of 10-17"
   },
   items: [
     {
@@ -58,14 +58,14 @@
 
       <div class="govuk-button-group">
         {{ govukButton({
-          text: "Save and continue"
+          text: "Continue"
         }) }}
 
-        {{ govukButton({
+  <!--      {{ govukButton({
           text: "Save as draft",
           href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
-        }) }}
+        }) }}-->
 
       </div>
  

@@ -231,7 +231,7 @@
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-            Is the device wearer on the Intensive Supervision and Surveillance Programme (ISSP)?
+            Is the device wearer on the Intensive Supervision and Surveillance Programme (ISS)?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['issp'] or 'No' }}
@@ -284,7 +284,7 @@
           
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date when all monitoring ends? {% if (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What is the date when all monitoring ends? {% if (data['order-type'] == "Immigration") or (data['order-type'] == "Pre trial") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['monitoring-date-end'] or "12/01/2026" }} 
@@ -364,7 +364,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What date does curfew end? {% if (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What date does curfew end? {% if (data['order-type'] == "Immigration") or (data['order-type'] == "Pre trial") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['curfewend-date'] }} 
@@ -456,45 +456,45 @@
            
 
                  {% if (data['curfewstandard'] == "false") %}
-                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Monday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Tuesday
+                     Monday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                    19:00 Monday until 07:00 Tuesday
+                    Monday 19:00 until 07:00 
                  {% endif %} 
                  <br>
                   {% if (data['curfewstandard'] == "false") %}
-                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Tuesday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Wednesday
+                    Tuesday  {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                    19:00 Tuesday until 07:00 Wednesday
+                    Tuesday 19:00 until 07:00 
                  {% endif %} 
                  <br>
                   {% if (data['curfewstandard'] == "false") %}
-                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Wednesday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Thursday
+                    Wednesday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                    19:00 Wednesday until 07:00 Thursday
+                    Wednesday 19:00 until 07:00 
                  {% endif %} 
                  <br>
                   {% if (data['curfewstandard'] == "false") %}
-                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Thursday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Friday
+                     Thursday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                    19:00 Thursday until 07:00 Friday
+                   Thursday 19:00 until 07:00 
                  {% endif %} 
                  <br>
                   {% if (data['curfewstandard'] == "false") %}
-                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Friday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Saturday
+                    Friday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                    19:00 Friday until 07:00 Saturday
+                    Friday 19:00 until 07:00 
                  {% endif %} 
                  <br>
                   {% if (data['curfewstandard'] == "false") %}
-                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Saturday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Sunday
+                     Saturday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                    19:00 Saturday until 07:00 Sunday
+                   Saturday 19:00 until 07:00 
                  {% endif %} 
                  <br>
                   {% if (data['curfewstandard'] == "false") %}
-                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Sunday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Monday
+                    Sunday  {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                    19:00 Sunday until 07:00 Monday
+                   Sunday  19:00 until 07:00 
                  {% endif %} 
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -627,7 +627,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What date does exclusion monitoring end? {% if (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What date does exclusion monitoring end? {% if (data['order-type'] == "Immigration") or (data['order-type'] == "Pre trial") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['exclusionend-date'] }} 
@@ -741,7 +741,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What date does trail monitoring end? {% if (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What date does trail monitoring end? {% if (data['order-type'] == "Immigration") or (data['order-type'] == "Pre trial") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['trailend-date'] or '12/01/2026' }} 
@@ -793,7 +793,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What date does mandatory attendance monitoring end? {% if (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What date does mandatory attendance monitoring end? {% if (data['order-type'] == "Immigration") or (data['order-type'] == "Pre trial") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['attendanceend-date'] }} 

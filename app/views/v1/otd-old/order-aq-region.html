@@ -22,7 +22,7 @@
 
 
        
-      <form class="form" action="/order-region" method="post">
+      <form class="form" action="order-prrar" method="post">
 
 
 {% if (data['order-description'] == "GPS acquisitive crime") %}      
@@ -243,14 +243,14 @@
 
       <div class="govuk-button-group">
         {{ govukButton({
-          text: "Save and continue"
+          text: "Continue"
         }) }}
 
-        {{ govukButton({
+  <!--      {{ govukButton({
           text: "Save as draft",
           href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
-        }) }}
+        }) }}-->
 
       </div>
  

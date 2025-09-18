@@ -611,7 +611,7 @@ router.post('/pilots', function(request, response) {
     var ordertype = request.session.data['order-type']
     var orderdescription = request.session.data['order-description']
     if (orderdescription == "GPS acquisitive crime"){
-        response.redirect("/v1/otd-old/order-aq-region")         
+        response.redirect("/v1/otd-old/order-aq")         
 
   } else if (ordertype == "Post release") {
         response.redirect("/v1/otd-old/order-prrar")    
