@@ -28,7 +28,6 @@
 
       {% else %}  
 
-      <p>This is on Create and Vary a Licence (CVL) on the page you print the licence.</p>
 
 
      {% endif %}  
@@ -43,6 +42,8 @@
 
 
 {% if (data['order-type'] == "Post release") and (data['hdc'] == "No") %}
+
+      <p>This is on Create and Vary a Licence (CVL) on the page you print the licence. The device wearer must be part of a pilot or have Alcohol Monitoring on Licence (AML) as a licence condition.</p>
 
             {{ govukRadios({
               classes: "govuk-radios",
@@ -95,7 +96,7 @@
     {% elseif (data['order-type'] == "Post release") and (data['hdc'] == "Yes") %}
 
 
-   
+         <p>This is on Create and Vary a Licence (CVL) on the page you print the licence.</p>
 
             {{ govukRadios({
               classes: "govuk-radios",

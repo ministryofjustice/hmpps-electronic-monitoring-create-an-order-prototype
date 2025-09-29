@@ -17,7 +17,7 @@
            <form class="form" action="check-answers-view" method="post">
 
          {% else %}
-            <form class="form" action="photo-question" method="post">
+            <form class="form" action="/licence-question" method="post">
 
            {% endif %}
      
@@ -26,17 +26,37 @@
 
          {% if (data['notifying-org'] == 'Home Office') %}
 
-          {{ govukFileUpload({
-            id: "licence",
-            name: "licence",
-            isPageHeading: true,
-            label: {
-              text: "Upload a copy of the Grant of Bail document (optional)",
-              classes: 'govuk-label--l'
+           {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "licencequestion",
+            fieldset: {
+              legend: {
+                text: "Do you have a Grant of Bail document to upload?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
             },
             hint: {
-              text: 'Upload a scanned copy or photo of the Grant of Bail document. The file must be a PDF and under 10MB in size. For Secretary of state immigration bail cases you do not need to upload a document.'
-            }
+              text: ""
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['licencequestion'] == 'Yes'),
+                conditional: {
+                
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (true if data['licencequestion'] == 'No'),
+                conditional: {
+                 
+                }
+              }
+            ]
           }) }}
 
           {% else %}

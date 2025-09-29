@@ -1,0 +1,62 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Upload the licence document - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+        {% if (data['view'] == 'false') %}
+           <form class="form" action="check-answers-view" method="post">
+
+         {% else %}
+            <form class="form" action="photo" method="post">
+
+           {% endif %}
+     
+
+        <span class="govuk-caption-l">Additional documents</span>
+
+     
+
+          {{ govukFileUpload({
+            id: "licence",
+            name: "licence",
+            isPageHeading: true,
+            label: {
+              text: "Upload a copy of the Grant of Bail document",
+              classes: 'govuk-label--l'
+            },
+            hint: {
+              text: 'Upload a scanned copy or photo of the Grant of Bail document. The file must be a PDF and under 10MB in size. For Secretary of state immigration bail cases you do not need to upload a document.'
+            }
+          }) }}
+
+         
+
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+           href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

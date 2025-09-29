@@ -521,12 +521,25 @@ router.post('/monitoring-list-edit', function(request, response) {
     }
 })
 
+router.post('/ho-question', function(request, response) {
+
+    var notifyingorg = request.session.data['notifying-org']
+    if (notifyingorg == "Home Office"){
+        response.redirect("/v1/attachments/licence-question?cya5=false")
+    } else {
+        response.redirect("/v1/attachments/licence?cya5=false")
+    }
+})
+
+
 
 router.post('/licence-question', function(request, response) {
-
+    var notifyingorg = request.session.data['notifying-org']
     var licencequestion = request.session.data['licencequestion']
     if (licencequestion == "Yes"){
-        response.redirect("/v1/attachments/licence")
+        response.redirect("/v1/attachments/licence-ho")
+    } else if (notifyingorg == "Home Office"){
+        response.redirect("/v1/attachments/photo")    
     } else {
         response.redirect("/v1/attachments/photo-question")
     }
@@ -779,6 +792,27 @@ router.post('/trail-dates-question', function(request, response) {
     }
 })
 
+
+router.post('/pdu', function(request, response) {
+
+    var pdu = request.session.data['pdu']
+
+    if (pdu == "Cheshire East"){
+        response.redirect("/v1/organisation/region3") 
+    } else if (pdu == "Cheshire West") {
+        response.redirect("/v1/organisation/region3") 
+    } else if (pdu == "Central Lancashire") {
+        response.redirect("/v1/organisation/region3") 
+    } else if (pdu == "East Lancashire") {
+        response.redirect("/v1/organisation/region3")  
+    } else if (pdu == "North West Lancashire") {
+        response.redirect("/v1/organisation/region3")   
+    } else if (pdu == "Warrington and Halton") {
+        response.redirect("/v1/organisation/region3")              
+    } else {
+        response.redirect("/v1/organisation/check-answers")
+    }
+})
 
 
 
