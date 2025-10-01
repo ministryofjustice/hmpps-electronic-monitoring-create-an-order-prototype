@@ -32,6 +32,8 @@
 
      {% endif %}  
 
+           <p>This is on Create and Vary a Licence (CVL) on the page you print the licence. </p>
+
 
        
       <form class="form" action="/pilots" method="post">
@@ -40,10 +42,17 @@
            <p class="govuk-body">This pilot is only for probation practitioners varying a licence in response to an escalation of risk or as an alternative to recall.</p>
             {% endset -%}
 
+            {% set amlHtml %}
+           <p class="govuk-body">To be eligible for tagging the device wearer must either be part of a pilot or have Alcohol Monitoring on Licence (AML) as a licence condition.</p>
+
+           
+            {% endset -%}
+
+
 
 {% if (data['order-type'] == "Post release") and (data['hdc'] == "No") %}
 
-      <p>This is on Create and Vary a Licence (CVL) on the page you print the licence. The device wearer must be part of a pilot or have Alcohol Monitoring on Licence (AML) as a licence condition.</p>
+
 
             {{ govukRadios({
               classes: "govuk-radios",
@@ -85,10 +94,13 @@
                   divider: "or"
                 },
                 {
-                  value: "They have Alcohol Monitoring on Licence (AML) as a licence condition",
-                  checked: (true if data['order-description'] == 'They have Alcohol Monitoring on Licence (AML) as a licence condition'),
-                  text: "They have Alcohol Monitoring on Licence (AML) as a licence condition",
-                  behaviour: "exclusive"
+                  value: "They are not part of any of these pilots",
+                  checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
+                  text: "They are not part of any of these pilots",
+                  behaviour: "exclusive",
+                  conditional: {
+                      html: amlHtml
+                    }
                 }
               ]
             }) }}
@@ -96,7 +108,7 @@
     {% elseif (data['order-type'] == "Post release") and (data['hdc'] == "Yes") %}
 
 
-         <p>This is on Create and Vary a Licence (CVL) on the page you print the licence.</p>
+
 
             {{ govukRadios({
               classes: "govuk-radios",
@@ -176,14 +188,14 @@
 
       <div class="govuk-button-group">
         {{ govukButton({
-          text: "Continue"
+          text: "Save and continue"
         }) }}
 
-  <!--      {{ govukButton({
+      {{ govukButton({
           text: "Save as draft",
           href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
-        }) }}-->
+        }) }}
 
       </div>
  

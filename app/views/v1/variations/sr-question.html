@@ -110,7 +110,7 @@ Details of the changes - Electronic Monitoring
 
                     {{ govukButton({
                     text: "Save as draft",
-                    href: ('#' if data['view'] == 'false' else '#' ),
+                    href: ('../submitted-form' if data['view'] == 'false' else '#' ),
                     classes: "govuk-button--secondary"
                   }) }}
 
