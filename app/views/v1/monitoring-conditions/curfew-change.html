@@ -22,6 +22,13 @@
 
       <p>Enter the times to use for the curfew timetable. You can change the times or location for any given day on later screens if you need to.</p>
 
+      {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+        {{ govukDetails({
+          summaryText: "Help with HDC curfew hours",
+          text: "By law, the curfew must last at least 9 hours each day (except on the first day of release). It is usually set for 12 hours a day and should only be longer if there is clear evidence it will greatly help rehabilitation. The curfew cannot be more than 16 hours a day."
+        }) }}
+
          <form class="form" action="curfew-4" method="post">
 
  {% else %}
