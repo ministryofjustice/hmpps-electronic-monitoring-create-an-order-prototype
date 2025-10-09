@@ -107,11 +107,22 @@ router.post('/contact-address', function(request, response) {
 
     var addressquestion = request.session.data['addressquestion']
     if (addressquestion == "Yes"){
-        response.redirect("/v1/device-wearer/contact-address")
+        response.redirect("/v1/postcode-lookup/postcode")
     } else {
         response.redirect("/v1/device-wearer/check-answers")
     }
 })
+
+router.post('/postcode', function(request, response) {
+
+    var sectionid = request.session.data['sectionid']
+    if (sectionid == "About the device wearer"){
+        response.redirect("/v1/device-wearer/check-answers")
+    } else {
+        response.redirect("#")
+    }
+})
+
 router.post('/disability', function(request, response) {
 
     var disability = request.session.data['disability']
