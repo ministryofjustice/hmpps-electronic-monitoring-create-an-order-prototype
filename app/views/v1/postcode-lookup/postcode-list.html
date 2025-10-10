@@ -23,7 +23,7 @@
 <div class="govuk-width-container">
 
  <span class="govuk-caption-l"> {{ data['sectionid'] or 'About the device wearer'}}</span>
-  <h1 class="govuk-heading-l">Select the {{ data['addresstype'] or "device wearer's"}} address</h1>
+  <h1 class="govuk-heading-l">Select the {{ data['postcodetype'] or "device wearer's"}} address</h1>
 {{ govukRadios({
 name: "select-an-address",
 classes: "govuk-radios--small",

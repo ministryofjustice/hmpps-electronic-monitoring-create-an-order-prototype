@@ -13,9 +13,22 @@
     <div class="govuk-grid-column-two-thirds">
 
     
+   {% if (data['postcodetype'] == "installation") %}    
 
 
+      {% if (data['monitoringtypeadded'] == "Yes") %}
+
+       <form class="form" action="/install-type2" method="post">
+
+      {% else %}
+
+      <form class="form" action="/install-type" method="post">
+
+      {% endif %}
+
+ {% else %}
       <form class="form" action="/postcode" method="post">
+{% endif %}  
 
            {% from "govuk/components/button/macro.njk" import govukButton %}
           {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
@@ -24,7 +37,7 @@
           <div class="govuk-width-container">
           <h1 class="govuk-heading-l">  
            <span class="govuk-caption-l"> {{ data['sectionid'] or 'About the device wearer'}}</span>
-          Confirm the {{ data['addresstype'] or "device wearer's"}} address
+          Confirm the {{ data['postcodetype'] or "device wearer's"}} address
           </h1>
 
           <p>6 addresses found for <b>wr11nl</b> and <b>1</b>. <a href="postcode">Search again</a></p>

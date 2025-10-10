@@ -118,6 +118,8 @@ router.post('/postcode', function(request, response) {
     var sectionid = request.session.data['sectionid']
     if (sectionid == "About the device wearer"){
         response.redirect("/v1/device-wearer/check-answers")
+    } else if (sectionid == "Electronic monitoring required"){
+        response.redirect("/v1/postcode-lookup/address-name")         
     } else {
         response.redirect("#")
     }
@@ -460,7 +462,7 @@ router.post('/curfew-address-question', function(request, response) {
 
     var curfewaddressquestion = request.session.data['curfewaddressquestion']
     if (curfewaddressquestion == "Yes"){
-        response.redirect("/v1/monitoring-conditions/curfew-address")
+        response.redirect("/v1/postcode-lookup/postcode")
     } else {
         response.redirect("/v1/monitoring-conditions/curfew-1")
     }

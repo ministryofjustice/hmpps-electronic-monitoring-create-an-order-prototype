@@ -19,7 +19,7 @@
 
         <div class="govuk-width-container">
          <span class="govuk-caption-l"> {{ data['sectionid'] or 'About the device wearer'}}</span>
-        <h1 class="govuk-heading-l">Find the {{ data['addresstype'] or "device wearer's"}} address</h1>
+        <h1 class="govuk-heading-l">Find the {{ data['postcodetype'] or "device wearer's"}} address</h1>
 
         <!--
 
@@ -44,7 +44,7 @@
 
         {{ govukInput({
         label: {
-          text: "Building number or name (optional)"
+          text: "Building number or name"
         },
         classes: "govuk-!-width-two-thirds",
         hint: {

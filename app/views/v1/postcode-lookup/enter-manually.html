@@ -13,12 +13,25 @@
     <div class="govuk-grid-column-two-thirds">
 
 
+   {% if (data['postcodetype'] == "installation") %}    
 
 
+      {% if (data['monitoringtypeadded'] == "Yes") %}
+
+       <form class="form" action="/install-type2" method="post">
+
+      {% else %}
+
+      <form class="form" action="/install-type" method="post">
+
+      {% endif %}
+
+ {% else %}
       <form class="form" action="/postcode" method="post">
+{% endif %}      
 
        <span class="govuk-caption-l"> {{ data['sectionid'] or 'About the device wearer'}}</span>
-         <h1 class="govuk-heading-l">What is the {{ data['addresstype'] or "device wearer's"}} address?</h1>
+         <h1 class="govuk-heading-l">What is the {{ data['postcodetype'] or "device wearer's"}} address?</h1>
 
       {% call govukFieldset({
         legend: {
