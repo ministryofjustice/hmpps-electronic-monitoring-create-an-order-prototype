@@ -25,95 +25,80 @@
       {% endset %}
 
 
-          {% if (data['view-variation'] == 'cancelled') %}
-
-           {{ govukNotificationBanner({
-              html: htmlcancelled
-            }) }}
-
-              <h1 class="govuk-heading-l">
-                <span class="govuk-caption-l">About the changes to end all monitoring early</span>
-                Check your answers
-              </h1>
-
-          {% elseif (data['view'] == 'true') %}
+     
 
           {{ govukNotificationBanner({
               html: html
             }) }}
 
               <h1 class="govuk-heading-l">
-                <span class="govuk-caption-l">About the cancellation</span>
+                <span class="govuk-caption-l">About the changes in this version of the form</span>
                 View answers
               </h1>
 
-               <p>Check and save the information about the cancellation.</p>
-      
                     
-          {% endif %}
+
   
 
       <form class="form" action="../submitted-form?section-5-complete=true" method="post">
 
-
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             What is the date you want the change to take effect?
+             Why are you making changes to the form?
             </dt>
             <dd class="govuk-summary-list__value">
-             12/02/2025
+            {{ data['sr-type'] or "I need monitoring equipment installed at a new address" }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
-                {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
-                {% endif %}
+              
             </dd>
           </div>
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Why are you ending all monitoring for the device wearer?
+            What is the date you want the changes to take effect?
             </dt>
             <dd class="govuk-summary-list__value">
-              Offender has been recalled to prison due to breaching conditions.
+             {{ data['variation-date'] or '20/09/2025' }}
             </dd>
             <dd class="govuk-summary-list__actions">
-               <ul class="govuk-summary-list__actions-list">
-                 {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
-                {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
-                {% endif %}
-              </ul>
+       
             </dd>
           </div>
+          {% if (data['sr-type'] == "I have changed something else in the form") %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            What have you changed in the form?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['variation-type'] or "The device wearer's personal details" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+            
+        
+           </dd>
+          </div>
+
+          {% endif %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Enter information on what you have changed
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['edit-text'] or "Added new address" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
           
-
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             What is the address where any tags and monitoring equipment should be collected?
-            </dt>
-            <dd class="govuk-summary-list__value">
-            {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
-            {{ data['contactaddressTown'] or "Glossop" }}<br>
-            {{ data['contactaddressCounty'] or "High Peak" }}<br>
-            {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
-                {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
-                {% endif %}
-            </dd>
+           </dd>
           </div>
-          
 
         </dl>
+     
      
         
 
