@@ -130,7 +130,7 @@
             title: {
               text: ("About the changes in this version of the form")
             },
-            href: ("variations/check-answers" if data['section-6-complete'] == 'true' else "variations/sr-question"),
+            href: ("variations/check-answers" if data['section-6-complete'] == 'true' else "variations/edit-form-question?sr-type=I have changed something else in the form"),
            status: ( completedStatus if data['section-6-complete'] == 'true' else incompleteStatus)
           }
 

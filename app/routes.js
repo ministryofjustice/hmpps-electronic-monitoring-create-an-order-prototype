@@ -106,8 +106,11 @@ router.post('/eighteen-answer', function(request, response) {
 router.post('/contact-address', function(request, response) {
 
     var addressquestion = request.session.data['addressquestion']
+    var variationsimple = request.session.data['variation-simple']
     if (addressquestion == "Yes"){
         response.redirect("/v1/postcode-lookup/postcode")
+    } else if (variationsimple == "true"){
+        response.redirect("/v1/variation-simple/offence")      
     } else {
         response.redirect("/v1/device-wearer/check-answers")
     }
@@ -121,7 +124,7 @@ router.post('/postcode', function(request, response) {
     } else if (sectionid == "Electronic monitoring required"){
         response.redirect("/v1/postcode-lookup/address-name")         
     } else {
-        response.redirect("#")
+        response.redirect("/v1/variation-simple/offence")
     }
 })
 
@@ -826,6 +829,52 @@ router.post('/pdu', function(request, response) {
         response.redirect("/v1/organisation/check-answers")
     }
 })
+
+router.post('/sr-question', function(request, response) {
+
+    var srtypesimple = request.session.data['sr-type-simple']
+    if (srtypesimple == "I have changed something else in the form"){
+        response.redirect("/v1/new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")     
+    } else if (srtypesimple == "I need to end all monitoring for the device wearer") {
+        response.redirect("/v1/variation-simple/bail") 
+    } else {
+        response.redirect("/v1/variation-simple/identity-numbers")
+    }
+})
+
+router.post('/type-change', function(request, response) {
+
+    var clarification = request.session.data['clarification']
+    if (clarification == "false"){
+        response.redirect("/v1/variations/sr-question?view=false") 
+    } else {
+        response.redirect("/v1//submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false")
+    }
+})
+
+router.post('/document-question', function(request, response) {
+
+    var licencequestion = request.session.data['licencequestion']
+    if (licencequestion == "Yes"){
+        response.redirect("/v1/variation-simple/document")  
+    } else {
+        response.redirect("/v1/variation-simple/check-answers")
+    }
+})
+
+router.post('/identity-numbers', function(request, response) {
+
+    var identitynumbers = request.session.data['identity-numbers']
+    if (identitynumbers == "Magistrate Court Case Reference Number"){
+        response.redirect("/v1/variation-simple/court")  
+    } else if (identitynumbers == "Court Case Reference Number (CCRN)") {
+        response.redirect("/v1/variation-simple/court")     
+    } else {
+        response.redirect("/v1/variation-simple/personal-details")
+    }
+})
+
+
 
 
 

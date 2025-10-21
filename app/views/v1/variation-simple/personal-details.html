@@ -1,0 +1,157 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Personal details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+       Device wearer's personal details
+      </h1>
+
+        {% if (data['cyasimple'] == "true") %}
+
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+        <form class="form" action="contact-address-question" method="post">
+
+        {% endif %}
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukInput({
+          label: {
+            text: "What is the device wearer's first name?",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "wearer-firstname",
+          name: "wearer-firstname",
+          spellcheck: false,
+          value: data['wearer-firstname']
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "What is the device wearer's last name?",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "wearer-lastname",
+          name: "wearer-lastname",
+          spellcheck: false,
+          value: data['wearer-lastname']
+        }) }}
+
+
+
+
+
+
+      <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-label govuk-label--s">
+                What is the device wearer's date of birth?
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 27 3 2007
+              </div>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="wearer-dob-day" type="text" inputmode="numeric" value="{{ data['wearer-dob-day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="wearer-dob-month" type="text" inputmode="numeric" value="{{ data['wearer-dob-month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="wearer-dob-year" type="text" inputmode="numeric" value="{{ data['wearer-dob-year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+       {{ govukRadios({
+            name: "wearer-gender",
+            fieldset: {
+              legend: {
+                text: "What is the sex of the device wearer?",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "Select the sex recorded on the device wearer's birth certificate."
+            },
+            items: [
+              {
+                value: "Male",
+                checked: (true if data['wearer-gender'] == 'Male'),
+                text: "Male"
+              },
+              {
+                value: "Female",
+                checked: (true if data['wearer-gender'] == 'Female'),
+                text: "Female"
+              },
+              
+              {
+                divider: "or"
+              },
+              {
+                value: "Not able to provide this information",
+                checked: (true if data['wearer-gender'] == 'Not able to provide this information'),
+                text: "Not able to provide this information"
+              }
+            ]
+          }) }}
+
+         
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+    <!--    {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}-->
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,309 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Check your answers - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+      
+        Check your answers
+      </h1>
+
+
+
+      <form class="form" action="../submit-confirmation?variation=true" method="post">
+
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Why do you need to make changes to the order?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sr-type-simple'] or 'I need monitoring equipment reinstalled or checked' }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="sr-question?cyasimple=true">Change<span class="govuk-visually-hidden"> What identity numbers do you have for the device wearer?</span></a>
+            </dd>
+          </div>
+
+          {% if (data['sr-type-simple'] == "I need to end all monitoring for the device wearer") %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Is the device wearer on bail?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['bail-order'] or 'No' }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="sr-question?cyasimple=true">Change<span class="govuk-visually-hidden"> What identity numbers do you have for the device wearer?</span></a>
+            </dd>
+          </div>
+
+
+
+          {% endif %}
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               What identity numbers do you have for the device wearer?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['identity-numbers'] or 'Not able to provide this information' }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="identity-numbers?cyasimple=true">Change<span class="govuk-visually-hidden"> What identity numbers do you have for the device wearer?</span></a>
+            </dd>
+          </div>
+          {% if (data['identity-numbers'] == "Not able to provide this information") %}
+
+          {% else %}
+
+
+          {% if (data['nomis'] !== NULL and data['nomis'] !== '') %}
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               NOMIS
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['nomis'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="identity-numbers?cyasimple=true">Change<span class="govuk-visually-hidden"> NOMIS ID</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if (data['pnc'] !== NULL and data['pnc'] !== '') %}
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               PNC
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['pnc'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="identity-numbers?cyasimple=true">Change<span class="govuk-visually-hidden"> PNC ID</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if (data['delius'] !== NULL and data['delius'] !== '') %}
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Delius ID
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['delius'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="identity-numbers?cyasimple=true">Change<span class="govuk-visually-hidden"> Delius ID</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if (data['mrn'] !== NULL and data['mrn'] !== '') %}
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Magistrate Court Case Reference Number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['mrn'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="identity-numbers?cyasimple=true">Change<span class="govuk-visually-hidden"> Prison number</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          {% if (data['ho2'] !== NULL and data['ho2'] !== '') %}
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Home Office Reference Number
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['ho2'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="identity-numbers?cyasimple=true">Change<span class="govuk-visually-hidden">Home Office reference number</span></a>
+            </dd>
+          </div>
+          {% endif %}
+           {% if (data['ccrn'] !== NULL and data['ccrn'] !== '') %}
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Court Case Reference Number (CCRN)
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['ccrn'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="identity-numbers?cyasimple=true">Change<span class="govuk-visually-hidden">URN ID number</span></a>
+            </dd>
+          </div>
+          {% endif %}
+          {% endif %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's first name?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['wearer-firstname'] or "Fred" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="personal-details?cyasimple=true">Change<span class="govuk-visually-hidden"> What is the device wearer's first name?</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's last name?
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {{ data['wearer-lastname'] or "Bloggs" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="personal-details?cyasimple=true">Change<span class="govuk-visually-hidden"> What is the device wearer's last name?</span></a>
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             What is the sex of the device wearer?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['wearer-gender'] or 'Male' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="personal-details?cyasimple=true">Change<span class="govuk-visually-hidden"> How does the device wearer describe themselves?</span></a>
+            </dd>
+          </div>
+
+               <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's date of birth?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              19 January 1990
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="personal-details?cyasimple=true">Change<span class="govuk-visually-hidden"> What is the device wearer's date of birth?</span></a>
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Does the device wearer have a fixed address?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['addressquestion'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="contact-address-question?cyasimple=true">Change<span class="govuk-visually-hidden"> Does the device wearer have a fixed address?</span></a>
+            </dd>
+          </div>
+          {% if (data['addressquestion'] == "Yes") %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's contact address?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['contactaddressLine1'] or '1 Washington Street' }}<br>
+              {{ data['contactaddressTown'] or 'Worcester' }}<br>
+              {{ data['contactaddressPostcode'] or 'WR1 1NL' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/v1/postcode-lookup/postcode">Change<span class="govuk-visually-hidden"> What is the device wearer's contact address?</span></a>
+            </dd>
+          </div>
+
+          {% endif %}
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             What type of offence did the device wearer commit? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['offence'] or 'The offence committed is not relevant to the risk of installation' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="offence?cyasimple=true">Change<span class="govuk-visually-hidden"> What type of offence has been committed by the device wearer?</span></a>
+            </dd>
+          </div>
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             What was the date of the offence? (optional) 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['offencedate'] or '' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="offence?cyasimple=true">Change<span class="govuk-visually-hidden"> What type of offence has been committed by the device wearer?</span></a>
+            </dd>
+          </div>
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Do you have a document to upload?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['licencequestion'] or "No" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="document-question?cyasimple=true">Change<span class="govuk-visually-hidden"> Do you have a licence document to upload? </span></a>
+            </dd>
+          </div>
+
+
+
+           {% if (data['licencequestion'] == 'Yes') %}
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Upload a copy of the document 
+            </dt>
+            <dd class="govuk-summary-list__value">
+             <a href="#">{{ data['licence'] }}</a>
+            </dd>
+            <dd class="govuk-summary-list__actions">        
+                  <a class="govuk-link" href="document?cyasimple=true">Change<span class="govuk-visually-hidden"> Licence </span></a>    
+            </dd>
+          </div>
+       
+         {% endif %}
+
+         
+
+        </dl>
+     
+        
+
+       <h2 class="govuk-heading-m">Now submit the form</h2>
+
+    <p>Check all your answers are complete before you submit the form.</p>
+
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Submit form"
+        }) }}
+
+      
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

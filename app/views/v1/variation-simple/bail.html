@@ -1,0 +1,79 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+Details of the changes - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+  
+
+         <form class="form" action="identity-numbers" method="post">
+
+
+
+            {{ govukRadios({
+            name: "bail-order",
+            classes: "govuk-radios--inline",
+            fieldset: {
+              legend: {
+                text: "Is the device wearer on bail?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+
+             
+              {
+                value: "Yes",
+                checked: (true if data['bail-order'] == "Yes"),
+                text: "Yes"
+              },
+              {
+                value: "No",
+                checked: (true if data['bail-order'] == "No"),
+                text: "No"
+              }
+            ]
+          }) }}
+
+     
+
+
+          <div class="govuk-button-group">
+
+           
+                  {{ govukButton({
+                    text: "Save and continue"
+                  }) }}
+
+                    <!--  {{ govukButton({
+                  text: "Save as draft",
+                  href: '../new-form',
+                  classes: "govuk-button--secondary"
+                }) }}-->
+
+         
+
+          </div>
+
+      </form>
+
+
+        
+
+        </div>
+      </div>
+{% endblock %}

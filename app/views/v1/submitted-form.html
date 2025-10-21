@@ -98,7 +98,27 @@
 
         {% else %}
 
-         <p> You are making changes to a form that was submitted on the 14 December 2024. Edit the sections that you need to change.</p>
+        {% if (data['clarification'] == 'true') %}
+
+        <p> You are making changes to a submitted form. </p>
+
+        {% elseif (data['sr-type'] == 'I need monitoring equipment installed at a new address') %}
+
+         <p> You are requesting monitoring equipment to be installed at a new address. </p>
+
+        {% elseif (data['sr-type'] == 'I need monitoring equipment reinstalled or checked') %}
+
+         <p> You are requesting monitoring equipment to be reinstalled or checked. </p>
+
+        {% elseif (data['sr-type'] == 'I need to end all monitoring for the device wearer') %}
+
+         <p> You are ending all monitoring for the device wearer.</p>
+
+          {% else %}  
+
+         <p> You are making changes to a submitted form. </p>
+
+        {% endif %}   
 
 
               <form class="form" action="submit-confirmation?variation=true" method="post">
@@ -282,7 +302,7 @@
             title: {
               text: ("About the changes in this version of the form")
             },
-            href: ("variations/check-answers" if data['section-6-complete'] == 'true' else "variations/sr-question"),
+            href: ("variations/check-answers" if data['section-6-complete'] == 'true' else "variations/edit-form-question"),
            status: ( completedStatus if data['section-6-complete'] == 'true' else incompleteStatus)
 
           }

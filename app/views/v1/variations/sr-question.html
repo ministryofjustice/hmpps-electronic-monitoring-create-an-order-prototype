@@ -28,16 +28,16 @@ Details of the changes - Electronic Monitoring
                   
         {% endif %}
 
-    <span class="govuk-caption-l">About the changes in this version of the form</span>
+ <!--   <span class="govuk-caption-l">About the changes in this version of the form</span>-->
 
 
        {% if (data['newform'] == 'false') %}
 
-        <form class="form" action="edit-form-question" method="post">
+        <form class="form" action="../submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false" method="post">
 
         {% else %}   
 
-         <form class="form" action="edit-form-question" method="post">
+         <form class="form" action="../submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false" method="post">
 
 
       {% endif %}  
@@ -82,7 +82,7 @@ Details of the changes - Electronic Monitoring
                 value: "I have changed something else in the form",
                 checked: (true if data['sr-type'] == 'I have changed something else in the form'),
                 disabled: (true if data['view'] == 'true'),
-                text: "I have changed something else in the form"
+                text: "I need to change something else in the form"
               }
             ]
           }) }}

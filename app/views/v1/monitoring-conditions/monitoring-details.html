@@ -45,7 +45,151 @@
       <form class="form" action="/monitoring-type" method="post">
     
      
+  {% if (data['hdc'] == "No" and data['order-description'] == "GPS acquisitive crime") %}
 
+
+      {{ govukInsetText({
+        text: "Some monitoring types can’t be selected because the device wearer is not on a Home Detention Curfew (HDC)."
+      }) }}
+
+      {{ govukRadios({
+            name: "monitoringtype",
+            fieldset: {
+              legend: {
+                text: "What monitoring does the device wearer need?",
+                isPageHeading: true,
+                classes: "govuk-visually-hidden"
+
+              }
+            },
+            hint: {
+              text: "Select one, if you need to you will be able to add other monitoring types later"
+            },
+            items: [
+              {
+                value: "Curfew",
+                checked: (true if data['monitoringtype'] == 'Curfew'),
+                disabled: true,
+                hint: {
+                  text: "Monitoring the device wearer adheres to set times and days that they must remain at a location."
+                },
+                text: "Curfew"
+              },
+              {
+                value: "Exclusion zone monitoring",
+                checked: (true if data['monitoringtype'] == 'Exclusion zone monitoring'),
+                disabled: true,
+                hint: {
+                  text: "Prevents the device wearer entering areas or visiting locations at set times."
+                },
+                text: "Exclusion zone monitoring"
+              },
+             
+              {
+                value: "Trail monitoring",
+                checked: (true if data['monitoringtype'] == 'Trail monitoring'),
+                disabled: false,
+                hint: {
+                  text: "Recording and gathering data on movements of the device wearer throughout the day."
+                },
+                text: "Trail monitoring"
+              },
+              
+              {
+                value: "Alcohol monitoring",
+                checked: (true if data['monitoringtype'] == 'Alcohol monitoring'),
+                disabled: true,
+                hint: {
+                  text: "Measuring alcohol levels of the device wearer or recording they are abstaining from drinking alcohol."
+                },
+                text: "Alcohol monitoring"
+              },
+              {
+                value: "Mandatory attendance monitoring",
+                checked: (true if data['monitoringtype'] == 'Mandatory attendance monitoring'),
+                disabled: true,
+                hint: {
+                  text: "Recording the device wearer's attendance at arranged meetings or places."
+                },
+                text: "Mandatory attendance monitoring"
+              }
+              
+          ]
+        }) }}
+
+  {% elseif (data['hdc'] == "No" and data['order-description'] == "They are not part of any of these pilots") %}
+
+
+      {{ govukInsetText({
+        text: "Some monitoring types can’t be selected because the device wearer is not part of any pilots."
+      }) }}
+
+        {{ govukRadios({
+            name: "monitoringtype",
+            fieldset: {
+              legend: {
+                text: "What monitoring does the device wearer need?",
+                isPageHeading: true,
+                classes: "govuk-visually-hidden"
+
+              }
+            },
+            hint: {
+              text: "Select one, if you need to you will be able to add other monitoring types later"
+            },
+            items: [
+              {
+                value: "Curfew",
+                checked: (true if data['monitoringtype'] == 'Curfew'),
+                disabled: true,
+                hint: {
+                  text: "Monitoring the device wearer adheres to set times and days that they must remain at a location."
+                },
+                text: "Curfew"
+              },
+              {
+                value: "Exclusion zone monitoring",
+                checked: (true if data['monitoringtype'] == 'Exclusion zone monitoring'),
+                disabled: true,
+                hint: {
+                  text: "Prevents the device wearer entering areas or visiting locations at set times."
+                },
+                text: "Exclusion zone monitoring"
+              },
+             
+              {
+                value: "Trail monitoring",
+                checked: (true if data['monitoringtype'] == 'Trail monitoring'),
+                disabled: true,
+                hint: {
+                  text: "Recording and gathering data on movements of the device wearer throughout the day."
+                },
+                text: "Trail monitoring"
+              },
+             
+              {
+                value: "Alcohol monitoring",
+                checked: (true if data['monitoringtype'] == 'Alcohol monitoring'),
+                disabled: false,
+                hint: {
+                  text: "Measuring alcohol levels of the device wearer or recording they are abstaining from drinking alcohol."
+                },
+                text: "Alcohol monitoring"
+              },
+              {
+                value: "Mandatory attendance monitoring",
+                checked: (true if data['monitoringtype'] == 'Mandatory attendance monitoring'),
+                disabled: true,
+                hint: {
+                  text: "Recording the device wearer's attendance at arranged meetings or places."
+                },
+                text: "Mandatory attendance monitoring"
+              }
+              
+          ]
+        }) }}
+
+  {% else %} 
 
         {{ govukRadios({
             name: "monitoringtype",
@@ -119,7 +263,7 @@
           ]
         }) }}
 
-
+ {% endif %} 
 
 
 
