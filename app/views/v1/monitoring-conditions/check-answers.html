@@ -173,6 +173,22 @@
             </dd>
           </div>
 
+              {% if (data['notifying-org'] == "Probation service") %} 
+
+                <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Are you submitting this form because DAPOL was missed in error at point of release?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['dapol'] or 'No' }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="../otd-old/order-dapol?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
+              </dd>
+            </div>
+
+           {% endif  %}
+
            {% if (data['order-description'] == "GPS acquisitive crime") %} 
 
                 <div class="govuk-summary-list__row">

@@ -60,6 +60,11 @@
                 value: "At a probation office",
                 checked: (true if data['appointmentquestion'] == 'At a probation office'),
                 text: "At a probation office"
+              },
+              {
+                value: "At another address",
+                checked: (true if data['appointmentquestion'] == 'At another address'),
+                text: "At another address"
               }
             ]
           }) }}
@@ -97,11 +102,19 @@
                 value: "At a probation office",
                 checked: (true if data['appointmentquestion'] == 'At a probation office'),
                 text: "At a probation office"
+              },
+              {
+                value: "At another address",
+                checked: (true if data['appointmentquestion'] == 'At another address'),
+                text: "At another address"
               }
             ]
           }) }}
 
   {% endif %} 
+
+  <input type="hidden" id="sectionid" name="sectionid" value="Electronic monitoring required">
+<input type="hidden" id="postcodetype" name="postcodetype" value="installation">
 
     {% from "govuk/components/button/macro.njk" import govukButton %}
 

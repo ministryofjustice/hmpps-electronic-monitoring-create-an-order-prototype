@@ -23,7 +23,7 @@
 
 
       {{ govukInsetText({
-        text: "The device wearer is in the North East probation region. To be eligible for the DAPOL pilot they must live in an in-scope region."
+        text: "The device wearer is being managed by the North East probation region. To be eligible for the DAPOL pilot they must be managed by an in-scope region."
       }) }}
 
       {% else %}  
@@ -36,7 +36,6 @@
 
 
        
-      <form class="form" action="/pilots" method="post">
 
          {% set warningHtml %}
            <p class="govuk-body">This pilot is only for probation practitioners varying a licence in response to an escalation of risk or as an alternative to recall.</p>
@@ -51,6 +50,12 @@
 
 
 {% if (data['order-type'] == "Post release") and (data['hdc'] == "No") %}
+
+
+{% if (data['usertype'] == "Probation") %}
+
+      <form class="form" action="/pilots-probation" method="post">
+
 
             {{ govukRadios({
               classes: "govuk-radios",
@@ -77,12 +82,13 @@
                 {
                   value: "GPS acquisitive crime",
                   checked: (true if data['order-description'] == 'GPS acquisitive crime'),
-                  text: "GPS acquisitive crime"
+                  text: "GPS acquisitive crime (EMAC)"
                 },
                  {
                   value: "Licence Variation Project (Probation only)",
                   checked: (true if data['order-description'] == 'Licence Variation Project (Probation only)'),
                   text: "Licence Variation Project (Probation only)",
+                  classes: ("govuk-visually-hidden" if data['notifying-org'] !== 'Probation service'),
                   conditional: {
                       html: warningHtml
                     }
@@ -103,8 +109,61 @@
               ]
             }) }}
 
+    {% else %}      
+
+          <form class="form" action="/pilots" method="post">
+
+
+                {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "What pilot project is the device wearer part of?",
+                  isPageHeading: true,
+                classes: "govuk-visually-hidden"
+                }
+              },
+
+            hint: {
+              text: ""
+            },
+              items: [
+               
+                {
+                  value: "Domestic Abuse Perpetrator on Licence (DAPOL)",
+                  disabled: (true if data['region'] == 'North East'),
+                  checked: (true if data['order-description'] == 'Domestic Abuse Perpetrator on Licence (DAPOL)'),
+                  text: "Domestic Abuse Perpetrator on Licence (DAPOL)"
+                },
+                {
+                  value: "GPS acquisitive crime",
+                  checked: (true if data['order-description'] == 'GPS acquisitive crime'),
+                  text: "GPS acquisitive crime (EMAC)"
+                },
+
+                 {
+                  divider: "or"
+                },
+                {
+                  value: "They are not part of any of these pilots",
+                  checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
+                  text: "They are not part of any of these pilots",
+                  behaviour: "exclusive",
+                  conditional: {
+                      html: amlHtml
+                    }
+                }
+              ]
+            }) }} 
+    
+    {% endif %}   
+
     {% elseif (data['order-type'] == "Post release") and (data['hdc'] == "Yes") %}
 
+{% if (data['usertype'] == "Probation") %}
+
+      <form class="form" action="/pilots-probation" method="post">
 
 
 
@@ -133,12 +192,13 @@
                 {
                   value: "GPS acquisitive crime",
                   checked: (true if data['order-description'] == 'GPS acquisitive crime'),
-                  text: "GPS acquisitive crime"
+                  text: "GPS acquisitive crime (EMAC)"
                 },
                 {
                   value: "Licence Variation Project (Probation only)",
                   checked: (true if data['order-description'] == 'Licence Variation Project (Probation only)'),
                   text: "Licence Variation Project (Probation only)",
+
                   conditional: {
                       html: warningHtml
                     }
@@ -154,9 +214,60 @@
                   behaviour: "exclusive"
                 }
               ]
-            }) }}        
+            }) }}  
 
-    {% elseif (data['order-type'] == "Civil") %}    
+        {% else %}  
+
+              <form class="form" action="/pilots" method="post">
+
+
+         {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "What pilot project is the device wearer part of?",
+                  isPageHeading: true,
+                classes: "govuk-visually-hidden"
+                }
+              },
+               hint: {
+              text: ""
+            },
+              items: [
+               
+              
+                {
+                  value: "Domestic Abuse Perpetrator on Licence (DAPOL)",
+                  disabled: (true if data['region'] == 'North East'),
+                  checked: (true if data['order-description'] == 'Domestic Abuse Perpetrator on Licence (DAPOL)'),
+                  text: "Domestic Abuse Perpetrator on Licence (DAPOL)"
+                },
+                {
+                  value: "GPS acquisitive crime",
+                  checked: (true if data['order-description'] == 'GPS acquisitive crime'),
+                  text: "GPS acquisitive crime (EMAC)"
+                },
+               
+
+                 {
+                  divider: "or"
+                },
+                {
+                  value: "They are not part of any of these pilots",
+                  checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
+                  text: "They are not part of any of these pilots",
+                  behaviour: "exclusive"
+                }
+              ]
+            }) }}  
+
+        {% endif %}        
+
+    {% elseif (data['order-type'] == "Civil") %}   
+
+          <form class="form" action="/pilots" method="post">
+ 
 
         {{ govukRadios({
               classes: "govuk-radios",

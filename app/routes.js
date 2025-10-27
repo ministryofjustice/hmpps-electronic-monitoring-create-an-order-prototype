@@ -119,10 +119,15 @@ router.post('/contact-address', function(request, response) {
 router.post('/postcode', function(request, response) {
 
     var sectionid = request.session.data['sectionid']
+    var postcodetype = request.session.data['postcodetype']
     if (sectionid == "About the device wearer"){
         response.redirect("/v1/device-wearer/check-answers")
-    } else if (sectionid == "Electronic monitoring required"){
-        response.redirect("/v1/postcode-lookup/address-name")         
+    } else if (postcodetype == "appointment"){
+        response.redirect("/v1/monitoring-conditions/monitoring-needed")       
+    } else if (postcodetype == "curfew"){
+        response.redirect("/v1/postcode-lookup/address-name")    
+    } else if (postcodetype == "installation"){
+        response.redirect("/v1/monitoring-conditions/alcohol")            
     } else {
         response.redirect("/v1/variation-simple/offence")
     }
@@ -265,7 +270,7 @@ router.post('/appointment-address', function(request, response) {
     } else if (appointmentquestion == "At a probation office"){
         response.redirect("/v1/monitoring-conditions/appointment-details") 
     } else if (appointmentquestion == "At another address"){
-        response.redirect("/v1/monitoring-conditions/install-address") 
+        response.redirect("/v1/postcode-lookup/postcode") 
     } else if (monitoringtype == "Trail monitoring (Home Office)"){
         response.redirect("/v1/monitoring-conditions/trail")                 
     } else {
@@ -639,8 +644,27 @@ router.post('/pilots', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     var orderdescription = request.session.data['order-description']
+    var notifyingorg = request.session.data['order-description']
     if (orderdescription == "GPS acquisitive crime"){
         response.redirect("/v1/otd-old/order-aq")         
+
+  } else if (ordertype == "Post release") {
+        response.redirect("/v1/otd-old/order-prrar")    
+   } else {
+        response.redirect("/v1/monitoring-conditions/monitoring-dates")
+    }
+})
+
+router.post('/pilots-probation', function(request, response) {
+
+    var ordertype = request.session.data['order-type']
+    var orderdescription = request.session.data['order-description']
+    var notifyingorg = request.session.data['order-description']
+    if (orderdescription == "GPS acquisitive crime"){
+        response.redirect("/v1/otd-old/order-aq")  
+
+  } else if (orderdescription == "Domestic Abuse Perpetrator on Licence (DAPOL)") {
+    response.redirect("/v1/otd-old/order-dapol")        
 
   } else if (ordertype == "Post release") {
         response.redirect("/v1/otd-old/order-prrar")    

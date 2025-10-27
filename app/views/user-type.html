@@ -1,0 +1,61 @@
+{% extends "layouts/moj-signedout-service.html" %}
+
+{% set pageName="Start - Electronic Monitoring" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+ 
+
+
+
+       <form class="form" action="start" method="post">
+
+      
+      
+            {{ govukRadios({
+              classes: "govuk-radios",
+              name: "usertype",
+              fieldset: {
+                legend: {
+                  text: "Select the type of user",
+                  isPageHeading: true,
+                   classes: "govuk-fieldset__legend--l"
+                }
+              },
+               hint: {
+              text: ""
+            },
+              items: [
+               
+              
+                {
+                  value: "Prison or Youth",
+                  checked: (true if data['usertype'] == 'Prison or Youth'),
+                  text: "Prison or Youth"
+                },
+                {
+                  value: "Probation",
+                  checked: (true if data['usertype'] == 'Probation'),
+                  text: "Probation"
+                },
+                {
+                  value: "Home Office",
+                  checked: (true if data['usertype'] == 'Home Office'),
+                  text: "Home Office (Coming soon)"
+                }
+              ]
+            }) }}  
+
+
+       {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+    
+  </div>
+</div>
+
+{% endblock %}
