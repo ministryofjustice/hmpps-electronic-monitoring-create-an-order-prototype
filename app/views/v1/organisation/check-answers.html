@@ -213,6 +213,25 @@
             </dd>
           </div>-->
 
+           {% if (data['officer-org'] == "Police") %}
+
+  <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+         What is the Responsible Organisation's  Police Force Area?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['policearea'] or 'Northumberland' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               
+                  <a class="govuk-link" href="region-police?cya2=true">Change<span class="govuk-visually-hidden">  What is the Responsible Organisation's Probation Delivery Unit (PDU)? </span></a>
+                </li>
+                
+            </dd>
+          </div>
+
+   {% endif %}     
+
 
 
 

@@ -26,6 +26,15 @@
         text: "The device wearer is being managed by the North East probation region. To be eligible for the DAPOL pilot they must be managed by an in-scope region."
       }) }}
 
+  
+
+       {% elseif (data['region'] == "London") and (data['usertype'] == "Probation") %}
+
+
+      {{ govukInsetText({
+        text: "The device wearer is being managed by the London probation region. To be eligible for the Licence Variation pilot they must be managed by an in-scope region."
+      }) }}
+
       {% else %}  
 
 
@@ -85,9 +94,10 @@
                   text: "GPS acquisitive crime (EMAC)"
                 },
                  {
-                  value: "Licence Variation Project (Probation only)",
-                  checked: (true if data['order-description'] == 'Licence Variation Project (Probation only)'),
-                  text: "Licence Variation Project (Probation only)",
+                  value: "Licence Variation Project",
+                  checked: (true if data['order-description'] == 'Licence Variation Project'),
+                  disabled: (true if data['region'] == 'London'),
+                  text: "Licence Variation Project",
                   classes: ("govuk-visually-hidden" if data['notifying-org'] !== 'Probation service'),
                   conditional: {
                       html: warningHtml
@@ -195,9 +205,10 @@
                   text: "GPS acquisitive crime (EMAC)"
                 },
                 {
-                  value: "Licence Variation Project (Probation only)",
-                  checked: (true if data['order-description'] == 'Licence Variation Project (Probation only)'),
-                  text: "Licence Variation Project (Probation only)",
+                  value: "Licence Variation Project",
+                  checked: (true if data['order-description'] == 'Licence Variation Project'),
+                  disabled: (true if data['region'] == 'London'),
+                  text: "Licence Variation Project",
 
                   conditional: {
                       html: warningHtml

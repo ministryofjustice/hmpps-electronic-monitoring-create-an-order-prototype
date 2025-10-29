@@ -59,6 +59,41 @@
             ]
           }) }}
 
+           {% elseif (data['notifying-org'] == 'Family Court') or (data['notifying-org'] == 'Civil and County Court')  %}
+
+           {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "licencequestion",
+            fieldset: {
+              legend: {
+                text: "Do you have a court order document to upload?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['licencequestion'] == 'Yes'),
+                conditional: {
+                
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (true if data['licencequestion'] == 'No'),
+                conditional: {
+                 
+                }
+              }
+            ]
+          }) }}
+
           {% else %}
 
           {{ govukFileUpload({

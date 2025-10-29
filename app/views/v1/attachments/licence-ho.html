@@ -17,7 +17,7 @@
            <form class="form" action="check-answers-view" method="post">
 
          {% else %}
-            <form class="form" action="photo" method="post">
+            <form class="form" action="photo-question" method="post">
 
            {% endif %}
      
@@ -25,7 +25,7 @@
         <span class="govuk-caption-l">Additional documents</span>
 
      
-
+         {% if (data['notifying-org'] == 'Home Office') %}
           {{ govukFileUpload({
             id: "licence",
             name: "licence",
@@ -39,6 +39,23 @@
             }
           }) }}
 
+         {% else %}
+
+          {{ govukFileUpload({
+            id: "licence",
+            name: "licence",
+            isPageHeading: true,
+            label: {
+              text: "Upload a copy of the licence or court order document",
+              classes: 'govuk-label--l'
+            },
+            hint: {
+              text: 'Upload a scanned copy or photo of the original licence or court order document. If the licence is draft upload a copy of that. You will be able to change the order once you have the final version of the licence. The file must be a PDF or Word document and under 25MB in size. '
+            }
+          }) }}
+
+
+         {% endif %}
          
 
 

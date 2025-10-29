@@ -558,9 +558,7 @@ router.post('/licence-question', function(request, response) {
     var notifyingorg = request.session.data['notifying-org']
     var licencequestion = request.session.data['licencequestion']
     if (licencequestion == "Yes"){
-        response.redirect("/v1/attachments/licence-ho")
-    } else if (notifyingorg == "Home Office"){
-        response.redirect("/v1/attachments/photo")    
+        response.redirect("/v1/attachments/licence-ho")  
     } else {
         response.redirect("/v1/attachments/photo-question")
     }
@@ -595,7 +593,9 @@ router.post('/region', function(request, response) {
     } else if (officerorg == "Youth Justice Service (YJS)"){
         response.redirect("/v1/organisation/region")
     } else if (officerorg == "Youth Custody Service (YCS)"){
-        response.redirect("/v1/organisation/region")    
+        response.redirect("/v1/organisation/region") 
+     } else if (officerorg == "Police"){
+        response.redirect("/v1/organisation/region-police")           
     } else {
         response.redirect("/v1/organisation/check-answers")
     }
