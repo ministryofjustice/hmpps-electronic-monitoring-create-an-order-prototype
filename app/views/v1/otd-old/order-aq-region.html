@@ -22,10 +22,17 @@
 
 
        
-      <form class="form" action="order-prrar" method="post">
+      <form class="form" action="/order-aq-region" method="post">
+
+         {% set acHtml %}
+           <p class="govuk-body">You can't continue and must contact probation or the parole board. To be eligible for the acquisitive crime pilot the device wearer must have committed an acquisitive offence. </p>
+
+           
+            {% endset -%}
 
 
-{% if (data['order-description'] == "GPS acquisitive crime") %}      
+
+
 
         <div class="govuk-form-group">
             <fieldset class="govuk-fieldset">
@@ -35,7 +42,7 @@
                 </h1>
               </legend>
               <div id="region-eligibility-hint" class="govuk-hint">
-                To be eligible for the acquisitive crime pilot the device wearer's release address must be in an in-scope police area. Use the <a target=blank href="https://www.police.uk/pu/your-area/">police force lookup (opens in a new tab)</a> to check which police force area the device wearer release address is in.
+                To be eligible for the acquisitive crime pilot the device wearer's release address must be in an in-scope police area. Use the <a target=blank href="https://www.police.uk/pu/your-area/">police force lookup (opens in a new tab)</a> to check which police force area the device wearer release address is in. 
               </div>
 
          
@@ -155,87 +162,20 @@
                       West Midlands
                     </label>
                   </div>
-                 
-                </div>
+                <div class="govuk-radios__divider">or</div>
+                    <div class="govuk-radios" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="region-eligibility19" name="region-eligibility" type="radio" value="The device wearer's release address is in a different police force area">
+                      <label class="govuk-label govuk-radios__label" for="region-eligibility19">
+                        The device wearer's release address is in a different police force area
+                      </label>
+                    </div>
+                  
             </fieldset>
           </div>
 
        
-{% else %}   
 
-  <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset">
-              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                <h1 class="govuk-fieldset__heading">
-                 Which probation region does the device wearer live in?
-                </h1>
-              </legend>
-            <div id="region-eligibility-hint" class="govuk-hint">
-                To be eligible for the DAPOL pilot the device wearer must live in an in-scope probation region. 
-              </div>
-              
-
-              <div class="govuk-radios" data-module="govuk-radios">
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="region-eligibility" name="region-eligibility" type="radio" value="London">
-                    <label class="govuk-label govuk-radios__label" for="region-eligibility">
-                      London
-                    </label>
-                  </div>
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="region-eligibility1" name="region-eligibility" type="radio" value="East of England">
-                    <label class="govuk-label govuk-radios__label" for="region-eligibility1">
-                      East of England
-                    </label>
-                  </div>
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="region-eligibility2" name="region-eligibility" type="radio" value="South West">
-                    <label class="govuk-label govuk-radios__label" for="region-eligibility2">
-                      South West
-                    </label>
-                  </div>
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="region-eligibility3" name="region-eligibility" type="radio" value="Kent Surrey & Sussex">
-                    <label class="govuk-label govuk-radios__label" for="region-eligibility3">
-                      Kent Surrey & Sussex
-                    </label>
-                  </div>
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="region-eligibility4" name="region-eligibility" type="radio" value="Wales">
-                    <label class="govuk-label govuk-radios__label" for="region-eligibility4">
-                      Wales
-                    </label>
-                  </div>
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="region-eligibility5" name="region-eligibility" type="radio" value="South Central">
-                    <label class="govuk-label govuk-radios__label" for="region-eligibility5">
-                      South Central
-                    </label>
-                  </div>
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="region-eligibility6" name="region-eligibility" type="radio" value="East Midlands">
-                    <label class="govuk-label govuk-radios__label" for="region-eligibility6">
-                      East Midlands
-                    </label>
-                  </div>
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="region-eligibility7" name="region-eligibility" type="radio" value="West Midlands">
-                    <label class="govuk-label govuk-radios__label" for="region-eligibility7">
-                      West Midlands
-                    </label>
-                  </div>
-                 
-                 
-                </div>
-            </fieldset>
-          </div>
-
-              
-
-
-         
-       
-{% endif %}     
 
        
 

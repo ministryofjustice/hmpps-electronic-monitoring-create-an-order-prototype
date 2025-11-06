@@ -88,8 +88,14 @@
 
             {% if (data['clarification'] == 'true') %}
             New order (original order was rejected)
-            {% elseif (data['variation'] == 'true') %}
+            {% elseif (data['sr-type'] == "I have changed something else in the form") %}
             Change to an order 
+            {% elseif (data['sr-type'] == "I need monitoring equipment installed at a new address") %}
+            Install at new address
+            {% elseif (data['sr-type'] == "I need monitoring equipment reinstalled or checked") %}
+            Reinstall equipment
+            {% elseif (data['sr-type'] == "I need to end all monitoring for the device wearer") %}
+            All monitoring ended early
             {% else  %} 
             New order
             {% endif  %} 
@@ -160,19 +166,24 @@
              
                 
             </dd>
-          </div>
-           <div class="govuk-summary-list__row">
+        </div>
+             {% if (data['sr-type'] == "I have changed something else in the form") %}
+
+          <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
             What have you changed in the form?
             </dt>
             <dd class="govuk-summary-list__value">
-           I have changed something else in the form
+             {{ data['variation-type'] or "The device wearer's personal details" }}
             </dd>
             <dd class="govuk-summary-list__actions">
              
                 
-            </dd>
+        
+           </dd>
           </div>
+
+          {% endif %}
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">

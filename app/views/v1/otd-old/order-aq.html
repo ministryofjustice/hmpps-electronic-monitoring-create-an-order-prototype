@@ -22,7 +22,13 @@
 
 
        
-      <form class="form" action="order-aq-region" method="post">
+      <form class="form" action="/order-aq" method="post">
+
+          {% set acHtml %}
+           <p class="govuk-body">You can't continue and must contact probation or the parole board. To be eligible for the acquisitive crime pilot the device wearer must have committed an acquisitive offence. </p>
+
+           
+            {% endset -%}
 
 
 
@@ -38,7 +44,7 @@
               },
 
             hint: {
-              text: "To be eligible for the acquisitive crime pilot the device wearer must have committed an acquisitive offence. It needs to be their longest or equal longest sentence."
+              text: "To be eligible for the acquisitive crime pilot the device wearer must have committed an acquisitive offence. It needs to be their longest or equal longest sentence.  "
             },
               items: [
                
@@ -91,6 +97,15 @@
                   value: "Robbery",
                   checked: (true if data['order-aq'] == 'Robbery'),
                   text: "Robbery"
+                },
+                 {
+                  divider: "or"
+                },
+                {
+                  value: "They did not commit one of these offences",
+                  checked: (true if data['order-aq'] == 'They did not commit one of these offences'),
+                  text: "They did not commit one of these offences",
+                  behaviour: "exclusive"
                 }
               ]
             }) }}

@@ -605,7 +605,7 @@ router.post('/order-type', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     if (ordertype == "Civil"){
-        response.redirect("/v1/monitoring-conditions/monitoring-dates")
+        response.redirect("/v1/monitoring-conditions/monitoring-details")
     } else if (ordertype == "Post release"){
         response.redirect("/v1/otd-old/order-sentence") 
     } else if (ordertype == "Community"){
@@ -615,7 +615,7 @@ router.post('/order-type', function(request, response) {
     } else if (ordertype == "Pre trial"){
         response.redirect("/v1/otd-old/order-sentence")          
     } else {
-        response.redirect("/v1/monitoring-conditions/monitoring-dates")
+        response.redirect("/v1/monitoring-conditions/monitoring-details")
     }
 })
 
@@ -651,7 +651,7 @@ router.post('/pilots', function(request, response) {
   } else if (ordertype == "Post release") {
         response.redirect("/v1/otd-old/order-prrar")    
    } else {
-        response.redirect("/v1/monitoring-conditions/monitoring-dates")
+        response.redirect("/v1/monitoring-conditions/monitoring-details")
     }
 })
 
@@ -669,7 +669,7 @@ router.post('/pilots-probation', function(request, response) {
   } else if (ordertype == "Post release") {
         response.redirect("/v1/otd-old/order-prrar")    
    } else {
-        response.redirect("/v1/monitoring-conditions/monitoring-dates")
+        response.redirect("/v1/monitoring-conditions/monitoring-details")
     }
 })
 
@@ -705,7 +705,7 @@ router.post('/order-sentence', function(request, response) {
     } else if (ordersentence == "Detention and Training Order (DTO)") {
         response.redirect("/v1/otd-old/order-issp")      
     } else if (ordertype == "Community") {
-        response.redirect("/v1/monitoring-conditions/monitoring-dates")        
+        response.redirect("/v1/monitoring-conditions/monitoring-details")        
     } else if (ordersentence == "Standard Determinate Sentence") {
         response.redirect("/v1/otd-old/order-hdc")
     } else {
@@ -731,7 +731,7 @@ router.post('/order-issp', function(request, response) {
     if (ordersentence == "Detention and Training Order (DTO)"){
         response.redirect("/v1/otd-old/order-prrar") 
     } else {
-        response.redirect("/v1/monitoring-conditions/monitoring-dates")
+        response.redirect("/v1/monitoring-conditions/monitoring-details")
     }
 })
 
@@ -761,7 +761,7 @@ router.post('/order-description', function(request, response) {
     if (ordertype == "Release from prison"){
         response.redirect("/v1/monitoring-conditions/order-prrar") 
     } else {
-        response.redirect("/v1/monitoring-conditions/monitoring-dates")
+        response.redirect("/v1/monitoring-conditions/monitoring-details")
     }
 })
 
@@ -897,6 +897,39 @@ router.post('/identity-numbers', function(request, response) {
         response.redirect("/v1/variation-simple/personal-details")
     }
 })
+
+router.post('/language', function(request, response) {
+
+    var notifyingorg = request.session.data['notifying-org']
+    if (notifyingorg == "Family Court"){
+        response.redirect("/v1/installation/risk-dapo")  
+    } else if (notifyingorg == "Civil and County Court") {
+        response.redirect("/v1/installation/risk-civil")     
+    } else {
+        response.redirect("/v1/installation/risk")
+    }
+})
+
+router.post('/order-aq', function(request, response) {
+
+    var orderaq = request.session.data['order-aq']
+    if (orderaq == "They did not commit one of these offences"){
+        response.redirect("/v1/otd-old/hard-stop")     
+    } else {
+        response.redirect("/v1/otd-old/order-aq-region")
+    }
+})
+
+router.post('/order-aq-region', function(request, response) {
+
+    var regioneligibility = request.session.data['region-eligibility']
+    if (regioneligibility == "The device wearer's release address is in a different police force area"){
+        response.redirect("/v1/otd-old/hard-stop")     
+    } else {
+        response.redirect("/v1/otd-old/order-prrar")
+    }
+})
+
 
 
 
