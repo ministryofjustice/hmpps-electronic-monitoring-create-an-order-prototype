@@ -931,6 +931,24 @@ router.post('/order-aq-region', function(request, response) {
 })
 
 
+router.post('/org-details', function(request, response) {
+
+    var notifyingorg = request.session.data['notifying-org']
+    if (notifyingorg == "Prison service"){
+        response.redirect("/v1/organisation/responsible-officer") 
+    } else if (notifyingorg == "Probation service") {
+        response.redirect("/v1/organisation/responsible-officer")  
+    } else if (notifyingorg == "Youth Custody Service (YCS)") {
+        response.redirect("/v1/organisation/responsible-officer") 
+    } else if (notifyingorg == "Home Office") {
+        response.redirect("/v1/organisation/responsible-officer")                  
+    } else {
+        response.redirect("/v1/organisation/org-contact")
+    }
+})
+
+
+
 
 
 
