@@ -30,6 +30,17 @@
          {% endif %}-->
 
 
+         {% if (data['postcodetype'] == "installation") %}
+
+       <p class="govuk-body"> 
+         For example, the address of the prison or probation office.</p>
+
+         {% endif %}
+
+
+
+
+
         {{ govukInput({
         label: {
           text: "Postcode",
