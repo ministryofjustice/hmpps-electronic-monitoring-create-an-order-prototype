@@ -274,7 +274,7 @@ router.post('/appointment-address', function(request, response) {
     } else if (monitoringtype == "Trail monitoring (Home Office)"){
         response.redirect("/v1/monitoring-conditions/trail")                 
     } else {
-        response.redirect("/v1/monitoring-conditions/alcohol")
+        response.redirect("/v1/monitoring-conditions/check-answers")
     }
 })
 
@@ -292,7 +292,7 @@ router.post('/appointment-address2', function(request, response) {
     } else if (monitoringtype2 == "Trail monitoring (Home Office)"){
         response.redirect("/v1/monitoring-conditions/trail")                 
     } else {
-        response.redirect("/v1/monitoring-conditions/alcohol")
+        response.redirect("/v1/monitoring-conditions/check-answers")
     }
 })
 
@@ -398,7 +398,7 @@ router.post('/monitoring-type', function(request, response) {
     } else if (monitoringtype == "Mandatory attendance monitoring"){
         response.redirect("/v1/monitoring-conditions/attendance")      
     } else {
-        response.redirect("/v1/monitoring-conditions/appointment-question")
+        response.redirect("/v1/monitoring-conditions/alcohol")
     }
 })
 
@@ -419,7 +419,7 @@ router.post('/install-type', function(request, response) {
     } else if (monitoringtype == "Mandatory attendance monitoring"){
         response.redirect("/v1/monitoring-conditions/attendance")      
     } else {
-        response.redirect("/v1/monitoring-conditions/alcohol")
+        response.redirect("/v1/monitoring-conditions/check-answers")
     }
 })
 
@@ -440,7 +440,7 @@ router.post('/monitoring-type2', function(request, response) {
     } else if (monitoringtype2 == "Mandatory attendance monitoring"){
         response.redirect("/v1/monitoring-conditions/attendance")      
     } else {
-        response.redirect("/v1/monitoring-conditions/appointment-question")
+        response.redirect("/v1/monitoring-conditions/alcohol")
     }
 })
 
@@ -461,7 +461,7 @@ router.post('/install-type2', function(request, response) {
     } else if (monitoringtype2 == "Mandatory attendance monitoring"){
         response.redirect("/v1/monitoring-conditions/attendance")      
     } else {
-        response.redirect("/v1/monitoring-conditions/alcohol")
+        response.redirect("/v1/monitoring-conditions/check-answers")
     }
 })
 
@@ -525,8 +525,15 @@ router.post('/inclusion-question', function(request, response) {
 router.post('/monitoring-list', function(request, response) {
 
     var monitoringtypesquestion = request.session.data['monitoringtypesquestion']
+    var monitoringtype = request.session.data['monitoringtype']
+    var monitoringtype2 = request.session.data['monitoringtype2']
     if (monitoringtypesquestion == "Yes"){
         response.redirect("/v1/monitoring-conditions/monitoring-details2")
+
+    } else if (monitoringtype == "Alcohol monitoring"){
+        response.redirect("/v1/monitoring-conditions/appointment-question") 
+    } else if (monitoringtype2 == "Alcohol monitoring"){
+        response.redirect("/v1/monitoring-conditions/appointment-question")        
     } else {
         response.redirect("/v1/monitoring-conditions/check-answers")
     }
@@ -593,9 +600,7 @@ router.post('/region', function(request, response) {
     } else if (officerorg == "Youth Justice Service (YJS)"){
         response.redirect("/v1/organisation/region")
     } else if (officerorg == "Youth Custody Service (YCS)"){
-        response.redirect("/v1/organisation/region") 
-     } else if (officerorg == "Police"){
-        response.redirect("/v1/organisation/region-police")           
+        response.redirect("/v1/organisation/region")           
     } else {
         response.redirect("/v1/organisation/check-answers")
     }
@@ -948,6 +953,25 @@ router.post('/org-details', function(request, response) {
 })
 
 
+router.post('/risk-list', function(request, response) {
+
+    var offencelistquestion = request.session.data['offencelistquestion']
+    if (offencelistquestion == "Yes"){
+        response.redirect("/v1/installation/risk-civil")     
+    } else {
+        response.redirect("/v1/installation/risk-1")
+    }
+})
+
+router.post('/risk-listdapo', function(request, response) {
+
+    var dapoquestion = request.session.data['dapoquestion']
+    if (dapoquestion == "Yes"){
+        response.redirect("/v1/installation/risk-dapo")     
+    } else {
+        response.redirect("/v1/installation/risk-2")
+    }
+})
 
 
 

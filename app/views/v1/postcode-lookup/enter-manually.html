@@ -33,6 +33,14 @@
        <span class="govuk-caption-l"> {{ data['sectionid'] or 'About the device wearer'}}</span>
          <h1 class="govuk-heading-l">What is the {{ data['postcodetype'] or "device wearer's"}} address?</h1>
 
+         {% if (data['postcodetype'] == "installation") %}
+
+       <p class="govuk-body"> 
+         For installation at source this is the address of the prison or probation office.</p>
+
+         {% endif %}
+
+
       {% call govukFieldset({
         legend: {
           text: "Add address",

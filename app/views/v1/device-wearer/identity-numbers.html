@@ -146,12 +146,13 @@
             text: "Select and enter all identity numbers that you have for the device wearer."
           },
           items: [
+            
             {
-              value: "Prison number",
-              checked: (true if data['prison'] !== NULL and data['prison'] !== ''),
-              text: "Prison number",
+              value: "Police National Computer (PNC)",
+              checked: (true if data['pnc'] !== NULL and data['pnc'] !== ''),
+              text: "Police National Computer (PNC)",
               conditional: {
-                html: prisonHtml
+                html: pncHtml
               }
             },
             {
@@ -163,11 +164,11 @@
               }
             },
             {
-              value: "Police National Computer (PNC)",
-              checked: (true if data['pnc'] !== NULL and data['pnc'] !== ''),
-              text: "Police National Computer (PNC)",
+              value: "Prison number",
+              checked: (true if data['prison'] !== NULL and data['prison'] !== ''),
+              text: "Prison number",
               conditional: {
-                html: pncHtml
+                html: prisonHtml
               }
             },
             {
@@ -195,7 +196,13 @@
               conditional: {
                 html: urnHtml
               }
-            },
+            }
+          ]
+        }) }}
+
+        <!--
+
+        ,
             {
               value: "Magistrate Court Case Reference Number",
               checked: (true if data['mrn'] !== NULL and data['mrn'] !== ''),
@@ -204,8 +211,8 @@
                 html: mrnHtml
               }
             }
-          ]
-        }) }}
+
+        -->
 
        
 

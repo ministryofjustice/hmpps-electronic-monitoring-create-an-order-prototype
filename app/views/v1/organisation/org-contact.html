@@ -23,7 +23,11 @@
 
         <p>The Responsible Organisation is the service the Responsible Officer is part of. For example, the Responsible Organisation for a probation officer is the Probation Service.</p>
 
+{% set policeHtml %}
 
+             {% include "/includes/police.html" %}
+            
+            {% endset -%}
 
 
        
@@ -63,7 +67,10 @@
               {
                 value: "Police",
                 checked: (true if data['officer-org'] == 'Police'),
-                text: "Police"
+                text: "Police",
+                 conditional: {
+                    html: policeHtml
+                  }
                 
               },
                {
