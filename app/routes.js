@@ -269,6 +269,8 @@ router.post('/appointment-address', function(request, response) {
         response.redirect("/v1/monitoring-conditions/appointment-details")  
     } else if (appointmentquestion == "At a probation office"){
         response.redirect("/v1/monitoring-conditions/appointment-details") 
+    } else if (appointmentquestion == "At an immigration removal centre"){
+        response.redirect("/v1/monitoring-conditions/appointment-details")     
     } else if (appointmentquestion == "At another address"){
         response.redirect("/v1/postcode-lookup/postcode") 
     } else if (monitoringtype == "Trail monitoring (Home Office)"){
@@ -394,7 +396,7 @@ router.post('/monitoring-type', function(request, response) {
     } else if (monitoringtype == "Trail monitoring"){
         response.redirect("/v1/monitoring-conditions/trail") 
     } else if (monitoringtype == "Trail monitoring (Home Office)"){
-        response.redirect("/v1/monitoring-conditions/appointment-question")    
+        response.redirect("/v1/monitoring-conditions/trail")    
     } else if (monitoringtype == "Mandatory attendance monitoring"){
         response.redirect("/v1/monitoring-conditions/attendance")      
     } else {
@@ -436,7 +438,7 @@ router.post('/monitoring-type2', function(request, response) {
     } else if (monitoringtype2 == "Trail monitoring"){
         response.redirect("/v1/monitoring-conditions/trail")   
     } else if (monitoringtype2 == "Trail monitoring (Home Office)"){
-        response.redirect("/v1/monitoring-conditions/appointment-question")  
+        response.redirect("/v1/monitoring-conditions/trail")  
     } else if (monitoringtype2 == "Mandatory attendance monitoring"){
         response.redirect("/v1/monitoring-conditions/attendance")      
     } else {
@@ -533,7 +535,11 @@ router.post('/monitoring-list', function(request, response) {
     } else if (monitoringtype == "Alcohol monitoring"){
         response.redirect("/v1/monitoring-conditions/appointment-question") 
     } else if (monitoringtype2 == "Alcohol monitoring"){
-        response.redirect("/v1/monitoring-conditions/appointment-question")        
+        response.redirect("/v1/monitoring-conditions/appointment-question") 
+    } else if (monitoringtype == "Trail monitoring (Home Office)"){
+        response.redirect("/v1/monitoring-conditions/appointment-question") 
+    } else if (monitoringtype2 == "Trail monitoring (Home Office)"){
+        response.redirect("/v1/monitoring-conditions/appointment-question")            
     } else {
         response.redirect("/v1/monitoring-conditions/check-answers")
     }

@@ -12,22 +12,24 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-       <span class="govuk-caption-l">Access needs and installation risk</span>
 
-    <!--  <h1 class="govuk-heading-l">
+  <h1 class="govuk-heading-l">
        <span class="govuk-caption-l">Access needs and installation risk</span>
-      Offence committed
-      </h1>-->
+      Offence details
+      </h1>
 
        {% if (data['cya3'] == "true") %}
 
-        <form class="form" action="risk-date" method="post">
+        <form class="form" action="risk-list" method="post">
 
         {% else %}
 
-       <form class="form" action="risk-date" method="post">
+       <form class="form" action="risk-list" method="post">
 
         {% endif %}
+
+         <p>Enter details of the offence the device wearer has committed. You will be able to add more offences later if you need to.</p>
+
 
 
 
@@ -37,13 +39,11 @@
             fieldset: {
               legend: {
                 text: "What type of offence did the device wearer commit?",
-                 isPageHeading: true,
-                classes: "govuk-fieldset__legend--l"
+                 isPageHeading: false,
+                classes: "govuk-fieldset__legend--s"
               }
             },
-            hint: {
-              text: "Select one, if you need to you will be able to add other offences later"
-            },
+        
             items: [
               {
                 value: "Violence against the person",
@@ -115,6 +115,56 @@
               }
             ]
           }) }}
+
+
+           {{ govukDateInput({
+      id: "offence-date",
+      name: "offencelistquestion",
+      fieldset: {
+        legend: {
+          text: "What was the date of the offence?",
+          isPageHeading: false,
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      hint: {
+        text: "For example, 31 3 1980"
+      },
+      items: [
+        {
+          id: "person[0][dob][day]",
+          name: "offenceday",
+          label: "Day",
+          classes: "govuk-input--width-2",
+          attributes: {
+            "data-name": "person[%index%][dob][day]",
+            "data-id": "person[%index%][dob][day]"
+          }
+        },
+        {
+          id: "person[0][dob][month]",
+          name: "offencemonth",
+          label: "Month",
+          classes: "govuk-input--width-2",
+          attributes: {
+            "data-name": "person[%index%][dob][month]",
+            "data-id": "person[%index%][dob][month]"
+          }
+        },
+        {
+          id: "person[0][dob][year]",
+          name: "offenceyear",
+          label: "Year",
+          classes: "govuk-input--width-4",
+          attributes: {
+            "data-name": "person[%index%][dob][year]",
+            "data-id": "person[%index%][dob][year]"
+          }
+        }
+      ]
+    }) }}
+
+  
 
   
 
