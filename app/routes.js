@@ -950,8 +950,6 @@ router.post('/org-details', function(request, response) {
     } else if (notifyingorg == "Probation service") {
         response.redirect("/v1/organisation/responsible-officer")  
     } else if (notifyingorg == "Youth Custody Service (YCS)") {
-        response.redirect("/v1/organisation/responsible-officer") 
-    } else if (notifyingorg == "Home Office") {
         response.redirect("/v1/organisation/responsible-officer")                  
     } else {
         response.redirect("/v1/organisation/org-contact")

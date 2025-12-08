@@ -1,0 +1,31 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Page not found - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">You do not have access to view this order</h1>
+
+
+       <p>Access is restricted to some orders. </p>
+       <p>If you work for the Home Office and think you should be able to view this Electronic Monitoring Order email <a href="mailto:hoieorders@ems.co.uk">Email address TBC</a>.</p></p>
+
+       {{ govukButton({
+              text: "Go back to the start",
+              href: '#',
+              classes: "govuk-button"
+            }) }}
+
+
+
+    </div>
+  </div>
+{% endblock %}
