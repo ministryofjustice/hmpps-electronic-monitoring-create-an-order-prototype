@@ -138,17 +138,19 @@
            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
 
-             {% if (data['usertype'] == "Prison or Youth") %}
+         {% if (data['usertype'] == "Prison or Youth") %}
 
-                    <div class="govuk-phase-banner" style=" margin:20px 0 0px 0;">
-              <p>
-                 Showing:
-                 <strong style="margin-right:10px;"> 
-                    Berwyn Prison    
-                 </strong>
-                   <a class="govuk-link" href="#">Change location</a>
-                 </p>
-          </div>
+           
+            <div class="govuk-phase-banner" style=" padding-bottom:20px">
+              <label class="govuk-label" for="sort">
+                Showing:
+              </label>
+              <select class="govuk-select" id="sort" name="sort">
+                <option value="published">All prisons</option>
+                <option value="updated" selected>Berwyn Prison</option>
+       
+              </select>
+            </div>
 
           {% else %} 
 
@@ -165,6 +167,7 @@
                   <thead class="govuk-table__head">
                     <tr class="govuk-table__row">
                       <th scope="col" class="govuk-table__header">Name</th>
+             
                       <th scope="col" class="govuk-table__header">Date of birth</th>
                        <th scope="col" class="govuk-table__header">Personal ID number</th>
                        <th scope="col" class="govuk-table__header">Town or city</th>
@@ -177,6 +180,7 @@
                   <tbody class="govuk-table__body">
                     <tr class="govuk-table__row">
                       <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=false&fullname=David Murphy&newform=true&clarification=false">David Murphy</a></td>
+                    
                       <td class="govuk-table__cell">19/01/2001</td>
                       <td class="govuk-table__cell">AYEDFE</td>
                       <td class="govuk-table__cell">Glossop</td>
@@ -191,7 +195,8 @@
                     </tr>
                      <tr class="govuk-table__row">
                       <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=true&view-variation=false&fullname=David Murphy&newform=true&clarification=false">David Murphy</a></td>
-                      <td class="govuk-table__cell">05/06/1974</td>
+            
+                      <td class="govuk-table__cell">05/06/2010</td>
                       <td class="govuk-table__cell">JHADCT</td>
                       <td class="govuk-table__cell">Salford</td>
                       <td class="govuk-table__cell">01/09/2024</td>
@@ -205,6 +210,7 @@
                     </tr>
                      <tr class="govuk-table__row">
                       <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=cancelled&fullname=David Murphy&newform=true&clarification=false">David Murphy</a></td>
+            
                       <td class="govuk-table__cell">21/04/1990</td>
                       <td class="govuk-table__cell">FACRDF<br>D125433</td>
                       <td class="govuk-table__cell">Birchwood</td>

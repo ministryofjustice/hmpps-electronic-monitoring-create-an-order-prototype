@@ -1,0 +1,143 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   MAPPA details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Access needs and installation risk</span>
+        MAPPA
+      </h1>
+     
+
+      <form class="form" action="mappa-3" method="post">
+
+        
+         
+
+          {{ govukRadios({
+            name: "mappa-level",
+            fieldset: {
+              legend: {
+                text: "Which level of MAPPA applies to the device wearer? (optional)",
+                 isPageHeading: false,
+                 classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "MAPPA 1",
+                text: "MAPPA 1",
+                hint: {
+                  text: "Ordinary agency management, where the offender can be managed by the lead agency in consultation with other agencies involved."
+                },
+                checked: (true if data['mappa-level'] == 'MAPPA 1')
+         
+                
+                },
+              {
+                value: "MAPPA 2",
+                text: "MAPPA 2",
+                hint: {
+                  text: "For cases where active interagency management is required in order to manage the risk of serious harm posed."
+                },
+                checked: (true if data['mappa-level'] == 'MAPPA 2')
+
+                 
+                },
+              {
+                value: "MAPPA 3",
+                text: "MAPPA 3",
+                 hint: {
+                  text: "For the most complex cases which require active interagency management by Senior Managers from the agencies involved."
+                },
+                checked: (true if data['mappa-level'] == 'MAPPA 3')
+                 
+                }
+            ]
+          }) }}
+
+           {{ govukRadios({
+            name: "mappa-type",
+            fieldset: {
+              legend: {
+                text: "Which category of MAPPA applies to the device wearer? (optional)",
+                isPageHeading: false,
+                 classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Category 1",
+                text: "Category 1",
+                hint: {
+                  text: "All registered sexual offenders."
+                },
+                checked: (true if data['mappa-type'] == 'Category 1')
+         
+                
+                },
+              {
+                value: "Category 2",
+                text: "Category 2",
+                hint: {
+                  text: "Violent or other sex offenders not subject to notification requirements."
+                },
+                checked: (true if data['mappa-type'] == 'Category 2')
+
+                 
+                },
+              {
+                value: "Category 3",
+                text: "Category 3",
+                hint: {
+                  text: "Other dangerous offenders."
+                },
+                checked: (true if data['mappa-type'] == 'Category 3')
+                 
+                }
+            ]
+          }) }}
+
+
+
+         
+
+     
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}
