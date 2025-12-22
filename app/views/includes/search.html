@@ -169,6 +169,10 @@
                       <th scope="col" class="govuk-table__header">Name</th>
              
                       <th scope="col" class="govuk-table__header">Date of birth</th>
+                       {% if (data['usertype'] == "Prison or Youth") %}
+                       <th scope="col" class="govuk-table__header">Youth</th>
+                       {% endif %}   
+
                        <th scope="col" class="govuk-table__header">Personal ID number</th>
                        <th scope="col" class="govuk-table__header">Town or city</th>
                        <th scope="col" class="govuk-table__header">Start date</th>
@@ -182,6 +186,9 @@
                       <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=false&fullname=David Murphy&newform=true&clarification=false">David Murphy</a></td>
                     
                       <td class="govuk-table__cell">19/01/2001</td>
+                       {% if (data['usertype'] == "Prison or Youth") %}
+                       <td class="govuk-table__cell"></td>
+                       {% endif %}   
                       <td class="govuk-table__cell">AYEDFE</td>
                       <td class="govuk-table__cell">Glossop</td>
                       <td class="govuk-table__cell">18/12/2024</td>
@@ -197,6 +204,9 @@
                       <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=true&view-variation=false&fullname=David Murphy&newform=true&clarification=false">David Murphy</a></td>
             
                       <td class="govuk-table__cell">05/06/2010</td>
+                      {% if (data['usertype'] == "Prison or Youth") %}
+                       <td class="govuk-table__cell">Youth</td>
+                       {% endif %}  
                       <td class="govuk-table__cell">JHADCT</td>
                       <td class="govuk-table__cell">Salford</td>
                       <td class="govuk-table__cell">01/09/2024</td>
@@ -212,6 +222,9 @@
                       <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=cancelled&fullname=David Murphy&newform=true&clarification=false">David Murphy</a></td>
             
                       <td class="govuk-table__cell">21/04/1990</td>
+                      {% if (data['usertype'] == "Prison or Youth") %}
+                       <td class="govuk-table__cell"></td>
+                       {% endif %}  
                       <td class="govuk-table__cell">FACRDF<br>D125433</td>
                       <td class="govuk-table__cell">Birchwood</td>
                       <td class="govuk-table__cell">01/12/2021</td>
