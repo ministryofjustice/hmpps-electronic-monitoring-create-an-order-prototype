@@ -54,10 +54,8 @@
                   <li>Police National Computer (PNC)</li>
                   <li>NDelius ID</li>
                   <li>Prison number</li>
-                  <li>Home Office Reference Number</li>
                   <li>Compliance and Enforcement Person Reference (CEPR)</li>
                   <li>Court Case Reference Number (CCRN)</li>
-                  <li>Magistrate Court Reference Number (MCRN)</li>
                 </ul>
               </div>
             </details>
@@ -124,10 +122,8 @@
                   <li>Police National Computer (PNC)</li>
                   <li>Delius ID</li>
                   <li>Prison number</li>
-                  <li>Home Office Reference Number</li>
                   <li>Compliance and Enforcement Person Reference (CEPR)</li>
                   <li>Court Case Reference Number (CCRN)</li>
-                  <li>Magistrate Court Reference Number (MCRN)</li>
                 </ul>
               </div>
             </details>
@@ -140,8 +136,19 @@
 
          {% if (data['usertype'] == "Prison or Youth") %}
 
+         
+      <div class="govuk-phase-banner" style=" margin:20px 0 0px 0;">
+              <p>
+                 Showing:
+                 <strong style="margin-right:10px;"> 
+                    Berwyn Prison    
+                 </strong>
+                   <a class="govuk-link" href="#">Change location</a>
+                 </p>
+      </div>
+
            
-            <div class="govuk-phase-banner" style=" padding-bottom:20px">
+         <!--   <div class="govuk-phase-banner" style=" padding-bottom:20px">
               <label class="govuk-label" for="sort">
                 Showing:
               </label>
@@ -150,7 +157,7 @@
                 <option value="updated" selected>Berwyn Prison</option>
        
               </select>
-            </div>
+            </div>-->
 
           {% else %} 
 
