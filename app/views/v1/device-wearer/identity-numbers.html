@@ -129,7 +129,7 @@
           value: data['mrn'],
           classes: "govuk-!-width-two-thirds",
           label: {
-            text: "Enter Magistrate Court Case Reference Number"
+            text: "Enter Crown Court Case Reference Number"
           }
         }) }}
         {% endset -%}
@@ -192,9 +192,17 @@
             {
               value: "Court Case Reference Number (CCRN)",
               checked: (true if data['ccrn'] !== NULL and data['ccrn'] !== ''),
-              text: "Court Case Reference Number (CCRN)",
+              text: "Court Case Reference Number",
               conditional: {
                 html: urnHtml
+              }
+            },
+            {
+              value: "Magistrate Court Case Reference Number",
+              checked: (true if data['mrn'] !== NULL and data['mrn'] !== ''),
+              text: "Crown Court Case Reference Number",
+              conditional: {
+                html: mrnHtml
               }
             }
           ]
@@ -203,14 +211,7 @@
         <!--
 
         ,
-            {
-              value: "Magistrate Court Case Reference Number",
-              checked: (true if data['mrn'] !== NULL and data['mrn'] !== ''),
-              text: "Magistrate Court Case Reference Number (MCRN)",
-              conditional: {
-                html: mrnHtml
-              }
-            }
+            
 
         -->
 

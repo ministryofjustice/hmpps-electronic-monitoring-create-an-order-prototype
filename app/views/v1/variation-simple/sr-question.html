@@ -32,24 +32,49 @@ Details of the changes - Electronic Monitoring
             items: [
 
              
-              {
-                value: "I need monitoring equipment installed at a new address",
-                checked: (true if data['sr-type-simple'] == "I need monitoring equipment installed at a new address"),
-                text: "I need monitoring equipment installed at a new address"
-              },
-              {
+               {
                 value: "I need monitoring equipment reinstalled or checked",
                 checked: (true if data['sr-type-simple'] == "I need monitoring equipment reinstalled or checked"),
-                text: "I need monitoring equipment reinstalled or checked"
+                disabled: (true if data['view'] == 'true'),
+                text: "I need monitoring equipment reinstalled",
+                hint: {
+                  text: "The device wearer's primary, secondary or tertiary address has changed."
+                }
+                
+              },
+               {
+                value: "I need monitoring equipment installed at a new address",
+                checked: (true if data['sr-type-simple'] == "I need monitoring equipment installed at a new address"),
+                disabled: (true if data['view'] == 'true'),
+                text: "I need monitoring equipment installed at an additional address",
+                 hint: {
+                  text: "The device wearer needs to remain at a second or third address during curfew hours. This is a new address where there was no second or third address previously."
+                }
+
+              },
+              
+                {
+                value: "I need to end all monitoring for the device wearer",
+                checked: (true if data['sr-type-simple'] == 'I need to end all monitoring for the device wearer'),
+                disabled: (true if data['view'] == 'true'),
+                text: "I need to revoke monitoring for the device wearer",
+                 hint: {
+                  text: "The device wearer has been recalled to prison. To cancel an order for another reason xxx. "
+                }
               },
                 {
                 value: "I need to end all monitoring for the device wearer",
                 checked: (true if data['sr-type-simple'] == 'I need to end all monitoring for the device wearer'),
-                text: "I need to end all monitoring for the device wearer"
+                disabled: (true if data['view'] == 'true'),
+                text: "I need to end all monitoring for a device wearer on bail",
+                 hint: {
+                  text: "The device wearer is on bail or immigration bail and all monitoring needs to end early."
+                }
               },
                {
                 value: "I have changed something else in the form",
                 checked: (true if data['sr-type-simple'] == 'I have changed something else in the form'),
+                disabled: (true if data['view'] == 'true'),
                 text: "I need to change something else in the form"
               }
             ]
