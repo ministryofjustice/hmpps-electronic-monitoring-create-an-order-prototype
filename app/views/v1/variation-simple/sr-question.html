@@ -59,16 +59,16 @@ Details of the changes - Electronic Monitoring
                 disabled: (true if data['view'] == 'true'),
                 text: "I need to revoke monitoring for the device wearer",
                  hint: {
-                  text: "The device wearer has been recalled to prison. To cancel an order for another reason xxx. "
+                  text: "The device wearer has been recalled to prison. "
                 }
               },
-                {
-                value: "I need to end all monitoring for the device wearer",
-                checked: (true if data['sr-type-simple'] == 'I need to end all monitoring for the device wearer'),
+              {
+                value: "I need to end all monitoring for the device wearer2",
+                checked: (true if data['sr-type'] == 'I need to end all monitoring for the device wearer2'),
                 disabled: (true if data['view'] == 'true'),
-                text: "I need to end all monitoring for a device wearer on bail",
+                text: "I need to end all monitoring for a device wearer",
                  hint: {
-                  text: "The device wearer is on bail or immigration bail and all monitoring needs to end early."
+                  text: "The device wearers circumstances have changed and all monitoring needs to end early."
                 }
               },
                {

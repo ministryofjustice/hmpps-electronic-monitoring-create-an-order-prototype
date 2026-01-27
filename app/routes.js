@@ -870,12 +870,23 @@ router.post('/sr-question', function(request, response) {
     var srtypesimple = request.session.data['sr-type-simple']
     if (srtypesimple == "I have changed something else in the form"){
         response.redirect("/v1/new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")     
-    } else if (srtypesimple == "I need to end all monitoring for the device wearer") {
+    } else if (srtypesimple == "I need to end all monitoring for the device wearer2") {
         response.redirect("/v1/variation-simple/bail") 
     } else {
         response.redirect("/v1/variation-simple/identity-numbers")
     }
 })
+
+router.post('/bail', function(request, response) {
+
+    var bailorder = request.session.data['bail-order']
+    if (bailorder == "No"){
+        response.redirect("/v1/variation-simple/hard-stop") 
+    } else {
+        response.redirect("/v1/variation-simple/identity-numbers")
+    }
+})
+
 
 router.post('/type-change', function(request, response) {
 
@@ -974,6 +985,16 @@ router.post('/risk-listdapo', function(request, response) {
         response.redirect("/v1/installation/risk-dapo")     
     } else {
         response.redirect("/v1/installation/risk-2")
+    }
+})
+
+router.post('/hard-stop', function(request, response) {
+
+    var srtype = request.session.data['sr-type']
+    if (srtype == "I need to end all monitoring for the device wearer2"){
+        response.redirect("/v1/variations/hard-stop")     
+    } else {
+        response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false")
     }
 })
 

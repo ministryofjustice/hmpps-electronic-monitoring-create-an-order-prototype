@@ -33,11 +33,11 @@ Details of the changes - Electronic Monitoring
 
        {% if (data['newform'] == 'false') %}
 
-        <form class="form" action="../submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false" method="post">
+        <form class="form" action="/hard-stop" method="post">
 
         {% else %}   
 
-         <form class="form" action="../submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false" method="post">
+         <form class="form" action="/hard-stop" method="post">
 
 
       {% endif %}  
@@ -92,8 +92,8 @@ Details of the changes - Electronic Monitoring
                 }
               },
                 {
-                value: "I need to end all monitoring for the device wearer",
-                checked: (true if data['sr-type'] == 'I need to end all monitoring for the device wearer'),
+                value: "I need to end all monitoring for the device wearer2",
+                checked: (true if data['sr-type'] == 'I need to end all monitoring for the device wearer2'),
                 disabled: (true if data['view'] == 'true'),
                 text: "I need to end all monitoring for a device wearer",
                  hint: {
