@@ -128,6 +128,12 @@ Details of the changes - Electronic Monitoring
                 text: "Temporary suspend monitoring (attend a funeral or go on holiday)"
               },
               {
+                value: "Change of device type (fitted/non fitted)",
+                checked: (true if data['variation-type'] == 'Change of device type (fitted/non fitted)'),
+                disabled: (true if data['view'] == 'true'),
+                text: "Change of device type (fitted/non fitted)"
+              },
+              {
                 value: "I have changed something due to an administration error",
                 checked: (true if data['variation-type'] == 'I have changed something due to an administration error'),
                 disabled: (true if data['view'] == 'true'),

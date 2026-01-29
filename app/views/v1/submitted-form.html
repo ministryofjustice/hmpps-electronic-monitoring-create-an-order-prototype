@@ -72,7 +72,7 @@
 
             {% elseif (data['view-variation'] == 'cancelled') %}
 
-           <p> You can't make changes to this form because monitoring has ended early.</p>
+           <p> You can't make changes to this form because monitoring has ended.</p>
       
 
             {% else %}
@@ -100,7 +100,7 @@
 
         {% if (data['clarification'] == 'true') %}
 
-        <p> You are making changes to a submitted form. </p>
+        <p>  </p>
 
         {% elseif (data['sr-type'] == 'I need monitoring equipment installed at a new address') %}
 
@@ -112,15 +112,18 @@
 
         {% elseif (data['sr-type'] == 'I need to end all monitoring for the device wearer') %}
 
-         <p> You are ending all monitoring for the device wearer.</p>
+         <p> You are revoking monitoring for the device wearer.</p>
 
          {% elseif (data['sr-type'] == 'I need to end all monitoring for the device wearer2') %}
 
          <p> You are ending all monitoring for the device wearer.</p>
 
-          {% else %}  
+          {% elseif (data['sr-type'] == 'I have changed something else in the form') %}
 
          <p> You are making changes to a submitted form. </p>
+
+
+         
 
         {% endif %}   
 
@@ -357,6 +360,12 @@
             text: "View and download form",
             classes: "govuk-button--secondary",
             href: "submitted-form-all"
+            }) }}
+
+            {{ govukButton({
+            text: "Copy and send as new order",
+            classes: "govuk-button--secondary",
+            href: "submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false"
             }) }}
 
 

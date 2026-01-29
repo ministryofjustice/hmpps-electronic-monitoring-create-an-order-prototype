@@ -31,13 +31,13 @@ Details of the changes - Electronic Monitoring
  <!--   <span class="govuk-caption-l">About the changes in this version of the form</span>-->
 
 
-       {% if (data['newform'] == 'false') %}
+       {% if (data['usertype'] == 'Probation') %}
 
         <form class="form" action="/hard-stop" method="post">
 
         {% else %}   
 
-         <form class="form" action="/hard-stop" method="post">
+         <form class="form" action="../submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false" method="post">
 
 
       {% endif %}  
