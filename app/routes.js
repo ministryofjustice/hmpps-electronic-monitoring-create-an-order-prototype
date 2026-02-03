@@ -887,6 +887,16 @@ router.post('/bail', function(request, response) {
     }
 })
 
+router.post('/bail-simple', function(request, response) {
+
+    var bailorder = request.session.data['bail-order']
+    if (bailorder == "Yes"){
+        response.redirect("/v1/variation-simple/identity-numbers") 
+    } else {
+        response.redirect("/v1/variation-simple/identity-numbers")
+    }
+})
+
 
 router.post('/type-change', function(request, response) {
 
