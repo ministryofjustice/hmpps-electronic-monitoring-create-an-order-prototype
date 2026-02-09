@@ -478,13 +478,23 @@ router.post('/curfew-address-question', function(request, response) {
     }
 })
 
+router.post('/curfew-change', function(request, response) {
+
+    var curfewperiods = request.session.data['curfewperiods']
+    if (curfewperiods == "one"){
+        response.redirect("/v1/monitoring-conditions/curfew-4")
+    } else {
+        response.redirect("/v1/monitoring-conditions/curfew-change2")
+    }
+})
+
 router.post('/curfew-times-question', function(request, response) {
 
     var curfewtimesquestion = request.session.data['curfewtimesquestion']
     if (curfewtimesquestion == "Yes"){
-        response.redirect("/v1/monitoring-conditions/curfew-4?curfewtimetableday=false&curfewstandard=true&curfewchange-starttime-hours=19&curfewchange-starttime-minutes=00&curfewchange-endtime-hours=07&curfewchange-endtime-minutes=00")
+        response.redirect("/v1/monitoring-conditions/curfew-4?curfewtimetableday=false&curfewstandard=true&curfewchange-starttime-hours=19&curfewchange-starttime-minutes=00&curfewchange-endtime-hours=07&curfewchange-endtime-minutes=00&curfewperiods=one")
     } else {
-        response.redirect("/v1/monitoring-conditions/curfew-change?curfewstandard=false&curfewtimetableday=false")
+        response.redirect("/v1/monitoring-conditions/curfew-period?curfewstandard=false&curfewtimetableday=false")
     }
 })
 
@@ -897,6 +907,20 @@ router.post('/bail-simple', function(request, response) {
     }
 })
 
+router.post('/type-change-areyousure', function(request, response) {
+
+    var clarification = request.session.data['clarification']
+    var usertype = request.session.data['usertype']
+    if (usertype == "Probation user"){
+        response.redirect("/v1/variations/sr-question?view=false") 
+    } else if (clarification == "true") {     
+        response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false") 
+    } else {
+        response.redirect("/v1/variations/type-change?view=false") 
+    }
+})
+
+
 
 router.post('/type-change', function(request, response) {
 
@@ -904,7 +928,7 @@ router.post('/type-change', function(request, response) {
     if (clarification == "false"){
         response.redirect("/v1/variations/sr-question?view=false") 
     } else {
-        response.redirect("/v1//submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false")
+        response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false")
     }
 })
 
@@ -1007,6 +1031,36 @@ router.post('/hard-stop', function(request, response) {
         response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false")
     }
 })
+
+router.post('/check-document', function(request, response) {
+
+    var checkdocument = request.session.data['checkdocument']
+    if (checkdocument == "Yes"){
+        response.redirect("/v1/attachments/licence")     
+    } else {
+        response.redirect("/v1/attachments/check-answers-view")
+    }
+})
+
+
+router.post('/user-type', function(request, response) {
+
+    var usertype = request.session.data['usertype']
+    if (usertype == "Prison user"){
+        response.redirect("start?notifying-org=Prison service&order-type=Post release")  
+    } else if (usertype == "Probation user") {
+        response.redirect("start?notifying-org=Probation service&order-type=Post release") 
+    } else if (usertype == "Youth user") {
+        response.redirect("start?notifying-org=Youth Custody Service (YCS)&order-type=Post release")  
+    } else if (usertype == "Court user") {
+        response.redirect("start?notifying-org=Family Court&order-type=Civil&hdc=clear")     
+    } else if (usertype == "Home Office user") {
+        response.redirect("start?notifying-org=Home Office&order-type=Immigration&hdc=clear")                      
+    }
+})
+
+
+
 
 
 

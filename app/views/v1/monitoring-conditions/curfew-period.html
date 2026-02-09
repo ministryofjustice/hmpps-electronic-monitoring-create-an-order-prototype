@@ -1,0 +1,99 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Curfew times for the curfew timetable - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+ 
+ {% if (data['curfewstandard'] == "false") %}     
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+       How many curfew periods are there each day?
+      </h1>
+
+  <!--    {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+        {{ govukDetails({
+          summaryText: "Help with HDC curfew hours",
+          text: "By law, the curfew must last at least 9 hours each day (except on the first day of release). It is usually set for 12 hours a day and should only be longer if there is clear evidence it will greatly help rehabilitation. The curfew cannot be more than 16 hours a day."
+        }) }}-->
+
+         <form class="form" action="curfew-change" method="post">
+
+ {% else %}
+
+       <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        How many curfew periods are there on {{ data['day'] }}?
+      </h1>
+
+         <form class="form" action="curfew-change" method="post">
+      
+{% endif %}     
+
+
+
+{{ govukRadios({
+  name: "curfewperiods",
+  fieldset: {
+    legend: {
+      text: "Where do you live?",
+      isPageHeading: false,
+      classes: "govuk-visually-hidden"
+    }
+  },
+  items: [
+    {
+      value: "one",
+      checked: (true if data['curfewperiods'] == 'one'),
+      text: "One"
+    },
+    {
+      value: "two",
+      checked: (true if data['curfewperiods'] == 'two'),
+      text: "Two"
+    },
+    {
+      value: "three",
+      checked: (true if data['curfewperiods'] == 'three'),
+      text: "Three"
+    }
+  ]
+}) }}
+
+
+       
+
+     
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

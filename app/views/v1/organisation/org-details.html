@@ -85,6 +85,121 @@
             {% endset -%}
 
 
+  {% if (data['usertype'] == "Prison user")  %}
+
+  <input type="hidden" name="notifying-org" value="Prison service">
+
+    {% include "/includes/prison2.html" %}
+
+  {% elseif (data['usertype'] == "Probation user") %}  
+
+    <input type="hidden" name="notifying-org" value="Probation service">
+
+
+  {% elseif (data['usertype'] == "Youth user") %}  
+
+    <input type="hidden" name="notifying-org" value="Youth Custody Service (YCS)">
+
+
+{{ govukRadios({
+  name: "ycs",
+  fieldset: {
+    legend: {
+      text: "What is your Youth Custody Service region?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  items: [
+    {
+      value: "East and South East",
+       checked: (true if data['ycs'] == 'East and South East'),
+      text: "East and South East"
+    },
+    {
+      value: "London",
+      checked: (true if data['ycs'] == 'London'),
+      text: "London"
+    },
+    {
+      value: "Midlands",
+      checked: (true if data['ycs'] == 'Midlands'),
+      text: "Midlands"
+    },
+    {
+      value: "North East and Cumbria",
+      checked: (true if data['ycs'] == 'North East and Cumbria'),
+      text: "North East and Cumbria"
+    },
+    {
+      value: "North West",
+      checked: (true if data['ycs'] == 'North West'),
+      text: "North West"
+    },
+    {
+      value: "South West and South Central",
+      checked: (true if data['ycs'] == 'South West and South Central'),
+      text: "South West and South Central"
+    },
+    {
+      value: "Wales",
+      checked: (true if data['ycs'] == 'Wales'),
+      text: "Wales"
+    },
+    {
+      value: "Yorkshire and the Humber",
+      checked: (true if data['ycs'] == 'Yorkshire and the Humber'),
+      text: "Yorkshire and the Humber"
+    }
+  ]
+}) }}
+
+
+  {% elseif (data['usertype'] == "Court user") %}  
+
+
+     {{ govukRadios({
+              name: "notifying-org",
+              fieldset: {
+                legend: {
+                  text: " Which type of court are you part of?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: ""
+              },
+              items: [
+                
+              
+                {
+                  value: "Family Court",
+                  text: "Family Court",
+                  conditional: {
+                    html: courtsHtml
+                  }
+                },
+                {
+                  value: "Civil and County Court",
+                  text: "Civil and County Court",
+                  conditional: {
+                    html: courtsHtml
+                  }
+                }
+
+              ]
+            }) }}
+
+ 
+
+   {% elseif (data['usertype'] == "Home Office user") %}  
+
+       <input type="hidden" name="notifying-org" value="Home Office">
+
+  {% else %}
+
+
 
             {{ govukRadios({
               name: "notifying-org",
@@ -184,6 +299,8 @@
 
               ]
             }) }}
+
+  {% endif  %}
 
 
               {{ govukInput({

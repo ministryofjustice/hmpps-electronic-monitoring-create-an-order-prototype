@@ -1,7 +1,7 @@
 <div class="moj-search" style="width: 75%">
 
 
-  {% if (data['usertype'] == "Probation") %}
+  {% if (data['usertype'] == "Probation user") %}
 
             <form action="dashboard?searchresults=true#submitted" method="post">
 
@@ -134,7 +134,7 @@
            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
 
-         {% if (data['usertype'] == "Prison or Youth") %}
+   {% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user") %}
 
          
       <div class="govuk-phase-banner" style=" margin:20px 0 0px 0;">
@@ -193,7 +193,7 @@
                       <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=false&fullname=David Murphy&newform=true&clarification=false">David Murphy</a></td>
                     
                       <td class="govuk-table__cell">19/01/2001</td>
-                       {% if (data['usertype'] == "Prison or Youth") %}
+                       {% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user") %}
                        <td class="govuk-table__cell"></td>
                        {% endif %}   
                       <td class="govuk-table__cell">AYEDFE</td>
@@ -211,7 +211,7 @@
                       <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=true&view-variation=false&fullname=David Murphy&newform=true&clarification=false">David Murphy</a></td>
             
                       <td class="govuk-table__cell">05/06/2010</td>
-                      {% if (data['usertype'] == "Prison or Youth") %}
+                      {% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user") %}
                        <td class="govuk-table__cell">Youth</td>
                        {% endif %}  
                       <td class="govuk-table__cell">JHADCT</td>
@@ -229,7 +229,7 @@
                       <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=cancelled&fullname=David Murphy&newform=true&clarification=false">David Murphy</a></td>
             
                       <td class="govuk-table__cell">21/04/1990</td>
-                      {% if (data['usertype'] == "Prison or Youth") %}
+                      {% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user") %}
                        <td class="govuk-table__cell"></td>
                        {% endif %}  
                       <td class="govuk-table__cell">FACRDF<br>D125433</td>

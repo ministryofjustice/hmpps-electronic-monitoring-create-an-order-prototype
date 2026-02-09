@@ -20,13 +20,18 @@
     text: 'Apply, change or end an Electronic Monitoring Order (EMO)',
     href: '/v1/dashboard'
   },
-  navigation: {
+ navigation: {
     label: 'Account navigation',
     items: [{
-      text: 'Ada Lovelace',
-      href: '#',
+      text: data['usertype'],
+      href: '/user-type',
       active: true
-    }, {
+    }, 
+    {
+      text: 'Ada Lovelace',
+      href: '#'
+    },
+    {
       text: 'Sign out',
       href: '/user-type'
     }]

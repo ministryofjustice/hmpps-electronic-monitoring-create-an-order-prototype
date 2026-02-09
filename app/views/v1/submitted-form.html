@@ -263,11 +263,10 @@
         ]
       }) }}
 
-      {% else %}
+{% elseif (data['usertype'] == 'Court user' or data['usertype'] == 'Home Office user')  %}
 
 
-
-        {{ govukTaskList({
+     {{ govukTaskList({
         idPrefix: "first-section",
         items: [
           {
@@ -304,6 +303,61 @@
             },
             href: ("attachments/check-answers-view"),
            status: ( completedStatus if data['section-5-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: ("About the changes in this version of the form")
+            },
+            href: ("variations/check-answers" if data['section-6-complete'] == 'true' else "variations/edit-form-question"),
+           status: ( completedStatus if data['section-6-complete'] == 'true' else incompleteStatus)
+
+          }
+
+        ]
+      }) }}
+
+
+
+
+ {% else %}
+
+        {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the Notifying and Responsible Organisations"
+            },
+            href: ("organisation/check-answers-view"),
+            status: ( completedStatus if data['section-2-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: ( completedStatus if data['section-1-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers-view"),
+           status: ( completedStatus if data['section-3-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-licence"),
+           status: ( completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
           },
           {
             title: {
