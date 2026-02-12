@@ -85,18 +85,48 @@
             {% endset -%}
 
 
-  {% if (data['usertype'] == "Prison user")  %}
+  {% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user" )  %}
 
-  <input type="hidden" name="notifying-org" value="Prison service">
+     {{ govukRadios({
+              name: "notifying-org",
+              fieldset: {
+                legend: {
+                  text: " What organisation or related organisation are you part of?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: ""
+              },
+              items: [
+                 {
+                  value: "Prison service",
+                  checked: (true if data['notifying-org'] == 'Prison service'),
+                  text: "Prison service",
+                  conditional: {
+                    html: prison2Html
+                  }
+                },           
+                 {
+                  value: "Youth Custody Service (YCS)",
+                  checked: (true if data['notifying-org'] == 'Youth Custody Service (YCS)'),
+                  text: "Youth Custody Service (YCS)",
+                  conditional: {
+                    html: ycsHtml
+                  }
+                }
 
-    {% include "/includes/prison2.html" %}
+              ]
+            }) }}
+
 
   {% elseif (data['usertype'] == "Probation user") %}  
 
     <input type="hidden" name="notifying-org" value="Probation service">
 
 
-  {% elseif (data['usertype'] == "Youth user") %}  
+<!--  {% elseif (data['usertype'] == "Youth user") %}  
 
     <input type="hidden" name="notifying-org" value="Youth Custody Service (YCS)">
 
@@ -152,7 +182,7 @@
       text: "Yorkshire and the Humber"
     }
   ]
-}) }}
+}) }}-->
 
 
   {% elseif (data['usertype'] == "Court user") %}  
