@@ -1,0 +1,58 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Offence committed - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+       <span class="govuk-caption-l">Access needs and installation risk</span>
+<!--
+     <h1 class="govuk-heading-l">
+       <span class="govuk-caption-l">Access needs and installation risk</span>
+      What type of offence did the device wearer commit?
+      </h1>-->
+
+       {% if (data['cya3'] == "true") %}
+
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+       <form class="form" action="risk-1" method="post">
+
+        {% endif %}
+
+
+        {% include "/includes/offences.html" %}
+
+
+        
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,78 @@
+ {% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+          <span class="govuk-caption-l">Electronic monitoring required</span>
+
+  
+       
+      <form class="form" action="order-description" method="post">
+
+
+       {{ govukRadios({
+          classes: "govuk-radios",
+          name: "sentencetype",
+          fieldset: {
+            legend: {
+              text: "What type of sentence has the device wearer been given?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "Standard Determinate Sentence",
+              text: "Standard Determinate Sentence",
+              checked: (true if data['sentencetype'] == 'Standard Determinate Sentence')
+            },
+            {
+              value: "Detention and Training Order",
+              text: "Detention and Training Order (DTO)",
+              checked: (true if data['sentencetype'] == 'Detention and Training Order')
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "The sentence the device wearer has been given is not listed",
+              text: "The sentence the device wearer has been given is not listed",
+              checked: (true if data['sentencetype'] == 'The sentence the device wearer has been given is not listed')
+            }
+          ]
+        }) }}
+     
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

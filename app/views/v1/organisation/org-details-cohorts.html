@@ -1,0 +1,326 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+ Contact details for the notifying organisation - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+       Notifying Organisation's details
+      </h1>
+
+        {% if (data['cya2'] == "true") %}
+
+        <form class="form" action="check-answers" method="post">
+
+
+        {% elseif (data['cya2'] == "sr20") %}
+
+        <form class="form" action="check-answers-view" method="post">  
+
+        {% else %}
+
+       <form class="form" action="/org-details" method="post">
+
+        {% endif %}
+
+
+
+
+
+
+         
+
+           {% set courtsHtml %}
+
+           {% include "/includes/court.html" %}
+            
+           
+            {% endset -%}
+
+             {% set youthcourtsHtml %}
+
+           {% include "/includes/youthcourt.html" %}
+            
+           
+            {% endset -%}
+
+            {% set crowncourtsHtml %}
+
+             {% include "/includes/crown-court.html" %}
+            
+           
+            {% endset -%}
+
+            {% set prison2Html %}
+
+             {% include "/includes/prison.html" %}
+            
+            {% endset -%}
+
+             {% set militarycourtsHtml %}
+
+           {% include "/includes/militarycourt.html" %}
+            
+           
+            {% endset -%}
+
+             {% set probationHtml %}
+
+           {% include "/includes/probation.html" %}
+            
+           
+            {% endset -%}
+
+             {% set ycsHtml %}
+
+           {% include "/includes/ycs.html" %}
+            
+           
+            {% endset -%}
+
+
+ {% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user" )  %}
+
+     {{ govukRadios({
+              name: "notifying-org",
+              fieldset: {
+                legend: {
+                  text: " What organisation or related organisation are you part of?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: ""
+              },
+              items: [
+                 {
+                  value: "Prison service",
+                  checked: (true if data['notifying-org'] == 'Prison service'),
+                  text: "Prison service",
+                  conditional: {
+                    html: prison2Html
+                  }
+                },           
+                 {
+                  value: "Youth Custody Service (YCS)",
+                  checked: (true if data['notifying-org'] == 'Youth Custody Service (YCS)'),
+                  text: "Youth Custody Service (YCS)",
+                  conditional: {
+                    html: ycsHtml
+                  }
+                }
+
+              ]
+            }) }}
+
+
+  {% elseif (data['usertype'] == "Probation user") %}  
+
+    <input type="hidden" name="notifying-org" value="Probation service">
+
+
+ 
+
+  {% elseif (data['usertype'] == "Court user") %}  
+
+
+     {{ govukRadios({
+              name: "notifying-org",
+              fieldset: {
+                legend: {
+                  text: " Which type of court are you part of?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: ""
+              },
+              items: [
+                
+              
+                {
+                  value: "Family Court",
+                  text: "Family Court",
+                  conditional: {
+                    html: courtsHtml
+                  }
+                },
+                {
+                  value: "Civil and County Court",
+                  text: "Civil and County Court",
+                  conditional: {
+                    html: courtsHtml
+                  }
+                }
+
+              ]
+            }) }}
+
+ 
+
+   {% elseif (data['usertype'] == "Home Office user") %}  
+
+       <input type="hidden" name="notifying-org" value="Home Office">
+
+  {% else %}
+
+    
+
+
+
+            {{ govukRadios({
+              name: "notifying-org",
+              fieldset: {
+                legend: {
+                  text: " What organisation or related organisation are you part of?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: ""
+              },
+              items: [
+                 {
+                  value: "Prison service",
+                  checked: (true if data['notifying-org'] == 'Prison service'),
+                  text: "Prison service",
+                  conditional: {
+                    html: prison2Html
+                  }
+                },
+               
+                {
+                  value: "Probation service",
+                  checked: (true if data['notifying-org'] == 'Probation service'),
+                  text: "Probation service"
+                },
+               
+                 {
+                  value: "Youth Custody Service (YCS)",
+                  checked: (true if data['notifying-org'] == 'Youth Custody Service (YCS)'),
+                  text: "Youth Custody Service (YCS)",
+                  conditional: {
+                    html: ycsHtml
+                  }
+                },
+                {
+                  value: "Crown Court",
+                  text: "Crown Court",
+                  checked: (true if data['notifying-org'] == 'Crown Court'),
+                  conditional: {
+                    html: crowncourtsHtml
+                  }
+                },
+                {
+                  value: "Magistrates Court",
+                  checked: (true if data['notifying-org'] == 'Magistrates Court'),
+                  text: "Magistrates Court",
+                  conditional: {
+                    html: courtsHtml
+                  }
+                },
+                {
+                  value: "Family Court",
+                  text: "Family Court",
+                  checked: (true if data['notifying-org'] == 'Family Court'),
+                  conditional: {
+                    html: courtsHtml
+                  }
+                },
+                {
+                  value: "Civil and County Court",
+                  text: "Civil and County Court",
+                  checked: (true if data['notifying-org'] == 'Civil and County Court'),
+                  conditional: {
+                    html: courtsHtml
+                  }
+                },
+                
+                 {
+                  value: "Youth Court",
+                  checked: (true if data['notifying-org'] == 'Youth Court'),
+                  text: "Youth Court",
+                  conditional: {
+                    html: youthcourtsHtml
+                  }
+                },
+                 {
+                  value: "Scottish Court",
+                  checked: (true if data['notifying-org'] == 'Scottish Court'),
+                  text: "Scottish Court"
+                },
+                {
+                  value: "Military Court",
+                  checked: (true if data['notifying-org'] == 'Military Court'),
+                  text: "Military Court",
+                  conditional: {
+                    html: militarycourtsHtml
+                  }
+                }, 
+                {
+                  value: "Home Office",
+                  text: "Home Office",
+                  checked: (true if data['notifying-org'] == 'Home Office')
+                }
+
+              ]
+            }) }}
+
+{% endif  %}
+
+
+              {{ govukInput({
+                  label: {
+                    text: "What is your team's contact email address?",
+                    classes: "govuk-label--s"
+                    },
+                    hint: {
+                      text: "Provide the email address for a mailbox that member's of your team can access. Do not provide a personal email address."
+                    },
+                  
+                  classes: "govuk-input--width-20",
+                  id: "team-email",
+                  name: "team-email",
+                  spellcheck: false,
+                  value: data['team-email']
+                }) }}
+
+        
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

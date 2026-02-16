@@ -1,0 +1,148 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+Details of the changes - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+         {% set html %}
+        <p class="govuk-notification-banner__heading">
+         You are viewing a submitted form. This form was submitted on the 14 December 2024.
+        </p>
+          {% endset %}
+
+       {% if (data['view'] == 'true') %}
+
+          {{ govukNotificationBanner({
+            html: html
+          }) }}
+
+        {% else %}
+                  
+        {% endif %}
+
+ <!--   <span class="govuk-caption-l">About the changes in this version of the form</span>-->
+
+
+       {% if (data['usertype'] == 'Probation') %}
+
+        <form class="form" action="/hard-stop" method="post">
+
+        {% else %}   
+
+         <form class="form" action="../submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false" method="post">
+
+
+      {% endif %}  
+
+ 
+
+
+            {{ govukRadios({
+            name: "sr-type",
+            fieldset: {
+              legend: {
+                text: "Why are you making changes to the form?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+
+             
+             
+              {
+                value: "I need monitoring equipment reinstalled or checked",
+                checked: (true if data['sr-type'] == "I need monitoring equipment reinstalled or checked"),
+                disabled: (true if data['view'] == 'true'),
+                text: "I need monitoring equipment reinstalled",
+                hint: {
+                  text: "The device wearer's primary, secondary or tertiary address has changed."
+                }
+                
+              },
+               {
+                value: "I need monitoring equipment installed at a new address",
+                checked: (true if data['sr-type'] == "I need monitoring equipment installed at a new address"),
+                disabled: (true if data['view'] == 'true'),
+                text: "I need monitoring equipment installed at an additional address",
+                 hint: {
+                  text: "The device wearer needs to remain at a second or third address during curfew hours. This is a new address where there was no second or third address previously."
+                }
+
+              },
+              
+                {
+                value: "I need to end all monitoring for the device wearer",
+                checked: (true if data['sr-type'] == 'I need to end all monitoring for the device wearer'),
+                disabled: (true if data['view'] == 'true'),
+                text: "I need to revoke monitoring for the device wearer",
+                 hint: {
+                  text: "The device wearer has been recalled to prison."
+                }
+              },
+                {
+                value: "I need to end all monitoring for the device wearer2",
+                checked: (true if data['sr-type'] == 'I need to end all monitoring for the device wearer2'),
+                disabled: (true if data['view'] == 'true'),
+                text: "I need to end all monitoring for a device wearer",
+                 hint: {
+                  text: "The device wearers circumstances have changed and all monitoring needs to end early."
+                }
+              },
+               {
+                value: "I have changed something else in the form",
+                checked: (true if data['sr-type'] == 'I have changed something else in the form'),
+                disabled: (true if data['view'] == 'true'),
+                text: "I need to change something else in the form"
+              }
+            ]
+          }) }}
+
+     
+
+
+          <div class="govuk-button-group">
+
+             {% if (data['view'] == 'true') %}
+                   {{ govukButton({
+                      text: "Return to main form menu",
+                      href: "../submitted-form"
+                    }) }}
+                {% else %}
+                  {{ govukButton({
+                    text: "Save and continue"
+                  }) }}
+
+                    {{ govukButton({
+                    text: "Save as draft",
+                    href: ('../submitted-form' if data['view'] == 'false' else '#' ),
+                    classes: "govuk-button--secondary"
+                  }) }}
+
+
+                {% endif %}
+
+
+             
+
+          </div>
+
+      </form>
+
+
+        
+
+        </div>
+      </div>
+{% endblock %}

@@ -16,7 +16,7 @@
 
   
        
-      <form class="form" action="#" method="post">
+      <form class="form" action="../monitoring-conditions/monitoring-dates" method="post">
 
 
   {% if (data['order-type'] == "Post release") and (data['hdc'] == "Yes") %}
@@ -45,9 +45,9 @@
                
                 },
                  {
-                  value: "Home Detention Curfew Electronic Monitoring Acquisitive Crime",
-                  checked: (true if data['order-description'] == 'Home Detention Curfew Electronic Monitoring Acquisitive Crime'),
-                  text: "Home Detention Curfew Electronic Monitoring Acquisitive Crime"
+                  value: "Home Detention Curfew Electronic Monitoring Acquisitive Crime (HDC EMAC)",
+                  checked: (true if data['order-description'] == 'Home Detention Curfew Electronic Monitoring Acquisitive Crime (HDC EMAC)'),
+                  text: "Home Detention Curfew Electronic Monitoring Acquisitive Crime (HDC EMAC)"
                
                 },
                  {
@@ -136,28 +136,23 @@
                   text: "Domestic Abuse Perpetrators on Licence (DAPOL)"
                
                 },
+                 
                  {
-                  value: "Electronic Monitoring Acquisitive Crime On Licence",
-                  checked: (true if data['order-description'] == 'Electronic Monitoring Acquisitive Crime On Licence'),
-                  text: "Electronic Monitoring Acquisitive Crime On Licence"
-               
-                },
-                 {
-                  value: "EMAC (EM Acquisitive Crime)",
-                  checked: (true if data['order-description'] == 'EMAC (EM Acquisitive Crime)'),
-                  text: "EMAC (EM Acquisitive Crime)"
-               
-                },
-                 {
-                  value: "Electronic Monitoring as a Licence Variation",
-                  checked: (true if data['order-description'] == 'Electronic Monitoring as a Licence Variation'),
-                  text: "Electronic Monitoring as a Licence Variation"
+                  value: "EM Acquisitive Crime (EMAC)",
+                  checked: (true if data['order-description'] == 'EM Acquisitive Crime (EMAC)'),
+                  text: "EM Acquisitive Crime (EMAC)"
                
                 },
                  {
                   value: "Release on Licence with Alcohol Monitoring",
                   checked: (true if data['order-description'] == 'Release on Licence with Alcohol Monitoring'),
                   text: "Release on Licence with Alcohol Monitoring"
+                },
+                {
+                  value: "Electronic Monitoring as a Licence Variation (Probation only)",
+                  checked: (true if data['order-description'] == 'Electronic Monitoring as a Licence Variation (Probation only)'),
+                  text: "Electronic Monitoring as a Licence Variation (Probation only)"
+               
                 }
               ]
             }) }}

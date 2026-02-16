@@ -92,7 +92,7 @@
                What condition is the electronic monitoring part of?
             </dt>
             <dd class="govuk-summary-list__value">
-             Civil
+            Release from prison
             </dd>
             <dd class="govuk-summary-list__actions">
               {% if (data['view'] == 'true') %}
@@ -102,6 +102,37 @@
                 {% endif %}
             </dd>
           </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What type of sentence has the device wearer been given?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['order-sentence'] or 'Standard Determinate Sentence' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           Is the device wearer on a Home Detention Curfew (HDC)?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['hdc'] or 'Yes' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What pilot project is the device wearer part of?
@@ -117,7 +148,7 @@
                 {% endif %}
             </dd>
           </div>
-                  <div class="govuk-summary-list__row">
+     <!--             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What condition is the monitoring part of?
             </dt>
@@ -131,24 +162,9 @@
                   <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
                 {% endif %}
             </dd>
-          </div>
+          </div>-->
          
-      <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What type of sentence has the device wearer been given?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['order-sentence'] or 'Standard Determinate Sentence' }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
-                {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
-                {% endif %}
-            </dd>
-          </div>
-
+     
          
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -166,21 +182,7 @@
             </dd>
           </div>
 
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-           Is the device wearer on a Home Detention Curfew (HDC)?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['hdc'] or 'No' }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-               {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
-                {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
-                {% endif %}
-            </dd>
-          </div>
+         
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -273,14 +275,14 @@
               What monitoring does the device wearer need?
             </dt>
             <dd class="govuk-summary-list__value">
-              Curfew with electronic monitoring<br>
+              Curfew<br>
               {{ data['monitoringtype2'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
               {% if (data['view'] == 'true') %}
                  <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
                 {% else %}
-                  <a class="govuk-link" href="monitoring-needed?monitoringtype=Curfew with electronic monitoring">Change<span class="govuk-visually-hidden"> </span></a>                  
+                  <a class="govuk-link" href="monitoring-needed?monitoringtype=Curfew">Change<span class="govuk-visually-hidden"> </span></a>                  
                 {% endif %}
             </dd>
           </div>     
@@ -435,7 +437,7 @@
               On the day of release, what time does the curfew end?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['release-endtime-hours'] or "07" }}:{{ data['release-endtime-hours'] or '00' }} {{ data['curfew-same-next-day'] or 'The next day' }}
+              {{ data['release-endtime-hours'] or "07" }}:{{ data['release-endtime-hours'] or '00' }} 
             </dd>
             <dd class="govuk-summary-list__actions">
                {% if (data['view'] == 'true') %}
@@ -535,9 +537,9 @@
             </dd>
             <dd class="govuk-summary-list__actions">
                {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="curfew-4?monitoringtype=Curfew with electronic monitoring&curfewtimetableday=false&curfewstandard=true&curfewchange-starttime-hours=19&curfewchange-starttime-minutes=00&curfewchange-endtime-hours=07&curfewchange-endtime-minutes=00&installaddressquestion=Yes"><span class="govuk-visually-hidden"> </span></a>
+                 <a class="govuk-link" href="curfew-4?monitoringtype=Curfew with electronic monitoring&curfewtimetableday=false&curfewstandard=true&curfewchange-starttime-hours=19&curfewchange-starttime-minutes=00&curfewchange-endtime-hours=07&curfewchange-endtime-minutes=00&installaddressquestion=Yes&curfewperiods=one"><span class="govuk-visually-hidden"> </span></a>
                 {% else %}
-                  <a class="govuk-link" href="curfew-4?monitoringtype=Curfew with electronic monitoring&curfewtimetableday=false&curfewstandard=true&curfewchange-starttime-hours=19&curfewchange-starttime-minutes=00&curfewchange-endtime-hours=07&curfewchange-endtime-minutes=00&installaddressquestion=Yes">Change<span class="govuk-visually-hidden"> </span></a>                  
+                  <a class="govuk-link" href="curfew-4?monitoringtype=Curfew with electronic monitoring&curfewtimetableday=false&curfewstandard=true&curfewchange-starttime-hours=19&curfewchange-starttime-minutes=00&curfewchange-endtime-hours=07&curfewchange-endtime-minutes=00&installaddressquestion=Yes&curfewperiods=one">Change<span class="govuk-visually-hidden"> </span></a>                  
                 {% endif %}
             </dd>
           </div>

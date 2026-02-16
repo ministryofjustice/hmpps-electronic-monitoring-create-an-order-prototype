@@ -29,12 +29,13 @@
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-             <div class="govuk-summary-list__row">
+
+                <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
                What organisation or related organisation are you part of?
             </dt>
             <dd class="govuk-summary-list__value">
-             {{ data['notifying-org'] or "Crown Court" }}
+             {{ data['notifying-org'] or "Low Newton Prison and Young Offender Institution" }}
             </dd>
             <dd class="govuk-summary-list__actions">
                
@@ -43,13 +44,14 @@
                 
             </dd>
           </div>
-           {% if (data['notifying-org'] == "Home Office" or data['notifying-org'] == "Probation" or data['notifying-org'] == "Scottish Court")  %}
 
-            {% else  %}
+
+
+      {% if (data['usertype'] == "Prison user") %}
 
              <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Name of the {{ data['notifying-org'] or 'prison' }}
+              What is the name of the prison you work at?
             </dt>
             <dd class="govuk-summary-list__value">
             Low Newton Prison and Young Offender Institution
@@ -62,7 +64,52 @@
             </dd>
           </div>
 
-            {% endif  %}
+
+       {% endif %}  
+
+
+       {% if (data['usertype'] == "Youth user") %}
+
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             What is your Youth Custody Service region?
+            </dt>
+            <dd class="govuk-summary-list__value">
+           {{ data['ycs'] or "London" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               
+                  <a class="govuk-link" href="org-details?cya2=true">Change<span class="govuk-visually-hidden"> What organisation are you part of? </span></a>
+                </li>
+                
+            </dd>
+          </div>
+
+
+       {% endif %}      
+
+
+      {% if (data['usertype'] == "Court user") %}
+
+         
+
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            What is the name of the court?
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Barnsley Family Court
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               
+                  <a class="govuk-link" href="org-details?cya2=true">Change<span class="govuk-visually-hidden"> What organisation are you part of? </span></a>
+                </li>
+                
+            </dd>
+          </div>
+
+
+  {% endif %}    
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -80,6 +127,8 @@
           </div>
 
         </dl>
+
+    {% if (data['usertype'] == 'Prison user' or data['usertype'] == 'Probation user' or data['usertype'] == 'Youth user' or data['usertype'] == 'Home Office user') %}   
 
      <h2 class="govuk-heading-m">Responsible Officer's details</h2>
 
@@ -113,7 +162,7 @@
                 
             </dd>
           </div>
-           <div class="govuk-summary-list__row">
+        <!--   <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
          What is the Responsible Officer's telephone number?
             </dt>
@@ -126,7 +175,7 @@
                 </li>
                 
             </dd>
-          </div>
+          </div>-->
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -143,7 +192,7 @@
             </dd>
           </div>
 
-        
+         {% endif %}     
 
       </dl>
 
@@ -213,6 +262,25 @@
             </dd>
           </div>-->
 
+           {% if (data['officer-org'] == "Police") %}
+
+  <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+         What is the Responsible Organisation's  Police Force Area?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['policearea'] or 'Northumberland' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               
+                  <a class="govuk-link" href="region-police?cya2=true">Change<span class="govuk-visually-hidden">  What is the Responsible Organisation's Probation Delivery Unit (PDU)? </span></a>
+                </li>
+                
+            </dd>
+          </div>
+
+   {% endif %}     
+
 
 
 
@@ -221,7 +289,7 @@
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-         What is the {{ data['officer-org'] or 'Probation' }} region?
+         What is the Responsible Organisation's {{ data['officer-org'] or 'Probation' }} region?
             </dt>
             <dd class="govuk-summary-list__value">
              {{ data['region'] or 'North West' }}
@@ -240,7 +308,7 @@
 
   <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-         What is the Probation Delivery Unit (PDU)?
+         What is the Responsible Organisation's  Probation Delivery Unit (PDU)?
             </dt>
             <dd class="govuk-summary-list__value">
              {{ data['pdu'] or 'Newcastle' }}
@@ -254,6 +322,27 @@
           </div>
 
    {% endif %}     
+
+         {% if (data['region'] == "North West") %}
+
+  <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+         What is the Responsible Organisation's probation office?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['pdu'] or 'Halton' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               
+                  <a class="govuk-link" href="region2?cya2=true">Change<span class="govuk-visually-hidden">  What is the Responsible Organisation's Probation Delivery Unit (PDU)? </span></a>
+                </li>
+                
+            </dd>
+          </div>
+
+   {% endif %}  
+
+
 
     <!--      <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">

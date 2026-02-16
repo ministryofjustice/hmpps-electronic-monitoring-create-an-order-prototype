@@ -1,0 +1,119 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Offence committed - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+ <h1 class="govuk-heading-l">
+       <span class="govuk-caption-l">Access needs and installation risk</span>
+      Add DAPO order clause
+      </h1>
+
+       {% if (data['cya3'] == "true") %}
+
+        <form class="form" action="risk-listdapo" method="post">
+
+        {% else %}
+
+       <form class="form" action="risk-listdapo" method="post">
+
+        {% endif %}
+
+<p>Enter details of the DAPO order clause. You will be able to add more DAPO order clauses later if you need to.</p>
+
+
+
+
+    {{ govukInput({
+      id: "orderclause",
+      name: "orderclause",
+      label: {
+        html: "DAPO order clause number",
+        classes: "govuk-!-font-weight-bold"
+      },
+      attributes: {
+        "data-name": "person[%index%][first_name]",
+        "data-id": "person[%index%][first_name]"
+      }
+    }) }}
+
+    
+
+    {{ govukDateInput({
+      id: "date-of-birth",
+      fieldset: {
+        legend: {
+          text: "Date of DAPO requirement",
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      hint: {
+        text: "For example, 31 3 1980"
+      },
+      items: [
+        {
+          id: "person[0][dob][day]",
+          name: "orderclauseday",
+          label: "Day",
+          classes: "govuk-input--width-2",
+          attributes: {
+            "data-name": "person[%index%][dob][day]",
+            "data-id": "person[%index%][dob][day]"
+          }
+        },
+        {
+          id: "person[0][dob][month]",
+          name: "orderclausemonth",
+          label: "Month",
+          classes: "govuk-input--width-2",
+          attributes: {
+            "data-name": "person[%index%][dob][month]",
+            "data-id": "person[%index%][dob][month]"
+          }
+        },
+        {
+          id: "person[0][dob][year]",
+          name: "orderclauseyear",
+          label: "Year",
+          classes: "govuk-input--width-4",
+          attributes: {
+            "data-name": "person[%index%][dob][year]",
+            "data-id": "person[%index%][dob][year]"
+          }
+        }
+      ]
+    }) }}
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

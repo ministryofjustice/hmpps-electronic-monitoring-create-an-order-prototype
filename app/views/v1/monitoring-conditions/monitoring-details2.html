@@ -20,17 +20,17 @@
       {% if (data['addressquestion'] == "No" and data['eighteen'] == "No") %}
 
       {{ govukInsetText({
-        text: "Curfew is not an option because the device wearer does not have a fixed address. Alcohol monitoring is not an option because the device wearer will not be 18 years old or older when the electronic monitoring device is installed."
+        text: "Some monitoring types can't be selected because the device wearer has no fixed address. Alcohol monitoring is not an option because the device wearer is not 18 years old or older when the electronic monitoring device is installed."
       }) }}
-
 
      {% elseif (data['addressquestion'] == "No") %}
 
  
 
       {{ govukInsetText({
-        text: "Curfew is not an option because the device wearer does not have a fixed address."
+        text: "Some monitoring types can't be selected because the device wearer has no fixed address."
       }) }}
+
 
 
      {% elseif (data['eighteen'] == "Yes") %}
@@ -71,6 +71,7 @@
               },
               {
                 value: "Exclusion zone monitoring",
+                disabled: (true if data['addressquestion'] == 'No'),
                 hint: {
                   text: "Prevents the device wearer entering areas or visiting locations at set times."
                 },
@@ -79,20 +80,13 @@
               
               {
                 value: "Trail monitoring",
-                disabled: (true if data['monitoringtype'] == 'Trail monitoring'),
+                disabled: (true if data['monitoringtype'] == 'Trail monitoring' or data['addressquestion'] == 'No'),
                 hint: {
-                  text: "Recording and gathering data on movements of the device wearer throughout the day.  Must be selected if the device wearer is part of the Acquisitive Crime Project."
+                  text: "Recording and gathering data on movements of the device wearer throughout the day."
                 },
                 text: "Trail monitoring"
               },
-              {
-                value: "Trail monitoring (Home Office)",
-                disabled: (true if data['monitoringtype'] == 'Trail monitoring (Home Office)' or data['monitoringtype'] == 'Trail monitoring'),
-                hint: {
-                  text: "Recording and gathering data on movements of the device wearer throughout the day. "
-                },
-                text: "Trail monitoring (Home Office only)"
-              },
+             
               {
                 value: "Alcohol monitoring",
                 disabled: (true if data['monitoringtype'] == 'Alcohol monitoring' or data['eighteen'] == 'Yes'),
@@ -104,6 +98,7 @@
               },
               {
                 value: "Mandatory attendance monitoring",
+                disabled: (true if data['addressquestion'] == 'No'),
                 hint: {
                   text: "Recording the device wearer's attendance at arranged meetings or places."
                 },
@@ -129,7 +124,7 @@
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
+       {{ govukButton({
           text: "Save as draft",
           href: '../new-form',
           classes: "govuk-button--secondary"

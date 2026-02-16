@@ -30,6 +30,8 @@
         </p>
       {% endset %}
 
+     
+
 
           {% if (data['view-variation'] == 'cancelled') %}
 
@@ -48,6 +50,8 @@
           {{ govukNotificationBanner({
               html: html
             }) }}
+
+    
 
           {% else %}
 
@@ -81,25 +85,48 @@
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-  <!--   <div class="govuk-summary-list__row">
+
+     
+
+
+
+   <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             Do you have a licence or court order document to upload?
+
+                {% if (data['usertype'] == 'Court user') %} 
+                 Do you have a licence or court order document to upload?
+                {% elseif (data['usertype'] == 'Home Office user') %}  
+                  Do you have a Grant of Bail document to upload? 
+                {% else %}  
+                  Do you need to upload a new document?
+                {% endif %}  
+       
             </dt>
             <dd class="govuk-summary-list__value">
-             Yes
+             {{ data['checkdocument'] or 'No' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               {% if (data['view'] == 'true') %}
                  <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
                 {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                  <a class="govuk-link" href="check-licence">Change<span class="govuk-visually-hidden"> </span></a>                  
                 {% endif %}
             </dd>
-          </div>-->
+          </div>
+
+
+          
+
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
+
+              {% if (data['sr-type'] == 'I need to end all monitoring for the device wearer') %}
+              Upload a copy of the recall paperwork
+              {% else %}
               Upload a copy of the licence or court order document
+              {% endif %}
+
             </dt>
             <dd class="govuk-summary-list__value">
              <a href="#">{{ data['licence'] or 'Murphy - licence 3245' }}</a>
@@ -114,11 +141,13 @@
               </ul>
             </dd>
           </div>
+
+      
           
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             Do you have a photo identification document to upload?
+             Do you have a photo to upload?
             </dt>
             <dd class="govuk-summary-list__value">
              No
@@ -134,7 +163,41 @@
           
 
         </dl>
+
+
+ <!--{% if (data['sr-type'] == 'I need to end all monitoring for the device wearer') %}
+
+
+ <h2 class="govuk-heading-m">Check if you need to upload a new licence</h2>
+
+ <p>You need to update the licence and upload it if the electronic monitoring conditions have changed.</p>
+
+
+        {{ govukCheckboxes({
+          name: "waste",
+          fieldset: {
+            legend: {
+              text: "Which types of waste do you transport?",
+              isPageHeading: true,
+              classes: "govuk-visually-hidden"
+            }
+          },
+   
+          items: [
+            {
+              value: "carcasses",
+              text: "I do not have to upload a new licence"
+            }
+          ]
+          }) }}
+
      
+
+  {% else %}
+
+  
+            
+  {% endif %}    -->
         
 
        

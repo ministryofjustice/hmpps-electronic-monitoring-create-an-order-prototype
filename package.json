@@ -6,10 +6,12 @@
   },
   "dependencies": {
     "@govuk-prototype-kit/common-templates": "2.0.1",
-    "@ministryofjustice/frontend": "5.1.4",
-    "@x-govuk/govuk-prototype-components": "^3.0.9",
-    "@x-govuk/govuk-prototype-filters": "^1.4.3",
-    "govuk-frontend": "5.11.0",
-    "govuk-prototype-kit": "13.17.0"
+    "@govuk-prototype-kit/task-list": "2.0.0",
+    "@ministryofjustice/frontend": "8.0.0",
+    "@x-govuk/govuk-prototype-components": "5.0.2",
+    "@x-govuk/govuk-prototype-filters": "2.1.0",
+    "govuk-frontend": "5.14.0",
+    "govuk-prototype-kit": "13.18.1",
+    "notifications-node-client": "8.2.1"
   }
 }

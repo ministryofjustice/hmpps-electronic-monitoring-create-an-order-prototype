@@ -12,12 +12,11 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">Access needs and installation risk</span>
-        MAPPA details
-      </h1>
 
-      <form class="form" action="check-answers" method="post">
+        <span class="govuk-caption-l">Access needs and installation risk</span>
+     
+
+      <form class="form" action="mappa-3" method="post">
 
         
          
@@ -27,7 +26,8 @@
             fieldset: {
               legend: {
                 text: "Which level of MAPPA applies to the device wearer?",
-                classes: "govuk-fieldset__legend--s"
+                 isPageHeading: true,
+                 classes: "govuk-fieldset__legend--l"
               }
             },
             hint: {
@@ -122,65 +122,7 @@
 
       -->
 
-            {{ govukRadios({
-            name: "mappa-type",
-            fieldset: {
-              legend: {
-                text: "Which category of MAPPA applies to the device wearer?",
-                classes: "govuk-fieldset__legend--s"
-              }
-            },
-            hint: {
-              text: ""
-            },
-            items: [
-              {
-                value: "Category 1",
-                text: "Category 1",
-                hint: {
-                  text: "All registered sexual offenders."
-                },
-                checked: (true if data['mappa-type'] == 'Category 1')
          
-                
-                },
-              {
-                value: "Category 2",
-                text: "Category 2",
-                hint: {
-                  text: "Violent or other sex offenders not subject to notification requirements."
-                },
-                checked: (true if data['mappa-type'] == 'Category 2')
-
-                 
-                },
-              {
-                value: "Category 3",
-                text: "Category 3",
-                hint: {
-                  text: "Other dangerous offenders."
-                },
-                checked: (true if data['mappa-type'] == 'Category 3')
-                 
-                },
-                 {
-                value: "Category 4",
-                text: "Category 4",
-                hint: {
-                  text: "Terrorist or terrorist risk offender"
-                },
-                checked: (true if data['mappa-type'] == 'Category 4')
-                 
-                }
-            ]
-          }) }}
-
-
-
-  
-
-
-
 
      
        

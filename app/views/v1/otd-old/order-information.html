@@ -1,0 +1,197 @@
+{% extends "layouts/moj-level2.html" %}
+
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+          <span class="govuk-caption-l">Electronic monitoring required</span>
+
+   <!--   <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+           What condition is the electronic monitoring part of?
+      </h1>-->
+
+
+       
+      <form class="form" action="/order-type" method="post" name="redirect">
+
+      
+
+
+            {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-type",
+              fieldset: {
+                legend: {
+                  text: "   What is the order type?",
+                  isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+                }
+              },
+              items: [
+                {
+                  value: "Post release",
+                  checked: (true if data['order-type'] == 'Post release'),
+                  text: "Release from prison",
+                  hint: {
+                    text: "Monitoring is a condition of being released from prison following a custodial sentence."
+                  }
+                },
+                {
+                  value: "Community",
+                  checked: (true if data['order-type'] == 'Community'),
+                  text: "Community",
+                  hint: {
+                    text: "Monitoring is a condition of a court order where they were convicted of a crime, but received a community rather than custodial sentence."
+                  }
+                },
+                {
+                  value: "Pre trial",
+                  checked: (true if data['order-type'] == 'Pre trial'),
+                  text: "Bail",
+                  hint: {
+                    text: "Monitoring is a condition of bail."
+                  }
+                },
+                
+                 
+                {
+                  value: "Civil",
+                  checked: (true if data['order-type'] == 'Civil'),
+                  text: "Civil",
+                  hint: {
+                    text: "Monitoring is a condition of a civil court order, rather than a criminal one."
+                  }
+                },
+                {
+                  value: "Immigration",
+                  checked: (true if data['order-type'] == 'Immigration'),
+                  text: "Immigration (Home office only)",
+                  hint: {
+                    text: "Monitoring is a condition of immigration bail."
+                  }
+                }
+              ]
+            }) }}
+
+
+
+     <!--       {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "Is the device wearer part of any of these pilots?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  value: "Domestic Abuse Protection Order (DAPO)",
+                  checked: (true if data['order-description'] == 'Domestic Abuse Protection Order (DAPO)'),
+                  text: "Domestic Abuse Protection Order (DAPO)"
+                },
+                {
+                  value: "Domestic Abuse Protection Order on Licence (DAPOL)",
+                  checked: (true if data['order-type'] == 'Domestic Abuse Protection Order on Licence (DAPOL)'),
+                  text: "Domestic Abuse Protection Order on Licence (DAPOL)"
+                },
+                {
+                  value: "Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)",
+                  checked: (true if data['order-description'] == 'Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)'),
+                  text: "Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)"
+                },
+                {
+                  value: "GPS acquisitive crime Home Detention Curfew",
+                  checked: (true if data['order-description'] == 'GPS acquisitive crime Home Detention Curfew'),
+                  text: "GPS acquisitive crime Home Detention Curfew"
+                },
+                {
+                  value: "GPS acquisitive crime parole",
+                  checked: (true if data['order-description'] == 'GPS acquisitive crime parole'),
+                  text: "GPS acquisitive crime parole"
+                },
+                 {
+                  divider: "or"
+                },
+                {
+                  value: "They are not part of any of these pilots",
+                  checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
+                  text: "They are not part of any of these pilots",
+                  behaviour: "exclusive"
+                }
+              ]
+            }) }} 
+
+            
+             {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-condition",
+              fieldset: {
+                legend: {
+                  text: "What are the order type conditions?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  value: "Requirement of a community order",
+                  checked: (true if data['order-condition'] == 'Requirement of a community order'),
+                  text: "Requirement of a community order"
+                },
+                {
+                  value: "Licence condition of a custodial order",
+                  checked: (true if data['order-condition'] == 'Licence condition of a custodial order'),
+                  text: "Licence condition of a custodial order"
+                },
+                {
+                  value: "Post-Sentence Supervision Requirement following on from an Adult Custody order",
+                  checked: (true if data['order-condition'] == 'Post-Sentence Supervision Requirement following on from an Adult Custody order'),
+                  text: "Post-Sentence Supervision Requirement following on from an Adult Custody order"
+                },
+                {
+                  value: "Bail order",
+                  checked: (true if data['order-condition'] == 'Bail order'),
+                  text: "Bail order"
+                }
+              ]
+            }) }}
+
+-->
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+       {{ govukButton({
+          text: "Save as draft",
+          href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+ 
+
+    </div>
+  </div>
+{% endblock %}

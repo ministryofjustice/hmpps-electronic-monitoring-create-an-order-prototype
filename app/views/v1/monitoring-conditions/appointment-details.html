@@ -47,7 +47,7 @@ USED IF INSTALL ADDRESS IS PER MONITORING TYPE
 
  
 
-       <form class="form" action="install-address" method="post">
+       <form class="form" action="/v1/postcode-lookup/postcode" method="post">
 
 
            {{ govukInput({
@@ -114,6 +114,8 @@ USED IF INSTALL ADDRESS IS PER MONITORING TYPE
     </fieldset>
   </div>
 
+<input type="hidden" id="sectionid" name="sectionid" value="Electronic monitoring required">
+<input type="hidden" id="postcodetype" name="postcodetype" value="installation">
         
 
        

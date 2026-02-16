@@ -1,0 +1,52 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Upload the licence document - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+            <form class="form" action="check-answers" method="post">
+
+
+     
+
+          {{ govukFileUpload({
+            id: "licence",
+            name: "licence",
+            isPageHeading: true,
+            label: {
+              text: "Upload a copy of the document",
+              classes: 'govuk-label--l'
+            },
+            hint: {
+              text: 'Upload a scanned copy or photo of the original paperwork or court document. The file must be a PDF or Word document and under 25MB in size. '
+            }
+          }) }}
+
+
+
+
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+  
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -28,54 +28,66 @@
 
           
            
-           <div class="govuk-summary-list__row">
+   <!--        <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the order type?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['order-type'] or 'Post release' }}
+              {{ data['order-type'] or 'Release from prison' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
             </dd>
           </div>
 
-        {% if (data['order-type'] == "Post release" or data['order-type'] == "Civil")  %}    
- 
-          <div class="govuk-summary-list__row">
+        {% if (data['order-type'] == "Release from prison")   %}    
+
+         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What pilot project is the device wearer part of?
+             Is the device wearer on a Home Detention Curfew (HDC)?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['order-description'] or "They are not part of any of these pilots" }}
+              {{ data['hdc'] or 'Yes' }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="order-pilots?cya4=true">Change<span class="govuk-visually-hidden"> What is the description of the order? </span></a>
-            </dd>
-          </div>
-
-         {% endif  %}
-
-      
-
-        {% if (data['order-type'] == "Post release" or data['order-type'] == "Pre trial" or data['order-type'] == "Community")  %} 
-         
-      <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What type of sentence has the device wearer been given?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['order-sentence'] or 'Standard Determinate Sentence' }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="order-senence?cya4=true">Change<span class="govuk-visually-hidden"> WWhat type of sentence has the device wearer been given? </span></a>
+              <a class="govuk-link" href="order-hdc?cya4=true">Change<span class="govuk-visually-hidden"> What are the conditions of the order? </span></a>
             </dd>
           </div>
 
           {% endif  %}
 
-            {% if (data['order-type'] == "Post release" or data['order-type'] == "Special")  %}  
-       
+          {% if (data['order-type'] == "Release from prison") and (data['hdc'] == "Yes")   %}  
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             What type of sentence has the device wearer been given?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['sentencetype'] or 'Standard Determinate Sentence' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="order-sentence-type?cya4=true">Change<span class="govuk-visually-hidden"> What are the conditions of the order? </span></a>
+            </dd>
+          </div>
+
+
+          {% endif  %}
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the order type description?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['order-description'] or 'Domestic Abuse Perpetrators on Licence (DAPOL)' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="order-description?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
+            </dd>
+          </div>
+
+
+          {% if (data['order-type'] == "Release from prison")   %}    
+
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              What condition is the monitoring part of?
@@ -88,37 +100,6 @@
             </dd>
           </div>
 
-        {% endif  %}
-
-         <!--    {% if (data['order-condition'] == "Yes")  %}  
-       
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             At what stage in their licence period is the device wearer?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['order-conditions2'] or 'It is due to start soon or has recently started' }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="order-conditions2?cya4=true">Change<span class="govuk-visually-hidden"> At what stage in their licence period are they? </span></a>
-            </dd>
-          </div>
-
-        {% endif  %}-->
-
-        {% if (data['order-type'] == "Post release")  %} 
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-            Is the device wearer on a Home Detention Curfew (HDC)?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['hdc'] or 'No' }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> Has the device wearer been released on a Home Detention Curfew (HDC)?</span></a>
-            </dd>
-          </div>
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -128,28 +109,174 @@
               {{ data['prarr'] or 'No' }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> Is the device wearer being released under P-RARR? </span></a>
+              <a class="govuk-link" href="order-prarr?cya4=true">Change<span class="govuk-visually-hidden"> Is the device wearer being released under P-RARR? </span></a>
             </dd>
           </div>
 
-           {% endif  %}
+         {% endif  %}
 
-           {% if (data['order-type'] == "Post release" or data['order-type'] == "Pre trial" or data['order-type'] == "Community")  %}  
+         -->
 
-         
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             Is the device wearer on the Intensive Supervision and Surveillance Programme (ISSP)?
+              What is the order type?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['order-type'] or 'Release from prison' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="../otd-old/order-information?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
+            </dd>
+          </div>
+
+        {% if (data['order-type'] == "Post release") or (data['order-type'] == "Community") or (data['order-type'] == "Pre trial") %}   
+
+
+         <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             What type of sentence has the device wearer been given?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['order-sentence'] or 'Standard Determinate Sentence' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="../otd-old/order-sentence?cya4=true">Change<span class="govuk-visually-hidden"> What are the conditions of the order? </span></a>
+            </dd>
+          </div> 
+
+           {% endif  %}
+
+          {% if (data['order-type'] == "Post release") and (data['order-sentence'] == "Standard Determinate Sentence")   %}  
+
+         <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Is the device wearer on a Home Detention Curfew (HDC)?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['hdc'] or 'Yes' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="../otd-old/order-hdc?cya4=true">Change<span class="govuk-visually-hidden"> What are the conditions of the order? </span></a>
+            </dd>
+          </div>
+
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What pilot project is the device wearer part of?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['order-description'] or 'Domestic Abuse Perpetrators on Licence (DAPOL)' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="../otd-old/order-pilots?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
+            </dd>
+          </div>
+
+              {% if (data['notifying-org'] == "Probation service") %} 
+
+                <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Are you submitting this form because DAPOL was missed in error at point of release?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['dapol'] or 'No' }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="../otd-old/order-dapol?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
+              </dd>
+            </div>
+
+           {% endif  %}
+
+           {% if (data['order-description'] == "GPS acquisitive crime") %} 
+
+                <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Which police force area does the device wearer live in? 
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['region-eligibility'] or 'Durham' }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="../otd-old/order-aq-region?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
+              </dd>
+            </div>
+
+           {% endif  %}
+
+           {% if (data['order-description'] == "GPS acquisitive crime")   %} 
+
+           <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                What type of acquisitive crime offence did the device wearer commit?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {{ data['order-aq'] or 'Theft from a Vehicle' }}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="../otd-old/order-aq?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
+              </dd>
+            </div>
+
+           {% endif  %}
+
+          {% endif  %}
+
+
+          {% if (data['order-type'] == "Civil") %}  
+
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What pilot project is the device wearer part of?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['order-description'] or 'Domestic Abuse Protection Order (DAPO)' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="../otd-old/order-pilot?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
+            </dd>
+          </div>
+
+          {% endif  %}
+
+       
+
+          {% if (data['order-sentence'] == "Detention and Training Order (DTO)") or (data['order-sentence'] == "Youth Rehabilitation Order (YRO)") or (data['order-type'] == "Pre trial") %}  
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Is the device wearer on the Intensive Supervision and Surveillance Programme (ISSP)?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['issp'] or 'No' }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="order-issp?cya4=true">Change<span class="govuk-visually-hidden"> Is the device wearer on the Intensive Supervision and Surveillance Programme (ISSP)? </span></a>
+              <a class="govuk-link" href="../otd-old/order-issp?cya4=true">Change<span class="govuk-visually-hidden"> Is the device wearer being released under P-RARR? </span></a>
+            </dd>
+          </div>  
+      
+
+          {% endif  %}
+
+             {% if (data['order-type'] == "Post release") %}    
+
+       
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Has the device wearer been released on a Presumptive Risk Assessed Release Review (P-RARR)?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['prarr'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="../otd-old/order-prarr?cya4=true">Change<span class="govuk-visually-hidden"> Is the device wearer being released under P-RARR? </span></a>
             </dd>
           </div>
 
-           {% endif  %}
+         {% endif  %}
 
         </dl>
 
@@ -159,7 +286,7 @@
    
 
 
-          <div class="govuk-summary-list__row">
+      <!--    <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the date for the first day of all monitoring?
             </dt>
@@ -170,20 +297,10 @@
               <a class="govuk-link" href="monitoring-dates?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the monitoring starts? </span></a>
             </dd>
           </div>
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What is the start time on the first day of monitoring? (optional)
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['starttime-hours'] or "13" }}:{{ data['starttime-minutes'] or "00" }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="monitoring-dates?cya4=true">Change<span class="govuk-visually-hidden"> What is the time the monitoring starts? </span></a>
-            </dd>
-          </div>
+          
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date when all monitoring ends? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What is the date when all monitoring ends? {% if (data['order-type'] == "Immigration") or (data['order-type'] == "Pre trial") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['monitoring-date-end'] or "12/01/2026" }} 
@@ -191,20 +308,9 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="monitoring-dates?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the monitoring ends? (optional) </span></a>
             </dd>
-          </div>
+          </div>-->
 
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What is the end time on the last day of monitoring? (optional)
-            </dt>
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['endtime-hours']  or "13"  }}:{{ data['endtime-minutes']  or "00"  }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="monitoring-dates?cya4=true">Change<span class="govuk-visually-hidden"> What is the time the monitoring ends? (optional) </span></a>
-            </dd>
-          </div>
+          
          
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -259,33 +365,7 @@
           </div>
             {% endif %}
 
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Do you want to change the standard curfew address boundary of “front door to back door” for any of the curfew addresses?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['curfew-boundary-question'] or "No" }}
-               
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="curfew-boundary?cya4=true">Change<span class="govuk-visually-hidden"> Do you want to change the standard curfew address boundary of “front door to back door” for any of the curfew addresses? </span></a>
-            </dd>
-          </div>  
-
-          {% if (data['curfew-boundary-question'] == 'No') %}
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Enter details of what the curfew address boundary should include
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['curfew-boundary'] or "Patio up to the lawn" }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="curfew-boundary?cya4=true">Change<span class="govuk-visually-hidden"> What is the address where the device wearer will spend curfew hours? </span></a>
-            </dd>
-          </div>
-            {% endif %}
+         
 
              <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -300,7 +380,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What date does curfew end? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What date does curfew end? {% if (data['order-type'] == "Immigration") or (data['order-type'] == "Pre trial") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['curfewend-date'] }} 
@@ -315,7 +395,7 @@
     <h2 class="govuk-heading-m">Curfew on the day of release</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-          <div class="govuk-summary-list__row">
+       <!--   <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What date is the device wearer released from custody?
             </dt>
@@ -325,7 +405,7 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="curfew-3?cya4=true">Change<span class="govuk-visually-hidden"> What is the release date? </span></a>
             </dd>
-          </div>
+          </div>-->
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               On the day of release, what time does the curfew start?
@@ -392,58 +472,85 @@
            
 
                  {% if (data['curfewstandard'] == "false") %}
-                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Monday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Tuesday
+                     Monday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                    19:00 Monday until 07:00 Tuesday
+                    Monday 19:00 until 07:00 
                  {% endif %} 
                  <br>
                   {% if (data['curfewstandard'] == "false") %}
-                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Tuesday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Wednesday
+                    Tuesday  {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                    19:00 Tuesday until 07:00 Wednesday
+                    Tuesday 19:00 until 07:00 
                  {% endif %} 
                  <br>
                   {% if (data['curfewstandard'] == "false") %}
-                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Wednesday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Thursday
+                    Wednesday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                    19:00 Wednesday until 07:00 Thursday
+                    Wednesday 19:00 until 07:00 
                  {% endif %} 
                  <br>
                   {% if (data['curfewstandard'] == "false") %}
-                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Thursday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Friday
+                     Thursday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                    19:00 Thursday until 07:00 Friday
+                   Thursday 19:00 until 07:00 
                  {% endif %} 
                  <br>
                   {% if (data['curfewstandard'] == "false") %}
-                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Friday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Saturday
+                    Friday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                    19:00 Friday until 07:00 Saturday
+                    Friday 19:00 until 07:00 
                  {% endif %} 
                  <br>
                   {% if (data['curfewstandard'] == "false") %}
-                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Saturday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Sunday
+                     Saturday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                    19:00 Saturday until 07:00 Sunday
+                   Saturday 19:00 until 07:00 
                  {% endif %} 
                  <br>
                   {% if (data['curfewstandard'] == "false") %}
-                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Sunday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Monday
+                    Sunday  {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                    19:00 Sunday until 07:00 Monday
+                   Sunday  19:00 until 07:00 
                  {% endif %} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="curfew-4?cya4=true">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
             </dd>
           </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Do you want to change the standard curfew address boundary of “front door to back door” for any of the curfew addresses?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfew-boundary-question'] or "No" }}
+               
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="curfew-boundary?cya4=true">Change<span class="govuk-visually-hidden"> Do you want to change the standard curfew address boundary of “front door to back door” for any of the curfew addresses? </span></a>
+            </dd>
+          </div>  
+
+          {% if (data['curfew-boundary-question'] == 'No') %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Enter details of what the curfew address boundary should include
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfew-boundary'] or "Patio up to the lawn" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="curfew-boundary?cya4=true">Change<span class="govuk-visually-hidden"> What is the address where the device wearer will spend curfew hours? </span></a>
+            </dd>
+          </div>
+            {% endif %}
            
 
         </dl>
       
 {% endif %}
 
-{% if (data['monitoringtype'] != "Curfew" or data['monitoringtype2'] != "Curfew") %}
+   {% if (data['monitoringtype'] == "Alcohol monitoring" or data['monitoringtype2'] == "Alcohol monitoring") %}
 
 <h2 class="govuk-heading-m">Installation address</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -507,7 +614,7 @@
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="install-address?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
+              <a class="govuk-link" href="/v1/postcode-lookup/postcode">Change<span class="govuk-visually-hidden"> Installation address </span></a>
             </dd>
           </div>  
 
@@ -531,18 +638,18 @@
               {{ data['exclusionstart-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="exclusion?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the exclusion and inclusion monitoring starts? </span></a>
+              <a class="govuk-link" href="exclusion-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the exclusion and inclusion monitoring starts? </span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What date does exclusion monitoring end? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What date does exclusion monitoring end? {% if (data['order-type'] == "Immigration") or (data['order-type'] == "Pre trial") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['exclusionend-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="exclusion?cya4=true">Change<span class="govuk-visually-hidden"> What is the end date for exclusion and inclusion monitoring? </span></a>
+              <a class="govuk-link" href="exclusion-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the end date for exclusion and inclusion monitoring? </span></a>
             </dd>
           </div>
         <!--  <div class="govuk-summary-list__row">
@@ -645,22 +752,22 @@
               {{ data['trailstart-date'] or '12/01/2025' }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="trail?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the trail monitoring starts? </span></a>
+              <a class="govuk-link" href="trail-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the trail monitoring starts? </span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What date does trail monitoring end? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What date does trail monitoring end? {% if (data['order-type'] == "Immigration") or (data['order-type'] == "Pre trial") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['trailend-date'] or '12/01/2026' }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="trail?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the trail monitoring ends? </span></a>
+              <a class="govuk-link" href="trail-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the trail monitoring ends? </span></a>
             </dd>
           </div>
 
-          {% if (data['monitoringtype'] == "Trail monitoring (Home Office)") %}
+          {% if (data['order-type'] == "Immigration") %}
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -697,18 +804,18 @@
               {{ data['attendancestart-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="attendance?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the mandatory attendance monitoring starts? </span></a>
+              <a class="govuk-link" href="attendance-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the mandatory attendance monitoring starts? </span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What date does mandatory attendance monitoring end? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What date does mandatory attendance monitoring end? {% if (data['order-type'] == "Immigration") or (data['order-type'] == "Pre trial") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['attendanceend-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="attendance?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the mandatory attendance monitoring ends? </span></a>
+              <a class="govuk-link" href="attendance-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the mandatory attendance monitoring ends? </span></a>
             </dd>
           </div>
   
@@ -748,7 +855,7 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-           What time does the appointment end? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+           What time does the appointment end? {% if (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['appointment-end-hours'] }}:{{ data['appointment-end-minutes'] }}
@@ -794,18 +901,18 @@
               {{ data['alcoholstart-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="alcohol?cya4=true">Change<span class="govuk-visually-hidden"> What date does alcohol monitoring start? </span></a>
+              <a class="govuk-link" href="alcohol-1?cya4=true">Change<span class="govuk-visually-hidden"> What date does alcohol monitoring start? </span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What date does alcohol monitoring end? {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}(optional){% endif %}
+              What date does alcohol monitoring end? {% if (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['alcoholend-date'] }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="alcohol?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the alcohol monitoring ends? </span></a>
+              <a class="govuk-link" href="alcohol-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the alcohol monitoring ends? </span></a>
             </dd>
           </div>
            <div class="govuk-summary-list__row">

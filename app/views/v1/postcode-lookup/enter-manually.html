@@ -13,20 +13,39 @@
     <div class="govuk-grid-column-two-thirds">
 
 
+   {% if (data['postcodetype'] == "installation") %}    
 
 
-      <form class="form" action="#" method="post">
+      {% if (data['monitoringtypeadded'] == "Yes") %}
 
+       <form class="form" action="/install-type2" method="post">
 
-  <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">Section title</span>
-        Add address
-      </h1>
+      {% else %}
+
+      <form class="form" action="/install-type" method="post">
+
+      {% endif %}
+
+ {% else %}
+      <form class="form" action="/postcode" method="post">
+{% endif %}      
+
+       <span class="govuk-caption-l"> {{ data['sectionid'] or 'About the device wearer'}}</span>
+         <h1 class="govuk-heading-l">What is the {{ data['postcodetype'] or "device wearer's"}} address?</h1>
+
+         {% if (data['postcodetype'] == "installation") %}
+
+       <p class="govuk-body"> 
+         For installation at source this is the address of the prison or probation office.</p>
+
+         {% endif %}
+
 
       {% call govukFieldset({
         legend: {
-          text: "What is the device wearer's address?",
-          classes: "govuk-fieldset__legend--s"
+          text: "Add address",
+         isPageHeading: true,
+         classes: "govuk-visually-hidden"
         }
       }) %}
 

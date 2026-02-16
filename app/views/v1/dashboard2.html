@@ -1,0 +1,87 @@
+{% extends "layouts/moj.html" %}
+
+
+
+{% block pageTitle %}
+  Electronic Monitoring application forms - Electronic Monitoring
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+         <form class="form" action="new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&view=none&newform=true" method="post">
+
+        <div class="moj-page-header-actions">
+          <div class="moj-page-header-actions__title">
+            <h1 class="govuk-heading-xl">Electronic Monitoring Order (EMO) forms</h1>
+          </div>
+
+          <div class="moj-page-header-actions__actions">
+            <div class="moj-button-group moj-button-group--inline">
+
+            <!--  <button type="submit" class="govuk-button" data-module="govuk-button">
+                Start new form
+              </button>-->
+
+              
+
+            </div>
+          </div>
+
+        </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+                Start new form
+              </button>
+
+      </form>
+
+{% if (data['usertype'] == "Probation user") %}
+
+      {{ mojSubNavigation({
+        label: "Sub navigation",
+        items: [{
+          text: "Submitted forms",
+          href: "dashboard?searchresults=false&search="
+          
+        }, {
+          text: "Draft forms",
+          href: "#",
+          active: true
+        }]
+      }) }}
+
+
+          {% include "/includes/draft.html" %}
+
+
+{% else %}    
+
+      {{ mojSubNavigation({
+        label: "Sub navigation",
+        items: [{
+          text: "Draft forms",
+          href: "dashboard"
+        }, {
+          text: "Submitted forms",
+          href: "#3",
+          active: true
+
+        }]
+      }) }}
+
+
+     {% include "/includes/search.html" %}
+
+{% endif %}  
+       
+      
+       
+        
+         
+    </div>
+</div>
+
+{% endblock %}

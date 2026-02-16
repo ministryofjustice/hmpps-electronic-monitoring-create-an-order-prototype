@@ -100,6 +100,36 @@
  <h2 class="govuk-heading-m">Installation risk</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+       {% if (data['notifying-org'] == "Family Court") %}
+
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            DAPO order clauses
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['dapoclause'] or '12345642' }} on {{ data['dapoclauseday'] or '12' }}/{{ data['dapoclausemonth'] or '01' }}/{{ data['dapoclauseyear'] or '2025' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="risk-listdapo?cya3=true">Change<span class="govuk-visually-hidden"> What type of offence has been committed by the device wearer?</span></a>
+            </dd>
+          </div>
+
+       {% elseif (data['notifying-org'] == "Civil and County Court") %}
+
+         <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Offences
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['offence'] or 'Robbery' }} on {{ data['offenceday'] or '12' }}/{{ data['offencemonth'] or '01' }}/{{ data['offenceyear'] or '2025' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="risk-list?cya3=true">Change<span class="govuk-visually-hidden"> What type of offence has been committed by the device wearer?</span></a>
+            </dd>
+          </div>
+
+       {% else %}
+
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              What type of offence did the device wearer commit? 
@@ -122,6 +152,8 @@
               <a class="govuk-link" href="risk-1?cya3=true">Change<span class="govuk-visually-hidden">   Is there any other information to be aware of about the offence committed?</span></a>
             </dd>
           </div>
+
+          {% endif %}
 
           {% if (data['offence-question'] == "Yes") %}
 

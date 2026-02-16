@@ -1,0 +1,40 @@
+{% extends "layouts/moj.html" %}
+
+{% block pageTitle %}
+  Are you sure that you want to delete this electronic monitoring type? - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l"><span class="govuk-caption-l">Access needs and installation risk</span>
+
+      Are you sure that you want to delete this offence?</h1>
+
+      <p>{{ data['offence'] or 'Robbery' }} on {{ data['offenceday'] or '12' }}/{{ data['offencemonth'] or '01' }}/{{ data['offenceyear'] or '2025' }}</p>
+
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Yes, delete offence",
+              href: 'risk-civil',
+              classes: "govuk-button--warning"
+            }) }}
+
+            {{ govukButton({
+              text: "Cancel",
+              href: 'risk-list',
+              classes: "govuk-button--secondary"
+            }) }}
+          </div>
+     
+        </div>
+      </div>
+{% endblock %}

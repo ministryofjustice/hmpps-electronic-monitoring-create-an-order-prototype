@@ -1,0 +1,110 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Monitoring dates - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+
+        Overall monitoring dates
+      </h1>
+
+      
+
+    
+  {% if (data['cyasimple'] == "true") %}
+
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+       <form class="form" action="document-question" method="post">
+
+        {% endif %}
+
+
+ 
+
+          <div class="moj-datepicker" data-module="moj-date-picker">
+
+            <div class="govuk-form-group">
+              <label class="govuk-label  govuk-label--s" for="date">
+               What is the date for the first day of all monitoring?
+              </label>
+
+              <div id="date-hint" class="govuk-hint">
+                For example, 17/5/2024.  If there is more than one type of monitoring, provide the date when all monitoring started.
+              </div>
+
+              <input class="govuk-input moj-js-datepicker-input " id="date" name="monitoring-date-start" type="text" aria-describedby="date-hint" autocomplete="off" value="{{ data['monitoring-date-start'] }}">
+
+            </div>
+
+          </div>
+
+
+
+
+  
+
+          <div class="moj-datepicker" data-module="moj-date-picker">
+
+            <div class="govuk-form-group">
+              <label class="govuk-label  govuk-label--s" for="date">
+           
+               What is the date when all monitoring ends? 
+    
+
+              </label>
+
+              <div id="date-hint" class="govuk-hint">
+                For example, 17/5/2024.  If there is more than one type of monitoring, provide the date when all monitoring finishes.
+              </div>
+
+              <input class="govuk-input moj-js-datepicker-input " id="date" name="monitoring-date-end" type="text" aria-describedby="date-hint" autocomplete="off" value="{{ data['monitoring-date-end'] }}">
+
+            </div>
+
+          </div>
+
+           
+            
+          </div>
+        </fieldset>
+      </div>
+       
+
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+  <!--  {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+-->
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

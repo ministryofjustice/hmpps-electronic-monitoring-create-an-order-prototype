@@ -18,11 +18,33 @@
       <form class="form" action="postcode-list" method="post">
 
         <div class="govuk-width-container">
-         <span class="govuk-caption-l">Section title</span>
-        <h1 class="govuk-heading-l">Find an address</h1>
+         <span class="govuk-caption-l"> {{ data['sectionid'] or 'About the device wearer'}}</span>
+        <h1 class="govuk-heading-l">Find the {{ data['postcodetype'] or "device wearer's"}} address</h1>
+
+        <!--
+
+        {% if (data['sectionid'] == "About the device wearer") %}
+
+       <p class="govuk-body"> If the device wearer has more than one address, enter the address they are legally registered at. If they divide their time across properties, enter the address they spend the most time or consider their home address.<p class="govuk-body">
+
+         {% endif %}-->
+
+
+         {% if (data['postcodetype'] == "installation") %}
+
+       <p class="govuk-body"> 
+         For installation at source this is the address of the prison or probation office.</p>
+
+         {% endif %}
+
+
+
+
+
         {{ govukInput({
         label: {
-          text: "Postcode"
+          text: "Postcode",
+          classes: "govuk-label--s"
         },
         classes: "govuk-!-width-two-thirds",
         hint: {
@@ -34,7 +56,9 @@
 
         {{ govukInput({
         label: {
-          text: "Building number or name"
+          text: "Building number or name (optional)",
+          classes: "govuk-label--s"
+
         },
         classes: "govuk-!-width-two-thirds",
         hint: {

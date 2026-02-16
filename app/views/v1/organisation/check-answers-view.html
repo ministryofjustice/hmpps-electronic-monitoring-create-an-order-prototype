@@ -88,24 +88,57 @@
 
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-
-           <div class="govuk-summary-list__row">
+               <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
                What organisation or related organisation are you part of?
             </dt>
             <dd class="govuk-summary-list__value">
-             {{ data['notifying-org'] or "Crown Court" }}
+             {{ data['notifying-org'] or "Probation" }}
             </dd>
             <dd class="govuk-summary-list__actions">
-                 {% if (data['view'] == 'true') %}
+
+                {% if (data['view'] == 'true') %}
                  <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
                 {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                 <a class="govuk-link" href="org-details?cya2=true">Change<span class="govuk-visually-hidden"> What organisation are you part of? </span></a>                
                 {% endif %}
+                   
+                </li>
+                
+            </dd>
+          </div>
+<!--
+
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Which type of court are you part of?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['notifying-org'] or "Family Court" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               
+                  <a class="govuk-link" href="org-details?cya2=true">Change<span class="govuk-visually-hidden"> What organisation are you part of? </span></a>
+                </li>
                 
             </dd>
           </div>
 
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            What is the name of the court?
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Barnsley Family Court
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               
+                  <a class="govuk-link" href="org-details?cya2=true">Change<span class="govuk-visually-hidden"> What organisation are you part of? </span></a>
+                </li>
+                
+            </dd>
+          </div>
+   -->
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
          What is your team's contact email address?
@@ -122,9 +155,18 @@
                 
             </dd>
           </div>
-
-
              </dl>
+
+    {% if (data['usertype'] == 'Probation user') %}   
+
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+        {{ govukDetails({
+          summaryText: "How do I change the Responsible Officer or Responsible Organisation?",
+          text: "Use the service request portal if you have access. If you don’t have access, complete the XXX form and email it to XXXX."
+        }) }}
+    
+    {% else %}      
 
      <h2 class="govuk-heading-m">Responsible Officer's details</h2>
 
@@ -139,9 +181,9 @@
             </dd>
             <dd class="govuk-summary-list__actions">
                {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="responsible-officer-view"><span class="govuk-visually-hidden"> </span></a>
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
                 {% else %}
-                  <a class="govuk-link" href="responsible-officer-view">Change<span class="govuk-visually-hidden"> </span></a>                  
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
                 {% endif %}
             </dd>
           </div>
@@ -154,9 +196,9 @@
             </dd>
             <dd class="govuk-summary-list__actions">
                {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="responsible-officer-view"><span class="govuk-visually-hidden"> </span></a>
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
                 {% else %}
-                  <a class="govuk-link" href="responsible-officer-view">Change<span class="govuk-visually-hidden"> </span></a>                  
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
                 {% endif %}
                 
             </dd>
@@ -170,9 +212,9 @@
             </dd>
             <dd class="govuk-summary-list__actions">
                {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="responsible-officer-view"><span class="govuk-visually-hidden"> </span></a>
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
                 {% else %}
-                  <a class="govuk-link" href="responsible-officer-view">Change<span class="govuk-visually-hidden"> </span></a>                  
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
                 {% endif %}
                 
             </dd>
@@ -191,7 +233,7 @@
          What is the Responsible Officer's organisation?
             </dt>
             <dd class="govuk-summary-list__value">
-             Home Office
+             Probation
             </dd>
             <dd class="govuk-summary-list__actions">
                {% if (data['view'] == 'true') %}
@@ -220,6 +262,8 @@
                 
             </dd>
           </div>
+
+    
 <!--
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -307,6 +351,8 @@
 
 
         </dl>
+
+{% endif %}    
      
         
 

@@ -1,0 +1,87 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Device wearer's address - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+    
+
+     <h1 class="govuk-heading-l">
+   <!--     <span class="govuk-caption-l">About the device wearer</span>-->
+        Fixed address
+      </h1>
+
+   
+
+     <p>  A fixed address is the address the device wearer has registered as their home address. It can be temporary accommodation, an Approved Premises (AP), a fixed tenancy or a permanent address.</p> 
+
+    <p>  A fixed address is required to process all monitoring orders apart from immigration cases or those that include Alcohol monitoring.</p>
+
+
+      <form class="form" action="/contact-address" method="post">
+
+          {{ govukRadios({
+            name: "addressquestion",
+            classes: "govuk-radios--inline",
+            fieldset: {
+              legend: {
+                text: "Does the device wearer have a fixed address?",
+               classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+           
+              {
+                value: "Yes",
+                checked: (true if data['addressquestion'] == 'Yes'),
+                text: "Yes"
+              },
+              {
+                value: "No",
+                checked: (true if data['addressquestion'] == 'No'),
+                text: "No"
+              }
+            ]
+          }) }}
+
+
+<input type="hidden" id="sectionid" name="sectionid" value=" ">
+<input type="hidden" id="variation-simple" name="variation-simple" value="true">
+<input type="hidden" id="postcodetype" name="postcodetype" value="device wearer's">
+
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+    <!--    {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}-->
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

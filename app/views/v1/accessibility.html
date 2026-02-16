@@ -33,19 +33,20 @@
           <p>We know some parts of this website are not fully accessible:</p>
 
           <ul class="govuk-list govuk-list--bullet">
-            <li>xxx</li>
-            <li>xxx</li>
-            <li>xxx</li>
+            <li>No error message shown when an empty curfew timetable form is submitted.</li>
+            <li>Curfew updates not announced to screen reader users. For example, remove a curfew period.</li>
+            <li>PDF documents are not fully accessible to screen reader software.</li>
+            <li>Inconsistent back link behaviour.</li>
           </ul>
 
           <h2 class="govuk-heading-l">Feedback and contact information</h2>
 
-          <p>If you find any problems not listed on this page or think we’re not meeting accessibility requirements, contact: <a href="mailto:EMOrderSupport@justice.gov.uk">EMOrderSupport@justice.gov.uk</a>.</p>
+          <p>If you find any problems not listed on this page or think we’re not meeting accessibility requirements, contact: <a href="mailto:digitalmonitoringqueries@justice.gov.uk">digitalmonitoringqueries@justice.gov.uk</a>.</p>
 
           <p>If you need information on this website in a different format like accessible PDF, large print, easy read, audio recording or braille:</p>
 
           <ul class="govuk-list govuk-list--bullet">
-            <li>EMOrderSupport@justice.gov.uk</li>
+            <li>digitalmonitoringqueries@justice.gov.uk</li>
           </ul>
 
           <p>We’ll consider your request and get back to you in 5 working days.</p>
@@ -66,17 +67,23 @@
 
           <p>The website has been tested against the Web Content Accessibility Guidelines (WCAG) 2.2 AA standard.</p>
 
+          <!--
+
           <p>[Select (a) only if all requirements of the technical specification are fully met without exceptions for WCAG 2.2.]</p>
 
           <p>(a) This website is fully compliant with the <a rel="external" href="https://www.w3.org/TR/WCAG22/" class="govuk-link">Web Content Accessibility Guidelines version 2.2</a> AA standard.</p>
 
           <p>[Select (b) if most requirements of the technical specification are met, but with some exceptions. This means not yet fully compliant and that the necessary measures are to be taken in order to reach full compliance.]</p>
 
-          <p>(b) This website is partially compliant with the <a rel="external" href="https://www.w3.org/TR/WCAG22/" class="govuk-link">Web Content Accessibility Guidelines version 2.2</a> AA standard, due to [insert one of the following: ‘the non-compliances’, ‘the exemptions’ or ‘the non-compliances and exemptions’] listed below.</p>
+          -->
+
+          <p>This website is partially compliant with the <a rel="external" href="https://www.w3.org/TR/WCAG22/" class="govuk-link">Web Content Accessibility Guidelines version 2.2</a> AA standard, due to [insert one of the following: ‘the non-compliances’, ‘the exemptions’ or ‘the non-compliances and exemptions’] listed below.</p>
+
+          <!--
 
           <p>[Select (c) if most requirements of the technical specification are not met.]</p>
 
-          <p>(c) This website is not compliant with the <a rel="external" href="https://www.w3.org/TR/WCAG22/" class="govuk-link">Web Content Accessibility Guidelines version 2.2</a> AA standard. The [insert one of the following: ‘non-compliances’, ‘exemptions’ or ‘non-compliances and exemptions’] are listed below.</p>
+          <p>(c) This website is not compliant with the <a rel="external" href="https://www.w3.org/TR/WCAG22/" class="govuk-link">Web Content Accessibility Guidelines version 2.2</a> AA standard. The [insert one of the following: ‘non-compliances’, ‘exemptions’ or ‘non-compliances and exemptions’] are listed below.</p>-->
 
 
           <h2 class="govuk-heading-l">Non-accessible content</h2>
@@ -86,8 +93,15 @@
 
           <h3 class="govuk-heading-m">Non-compliance with the accessibility regulations</h3>
 
+          <ol  class="govuk-list govuk-list--number">
+            <li>Error identification. On the Curfew Timetable page, if the user attempts to submit the form without completing any of the fields, the page simply reloads without providing an error message or summary. This leaves users unaware of what went wrong or why they cannot progress, which can be particularly problematic for screen reader users or those with cognitive impairments who rely on clear feedback to correct mistakes. This fails WCAG 3.3.1 (A), 3.3.3 (AA).</li>
+            <li>Status messages. On the Curfew Timetable page, actions such as clicking the “Remove” button to delete an extra time entry or using the “Auto populate the other days with the same curfew hours” option dynamically update the form fields. However, these updates are not announced to screen reader users, who receive no feedback indicating that the interface has changed. This fails WCAG 4.1.3 (AA).</li>
 
-          <p>xxxxxxx</p>
+
+          </ol>
+
+          <p>The submitted form document is in both a HTML format and PDF. The PDF is not accessible in a number of ways including missing document structure.</p>
+          <p>Every form submission causes the page to reload resulting in the browser treating the current page as a new history entry each time. When users click the “Back” link, they are often taken to an earlier state of the current page (such as an empty or partially completed form) rather than the previous step in the journey. </p>
 
           <!-- We should not be using this at MOJ without approval!!!
 
@@ -102,19 +116,19 @@
          
           <h2 class="govuk-heading-m">What we’re doing to improve accessibility</h2>
 
-          <p>Our accessibility roadmap [add link to roadmap] shows how and when we plan to improve accessibility on this website.</p>
+          <p>We are working alongside other government departments and agencies to fix content which fails to meet the Web Content Accessibility Guidelines version 2.2 AA standard.</p>
 
           <h2 class="govuk-heading-l">Preparation of this accessibility statement</h2>
 
 
-          <p>This statement was prepared on [date when it was first published]. It was last reviewed on [date when it was last reviewed].</p>
+          <p>This statement was prepared in December 2025. <!--It was last reviewed on [date when it was last reviewed].--></p>
 
-          <p>This website was last tested on [date] against the WCAG  2.2 AA standard.</p>
+          <p>This website was last tested on 1 July 2025 against the WCAG  2.2 AA standard.</p>
 
-          <p>The test was carried out by [add name of organisation that carried out test, or indicate that you did your own testing]. The most viewed pages were tested using automated testing tools by our website team. A further audit of the website was carried out to the WCAG 2.2 AA standard.</p>
+          <p>The test was carried out by User Vision LTD. The most viewed pages were tested using automated testing tools by our website team. A further audit of the website was carried out to the WCAG 2.2 AA standard.</p>
 
 
-          <p>You can read the full accessibility test report [add link to report].</p>
+          <p>You can read the full <a href="https://uv3228-cemo.uservisionaccessibility.co.uk/">accessibility test report</a>.</p>
 
 
 

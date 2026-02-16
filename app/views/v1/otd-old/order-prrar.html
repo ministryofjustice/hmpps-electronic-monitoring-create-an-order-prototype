@@ -12,19 +12,29 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-          <span class="govuk-caption-l">Electronic monitoring required</span>
+       <span class="govuk-caption-l">Electronic monitoring required</span>
 
-  
+  <!--    <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        Release conditions
+      </h1>
+-->
+ 
+
        
-      <form class="form" action="order-description" method="post">
+      <form class="form" action="../monitoring-conditions/monitoring-details" method="post">
 
 
-       {{ govukRadios({
+
+      
+
+
+        {{ govukRadios({
           classes: "govuk-radios",
-          name: "sentencetype",
+          name: "prarr",
           fieldset: {
             legend: {
-              text: "What type of sentence has the device wearer been given?",
+              text: "Has the device wearer been released on a Presumptive Risk Assessed Release Review (P-RARR)?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
@@ -34,26 +44,25 @@
           },
           items: [
             {
-              value: "Standard Determinate Sentence",
-              text: "Standard Determinate Sentence",
-              checked: (true if data['sentencetype'] == 'Standard Determinate Sentence')
+              value: "Yes",
+              text: "Yes",
+              checked: (true if data['prarr'] == 'Yes')
             },
             {
-              value: "Detention and Training Order",
-              text: "Detention and Training Order (DTO)",
-              checked: (true if data['sentencetype'] == 'Detention and Training Order')
+              value: "No",
+              text: "No",
+              checked: (true if data['prarr'] == 'No')
             },
             {
               divider: "or"
             },
             {
-              value: "The sentence the device wearer has been given is not listed",
-              text: "The sentence the device wearer has been given is not listed",
-              checked: (true if data['sentencetype'] == 'The sentence the device wearer has been given is not listed')
+              value: "Not able to provide this information",
+              text: "Not able to provide this information",
+              checked: (true if data['prarr'] == 'Not able to provide this information')
             }
           ]
         }) }}
-     
        
 
     {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -68,7 +77,6 @@
           href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
         }) }}
-
       </div>
  
     </form>
