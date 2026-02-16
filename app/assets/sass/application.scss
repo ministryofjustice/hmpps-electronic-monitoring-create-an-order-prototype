@@ -5,6 +5,27 @@
 
 // Add extra styles here
 
+
+
+.technical-updates-banner {
+    background-color: #44247b;
+    padding: 10px 0 10px 0;
+}
+
+.govuk-grid-row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.technical-updates-container {
+    color: #fff;
+}
+
+.technical-updates-content {
+    float: left;
+}
+
+
 .govuk-width-container {
   max-width: 1170px;
 }
@@ -157,3 +178,14 @@ $govuk-button-text-colour: govuk-colour("black");
     }
   }
 }
+
+
+    .guidance-panel {
+        border-left-color: govuk-colour('blue');
+        background-color: #eaf4f9;
+    }
+    
+    
+
+
+

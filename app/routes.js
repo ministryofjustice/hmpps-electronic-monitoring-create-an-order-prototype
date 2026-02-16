@@ -106,12 +106,33 @@ router.post('/eighteen-answer', function(request, response) {
 router.post('/contact-address', function(request, response) {
 
     var addressquestion = request.session.data['addressquestion']
+    var variationsimple = request.session.data['variation-simple']
     if (addressquestion == "Yes"){
-        response.redirect("/v1/device-wearer/contact-address")
+        response.redirect("/v1/postcode-lookup/postcode")
+    } else if (variationsimple == "true"){
+        response.redirect("/v1/variation-simple/offence")      
     } else {
         response.redirect("/v1/device-wearer/check-answers")
     }
 })
+
+router.post('/postcode', function(request, response) {
+
+    var sectionid = request.session.data['sectionid']
+    var postcodetype = request.session.data['postcodetype']
+    if (sectionid == "About the device wearer"){
+        response.redirect("/v1/device-wearer/check-answers")
+    } else if (postcodetype == "appointment"){
+        response.redirect("/v1/monitoring-conditions/monitoring-needed")       
+    } else if (postcodetype == "curfew"){
+        response.redirect("/v1/postcode-lookup/address-name")    
+    } else if (postcodetype == "installation"){
+        response.redirect("/v1/monitoring-conditions/alcohol")            
+    } else {
+        response.redirect("/v1/variation-simple/offence")
+    }
+})
+
 router.post('/disability', function(request, response) {
 
     var disability = request.session.data['disability']
@@ -248,12 +269,14 @@ router.post('/appointment-address', function(request, response) {
         response.redirect("/v1/monitoring-conditions/appointment-details")  
     } else if (appointmentquestion == "At a probation office"){
         response.redirect("/v1/monitoring-conditions/appointment-details") 
+    } else if (appointmentquestion == "At an immigration removal centre"){
+        response.redirect("/v1/monitoring-conditions/appointment-details")     
     } else if (appointmentquestion == "At another address"){
-        response.redirect("/v1/monitoring-conditions/install-address") 
+        response.redirect("/v1/postcode-lookup/postcode") 
     } else if (monitoringtype == "Trail monitoring (Home Office)"){
         response.redirect("/v1/monitoring-conditions/trail")                 
     } else {
-        response.redirect("/v1/monitoring-conditions/alcohol")
+        response.redirect("/v1/monitoring-conditions/check-answers")
     }
 })
 
@@ -271,7 +294,7 @@ router.post('/appointment-address2', function(request, response) {
     } else if (monitoringtype2 == "Trail monitoring (Home Office)"){
         response.redirect("/v1/monitoring-conditions/trail")                 
     } else {
-        response.redirect("/v1/monitoring-conditions/alcohol")
+        response.redirect("/v1/monitoring-conditions/check-answers")
     }
 })
 
@@ -373,11 +396,11 @@ router.post('/monitoring-type', function(request, response) {
     } else if (monitoringtype == "Trail monitoring"){
         response.redirect("/v1/monitoring-conditions/trail") 
     } else if (monitoringtype == "Trail monitoring (Home Office)"){
-        response.redirect("/v1/monitoring-conditions/appointment-question")    
+        response.redirect("/v1/monitoring-conditions/trail")    
     } else if (monitoringtype == "Mandatory attendance monitoring"){
         response.redirect("/v1/monitoring-conditions/attendance")      
     } else {
-        response.redirect("/v1/monitoring-conditions/appointment-question")
+        response.redirect("/v1/monitoring-conditions/alcohol")
     }
 })
 
@@ -398,32 +421,11 @@ router.post('/install-type', function(request, response) {
     } else if (monitoringtype == "Mandatory attendance monitoring"){
         response.redirect("/v1/monitoring-conditions/attendance")      
     } else {
-        response.redirect("/v1/monitoring-conditions/alcohol")
+        response.redirect("/v1/monitoring-conditions/check-answers")
     }
 })
 
 router.post('/monitoring-type2', function(request, response) {
-
-    var monitoringtype2 = request.session.data['monitoringtype2']
-    
-    if (monitoringtype2 == "Curfew"){
-        response.redirect("/v1/monitoring-conditions/curfew")   
-    } else if (monitoringtype2 == "Exclusion zone monitoring"){
-        response.redirect("/v1/monitoring-conditions/exclusion") 
-    } else if (monitoringtype2 == "Inclusion zone monitoring"){
-        response.redirect("/v1/monitoring-conditions/inclusion")       
-    } else if (monitoringtype2 == "Trail monitoring"){
-        response.redirect("/v1/monitoring-conditions/trail")   
-    } else if (monitoringtype2 == "Trail monitoring (Home Office)"){
-        response.redirect("/v1/monitoring-conditions/appointment-question")  
-    } else if (monitoringtype2 == "Mandatory attendance monitoring"){
-        response.redirect("/v1/monitoring-conditions/attendance")      
-    } else {
-        response.redirect("/v1/monitoring-conditions/appointment-question")
-    }
-})
-
-router.post('/install-type2', function(request, response) {
 
     var monitoringtype2 = request.session.data['monitoringtype2']
     
@@ -444,14 +446,45 @@ router.post('/install-type2', function(request, response) {
     }
 })
 
+router.post('/install-type2', function(request, response) {
+
+    var monitoringtype2 = request.session.data['monitoringtype2']
+    
+    if (monitoringtype2 == "Curfew"){
+        response.redirect("/v1/monitoring-conditions/curfew")   
+    } else if (monitoringtype2 == "Exclusion zone monitoring"){
+        response.redirect("/v1/monitoring-conditions/exclusion") 
+    } else if (monitoringtype2 == "Inclusion zone monitoring"){
+        response.redirect("/v1/monitoring-conditions/inclusion")       
+    } else if (monitoringtype2 == "Trail monitoring"){
+        response.redirect("/v1/monitoring-conditions/trail")   
+    } else if (monitoringtype2 == "Trail monitoring (Home Office)"){
+        response.redirect("/v1/monitoring-conditions/trail")  
+    } else if (monitoringtype2 == "Mandatory attendance monitoring"){
+        response.redirect("/v1/monitoring-conditions/attendance")      
+    } else {
+        response.redirect("/v1/monitoring-conditions/check-answers")
+    }
+})
+
 
 router.post('/curfew-address-question', function(request, response) {
 
     var curfewaddressquestion = request.session.data['curfewaddressquestion']
     if (curfewaddressquestion == "Yes"){
-        response.redirect("/v1/monitoring-conditions/curfew-address")
+        response.redirect("/v1/postcode-lookup/postcode")
     } else {
         response.redirect("/v1/monitoring-conditions/curfew-1")
+    }
+})
+
+router.post('/curfew-change', function(request, response) {
+
+    var curfewperiods = request.session.data['curfewperiods']
+    if (curfewperiods == "one"){
+        response.redirect("/v1/monitoring-conditions/curfew-4")
+    } else {
+        response.redirect("/v1/monitoring-conditions/curfew-change2")
     }
 })
 
@@ -459,9 +492,9 @@ router.post('/curfew-times-question', function(request, response) {
 
     var curfewtimesquestion = request.session.data['curfewtimesquestion']
     if (curfewtimesquestion == "Yes"){
-        response.redirect("/v1/monitoring-conditions/curfew-4?curfewtimetableday=false&curfewstandard=true&curfewchange-starttime-hours=19&curfewchange-starttime-minutes=00&curfewchange-endtime-hours=07&curfewchange-endtime-minutes=00")
+        response.redirect("/v1/monitoring-conditions/curfew-4?curfewtimetableday=false&curfewstandard=true&curfewchange-starttime-hours=19&curfewchange-starttime-minutes=00&curfewchange-endtime-hours=07&curfewchange-endtime-minutes=00&curfewperiods=one")
     } else {
-        response.redirect("/v1/monitoring-conditions/curfew-change?curfewstandard=false&curfewtimetableday=false")
+        response.redirect("/v1/monitoring-conditions/curfew-period?curfewstandard=false&curfewtimetableday=false")
     }
 })
 
@@ -504,8 +537,19 @@ router.post('/inclusion-question', function(request, response) {
 router.post('/monitoring-list', function(request, response) {
 
     var monitoringtypesquestion = request.session.data['monitoringtypesquestion']
+    var monitoringtype = request.session.data['monitoringtype']
+    var monitoringtype2 = request.session.data['monitoringtype2']
     if (monitoringtypesquestion == "Yes"){
         response.redirect("/v1/monitoring-conditions/monitoring-details2")
+
+    } else if (monitoringtype == "Alcohol monitoring"){
+        response.redirect("/v1/monitoring-conditions/appointment-question") 
+    } else if (monitoringtype2 == "Alcohol monitoring"){
+        response.redirect("/v1/monitoring-conditions/appointment-question") 
+    } else if (monitoringtype == "Trail monitoring (Home Office)"){
+        response.redirect("/v1/monitoring-conditions/appointment-question") 
+    } else if (monitoringtype2 == "Trail monitoring (Home Office)"){
+        response.redirect("/v1/monitoring-conditions/appointment-question")            
     } else {
         response.redirect("/v1/monitoring-conditions/check-answers")
     }
@@ -521,12 +565,23 @@ router.post('/monitoring-list-edit', function(request, response) {
     }
 })
 
+router.post('/ho-question', function(request, response) {
+
+    var notifyingorg = request.session.data['notifying-org']
+    if (notifyingorg == "Home Office"){
+        response.redirect("/v1/attachments/licence-question?cya5=false")
+    } else {
+        response.redirect("/v1/attachments/licence?cya5=false")
+    }
+})
+
+
 
 router.post('/licence-question', function(request, response) {
-
+    var notifyingorg = request.session.data['notifying-org']
     var licencequestion = request.session.data['licencequestion']
     if (licencequestion == "Yes"){
-        response.redirect("/v1/attachments/licence")
+        response.redirect("/v1/attachments/licence-ho")  
     } else {
         response.redirect("/v1/attachments/photo-question")
     }
@@ -561,7 +616,7 @@ router.post('/region', function(request, response) {
     } else if (officerorg == "Youth Justice Service (YJS)"){
         response.redirect("/v1/organisation/region")
     } else if (officerorg == "Youth Custody Service (YCS)"){
-        response.redirect("/v1/organisation/region")    
+        response.redirect("/v1/organisation/region")           
     } else {
         response.redirect("/v1/organisation/check-answers")
     }
@@ -571,17 +626,17 @@ router.post('/order-type', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     if (ordertype == "Civil"){
-        response.redirect("/v1/monitoring-conditions/order-pilots")
+        response.redirect("/v1/monitoring-conditions/monitoring-details")
     } else if (ordertype == "Post release"){
-        response.redirect("/v1/monitoring-conditions/order-sentence") 
+        response.redirect("/v1/otd-old/order-sentence") 
     } else if (ordertype == "Community"){
-        response.redirect("/v1/monitoring-conditions/order-sentence") 
+        response.redirect("/v1/otd-old/order-sentence") 
     } else if (ordertype == "Special"){
         response.redirect("/v1/mvp/order-conditions") 
     } else if (ordertype == "Pre trial"){
-        response.redirect("/v1/monitoring-conditions/order-sentence")          
+        response.redirect("/v1/otd-old/order-sentence")          
     } else {
-        response.redirect("/v1/monitoring-conditions/monitoring-dates")
+        response.redirect("/v1/monitoring-conditions/monitoring-details")
     }
 })
 
@@ -609,10 +664,43 @@ router.post('/order-type2', function(request, response) {
 router.post('/pilots', function(request, response) {
 
     var ordertype = request.session.data['order-type']
-    if (ordertype == "Post release"){
-        response.redirect("/v1/monitoring-conditions/order-conditions")
+    var orderdescription = request.session.data['order-description']
+    var notifyingorg = request.session.data['order-description']
+    if (orderdescription == "GPS acquisitive crime"){
+        response.redirect("/v1/otd-old/order-aq")         
+
+  } else if (ordertype == "Post release") {
+        response.redirect("/v1/otd-old/order-prrar")    
+   } else {
+        response.redirect("/v1/monitoring-conditions/monitoring-details")
+    }
+})
+
+router.post('/pilots-probation', function(request, response) {
+
+    var ordertype = request.session.data['order-type']
+    var orderdescription = request.session.data['order-description']
+    var notifyingorg = request.session.data['order-description']
+    if (orderdescription == "GPS acquisitive crime"){
+        response.redirect("/v1/otd-old/order-aq")  
+
+  } else if (orderdescription == "Domestic Abuse Perpetrator on Licence (DAPOL)") {
+    response.redirect("/v1/otd-old/order-dapol")        
+
+  } else if (ordertype == "Post release") {
+        response.redirect("/v1/otd-old/order-prrar")    
+   } else {
+        response.redirect("/v1/monitoring-conditions/monitoring-details")
+    }
+})
+
+router.post('/order-region', function(request, response) {
+
+    var orderdescription = request.session.data['order-description']
+    if (orderdescription == "GPS acquisitive crime"){
+        response.redirect("/v1/otd-old/order-aq") 
     } else {
-        response.redirect("/v1/monitoring-conditions/monitoring-dates")
+        response.redirect("/v1/otd-old/order-prrar")
     }
 })
 
@@ -631,12 +719,40 @@ router.post('/order-sentence', function(request, response) {
     var ordertype = request.session.data['order-type']
     var ordersentence = request.session.data['order-sentence']
 
-    if (ordertype != "Post release"){
-        response.redirect("/v1/monitoring-conditions/order-issp") 
+    if (ordertype == "Pre trial"){
+        response.redirect("/v1/otd-old/order-issp") 
+    } else if (ordersentence == "Youth Rehabilitation Order (YRO)") {
+        response.redirect("/v1/otd-old/order-issp")  
+    } else if (ordersentence == "Detention and Training Order (DTO)") {
+        response.redirect("/v1/otd-old/order-issp")      
+    } else if (ordertype == "Community") {
+        response.redirect("/v1/monitoring-conditions/monitoring-details")        
     } else if (ordersentence == "Standard Determinate Sentence") {
-        response.redirect("/v1/monitoring-conditions/order-pilots")
+        response.redirect("/v1/otd-old/order-hdc")
     } else {
-        response.redirect("/v1/monitoring-conditions/order-conditions")
+        response.redirect("/v1/otd-old/order-prrar")
+    }
+})
+
+router.post('/order-hdc', function(request, response) {
+
+  
+    var ordersentence = request.session.data['order-sentence']
+    if (ordersentence == "Section 250 / Section 91"){
+        response.redirect("/v1/otd-old/order-prrar") 
+    } else {
+        response.redirect("/v1/otd-old/order-pilots")
+    }
+})
+
+router.post('/order-issp', function(request, response) {
+
+  
+    var ordersentence = request.session.data['order-sentence']
+    if (ordersentence == "Detention and Training Order (DTO)"){
+        response.redirect("/v1/otd-old/order-prrar") 
+    } else {
+        response.redirect("/v1/monitoring-conditions/monitoring-details")
     }
 })
 
@@ -664,9 +780,9 @@ router.post('/order-description', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     if (ordertype == "Release from prison"){
-        response.redirect("/v1/monitoring-conditions/order-conditions") 
+        response.redirect("/v1/monitoring-conditions/order-prrar") 
     } else {
-        response.redirect("/v1/monitoring-conditions/monitoring-dates")
+        response.redirect("/v1/monitoring-conditions/monitoring-details")
     }
 })
 
@@ -736,6 +852,242 @@ router.post('/trail-dates-question', function(request, response) {
         response.redirect("/v1/monitoring-conditions/monitoring-needed")
     }
 })
+
+
+router.post('/pdu', function(request, response) {
+
+    var pdu = request.session.data['pdu']
+
+    if (pdu == "Cheshire East"){
+        response.redirect("/v1/organisation/region3") 
+    } else if (pdu == "Cheshire West") {
+        response.redirect("/v1/organisation/region3") 
+    } else if (pdu == "Central Lancashire") {
+        response.redirect("/v1/organisation/region3") 
+    } else if (pdu == "East Lancashire") {
+        response.redirect("/v1/organisation/region3")  
+    } else if (pdu == "North West Lancashire") {
+        response.redirect("/v1/organisation/region3")   
+    } else if (pdu == "Warrington and Halton") {
+        response.redirect("/v1/organisation/region3")              
+    } else {
+        response.redirect("/v1/organisation/check-answers")
+    }
+})
+
+router.post('/sr-question', function(request, response) {
+
+    var srtypesimple = request.session.data['sr-type-simple']
+    if (srtypesimple == "I have changed something else in the form"){
+        response.redirect("/v1/new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")     
+    } else if (srtypesimple == "I need to end all monitoring for the device wearer2") {
+        response.redirect("/v1/variation-simple/bail") 
+    } else {
+        response.redirect("/v1/variation-simple/identity-numbers")
+    }
+})
+
+router.post('/bail', function(request, response) {
+
+    var bailorder = request.session.data['bail-order']
+    if (bailorder == "No"){
+        response.redirect("/v1/variation-simple/hard-stop") 
+    } else {
+        response.redirect("/v1/variation-simple/identity-numbers")
+    }
+})
+
+router.post('/bail-simple', function(request, response) {
+
+    var bailorder = request.session.data['bail-order']
+    if (bailorder == "Yes"){
+        response.redirect("/v1/variation-simple/identity-numbers") 
+    } else {
+        response.redirect("/v1/variation-simple/identity-numbers")
+    }
+})
+
+router.post('/type-change-areyousure', function(request, response) {
+
+    var clarification = request.session.data['clarification']
+    var usertype = request.session.data['usertype']
+    if (usertype == "Probation user"){
+        response.redirect("/v1/variations/sr-question?view=false") 
+    } else if (clarification == "true") {     
+        response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false") 
+    } else {
+        response.redirect("/v1/variations/type-change?view=false") 
+    }
+})
+
+
+
+router.post('/type-change', function(request, response) {
+
+    var clarification = request.session.data['clarification']
+    if (clarification == "false"){
+        response.redirect("/v1/variations/sr-question?view=false") 
+    } else {
+        response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false")
+    }
+})
+
+router.post('/document-question', function(request, response) {
+
+    var licencequestion = request.session.data['licencequestion']
+    if (licencequestion == "Yes"){
+        response.redirect("/v1/variation-simple/document")  
+    } else {
+        response.redirect("/v1/variation-simple/check-answers")
+    }
+})
+
+router.post('/identity-numbers', function(request, response) {
+
+    var identitynumbers = request.session.data['identity-numbers']
+    if (identitynumbers == "Magistrate Court Case Reference Number"){
+        response.redirect("/v1/variation-simple/court")  
+    } else if (identitynumbers == "Court Case Reference Number (CCRN)") {
+        response.redirect("/v1/variation-simple/court")     
+    } else {
+        response.redirect("/v1/variation-simple/personal-details")
+    }
+})
+
+router.post('/language', function(request, response) {
+
+    var notifyingorg = request.session.data['notifying-org']
+    if (notifyingorg == "Family Court"){
+        response.redirect("/v1/installation/risk-dapo")  
+    } else if (notifyingorg == "Civil and County Court") {
+        response.redirect("/v1/installation/risk-civil")     
+    } else {
+        response.redirect("/v1/installation/risk")
+    }
+})
+
+router.post('/order-aq', function(request, response) {
+
+    var orderaq = request.session.data['order-aq']
+    if (orderaq == "They did not commit one of these offences"){
+        response.redirect("/v1/otd-old/hard-stop")     
+    } else {
+        response.redirect("/v1/otd-old/order-aq-region")
+    }
+})
+
+router.post('/order-aq-region', function(request, response) {
+
+    var regioneligibility = request.session.data['region-eligibility']
+    if (regioneligibility == "The device wearer's release address is in a different police force area"){
+        response.redirect("/v1/otd-old/hard-stop")     
+    } else {
+        response.redirect("/v1/otd-old/order-prrar")
+    }
+})
+
+
+router.post('/org-details', function(request, response) {
+
+    var notifyingorg = request.session.data['notifying-org']
+    if (notifyingorg == "Prison service"){
+        response.redirect("/v1/organisation/responsible-officer") 
+    } else if (notifyingorg == "Probation service") {
+        response.redirect("/v1/organisation/responsible-officer")  
+    } else if (notifyingorg == "Youth Custody Service (YCS)") {
+        response.redirect("/v1/organisation/responsible-officer")  
+     } else if (notifyingorg == "Home Office") {
+        response.redirect("/v1/organisation/responsible-officer")   
+    } else if (notifyingorg == "") {
+        response.redirect("/v1/organisation/responsible-officer")                        
+    } else {
+        response.redirect("/v1/organisation/org-contact")
+    }
+})
+
+
+router.post('/risk-list', function(request, response) {
+
+    var offencelistquestion = request.session.data['offencelistquestion']
+    if (offencelistquestion == "Yes"){
+        response.redirect("/v1/installation/risk-civil")     
+    } else {
+        response.redirect("/v1/installation/risk-1")
+    }
+})
+
+router.post('/risk-listdapo', function(request, response) {
+
+    var dapoquestion = request.session.data['dapoquestion']
+    if (dapoquestion == "Yes"){
+        response.redirect("/v1/installation/risk-dapo")     
+    } else {
+        response.redirect("/v1/installation/risk-2")
+    }
+})
+
+router.post('/hard-stop', function(request, response) {
+
+    var srtype = request.session.data['sr-type']
+    if (srtype == "I need to end all monitoring for the device wearer2"){
+        response.redirect("/v1/variations/hard-stop")     
+    } else {
+        response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false")
+    }
+})
+
+router.post('/check-document', function(request, response) {
+
+    var checkdocument = request.session.data['checkdocument']
+    if (checkdocument == "Yes"){
+        response.redirect("/v1/attachments/licence")     
+    } else {
+        response.redirect("/v1/attachments/check-answers-view")
+    }
+})
+
+
+router.post('/user-type-cohort', function(request, response) {
+
+    var usertype = request.session.data['usertype']
+    if (usertype == "Prison user"){
+        response.redirect("start?notifying-org=Prison service&order-type=Post release")  
+    } else if (usertype == "Probation user") {
+        response.redirect("start?notifying-org=Probation service&order-type=Post release") 
+    } else if (usertype == "Youth user") {
+        response.redirect("start?notifying-org=Youth Custody Service (YCS)&order-type=Post release")  
+    } else if (usertype == "Court user") {
+        response.redirect("start?notifying-org=Family Court&order-type=Civil&hdc=clear")     
+    } else if (usertype == "Home Office user") {
+        response.redirect("start?notifying-org=Home Office&order-type=Immigration&hdc=clear")  
+     } else {
+        response.redirect("start?notifying-org=&order-type=&hdc=clear")
+    }                        
+})
+
+router.post('/user-type', function(request, response) {
+
+    var usertype = request.session.data['usertype']
+    if (usertype == "Prison user"){
+        response.redirect("start?order-type=Post release")  
+    } else if (usertype == "Probation user") {
+        response.redirect("start?order-type=Post release") 
+    } else if (usertype == "Youth user") {
+        response.redirect("start?order-type=Post release")  
+    } else if (usertype == "Court user") {
+        response.redirect("start?order-type=Civil&hdc=clear")     
+    } else if (usertype == "Home Office user") {
+        response.redirect("start?order-type=Immigration&hdc=clear")  
+     } else {
+        response.redirect("start?notifying-org=&order-type=&hdc=clear")
+    }                        
+})
+
+
+
+
+
+
 
 
 

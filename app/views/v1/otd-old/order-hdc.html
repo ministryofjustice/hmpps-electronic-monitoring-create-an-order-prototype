@@ -26,12 +26,12 @@
  
 
        
-      <form class="form" action="order-issp" method="post">
+      <form class="form" action="/order-hdc" method="post">
 
 
 
         {{ govukRadios({
-          classes: "govuk-radios",
+          classes: "govuk-radios--inline",
           name: "hdc",
           fieldset: {
             legend: {
@@ -53,14 +53,6 @@
               value: "No",
               text: "No",
               checked: (true if data['hdc'] == 'No')
-            },
-            {
-              divider: "or"
-            },
-            {
-              value: "Not able to provide this information",
-              text: "Not able to provide this information",
-              checked: (true if data['hdc'] == 'Not able to provide this information')
             }
           ]
         }) }}
@@ -76,7 +68,7 @@
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
+    {{ govukButton({
           text: "Save as draft",
           href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"

@@ -12,26 +12,59 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+ <form class="form" action="/curfew-change" method="post">     
+
  
- {% if (data['curfewstandard'] == "false") %}     
+{% if (data['curfewstandard'] == "false") %}     
+
+{% if (data['curfewperiods'] == "one") %}     
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
-        Curfew times for the curfew timetable
+        Curfew times 
       </h1>
 
-      <p>Enter the times to use for the curfew timetable. You can change the times or location for any given day on later screens if you need to.</p>
+{% else %} 
 
-         <form class="form" action="curfew-4" method="post">
+ <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        Curfew times (first period)
+      </h1>
+
+{% endif %}           
+
+   <!--     <p>Enter the times to use for the curfew timetable. You can change the times or location for any given day on later screens if you need to.</p>
+
+  {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+        {{ govukDetails({
+          summaryText: "Help with HDC curfew hours",
+          text: "By law, the curfew must last at least 9 hours each day (except on the first day of release). It is usually set for 12 hours a day and should only be longer if there is clear evidence it will greatly help rehabilitation. The curfew cannot be more than 16 hours a day."
+        }) }}-->
+
+
 
  {% else %}
+
+ {% if (data['curfewperiods'] == "one") %}     
+
 
        <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
         Curfew timetable for {{ data['day'] }}
       </h1>
 
-         <form class="form" action="curfew-4" method="post">
+
+
+ {% else %} 
+
+ <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        Curfew timetable for {{ data['day'] }} (first period)
+      </h1>
+
+{% endif %}           
+         
       
 {% endif %}     
 
@@ -44,11 +77,11 @@
 
     <fieldset class="govuk-fieldset moj-add-another__item">
 
-      <legend class="govuk-fieldset__legend moj-add-another__title govuk-fieldset__legend--m">
+  <!--    <legend class="govuk-fieldset__legend moj-add-another__title govuk-fieldset__legend--m">
 
         Curfew period
 
-      </legend>
+      </legend>-->
 
    <div class="govuk-form-group">
     <fieldset class="govuk-fieldset">
@@ -85,6 +118,7 @@
             {% endif %}    
           </div>       
         </div>
+         
         
       </div>
     </fieldset>
@@ -125,13 +159,21 @@
             {% endif %}
           </div>
         </div>
-    <!--    <div class="govuk-date-input__item">
-           <select class="govuk-select" id="sort" name="curfew-same-next-day">
+       <div class="govuk-date-input__item">
+          <!--   <select class="govuk-select" id="sort" name="curfew-same-next-day">
             <option value="the same day">The same day</option>
             <option value="the next day" selected>The next day</option>
+
+          {% if (data['day'] == "Monday") %}
+            <option value="the same day">Monday</option>
+            <option value="the next day" selected>Tuesday</option>
+            {% elseif (data['day'] == "Tuesday") %}
+            <option value="the same day">Tuesday</option>
+            <option value="the next day" selected>Wednesday</option>
+            {% endif %}-->
  
           </select>
-        </div>-->
+        </div>
       </div>
     </fieldset>
   </div>
@@ -193,13 +235,13 @@
 
     </fieldset>
 
-    <div class="moj-button-action">
+  <!--  <div class="moj-button-action">
 
       <button type="submit" class="govuk-button govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4" data-module="govuk-button">
         Add another curfew period
       </button>
 
-    </div>
+    </div>-->
 
 
 

@@ -1,0 +1,91 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Offence committed - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+       <span class="govuk-caption-l">Access needs and installation risk</span>
+
+
+
+       <form class="form" action="risk-list" method="post">
+
+
+
+    {{ govukDateInput({
+      id: "offence-date",
+      name: "offencelistquestion",
+      fieldset: {
+        legend: {
+          text: "What was the date of the offence?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        text: "For example, 31 3 1980"
+      },
+      items: [
+        {
+          id: "person[0][dob][day]",
+          name: "offenceday",
+          label: "Day",
+          classes: "govuk-input--width-2",
+          attributes: {
+            "data-name": "person[%index%][dob][day]",
+            "data-id": "person[%index%][dob][day]"
+          }
+        },
+        {
+          id: "person[0][dob][month]",
+          name: "offencemonth",
+          label: "Month",
+          classes: "govuk-input--width-2",
+          attributes: {
+            "data-name": "person[%index%][dob][month]",
+            "data-id": "person[%index%][dob][month]"
+          }
+        },
+        {
+          id: "person[0][dob][year]",
+          name: "offenceyear",
+          label: "Year",
+          classes: "govuk-input--width-4",
+          attributes: {
+            "data-name": "person[%index%][dob][year]",
+            "data-id": "person[%index%][dob][year]"
+          }
+        }
+      ]
+    }) }}
+
+  
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

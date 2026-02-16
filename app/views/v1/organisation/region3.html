@@ -1,0 +1,286 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible organisation's details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+  {% if (data['pdu'] == "Cheshire East") %}
+
+   <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+   <!--   <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+      What is the Probation region?
+      </h1>-->
+
+      
+   
+<form class="form" action="check-answers" method="post">    
+
+
+          {{ govukRadios({
+            name: "office",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's Probation office?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Crewe",
+                checked: (true if data['office'] == 'Crewe'),
+                text: "Crewe"
+                
+              },
+              {
+                value: "Macclesfield",
+                checked: (true if data['office'] == 'Macclesfield'),
+                text: "Macclesfield"
+                
+              }
+            ]
+          }) }}
+
+        
+  {% elseif (data['pdu'] == "Cheshire West") %}
+
+
+   <form class="form" action="check-answers" method="post">
+
+  <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+  <!--    <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+      What is the Youth Justice Service (YJS) region?
+      </h1>-->
+
+
+    {{ govukRadios({
+            name: "office",
+            fieldset: {
+              legend: {
+                text: "What is the Probation office?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Chester",
+                checked: (true if data['office'] == 'Chester'),
+                text: "Chester"
+                
+              },
+              {
+                value: "Northwich",
+                checked: (true if data['office'] == 'Northwich'),
+                text: "Northwich"
+                
+              }
+            ]
+          }) }}
+
+  {% elseif (data['pdu'] == "Central Lancashire") %}
+
+
+   <form class="form" action="check-answers" method="post">
+
+  <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+  <!--    <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+      What is the Youth Justice Service (YJS) region?
+      </h1>-->
+
+
+    {{ govukRadios({
+            name: "office",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's Probation office?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Chorley",
+                checked: (true if data['office'] == 'Chorley'),
+                text: "Chorley"
+                
+              },
+              {
+                value: "Preston",
+                checked: (true if data['office'] == 'Preston'),
+                text: "Preston"
+                
+              },
+              {
+                value: "Skelmersdale",
+                checked: (true if data['office'] == 'Skelmersdale'),
+                text: "Skelmersdale"
+                
+              }
+            ]
+          }) }}
+          
+   {% elseif (data['pdu'] == "East Lancashire") %}
+
+
+   <form class="form" action="check-answers" method="post">
+
+  <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+  <!--    <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+      What is the Youth Justice Service (YJS) region?
+      </h1>-->
+
+
+    {{ govukRadios({
+            name: "office",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's Probation office?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Accrington",
+                checked: (true if data['office'] == 'Accrington'),
+                text: "Accrington"
+                
+              },
+              {
+                value: "Burnley",
+                checked: (true if data['office'] == 'Burnley'),
+                text: "Burnley"
+                
+              }
+            ]
+          }) }}   
+
+   {% elseif (data['pdu'] == "North West Lancashire") %}
+
+
+   <form class="form" action="check-answers" method="post">
+
+  <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+  <!--    <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+      What is the Youth Justice Service (YJS) region?
+      </h1>-->
+
+
+    {{ govukRadios({
+            name: "office",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's Probation office?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Blackpool",
+                checked: (true if data['office'] == 'Blackpool'),
+                text: "Blackpool"
+                
+              },
+              {
+                value: "Lancaster",
+                checked: (true if data['office'] == 'Lancaster'),
+                text: "Lancaster"
+                
+              }
+            ]
+          }) }}               
+
+ {% else %}
+
+
+   <form class="form" action="check-answers" method="post">
+
+  <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+  <!--    <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+      What is the Youth Justice Service (YJS) region?
+      </h1>-->
+
+
+    {{ govukRadios({
+            name: "office",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's Probation office?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Halton",
+                checked: (true if data['office'] == 'Halton'),
+                text: "Halton"
+                
+              },
+              {
+                value: "Warrington",
+                checked: (true if data['office'] == 'Warrington'),
+                text: "Warrington"
+                
+              }
+            ]
+          }) }}               
+                    
+
+  {% endif %}
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

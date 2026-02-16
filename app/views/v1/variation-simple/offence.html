@@ -1,0 +1,166 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Personal details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+        {% if (data['cyasimple'] == "true") %}
+
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+        <form class="form" action="monitoring-dates" method="post">
+
+        {% endif %}
+
+               <h1 class="govuk-heading-l">
+
+        Offence details
+      </h1>
+
+         
+         
+
+       
+
+          {{ govukRadios({
+            name: "offence",
+            fieldset: {
+              legend: {
+                text: "What type of offence did the device wearer commit?",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "If more than one offence committed, select the main offence"
+            },
+            items: [
+              {
+                value: "Violence against the person",
+                checked: (true if data['offence'] == 'Violence against the person'),
+                text: "Violence against the person"
+              },
+              {
+                value: "Sexual offences",
+                checked: (true if data['offence'] == 'Sexual offences'),
+                text: "Sexual offences"
+              },
+              {
+                value: "Robbery",
+                checked: (true if data['offence'] == 'Robbery'),
+                text: "Robbery"
+              },
+              {
+                value: "Theft offences",
+                checked: (true if data['offence'] == 'Theft offences'),
+                text: "Theft offences"
+              },
+              {
+                value: "Criminal damage and arson",
+                checked: (true if data['offence'] == 'Criminal damage and arson'),
+                text: "Criminal damage and arson"
+              },
+              {
+                value: "Drug offences",
+                checked: (true if data['offence'] == 'Drug offences'),
+                text: "Drug offences"
+              },
+              {
+                value: "Possession of weapons",
+                checked: (true if data['offence'] == 'Possession of weapons'),
+                text: "Possession of weapons"
+              },
+              {
+                value: "Public order offences",
+                checked: (true if data['offence'] == 'Public order offences'),
+                text: "Public order offences"
+              },
+              {
+                value: "Miscellaneous crimes against society",
+                checked: (true if data['offence'] == 'Miscellaneous crimes against society'),
+                text: "Miscellaneous crimes against society"
+              },
+              {
+                value: "Fraud offences",
+                checked: (true if data['offence'] == 'Fraud offences'),
+                text: "Fraud offences"
+              },
+              {
+                value: "Summary non-motoring",
+                checked: (true if data['offence'] == 'Summary non-motoring'),
+                text: "Summary non-motoring"
+              },
+              {
+                value: "Summary motoring",
+                checked: (true if data['offence'] == 'Summary motoring'),
+                text: "Summary motoring"
+              },
+
+              {
+                divider: "or"
+              },
+              {
+                value: "Offence not recorded",
+                checked: (true if data['offence'] == 'Offence not recorded'),
+                text: "Offence not recorded"
+              }
+            ]
+          }) }}
+
+  
+
+
+      <div class="moj-datepicker" data-module="moj-date-picker">
+
+              <div class="govuk-form-group">
+                <label class="govuk-label  govuk-label--s" for="date">
+                 What was the date of the offence? (optional)
+                </label>
+
+                <div id="date-hint" class="govuk-hint">
+                  For example, 17/5/2024.  
+                </div>
+
+                <input class="govuk-input moj-js-datepicker-input " id="date" name="offencedate" type="text" aria-describedby="date-hint" autocomplete="off" value="{{ data['offencedate'] }}">
+
+              </div>
+
+            </div>
+
+         
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+    <!--    {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}-->
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

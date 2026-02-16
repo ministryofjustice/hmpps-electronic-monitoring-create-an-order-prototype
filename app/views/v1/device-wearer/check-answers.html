@@ -171,6 +171,8 @@
             </dd>
           </div>
           {% endif %}
+
+          
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              What is the device wearer's gender?
@@ -260,15 +262,15 @@
           {% if (data['addressquestion'] == "Yes") %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the device wearer's contact address?
+              Device wearer's main address
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['contactaddressLine1'] }}<br>
-              {{ data['contactaddressTown'] }}<br>
-              {{ data['contactaddressPostcode'] }}
+              {{ data['contactaddressLine1'] or '123 Main street' }}<br>
+              {{ data['contactaddressTown'] or 'Glossop' }}<br>
+              {{ data['contactaddressPostcode'] or 'SK22 2RD' }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="contact-address?cya1=true">Change<span class="govuk-visually-hidden"> What is the device wearer's contact address?</span></a>
+              <a class="govuk-link" href="/v1/postcode-lookup/postcode">Change<span class="govuk-visually-hidden"> What is the device wearer's contact address?</span></a>
             </dd>
           </div>
 
@@ -355,7 +357,7 @@
       <div class="govuk-button-group">
         {{ govukButton({
           text: "Save and go to next section",
-          href: ("../monitoring-conditions/check-answers?section-1-complete=true" if data['section-4-complete'] == 'true' else "../monitoring-conditions/order-information?section-1-complete=true")
+          href: ("../monitoring-conditions/check-answers?section-1-complete=true" if data['section-4-complete'] == 'true' else "../otd-old/order-information?section-1-complete=true")
         }) }}
 
         {{ govukButton({

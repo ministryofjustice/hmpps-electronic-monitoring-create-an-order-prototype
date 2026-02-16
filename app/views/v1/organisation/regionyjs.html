@@ -1,0 +1,767 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible organisation's details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+
+     <!-- <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+       What is the Responsible Organisation's Probation Delivery Unit (PDU)?
+      </h1>-->
+   <form class="form" action="check-answers" method="post">
+
+   
+
+
+
+  {% if (data['region'] == "East and South East") %}
+
+
+
+          {{ govukRadios({
+            name: "yjsoffice",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's Youth Justice Service (YJS) office?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Bedfordshire",
+                checked: (true if data['yjsoffice'] == 'Bedfordshire'),
+                text: "Bedfordshire"
+                
+              },
+              {
+                value: "Cambridgeshire",
+                checked: (true if data['yjsoffice'] == 'Cambridgeshire'),
+                text: "Cambridgeshire"
+                
+              },
+              {
+                value: "Essex",
+                checked: (true if data['yjsoffice'] == 'Essex'),
+                text: "Essex"
+                
+              },
+              {
+                value: "Hertfordshire - Central",
+                checked: (true if data['yjsoffice'] == 'Hertfordshire - Central'),
+                text: "Hertfordshire - Central"
+                
+              },
+              {
+                value: "Hertfordshire - East",
+                checked: (true if data['yjsoffice'] == 'Hertfordshire - East'),
+                text: "Hertfordshire - East"
+                
+              },
+              {
+                value: "Hertfordshire - West",
+                checked: (true if data['yjsoffice'] == 'Hertfordshire - West'),
+                text: "Hertfordshire - West"
+              },
+               {
+                value: "Hertfordshire - North",
+                checked: (true if data['yjsoffice'] == 'Hertfordshire - North'),
+                text: "Hertfordshire - North"
+                
+              },
+              {
+                value: "Hertfordshire - South",
+                checked: (true if data['yjsoffice'] == 'Hertfordshire - South'),
+                text: "Hertfordshire - South"
+              },
+              {
+                value: "Luton",
+                checked: (true if data['yjsoffice'] == 'Luton'),
+                text: "Luton"
+                
+              },
+              {
+                value: "Norfolk",
+                checked: (true if data['yjsoffice'] == 'Norfolk'),
+                text: "Norfolk"
+              },
+               {
+                value: "Norfolk - Great Yarmouth",
+                checked: (true if data['yjsoffice'] == 'Norfolk - Great Yarmouth'),
+                text: "Norfolk - Great Yarmouth"
+                
+              },
+              {
+                value: "Peterborough",
+                checked: (true if data['yjsoffice'] == 'Peterborough'),
+                text: "Peterborough"
+              },
+                {
+                value: "Southend on Sea",
+                checked: (true if data['yjsoffice'] == 'Southend on Sea'),
+                text: "Southend on Sea"
+              },
+                {
+                value: "Suffolk",
+                checked: (true if data['yjsoffice'] == 'Suffolk'),
+                text: "Suffolk"
+              },
+                {
+                value: "Suffolk YJ Service - Bury St Edmunds (West and Central)",
+                checked: (true if data['yjsoffice'] == 'Suffolk YJ Service - Bury St Edmunds (West and Central)'),
+                text: "Suffolk YJ Service - Bury St Edmunds (West and Central)"
+              },
+                {
+                value: "Suffolk YJ Service - Ipswich",
+                checked: (true if data['yjsoffice'] == 'Suffolk YJ Service - Ipswich'),
+                text: "Suffolk YJ Service - Ipswich"
+              },
+                {
+                value: "Suffolk YJ Service - Lowestoft",
+                checked: (true if data['yjsoffice'] == 'Suffolk YJ Service - Lowestoft'),
+                text: "Suffolk YJ Service - Lowestoft"
+              },
+                {
+                value: "Ipswich",
+                checked: (true if data['yjsoffice'] == 'Ipswich'),
+                text: "Ipswich"
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "Not able to provide this information",
+                checked: (true if data['yjsoffice'] == 'Not able to provide this information'),
+                text: "Not able to provide this information"
+              }
+            ]
+          }) }}
+
+  {% elseif (data['region'] == "London") %}
+
+
+   {{ govukRadios({
+            name: "yjsoffice",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's Youth Justice Service (YJS) office?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Bedfordshire",
+                checked: (true if data['yjsoffice'] == 'Bedfordshire'),
+                text: "Bedfordshire"
+                
+              },
+              {
+                value: "Cambridgeshire",
+                checked: (true if data['yjsoffice'] == 'Cambridgeshire'),
+                text: "Cambridgeshire"
+                
+              },
+              {
+                value: "Essex North",
+                checked: (true if data['yjsoffice'] == 'Essex North'),
+                text: "Essex North"
+                
+              },
+              {
+                value: "Essex South",
+                checked: (true if data['yjsoffice'] == 'Essex South'),
+                text: "Essex South"
+                
+              },
+              {
+                value: "Hertfordshire",
+                checked: (true if data['yjsoffice'] == 'Hertfordshire'),
+                text: "Hertfordshire"
+                
+              },
+              {
+                value: "Norfolk",
+                checked: (true if data['yjsoffice'] == 'Norfolk'),
+                text: "Norfolk"
+              },
+              {
+                value: "Northamptonshire",
+                checked: (true if data['yjsoffice'] == 'Northamptonshire'),
+                text: "Northamptonshire"
+              },
+              {
+                value: "Suffolk",
+                checked: (true if data['yjsoffice'] == 'Suffolk'),
+                text: "Suffolk"
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "Not able to provide this information",
+                checked: (true if data['yjsoffice'] == 'Not able to provide this information'),
+                text: "Not able to provide this information"
+              }
+            ]
+          }) }}
+
+
+  
+ {% elseif (data['region'] == "Midlands") %}
+
+
+   {{ govukRadios({
+            name: "yjsoffice",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's Youth Justice Service (YJS) office?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Bolton",
+                checked: (true if data['yjsoffice'] == 'Bolton'),
+                text: "Bolton"
+                
+              },
+              {
+                value: "Bury and Rochdale",
+                checked: (true if data['yjsoffice'] == 'Bury and Rochdale'),
+                text: "Bury and Rochdale"
+                
+              },
+              {
+                value: "Manchester North",
+                checked: (true if data['yjsoffice'] == 'Manchester North'),
+                text: "Manchester North"
+                
+              },
+              {
+                value: "Manchester South",
+                checked: (true if data['yjsoffice'] == 'Manchester South'),
+                text: "Manchester South"
+                
+              },
+              {
+                value: "Oldham",
+                checked: (true if data['yjsoffice'] == 'Oldham'),
+                text: "Oldham"
+                
+              },
+              {
+                value: "Salford",
+                checked: (true if data['yjsoffice'] == 'Salford'),
+                text: "Salford"
+              },
+              {
+                value: "Stockport and Trafford",
+                checked: (true if data['yjsoffice'] == 'Stockport and Trafford'),
+                text: "Stockport and Trafford"
+              },
+              {
+                value: "Tameside",
+                checked: (true if data['yjsoffice'] == 'Tameside'),
+                text: "Tameside"
+              },
+              {
+                value: "Wigan",
+                checked: (true if data['yjsoffice'] == 'Wigan'),
+                text: "Wigan"
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "Not able to provide this information",
+                checked: (true if data['yjsoffice'] == 'Not able to provide this information'),
+                text: "Not able to provide this information"
+              }
+            ]
+          }) }}
+                
+ {% elseif (data['region'] == "North East and Cumbria") %}
+
+
+   {{ govukRadios({
+            name: "yjsoffice",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's Youth Justice Service (YJS) office?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "East Sussex",
+                checked: (true if data['yjsoffice'] == 'East Sussex'),
+                text: "East Sussex"
+                
+              },
+              {
+                value: "East Kent",
+                checked: (true if data['yjsoffice'] == 'East Kent'),
+                text: "East Kent"
+                
+              },
+              {
+                value: "North Kent & Medway",
+                checked: (true if data['yjsoffice'] == 'North Kent & Medway'),
+                text: "North Kent & Medway"
+                
+              },
+              {
+                value: "Surrey",
+                checked: (true if data['yjsoffice'] == 'Surrey'),
+                text: "Surrey"
+                
+              },
+              {
+                value: "West Kent",
+                checked: (true if data['yjsoffice'] == 'West Kent'),
+                text: "West Kent"
+                
+              },
+              {
+                value: "West Sussex",
+                checked: (true if data['yjsoffice'] == 'West Sussex'),
+                text: "West Sussex"
+                
+              },
+
+              {
+                divider: "or"
+              },
+              {
+                value: "Not able to provide this information",
+                checked: (true if data['yjsoffice'] == 'Not able to provide this information'),
+                text: "Not able to provide this information"
+              }
+            ]
+          }) }}     
+
+ {% elseif (data['region'] == "North West") %}
+
+
+   {{ govukRadios({
+            name: "yjsoffice",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's Youth Justice Service (YJS) office?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Barking and Dagenham and Havering",
+                checked: (true if data['yjsoffice'] == 'Barking and Dagenham and Havering'),
+                text: "Barking and Dagenham and Havering"
+                
+              },
+              {
+                value: "Brent",
+                checked: (true if data['yjsoffice'] == 'Brent'),
+                text: "Brent"
+                
+              },
+              {
+                value: "Camden & Islington",
+                checked: (true if data['yjsoffice'] == 'Camden & Islington'),
+                text: "Camden & Islington"
+                
+              },
+              {
+                value: "Croydon",
+                checked: (true if data['yjsoffice'] == 'Croydon'),
+                text: "Croydon"
+                
+              },
+              {
+                value: "Ealing and Hillingdon",
+                checked: (true if data['yjsoffice'] == 'Ealing and Hillingdon'),
+                text: "Ealing and Hillingdon"
+                
+              },
+              {
+                value: "Enfield and Haringey",
+                checked: (true if data['yjsoffice'] == 'Enfield and Haringey'),
+                text: "Enfield and Haringey"
+              },
+              {
+                value: "Greenwich and Bexley",
+                checked: (true if data['yjsoffice'] == 'Greenwich and Bexley'),
+                text: "Greenwich and Bexley"
+              },
+              {
+                value: "Hackney and City",
+                checked: (true if data['yjsoffice'] == 'Hackney and City'),
+                text: "Hackney and City"
+              },
+              {
+                value: "Hammersmith, Fulham, Kensington, Chelsea and Westminster",
+                checked: (true if data['yjsoffice'] == 'Hammersmith, Fulham, Kensington, Chelsea and Westminster'),
+                text: "Hammersmith, Fulham, Kensington, Chelsea and Westminster"
+              },
+              {
+                value: "Harrow and Barnet",
+                checked: (true if data['yjsoffice'] == 'Harrow and Barnet'),
+                text: "Harrow and Barnet"
+              },
+              {
+                value: "Kingston, Richmond and Hounslow",
+                checked: (true if data['yjsoffice'] == 'Kingston, Richmond and Hounslow'),
+                text: "Kingston, Richmond and Hounslow"
+              },
+              {
+                value: "Lambeth",
+                checked: (true if data['yjsoffice'] == 'Lambeth'),
+                text: "Lambeth"
+              },
+              {
+                value: "Lewisham and Bromley",
+                checked: (true if data['yjsoffice'] == 'Lewisham and Bromley'),
+                text: "Lewisham and Bromley"
+              },
+              {
+                value: "Newham",
+                checked: (true if data['yjsoffice'] == 'Newham'),
+                text: "Newham"
+              },
+              {
+                value: "Redbridge and Waltham Forest",
+                checked: (true if data['yjsoffice'] == 'Redbridge and Waltham Forest'),
+                text: "Redbridge and Waltham Forest"
+              },
+              {
+                value: "Southwark",
+                checked: (true if data['yjsoffice'] == 'Southwark'),
+                text: "Southwark"
+              },
+              {
+                value: "Tower Hamlets",
+                checked: (true if data['yjsoffice'] == 'Tower Hamlets'),
+                text: "Tower Hamlets"
+              },
+              {
+                value: "Wandsworth, Merton and Sutton",
+                checked: (true if data['yjsoffice'] == 'Wandsworth, Merton and Sutton'),
+                text: "Wandsworth, Merton and Sutton"
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "Not able to provide this information",
+                checked: (true if data['yjsoffice'] == 'Not able to provide this information'),
+                text: "Not able to provide this information"
+              }
+            ]
+          }) }}    
+
+  {% elseif (data['region'] == "South West and South Central") %}
+
+
+   {{ govukRadios({
+            name: "yjsoffice",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's Youth Justice Service (YJS) office?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Blackburn",
+                checked: (true if data['yjsoffice'] == 'Blackburn'),
+                text: "Blackburn"
+                
+              },
+              {
+                value: "Central Lancashire",
+                checked: (true if data['yjsoffice'] == 'Central Lancashire'),
+                text: "Central Lancashire"
+                
+              },
+              {
+                value: "Cheshire East",
+                checked: (true if data['yjsoffice'] == 'Cheshire East'),
+                text: "Cheshire East"
+                
+              },
+              {
+                value: "Cheshire West",
+                checked: (true if data['yjsoffice'] == 'Cheshire West'),
+                text: "Cheshire West"
+                
+              },
+              {
+                value: "Cumbria",
+                checked: (true if data['yjsoffice'] == 'Cumbria'),
+                text: "Cumbria"
+                
+              },
+              {
+                value: "East Lancashire",
+                checked: (true if data['yjsoffice'] == 'East Lancashire'),
+                text: "East Lancashire"
+              },
+              {
+                value: "Warrington and Halton",
+                checked: (true if data['yjsoffice'] == 'Warrington and Halton'),
+                text: "Warrington and Halton"
+              },
+              {
+                value: "Liverpool North",
+                checked: (true if data['yjsoffice'] == 'Liverpool North'),
+                text: "Liverpool North"
+              },
+              {
+                value: "Liverpool South",
+                checked: (true if data['yjsoffice'] == 'Liverpool South'),
+                text: "Liverpool South"
+              },
+              {
+                value: "North West Lancashire",
+                checked: (true if data['yjsoffice'] == 'North West Lancashire'),
+                text: "North West Lancashire"
+              },
+              {
+                value: "Sefton & Merseyside Womens",
+                checked: (true if data['yjsoffice'] == 'Sefton & Merseyside Womens'),
+                text: "Sefton & Merseyside Womens"
+              },
+              {
+                value: "Wirral & ISC Team",
+                checked: (true if data['yjsoffice'] == 'Wirral & ISC Team'),
+                text: "Wirral & ISC Team"
+              },
+              {
+                value: "Knowsley & St Helens",
+                checked: (true if data['yjsoffice'] == 'Knowsley & St Helens'),
+                text: "Knowsley & St Helens"
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "Not able to provide this information",
+                checked: (true if data['yjsoffice'] == 'Not able to provide this information'),
+                text: "Not able to provide this information"
+              }
+            ]
+          }) }}        
+
+
+  {% elseif (data['region'] == "Wales") %}
+
+
+   {{ govukRadios({
+            name: "yjsoffice",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's Youth Justice Service (YJS) office?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Buckinghamshire and Milton Keynes",
+                checked: (true if data['yjsoffice'] == 'Buckinghamshire and Milton Keynes'),
+                text: "Buckinghamshire and Milton Keynes"
+                
+              },
+              {
+                value: "East Berkshire",
+                checked: (true if data['yjsoffice'] == 'East Berkshire'),
+                text: "East Berkshire"
+                
+              },
+              {
+                value: "Hampshire North and East",
+                checked: (true if data['yjsoffice'] == 'Hampshire North and East'),
+                text: "Hampshire North and East"
+                
+              },
+              {
+                value: "Oxfordshire",
+                checked: (true if data['yjsoffice'] == 'Oxfordshire'),
+                text: "Oxfordshire"
+                
+              },
+              {
+                value: "Hampshire South West",
+                checked: (true if data['yjsoffice'] == 'Hampshire South West'),
+                text: "Hampshire South West"
+                
+              },
+              {
+                value: "Hampshire South and Isle of Wight",
+                checked: (true if data['yjsoffice'] == 'Hampshire South and Isle of Wight'),
+                text: "Hampshire South and Isle of Wight"
+              },
+              {
+                value: "West Berkshire",
+                checked: (true if data['yjsoffice'] == 'West Berkshire'),
+                text: "West Berkshire"
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "Not able to provide this information",
+                checked: (true if data['yjsoffice'] == 'Not able to provide this information'),
+                text: "Not able to provide this information"
+              }
+            ]
+          }) }}   
+
+
+
+
+   {% else %}     
+
+   {{ govukRadios({
+            name: "yjsoffice",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's Youth Justice Service (YJS) office?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Barnsley and Rotherham",
+                checked: (true if data['yjsoffice'] == 'Barnsley and Rotherham'),
+                text: "Barnsley and Rotherham"
+                
+              },
+              {
+                value: "Bradford and Calderdale",
+                checked: (true if data['yjsoffice'] == 'Bradford and Calderdale'),
+                text: "Bradford and Calderdale"
+                
+              },
+              {
+                value: "Doncaster",
+                checked: (true if data['yjsoffice'] == 'Doncaster'),
+                text: "Doncaster"
+                
+              },
+              {
+                value: "Hull and East Riding",
+                checked: (true if data['yjsoffice'] == 'Hull and East Riding'),
+                text: "Hull and East Riding"
+                
+              },
+              {
+                value: "Kirklees",
+                checked: (true if data['yjsoffice'] == 'Kirklees'),
+                text: "Kirklees"
+                
+              },
+              {
+                value: "Leeds",
+                checked: (true if data['yjsoffice'] == 'Leeds'),
+                text: "Leeds"
+              },
+              {
+                value: "North and North East Lincs",
+                checked: (true if data['yjsoffice'] == 'North and North East Lincs'),
+                text: "North and North East Lincs"
+              },
+              {
+                value: "North Yorkshire",
+                checked: (true if data['yjsoffice'] == 'North Yorkshire'),
+                text: "North Yorkshire"
+              },
+              {
+                value: "Sheffield",
+                checked: (true if data['yjsoffice'] == 'Sheffield'),
+                text: "Sheffield"
+              },
+              {
+                value: "York",
+                checked: (true if data['yjsoffice'] == 'York'),
+                text: "York"
+              },
+              {
+                value: "Wakefield",
+                checked: (true if data['yjsoffice'] == 'Wakefield'),
+                text: "Wakefield"
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "Not able to provide this information",
+                checked: (true if data['yjsoffice'] == 'Not able to provide this information'),
+                text: "Not able to provide this information"
+              }
+            ]
+          }) }}              
+
+  {% endif %}
+
+
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

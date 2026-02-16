@@ -51,17 +51,22 @@
               {% if (data['addcurfewaddress'] == "Yes") %}
                 <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  {{ data['curfewaddressname'] }}
+                  {{ data['curfewaddressname'] or "Partner's house" }}
                 </dt>
                 <dd class="govuk-summary-list__value">
                   <p class="govuk-body">
-                    {{ data['curfewaddressLine1'] }}<br>
-                    {{ data['curfewaddressTown'] }}<br>
-                    {{ data['curfewaddressPostcode'] }}
+                    {{ data['curfewaddressLine1'] or '1 Washington Street' }}<br>
+                    {{ data['curfewaddressTown'] or 'Worcester' }}<br>
+                    {{ data['curfewaddressPostcode'] or 'WR1 1NL' }}
                 <dd class="govuk-summary-list__actions">
                   <ul class="govuk-summary-list__actions-list">
                     
-                      <a class="govuk-link" href="curfew-address">Change<span class="govuk-visually-hidden"> contact details</span></a>
+                       <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link" href="#">Delete<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
+                    </li>
+                    <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link" href="/v1/postcode-lookup/postcode">Change<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
+                    </li>  
                  
                   </ul>
                 </dd>
@@ -94,6 +99,9 @@
               }
             ]
           }) }}
+
+<input type="hidden" id="sectionid" name="sectionid" value="Electronic monitoring required">
+<input type="hidden" id="postcodetype" name="postcodetype" value="curfew">
 
        
 

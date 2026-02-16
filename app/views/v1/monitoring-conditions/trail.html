@@ -1,7 +1,7 @@
 {% extends "layouts/moj-level2.html" %}
 
 {% block pageTitle %}
-  Do you want to use the standard curfew times for the curfew timetable? - Electronic Monitoring
+  Trail monitoring - Electronic Monitoring
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,74 +12,147 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      
 
-      <form class="form" action="/trail-dates-question" method="post">
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
 
-        
+    
+         Trail monitoring dates
+    
 
+      
+      </h1>
 
-   <span class="govuk-caption-l">Electronic monitoring required</span>
-      {% if (data['monitoringtype'] == "Trail monitoring (Home Office)" or data['monitoringtype2'] == "Trail monitoring (Home Office)") %}
+  
+      {% if (data['order-type'] == "Immigration") %}
+         <form class="form" action="trail-2" method="post">
+         {% else %}
+         <form class="form" action="monitoring-needed" method="post">
+         {% endif %}
 
-          {{ govukRadios({
-            classes: "govuk-radios--inline",
-            name: "traildatesquestion",
-            fieldset: {
-              legend: {
-                text: "Is the trail monitoring (Home Office) start date 12 August 2025?",   
-                isPageHeading: true,
-               classes: "govuk-fieldset__legend--l"
-              }
-            },
-            hint: {
-                    text: ""
-                  },
-            items: [
+       <div class="moj-datepicker" data-module="moj-date-picker">
+
+            <div class="govuk-form-group">
+              <label class="govuk-label  govuk-label--s" for="date">
+
+               What date does trail monitoring start?
+              </label>
+
+              <div id="date-hint" class="govuk-hint">
+                For example, 17/5/2024.
+              </div>
+
+              <input class="govuk-input moj-js-datepicker-input " id="date" name="trailstart-date" type="text" aria-describedby="date-hint" autocomplete="off" value="{{ data['trailstart-date'] }}">
+
+            </div>
+
+          </div>
+
+         <div class="moj-datepicker" data-module="moj-date-picker">
+
+            <div class="govuk-form-group">
+              <label class="govuk-label  govuk-label--s" for="date">
+               {% if (data['order-type'] == "Immigration") or (data['order-type'] == "Pre trial") %}
+               What date does trail monitoring end? (optional)
+               {% else %}
+               What date does trail monitoring end? 
+               {% endif %}
+              </label>
+
+              <div id="date-hint" class="govuk-hint">
+                For example, 17/5/2024.
+              </div>
+
+              <input class="govuk-input moj-js-datepicker-input " id="date" name="trailend-date" type="text" aria-describedby="date-hint" autocomplete="off" value="{{ data['trailend-date'] }}">
+
+            </div>
+
+          </div>
+
+       <!--
+
+            <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-label govuk-label--s">
+                What is the date the trail monitoring starts?
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 27 3 2020
+              </div>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoring-day" name="trailstart-day" type="text" inputmode="numeric" value="{{ data['trailstart-day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoring-month" name="trailstart-month" type="text" inputmode="numeric" value="{{ data['trailstart-month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="monitoring-year" name="trailstart-year" type="text" inputmode="numeric" value="{{ data['trailstart-year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+            <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-label govuk-label--s">
+                What is the date trail monitoring ends? (optional)
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 27 3 2020
+              </div>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoringend-day" name="trailend-day" type="text" inputmode="numeric" value="{{ data['trailend-day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoringend-month" name="trailend-month" type="text" inputmode="numeric" value="{{ data['trailend-month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="monitoringend-year" name="trailend-year" type="text" inputmode="numeric" value="{{ data['trailend-year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
            
-              {
-                value: "Yes",
-                checked: (true if data['traildatesquestion'] == 'Yes'),
-                text: "Yes"
-              },
-              {
-                value: "No",
-                checked: (true if data['traildatesquestion'] == 'No'),
-                text: "No"
-              }
-            ]
-          }) }}
+            
+          </div>
+        </fieldset>
+      </div>-->
+       
 
-      {% else %}
 
-                {{ govukRadios({
-            classes: "govuk-radios--inline",
-            name: "traildatesquestion",
-            fieldset: {
-              legend: {
-                text: "Are the trail monitoring dates from 12 August 2025 to 12 March 2026?",   
-                isPageHeading: true,
-               classes: "govuk-fieldset__legend--l"
-              }
-            },
-            hint: {
-                    text: ""
-                  },
-            items: [
-           
-              {
-                value: "Yes",
-                checked: (true if data['traildatesquestion'] == 'Yes'),
-                text: "Yes"
-              },
-              {
-                value: "No",
-                checked: (true if data['traildatesquestion'] == 'No'),
-                text: "No"
-              }
-            ]
-          }) }}
-
-      {% endif %}
        
 
     {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -91,7 +164,7 @@
 
         {{ govukButton({
           text: "Save as draft",
-          href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
+           href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
         }) }}
 

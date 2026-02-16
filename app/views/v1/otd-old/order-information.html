@@ -1,5 +1,6 @@
 {% extends "layouts/moj-level2.html" %}
 
+
 {% block pageTitle %}
    Order information - Electronic Monitoring
 {% endblock %}
@@ -18,8 +19,12 @@
         <span class="govuk-caption-l">Electronic monitoring required</span>
            What condition is the electronic monitoring part of?
       </h1>-->
+
+
        
-      <form class="form" action="/order-type" method="post">
+      <form class="form" action="/order-type" method="post" name="redirect">
+
+      
 
 
             {{ govukRadios({
@@ -46,7 +51,7 @@
                   checked: (true if data['order-type'] == 'Community'),
                   text: "Community",
                   hint: {
-                    text: "Monitoring is a condition of a court order where they were convicted of a crime, but recieved a community rather than custodial sentence."
+                    text: "Monitoring is a condition of a court order where they were convicted of a crime, but received a community rather than custodial sentence."
                   }
                 },
                 {
@@ -70,9 +75,9 @@
                 {
                   value: "Immigration",
                   checked: (true if data['order-type'] == 'Immigration'),
-                  text: "Immigration",
+                  text: "Immigration (Home office only)",
                   hint: {
-                    text: "Monitoring is a condition of immigration bail (Home office only)."
+                    text: "Monitoring is a condition of immigration bail."
                   }
                 }
               ]
@@ -175,7 +180,7 @@
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
+       {{ govukButton({
           text: "Save as draft",
           href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"
@@ -184,6 +189,8 @@
       </div>
  
     </form>
+
+ 
 
     </div>
   </div>

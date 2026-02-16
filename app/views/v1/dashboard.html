@@ -38,274 +38,62 @@
 
       </form>
 
+{% if (data['usertype'] == "Probation user") %}
+
+    {{ mojSubNavigation({
+        label: "Sub navigation",
+        items: [{
+          text: "Submitted forms",
+          href: "dashboard",
+          active: true
+        }, {
+          text: "Draft forms",
+          href: "dashboard2"
+          
+
+        }]
+      }) }}
+
+
+     {% include "/includes/search.html" %}
+
+
+{% else %}
+    
+
+      {{ mojSubNavigation({
+        label: "Sub navigation",
+        items: [{
+          text: "Draft forms",
+          href: "#1",
+          active: true
+        }, {
+          text: "Submitted forms",
+          href: "dashboard2?searchresults=false&search="
+        }]
+      }) }}
+
+
+{% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user") %}
+      <div class="govuk-phase-banner" style=" margin:20px 0 0px 0;">
+              <p>
+                 Showing:
+                 <strong style="margin-right:10px;"> 
+                    Berwyn Prison    
+                 </strong>
+                   <a class="govuk-link" href="#">Change location</a>
+                 </p>
+      </div>
+
+  {% else %}
   
-      <!--  <p>
-          View and edit your draft forms or search for a form someone else has submitted to edit or cancel it.
-        </p>-->
+  {% endif %}    
 
 
-          <div class="govuk-tabs" data-module="govuk-tabs">
-          <h2 class="govuk-tabs__title">
-            Contents
-          </h2>
-
-          <ul class="govuk-tabs__list">
-            <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-              <a class="govuk-tabs__tab" href="?searchresults=false#draft">
-                Your draft forms
-              </a>
-            </li>  
-            <li class="govuk-tabs__list-item">
-              <a class="govuk-tabs__tab" href="#submitted">
-               Submitted forms
-              </a>
-            </li>
-            
-          </ul>
-
-       <div class="govuk-tabs__panel" id="draft">   
-
-           <table class="govuk-table  govuk-table--small-text-until-tablet">
-            <thead class="govuk-table__head">
-              <tr class="govuk-table__row">
-                <th scope="col" class="govuk-table__header">Name</th>
-                <th scope="col" class="govuk-table__header">Last updated</th>
-                <th scope="col" class="govuk-table__header">Status</th>
-              </tr>
-            </thead>
-            <tbody class="govuk-table__body">
-              <tr class="govuk-table__row">
-                <td class="govuk-table__cell"><a href="new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=true&section-5-complete=true&newform=true">David Francis</a></td>
-                <td class="govuk-table__cell">29/12/2024</td>
-                <td class="govuk-table__cell">
-                  {{govukTag({
-                      text: "Draft"
-                    })}}</td>
-              </tr>
-         <tr class="govuk-table__row">
-                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=fail&newform=true">{{ data['wearer-firstname'] or "Bobbie" }} {{ data['wearer-lastname'] or "Gibbs" }}</a></td>
-                <td class="govuk-table__cell">01/02/2025</td>
-                <td class="govuk-table__cell">
-                {{govukTag({
-                  text: "Failed to submit",
-                  classes: "govuk-tag--red"
-                })}}</td>
-              </tr>
-            </tbody>
-          </table>
+          {% include "/includes/draft.html" %}
 
 
-
-      </div>
-
-     <div class="govuk-tabs__panel" id="submitted">   
-
-
-
-      
-        <div class="moj-search" style="width: 75%">
-
-            <form action="dashboard?searchresults=true#submitted" method="post">
-    
-            <div class="govuk-form-group">
-              <fieldset class="govuk-fieldset">
-                 <label class="govuk-label--m moj-search__label govuk-!-font-weight-bold" for="search">
-                   Search for a submitted form
-                  </label>
-
-              <div id="search-hint" class="govuk-hint moj-search__hint ">
-               Enter the device wearer's full name or personal identity number. <br>
-                For example Bob Smith NHEFTH.
-              </div>
-
-             
-
-              <input class="govuk-input moj-search__input" id="search" name="search" type="search" aria-describedby="search-hint" value="{{ data['search'] }} ">
-
-            </div>
-
-            <button style="margin-bottom:0px" class="govuk-button govuk-button--secondary moj-search__button">
-              Search
-            </button>
-
-          </form>
-        
-      </fieldset>
-      </div>
-
-      {% if (data['searchresults'] != "true") %}
-
-        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
-       <details class="govuk-details">
-              <summary class="govuk-details__summary">
-                <span class="govuk-details__summary-text">
-                  What's a personal identity number?
-                </span>
-              </summary>
-              <div class="govuk-details__text">
-                <p class="govuk-body">A personal identity number is:</p>
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>National Offender Management Information System (NOMIS)</li>
-                  <li>Police National Computer (PNC)</li>
-                  <li>NDelius ID</li>
-                  <li>Prison number</li>
-                  <li>Home Office Reference Number</li>
-                  <li>Compliance and Enforcement Person Reference (CEPR)</li>
-                  <li>Court Case Reference Number (CCRN)</li>
-                  <li>Magistrate Court Reference Number (MCRN)</li>
-                </ul>
-              </div>
-            </details>
-
-      {% endif %}
-   
-
-     {% if (data['searchresults'] == "true") %}
-
-
-      {% if (data['search'] == "mohammed mulin" or data['search'] == "Mohammed mulin" or data['search'] == " mohammed mulin" or data['search'] == "mohammed mulin ") or data['search'] == "mohammed mulin  " or data['search'] == "mohammed" or data['search'] == "Mohammed" %}
-
-        <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
-       <h2 class="govuk-heading-m">No results found for 'Mohammed Mulin'</h2>
-
-      <p>Check spelling is correct and numbers are in the right place.</p>
-
-      <p>Try searching using the device wearer's personal ID number, full name or both.</p>
-
-
-      <div class="govuk-warning-text">
-          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-          <strong class="govuk-warning-text__text">
-            <span class="govuk-visually-hidden">Warning</span>
-            <h2 class="govuk-heading-s">Can't find what you are looking for?</h2>
-            If the form is not listed in search results, it may be an emailed form so not available online.
-            <br>
-            
-            <a href="new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false">Tell us about changes to form a sent by email</a>.
-          </strong>
-        </div>
-
-      <p></p>
-    
-
-      {% elseif (data['search'] == "" or data['search'] == " " or data['search'] == "  " or data['search'] == NULL) %}
-
-      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
-      <h2 class="govuk-heading-m">You have not entered any search terms</h2>
-
-      <p>Try searching using the device wearer's:</p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        
-       <li>first name and surname</li>
-       <li>personal ID number</li>
-       <li>full name and personal ID number</li>
-      </ul>  
-
-       <p>Check spelling is correct and numbers are in the right place.</p>
-
-        <details class="govuk-details">
-              <summary class="govuk-details__summary">
-                <span class="govuk-details__summary-text">
-                  What's a personal identity number?
-                </span>
-              </summary>
-              <div class="govuk-details__text">
-                <p class="govuk-body">A personal identity number is:</p>
-                <ul class="govuk-list govuk-list--bullet">
-                  <li>National Offender Management Information System (NOMIS)</li>
-                  <li>Police National Computer (PNC)</li>
-                  <li>Delius ID</li>
-                  <li>Prison number</li>
-                  <li>Home Office Reference Number</li>
-                  <li>Compliance and Enforcement Person Reference (CEPR)</li>
-                  <li>Court Case Reference Number (CCRN)</li>
-                  <li>Magistrate Court Reference Number (MCRN)</li>
-                </ul>
-              </div>
-            </details>
-
-
-      {% else %}
-
-           <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-
-
-            <div class="govuk-form-group">
-               <table class="govuk-table  govuk-table--small-text-until-tablet">
-                  <thead class="govuk-table__head">
-                    <tr class="govuk-table__row">
-                      <th scope="col" class="govuk-table__header">Name</th>
-                      <th scope="col" class="govuk-table__header">Date of birth</th>
-                       <th scope="col" class="govuk-table__header">Personal ID number</th>
-                       <th scope="col" class="govuk-table__header">Town or city</th>
-                       <th scope="col" class="govuk-table__header">Start date</th>
-                       <th scope="col" class="govuk-table__header">End date</th>
-                      <th scope="col" class="govuk-table__header">Last updated</th>
-                      <th scope="col" class="govuk-table__header">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody class="govuk-table__body">
-                    <tr class="govuk-table__row">
-                      <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=false&fullname=David Murphy&newform=true">David Murphy</a></td>
-                      <td class="govuk-table__cell">19/01/2001</td>
-                      <td class="govuk-table__cell">AYEDFE</td>
-                      <td class="govuk-table__cell">Glossop</td>
-                      <td class="govuk-table__cell">18/12/2024</td>
-                      <td class="govuk-table__cell">18/12/2025</td>
-                      <td class="govuk-table__cell">14/12/2024</td>
-                      <td class="govuk-table__cell">
-                      {{govukTag({
-                        text: "In progress",
-                        classes: "govuk-tag--green"
-                      })}}</td>
-                    </tr>
-                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=true&view-variation=false&fullname=David Murphy&newform=true">David Murphy</a></td>
-                      <td class="govuk-table__cell">5/6/1974</td>
-                      <td class="govuk-table__cell">JHADCT</td>
-                      <td class="govuk-table__cell">Salford</td>
-                      <td class="govuk-table__cell">01/09/2024</td>
-                      <td class="govuk-table__cell">01/09/2025</td>
-                      <td class="govuk-table__cell">15/01/2025</td>
-                      <td class="govuk-table__cell">
-                      {{govukTag({
-                        text: "In progress",
-                        classes: "govuk-tag--green"
-                      })}}</td>
-                    </tr>
-                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=cancelled&fullname=David Murphy&newform=true">David Murphy</a></td>
-                      <td class="govuk-table__cell">19/01/2001</td>
-                      <td class="govuk-table__cell">FACRDF<br>D125433</td>
-                      <td class="govuk-table__cell">Glossop</td>
-                      <td class="govuk-table__cell">01/12/2021</td>
-                      <td class="govuk-table__cell">18/07/2022</td>
-                      <td class="govuk-table__cell">02/03/2022</td>
-                      <td class="govuk-table__cell">
-                       {{govukTag({
-                        text: "Ended",
-                        classes: "govuk-tag--grey"
-                      })}}</td>
-                    </tr>
-                    
-                   
-                    
-                  </tbody>
-                </table>
-
-              </div>
-
-
-
-                  {% endif %}
-
-            </div>
-
-       {% endif %}
+{% endif %}
         
          
     </div>

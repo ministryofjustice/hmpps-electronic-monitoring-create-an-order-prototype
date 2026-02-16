@@ -86,14 +86,7 @@
                 },
                 text: "Trail monitoring"
               },
-              {
-                value: "Trail monitoring (Home Office)",
-                disabled: (true if data['monitoringtype'] == 'Trail monitoring (Home Office)' or data['monitoringtype'] == 'Trail monitoring'),
-                hint: {
-                  text: "Recording and gathering data on movements of the device wearer throughout the day. "
-                },
-                text: "Trail monitoring (Home Office only)"
-              },
+             
               {
                 value: "Alcohol monitoring",
                 disabled: (true if data['monitoringtype'] == 'Alcohol monitoring' or data['eighteen'] == 'Yes'),
@@ -131,7 +124,7 @@
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
+       {{ govukButton({
           text: "Save as draft",
           href: '../new-form',
           classes: "govuk-button--secondary"

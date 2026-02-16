@@ -1,0 +1,76 @@
+{% extends "layouts/moj-signedout-service.html" %}
+
+{% set pageName="Start - Electronic Monitoring" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+ 
+
+
+
+       <form class="form" action="/user-type" method="post">
+
+      
+      
+            {{ govukRadios({
+              classes: "govuk-radios",
+              name: "usertype",
+              fieldset: {
+                legend: {
+                  text: "Select the type of user",
+                  isPageHeading: true,
+                   classes: "govuk-fieldset__legend--l"
+                }
+              },
+               hint: {
+              text: ""
+            },
+              items: [
+               
+              
+                {
+                  value: "Prison user",
+                  checked: (true if data['usertype'] == 'Prison user'),
+                  text: "Prison"
+                },
+                 {
+                  value: "Youth user",
+                  checked: (true if data['usertype'] == 'Youth user'),
+                  text: "Youth"
+                },
+                {
+                  value: "Probation user",
+                  checked: (true if data['usertype'] == 'Probation user'),
+                  text: "Probation"
+                },
+                {
+                  value: "Court user",
+                  checked: (true if data['usertype'] == 'Court user'),
+                  text: "Court"
+                },
+                 {
+                  value: "Home Office user",
+                  checked: (true if data['usertype'] == 'Home Office user'),
+                  text: "Home Office"
+                },
+                {
+                  value: "",
+                  checked: (true if data['usertype'] == ''),
+                  text: "No user group"
+                }
+              ]
+            }) }}  
+
+
+       {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+    
+  </div>
+</div>
+
+{% endblock %}

@@ -85,9 +85,17 @@
             Type
             </dt>
             <dd class="govuk-summary-list__value">
-             
-              {% if (data['variation'] == 'true') %}
-               Change to an order 
+
+            {% if (data['clarification'] == 'true') %}
+            New order (original order was rejected)
+            {% elseif (data['sr-type'] == "I have changed something else in the form") %}
+            Change to an order 
+            {% elseif (data['sr-type'] == "I need monitoring equipment installed at a new address") %}
+            Install at new address
+            {% elseif (data['sr-type'] == "I need monitoring equipment reinstalled or checked") %}
+            Reinstall equipment
+            {% elseif (data['sr-type'] == "I need to end all monitoring for the device wearer") %}
+            All monitoring ended early
             {% else  %} 
             New order
             {% endif  %} 
@@ -138,11 +146,14 @@
              </dl>
 
              {% if (data['variation'] == 'true') %}
+            {% if (data['clarification'] == 'false') %}
 
  <h2 class="govuk-heading-l">About the changes in this version of the form</h2>      
-
+            
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+          
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -155,31 +166,43 @@
              
                 
             </dd>
-          </div>
-           <div class="govuk-summary-list__row">
+        </div>
+             {% if (data['sr-type'] == "I have changed something else in the form") %}
+
+          <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
             What have you changed in the form?
             </dt>
             <dd class="govuk-summary-list__value">
-            The device wearer's address or the installation address
+             {{ data['variation-type'] or "The device wearer's personal details" }}
             </dd>
             <dd class="govuk-summary-list__actions">
              
                 
-            </dd>
+        
+           </dd>
           </div>
+
+          {% endif %}
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
             Enter more information on what you have changed
             </dt>
             <dd class="govuk-summary-list__value">
-            Moved house, no change in risk
+           Moved house, no change in risk
             </dd>
             <dd class="govuk-summary-list__actions">
              
                 
             </dd>
           </div>
+
+          {% else %}
+
+
+
+           {% endif %}
 
 
              </dl>

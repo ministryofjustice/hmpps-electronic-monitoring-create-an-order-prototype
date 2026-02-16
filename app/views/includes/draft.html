@@ -1,0 +1,53 @@
+     <table class="govuk-table  govuk-table--small-text-until-tablet">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Name</th>
+                <th scope="col" class="govuk-table__header">Last updated</th>
+                <th scope="col" class="govuk-table__header">Updated by</th>
+          
+                <th scope="col" class="govuk-table__header">Status</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=true&section-5-complete=true&newform=true">David Francis</a></td>
+                <td class="govuk-table__cell">18/09/2025</td>
+                <td class="govuk-table__cell">Ada Lovelace</td>
+               
+                <td class="govuk-table__cell">
+                  {{govukTag({
+                      text: "Draft"
+                    })}}</td>
+              </tr>
+               <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=true&section-5-complete=true&newform=true">Mohammed Mulin</a></td>
+                <td class="govuk-table__cell">17/09/2025</td>
+                <td class="govuk-table__cell">Ada Lovelace</td>
+               
+                <td class="govuk-table__cell">
+                  {{govukTag({
+                      text: "Draft"
+                    })}}</td>
+              </tr>
+               <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=true&section-5-complete=true&newform=true">Dylan Davies</a></td>
+                <td class="govuk-table__cell">17/09/2025</td>
+                <td class="govuk-table__cell">Radia Perlman</td>
+               
+                <td class="govuk-table__cell">
+                  {{govukTag({
+                      text: "Draft"
+                    })}}</td>
+              </tr>
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=fail&newform=true">{{ data['wearer-firstname'] or "Bobbie" }} {{ data['wearer-lastname'] or "Gibbs" }}</a></td>
+                <td class="govuk-table__cell">05/09/2025</td>
+                <td class="govuk-table__cell">Ada Lovelace</td>
+                <td class="govuk-table__cell">
+                {{govukTag({
+                  text: "Failed to submit",
+                  classes: "govuk-tag--red"
+                })}}</td>
+              </tr>
+            </tbody>
+          </table>

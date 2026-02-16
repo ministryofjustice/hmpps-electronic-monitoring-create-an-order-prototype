@@ -1,0 +1,82 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Do you have a licence document to upload? - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+     
+
+        <form class="form" action="/document-question" method="post">
+
+
+
+ 
+
+   
+         
+
+     
+       {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "licencequestion",
+            fieldset: {
+              legend: {
+                text: "Do you have a document to upload?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: "Wherever possible you should upload a document that includes details of the change you are making."
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['licencequestion'] == 'Yes'),
+                conditional: {
+                
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (true if data['licencequestion'] == 'No'),
+                conditional: {
+                 
+                }
+              }
+            ]
+          }) }}
+
+
+
+
+     
+        
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

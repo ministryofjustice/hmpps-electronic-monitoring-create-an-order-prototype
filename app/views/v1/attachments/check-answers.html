@@ -26,9 +26,11 @@
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-        <!-- <div class="govuk-summary-list__row">
+           {% if (data['notifying-org'] == 'Home Office') %}
+
+        <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             Do you have a licence or court order document to upload?
+             Do you have a Grant of Bail document to upload?
             </dt>
             <dd class="govuk-summary-list__value">
              {{ data['licencequestion'] or "No" }}
@@ -36,37 +38,45 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="licence-question">Change<span class="govuk-visually-hidden"> Do you have a licence document to upload? </span></a>
             </dd>
-          </div>-->
-       
-        
+          </div>
+
+           {% if (data['licencequestion'] == 'Yes') %}
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             {% if (data['notifying-org'] == 'Home Office') %}
+              Upload a copy of the Grant of Bail document 
+            </dt>
+            <dd class="govuk-summary-list__value">
+             <a href="#">{{ data['licence'] }}</a>
+            </dd>
+            <dd class="govuk-summary-list__actions">        
+                  <a class="govuk-link" href="licence">Change<span class="govuk-visually-hidden"> Licence </span></a>    
+            </dd>
+          </div>
+       
+         {% endif %}
 
-              Upload a copy of the Grant of Bail document (optional)
+         {% else %}
 
-               {% else %}
-
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
              Upload a copy of the licence or court order document
-
-              {% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
              <a href="#">{{ data['licence'] }}</a>
             </dd>
             <dd class="govuk-summary-list__actions">
-              
-               
-              
+                       
                   <a class="govuk-link" href="licence">Change<span class="govuk-visually-hidden"> Licence </span></a>
-         
        
             </dd>
           </div>
 
+          {% endif %}
 
+             {% if (data['notifying-org'] == 'Home Office') %}
 
+             {% else %}
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -79,6 +89,9 @@
               <a class="govuk-link" href="photo-question">Change<span class="govuk-visually-hidden"> Licence </span></a>
             </dd>
           </div>
+
+           {% endif %}
+
           {% if (data['photoquestion'] == "Yes") %}
 
           <div class="govuk-summary-list__row">

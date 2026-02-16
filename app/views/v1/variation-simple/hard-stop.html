@@ -1,0 +1,56 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+
+    <h1 class="govuk-heading-l">
+
+       This order cannot be ended early using the service
+      </h1>
+
+       <h2 class="govuk-heading-s">
+      To end the order early
+      </h2>
+
+      <p class="govuk-body">Use the service request portal if you have access.</p>
+
+
+       <p class="govuk-body">If you don’t have access, email the order details to:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>your EM Regional Probation SPoC if you work in Probation</li>
+              <li><a href="mailto:LPAdmin@EMS.co.uk">LPAdmin@EMS.co.uk</a> if you work in any other service or department</li>
+
+            </ul>
+            <br>
+
+
+
+
+       
+
+
+     {{ govukButton({
+          text: "Return to form",
+          href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
+          classes: "govuk-button"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

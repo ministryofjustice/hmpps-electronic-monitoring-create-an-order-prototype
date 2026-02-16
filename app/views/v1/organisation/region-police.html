@@ -1,0 +1,296 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible organisation's details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+
+   <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+   <!--   <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+      What is the Probation policearea?
+      </h1>-->
+
+      
+   
+<form class="form" action="check-answers" method="post">   
+
+    {{ govukRadios({
+            name: "policearea",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's Police Force area?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Avon and Somerset Constabulary",
+                checked: (true if data['policearea'] == 'Avon and Somerset Constabulary'),
+                text: "Avon and Somerset Constabulary"
+                
+              },
+              {
+                value: "Bedfordshire Police",
+                checked: (true if data['policearea'] == 'Bedfordshire Police'),
+                text: "Bedfordshire Police"
+                
+              },
+              {
+                value: "Cambridgeshire Constabulary",
+                checked: (true if data['policearea'] == 'Cambridgeshire Constabulary'),
+                text: "Cambridgeshire Constabulary"
+                
+              },
+              {
+                value: "Cheshire Constabulary",
+                checked: (true if data['policearea'] == 'Cheshire Constabulary'),
+                text: "Cheshire Constabulary"
+                
+              },
+              {
+                value: "City of London Police",
+                checked: (true if data['policearea'] == 'City of London Police'),
+                text: "City of London Police"
+                
+              },
+              {
+                value: "Cleveland Police",
+                checked: (true if data['policearea'] == 'Cleveland Police'),
+                text: "Cleveland Police"
+              },
+              {
+                value: "Cumbria Constabulary",
+                checked: (true if data['policearea'] == 'Cumbria Constabulary'),
+                text: "Cumbria Constabulary"
+              },
+              {
+                value: "Derbyshire Constabulary",
+                checked: (true if data['policearea'] == 'Derbyshire Constabulary'),
+                text: "Derbyshire Constabulary"
+                
+              },
+              {
+                value: "Devon & Cornwall Police",
+                checked: (true if data['policearea'] == 'Devon & Cornwall Police'),
+                text: "Devon & Cornwall Police"
+                
+              },
+              {
+                value: "Dorset Police",
+                checked: (true if data['policearea'] == 'Dorset Police'),
+                text: "Dorset Police"
+                
+              },
+              {
+                value: "Durham Constabulary",
+                checked: (true if data['policearea'] == 'Durham Constabulary'),
+                text: "Durham Constabulary"
+                
+              },
+              {
+                value: "Dyfed-Powys Police",
+                checked: (true if data['policearea'] == 'Dyfed-Powys Police'),
+                text: "Dyfed-Powys Police"
+              },
+              {
+                value: "Essex Police",
+                checked: (true if data['policearea'] == 'Essex Police'),
+                text: "Essex Police"
+              },
+              {
+                value: "Gloucestershire Constabulary",
+                checked: (true if data['policearea'] == 'Gloucestershire Constabulary'),
+                text: "Gloucestershire Constabulary"
+              },
+              {
+                value: "Greater Manchester Police",
+                checked: (true if data['policearea'] == 'Greater Manchester Police'),
+                text: "Greater Manchester Police"
+              },
+              {
+                value: "Gwent Police",
+                checked: (true if data['policearea'] == 'Gwent Police'),
+                text: "Gwent Police"
+              },
+              {
+                value: "Hampshire Constabulary",
+                checked: (true if data['policearea'] == 'Hampshire Constabulary'),
+                text: "Hampshire Constabulary"
+              },
+              {
+                value: "Hertfordshire Constabulary",
+                checked: (true if data['policearea'] == 'Hertfordshire Constabulary'),
+                text: "Hertfordshire Constabulary"
+              },
+              {
+                value: "Humberside Police",
+                checked: (true if data['policearea'] == 'Humberside Police'),
+                text: "Humberside Police"
+              },
+              {
+                value: "Kent Police",
+                checked: (true if data['policearea'] == 'Kent Police'),
+                text: "Kent Police"
+              },
+              {
+                value: "Lancashire Constabulary",
+                checked: (true if data['policearea'] == 'Lancashire Constabulary'),
+                text: "Lancashire Constabulary"
+              },
+              {
+                value: "Leicestershire Police",
+                checked: (true if data['policearea'] == 'Leicestershire Police'),
+                text: "Leicestershire Police"
+              },
+              {
+                value: "Lincolnshire Police",
+                checked: (true if data['policearea'] == 'Lincolnshire Police'),
+                text: "Lincolnshire Police"
+              },
+              {
+                value: "Merseyside Police",
+                checked: (true if data['policearea'] == 'Merseyside Police'),
+                text: "Merseyside Police"
+              },
+              {
+                value: "Metropolitan Police Service",
+                checked: (true if data['policearea'] == 'Metropolitan Police Service'),
+                text: "Metropolitan Police Service"
+              },
+              {
+                value: "Norfolk Constabulary",
+                checked: (true if data['policearea'] == 'Norfolk Constabulary'),
+                text: "Norfolk Constabulary"
+              },
+              {
+                value: "North Wales Police ",
+                checked: (true if data['policearea'] == 'North Wales Police'),
+                text: "North Wales Police "
+              },
+              {
+                value: "North Yorkshire Police",
+                checked: (true if data['policearea'] == 'North Yorkshire Police'),
+                text: "North Yorkshire Police"
+              },
+              {
+                value: "Northamptonshire Police",
+                checked: (true if data['policearea'] == 'Northamptonshire Police'),
+                text: "Northamptonshire Police"
+              },
+              {
+                value: "Northumbria Police",
+                checked: (true if data['policearea'] == 'Northumbria Police'),
+                text: "Northumbria Police"
+              },
+              {
+                value: "Nottinghamshire Police",
+                checked: (true if data['policearea'] == 'Nottinghamshire Police'),
+                text: "Nottinghamshire Police"
+              },
+              {
+                value: "South Wales Police",
+                checked: (true if data['policearea'] == 'South Wales Police'),
+                text: "South Wales Police"
+              },
+              {
+                value: "South Yorkshire Police",
+                checked: (true if data['policearea'] == 'South Yorkshire Police'),
+                text: "South Yorkshire Police"
+              },
+              {
+                value: "Staffordshire Police",
+                checked: (true if data['policearea'] == 'Staffordshire Police'),
+                text: "Staffordshire Police"
+              },
+              {
+                value: "Suffolk Constabulary",
+                checked: (true if data['policearea'] == 'Suffolk Constabulary'),
+                text: "Suffolk Constabulary"
+              },
+              {
+                value: "Surrey Police",
+                checked: (true if data['policearea'] == 'Surrey Police'),
+                text: "Surrey Police"
+              },
+              {
+                value: "Sussex Police",
+                checked: (true if data['policearea'] == 'Sussex Police'),
+                text: "Sussex Police"
+              },
+              {
+                value: "Thames Valley Police",
+                checked: (true if data['policearea'] == 'Thames Valley Police'),
+                text: "Thames Valley Police"
+              },
+              {
+                value: "Warwickshire Police",
+                checked: (true if data['policearea'] == 'Warwickshire Police'),
+                text: "Warwickshire Police"
+              },
+              {
+                value: "West Mercia Police",
+                checked: (true if data['policearea'] == 'West Mercia Police'),
+                text: "West Mercia Police"
+              },
+              {
+                value: "West Midlands Police",
+                checked: (true if data['policearea'] == 'West Midlands Police'),
+                text: "West Midlands Police"
+              },
+              {
+                value: "West Yorkshire Police",
+                checked: (true if data['policearea'] == 'West Yorkshire Police'),
+                text: "West Yorkshire Police"
+              },
+              {
+                value: "Wiltshire Police",
+                checked: (true if data['policearea'] == 'Wiltshire Police'),
+                text: "Wiltshire Police"
+              },
+              {
+                value: "National Crime Agency",
+                checked: (true if data['policearea'] == 'National Crime Agency'),
+                text: "National Crime Agency"
+              }
+            ]
+          }) }} 
+
+
+        
+  
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

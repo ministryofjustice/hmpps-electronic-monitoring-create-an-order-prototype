@@ -1,0 +1,190 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Personal details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+        {% if (data['cyasimple'] == "true") %}
+
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+        <form class="form" action="personal-details" method="post">
+
+        {% endif %}
+
+  
+                
+
+   
+
+
+           {% set courtsHtml %}
+
+           {% include "/includes/court.html" %}
+            
+           
+            {% endset -%}
+
+             {% set youthcourtsHtml %}
+
+           {% include "/includes/youthcourt.html" %}
+            
+           
+            {% endset -%}
+
+            {% set crowncourtsHtml %}
+
+             {% include "/includes/crown-court.html" %}
+            
+           
+            {% endset -%}
+
+            {% set prison2Html %}
+
+             {% include "/includes/prison.html" %}
+            
+            {% endset -%}
+
+             {% set militarycourtsHtml %}
+
+           {% include "/includes/militarycourt.html" %}
+            
+           
+            {% endset -%}
+
+             {% set probationHtml %}
+
+           {% include "/includes/probation.html" %}
+            
+           
+            {% endset -%}
+
+             {% set ycsHtml %}
+
+           {% include "/includes/ycs.html" %}
+            
+           
+            {% endset -%}
+
+
+
+            {{ govukRadios({
+              name: "notifying-org",
+              fieldset: {
+                legend: {
+                  text: " What court sentenced or granted the device wearer bail?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--l"
+                }
+              },
+              hint: {
+                text: ""
+              },
+              items: [
+                
+                {
+                  value: "Crown Court",
+                  text: "Crown Court",
+                  checked: (true if data['notifying-org'] == 'Crown Court'),
+                  conditional: {
+                    html: crowncourtsHtml
+                  }
+                },
+                {
+                  value: "Magistrates Court",
+                  checked: (true if data['notifying-org'] == 'Magistrates Court'),
+                  text: "Magistrates Court",
+                  conditional: {
+                    html: courtsHtml
+                  }
+                },
+                {
+                  value: "Family Court",
+                  text: "Family Court",
+                  checked: (true if data['notifying-org'] == 'Family Court'),
+                  conditional: {
+                    html: courtsHtml
+                  }
+                },
+                {
+                  value: "Civil and County Court",
+                  text: "Civil and County Court",
+                  checked: (true if data['notifying-org'] == 'Civil and County Court'),
+                  conditional: {
+                    html: courtsHtml
+                  }
+                },
+                
+                 {
+                  value: "Youth Court",
+                  checked: (true if data['notifying-org'] == 'Youth Court'),
+                  text: "Youth Court",
+                  conditional: {
+                    html: youthcourtsHtml
+                  }
+                },
+                 {
+                  value: "Scottish Court",
+                  checked: (true if data['notifying-org'] == 'Scottish Court'),
+                  text: "Scottish Court"
+                },
+                {
+                  value: "Military Court",
+                  checked: (true if data['notifying-org'] == 'Military Court'),
+                  text: "Military Court",
+                  conditional: {
+                    html: militarycourtsHtml
+                  }
+                },
+                 {
+                divider: "or"
+              },
+              {
+                value: "Not able to provide this information",
+                checked: (true if data['notifying-org'] == 'Not able to provide this information'),
+                text: "Not able to provide this information"
+              }
+
+
+              ]
+            }) }}
+
+
+   
+
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+    <!--    {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}-->
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

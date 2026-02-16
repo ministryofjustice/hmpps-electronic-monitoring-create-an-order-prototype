@@ -14,16 +14,57 @@
 
       
 
-       <span class="govuk-caption-l">Electronic monitoring required</span>
-       <!--   <h1 class="govuk-heading-l">
+         <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
         What pilot project is the device wearer part of?
-      </h1>-->
+      </h1>
+
+     {% if (data['region'] == "North East") %}
+
+
+      {{ govukInsetText({
+        text: "The device wearer is being managed by the North East probation region. To be eligible for the DAPOL pilot they must be managed by an in-scope region. Any queries around pilot eligibility need to be raised with the appropriate COM. "
+      }) }}
+
+  
+
+       {% elseif (data['region'] == "London") and (data['usertype'] == "Probation") %}
+
+
+      {{ govukInsetText({
+        text: "The device wearer is being managed by the London probation region. To be eligible for the Licence Variation pilot they must be managed by an in-scope region."
+      }) }}
+
+      {% else %}  
+
+
+
+     {% endif %}  
+
+           <p>This is on Create and Vary a Licence (CVL) on the page you print the licence. </p>
+
+
        
-      <form class="form" action="/pilots" method="post">
+
+         {% set warningHtml %}
+           <p class="govuk-body">This pilot is only for probation practitioners varying a licence in response to an escalation of risk or as an alternative to recall.</p>
+            {% endset -%}
+
+            {% set amlHtml %}
+           <p class="govuk-body">To be eligible for tagging the device wearer must either be part of a pilot or have Alcohol Monitoring on Licence (AML) as a licence condition.</p>
+
+           
+            {% endset -%}
 
 
-{% if (data['order-type'] == "Post release") %}
+
+{% if (data['order-type'] == "Post release") and (data['hdc'] == "No") %}
+
+
+{% if (data['usertype'] == "Probation") %}
+
+      <form class="form" action="/pilots-probation" method="post">
+
 
             {{ govukRadios({
               classes: "govuk-radios",
@@ -32,45 +73,146 @@
                 legend: {
                   text: "What pilot project is the device wearer part of?",
                   isPageHeading: true,
-                classes: "govuk-fieldset__legend--l"
+                classes: "govuk-visually-hidden"
                 }
               },
+
+            hint: {
+              text: ""
+            },
               items: [
                
                 {
                   value: "Domestic Abuse Perpetrator on Licence (DAPOL)",
-                  checked: (true if data['order-type'] == 'Domestic Abuse Perpetrator on Licence (DAPOL)'),
+                  disabled: (true if data['region'] == 'North East'),
+                  checked: (true if data['order-description'] == 'Domestic Abuse Perpetrator on Licence (DAPOL)'),
                   text: "Domestic Abuse Perpetrator on Licence (DAPOL)"
                 },
                 {
-                  value: "Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)",
-                  checked: (true if data['order-description'] == 'Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)'),
-                  text: "Domestic Abuse Perpetrator on Licence Home Detention Curfew (DAPOL HDC)"
+                  value: "GPS acquisitive crime",
+                  checked: (true if data['order-description'] == 'GPS acquisitive crime'),
+                  text: "GPS acquisitive crime (EMAC)"
+                },
+                 {
+                  value: "Licence Variation Project",
+                  checked: (true if data['order-description'] == 'Licence Variation Project'),
+                  disabled: (true if data['region'] == 'London'),
+                  text: "Licence Variation Project",
+                  classes: ("govuk-visually-hidden" if data['notifying-org'] !== 'Probation service'),
+                  conditional: {
+                      html: warningHtml
+                    }
+                },
+
+                 {
+                  divider: "or"
                 },
                 {
-                  value: "Domestic Abuse Perpetrator on Licence Project",
-                  checked: (true if data['order-description'] == 'Domestic Abuse Perpetrator on Licence Project'),
-                  text: "Domestic Abuse Perpetrator on Licence Project"
+                  value: "They are not part of any of these pilots",
+                  checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
+                  text: "They are not part of any of these pilots",
+                  behaviour: "exclusive",
+                  conditional: {
+                      html: amlHtml
+                    }
+                }
+              ]
+            }) }}
+
+    {% else %}      
+
+          <form class="form" action="/pilots" method="post">
+
+
+                {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "What pilot project is the device wearer part of?",
+                  isPageHeading: true,
+                classes: "govuk-visually-hidden"
+                }
+              },
+
+            hint: {
+              text: ""
+            },
+              items: [
+               
+                {
+                  value: "Domestic Abuse Perpetrator on Licence (DAPOL)",
+                  disabled: (true if data['region'] == 'North East'),
+                  checked: (true if data['order-description'] == 'Domestic Abuse Perpetrator on Licence (DAPOL)'),
+                  text: "Domestic Abuse Perpetrator on Licence (DAPOL)"
                 },
                 {
-                  value: "GPS acquisitive crime Home Detention Curfew",
-                  checked: (true if data['order-description'] == 'GPS acquisitive crime Home Detention Curfew'),
-                  text: "GPS acquisitive crime Home Detention Curfew"
+                  value: "GPS acquisitive crime",
+                  checked: (true if data['order-description'] == 'GPS acquisitive crime'),
+                  text: "GPS acquisitive crime (EMAC)"
+                },
+
+                 {
+                  divider: "or"
                 },
                 {
-                  value: "GPS acquisitive crime parole",
-                  checked: (true if data['order-description'] == 'GPS acquisitive crime parole'),
-                  text: "GPS acquisitive crime parole"
+                  value: "They are not part of any of these pilots",
+                  checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
+                  text: "They are not part of any of these pilots",
+                  behaviour: "exclusive",
+                  conditional: {
+                      html: amlHtml
+                    }
+                }
+              ]
+            }) }} 
+    
+    {% endif %}   
+
+    {% elseif (data['order-type'] == "Post release") and (data['hdc'] == "Yes") %}
+
+{% if (data['usertype'] == "Probation") %}
+
+      <form class="form" action="/pilots-probation" method="post">
+
+
+
+            {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "What pilot project is the device wearer part of?",
+                  isPageHeading: true,
+                classes: "govuk-visually-hidden"
+                }
+              },
+               hint: {
+              text: ""
+            },
+              items: [
+               
+              
+                {
+                  value: "Domestic Abuse Perpetrator on Licence (DAPOL)",
+                  disabled: (true if data['region'] == 'North East'),
+                  checked: (true if data['order-description'] == 'Domestic Abuse Perpetrator on Licence (DAPOL)'),
+                  text: "Domestic Abuse Perpetrator on Licence (DAPOL)"
                 },
                 {
-                  value: "Acquisitive Crime Project",
-                  checked: (true if data['order-description'] == 'Acquisitive Crime Project'),
-                  text: "Acquisitive Crime Project"
+                  value: "GPS acquisitive crime",
+                  checked: (true if data['order-description'] == 'GPS acquisitive crime'),
+                  text: "GPS acquisitive crime (EMAC)"
                 },
                 {
                   value: "Licence Variation Project",
                   checked: (true if data['order-description'] == 'Licence Variation Project'),
-                  text: "Licence Variation Project"
+                  disabled: (true if data['region'] == 'London'),
+                  text: "Licence Variation Project",
+
+                  conditional: {
+                      html: warningHtml
+                    }
                 },
 
                  {
@@ -83,9 +225,60 @@
                   behaviour: "exclusive"
                 }
               ]
-            }) }}
+            }) }}  
 
-    {% else %}    
+        {% else %}  
+
+              <form class="form" action="/pilots" method="post">
+
+
+         {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "What pilot project is the device wearer part of?",
+                  isPageHeading: true,
+                classes: "govuk-visually-hidden"
+                }
+              },
+               hint: {
+              text: ""
+            },
+              items: [
+               
+              
+                {
+                  value: "Domestic Abuse Perpetrator on Licence (DAPOL)",
+                  disabled: (true if data['region'] == 'North East'),
+                  checked: (true if data['order-description'] == 'Domestic Abuse Perpetrator on Licence (DAPOL)'),
+                  text: "Domestic Abuse Perpetrator on Licence (DAPOL)"
+                },
+                {
+                  value: "GPS acquisitive crime",
+                  checked: (true if data['order-description'] == 'GPS acquisitive crime'),
+                  text: "GPS acquisitive crime (EMAC)"
+                },
+               
+
+                 {
+                  divider: "or"
+                },
+                {
+                  value: "They are not part of any of these pilots",
+                  checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
+                  text: "They are not part of any of these pilots",
+                  behaviour: "exclusive"
+                }
+              ]
+            }) }}  
+
+        {% endif %}        
+
+    {% elseif (data['order-type'] == "Civil") %}   
+
+          <form class="form" action="/pilots" method="post">
+ 
 
         {{ govukRadios({
               classes: "govuk-radios",
@@ -102,15 +295,6 @@
                   value: "Domestic Abuse Protection Order (DAPO)",
                   checked: (true if data['order-description'] == 'Domestic Abuse Protection Order (DAPO)'),
                   text: "Domestic Abuse Protection Order (DAPO)"
-                },
-                 {
-                  divider: "or"
-                },
-                {
-                  value: "They are not part of any of these pilots",
-                  checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
-                  text: "They are not part of any of these pilots",
-                  behaviour: "exclusive"
                 }
               ]
             }) }}
@@ -127,7 +311,7 @@
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
+      {{ govukButton({
           text: "Save as draft",
           href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
           classes: "govuk-button--secondary"

@@ -1,0 +1,191 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Offence committed - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+  <h1 class="govuk-heading-l">
+       <span class="govuk-caption-l">Access needs and installation risk</span>
+      Offence details
+      </h1>
+
+       {% if (data['cya3'] == "true") %}
+
+        <form class="form" action="risk-list" method="post">
+
+        {% else %}
+
+       <form class="form" action="risk-list" method="post">
+
+        {% endif %}
+
+         <p>Enter details of the offence the device wearer has committed. You will be able to add more offences later if you need to.</p>
+
+
+
+
+
+          {{ govukRadios({
+            name: "offence",
+            fieldset: {
+              legend: {
+                text: "What type of offence did the device wearer commit?",
+                 isPageHeading: false,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+        
+            items: [
+              {
+                value: "Violence against the person",
+               
+                text: "Violence against the person"
+              },
+              {
+                value: "Sexual offences",
+               
+                text: "Sexual offences"
+              },
+              {
+                value: "Robbery",
+                
+                text: "Robbery"
+              },
+              {
+                value: "Theft offences",
+        
+                text: "Theft offences"
+              },
+              {
+                value: "Criminal damage and arson",
+               
+                text: "Criminal damage and arson"
+              },
+              {
+                value: "Drug offences",
+          
+                text: "Drug offences"
+              },
+              {
+                value: "Possession of weapons",
+            
+                text: "Possession of weapons"
+              },
+              {
+                value: "Public order offences",
+                text: "Public order offences"
+              },
+              {
+                value: "Miscellaneous crimes against society",
+
+                text: "Miscellaneous crimes against society"
+              },
+              {
+                value: "Fraud offences",
+          
+                text: "Fraud offences"
+              },
+              {
+                value: "Summary non-motoring",
+         
+                text: "Summary non-motoring"
+              },
+              {
+                value: "Summary motoring",
+               
+                text: "Summary motoring"
+              },
+
+              {
+                divider: "or"
+              },
+              {
+                value: "Offence not recorded",
+                checked: (true if data['offence'] == 'Offence not recorded'),
+                text: "Offence not recorded"
+              }
+            ]
+          }) }}
+
+
+           {{ govukDateInput({
+      id: "offence-date",
+      name: "offencelistquestion",
+      fieldset: {
+        legend: {
+          text: "What was the date of the offence?",
+          isPageHeading: false,
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      hint: {
+        text: "For example, 31 3 1980"
+      },
+      items: [
+        {
+          id: "person[0][dob][day]",
+          name: "offenceday",
+          label: "Day",
+          classes: "govuk-input--width-2",
+          attributes: {
+            "data-name": "person[%index%][dob][day]",
+            "data-id": "person[%index%][dob][day]"
+          }
+        },
+        {
+          id: "person[0][dob][month]",
+          name: "offencemonth",
+          label: "Month",
+          classes: "govuk-input--width-2",
+          attributes: {
+            "data-name": "person[%index%][dob][month]",
+            "data-id": "person[%index%][dob][month]"
+          }
+        },
+        {
+          id: "person[0][dob][year]",
+          name: "offenceyear",
+          label: "Year",
+          classes: "govuk-input--width-4",
+          attributes: {
+            "data-name": "person[%index%][dob][year]",
+            "data-id": "person[%index%][dob][year]"
+          }
+        }
+      ]
+    }) }}
+
+  
+
+  
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+ 
+
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

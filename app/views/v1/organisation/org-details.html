@@ -23,9 +23,14 @@
 
         <form class="form" action="check-answers" method="post">
 
+
+        {% elseif (data['cya2'] == "sr20") %}
+
+        <form class="form" action="check-answers-view" method="post">  
+
         {% else %}
 
-       <form class="form" action="responsible-officer" method="post">
+       <form class="form" action="/org-details" method="post">
 
         {% endif %}
 
@@ -85,6 +90,9 @@
             {% endset -%}
 
 
+ 
+
+
 
             {{ govukRadios({
               name: "notifying-org",
@@ -111,10 +119,7 @@
                 {
                   value: "Probation service",
                   checked: (true if data['notifying-org'] == 'Probation service'),
-                  text: "Probation service",
-                  conditional: {
-                    html: probationHtml
-                  }
+                  text: "Probation service"
                 },
                
                  {
@@ -187,6 +192,8 @@
 
               ]
             }) }}
+
+
 
 
               {{ govukInput({

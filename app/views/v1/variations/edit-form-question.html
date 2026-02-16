@@ -31,17 +31,9 @@ Details of the changes - Electronic Monitoring
       <h1 class="govuk-heading-l"> <span class="govuk-caption-l">About the changes in this version of the form</span>
       Details of the changes</h1>
 
-       {% if (data['newform'] == 'false') %}
 
-        <form class="form" action="../new-form?section-6-complete=true" method="post">
-
-        {% else %}   
-
-         <form class="form" action="../submitted-form?section-6-complete=true" method="post">
-
-
-         {% endif %}  
-
+        <form class="form" action="check-answers" method="post">
+ 
 
          <div class="moj-datepicker" data-module="moj-date-picker">
 
@@ -69,9 +61,9 @@ Details of the changes - Electronic Monitoring
 
        </div>
 
+ {% if (data['sr-type'] == 'I have changed something else in the form') %}
 
-
-       <!--      {{ govukRadios({
+        {{ govukRadios({
             name: "variation-type",
             fieldset: {
               legend: {
@@ -121,7 +113,7 @@ Details of the changes - Electronic Monitoring
                 value: "Change to a device type",
                 checked: (true if data['variation-type'] == 'Change to a device type'),
                 disabled: (true if data['view'] == 'true'),
-                text: "Change to a device type"
+                text: "Change from a fitted to a non-fitted device"
               },   
               {
                 value: "Change to enforceable condition",
@@ -130,10 +122,16 @@ Details of the changes - Electronic Monitoring
                 text: "Change to enforceable condition"
               },   
               {
-                value: "I am suspending monitoring for the device wearer",
-                checked: (true if data['variation-type'] == 'I am suspending monitoring for the device wearer'),
+                value: "Temporary change in monitoring for the device wearer",
+                checked: (true if data['variation-type'] == 'Temporary change in monitoring for the device wearer'),
                 disabled: (true if data['view'] == 'true'),
-                text: "I am suspending monitoring for the device wearer"
+                text: "Temporary suspend monitoring (attend a funeral or go on holiday)"
+              },
+              {
+                value: "Change of device type (fitted/non fitted)",
+                checked: (true if data['variation-type'] == 'Change of device type (fitted/non fitted)'),
+                disabled: (true if data['view'] == 'true'),
+                text: "Change of device type (fitted/non fitted)"
               },
               {
                 value: "I have changed something due to an administration error",
@@ -150,63 +148,8 @@ Details of the changes - Electronic Monitoring
             ]
           }) }}
 
-        -->
+    {% endif %}
 
-            {{ govukRadios({
-            name: "variation-type",
-            fieldset: {
-              legend: {
-                text: "Why are you making changes to the form?",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--s"
-              }
-            },
-            hint: {
-              text: ""
-            },
-            items: [
-
-             
-              {
-                value: "I need monitoring equipment installed at a new address",
-                checked: (true if data['variation-type'] == "I need monitoring equipment installed at a new address"),
-                disabled: (true if data['view'] == 'true'),
-                text: "I need monitoring equipment installed at a new address"
-              },
-              {
-                value: "I need monitoring equipment reinstalled",
-                checked: (true if data['variation-type'] == "I need monitoring equipment reinstalled"),
-                disabled: (true if data['view'] == 'true'),
-                text: "I need monitoring equipment reinstalled"
-              },
-               {
-                value: "I have changed the Responsible Officer or Responsible Organisation details",
-                checked: (true if data['variation-type'] == 'I have changed the Responsible Officer or Responsible Organisation details'),
-                disabled: (true if data['view'] == 'true'),
-                text: "I have changed the Responsible Officer or Responsible Organisation details"
-              },
-               {
-                value: "I am ending all monitoring for the device wearer",
-                checked: (true if data['variation-type'] == 'I am ending all monitoring for the device wearer'),
-                disabled: (true if data['view'] == 'true'),
-                text: "I am ending all monitoring for the device wearer"
-              },
-               {
-                value: "I have changed something else in the form",
-                checked: (true if data['variation-type'] == 'I have changed something else in the form'),
-                disabled: (true if data['view'] == 'true'),
-                text: "I have changed something else in the form"
-              }
-            ]
-          }) }}
-
-     
-
-
-     
-    
-
-       
 
               <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
                 <h1 class="govuk-label-wrapper">
@@ -234,18 +177,25 @@ Details of the changes - Electronic Monitoring
 
           <div class="govuk-button-group">
 
-             {% if (data['view'] == 'true') %}
+                {% if (data['view'] == 'true') %}
                    {{ govukButton({
                       text: "Return to main form menu",
                       href: "../submitted-form"
                     }) }}
                 {% else %}
                   {{ govukButton({
-                    text: "Save and return to main form menu"
+                    text: "Save and continue"
+                  }) }}
+
+                    {{ govukButton({
+                    text: "Save as draft",
+                    href: ('../submitted-form' if data['view'] == 'false' else '#' ),
+                    classes: "govuk-button--secondary"
                   }) }}
 
 
                 {% endif %}
+
 
 
              
