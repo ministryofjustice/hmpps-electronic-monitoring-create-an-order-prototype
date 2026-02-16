@@ -10,7 +10,7 @@
     "@ministryofjustice/frontend": "6.0.0",
     "@x-govuk/govuk-prototype-components": "5.0.1",
     "@x-govuk/govuk-prototype-filters": "2.0.0",
-    "govuk-frontend": "5.13.0",
+    "govuk-frontend": "5.14.0",
     "govuk-prototype-kit": "13.18.1",
     "notifications-node-client": "8.2.1"
   }
