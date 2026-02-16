@@ -1,0 +1,107 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Offence committed - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+  <h1 class="govuk-heading-l">
+       <span class="govuk-caption-l">Access needs and installation risk</span>
+      Offences committed
+      </h1>
+
+     
+     
+
+  <form class="form" action="/risk-list" method="post">
+
+
+              <dl class="govuk-summary-list">
+       
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  {{ data['offence'] or 'Theft' }}
+                </dt>
+                <dd class="govuk-summary-list__value">
+                on {{ data['offenceday'] or '12' }}/{{ data['offencemonth'] or '01' }}/{{ data['offenceyear'] or '2025' }}            
+                </dd>  
+                </dd>  
+                <dd class="govuk-summary-list__actions">
+                  <ul class="govuk-summary-list__actions-list">
+                     <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link" href="are-you-sure">Delete<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
+                    </li>
+                    <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
+                    </li>       
+                  </ul>
+                </dd>
+              </div>
+
+            
+            </dl>
+
+
+
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "offencelistquestion",
+            fieldset: {
+              legend: {
+                text: "Are there any other offences that the device wearer has committed?",
+               classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+           
+              {
+                value: "Yes",
+                text: "Yes"
+              },
+              {
+                value: "No",
+                text: "No"
+              }
+            ]
+          }) }}
+
+
+
+
+
+
+
+
+
+
+
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

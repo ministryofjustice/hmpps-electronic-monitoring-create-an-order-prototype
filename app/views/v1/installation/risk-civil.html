@@ -12,188 +12,96 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-       <span class="govuk-caption-l">Access needs and installation risk</span>
 
-    <!--  <h1 class="govuk-heading-l">
+  <h1 class="govuk-heading-l">
        <span class="govuk-caption-l">Access needs and installation risk</span>
-      Offence committed
-      </h1>-->
+      Offence details
+      </h1>
 
        {% if (data['cya3'] == "true") %}
 
-        <form class="form" action="check-answers" method="post">
+        <form class="form" action="risk-list" method="post">
 
         {% else %}
 
-       <form class="form" action="risk-1" method="post">
+       <form class="form" action="risk-list" method="post">
 
         {% endif %}
 
+         <p>Enter details of the offence the device wearer has committed. You will be able to add more offences later if you need to.</p>
 
 
-{%- from "govuk/components/button/macro.njk" import govukButton -%}
-{%- from "govuk/components/date-input/macro.njk" import govukDateInput -%}
-{%- from "govuk/components/fieldset/macro.njk" import govukFieldset -%}
-{%- from "govuk/components/input/macro.njk" import govukInput -%}
-{%- from "govuk/components/textarea/macro.njk" import govukTextarea -%}
 
-<div data-module="moj-add-another">
 
-  <h2 class="govuk-heading-l moj-add-another__heading" tabindex="-1">Add offences</h2>
 
-  <form method="post">
-
-    {% call govukFieldset({
-      classes: "moj-add-another__item",
-      legend: {
-        text: "Offence",
-        classes: "moj-add-another__title govuk-fieldset__legend--m",
-        isPageHeading: false
-      }
-    }) %}
-
-    {% from "govuk/components/select/macro.njk" import govukSelect %}
-
-      {{ govukSelect({
-        id: "sort",
-        name: "offence",
-        label: {
-          text: "What type of offence did the device wearer commit?",
-          classes: "govuk-fieldset__legend--s"
-        },
-        items: [
-          {
-            value: "Select",
-            text: "Select",
-            selected: true
-          },
-          {
-            value: "Violence against the person",
-            text: "Violence against the person"
-          },
-          {
-            value: "Sexual offences",
-            text: "Sexual offences"
-          },
-          {
-            value: "Robbery",
-            text: "Robbery"
-          },
-          {
-            value: "Theft offences",
-            text: "Theft offences"
-          },
-          {
-            value: "Criminal damage and arson",
-            text: "Criminal damage and arson"
-          },
-          {
-            value: "Drug offences",
-            text: "Drug offences"
-          },
-          {
-            value: "Possession of weapons",
-            text: "Possession of weapons"
-          },
-          {
-            value: "Public order offences",
-            text: "Public order offences"
-          },
-          {
-            value: "Miscellaneous crimes against society",
-            text: "Miscellaneous crimes against society"
-          },
-          {
-            value: "Fraud offences",
-            text: "Fraud offences"
-          },
-          {
-            value: "Summary non-motoring",
-            text: "Summary non-motoring"
-          },
-          {
-            value: "Summary motoring",
-            text: "Summary motoring"
-          },
-          {
-            value: "Offence not recorded",
-            text: "Offence not recorded"
-          }
-        ]
-      }) }}
-
-<!--
           {{ govukRadios({
             name: "offence",
             fieldset: {
               legend: {
                 text: "What type of offence did the device wearer commit?",
-                isPageHeading: false,
+                 isPageHeading: false,
                 classes: "govuk-fieldset__legend--s"
               }
             },
-            hint: {
-              text: "If more than one offence committed, select the main offence"
-            },
+        
             items: [
               {
                 value: "Violence against the person",
-                checked: (true if data['offence'] == 'Violence against the person'),
+               
                 text: "Violence against the person"
               },
               {
                 value: "Sexual offences",
-                checked: (true if data['offence'] == 'Sexual offences'),
+               
                 text: "Sexual offences"
               },
               {
                 value: "Robbery",
-                checked: (true if data['offence'] == 'Robbery'),
+                
                 text: "Robbery"
               },
               {
                 value: "Theft offences",
-                checked: (true if data['offence'] == 'Theft offences'),
+        
                 text: "Theft offences"
               },
               {
                 value: "Criminal damage and arson",
-                checked: (true if data['offence'] == 'Criminal damage and arson'),
+               
                 text: "Criminal damage and arson"
               },
               {
                 value: "Drug offences",
-                checked: (true if data['offence'] == 'Drug offences'),
+          
                 text: "Drug offences"
               },
               {
                 value: "Possession of weapons",
-                checked: (true if data['offence'] == 'Possession of weapons'),
+            
                 text: "Possession of weapons"
               },
               {
                 value: "Public order offences",
-                checked: (true if data['offence'] == 'Public order offences'),
                 text: "Public order offences"
               },
               {
                 value: "Miscellaneous crimes against society",
-                checked: (true if data['offence'] == 'Miscellaneous crimes against society'),
+
                 text: "Miscellaneous crimes against society"
               },
               {
                 value: "Fraud offences",
-                checked: (true if data['offence'] == 'Fraud offences'),
+          
                 text: "Fraud offences"
               },
               {
                 value: "Summary non-motoring",
-                checked: (true if data['offence'] == 'Summary non-motoring'),
+         
                 text: "Summary non-motoring"
               },
               {
                 value: "Summary motoring",
-                checked: (true if data['offence'] == 'Summary motoring'),
+               
                 text: "Summary motoring"
               },
 
@@ -207,14 +115,15 @@
               }
             ]
           }) }}
--->
-    
 
-    {{ govukDateInput({
-      id: "date-of-birth",
+
+           {{ govukDateInput({
+      id: "offence-date",
+      name: "offencelistquestion",
       fieldset: {
         legend: {
-          text: "Date of offence",
+          text: "What was the date of the offence?",
+          isPageHeading: false,
           classes: "govuk-fieldset__legend--s"
         }
       },
@@ -246,7 +155,7 @@
           id: "person[0][dob][year]",
           name: "offenceyear",
           label: "Year",
-          classes: "govuk-input--width-2",
+          classes: "govuk-input--width-4",
           attributes: {
             "data-name": "person[%index%][dob][year]",
             "data-id": "person[%index%][dob][year]"
@@ -255,20 +164,9 @@
       ]
     }) }}
 
-    {% endcall %}
+  
 
-    <div class="moj-button-action">
-      {{ govukButton({
-        text: "Add another offence",
-        classes: "govuk-button--secondary moj-add-another__add-button govuk-!-margin-bottom-4"
-      }) }}
-    </div>
-
-    
-
-
-
-       
+  
 
     {% from "govuk/components/button/macro.njk" import govukButton %}
 
@@ -283,7 +181,8 @@
           classes: "govuk-button--secondary"
         }) }}
 
-      </div>
+ 
+
  
     </form>
 

@@ -11,7 +11,7 @@
 
 
 
-       <form class="form" action="start" method="post">
+       <form class="form" action="/user-type" method="post">
 
       
       
@@ -32,14 +32,34 @@
                
               
                 {
-                  value: "Prison or Youth",
-                  checked: (true if data['usertype'] == 'Prison or Youth'),
-                  text: "Prison or Youth"
+                  value: "Prison user",
+                  checked: (true if data['usertype'] == 'Prison user'),
+                  text: "Prison"
+                },
+                 {
+                  value: "Youth user",
+                  checked: (true if data['usertype'] == 'Youth user'),
+                  text: "Youth"
                 },
                 {
-                  value: "Probation",
-                  checked: (true if data['usertype'] == 'Probation'),
+                  value: "Probation user",
+                  checked: (true if data['usertype'] == 'Probation user'),
                   text: "Probation"
+                },
+                {
+                  value: "Court user",
+                  checked: (true if data['usertype'] == 'Court user'),
+                  text: "Court"
+                },
+                 {
+                  value: "Home Office user",
+                  checked: (true if data['usertype'] == 'Home Office user'),
+                  text: "Home Office"
+                },
+                {
+                  value: "",
+                  checked: (true if data['usertype'] == ''),
+                  text: "No user group"
                 }
               ]
             }) }}  

@@ -72,7 +72,7 @@
 
             {% elseif (data['view-variation'] == 'cancelled') %}
 
-           <p> You can't make changes to this form because monitoring has ended early.</p>
+           <p> You can't make changes to this form because monitoring has ended.</p>
       
 
             {% else %}
@@ -100,23 +100,30 @@
 
         {% if (data['clarification'] == 'true') %}
 
-        <p> You are making changes to a submitted form. </p>
+        <p>  </p>
 
         {% elseif (data['sr-type'] == 'I need monitoring equipment installed at a new address') %}
 
-         <p> You are requesting monitoring equipment to be installed at a new address. </p>
+         <p> You are requesting monitoring equipment to be installed at an additional address. </p>
 
         {% elseif (data['sr-type'] == 'I need monitoring equipment reinstalled or checked') %}
 
-         <p> You are requesting monitoring equipment to be reinstalled or checked. </p>
+         <p> You are requesting monitoring equipment to be reinstalled. </p>
 
         {% elseif (data['sr-type'] == 'I need to end all monitoring for the device wearer') %}
 
+         <p> You are revoking monitoring for the device wearer.</p>
+
+         {% elseif (data['sr-type'] == 'I need to end all monitoring for the device wearer2') %}
+
          <p> You are ending all monitoring for the device wearer.</p>
 
-          {% else %}  
+          {% elseif (data['sr-type'] == 'I have changed something else in the form') %}
 
          <p> You are making changes to a submitted form. </p>
+
+
+         
 
         {% endif %}   
 
@@ -256,11 +263,10 @@
         ]
       }) }}
 
-      {% else %}
+{% elseif (data['usertype'] == 'Court user' or data['usertype'] == 'Home Office user')  %}
 
 
-
-        {{ govukTaskList({
+     {{ govukTaskList({
         idPrefix: "first-section",
         items: [
           {
@@ -297,6 +303,111 @@
             },
             href: ("attachments/check-answers-view"),
            status: ( completedStatus if data['section-5-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: ("About the changes in this version of the form")
+            },
+            href: ("variations/check-answers" if data['section-6-complete'] == 'true' else "variations/edit-form-question"),
+           status: ( completedStatus if data['section-6-complete'] == 'true' else incompleteStatus)
+
+          }
+
+        ]
+      }) }}
+
+ {% elseif (data['usertype'] == 'Probation user')  %}     
+
+  {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the Notifying and Responsible Organisations"
+            },
+            href: ("organisation/check-answers-view" if data['section-2-complete'] == 'true' else "organisation/org-details?cya2=sr20"),
+            status: ( completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: ( completedStatus if data['section-1-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers-view"),
+           status: ( completedStatus if data['section-3-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers-view" if data['section-5-complete'] == 'true' else "attachments/check-licence"),
+           status: ( completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: ("About the changes in this version of the form")
+            },
+            href: ("variations/check-answers" if data['section-6-complete'] == 'true' else "variations/edit-form-question"),
+           status: ( completedStatus if data['section-6-complete'] == 'true' else incompleteStatus)
+
+          }
+
+        ]
+      }) }}
+
+
+ {% else %}
+
+        {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the Notifying and Responsible Organisations"
+            },
+            href: ("organisation/check-answers-view"),
+            status: ( completedStatus if data['section-2-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: ( completedStatus if data['section-1-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers-view"),
+           status: ( completedStatus if data['section-3-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers-view" if data['section-5-complete'] == 'true' else "attachments/check-licence"),
+           status: ( completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
           },
           {
             title: {
@@ -353,6 +464,12 @@
             text: "View and download form",
             classes: "govuk-button--secondary",
             href: "submitted-form-all"
+            }) }}
+
+            {{ govukButton({
+            text: "Copy and send as new order",
+            classes: "govuk-button--secondary",
+            href: "submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false"
             }) }}
 
 
@@ -541,7 +658,11 @@
                         <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
                       </p>
 
-                       <div class="moj-timeline__description govuk-!-padding-bottom-4"><a href="submitted-form?view=true&view-variation=false&variation=true">View submitted form</a>.<br>
+                       <div class="moj-timeline__description govuk-!-padding-bottom-4">
+
+                         <p>Reinstall at different address.</p>
+
+                         <a href="submitted-form?view=true&view-variation=false&variation=true">View submitted form</a>.<br>
                        </div> 
 
                     </div>
@@ -591,6 +712,9 @@
                       </p>
 
                       <div class="moj-timeline__description govuk-!-padding-bottom-4">
+
+                         <p>Reinstall at different address.</p>
+                         
                         <p>You are viewing this version of the form.</p>
                       </div>
 

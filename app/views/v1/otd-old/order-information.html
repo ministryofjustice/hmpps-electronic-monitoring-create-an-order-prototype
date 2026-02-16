@@ -1,5 +1,6 @@
 {% extends "layouts/moj-level2.html" %}
 
+
 {% block pageTitle %}
    Order information - Electronic Monitoring
 {% endblock %}
@@ -18,8 +19,12 @@
         <span class="govuk-caption-l">Electronic monitoring required</span>
            What condition is the electronic monitoring part of?
       </h1>-->
+
+
        
-      <form class="form" action="/order-type" method="post">
+      <form class="form" action="/order-type" method="post" name="redirect">
+
+      
 
 
             {{ govukRadios({
@@ -184,6 +189,8 @@
       </div>
  
     </form>
+
+ 
 
     </div>
   </div>

@@ -12,6 +12,8 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+              <form class="form" action="/type-change-areyousure" method="post">
+
       <h1 class="govuk-heading-l">Are you sure that you want to make changes to the EMO application form for {{ data['fullname'] or "David Murphy" }}?</h1>
 
     
@@ -42,7 +44,7 @@
          
         </dl>
 
-         <p>Check and update the licence or court order before making changes to the EMO application form.</p>
+         <p>Check and update the licence before making changes to the EMO application form.</p>
 
          <p>You can make changes to the EMO application form now if the information you are changing isn't included in the licence or court order.</p>
 
@@ -53,7 +55,6 @@
           <div class="govuk-button-group">
             {{ govukButton({
               text: "Yes, make changes",
-              href: 'type-change',
               classes: "govuk-button--warning"
             }) }}
 
@@ -63,6 +64,7 @@
               classes: "govuk-button--secondary"
             }) }}
           </div>
+</form>
      
         </div>
       </div>

@@ -27,91 +27,184 @@
 
    <span class="govuk-caption-l">Electronic monitoring required</span>
 
-  {% if (data['addressquestion'] == "No") %}
+{% if (data['notifying-org'] == "Home Office") %} 
 
-          {{ govukRadios({
-            classes: "govuk-radios",
-            name: "appointmentquestion",
-            fieldset: {
-              legend: {
-                text: "Where will installation of the electronic monitoring device take place?",   
-                isPageHeading: true,
-               classes: "govuk-fieldset__legend--l"
-              }
-            },
-            hint: {
-                    text: ""
-                  },
-            items: [
+                   {% if (data['addressquestion'] == "No") %}
 
-              {
-              value: "Device wearer has no fixed address",
-              checked: (true if data['appointmentquestion'] == 'Device wearer has no fixed address'),
-              disabled: (true if data['addressquestion'] == 'No'),
-              text: "Device wearer has no fixed address"
-              },
-           
-              {
-                value: "At a prison",
-                checked: (true if data['appointmentquestion'] == 'At a prison'),
-                text: "At a prison"
-              },
-              {
-                value: "At a probation office",
-                checked: (true if data['appointmentquestion'] == 'At a probation office'),
-                text: "At a probation office"
-              },
-              {
-                value: "At another address",
-                checked: (true if data['appointmentquestion'] == 'At another address'),
-                text: "At another address"
-              }
-            ]
-          }) }}
+                  {{ govukRadios({
+                    classes: "govuk-radios",
+                    name: "appointmentquestion",
+                    fieldset: {
+                      legend: {
+                        text: "Where will installation of the electronic monitoring device take place?",   
+                        isPageHeading: true,
+                       classes: "govuk-fieldset__legend--l"
+                      }
+                    },
+                    hint: {
+                            text: ""
+                          },
+                    items: [
 
-  {% else %}    
+                      {
+                      value: "Device wearer has no fixed address",
+                      checked: (true if data['appointmentquestion'] == 'Device wearer has no fixed address'),
+                      disabled: (true if data['addressquestion'] == 'No'),
+                      text: "Device wearer has no fixed address"
+                      },
+                   
+                      {
+                        value: "At a prison",
+                        checked: (true if data['appointmentquestion'] == 'At a prison'),
+                        text: "At a prison"
+                      },
+                      {
+                        value: "At a probation office",
+                        checked: (true if data['appointmentquestion'] == 'At a probation office'),
+                        text: "At a probation office"
+                      },
+                      {
+                        value: "At an immigration removal centre",
+                        checked: (true if data['appointmentquestion'] == 'At an immigration removal centre'),
+                        text: "At an immigration removal centre"
+                      },
+                      {
+                        value: "At another address",
+                        checked: (true if data['appointmentquestion'] == 'At another address'),
+                        text: "At another address (for example, a relatives address they don't live at)"
+                      }
+                    ]
+                  }) }}
+
+          {% else %}    
 
 
-          {{ govukRadios({
-            classes: "govuk-radios",
-            name: "appointmentquestion",
-            fieldset: {
-              legend: {
-                text: "Where will installation of the electronic monitoring device take place?",   
-                isPageHeading: true,
-               classes: "govuk-fieldset__legend--l"
-              }
-            },
-            hint: {
-                    text: ""
-                  },
-            items: [
+                  {{ govukRadios({
+                    classes: "govuk-radios",
+                    name: "appointmentquestion",
+                    fieldset: {
+                      legend: {
+                        text: "Where will installation of the electronic monitoring device take place?",   
+                        isPageHeading: true,
+                       classes: "govuk-fieldset__legend--l"
+                      }
+                    },
+                    hint: {
+                            text: ""
+                          },
+                    items: [
 
-              {
-              value: "123 Glossop Road, Little Hayfield, High Peak, SK22 2NG",
-              checked: (true if data['appointmentquestion'] == '123 Glossop Road, Little Hayfield, High Peak, SK22 2NG'),
-              text: "123 Glossop Road, Little Hayfield, High Peak, SK22 2NG"
-              },
-           
-              {
-                value: "At a prison",
-                checked: (true if data['appointmentquestion'] == 'At a prison'),
-                text: "At a prison"
-              },
-              {
-                value: "At a probation office",
-                checked: (true if data['appointmentquestion'] == 'At a probation office'),
-                text: "At a probation office"
-              },
-              {
-                value: "At another address",
-                checked: (true if data['appointmentquestion'] == 'At another address'),
-                text: "At another address"
-              }
-            ]
-          }) }}
+                      {
+                      value: "123 Glossop Road, Little Hayfield, High Peak, SK22 2NG",
+                      checked: (true if data['appointmentquestion'] == '123 Glossop Road, Little Hayfield, High Peak, SK22 2NG'),
+                      text: "123 Glossop Road, Little Hayfield, High Peak, SK22 2NG"
+                      },
+                   
+                      {
+                        value: "At a prison",
+                        checked: (true if data['appointmentquestion'] == 'At a prison'),
+                        text: "At a prison"
+                      },
+                      {
+                        value: "At a probation office",
+                        checked: (true if data['appointmentquestion'] == 'At a probation office'),
+                        text: "At a probation office"
+                      },
+                      {
+                        value: "At an immigration removal centre",
+                        checked: (true if data['appointmentquestion'] == 'At an immigration removal centre'),
+                        text: "At an immigration removal centre"
+                      }
+                    ]
+                  }) }}
 
-  {% endif %} 
+          {% endif %} 
+
+
+{% else %}    
+
+          {% if (data['addressquestion'] == "No") %}
+
+                  {{ govukRadios({
+                    classes: "govuk-radios",
+                    name: "appointmentquestion",
+                    fieldset: {
+                      legend: {
+                        text: "Where will installation of the electronic monitoring device take place?",   
+                        isPageHeading: true,
+                       classes: "govuk-fieldset__legend--l"
+                      }
+                    },
+                    hint: {
+                            text: ""
+                          },
+                    items: [
+
+                      {
+                      value: "Device wearer has no fixed address",
+                      checked: (true if data['appointmentquestion'] == 'Device wearer has no fixed address'),
+                      disabled: (true if data['addressquestion'] == 'No'),
+                      text: "Device wearer has no fixed address"
+                      },
+                   
+                      {
+                        value: "At a prison",
+                        checked: (true if data['appointmentquestion'] == 'At a prison'),
+                        text: "At a prison"
+                      },
+                      {
+                        value: "At a probation office",
+                        checked: (true if data['appointmentquestion'] == 'At a probation office'),
+                        text: "At a probation office"
+                      },
+                      {
+                        value: "At another address",
+                        checked: (true if data['appointmentquestion'] == 'At another address'),
+                        text: "At another address (for example, a relatives address they don't live at)"
+                      }
+                    ]
+                  }) }}
+
+          {% else %}    
+
+
+                  {{ govukRadios({
+                    classes: "govuk-radios",
+                    name: "appointmentquestion",
+                    fieldset: {
+                      legend: {
+                        text: "Where will installation of the electronic monitoring device take place?",   
+                        isPageHeading: true,
+                       classes: "govuk-fieldset__legend--l"
+                      }
+                    },
+                    hint: {
+                            text: ""
+                          },
+                    items: [
+
+                      {
+                      value: "123 Glossop Road, Little Hayfield, High Peak, SK22 2NG",
+                      checked: (true if data['appointmentquestion'] == '123 Glossop Road, Little Hayfield, High Peak, SK22 2NG'),
+                      text: "123 Glossop Road, Little Hayfield, High Peak, SK22 2NG"
+                      },
+                   
+                      {
+                        value: "At a prison",
+                        checked: (true if data['appointmentquestion'] == 'At a prison'),
+                        text: "At a prison"
+                      },
+                      {
+                        value: "At a probation office",
+                        checked: (true if data['appointmentquestion'] == 'At a probation office'),
+                        text: "At a probation office"
+                      }
+                    ]
+                  }) }}
+
+          {% endif %} 
+
+{% endif %} 
 
   <input type="hidden" id="sectionid" name="sectionid" value="Electronic monitoring required">
 <input type="hidden" id="postcodetype" name="postcodetype" value="installation">

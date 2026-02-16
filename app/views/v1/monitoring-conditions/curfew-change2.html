@@ -12,10 +12,11 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
- <form class="form" action="/curfew-change" method="post">     
+
+<form class="form" action="curfew-4" method="post">     
 
  
-{% if (data['curfewstandard'] == "false") %}     
+ {% if (data['curfewstandard'] == "false") %}     
 
 {% if (data['curfewperiods'] == "one") %}     
 
@@ -28,7 +29,7 @@
 
  <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
-        Curfew times (first period)
+        Curfew times (second period)
       </h1>
 
 {% endif %}           
@@ -55,12 +56,11 @@
       </h1>
 
 
-
  {% else %} 
 
  <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
-        Curfew timetable for {{ data['day'] }} (first period)
+        Curfew timetable for {{ data['day'] }} (second period)
       </h1>
 
 {% endif %}           
@@ -93,13 +93,13 @@
 
         <div class="govuk-date-input__item">
           <div class="govuk-form-group form-group-start-hours">
-            <label class="govuk-label govuk-date-input__label" for="curfewchange-starttime-hours"><span class="govuk-visually-hidden">Start</span> Hour</label>
+            <label class="govuk-label govuk-date-input__label" for="curfewchange-starttime-hours2"><span class="govuk-visually-hidden">Start</span> Hour</label>
              {% if (data['curfewtimetableday'] == "true") %}
-               <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-starttime-hours" name="curfewchange-starttime{{ data['day'] }}-hours" value="{{ data['curfewchange-starttime-hours'] }}">
+               <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-starttime-hours2" name="curfewchange-starttime{{ data['day'] }}-hours2" value="{{ data['curfewchange-starttime-hours2'] }}">
             {% elseif (data['curfewstandard'] == "false") %}
-              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-starttime-hours" name="curfewchange-starttime-hours" value="">
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-starttime-hours2" name="curfewchange-starttime-hours2" value="">
             {% else %}  
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-starttime-hours" name="curfewchange-starttime-hours" value="19">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-starttime-hours2" name="curfewchange-starttime-hours2" value="19">
             {% endif %}    
           </div>       
         </div>
@@ -108,13 +108,13 @@
         </div>
         <div class="govuk-date-input__item">
           <div class="govuk-form-group form-group-start-hours">
-            <label class="govuk-label govuk-date-input__label" for="curfewchange-starttime-minutes"><span class="govuk-visually-hidden">Start</span> Minutes</label>
+            <label class="govuk-label govuk-date-input__label" for="curfewchange-starttime-minutes2"><span class="govuk-visually-hidden">Start</span> Minutes</label>
             {% if (data['curfewtimetableday'] == "true") %}
-               <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-starttime-minutes" name="curfewchange-starttime{{ data['day'] }}-minutes" value="{{ data['curfewchange-starttime-minutes'] }}">
+               <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-starttime-minutes2" name="curfewchange-starttime{{ data['day'] }}-minutes2" value="{{ data['curfewchange-starttime-minutes2'] }}">
             {% elseif (data['curfewstandard'] == "false") %}
-              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-starttime-minutes" name="curfewchange-starttime-minutes" value="">
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-starttime-minutes2" name="curfewchange-starttime-minutes2" value="">
             {% else %}  
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-starttime-minutes" name="curfewchange-starttime-minutes" value="00">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-starttime-minutes2" name="curfewchange-starttime-minutes2" value="00">
             {% endif %}    
           </div>       
         </div>
@@ -133,14 +133,14 @@
         
 
         <div class="govuk-date-input__item">
-          <label class="govuk-label govuk-date-input__label" for="curfewchange-starttime-hours"><span class="govuk-visually-hidden">Start</span> Hour</label>
+          <label class="govuk-label govuk-date-input__label" for="curfewchange-starttime-hours2"><span class="govuk-visually-hidden">Start</span> Hour</label>
           <div class="govuk-form-group form-group-start-hours">
              {% if (data['curfewtimetableday'] == "true") %}
-               <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-endtime-hours" name="curfewchange-endtime{{ data['day'] }}-hours" value="{{ data['curfewchange-endtime-hours'] }}">
+               <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-endtime-hours2" name="curfewchange-endtime{{ data['day'] }}-hours2" value="{{ data['curfewchange-endtime-hours2'] }}">
             {% elseif (data['curfewstandard'] == "false") %}
-              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-endtime-hours" name="curfewchange-endtime-hours" value="">
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-endtime-hours2" name="curfewchange-endtime-hours2" value="">
             {% else %}  
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-endtime-hours" name="curfewchange-endtime-hours" value="07">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-endtime-hours2" name="curfewchange-endtime-hours2" value="07">
             {% endif %}
           </div>
         </div>
@@ -148,14 +148,14 @@
           <label class="govuk-label govuk-date-input__label">:</label>
         </div>
          <div class="govuk-date-input__item">
-          <label class="govuk-label govuk-date-input__label" for="curfewchange-starttime-minutes"><span class="govuk-visually-hidden">Start</span> Minutes</label>
+          <label class="govuk-label govuk-date-input__label" for="curfewchange-starttime-minutes2"><span class="govuk-visually-hidden">Start</span> Minutes</label>
           <div class="govuk-form-group form-group-start-hours">
             {% if (data['curfewtimetableday'] == "true") %}
-               <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-endtime-minutes" name="curfewchange-endtime{{ data['day'] }}-minutes" value="{{ data['curfewchange-endtime-minutes'] }}">
+               <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-endtime-minutes2" name="curfewchange-endtime{{ data['day'] }}-minutes2" value="{{ data['curfewchange-endtime-minutes2'] }}">
             {% elseif (data['curfewstandard'] == "false") %}
-              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-endtime-minutes" name="curfewchange-endtime-minutes" value="">
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-endtime-minutes2" name="curfewchange-endtime-minutes2" value="">
             {% else %}  
-            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-endtime-minutes" name="curfewchange-endtime-minutes" value="00">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-endtime-minutes2" name="curfewchange-endtime-minutes2" value="00">
             {% endif %}
           </div>
         </div>
