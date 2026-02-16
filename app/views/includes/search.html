@@ -176,7 +176,7 @@
                       <th scope="col" class="govuk-table__header">Name</th>
              
                       <th scope="col" class="govuk-table__header">Date of birth</th>
-                       {% if (data['usertype'] == "Prison or Youth") %}
+                       {% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user") %}
                        <th scope="col" class="govuk-table__header">Youth</th>
                        {% endif %}   
 

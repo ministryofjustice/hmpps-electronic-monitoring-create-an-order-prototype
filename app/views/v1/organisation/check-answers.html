@@ -30,6 +30,22 @@
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
 
+                <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               What organisation or related organisation are you part of?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['notifying-org'] or "Low Newton Prison and Young Offender Institution" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               
+                  <a class="govuk-link" href="org-details?cya2=true">Change<span class="govuk-visually-hidden"> What organisation are you part of? </span></a>
+                </li>
+                
+            </dd>
+          </div>
+
+
 
       {% if (data['usertype'] == "Prison user") %}
 
@@ -75,20 +91,7 @@
 
       {% if (data['usertype'] == "Court user") %}
 
-             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-               Which type of court are you part of?
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {{ data['notifying-org'] or "Family Court" }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-               
-                  <a class="govuk-link" href="org-details?cya2=true">Change<span class="govuk-visually-hidden"> What organisation are you part of? </span></a>
-                </li>
-                
-            </dd>
-          </div>
+         
 
              <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">

@@ -997,7 +997,9 @@ router.post('/org-details', function(request, response) {
     } else if (notifyingorg == "Youth Custody Service (YCS)") {
         response.redirect("/v1/organisation/responsible-officer")  
      } else if (notifyingorg == "Home Office") {
-        response.redirect("/v1/organisation/responsible-officer")                     
+        response.redirect("/v1/organisation/responsible-officer")   
+    } else if (notifyingorg == "") {
+        response.redirect("/v1/organisation/responsible-officer")                        
     } else {
         response.redirect("/v1/organisation/org-contact")
     }
@@ -1045,7 +1047,7 @@ router.post('/check-document', function(request, response) {
 })
 
 
-router.post('/user-type', function(request, response) {
+router.post('/user-type-cohort', function(request, response) {
 
     var usertype = request.session.data['usertype']
     if (usertype == "Prison user"){
@@ -1058,6 +1060,24 @@ router.post('/user-type', function(request, response) {
         response.redirect("start?notifying-org=Family Court&order-type=Civil&hdc=clear")     
     } else if (usertype == "Home Office user") {
         response.redirect("start?notifying-org=Home Office&order-type=Immigration&hdc=clear")  
+     } else {
+        response.redirect("start?notifying-org=&order-type=&hdc=clear")
+    }                        
+})
+
+router.post('/user-type', function(request, response) {
+
+    var usertype = request.session.data['usertype']
+    if (usertype == "Prison user"){
+        response.redirect("start?order-type=Post release")  
+    } else if (usertype == "Probation user") {
+        response.redirect("start?order-type=Post release") 
+    } else if (usertype == "Youth user") {
+        response.redirect("start?order-type=Post release")  
+    } else if (usertype == "Court user") {
+        response.redirect("start?order-type=Civil&hdc=clear")     
+    } else if (usertype == "Home Office user") {
+        response.redirect("start?order-type=Immigration&hdc=clear")  
      } else {
         response.redirect("start?notifying-org=&order-type=&hdc=clear")
     }                        

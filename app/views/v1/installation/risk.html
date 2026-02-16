@@ -31,9 +31,104 @@
 
 
 
-
+ {% if (data['usertype'] == "Home Office user") %}
 
           {{ govukRadios({
+            name: "offence",
+            fieldset: {
+              legend: {
+                text: "What type of offence did the device wearer commit?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: "If more than one offence committed, select the main offence"
+            },
+            items: [
+              {
+                value: "Violence against the person",
+                checked: (true if data['offence'] == 'Violence against the person'),
+                text: "Violence against the person"
+              },
+              {
+                value: "Sexual offences",
+                checked: (true if data['offence'] == 'Sexual offences'),
+                text: "Sexual offences"
+              },
+              {
+                value: "Robbery",
+                checked: (true if data['offence'] == 'Robbery'),
+                text: "Robbery"
+              },
+              {
+                value: "Theft offences",
+                checked: (true if data['offence'] == 'Theft offences'),
+                text: "Theft offences"
+              },
+              {
+                value: "Criminal damage and arson",
+                checked: (true if data['offence'] == 'Criminal damage and arson'),
+                text: "Criminal damage and arson"
+              },
+              {
+                value: "Drug offences",
+                checked: (true if data['offence'] == 'Drug offences'),
+                text: "Drug offences"
+              },
+              {
+                value: "Possession of weapons",
+                checked: (true if data['offence'] == 'Possession of weapons'),
+                text: "Possession of weapons"
+              },
+              {
+                value: "Public order offences",
+                checked: (true if data['offence'] == 'Public order offences'),
+                text: "Public order offences"
+              },
+              {
+                value: "Miscellaneous crimes against society",
+                checked: (true if data['offence'] == 'Miscellaneous crimes against society'),
+                text: "Miscellaneous crimes against society"
+              },
+              {
+                value: "Fraud offences",
+                checked: (true if data['offence'] == 'Fraud offences'),
+                text: "Fraud offences"
+              },
+              {
+                value: "Summary non-motoring",
+                checked: (true if data['offence'] == 'Summary non-motoring'),
+                text: "Summary non-motoring"
+              },
+              {
+                value: "Summary motoring",
+                checked: (true if data['offence'] == 'Summary motoring'),
+                text: "Summary motoring"
+              },
+
+              {
+                divider: "or"
+              },
+              {
+                value: "Offence not recorded",
+                checked: (true if data['offence'] == 'Offence not recorded'),
+                text: "Offence not recorded"
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "They have not committed an offence",
+                checked: (true if data['offence'] == 'They have not committed an offence"'),
+                text: "They have not committed an offence"
+              }
+            ]
+          }) }}
+
+    {% else %}
+
+      {{ govukRadios({
             name: "offence",
             fieldset: {
               legend: {
@@ -119,6 +214,7 @@
           }) }}
 
 
+    {% endif %}
 
        
 
