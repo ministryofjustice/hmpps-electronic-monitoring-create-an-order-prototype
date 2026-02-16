@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "security_audit": "npx audit-ci --config audit-ci.json",
     "dev": "govuk-prototype-kit dev",
     "serve": "govuk-prototype-kit serve",
     "start": "govuk-prototype-kit start"
@@ -11,7 +12,7 @@
     "@x-govuk/govuk-prototype-components": "5.0.2",
     "@x-govuk/govuk-prototype-filters": "2.1.0",
     "govuk-frontend": "5.14.0",
-    "govuk-prototype-kit": "13.18.1",
+    "govuk-prototype-kit": "13.19.0",
     "notifications-node-client": "8.2.1"
   }
 }
