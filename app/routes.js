@@ -598,6 +598,16 @@ router.post('/photo-question', function(request, response) {
     }
 })
 
+router.post('/photo-question2', function(request, response) {
+
+    var photoquestion = request.session.data['photoquestion']
+    if (photoquestion == "Yes"){
+        response.redirect("/v1/attachments/photo")
+    } else {
+        response.redirect("/v1/attachments/check-answers-view")
+    }
+})
+
 router.post('/equipmentaddressquestion', function(request, response) {
 
     var equipmentaddressquestion = request.session.data['equipmentaddressquestion']
@@ -1042,7 +1052,7 @@ router.post('/check-document', function(request, response) {
     if (checkdocument == "Yes"){
         response.redirect("/v1/attachments/licence")     
     } else {
-        response.redirect("/v1/attachments/check-answers-view")
+        response.redirect("/v1/attachments/photo-question")
     }
 })
 

@@ -14,6 +14,16 @@
 {% endblock %}
 
 {% block content %}
+
+ <script>
+            var checker = document.getElementById('checkme');
+            var sendbtn = document.getElementById('sendNewSms');
+            checker.onchange = function() {
+              sendbtn.disabled = !!this.checked;
+            };
+          </script>
+      
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -189,12 +199,6 @@
             </dd>
           </div>
 
-
-         
-
-         
-
-
         </dl>
       
 
@@ -213,8 +217,47 @@
                
 
          {% else %}
+
+      {% if (data['sr-type'] == 'I need monitoring equipment reinstalled or checked' or data['sr-type'] == 'I need monitoring equipment installed at a new address') %}
+
+
+           <h2 class="govuk-heading-s">Check if the installation risk has changed</h2>
+
+           <p>If the device wearer has moved to a new address, you must check for any new information that suggests they might harm or verbally abuse electronic monitoring staff, and update any risk information that has changed.</p>
+
+
+       
+           {{ govukCheckboxes({
+                    name: "waste",
+                    classes: "govuk-checkboxes--small",
+                    fieldset: {
+                      legend: {
+                        text: "Check if the risk has changed",
+                        isPageHeading: true,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+             
+                    items: [
+                      {
+                        value: "carcasses",
+                        id: "checkme",
+                        text: "I have checked and updated any risk information that has changed"
+                      }
+                    ]
+                    }) }}
+
+               
+
+            {% else %}
+
+            
+                      
+            {% endif %}    
+
          {{ govukButton({
           text: "Save and go to next section",
+          id: "sendNewSms",
           href: "../attachments/check-licence?section-3-complete=true"
         }) }}
 
@@ -226,7 +269,8 @@
         }) }}
                 
           {% endif %}
-      
+
+         
 
       </div>
  

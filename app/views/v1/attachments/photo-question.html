@@ -12,6 +12,14 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+       {% if (data['view'] == 'false') %}
+           <form class="form" action="/photo-question2" method="post">
+
+         {% else %}
+            <form class="form" action="/photo-question" method="post">
+
+           {% endif %}
+
 
       <form class="form" action="/photo-question" method="post">
 

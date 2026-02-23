@@ -402,12 +402,12 @@
             href: ("installation/check-answers-view"),
            status: ( completedStatus if data['section-3-complete'] == 'true' else tocheckStatus)
           },
-          {
+           {
             title: {
               text: "Additional documents"
             },
-            href: ("attachments/check-answers-view" if data['section-5-complete'] == 'true' else "attachments/check-licence"),
-           status: ( completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+            href: ("attachments/check-answers-view"),
+           status: ( completedStatus if data['section-5-complete'] == 'true' else tocheckStatus)
           },
           {
             title: {
