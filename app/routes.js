@@ -539,8 +539,11 @@ router.post('/monitoring-list', function(request, response) {
     var monitoringtypesquestion = request.session.data['monitoringtypesquestion']
     var monitoringtype = request.session.data['monitoringtype']
     var monitoringtype2 = request.session.data['monitoringtype2']
+    var errorremoved = request.session.data['errorremoved']
     if (monitoringtypesquestion == "Yes"){
         response.redirect("/v1/monitoring-conditions/monitoring-details2")
+    } else if (errorremoved == "Yes"){
+        response.redirect("/v1/monitoring-conditions/check-answers")     
 
     } else if (monitoringtype == "Alcohol monitoring"){
         response.redirect("/v1/monitoring-conditions/appointment-question") 
@@ -561,7 +564,7 @@ router.post('/monitoring-list-edit', function(request, response) {
     if (monitoringtypesquestion == "Yes"){
         response.redirect("/v1/monitoring-conditions/monitoring-details2")
     } else {
-        response.redirect("/v1/monitoring-conditions/check-answers-view")
+        response.redirect("/v1/monitoring-conditions/check-answers")
     }
 })
 
@@ -622,13 +625,23 @@ router.post('/region', function(request, response) {
 
     var officerorg = request.session.data['officer-org']
     if (officerorg == "Probation service"){
-        response.redirect("/v1/organisation/region")
+        response.redirect("/v1/organisation/specialsquestion")
     } else if (officerorg == "Youth Justice Service (YJS)"){
         response.redirect("/v1/organisation/region")
     } else if (officerorg == "Youth Custody Service (YCS)"){
         response.redirect("/v1/organisation/region")           
     } else {
         response.redirect("/v1/organisation/check-answers")
+    }
+})
+
+router.post('/specialsquestion', function(request, response) {
+
+    var specialsquestion = request.session.data['specialsquestion']
+    if (specialsquestion == "Yes"){
+        response.redirect("/v1/installation/hard-stop?sectionid=About the Notifying and Responsible Organisations")        
+    } else {
+        response.redirect("/v1/organisation/region")
     }
 })
 
@@ -1023,6 +1036,26 @@ router.post('/risk-list', function(request, response) {
         response.redirect("/v1/installation/risk-civil")     
     } else {
         response.redirect("/v1/installation/risk-1")
+    }
+})
+
+router.post('/risk-1', function(request, response) {
+
+    var offence = request.session.data['offence']
+    if (offence == "Terrorism offence"){
+        response.redirect("/v1/installation/hard-stop?sectionid=Access needs and installation risk")     
+    } else {
+        response.redirect("/v1/installation/risk-1")
+    }
+})
+
+router.post('/risk-civil', function(request, response) {
+
+    var offence = request.session.data['offence']
+    if (offence == "Terrorism offence"){
+        response.redirect("/v1/installation/hard-stop?sectionid=Access needs and installation risk")     
+    } else {
+        response.redirect("/v1/installation/risk-list")
     }
 })
 

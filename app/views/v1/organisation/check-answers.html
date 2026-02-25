@@ -281,6 +281,27 @@
 
    {% endif %}     
 
+   {% if (data['officer-org'] == "Probation service") %}
+
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+         Is the device wearer being managed by the National Security Directorate?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['specialsquestion'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               
+                  <a class="govuk-link" href="region2?cya2=true">Change<span class="govuk-visually-hidden">  What is the Responsible Organisation's Probation Delivery Unit (PDU)? </span></a>
+                </li>
+                
+            </dd>
+          </div>
+
+
+   {% endif %}   
+
 
 
 
@@ -306,6 +327,7 @@
 
       {% if (data['officer-org'] == "Probation service") %}
 
+
   <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
          What is the Responsible Organisation's  Probation Delivery Unit (PDU)?
@@ -320,6 +342,8 @@
                 
             </dd>
           </div>
+
+         
 
    {% endif %}     
 

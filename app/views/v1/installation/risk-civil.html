@@ -20,11 +20,11 @@
 
        {% if (data['cya3'] == "true") %}
 
-        <form class="form" action="risk-list" method="post">
+        <form class="form" action="/risk-civil" method="post">
 
         {% else %}
 
-       <form class="form" action="risk-list" method="post">
+       <form class="form" action="/risk-civil" method="post">
 
         {% endif %}
 
@@ -103,6 +103,11 @@
                 value: "Summary motoring",
                
                 text: "Summary motoring"
+              },
+              {
+                value: "Terrorism offence",
+               
+                text: "Terrorism offence"
               },
 
               {

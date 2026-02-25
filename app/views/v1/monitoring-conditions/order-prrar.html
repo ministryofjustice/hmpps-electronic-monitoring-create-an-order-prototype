@@ -24,7 +24,11 @@
 
         <form class="form" action="check-answers" method="post">
 
-        {% else %}
+        {% elseif (data['error'] == "true") %}
+
+        <form class="form" action="monitoring-needed" method="post">
+
+         {% else %}
 
        <form class="form" action="monitoring-dates" method="post">
 

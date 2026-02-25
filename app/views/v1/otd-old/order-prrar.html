@@ -21,8 +21,22 @@
 -->
  
 
+      {% if (data['cya4'] == "true") %}
+
+        <form class="form" action="../monitoring-conditions/check-answers" method="post">
+
+        {% elseif (data['error'] == "true") %}
+
+        <form class="form" action="../monitoring-conditions/monitoring-needed" method="post">
+
+         {% else %}
+
+       <form class="form" action="../monitoring-conditions/monitoring-details" method="post">
+
+        {% endif %}
+
        
-      <form class="form" action="../monitoring-conditions/monitoring-details" method="post">
+
 
 
 

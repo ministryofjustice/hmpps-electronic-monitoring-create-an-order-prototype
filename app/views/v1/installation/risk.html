@@ -25,7 +25,7 @@
 
         {% else %}
 
-       <form class="form" action="risk-1" method="post">
+       <form class="form" action="/risk-1" method="post">
 
         {% endif %}
 
@@ -105,6 +105,11 @@
                 value: "Summary motoring",
                 checked: (true if data['offence'] == 'Summary motoring'),
                 text: "Summary motoring"
+              },
+              {
+                value: "Terrorism offence",
+                checked: (true if data['offence'] == 'Terrorism offence'),
+                text: "Terrorism offence"
               },
 
               {
@@ -200,6 +205,11 @@
                 value: "Summary motoring",
                 checked: (true if data['offence'] == 'Summary motoring'),
                 text: "Summary motoring"
+              },
+              {
+                value: "Terrorism offence",
+                checked: (true if data['offence'] == 'Terrorism offence'),
+                text: "Terrorism offence"
               },
 
               {

@@ -12,7 +12,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-         {% set html %}
+  <!--       {% set html %}
         <p class="govuk-notification-banner__heading">
          You are viewing a submitted form. This form was submitted on the 14 December 2024.
         </p>
@@ -39,7 +39,7 @@
 
           {% else %}
 
-           {% endif %}
+           {% endif %}-->
 
       
 
@@ -59,6 +59,32 @@
 
            {% endif %}
 
+
+           {% if (data['error'] == "true") %}
+
+           {% call govukInsetText({ classes: "govuk-!-margin-0 guidance-panel" }) %}
+               <p>The device wearer has no fixed address so only Alcohol Monitoring is allowed. </p>
+               <h2 class="govuk-heading-s govuk-!-margin-0">You must:</h2>
+               <ul class="govuk-list govuk-list--bullet">
+                 <li>delete the invalid monitoring conditions from the order</li>
+                 <li>ensure any required documents are also updated and attached to the order. For example, the licence.</li>
+               </ul>
+              
+            {% endcall %}
+
+            <br>
+
+          <!--  <div class="govuk-inset-text">
+              <p>The device wearer has no fixed address so only Alcohol Monitoring is allowed. </p>
+               <h2 class="govuk-heading-s govuk-!-margin-0">You must:</h2>
+               <ul class="govuk-list govuk-list--bullet">
+                 <li>delete the invalid monitoring conditions from the order</li>
+                 <li>ensure any required documents are also updated and attached to the order. For example, the licence.</li>
+               </ul>
+            </div>-->
+
+
+           {% endif %}
    
 
           <dl class="govuk-summary-list">
