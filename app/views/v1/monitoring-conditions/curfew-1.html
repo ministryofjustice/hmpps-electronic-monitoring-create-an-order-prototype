@@ -27,7 +27,7 @@
 
 
 
-        <div class="moj-datepicker" data-module="moj-date-picker">
+ <!--       <div class="moj-datepicker" data-module="moj-date-picker">
 
             <div class="govuk-form-group">
               <label class="govuk-label  govuk-label--s" for="date">
@@ -67,13 +67,13 @@
 
 
 
-        <!--
+      -->
 
 
             <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
               <legend class="govuk-label govuk-label--s">
-                What is the date the curfew monitoring starts?
+                What date does curfew start?
               </legend>
               <div id="passport-issued-hint" class="govuk-hint">
                 For example, 27 3 2020
@@ -110,7 +110,11 @@
             <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
               <legend class="govuk-label govuk-label--s">
-                What is the date curfew monitoring ends? (optional)
+                {% if (data['order-type'] == "Immigration") or (data['order-type'] == "Pre trial") %}
+               What date does curfew end? (optional)
+               {% else %}
+               What date does curfew end? 
+               {% endif %}
               </legend>
               <div id="passport-issued-hint" class="govuk-hint">
                 For example, 27 3 2020
@@ -149,7 +153,7 @@
         </fieldset>
       </div>
 
-     -->
+   
 
        
 

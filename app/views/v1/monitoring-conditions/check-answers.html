@@ -372,7 +372,7 @@
               What date does curfew start?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['curfewstart-date'] }} 
+              12 December 2025
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="curfew-2?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the curfew monitoring starts? </span></a>
@@ -383,7 +383,7 @@
               What date does curfew end? {% if (data['order-type'] == "Immigration") or (data['order-type'] == "Pre trial") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['curfewend-date'] }} 
+             12 December 2026
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="curfew-2?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the curfew monitoring ends? </span></a>
@@ -414,7 +414,7 @@
               {{ data['release-starttime-hours'] }}:{{ data['release-starttime-minutes'] }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="curfew-3?cya4=true">Change<span class="govuk-visually-hidden"> WWhat is the start time for curfew this day? </span></a>
+              <a class="govuk-link" href="curfew-3?cya4=true">Change<span class="govuk-visually-hidden"> What is the start time for curfew this day? </span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -586,7 +586,7 @@
              When does installation take place?
             </dt>
             <dd class="govuk-summary-list__value">
-             {{ data['installation-date'] or '12/06/2025'}} at {{ data['installation-hours'] or '12' }}:{{ data['installation-minutes'] or '00' }}
+             {{ data['installation-date'] or '12 December 2025'}} at {{ data['installation-hours'] or '12' }}:{{ data['installation-minutes'] or '00' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="appointment-details?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
@@ -635,7 +635,7 @@
               What date does exclusion monitoring start?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['exclusionstart-date'] }} 
+             12 December 2025
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="exclusion-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the exclusion and inclusion monitoring starts? </span></a>
@@ -646,7 +646,7 @@
               What date does exclusion monitoring end? {% if (data['order-type'] == "Immigration") or (data['order-type'] == "Pre trial") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['exclusionend-date'] }} 
+             12 December 2026 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="exclusion-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the end date for exclusion and inclusion monitoring? </span></a>
@@ -749,7 +749,7 @@
               What date does trail monitoring start?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['trailstart-date'] or '12/01/2025' }} 
+              {{ data['trailstart-date'] or '12 December 2025' }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="trail-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the trail monitoring starts? </span></a>
@@ -760,7 +760,7 @@
               What date does trail monitoring end? {% if (data['order-type'] == "Immigration") or (data['order-type'] == "Pre trial") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['trailend-date'] or '12/01/2026' }} 
+              {{ data['trailend-date'] or '12 December 2026' }} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="trail-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the trail monitoring ends? </span></a>
@@ -801,7 +801,7 @@
               What date does mandatory attendance monitoring start?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['attendancestart-date'] }} 
+              12 December 2025
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="attendance-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the mandatory attendance monitoring starts? </span></a>
@@ -812,7 +812,7 @@
               What date does mandatory attendance monitoring end? {% if (data['order-type'] == "Immigration") or (data['order-type'] == "Pre trial") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['attendanceend-date'] }} 
+              12 December 2026
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="attendance-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the mandatory attendance monitoring ends? </span></a>
@@ -895,13 +895,13 @@
          
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the date alcohol monitoring starts?
+              What date does alcohol monitoring starts?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['alcoholstart-date'] }} 
+             22 December 2025
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="alcohol-1?cya4=true">Change<span class="govuk-visually-hidden"> What date does alcohol monitoring start? </span></a>
+              <a class="govuk-link" href="alcohol?cya4=true">Change<span class="govuk-visually-hidden"> What date does alcohol monitoring start? </span></a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
@@ -909,10 +909,10 @@
               What date does alcohol monitoring end? {% if (data['order-type'] == "Immigration") %}(optional){% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['alcoholend-date'] }} 
+              22 December 2026
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="alcohol-1?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the alcohol monitoring ends? </span></a>
+              <a class="govuk-link" href="alcohol?cya4=true">Change<span class="govuk-visually-hidden"> What is the date the alcohol monitoring ends? </span></a>
             </dd>
           </div>
            <div class="govuk-summary-list__row">
@@ -920,13 +920,13 @@
               What alcohol monitoring does the device wearer need?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['type-alcohol'] }}
+              {{ data['type-alcohol'] or 'Abstinence' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="alcohol-2?cya4=true">Change<span class="govuk-visually-hidden"> What type of alcohol monitoring is needed? </span></a>
             </dd>
           </div>
-          <div class="govuk-summary-list__row">
+        <!--  <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
                What is the address of the base station? 
             </dt>
@@ -955,7 +955,7 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="alcohol-2?cya4=true">Change<span class="govuk-visually-hidden">  Where will alcohol base station monitoring equipment be installed? </span></a>
             </dd>
-          </div>
+          </div>-->
 
 
 

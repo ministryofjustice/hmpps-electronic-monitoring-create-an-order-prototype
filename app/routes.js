@@ -586,7 +586,7 @@ router.post('/licence-question', function(request, response) {
     if (licencequestion == "Yes"){
         response.redirect("/v1/attachments/licence-ho")  
     } else {
-        response.redirect("/v1/attachments/photo-question")
+        response.redirect("/v1/attachments/photo-question?photoquestion=No")
     }
 })
 
