@@ -1,0 +1,92 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Multi-Agency Public Protection Arrangements (MAPPA) - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+ <span class="govuk-caption-l">Access needs and installation risk</span>
+   <!--   <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Access needs and installation risk</span>
+        Multi-Agency Public Protection Arrangements (MAPPA)
+      </h1>-->
+
+      <form class="form" action="/oasys" method="post">
+
+        
+         
+
+          {{ govukRadios({
+            name: "oasys",
+            fieldset: {
+              legend: {
+                text: "Has the supervised individual undergone a risk of harm assessment?",
+                isPageHeading: true,
+         classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: "For example, an OASys assessment"
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['oasys'] == 'Yes'),
+                conditional: {
+                
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (true if data['oasys'] == 'No'),
+                conditional: {
+                 
+                }
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "Not able to provide this information",
+                checked: (true if data['oaysy'] == 'Not able to provide this information'),
+                text: "Not able to provide this information",
+                behaviour: "exclusive"
+              }
+            ]
+          }) }}
+
+
+
+
+     
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

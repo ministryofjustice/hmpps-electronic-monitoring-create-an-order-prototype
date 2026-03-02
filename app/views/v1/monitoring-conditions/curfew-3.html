@@ -19,6 +19,9 @@
 
 
    <span class="govuk-caption-l">Electronic monitoring required</span>
+
+     {% if (data['hdc'] == "Yes") %}
+        
           {{ govukRadios({
             classes: "govuk-radios--inline",
             name: "curfewreleasequestion",
@@ -46,6 +49,40 @@
               }
             ]
           }) }}
+
+         {% else %}   
+
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "curfewreleasequestion",
+            fieldset: {
+              legend: {
+                text: "On the day of release do you want to use the standard curfew times?",   
+                isPageHeading: true,
+               classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+                    text: "On the day of release the standard times are 19:00 to 07:00 the next day. It can be later if the device wearer has a long way to travel."
+                  },
+            items: [
+           
+              {
+                value: "Yes",
+                checked: (true if data['curfewreleasequestion'] == 'Yes'),
+                text: "Yes"
+              },
+              {
+                value: "No",
+                checked: (true if data['curfewreleasequestion'] == 'No'),
+                text: "No"
+              }
+            ]
+          }) }}
+
+
+
+         {% endif %} 
 
        
 
