@@ -19,7 +19,7 @@
          
         <span class="govuk-caption-l">Additional documents</span>
 
-         {% if (data['notifying-org'] == 'Home Office') %}
+         {% if (data['usertype'] == 'Home Office user') %}
           {{ govukRadios({
             classes: "govuk-radios--inline",
             name: "licencequestion",

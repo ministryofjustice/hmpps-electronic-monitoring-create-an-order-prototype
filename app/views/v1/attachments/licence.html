@@ -13,18 +13,15 @@
     <div class="govuk-grid-column-two-thirds">
 
 
-        {% if (data['view'] == 'false') %}
-           <form class="form" action="photo-question" method="post">
-
-         {% else %}
+      
             <form class="form" action="/licence-question" method="post">
 
-           {% endif %}
+      
      
 
         <span class="govuk-caption-l">Additional documents</span>
 
-         {% if (data['notifying-org'] == 'Home Office') %}
+         {% if (data['usertype'] == 'Home Office user') %}
 
            {{ govukRadios({
             classes: "govuk-radios--inline",
@@ -59,7 +56,7 @@
             ]
           }) }}
 
-           {% elseif (data['notifying-org'] == 'Family Court') or (data['notifying-org'] == 'Civil and County Court')  %}
+           {% elseif (data['usertype'] == 'Court user') %}
 
            {{ govukRadios({
             classes: "govuk-radios--inline",

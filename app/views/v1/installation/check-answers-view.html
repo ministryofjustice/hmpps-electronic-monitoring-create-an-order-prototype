@@ -199,6 +199,30 @@
             </dd>
           </div>
 
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Has the device wearer had a risk of harm assessment?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['oasys'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What should we know that will help lower risk of violence or threatening behaviour? </span></a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Are there other risks to be aware of in order to assess the risk to staff fitting the device?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['risk-question'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> Is there anything else the installer should know that will help lower risk of violence or threatening behaviour?</span></a>
+            </dd>
+          </div>
+
         </dl>
       
 
@@ -223,7 +247,7 @@
 
            <h2 class="govuk-heading-s">Check if the installation risk has changed</h2>
 
-           <p>If the device wearer has moved to a new address, you must check for any new information that suggests they might harm or verbally abuse electronic monitoring staff, and update any risk information that has changed.</p>
+           <p>If the device wearer has moved to a new address, you must check and update any risk information that has changed.</p>
 
 
        

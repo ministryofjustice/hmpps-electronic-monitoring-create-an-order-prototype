@@ -90,7 +90,94 @@
             {% endset -%}
 
 
+ {% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user" )  %}
+
+     {{ govukRadios({
+              name: "notifying-org",
+              fieldset: {
+                legend: {
+                  text: " What organisation or related organisation are you part of?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: ""
+              },
+              items: [
+                 {
+                  value: "Prison service",
+                  checked: (true if data['notifying-org'] == 'Prison service'),
+                  text: "Prison service",
+                  conditional: {
+                    html: prison2Html
+                  }
+                },           
+                 {
+                  value: "Youth Custody Service (YCS)",
+                  checked: (true if data['notifying-org'] == 'Youth Custody Service (YCS)'),
+                  text: "Youth Custody Service (YCS)",
+                  conditional: {
+                    html: ycsHtml
+                  }
+                }
+
+              ]
+            }) }}
+
+
+  {% elseif (data['usertype'] == "Probation user") %}  
+
+    <input type="hidden" name="notifying-org" value="Probation service">
+
+
  
+
+  {% elseif (data['usertype'] == "Court user") %}  
+
+
+     {{ govukRadios({
+              name: "notifying-org",
+              fieldset: {
+                legend: {
+                  text: " Which type of court are you part of?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              hint: {
+                text: ""
+              },
+              items: [
+                
+              
+                {
+                  value: "Family Court",
+                  text: "Family Court",
+                  conditional: {
+                    html: courtsHtml
+                  }
+                },
+                {
+                  value: "Civil and County Court",
+                  text: "Civil and County Court",
+                  conditional: {
+                    html: courtsHtml
+                  }
+                }
+
+              ]
+            }) }}
+
+ 
+
+   {% elseif (data['usertype'] == "Home Office user") %}  
+
+       <input type="hidden" name="notifying-org" value="Home Office">
+
+  {% else %}
+
+    
 
 
 
@@ -193,7 +280,7 @@
               ]
             }) }}
 
-
+{% endif  %}
 
 
               {{ govukInput({

@@ -148,9 +148,9 @@ router.post('/disability', function(request, response) {
 router.post('/risk', function(request, response) {
 
     var risk = request.session.data['risk']
-    var notifyingorg = request.session.data['notifying-org']
+    var usertype = request.session.data['usertype']
 
-    if (notifyingorg == "Home Office") {
+    if (usertype == "Home Office user") {
         response.redirect("/v1/installation/mappa")  
     } else {
         response.redirect("/v1/installation/check-answers")
@@ -164,6 +164,16 @@ router.post('/mappa', function(request, response) {
         response.redirect("/v1/installation/mappa-2")  
     } else {
         response.redirect("/v1/installation/check-answers")
+    }
+})
+
+router.post('/oasys', function(request, response) {
+
+    var oasys = request.session.data['oasys']
+    if (oasys == "Yes"){
+        response.redirect("/v1/installation/oasys2")  
+    } else {
+        response.redirect("/v1/installation/risk-3")
     }
 })
 
@@ -581,7 +591,6 @@ router.post('/ho-question', function(request, response) {
 
 
 router.post('/licence-question', function(request, response) {
-    var notifyingorg = request.session.data['notifying-org']
     var licencequestion = request.session.data['licencequestion']
     if (licencequestion == "Yes"){
         response.redirect("/v1/attachments/licence-ho")  
@@ -1013,6 +1022,7 @@ router.post('/order-aq-region', function(request, response) {
 router.post('/org-details', function(request, response) {
 
     var notifyingorg = request.session.data['notifying-org']
+    var usertype = request.session.data['usertype']
     if (notifyingorg == "Prison service"){
         response.redirect("/v1/organisation/responsible-officer") 
     } else if (notifyingorg == "Probation service") {
@@ -1022,7 +1032,15 @@ router.post('/org-details', function(request, response) {
      } else if (notifyingorg == "Home Office") {
         response.redirect("/v1/organisation/responsible-officer")   
     } else if (notifyingorg == "") {
-        response.redirect("/v1/organisation/responsible-officer")                        
+        response.redirect("/v1/organisation/responsible-officer")  
+    } else if (usertype == "Prison user") {
+        response.redirect("/v1/organisation/responsible-officer")   
+    } else if (usertype == "Probation user") {
+        response.redirect("/v1/organisation/responsible-officer")     
+    } else if (usertype == "Home Office user") {
+        response.redirect("/v1/organisation/responsible-officer") 
+    } else if (usertype == "Youth user") {
+        response.redirect("/v1/organisation/responsible-officer")                                  
     } else {
         response.redirect("/v1/organisation/org-contact")
     }
@@ -1072,12 +1090,23 @@ router.post('/risk-listdapo', function(request, response) {
 router.post('/hard-stop', function(request, response) {
 
     var srtype = request.session.data['sr-type']
-    if (srtype == "I need to end all monitoring for the device wearer2"){
+    if (srtype == "hardstop"){
         response.redirect("/v1/variations/hard-stop")     
     } else {
         response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false")
     }
 })
+
+router.post('/sr-address', function(request, response) {
+
+    var sraddress = request.session.data['sr-address']
+    if (sraddress == "No"){
+        response.redirect("/v1/variations/sr-question3")     
+    } else {
+        response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&sr-type=I need monitoring equipment reinstalled or checked")
+    }
+})
+
 
 router.post('/check-document', function(request, response) {
 
@@ -1117,14 +1146,17 @@ router.post('/user-type', function(request, response) {
         response.redirect("start?order-type=Post release") 
     } else if (usertype == "Youth user") {
         response.redirect("start?order-type=Post release")  
-    } else if (usertype == "Court user") {
-        response.redirect("start?order-type=Civil&hdc=clear")     
+    } else if (usertype == "Family court user") {
+        response.redirect("start?order-type=Civil&hdc=clear&usertype=Court user&notifying-org=Family Court")  
+    } else if (usertype == "Civil court user") {
+        response.redirect("start?order-type=Civil&hdc=clear&usertype=Court user&notifying-org=Civil and County Court")        
     } else if (usertype == "Home Office user") {
         response.redirect("start?order-type=Immigration&hdc=clear")  
      } else {
         response.redirect("start?notifying-org=&order-type=&hdc=clear")
     }                        
 })
+
 
 
 

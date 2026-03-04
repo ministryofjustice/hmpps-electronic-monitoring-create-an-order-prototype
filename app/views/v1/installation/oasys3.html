@@ -18,16 +18,16 @@
         Multi-Agency Public Protection Arrangements (MAPPA)
       </h1>-->
 
-      <form class="form" action="/oasys" method="post">
+      <form class="form" action="risk-3" method="post">
 
         
          
 
           {{ govukRadios({
-            name: "oasys",
+            name: "rosh-self",
             fieldset: {
               legend: {
-                text: "Has the device wearer had an OASys risk of harm assessment?",
+                text: "What is the risk of serious harm to self?",
                 isPageHeading: true,
          classes: "govuk-fieldset__legend--l"
               }
@@ -37,29 +37,24 @@
             },
             items: [
               {
-                value: "Yes",
-                text: "Yes",
-                checked: (true if data['oasys'] == 'Yes'),
-                conditional: {
-                
-                }
+                value: "Low",
+                text: "Low",
+                checked: (true if data['rosh-self'] == 'Low')
               },
               {
-                value: "No",
-                text: "No",
-                checked: (true if data['oasys'] == 'No'),
-                conditional: {
-                 
-                }
+                value: "Medium",
+                text: "Medium",
+                checked: (true if data['rosh-self'] == 'Medium')
               },
               {
-                divider: "or"
+                value: "High",
+                checked: (true if data['rosh-self'] == 'High'),
+                text: "High"
               },
               {
-                value: "Not able to provide this information",
-                checked: (true if data['oaysy'] == 'Not able to provide this information'),
-                text: "Not able to provide this information",
-                behaviour: "exclusive"
+                value: "Very high",
+                checked: (true if data['rosh-self'] == 'Very high'),
+                text: "Very high"
               }
             ]
           }) }}

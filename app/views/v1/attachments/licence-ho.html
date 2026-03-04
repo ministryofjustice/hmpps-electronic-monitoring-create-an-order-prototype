@@ -25,7 +25,7 @@
         <span class="govuk-caption-l">Additional documents</span>
 
      
-         {% if (data['notifying-org'] == 'Home Office') %}
+         {% if (data['usertype'] == 'Home Office user') %}
           {{ govukFileUpload({
             id: "licence",
             name: "licence",

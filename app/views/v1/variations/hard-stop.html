@@ -17,17 +17,22 @@
 
     <h1 class="govuk-heading-l">
 
-       This order cannot be ended early using the service
+       You cannot use this service to request visits for refits or equipment checks.
       </h1>
 
-       <h2 class="govuk-heading-s">
-      To end the order early
-      </h2>
+    <!--   <h2 class="govuk-heading-s">
+      
+      </h2>-->
 
-      <p class="govuk-body">Use the service request portal if you have access.</p>
+      <p>If you need a visit for an equipment refit (for example, if the battery is not working or there is a medical reason for a refit):</p>
 
-      <p class="govuk-body">If you don’t have access, email the order details to your EM Regional Probation SPoC.</p>
+      <ul class="govuk-list govuk-list--bullet">
+              <li>Use the service request portal if you have access.</li>
+              <li>Email your request to <a href="mailto:EMSEnforcement@ems.co.uk">EMSEnforcement@ems.co.uk</a> if you do not have access.</li>
 
+            </ul>
+
+  
 
       <!-- <p class="govuk-body">If you don’t have access, email the order details to:</p>
             <ul class="govuk-list govuk-list--bullet">
@@ -44,9 +49,9 @@
 
 
      {{ govukButton({
-          text: "Return to form",
-          href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
-          classes: "govuk-button"
+          text: "Back to start",
+          href: ('../dashboard' ),
+          classes: "govuk-button--secondary"
         }) }}
 
       </div>
