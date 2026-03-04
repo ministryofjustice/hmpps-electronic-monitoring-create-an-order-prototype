@@ -31,8 +31,16 @@ Details of the changes - Electronic Monitoring
       <h1 class="govuk-heading-l"> <span class="govuk-caption-l">About the changes in this version of the form</span>
       Details of the changes</h1>
 
+  {% if (data['newform'] == 'false') %}
 
-        <form class="form" action="check-answers" method="post">
+        <form class="form" action="../new-form?section-6-complete=true" method="post">
+
+        {% else %}   
+
+         <form class="form" action="../submitted-form?section-6-complete=true" method="post">
+
+
+      {% endif %}  
  
 
          <div class="moj-datepicker" data-module="moj-date-picker">
@@ -182,16 +190,17 @@ Details of the changes - Electronic Monitoring
                       text: "Return to main form menu",
                       href: "../submitted-form"
                     }) }}
+
                 {% else %}
                   {{ govukButton({
-                    text: "Save and continue"
+                    text: "Save and return to main form menu"
                   }) }}
 
-                    {{ govukButton({
+           <!--         {{ govukButton({
                     text: "Save as draft",
                     href: ('../submitted-form' if data['view'] == 'false' else '#' ),
                     classes: "govuk-button--secondary"
-                  }) }}
+                  }) }}-->
 
 
                 {% endif %}

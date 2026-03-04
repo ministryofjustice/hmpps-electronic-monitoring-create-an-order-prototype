@@ -277,13 +277,28 @@
 
             
                       
-            {% endif %}    
+            {% endif %}   
+
+
+        {% if (data['usertype'] == 'Probation user') %}     
 
          {{ govukButton({
           text: "Save and go to next section",
           id: "sendNewSms",
           href: "../attachments/check-licence?section-3-complete=true"
         }) }}
+
+         {% else %}
+
+           {{ govukButton({
+          text: "Save and go to next section",
+          id: "sendNewSms",
+          href: "../attachments/check-answers-view?section-3-complete=true"
+        }) }}
+
+
+                      
+            {% endif %}  
 
           {{ govukButton({
           text: "Save as draft",
