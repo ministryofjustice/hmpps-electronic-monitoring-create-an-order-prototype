@@ -12,39 +12,30 @@ Details of the changes - Electronic Monitoring
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-         {% set html %}
-        <p class="govuk-notification-banner__heading">
-         You are viewing a submitted form. This form was submitted on the 14 December 2024.
-        </p>
-          {% endset %}
-
-       {% if (data['view'] == 'true') %}
-
-          {{ govukNotificationBanner({
-            html: html
-          }) }}
-
-        {% else %}
-                  
-        {% endif %}
+    
 
  <!--   <span class="govuk-caption-l">About the changes in this version of the form</span>-->
 
 
+       {% if (data['usertype'] == 'Probation user') %}
 
+        <form class="form" action="/sr-address" method="post">
 
-        <form class="form" action="/hard-stop" method="post">
+        {% else %}   
 
-    
+   <form class="form" action="/sr-address" method="post">
+
+      {% endif %}  
 
  
 
 
             {{ govukRadios({
-            name: "sr-type",
+            name: "sr-address",
+            classes: "govuk-radios--inline",
             fieldset: {
               legend: {
-                text: "Why are you making changes to the form?",
+                text: "Are you amending this form because the device wearer’s primary address has changed?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--l"
               }
@@ -57,66 +48,41 @@ Details of the changes - Electronic Monitoring
              
              
               {
-                value: "I need to end all monitoring for the device wearer",
-                checked: (true if data['sr-type'] == 'I need to end all monitoring for the device wearer'),
+                value: "Yes",
+                checked: (true if data['sr-address'] == "Yes"),
                 disabled: (true if data['view'] == 'true'),
-                text: "The device wearer's primary address has changed",
-                 hint: {
+                text: "Yes",
+                hint: {
                   text: ""
                 }
+                
               },
-              
-                {
-                value: "I need to end all monitoring for the device wearer",
-                checked: (true if data['sr-type'] == 'I need to end all monitoring for the device wearer'),
+               {
+                value: "No",
+                checked: (true if data['sr-address'] == "No"),
                 disabled: (true if data['view'] == 'true'),
-                text: "The device wearer has been recalled to prison",
-                 hint: {
-                  text: ""
-                }
-              },
-                {
-                value: "I need to end all monitoring for the device wearer2",
-                checked: (true if data['sr-type'] == 'I need to end all monitoring for the device wearer2'),
-                disabled: (true if data['view'] == 'true'),
-                text: "The device wearers circumstances have changed and all monitoring needs to end",
-                 hint: {
-                  text: ""
-                }
-              },
-                {
-                value: "I need monitoring equipment installed at a new address",
-                checked: (true if data['sr-type'] == "I need monitoring equipment installed at a new address"),
-                disabled: (true if data['view'] == 'true'),
-                text: "The device wearer needs to remain at a second or third address during curfew hours",
+                text: "No",
                  hint: {
                   text: ""
                 }
 
-              },
-              {
-                value: "hardstop",
-                checked: (true if data['sr-type'] == 'hardstop'),
-                disabled: (true if data['view'] == 'true'),
-                text: "There is an issue with the equipment and it needs checking or refitted",
-                 hint: {
-                  text: ""
-                }
-              },
-               {
-                divider: "or"
-              },
-            
-               {
-                value: "I have changed something else in the form",
-                checked: (true if data['sr-type'] == 'I have changed something else in the form'),
-                disabled: (true if data['view'] == 'true'),
-                text: "I need to change something else in the form"
               }
             ]
           }) }}
 
-   
+     
+
+          <!--    {
+                value: "hardstop",
+                checked: (true if data['sr-type'] == 'hardstop'),
+                disabled: (true if data['view'] == 'true'),
+                text: "I need to request an visit because there is a problem with the equipment",
+                 hint: {
+                  text: "For example, the battery isn't working or there is a medical need for a refit."
+                }
+              },
+
+          -->
 
      
 
