@@ -1,0 +1,123 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+Details of the changes - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    
+
+ <!--   <span class="govuk-caption-l">About the changes in this version of the form</span>-->
+
+
+       {% if (data['usertype'] == 'Probation user') %}
+
+        <form class="form" action="/sr-address" method="post">
+
+        {% else %}   
+
+   <form class="form" action="/sr-address" method="post">
+
+      {% endif %}  
+
+ 
+
+
+            {{ govukRadios({
+            name: "sr-address",
+            classes: "govuk-radios--inline",
+            fieldset: {
+              legend: {
+                text: "Are you amending this form because the device wearer’s primary address has changed?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+
+             
+             
+              {
+                value: "Yes",
+                checked: (true if data['sr-address'] == "Yes"),
+                disabled: (true if data['view'] == 'true'),
+                text: "Yes",
+                hint: {
+                  text: ""
+                }
+                
+              },
+               {
+                value: "No",
+                checked: (true if data['sr-address'] == "No"),
+                disabled: (true if data['view'] == 'true'),
+                text: "No",
+                 hint: {
+                  text: ""
+                }
+
+              }
+            ]
+          }) }}
+
+     
+
+          <!--    {
+                value: "hardstop",
+                checked: (true if data['sr-type'] == 'hardstop'),
+                disabled: (true if data['view'] == 'true'),
+                text: "I need to request an visit because there is a problem with the equipment",
+                 hint: {
+                  text: "For example, the battery isn't working or there is a medical need for a refit."
+                }
+              },
+
+          -->
+
+     
+
+
+          <div class="govuk-button-group">
+
+             {% if (data['view'] == 'true') %}
+                   {{ govukButton({
+                      text: "Return to main form menu",
+                      href: "../submitted-form"
+                    }) }}
+                {% else %}
+                  {{ govukButton({
+                    text: "Save and continue"
+                  }) }}
+
+                    {{ govukButton({
+                    text: "Save as draft",
+                    href: ('../submitted-form' if data['view'] == 'false' else '#' ),
+                    classes: "govuk-button--secondary"
+                  }) }}
+
+
+                {% endif %}
+
+
+             
+
+          </div>
+
+      </form>
+
+
+        
+
+        </div>
+      </div>
+{% endblock %}
