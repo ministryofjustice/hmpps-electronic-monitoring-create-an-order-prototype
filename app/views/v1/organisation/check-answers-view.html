@@ -88,6 +88,9 @@
 
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+              {% if (data['usertype'] == 'Probation user') %}   
+              {% else %}   
                <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
                What organisation or related organisation are you part of?
@@ -107,6 +110,8 @@
                 
             </dd>
           </div>
+
+            {% endif %}   
 <!--
 
              <div class="govuk-summary-list__row">

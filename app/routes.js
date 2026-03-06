@@ -958,7 +958,7 @@ router.post('/type-change', function(request, response) {
 
     var clarification = request.session.data['clarification']
     if (clarification == "false"){
-        response.redirect("/v1/variations/sr-question?view=false") 
+        response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&sr-type=I have changed something else in the form&view=false") 
     } else {
         response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false")
     }

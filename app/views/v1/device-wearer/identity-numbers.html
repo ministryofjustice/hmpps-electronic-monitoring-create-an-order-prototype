@@ -69,7 +69,7 @@
           classes: "govuk-!-width-two-thirds",
           value: data['delius'],
           label: {
-            text: "Enter NDelius ID"
+            text: "Enter CRN"
           }
         }) }}
         {% endset -%}
@@ -225,7 +225,7 @@
             {
               value: "Delius ID",
               checked: (true if data['delius'] !== NULL and data['delius'] !== ''),
-              text: "NDelius ID",
+              text: "Case Reference Number (CRN)",
               conditional: {
                 html: deliusHtml
               }
@@ -430,7 +430,7 @@
             {
               value: "Delius ID",
               checked: (true if data['delius'] !== NULL and data['delius'] !== ''),
-              text: "NDelius ID",
+              text: "Case Reference Number (CRN)",
               conditional: {
                 html: deliusHtml
               }
