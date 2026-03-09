@@ -195,7 +195,7 @@
             </dd>
           </div>
 
-            <div class="govuk-summary-list__row">
+        <!--    <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Has the device wearer had a risk of harm assessment?
             </dt>
@@ -235,13 +235,15 @@
           </div>
         {% endif %}
 
+          -->
+
           {% if (data['risk'] == "There are no risks that apply to the device wearer") %}
 
           {% else %}
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             Are there other risks to be aware of in order to assess the risk to staff fitting the device?
+             Are there other risks to be aware of?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['risk-question'] or 'No' }}
