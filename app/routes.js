@@ -1091,7 +1091,9 @@ router.post('/hard-stop', function(request, response) {
 
     var srtype = request.session.data['sr-type']
     if (srtype == "hardstop"){
-        response.redirect("/v1/variations/hard-stop")     
+        response.redirect("/v1/variations/hard-stop?equipment=true")     
+     } else if (srtype == "hardstop2") {
+        response.redirect("/v1/variations/hard-stop?equipment=false")      
     } else {
         response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false")
     }
