@@ -33,11 +33,13 @@ Details of the changes - Electronic Monitoring
 
 
 
-        <form class="form" action="/hard-stop" method="post">
+        
 
     
 
- 
+   {% if (data['usertype'] == 'Probation user') %}
+
+   <form class="form" action="/hard-stop" method="post">
 
 
             {{ govukRadios({
@@ -117,7 +119,49 @@ Details of the changes - Electronic Monitoring
             ]
           }) }}
 
+     {% else %}
+
+       <form class="form" action="/type-change" method="post">
+
+           {{ govukRadios({
+            name: "clarification",
+            fieldset: {
+              legend: {
+                text: "Why are you making changes to the form?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
    
+                {
+                value: "true",
+                checked: (true if data['clarification'] == 'I have received an email rejecting the original order'),
+                disabled: (true if data['view'] == 'true'),
+                text: "I have received an email rejecting the original order",
+                 hint: {
+                  text: ""
+                }
+              },
+               
+               {
+                divider: "or"
+              },
+            
+               {
+                value: "false",
+                checked: (true if data['clarification'] == 'I have changed something else in the form'),
+                disabled: (true if data['view'] == 'true'),
+                text: "I need to change something else in the form"
+              }
+            ]
+          }) }}
+
+
+     {% endif %}
 
      <!--
 

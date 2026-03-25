@@ -41,6 +41,26 @@
               
     {% endif %}   -->
 
+    {% if (data['view'] == 'true') %}
+
+    {% else %}
+
+        {% if (data['usertype'] == 'Probation user') %}
+
+         {{ mojAlert({
+          variant: "warning",
+          title: "Some information could be out of date",
+          showTitleAsHeading: true,
+          dismissible: true,
+          html: 'When you are making your change check all sections and correct anything that is out of date. View the <a href="https://ministryofjustice.github.io/hmpps-electronic-monitoring-create-an-order-docs/make-changes-and-ending-all-monitoring.html#making-changes-to-online-forms">guidance</a> for more information.'
+        }) }}
+
+        {% else %}
+                  
+        {% endif %} 
+
+      {% endif %}    
+
      {% if (data['view-variation'] == 'fail') %}
 
      <h1 class="govuk-heading-l">Electronic Monitoring application for {{ data['wearer-firstname'] or "Bobbie" }} {{ data['wearer-lastname'] or "Gibbs" }}</h1>

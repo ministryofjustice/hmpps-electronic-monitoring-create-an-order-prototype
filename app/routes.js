@@ -948,9 +948,10 @@ router.post('/type-change-areyousure', function(request, response) {
     } else if (clarification == "true") {     
         response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false") 
     } else {
-        response.redirect("/v1/variations/type-change?view=false") 
+        response.redirect("/v1/variations/sr-question3?view=false") 
     }
 })
+
 
 
 
