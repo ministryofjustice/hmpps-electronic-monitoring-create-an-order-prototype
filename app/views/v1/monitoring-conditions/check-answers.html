@@ -23,8 +23,6 @@
        
 
 
-    <h2 class="govuk-heading-m">Order information</h2>
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
           
            
@@ -115,7 +113,7 @@
 
          {% endif  %}
 
-         -->
+     
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -127,9 +125,13 @@
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="../otd-old/order-information?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
             </dd>
-          </div>
+          </div>     -->
 
         {% if (data['order-type'] == "Post release") or (data['order-type'] == "Community") or (data['order-type'] == "Pre trial") %}   
+
+
+    <h2 class="govuk-heading-m">Order information</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
 
          <div class="govuk-summary-list__row">
@@ -550,12 +552,10 @@
       
 {% endif %}
 
-   {% if (data['monitoringtype'] == "Alcohol monitoring" or data['monitoringtype2'] == "Alcohol monitoring") %}
+   {% if (data['monitoringtype'] == "Alcohol monitoring" or data['monitoringtype2'] == "Alcohol monitoring" or data['usertype'] == "Home Office user") %}
 
 <h2 class="govuk-heading-m">Installation address</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-
-          {% if (data['monitoringtype'] != "Alcohol monitoring" or data['monitoringtype2'] != "Alcohol monitoring") %}
 
           
           <div class="govuk-summary-list__row">
@@ -569,7 +569,11 @@
               <a class="govuk-link" href="appointment-question?cya4=true">Change<span class="govuk-visually-hidden"> Installation address </span></a>
             </dd>
           </div>  
-           {% if (data['appointmentquestion'] == "At a prison") or (data['appointmentquestion'] == "At a probation office") %}
+
+
+
+      {% if (data['appointmentquestion'] != "123 Glossop Road, Little Hayfield, High Peak, SK22 2NG") %}
+    
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
             What is the name of the place where installation will take place?
@@ -593,9 +597,7 @@
             </dd>
           </div> 
 
-          {% endif %}   
 
-            {% if (data['appointmentquestion'] != "123 Glossop Road, Little Hayfield, High Peak, SK22 2NG") %}
 
              <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -618,7 +620,7 @@
             </dd>
           </div>  
 
-          {% endif %}   
+   
 
 
             {% endif %}  

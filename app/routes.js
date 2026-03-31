@@ -127,7 +127,7 @@ router.post('/postcode', function(request, response) {
     } else if (postcodetype == "curfew"){
         response.redirect("/v1/postcode-lookup/address-name")    
     } else if (postcodetype == "installation"){
-        response.redirect("/v1/monitoring-conditions/alcohol")            
+        response.redirect("/v1/monitoring-conditions/check-answers")            
     } else {
         response.redirect("/v1/variation-simple/offence")
     }
@@ -282,9 +282,7 @@ router.post('/appointment-address', function(request, response) {
     } else if (appointmentquestion == "At an immigration removal centre"){
         response.redirect("/v1/monitoring-conditions/appointment-details")     
     } else if (appointmentquestion == "At another address"){
-        response.redirect("/v1/postcode-lookup/postcode") 
-    } else if (monitoringtype == "Trail monitoring (Home Office)"){
-        response.redirect("/v1/monitoring-conditions/trail")                 
+        response.redirect("/v1/monitoring-conditions/appointment-details")                 
     } else {
         response.redirect("/v1/monitoring-conditions/check-answers")
     }
@@ -300,9 +298,7 @@ router.post('/appointment-address2', function(request, response) {
     } else if (appointmentquestion == "At a probation office"){
         response.redirect("/v1/monitoring-conditions/appointment-details") 
     } else if (appointmentquestion == "At another address"){
-        response.redirect("/v1/monitoring-conditions/install-address") 
-    } else if (monitoringtype2 == "Trail monitoring (Home Office)"){
-        response.redirect("/v1/monitoring-conditions/trail")                 
+        response.redirect("/v1/monitoring-conditions/install-address")               
     } else {
         response.redirect("/v1/monitoring-conditions/check-answers")
     }
@@ -548,6 +544,7 @@ router.post('/monitoring-list', function(request, response) {
 
     var monitoringtypesquestion = request.session.data['monitoringtypesquestion']
     var monitoringtype = request.session.data['monitoringtype']
+    var usertype = request.session.data['usertype']
     var monitoringtype2 = request.session.data['monitoringtype2']
     var errorremoved = request.session.data['errorremoved']
     if (monitoringtypesquestion == "Yes"){
@@ -559,10 +556,8 @@ router.post('/monitoring-list', function(request, response) {
         response.redirect("/v1/monitoring-conditions/appointment-question") 
     } else if (monitoringtype2 == "Alcohol monitoring"){
         response.redirect("/v1/monitoring-conditions/appointment-question") 
-    } else if (monitoringtype == "Trail monitoring (Home Office)"){
-        response.redirect("/v1/monitoring-conditions/appointment-question") 
-    } else if (monitoringtype2 == "Trail monitoring (Home Office)"){
-        response.redirect("/v1/monitoring-conditions/appointment-question")            
+    } else if (usertype == "Home Office user"){
+        response.redirect("/v1/monitoring-conditions/appointment-question")          
     } else {
         response.redirect("/v1/monitoring-conditions/check-answers")
     }
@@ -914,6 +909,22 @@ router.post('/sr-question', function(request, response) {
         response.redirect("/v1/new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")     
     } else if (srtypesimple == "I need to end all monitoring for the device wearer2") {
         response.redirect("/v1/variation-simple/bail") 
+    } else if (srtypesimple == "I need to end all monitoring for the device wearer") {
+        response.redirect("/v1/variation-simple/bail")     
+    } else if (srtypesimple == "hardstop") {
+        response.redirect("/v1/variations/hard-stop?equipment=true")  
+    } else if (srtypesimple == "hardstop2") {
+        response.redirect("/v1/variations/hard-stop?equipment=false")         
+    } else {
+        response.redirect("/v1/variation-simple/identity-numbers")
+    }
+})
+
+router.post('/sr-address-simple', function(request, response) {
+
+    var sraddress = request.session.data['sr-address']
+    if (sraddress == "No"){
+        response.redirect("/v1/variation-simple/sr-question")     
     } else {
         response.redirect("/v1/variation-simple/identity-numbers")
     }
@@ -990,10 +1001,13 @@ router.post('/identity-numbers', function(request, response) {
 router.post('/language', function(request, response) {
 
     var notifyingorg = request.session.data['notifying-org']
+    var usertype = request.session.data['usertype']
     if (notifyingorg == "Family Court"){
         response.redirect("/v1/installation/risk-dapo")  
     } else if (notifyingorg == "Civil and County Court") {
-        response.redirect("/v1/installation/risk-civil")     
+        response.redirect("/v1/installation/risk-civil")
+     } else if (usertype == "Home Office user") {
+        response.redirect("/v1/installation/risk-2")         
     } else {
         response.redirect("/v1/installation/risk")
     }
@@ -1031,7 +1045,7 @@ router.post('/org-details', function(request, response) {
     } else if (notifyingorg == "Youth Custody Service (YCS)") {
         response.redirect("/v1/organisation/responsible-officer")  
      } else if (notifyingorg == "Home Office") {
-        response.redirect("/v1/organisation/responsible-officer")   
+        response.redirect("/v1/organisation/org-contact")   
     } else if (notifyingorg == "") {
         response.redirect("/v1/organisation/responsible-officer")  
     } else if (usertype == "Prison user") {
@@ -1039,7 +1053,7 @@ router.post('/org-details', function(request, response) {
     } else if (usertype == "Probation user") {
         response.redirect("/v1/organisation/responsible-officer")     
     } else if (usertype == "Home Office user") {
-        response.redirect("/v1/organisation/responsible-officer") 
+        response.redirect("/v1/organisation/org-contact") 
     } else if (usertype == "Youth user") {
         response.redirect("/v1/organisation/responsible-officer")                                  
     } else {
@@ -1109,6 +1123,9 @@ router.post('/sr-address', function(request, response) {
         response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&sr-type=I need monitoring equipment reinstalled or checked")
     }
 })
+
+
+
 
 
 router.post('/check-document', function(request, response) {

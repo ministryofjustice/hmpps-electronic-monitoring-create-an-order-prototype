@@ -12,7 +12,9 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-     {% if (data['monitoringtypeadded'] == "Yes") %}
+       <form class="form" action="/appointment-address" method="post">
+
+<!--     {% if (data['monitoringtypeadded'] == "Yes") %}
 
        <form class="form" action="/appointment-address2" method="post">
 
@@ -20,16 +22,16 @@
 
       <form class="form" action="/appointment-address" method="post">
 
-      {% endif %}
+      {% endif %}-->
 
 
 
 
    <span class="govuk-caption-l">Electronic monitoring required</span>
 
-{% if (data['notifying-org'] == "Home Office") %} 
+{% if (data['usertype'] == "Home Office user") %} 
 
-                   {% if (data['addressquestion'] == "No") %}
+            {% if (data['addressquestion'] == "No") %}
 
                   {{ govukRadios({
                     classes: "govuk-radios",
@@ -114,6 +116,11 @@
                         value: "At an immigration removal centre",
                         checked: (true if data['appointmentquestion'] == 'At an immigration removal centre'),
                         text: "At an immigration removal centre"
+                      },
+                       {
+                        value: "At another address",
+                        checked: (true if data['appointmentquestion'] == 'At another address'),
+                        text: "At another address (for example, a relatives address they don't live at)"
                       }
                     ]
                   }) }}

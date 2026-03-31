@@ -29,6 +29,8 @@
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+          {% if (data['usertype'] == "Court user" or data['usertype'] == "Prison user" or data['usertype'] == "Youth user") %}    
+
 
                 <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -45,7 +47,7 @@
             </dd>
           </div>
 
-
+{% endif %}  
 
       {% if (data['usertype'] == "Prison user") %}
 
@@ -128,7 +130,7 @@
 
         </dl>
 
-    {% if (data['usertype'] == 'Prison user' or data['usertype'] == 'Probation user' or data['usertype'] == 'Youth user' or data['usertype'] == 'Home Office user') %}   
+    {% if (data['usertype'] == 'Prison user' or data['usertype'] == 'Probation user' or data['usertype'] == 'Youth user') %}   
 
      <h2 class="govuk-heading-m">Responsible Officer's details</h2>
 

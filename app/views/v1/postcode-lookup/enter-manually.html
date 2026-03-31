@@ -15,8 +15,10 @@
 
    {% if (data['postcodetype'] == "installation") %}    
 
+     <form class="form" action="/v1/monitoring-conditions/check-answers" method="post"> 
 
-      {% if (data['monitoringtypeadded'] == "Yes") %}
+
+   <!--   {% if (data['monitoringtypeadded'] == "Yes") %}
 
        <form class="form" action="/install-type2" method="post">
 
@@ -24,7 +26,7 @@
 
       <form class="form" action="/install-type" method="post">
 
-      {% endif %}
+      {% endif %} -->
 
  {% else %}
       <form class="form" action="/postcode" method="post">

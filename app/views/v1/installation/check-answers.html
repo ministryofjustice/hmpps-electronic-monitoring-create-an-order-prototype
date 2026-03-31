@@ -100,6 +100,10 @@
  <h2 class="govuk-heading-m">Installation risk</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
+      {% if (data['usertype'] == "Home Office user") %}    
+
+      {% else %}
+
        {% if (data['notifying-org'] == "Family Court") %}
 
         <div class="govuk-summary-list__row">
@@ -168,6 +172,8 @@
               <a class="govuk-link" href="risk-1?cya3=true">Change<span class="govuk-visually-hidden"> Provide additional risk information about the device wearer's offence.</span></a>
             </dd>
           </div>
+
+          {% endif %}
 
           {% endif %}
 

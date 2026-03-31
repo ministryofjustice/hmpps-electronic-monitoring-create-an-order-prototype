@@ -33,17 +33,17 @@
 
  {% if (data['usertype'] == "Home Office user") %}
 
-          {{ govukRadios({
+          {{ govukCheckboxes({
             name: "offence",
             fieldset: {
               legend: {
-                text: "What type of offence did the device wearer commit?",
+                text: "What type of offences did the device wearer commit?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--l"
               }
             },
             hint: {
-              text: "If more than one offence committed, select the main offence"
+              text: ""
             },
             items: [
               {
@@ -112,9 +112,6 @@
                 text: "Terrorism offence"
               },
 
-              {
-                divider: "or"
-              },
               {
                 value: "Offence not recorded",
                 checked: (true if data['offence'] == 'Offence not recorded'),
@@ -126,24 +123,25 @@
               {
                 value: "They have not committed an offence",
                 checked: (true if data['offence'] == 'They have not committed an offence"'),
-                text: "They have not committed an offence"
+                text: "They have not committed an offence",
+                behaviour: "exclusive"
               }
             ]
           }) }}
 
     {% else %}
 
-      {{ govukRadios({
+      {{ govukCheckboxes({
             name: "offence",
             fieldset: {
               legend: {
-                text: "What type of offence did the device wearer commit?",
+                text: "What type of offences did the device wearer commit?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--l"
               }
             },
             hint: {
-              text: "If more than one offence committed, select the main offence"
+              text: ""
             },
             items: [
               {
@@ -210,10 +208,6 @@
                 value: "Terrorism offence",
                 checked: (true if data['offence'] == 'Terrorism offence'),
                 text: "Terrorism offence"
-              },
-
-              {
-                divider: "or"
               },
               {
                 value: "Offence not recorded",
