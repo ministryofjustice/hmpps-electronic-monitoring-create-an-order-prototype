@@ -45,9 +45,17 @@ USED IF INSTALL ADDRESS IS PER MONITORING TYPE
 
       -->
 
+   {% if (data['appointmentquestion'] == "123 Glossop Road, Little Hayfield, High Peak, SK22 2NG") %} 
+
+
+       <form class="form" action="check-answers" method="post">
+
+    {% else %} 
  
 
        <form class="form" action="/v1/postcode-lookup/postcode" method="post">
+
+     {% endif %}     
 
 
            {{ govukInput({
