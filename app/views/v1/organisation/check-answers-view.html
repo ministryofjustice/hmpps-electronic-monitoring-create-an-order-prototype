@@ -14,15 +14,18 @@
 
         {% set html %}
         <p class="govuk-notification-banner__heading">
-         You are viewing a submitted order. This order was submitted on the 14 December 2024.
+          You are viewing a submitted form. 
         </p>
 
       {% endset %}
 
       {% set htmlcancelled %}
-        <p class="govuk-notification-banner__heading">
+           <!--  <p class="govuk-notification-banner__heading">
           You are viewing an ended order. This order ended on the 22 December 2024.
-        </p>   
+        </p>-->
+        <p class="govuk-notification-banner__heading">
+         You are viewing a submitted form. 
+        </p>
       {% endset %}
 
        {% set htmlfail %}
@@ -62,7 +65,7 @@
       {% if (data['view'] == 'true') %}
 
          <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+        <span class="govuk-caption-l">About the Responsible Organisation</span>
         View answers
       </h1>
 
@@ -70,7 +73,7 @@
       {% else %}
 
          <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+           <span class="govuk-caption-l">About the Responsible Organisation</span>
         Check your answers
       </h1>
 
@@ -84,7 +87,7 @@
       <form class="form" action="" method="post">
 
 
-       <h2 class="govuk-heading-m">Notifying Organisation's details</h2>
+    <!--   <h2 class="govuk-heading-m">Notifying Organisation's details</h2>
 
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -111,7 +114,7 @@
             </dd>
           </div>
 
-            {% endif %}   
+            {% endif %}   -->
 <!--
 
              <div class="govuk-summary-list__row">
@@ -144,7 +147,7 @@
             </dd>
           </div>
    -->
-           <div class="govuk-summary-list__row">
+  <!--         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
          What is your team's contact email address?
             </dt>
@@ -160,9 +163,9 @@
                 
             </dd>
           </div>
-             </dl>
+             </dl>-->
 
-    {% if (data['usertype'] == 'Probation user') %}   
+  <!--  {% if (data['usertype'] == 'Probation user') %}   
 
         <details class="govuk-details">
           <summary class="govuk-details__summary">
@@ -176,7 +179,7 @@
             <p> If you don’t have access:</p>
 
             <ul class="govuk-list govuk-list--bullet">
-             <!-- <li>complete the 'Responsible Officer Notification to EMS' form</li> -->
+            <li>complete the 'Responsible Officer Notification to EMS' form</li> 
                   
                   <li> download and complete the <a href="/public/images/Post release orders - NAT Probation Practitioner Notification Form to EMS.doc" download>'Responsible Officer notification'</a> form</li></li>
                   <li>email it to <a href="mailto:EMSEnforcement@ems.co.uk">EMSEnforcement@ems.co.uk</a></li>
@@ -184,7 +187,11 @@
           </div>
         </details>
     
-    {% else %}      
+    {% else %}   
+
+     {% endif %}  
+
+       -->
 
      <h2 class="govuk-heading-m">Responsible Officer's details</h2>
 
@@ -370,7 +377,7 @@
 
         </dl>
 
-{% endif %}    
+
      
         
 

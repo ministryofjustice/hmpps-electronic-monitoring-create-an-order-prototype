@@ -141,6 +141,45 @@
                 
             </dd>
           </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Notifying organisation
+            </dt>
+            <dd class="govuk-summary-list__value">
+            Prison service
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                
+            </dd>
+          </div>
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Notifying organisation's name or region
+            </dt>
+            <dd class="govuk-summary-list__value">
+            New Hall Prison
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                
+            </dd>
+          </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Notifying organisation's contact email address
+            </dt>
+            <dd class="govuk-summary-list__value">
+            omu@newhall.justice.gov
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                
+            </dd>
+          </div>
+
+
 
 
              </dl>
@@ -214,13 +253,16 @@
 
 
 
+{% if (data['usertype'] == 'Probation user') %}     
+
+{% else %}   
 
 
 
-                <h2 class="govuk-heading-l">About the Notifying and Responsible Organisations</h2>
+                <h2 class="govuk-heading-l">About the Responsible Organisation</h2>
 
 
-                <h2 class="govuk-heading-m">Notifying Organisation's details</h2>
+         <!--       <h2 class="govuk-heading-m">Notifying Organisation's details</h2>
 
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -275,7 +317,8 @@
             </dd>
           </div>
 
-        </dl>
+        </dl> -->
+
 
      <h2 class="govuk-heading-m">Responsible Officer's details</h2>
 
@@ -448,6 +491,8 @@
 
 
         </dl>
+
+        {% endif %} 
      
 
 

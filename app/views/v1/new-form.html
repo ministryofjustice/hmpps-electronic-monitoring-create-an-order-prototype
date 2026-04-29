@@ -51,9 +51,9 @@
         items: [
           {
             title: {
-              text: "About the Notifying and Responsible Organisations"
+              text: "About the Responsible Organisation"
             },
-            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/org-details?cya2=false"),
+            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/org-contact?cya2=false"),
             status: (completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
           },
           {
@@ -95,9 +95,9 @@
         items: [
           {
             title: {
-              text: "About the Notifying and Responsible Organisations"
+              text: "About the Responsible Organisation"
             },
-            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/org-details?cya2=false"),
+            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/org-contact?cya2=false"),
             status: (completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
           },
           {
@@ -139,9 +139,9 @@
         items: [
           {
             title: {
-              text: "About the Notifying and Responsible Organisations"
+              text: "About the Responsible Organisation"
             },
-            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/org-details?cya2=false"),
+            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/responsible-officer?cya2=false"),
             status: (completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
           },
           {
@@ -184,9 +184,9 @@
         items: [
           {
             title: {
-              text: "About the Notifying and Responsible Organisations"
+              text: "About the Responsible Organisation"
             },
-            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/org-details?cya2=false"),
+            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/responsible-officer?cya2=false"),
             status: (completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
           },
           {
@@ -234,9 +234,9 @@
         items: [
           {
             title: {
-              text: "About the Notifying and Responsible Organisations"
+              text: "About the Responsible Organisation"
             },
-            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/org-details"),
+            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/org-contact"),
             status: (completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
           },
           {
@@ -285,9 +285,9 @@
         items: [
           {
             title: {
-              text: "About the Notifying and Responsible Organisations"
+              text: "About the Responsible Organisation"
             },
-            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/org-details"),
+            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/responsible-officer"),
             status: (completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
           },
           {
@@ -301,7 +301,7 @@
             title: {
               text: "Electronic monitoring required"
             },
-            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "/otd-old/order-sentence?cya4=false"),
+            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "otd-old/order-sentence?cya4=false&usertype=Prison user"),
             status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
           },
           {

@@ -14,15 +14,18 @@
 
         {% set html %}
         <p class="govuk-notification-banner__heading">
-         You are viewing a submitted order. This order was submitted on the 14 December 2024.
+         You are viewing a submitted form. 
         </p>
 
         
       {% endset %}
 
       {% set htmlcancelled %}
+           <!--  <p class="govuk-notification-banner__heading">
+          You are viewing an ended order. This order ended on the 22 December 2024.
+        </p>-->
         <p class="govuk-notification-banner__heading">
-         You are viewing an ended order. This order ended on the 22 December 2024.
+          You are viewing a submitted form. 
         </p>
       {% endset %}
 
@@ -87,21 +90,7 @@
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
         
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-               What condition is the electronic monitoring part of?
-            </dt>
-            <dd class="govuk-summary-list__value">
-            Release from prison
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
-                {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
-                {% endif %}
-            </dd>
-          </div>
+        
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What type of sentence has the device wearer been given?
@@ -206,7 +195,7 @@
             <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
 
-            <div class="govuk-summary-list__row">
+        <!--    <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the date for the first day of all monitoring?
             </dt>
@@ -268,7 +257,7 @@
             </dd>
           </div>
            
-         
+         -->
           
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -330,41 +319,7 @@
           </div>
             {% endif %}
 
-             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             Do you want to change the standard curfew address boundary of “front door to back door” for any of the curfew addresses?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['curfew-boundary-question'] or "No" }}
-               
-            </dd>
-            <dd class="govuk-summary-list__actions">
-                {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
-                {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
-                {% endif %}            </dd>
-          </div>  
-
-          {% if (data['curfew-boundary-question'] == 'No') %}
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Enter details of what the curfew address boundary should include
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['curfew-boundary'] or "Patio up to the lawn" }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
-                {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
-                {% endif %}
-            </dd>
-          </div>
-            {% endif %}
-
+       
              <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What date does curfew start?
@@ -432,7 +387,7 @@
                 {% endif %}
             </dd>
           </div>
-          <div class="govuk-summary-list__row">
+      <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               On the day of release, what time does the curfew end?
             </dt>
@@ -447,7 +402,7 @@
                 {% endif %}
             </dd>
           </div>
-          <div class="govuk-summary-list__row">
+  <!--        <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              On the day of release, where will the device wearer be during curfew hours?
             </dt>
@@ -481,7 +436,7 @@
                   <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
                 {% endif %}
             </dd>
-          </div>
+          </div>-->
         </dl>
         
     <h2 class="govuk-heading-m">Curfew timetable</h2>
@@ -543,6 +498,42 @@
                 {% endif %}
             </dd>
           </div>
+
+                <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Do you want to change the standard curfew address boundary of “front door to back door” for any of the curfew addresses?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfew-boundary-question'] or "No" }}
+               
+            </dd>
+            <dd class="govuk-summary-list__actions">
+                {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}            </dd>
+          </div>  
+
+          {% if (data['curfew-boundary-question'] == 'No') %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Enter details of what the curfew address boundary should include
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfew-boundary'] or "Patio up to the lawn" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+            {% endif %}
+
            
 
         </dl>

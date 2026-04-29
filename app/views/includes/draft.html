@@ -1,18 +1,21 @@
    
- <!--  {% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user") %}
+
+
+
+
+ {% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user") %}
     <div class="govuk-phase-banner" style=" padding-bottom:20px">
-              <label class="govuk-label" for="sort">
+              <label class="govuk-label" for="select">
                 Showing:
               </label>
-              <select class="govuk-select" id="sort" name="sort">
-                <option value="published">All prisons</option>
-                <option value="updated" selected>Berwyn Prison</option>
-       
+              <select class="govuk-select" name="select"  id="mySelect" onchange="toggleElement()">
+                <option value="hide">My drafts</option>
+                <option value="show">Berwyn Prison's drafts</option>
               </select>
             </div>
 
 
-   {% endif %}-->
+   {% endif %}
 
 
      <table class="govuk-table  govuk-table--small-text-until-tablet">
@@ -46,16 +49,26 @@
                       text: "Draft"
                     })}}</td>
               </tr>
-               <tr class="govuk-table__row">
-                <td class="govuk-table__cell"><a href="new-form-error?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=false&section-5-complete=true&newform=true">Dylan Davies</a></td>
-                <td class="govuk-table__cell">17/09/2025</td>
-                <td class="govuk-table__cell">Radia Perlman</td>
-               
-                <td class="govuk-table__cell">
-                  {{govukTag({
-                      text: "Draft"
-                    })}}</td>
-              </tr>
+
+         
+                   <tr class="govuk-table__row" id="targetDiv" style="display:none;">
+                    <td class="govuk-table__cell"><a href="new-form-error?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=false&section-5-complete=true&newform=true">Dylan Davies</a></td>
+                    <td class="govuk-table__cell">17/09/2025</td>
+                    <td class="govuk-table__cell">
+                      {% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user") %} 
+                      Radia Perlman
+                      {% else %}
+                      Ada Lovelace
+                      {% endif %}
+                    </td>
+                   
+                    <td class="govuk-table__cell">
+                      {{govukTag({
+                          text: "Draft"
+                        })}}</td>
+                  </tr>
+         
+
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=fail&newform=true">{{ data['wearer-firstname'] or "Bobbie" }} {{ data['wearer-lastname'] or "Gibbs" }}</a></td>
                 <td class="govuk-table__cell">05/09/2025</td>
@@ -68,3 +81,19 @@
               </tr>
             </tbody>
           </table>
+
+ 
+
+
+<script>
+function toggleElement() {
+  const select = document.getElementById("mySelect");
+  const div = document.getElementById("targetDiv");
+  
+  if (select.value === "show") {
+    div.style.display = "table-row";
+  } else {
+    div.style.display = "none";
+  }
+}
+</script>

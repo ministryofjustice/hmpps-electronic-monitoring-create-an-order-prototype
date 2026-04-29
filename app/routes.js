@@ -970,9 +970,9 @@ router.post('/type-change', function(request, response) {
 
     var clarification = request.session.data['clarification']
     if (clarification == "false"){
-        response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&sr-type=I have changed something else in the form&view=false") 
+        response.redirect("/v1/org-details-change?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&sr-type=I have changed something else in the form&view=false") 
     } else {
-        response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false")
+        response.redirect("/v1/org-details-change?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false")
     }
 })
 
@@ -1110,7 +1110,7 @@ router.post('/hard-stop', function(request, response) {
      } else if (srtype == "hardstop2") {
         response.redirect("/v1/variations/hard-stop?equipment=false")      
     } else {
-        response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false")
+        response.redirect("/v1/org-details-change?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false")
     }
 })
 
@@ -1120,7 +1120,7 @@ router.post('/sr-address', function(request, response) {
     if (sraddress == "No"){
         response.redirect("/v1/variations/sr-question3")     
     } else {
-        response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&sr-type=I need monitoring equipment reinstalled or checked")
+        response.redirect("/v1/org-details-change?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&sr-type=I need monitoring equipment reinstalled or checked")
     }
 })
 
@@ -1134,7 +1134,7 @@ router.post('/check-document', function(request, response) {
     if (checkdocument == "Yes"){
         response.redirect("/v1/attachments/licence")     
     } else {
-        response.redirect("/v1/attachments/photo-question")
+        response.redirect("/v1/attachments/check-answers-view")
     }
 })
 

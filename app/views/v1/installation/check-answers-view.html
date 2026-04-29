@@ -29,13 +29,16 @@
 
          {% set html %}
         <p class="govuk-notification-banner__heading">
-         You are viewing a submitted order. This order was submitted on the 14 December 2024.
+          You are viewing a submitted form. 
         </p>
       {% endset %}
 
       {% set htmlcancelled %}
-        <p class="govuk-notification-banner__heading">
+           <!--  <p class="govuk-notification-banner__heading">
           You are viewing an ended order. This order ended on the 22 December 2024.
+        </p>-->
+        <p class="govuk-notification-banner__heading">
+          You are viewing a submitted form. 
         </p>
       {% endset %}
 
@@ -242,10 +245,12 @@
 
          {% else %}
 
+    
+
       {% if (data['sr-type'] == 'I need monitoring equipment reinstalled or checked' or data['sr-type'] == 'I need monitoring equipment installed at a new address') %}
 
 
-           <h2 class="govuk-heading-s">Check if the installation risk has changed</h2>
+      <!--     <h2 class="govuk-heading-s">Check if the installation risk has changed</h2>
 
            <p>If the device wearer has moved to a new address, you must check and update any risk information that has changed.</p>
 
@@ -271,13 +276,15 @@
                     ]
                     }) }}
 
-               
+               -->
 
             {% else %}
 
             
                       
             {% endif %}   
+
+     <div class="govuk-button-group">    
 
 
         {% if (data['usertype'] == 'Probation user') %}     
@@ -309,7 +316,7 @@
                 
           {% endif %}
 
-         
+         </div>
 
       </div>
  

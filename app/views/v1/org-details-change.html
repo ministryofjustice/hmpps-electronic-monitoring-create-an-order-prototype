@@ -15,24 +15,16 @@
       
 
       <h1 class="govuk-heading-l">
-         <span class="govuk-caption-l">About the Responsible Organisation</span>
-       Notifying Organisation's details
+     <!--   <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+       Notifying Organisation's details-->
+       Your details
       </h1>
 
-        {% if (data['cya2'] == "true") %}
+      
 
-        <form class="form" action="check-answers" method="post">
+       <form class="form" action="submitted-form" method="post">
 
 
-        {% elseif (data['cya2'] == "sr20") %}
-
-        <form class="form" action="check-answers-view" method="post">  
-
-        {% else %}
-
-       <form class="form" action="/org-details" method="post">
-
-        {% endif %}
 
 
 
@@ -311,11 +303,11 @@
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
+      <!--  {{ govukButton({
           text: "Save as draft",
           href: '../new-form',
           classes: "govuk-button--secondary"
-        }) }}
+        }) }}-->
 
       </div>
  

@@ -45,15 +45,35 @@
 
     {% else %}
 
-        {% if (data['usertype'] == 'Probation user') %}
+        {% if (data['usertype'] == 'Probation user' and data['dirtydata'] == 'true') %}
 
-         {{ mojAlert({
-          variant: "warning",
-          title: "Some information could be out of date",
-          showTitleAsHeading: true,
-          dismissible: true,
-          html: 'When you are making your change check all sections and correct anything that is out of date. View the <a href="https://ministryofjustice.github.io/hmpps-electronic-monitoring-create-an-order-docs/make-changes-and-ending-all-monitoring.html#making-changes-to-online-forms">guidance</a> for more information.'
-        }) }}
+   <!--     {{ mojAlert({
+            variant: "warning",
+            title: "Some information could be out of date",
+            dismissible: false,
+            html: 'This information may be out of date. Don’t correct details already emailed to EMS. Do provide details about changes you came here to make that are already in this form.'
+          }) }}-->
+    
+<div role="region" class="moj-alert moj-alert--warning" aria-label="warning: Some information could not be imported" data-module="moj-alert">
+      <div>
+        <svg class="moj-alert__icon" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" height="30" width="30">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M15 2.44922L28.75 26.1992H1.25L15 2.44922ZM13.5107 9.49579H16.4697L16.2431 17.7678H13.7461L13.5107 9.49579ZM13.1299 21.82C13.1299 21.5661 13.1787 21.3285 13.2764 21.1071C13.374 20.8793 13.5075 20.6807 13.6768 20.5114C13.8525 20.3421 14.0544 20.2087 14.2822 20.111C14.5101 20.0134 14.7542 19.9645 15.0146 19.9645C15.2686 19.9645 15.5062 20.0134 15.7275 20.111C15.9554 20.2087 16.154 20.3421 16.3232 20.5114C16.4925 20.6807 16.626 20.8793 16.7236 21.1071C16.8213 21.3285 16.8701 21.5661 16.8701 21.82C16.8701 22.0804 16.8213 22.3246 16.7236 22.5524C16.626 22.7803 16.4925 22.9789 16.3232 23.1481C16.154 23.3174 15.9554 23.4509 15.7275 23.5485C15.5062 23.6462 15.2686 23.695 15.0146 23.695C14.7542 23.695 14.5101 23.6462 14.2822 23.5485C14.0544 23.4509 13.8525 23.3174 13.6768 23.1481C13.5075 22.9789 13.374 22.7803 13.2764 22.5524C13.1787 22.3246 13.1299 22.0804 13.1299 21.82Z" fill="currentColor" />
+        </svg>
+      </div>
+      <div class="moj-alert__content"><h2 class="moj-alert__heading">This information may be out of date
+        </h2>
+                                      <ul class="govuk-list govuk-list--bullet">
+                                      <li>Don’t correct details already emailed to EMS. </li>
+                                      <li>Do provide details about changes you came here to make that are already in this form.</li>
+                                    </ul>
+      </div>
+      <div class="moj-alert__action">
+        <button class="moj-alert__dismiss" hidden>Dismiss</button>
+      </div>
+    </div>
+
+    
+    
 
         {% else %}
                   
@@ -92,7 +112,7 @@
 
             {% elseif (data['view-variation'] == 'cancelled') %}
 
-           <p> You can't make changes to this form because monitoring has ended.</p>
+        <!--   <p> You can't make changes to this form because monitoring has ended.</p>-->
       
 
             {% else %}
@@ -156,6 +176,7 @@
 
   <!-- <h2 class="govuk-heading-m">Notification form sections</h2>-->
 
+<!-- changed status -->
       {% set completedStatus = {
         text: "Completed"
       } %}
@@ -164,12 +185,21 @@
         text: ""
       } %}
 
-      {% set tocheckStatus = {
+       {% set completedSectionStatus = {
+        text: "Completed"
+      } %}
+
+  <!--    {% set tocheckStatus = {
         tag: {
           text: "To check",
           classes: "govuk-tag--blue"
         }
-      } %}
+      } %} -->
+
+<!-- not changed -->
+     {% set tocheckStatus = {
+          text: "Completed"
+      } %} 
 
       {% set incompleteStatus = {
         tag: {
@@ -180,13 +210,70 @@
 
  {% if (data['view'] == 'true') %}
 
+     {% if (data['usertype'] == 'Probation user') %}
+
 
       {{ govukTaskList({
         idPrefix: "first-section",
         items: [
           {
             title: {
-              text: "About the Notifying and Responsible Organisations"
+              text: "About the Responsible Organisation"
+            },
+             classes: ("govuk-visually-hidden" if data['variation'] == 'true'),
+            href: ("organisation/check-answers-view"),
+             status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: (viewStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+             status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers-view"),
+            status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers-view"),
+            status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "About the changes in this version of the form"
+            },
+            href: ("variations/edit-form-question"),
+            classes: ("govuk-visually-hidden" if data['variation'] == 'false'),
+            status: ( viewStatus )
+          }
+          
+
+        ]
+      }) }}
+
+         {% else %}
+
+
+      {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the Responsible Organisation"
             },
             href: ("organisation/check-answers-view"),
              status: ( viewStatus)
@@ -223,21 +310,16 @@
             title: {
               text: "About the changes in this version of the form"
             },
-            href: ("variations/check-answers-view"),
+            href: ("variations/edit-form-question"),
             classes: ("govuk-visually-hidden" if data['variation'] == 'false'),
-            status: ( viewStatus )
-          },
-          {
-            title: {
-              text: "About the changes in this version of the form"
-            },
-            href: ("variations/edit-form-delete-question"),
-            classes: ("govuk-visually-hidden" if data['view-variation'] !== 'cancelled'),
             status: ( viewStatus )
           }
 
         ]
       }) }}
+
+
+         {% endif %}
 
       {% elseif (data['clarification'] == 'true')  %}
 
@@ -246,7 +328,7 @@
         items: [
           {
             title: {
-              text: "About the Notifying and Responsible Organisations"
+              text: "About the Responsible Organisation"
             },
             href: ("organisation/check-answers-view"),
             status: ( completedStatus if data['section-2-complete'] == 'true' else tocheckStatus)
@@ -291,7 +373,7 @@
         items: [
           {
             title: {
-              text: "About the Notifying and Responsible Organisations"
+              text: "About the Responsible Organisation"
             },
             href: ("organisation/check-answers-view"),
             status: ( completedStatus if data['section-2-complete'] == 'true' else tocheckStatus)
@@ -328,8 +410,8 @@
             title: {
               text: ("About the changes in this version of the form")
             },
-            href: ("variations/check-answers" if data['section-6-complete'] == 'true' else "variations/edit-form-question"),
-           status: ( completedStatus if data['section-6-complete'] == 'true' else incompleteStatus)
+            href: ("variations/edit-form-question" if data['section-6-complete'] == 'true' else "variations/edit-form-question"),
+           status: ( completedSectionStatus if data['section-6-complete'] == 'true' else incompleteStatus)
 
           }
 
@@ -341,13 +423,7 @@
   {{ govukTaskList({
         idPrefix: "first-section",
         items: [
-          {
-            title: {
-              text: "About the Notifying and Responsible Organisations"
-            },
-            href: ("organisation/check-answers-view" if data['section-2-complete'] == 'true' else "organisation/org-details?cya2=sr20"),
-            status: ( completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
-          },
+          
           {
             title: {
               text: "About the device wearer"
@@ -374,14 +450,14 @@
               text: "Additional documents"
             },
             href: ("attachments/check-answers-view" if data['section-5-complete'] == 'true' else "attachments/check-licence"),
-           status: ( completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+           status: ( completedSectionStatus if data['section-5-complete'] == 'true' else incompleteStatus)
           },
           {
             title: {
               text: ("About the changes in this version of the form")
             },
-            href: ("variations/check-answers" if data['section-6-complete'] == 'true' else "variations/edit-form-question"),
-           status: ( completedStatus if data['section-6-complete'] == 'true' else incompleteStatus)
+            href: ("variations/edit-form-question" if data['section-6-complete'] == 'true' else "variations/edit-form-question"),
+           status: ( completedSectionStatus if data['section-6-complete'] == 'true' else incompleteStatus)
 
           }
 
@@ -396,7 +472,7 @@
         items: [
           {
             title: {
-              text: "About the Notifying and Responsible Organisations"
+              text: "About the Responsible Organisation"
             },
             href: ("organisation/check-answers-view"),
             status: ( completedStatus if data['section-2-complete'] == 'true' else tocheckStatus)
@@ -433,8 +509,8 @@
             title: {
               text: ("About the changes in this version of the form")
             },
-            href: ("variations/check-answers" if data['section-6-complete'] == 'true' else "variations/edit-form-question"),
-           status: ( completedStatus if data['section-6-complete'] == 'true' else incompleteStatus)
+            href: ("variations/edit-form-question" if data['section-6-complete'] == 'true' else "variations/edit-form-question"),
+           status: ( completedSectionStatus if data['section-6-complete'] == 'true' else incompleteStatus)
 
           }
 
@@ -480,20 +556,32 @@
 
             {% elseif (data['view-variation'] == 'cancelled') %}
 
+             {{ govukButton({
+            text: "Make changes to this form",
+            classes: "govuk-button",
+            href: "hard-stop-ended"
+            }) }}
+
             {{ govukButton({
             text: "View and download form",
             classes: "govuk-button--secondary",
             href: "submitted-form-all"
             }) }}
 
-            {{ govukButton({
+        <!--    {{ govukButton({
             text: "Copy and send as new order",
             classes: "govuk-button--secondary",
             href: "submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false"
-            }) }}
+            }) }}-->
 
 
             {% elseif (data['view-variation'] == 'fail') %}
+
+            {{ govukButton({
+            text: "Make changes to this form",
+            classes: "govuk-button",
+            href: "hard-stop-ended"
+            }) }}
 
             {{ govukButton({
             text: "View and download form",
@@ -524,7 +612,14 @@
 
 
           {% elseif (data['clarification'] == 'true') %}
-              {% if (data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true') %}
+
+               <button type="submit" class="govuk-button" data-module="govuk-button">
+                Submit changes to the form
+              </button>
+
+               <a class="govuk-link" href="delete-form">Delete draft</a>
+
+         <!--     {% if (data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true') %}
               <button type="submit" class="govuk-button" data-module="govuk-button">
                 Submit changes to the form
               </button>
@@ -537,15 +632,29 @@
 
                <a class="govuk-link" href="delete-form">Delete draft</a>
 
-              {% endif %}
+              {% endif %} -->
 
              {% elseif (data['clarification'] == 'false') %}
-              {% if (data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true' and data['section-6-complete'] == 'true') %}
+
+
+
+              {% if (data['usertype'] == 'Probation user' and data['section-5-complete'] == 'true' and data['section-6-complete'] == 'true') %}
               <button type="submit" class="govuk-button" data-module="govuk-button">
                 Submit changes to the form
               </button>
           
               <a class="govuk-link" href="delete-form">Delete draft</a>
+
+             <!-- {% elseif (data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true' and data['section-6-complete'] == 'true') %}-->
+
+             {% elseif (data['usertype'] != 'Probation user' and data['section-6-complete'] == 'true') %}
+
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                Submit changes to the form
+              </button>
+          
+              <a class="govuk-link" href="delete-form">Delete draft</a>
+
               {% else %}
               <button type="submit" class="govuk-button" disabled data-module="govuk-button">
                 Submit changes to the form
@@ -585,6 +694,10 @@
                       </div>
 
                       <p class="moj-timeline__date">
+                          {% if (data['usertype'] == 'Probation user') %}
+                           <time datetime="2019-06-07T12:32:00.000Z">From Liverpool Prison</time><br>
+                         {% endif %}  
+
                         <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
                       </p>
                   <!--    <div class="moj-timeline__description govuk-!-padding-bottom-4">
@@ -611,6 +724,9 @@
                       </div>
 
                       <p class="moj-timeline__date">
+                         {% if (data['usertype'] == 'Probation user') %}
+                           <time datetime="2019-06-07T12:32:00.000Z">From Liverpool Prison</time><br>
+                         {% endif %}  
                         <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
                       </p>
                     <!--  <div class="moj-timeline__description govuk-!-padding-bottom-4">
@@ -619,48 +735,6 @@
 
                     </div>  
                   </div>
-
-            {% elseif (data['view-variation'] == 'cancelled') %}
-
-             <div class="moj-timeline">
-                    <div class="moj-timeline__item">
-
-                      <div class="moj-timeline__header">
-                        <h2 class="moj-timeline__title">Monitoring ended</h2>
-
-                        <p class="moj-timeline__byline">by Joe Bloggs</p>
-
-                      </div>
-
-                      <p class="moj-timeline__date">
-                        <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
-                      </p>
-
-                      <div class="moj-timeline__description govuk-!-padding-bottom-4">
-                        <p>You are viewing this version of the form.</p>
-                      </div>
-
-                    </div>
-
-                    <div class="moj-timeline__item">
-
-                      <div class="moj-timeline__header">
-                        <h2 class="moj-timeline__title">Form submitted</h2>
-
-                        <p class="moj-timeline__byline">by John Smith</p>
-
-                      </div>
-
-                      <p class="moj-timeline__date">
-                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
-                      </p>
-
-                      <div class="moj-timeline__description govuk-!-padding-bottom-4"><a href="#">View submitted form</a></div>
-
-                    </div>  
-                  </div>
-
-      
 
             {% else %}
 
@@ -675,6 +749,9 @@
                       </div>
 
                       <p class="moj-timeline__date">
+                         {% if (data['usertype'] == 'Probation user') %}
+                           <time datetime="2019-06-07T12:32:00.000Z">From Probation</time><br>
+                         {% endif %}  
                         <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
                       </p>
 
@@ -697,6 +774,9 @@
                       </div>
 
                       <p class="moj-timeline__date">
+                         {% if (data['usertype'] == 'Probation user') %}
+                           <time datetime="2019-06-07T12:32:00.000Z">Liverpool Prison</time><br>
+                         {% endif %}  
                         <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
                       </p>
 
@@ -712,7 +792,56 @@
             
 
             
-            {% endif %}      
+            {% endif %}  
+
+              {% elseif (data['view-variation'] == 'cancelled') %}
+
+             <div class="moj-timeline">
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Monitoring ended</h2>
+
+                        <p class="moj-timeline__byline">by Joe Bloggs</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                         {% if (data['usertype'] == 'Probation user') %}
+                           <time datetime="2019-06-07T12:32:00.000Z">From Probation</time><br>
+                         {% endif %}  
+                        <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
+                      </p>
+
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4">
+
+                  
+
+                        <p>You are viewing this version of the form.</p>
+                      </div>
+
+                    </div>
+
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Form submitted</h2>
+
+                        <p class="moj-timeline__byline">by John Smith</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                         {% if (data['usertype'] == 'Probation user') %}
+                           <time datetime="2019-06-07T12:32:00.000Z">From Liverpool Prison</time><br>
+                         {% endif %}  
+                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
+                      </p>
+
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4"><a href="#">View submitted form</a></div>
+
+                    </div>  
+                  </div>    
 
 
             {% else %}
@@ -728,6 +857,9 @@
                       </div>
 
                       <p class="moj-timeline__date">
+                         {% if (data['usertype'] == 'Probation user') %}
+                           <time datetime="2019-06-07T12:32:00.000Z">From Probation</time><br>
+                         {% endif %}  
                         <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
                       </p>
 
@@ -750,6 +882,9 @@
                       </div>
 
                       <p class="moj-timeline__date">
+                         {% if (data['usertype'] == 'Probation user') %}
+                           <time datetime="2019-06-07T12:32:00.000Z">From Liverpool Prison</time><br>
+                         {% endif %}  
                         <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
                       </p>
 

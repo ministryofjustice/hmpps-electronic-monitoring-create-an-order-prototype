@@ -14,7 +14,7 @@ Details of the changes - Electronic Monitoring
 
          {% set html %}
         <p class="govuk-notification-banner__heading">
-         You are viewing a submitted form. This form was submitted on the 14 December 2024.
+         You are viewing a submitted form. 
         </p>
           {% endset %}
 
@@ -41,9 +41,70 @@ Details of the changes - Electronic Monitoring
 
 
       {% endif %}  
+
+       <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-label govuk-label--s">
+                What is the date you want the changes to take effect?
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                 For example, 17/5/2024.
+              </div>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    {% if (data['view'] == 'true') %}
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="variation-date-day" disabled type="text" inputmode="numeric" value="12">
+                    {% else %}
+                     <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="variation-date-day" type="text" inputmode="numeric" value="{{ data['variation-date-day'] }}">
+
+                    {% endif %}
+
+                  </div>
+                  
+
+
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    {% if (data['view'] == 'true') %}
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="variation-date-month" disabled type="text" inputmode="numeric" value="01">
+                    {% else %}
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="variation-date-month" type="text" inputmode="numeric" value="{{ data['variation-date-month'] }}">
+
+                    {% endif %}
+
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    {% if (data['view'] == 'true') %}
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="variation-date-year" disabled type="text" inputmode="numeric" value="2026">
+                    {% else %}
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="variation-date-year" type="text" inputmode="numeric" value="{{ data['variation-date-year'] }}">
+
+                    {% endif %}
+
+
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
  
 
-         <div class="moj-datepicker" data-module="moj-date-picker">
+       <!--  <div class="moj-datepicker" data-module="moj-date-picker">
 
 
              <div class="govuk-form-group">
@@ -67,7 +128,7 @@ Details of the changes - Electronic Monitoring
 
          </div>
 
-       </div>
+       </div>-->
 
  {% if (data['sr-type'] == 'I have changed something else in the form') %}
 
@@ -117,12 +178,7 @@ Details of the changes - Electronic Monitoring
                 text: "Change to add an exclusion zone(s)"
               },
               
-              {
-                value: "Change to a device type",
-                checked: (true if data['variation-type'] == 'Change to a device type'),
-                disabled: (true if data['view'] == 'true'),
-                text: "Change from a fitted to a non-fitted device"
-              },   
+             
               {
                 value: "Change to enforceable condition",
                 checked: (true if data['variation-type'] == 'Change to enforceable condition'),
@@ -158,11 +214,12 @@ Details of the changes - Electronic Monitoring
 
     {% endif %}
 
+<!--
 
               <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
                 <h1 class="govuk-label-wrapper">
                   <label class="govuk-label govuk-label--s" for="with-hint">
-                    Enter details of all the changes you have made
+                    Enter details of what you have changed
                   </label>
                 </h1>
                 <div id="with-hint-hint" class="govuk-hint">
@@ -181,7 +238,117 @@ Details of the changes - Electronic Monitoring
                   You can enter up to 200 characters
                 </div>
               </div>
- 
+ -->
+
+  {% if (data['usertype'] == 'Probation user') %}
+
+{% set revertHtml %}
+          {{ govukTextarea({
+            id: "revert",
+            name: "revert",
+            spellcheck: false,
+            value: data['description'],
+            hint: {
+              text: ""
+            },
+            label: {
+              text: "Provide details of the changes you need that were already in the form"
+            }
+          }) }}
+          {% endset -%}
+
+         
+
+          {{ govukRadios({
+            name: "revert-question",
+            fieldset: {
+              legend: {
+                text: "Did this form already include any of the changes you came here to make?",
+                  isPageHeading: false,
+                 classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "For example, the device wearer's address in this form was the one you need to change it to"
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['revert-question'] == 'Yes'),
+                disabled:  (true if data['view'] == 'true'),
+                conditional: {
+                  html: revertHtml
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (true if data['view'] == 'true'),
+                disabled:  (true if data['view'] == 'true'),
+                conditional: {
+                 
+                }
+              }
+            ]
+          }) }}
+
+
+
+  {% endif %}
+
+  {% set needsHtml %}
+          {{ govukTextarea({
+            id: "needs",
+            name: "needs",
+            spellcheck: false,
+            value: data['description'],
+            hint: {
+              text: ""
+            },
+            label: {
+              text: "Provide additional information about the changes"
+            }
+          }) }}
+          {% endset -%}
+
+         
+
+          {{ govukRadios({
+            name: "variation-description-question",
+            fieldset: {
+              legend: {
+                text: "Is there any other information to be aware of about the changes?",
+                  isPageHeading: false,
+                 classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['variation-description-question'] == 'Yes'),
+                disabled:  (true if data['view'] == 'true'),
+                conditional: {
+                  html: needsHtml
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (true if data['view'] == 'true'),
+                disabled:  (true if data['view'] == 'true'),
+                conditional: {
+                 
+                }
+              }
+            ]
+          }) }}
+
+
 
           <div class="govuk-button-group">
 

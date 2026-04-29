@@ -1,0 +1,83 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+
+    <h1 class="govuk-heading-l">
+     
+ {% if (data['view-variation'] == 'cancelled') %}
+
+       You cannot make changes to this form because it has ended
+
+ {% else %} 
+
+  You cannot make changes to this form because it failed to submit
+  
+ {% endif %}        
+
+
+      </h1>
+
+ 
+ {% if (data['view-variation'] == 'cancelled') %}
+
+      <p>This is due to one of the following:</p>
+
+  
+
+      <ul class="govuk-list govuk-list--bullet">
+              <li>The device wearer has been recalled to prison.</li>
+              <li>The device wearer's circumstances have changed and monitoring has ended early.</li>
+              <li>The end date of the order has passed.</li>
+
+            </ul>
+
+            <p>If the device wearer has been recalled to prison and is being re-released you can make a copy of the form and submit it.</p>
+
+ {% else %} 
+  
+      <p>Your application form and attachments failed to submit. This was due to a technical problem. For more information <a href="https://ministryofjustice.github.io/hmpps-electronic-monitoring-create-an-order-docs/problems-submitting-forms.html#problems-submitting-forms">View the guidance (opens in a new tab)</a>.</p>
+
+      <p>If the technical problem has been fixed you can make a copy the form and resubmit it.</p>
+
+ {% endif %} 
+
+
+       <div class="govuk-!-margin-top-5">
+       <div class="govuk-button-group">     
+
+
+     {{ govukButton({
+          text: "Back to start",
+          href: ('dashboard' ),
+          classes: "govuk-button"
+        }) }}
+
+        {{ govukButton({
+          text: "Make a copy of the form",
+          href: ('submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&clarification=true&view-variation=false' ),
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+    </div>
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}
