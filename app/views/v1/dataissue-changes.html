@@ -1,0 +1,107 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+
+    <h1 class="govuk-heading-l">
+
+    Check your changes
+
+      </h1>
+
+  <ul class="govuk-list govuk-list--bullet">
+                    <li>Curfew timetable has changed</li>
+                    <li>Curfew boundary has changed</li>
+                  </ul>
+
+
+{% set revertHtml %}
+          {{ govukTextarea({
+            id: "revert",
+            name: "revert",
+            spellcheck: false,
+            value: data['description'],
+            hint: {
+              text: ""
+            },
+            label: {
+              text: "Provide details of the other changes you need that are already in the form"
+            }
+          }) }}
+          {% endset -%}
+
+         
+
+          {{ govukRadios({
+            name: "revert-question",
+            fieldset: {
+              legend: {
+                text: "Are there any other changes you came here to make?",
+                  isPageHeading: false,
+                 classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "For example, is the device wearer's address in this form the one you need to change it to"
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['revert-question'] == 'Yes'),
+                disabled:  (true if data['view'] == 'true'),
+                conditional: {
+                  html: revertHtml
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (true if data['view'] == 'true'),
+                disabled:  (true if data['view'] == 'true'),
+                conditional: {
+                 
+                }
+              }
+            ]
+          }) }}
+
+
+  
+
+
+
+
+       <div class="govuk-!-margin-top-5">
+       <div class="govuk-button-group">     
+
+
+     {{ govukButton({
+          text: "Submit changes to the form",
+          href: ('#' ),
+          classes: "govuk-button"
+        }) }}
+
+    
+      </div>
+    </div>
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

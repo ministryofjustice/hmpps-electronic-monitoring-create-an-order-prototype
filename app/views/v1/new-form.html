@@ -93,13 +93,7 @@
       {{ govukTaskList({
         idPrefix: "first-section",
         items: [
-          {
-            title: {
-              text: "About the Responsible Organisation"
-            },
-            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/org-contact?cya2=false"),
-            status: (completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
-          },
+         
           {
             title: {
               text: "About the device wearer"

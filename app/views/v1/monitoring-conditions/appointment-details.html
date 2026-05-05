@@ -131,7 +131,11 @@ USED IF INSTALL ADDRESS IS PER MONITORING TYPE
           </div>
 
 
+    {% if (data['appointmentquestion'] == "123 Glossop Road, Little Hayfield, High Peak, SK22 2NG" and data['usertype'] == "Home Office user" ) %}
 
+    {% elseif (data['appointmentquestion'] == "At another address" and data['usertype'] == "Home Office user" ) %}
+
+    {% else %}
            <div class="govuk-form-group">
     <fieldset class="govuk-fieldset">
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What time will installation take place?</legend>
@@ -159,6 +163,8 @@ USED IF INSTALL ADDRESS IS PER MONITORING TYPE
       </div>
     </fieldset>
   </div>
+
+  {% endif %}
 
 <input type="hidden" id="sectionid" name="sectionid" value="Electronic monitoring required">
 <input type="hidden" id="postcodetype" name="postcodetype" value="installation">

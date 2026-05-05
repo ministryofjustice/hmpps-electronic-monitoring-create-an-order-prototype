@@ -955,7 +955,7 @@ router.post('/type-change-areyousure', function(request, response) {
     var clarification = request.session.data['clarification']
     var usertype = request.session.data['usertype']
     if (usertype == "Probation user"){
-        response.redirect("/v1/variations/sr-question?view=false") 
+        response.redirect("/v1/dataissue-interupt?view=false") 
     } else if (clarification == "true") {     
         response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false") 
     } else {

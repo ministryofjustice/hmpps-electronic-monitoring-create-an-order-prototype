@@ -1,0 +1,71 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+
+    <h1 class="govuk-heading-l">
+
+  Important information about this form
+
+      </h1>
+
+      <p>The information on this form may be out of date:</p>
+      <ul class="govuk-list govuk-list--bullet">
+  
+        <li>This is the most recent version sent through the EMO service.</li>
+        <li>It does not include any updates that were sent by email.</li>
+      </ul>
+  <!--    <p>This version of the form is the last one that was sent using the EMO service. It does not include any changes that have been sent by email.</p>
+
+        -->
+
+      <p>What you need to do:</p>
+       <ul class="govuk-list govuk-list--bullet">
+                    <li>Do not correct details that you have already emailed to EMS.</li>
+                    <li>Only provide information for the changes you want to make now.</li>
+                    <li>You must include all details you want to change, even if they already appear on this form.</li>
+                  </ul>
+
+    <p>For example, If you are changing the device wearer’s address, you must submit the form again, even if the address is already shown on this version.</p>
+
+   <!--  <p>You do need to provide details of things you want to change even if those details already appear in this version of the form. For example, the device wearer's address in this form is the one you need to change it to.</p>
+
+      <p>You must include details of everything you want to change, even if those details already appear on this version of the form. For example, if you are changing the device wearer’s address, you need to submit the form, even if the address is already shown.</p>
+
+  -->
+
+
+
+       <div class="govuk-!-margin-top-5">
+       <div class="govuk-button-group">     
+
+
+     {{ govukButton({
+          text: "Continue",
+          href: ('/v1/variations/sr-question?view=false' ),
+          classes: "govuk-button"
+        }) }}
+
+    
+      </div>
+    </div>
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}
