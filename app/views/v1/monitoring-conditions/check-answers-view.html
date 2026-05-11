@@ -987,28 +987,28 @@
       <div class="govuk-button-group">
           {% if (data['view'] == 'true') %}
 
-          {{ govukButton({
+      <!--    {{ govukButton({
           text: "Go to next section",
           href: "../installation/check-answers-view"
-        }) }}
+        }) }}-->
 
            {{ govukButton({
           text: "Return to main form menu",
           href: "../submitted-form",
-          classes: "govuk-button--secondary"
+          classes: "govuk-button"
         }) }}
                
 
          {% else %}
-         {{ govukButton({
+     <!--    {{ govukButton({
           text: "Save and go to next section",
           href: "../installation/check-answers-view?section-4-complete=true"
-        }) }}
+        }) }}-->
 
           {{ govukButton({
-          text: "Save as draft",
+          text: "Save and return to main form menu",
           href: "../submitted-form?section-4-complete=true",
-          classes: "govuk-button--secondary"
+          classes: "govuk-button"
         }) }}
                 
           {% endif %}

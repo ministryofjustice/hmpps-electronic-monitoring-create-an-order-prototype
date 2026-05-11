@@ -296,28 +296,28 @@
 
           {% if (data['view'] == 'true') %}
 
-          {{ govukButton({
+       <!--   {{ govukButton({
           text: "Go to next section",
           href: "../monitoring-conditions/check-answers-view"
-        }) }}
+        }) }}-->
 
            {{ govukButton({
           text: "Return to main form menu",
           href: "../submitted-form",
-          classes: "govuk-button--secondary"
+          classes: "govuk-button"
         }) }}
                
 
          {% else %}
-         {{ govukButton({
+   <!--      {{ govukButton({
           text: "Save and go to next section",
           href: "../monitoring-conditions/check-answers-view?section-1-complete=true"
-        }) }}
+        }) }}-->
 
           {{ govukButton({
-          text: "Save as draft",
+          text: "Save and return to main form menu",
           href: "../submitted-form?section-1-complete=true",
-          classes: "govuk-button--secondary"
+          classes: "govuk-button"
         }) }}
                 
           {% endif %}

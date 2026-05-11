@@ -231,15 +231,15 @@
 
         {% if (data['view'] == 'true') %}
 
-          {{ govukButton({
+    <!--      {{ govukButton({
           text: "Go to next section",
           href: "../attachments/check-answers-view"
         }) }}
-
+-->
            {{ govukButton({
           text: "Return to main form menu",
           href: "../submitted-form",
-          classes: "govuk-button--secondary"
+          classes: "govuk-button"
         }) }}
                
 
@@ -287,7 +287,7 @@
      <div class="govuk-button-group">    
 
 
-        {% if (data['usertype'] == 'Probation user') %}     
+  <!--      {% if (data['usertype'] == 'Probation user') %}     
 
          {{ govukButton({
           text: "Save and go to next section",
@@ -305,12 +305,12 @@
 
 
                       
-            {% endif %}  
+            {% endif %}  -->
 
           {{ govukButton({
-          text: "Save as draft",
+          text: "Save and return to main form menu",
           href: "../submitted-form?section-3-complete=true",
-          classes: "govuk-button--secondary"
+          classes: "govuk-button"
 
         }) }}
                 
