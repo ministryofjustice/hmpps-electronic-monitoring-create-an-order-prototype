@@ -84,6 +84,15 @@
                 },
                 text: "Exclusion zone monitoring"
               },
+                {
+                value: "Restriction zone monitoring",
+                checked: (true if data['monitoringtype'] == 'Restriction zone monitoring'),
+                disabled: true,
+                hint: {
+                  text: "Prevents the device wearer leaving areas or locations at set times."
+                },
+                text: "Restriction zone monitoring"
+              },
              
               {
                 value: "Trail monitoring",
@@ -156,6 +165,16 @@
                 },
                 text: "Exclusion zone monitoring"
               },
+                {
+                value: "Restriction zone monitoring",
+                checked: (true if data['monitoringtype'] == 'Restriction zone monitoring'),
+                disabled: true,
+                hint: {
+                  text: "Prevents the device wearer leaving areas or locations at set times."
+                },
+                text: "Restriction zone monitoring"
+              },
+             
              
               {
                 value: "Trail monitoring",
@@ -217,17 +236,27 @@
               {
                 value: "Exclusion zone monitoring",
                 checked: (true if data['monitoringtype'] == 'Exclusion zone monitoring'),
-                disabled: (true if data['addressquestion'] == 'No'),
+                disabled: (true if data['addressquestion'] == 'No' and data['usertype'] != 'Home Office user'),
                 hint: {
                   text: "Prevents the device wearer entering areas or visiting locations at set times."
                 },
                 text: "Exclusion zone monitoring"
               },
+                {
+                value: "Restriction zone monitoring",
+                checked: (true if data['monitoringtype'] == 'Restriction zone monitoring'),
+                disabled: (true if data['addressquestion'] == 'No'),
+                hint: {
+                  text: "Prevents the device wearer leaving areas or locations at set times."
+                },
+                text: "Restriction zone monitoring"
+              },
+             
              
               {
                 value: "Trail monitoring",
                 checked: (true if data['monitoringtype'] == 'Trail monitoring'),
-                disabled: (true if data['addressquestion'] == 'No'),
+                disabled: (true if data['addressquestion'] == 'No' and data['usertype'] != 'Home Office user'),
                 hint: {
                   text: "Recording and gathering data on movements of the device wearer throughout the day."
                 },

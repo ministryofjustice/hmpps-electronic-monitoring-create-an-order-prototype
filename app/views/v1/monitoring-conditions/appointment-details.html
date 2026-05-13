@@ -131,19 +131,39 @@ USED IF INSTALL ADDRESS IS PER MONITORING TYPE
           </div>
 
 
-    {% if (data['appointmentquestion'] == "123 Glossop Road, Little Hayfield, High Peak, SK22 2NG" and data['usertype'] == "Home Office user" ) %}
+    
+           <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+
+          {% if (data['appointmentquestion'] == "123 Glossop Road, Little Hayfield, High Peak, SK22 2NG" and data['usertype'] == "Home Office user" ) %}
+ <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What is the preferred time installation take place?</legend>
+
+   <div class="govuk-date-input ">
+
+
+        <div class="govuk-hint">If the installation can’t be done at this time, it will happen during standard hours. Enter time using a 24 hour clock. For example, enter 14:30 instead of 2:30pm</div>
+        
 
     {% elseif (data['appointmentquestion'] == "At another address" and data['usertype'] == "Home Office user" ) %}
 
+     <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What is the preferred time installation take place?</legend>
+
+       <div class="govuk-date-input ">
+
+
+        <div class="govuk-hint">If the installation can’t be done at this time, it will happen during standard hours. Enter time using a 24 hour clock. For example, enter 14:30 instead of 2:30pm</div>
+
     {% else %}
-           <div class="govuk-form-group">
-    <fieldset class="govuk-fieldset">
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What time will installation take place?</legend>
 
+         
+
       <div class="govuk-date-input ">
+
+
         <div class="govuk-hint">Enter time using a 24 hour clock. For example, enter 14:30 instead of 2:30pm</div>
         
-
+{% endif %}
         
         <div class="govuk-date-input__item">
           <div class="govuk-form-group form-group-start-hours">
@@ -164,7 +184,7 @@ USED IF INSTALL ADDRESS IS PER MONITORING TYPE
     </fieldset>
   </div>
 
-  {% endif %}
+
 
 <input type="hidden" id="sectionid" name="sectionid" value="Electronic monitoring required">
 <input type="hidden" id="postcodetype" name="postcodetype" value="installation">

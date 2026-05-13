@@ -25,25 +25,44 @@
       {% endset %}
 
 
-     
+      {% if (data['view'] == 'true') %}
 
           {{ govukNotificationBanner({
               html: html
             }) }}
 
-              <h1 class="govuk-heading-l">
+             <h1 class="govuk-heading-l">
                 <span class="govuk-caption-l">About the changes in this version of the form</span>
                 View answers
               </h1>
 
-                    
+         {% else %}    
+
+              <h1 class="govuk-heading-l">
+                <span class="govuk-caption-l">About the changes in this version of the form</span>
+                Check your answers
+              </h1>
+
+           {% endif %}      
+
+        
+  {% if (data['newform'] == 'false') %}
+
+        <form class="form" action="../new-form?section-6-complete=true" method="post">
+
+        {% else %}   
+
+         <form class="form" action="../submitted-form?section-6-complete=true" method="post">
+
+
+      {% endif %}              
 
   
 
-      <form class="form" action="../submitted-form?section-5-complete=true" method="post">
+
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-           <div class="govuk-summary-list__row">
+    <!--       <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              Why are you making changes to the form?
             </dt>
@@ -54,6 +73,62 @@
               
             </dd>
           </div>
+          -->
+
+            {% if (data['usertype'] == 'Probation user') %}
+
+              <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Does this form already include any of the changes you came here to make?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['revert-question'] or "No" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+
+               {% if (data['view'] == 'true') %}
+
+
+                {% else %}
+
+                 <a class="govuk-link" href="edit-form-question3?cya6=true">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+
+
+                {% endif %}
+             
+            
+        
+           </dd>
+          </div>
+
+            {% if (data['revert-question'] == "Yes") %}
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Provide details of the changes you need that are already in this form
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['revert'] or "Fixed address was already in the form" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+
+              {% if (data['view'] == 'true') %}
+
+
+                {% else %}
+
+                 <a class="govuk-link" href="edit-form-question3?cya6=true">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+
+                {% endif %}
+             
+                 
+        
+           </dd>
+          </div>
+
+          {% endif %}
+
+
+            {% endif %}
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -63,6 +138,16 @@
              {{ data['variation-date'] or '20/09/2025' }}
             </dd>
             <dd class="govuk-summary-list__actions">
+
+               {% if (data['view'] == 'true') %}
+
+
+                {% else %}
+
+                 <a class="govuk-link" href="edit-form-question?cya6=true">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+
+
+                {% endif %}
        
             </dd>
           </div>
@@ -76,6 +161,16 @@
              {{ data['variation-type'] or "The device wearer's personal details" }}
             </dd>
             <dd class="govuk-summary-list__actions">
+
+               {% if (data['view'] == 'true') %}
+
+
+                {% else %}
+
+                 <a class="govuk-link" href="edit-form-question2?cya6=true">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+
+
+                {% endif %}
              
             
         
@@ -83,20 +178,56 @@
           </div>
 
           {% endif %}
+          
 
-          <div class="govuk-summary-list__row">
+
+           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-            Enter information on what you have changed
+           Is there any other information to be aware of about the changes?
             </dt>
             <dd class="govuk-summary-list__value">
-             {{ data['edit-text'] or "Added new address" }}
+             {{ data['variation-description-question'] or "No" }}
             </dd>
             <dd class="govuk-summary-list__actions">
+
+               {% if (data['view'] == 'true') %}
+
+
+                {% else %}
+
+                   <a class="govuk-link" href="edit-form-question4?cya6=true">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+
+
+                {% endif %}
              
-          
+                
+        
+           </dd>
+          </div>
+          {% if (data['variation-description-question'] == "Yes") %}
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Provide additional information about the changes
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['needs'] or "Device wearer has moved in with his girlfriend" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+
+              {% if (data['view'] == 'true') %}
+
+
+                {% else %}
+             
+                  <a class="govuk-link" href="edit-form-question4?cya6=true">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+
+               {% endif %}
+                
+        
            </dd>
           </div>
 
+          {% endif %}
         </dl>
      
      

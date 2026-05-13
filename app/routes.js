@@ -397,7 +397,7 @@ router.post('/monitoring-type', function(request, response) {
         response.redirect("/v1/monitoring-conditions/curfew")   
     } else if (monitoringtype == "Exclusion zone monitoring"){
         response.redirect("/v1/monitoring-conditions/exclusion")  
-    } else if (monitoringtype == "Inclusion zone monitoring"){
+    } else if (monitoringtype == "Restriction zone monitoring"){
         response.redirect("/v1/monitoring-conditions/inclusion")  
     } else if (monitoringtype == "Trail monitoring"){
         response.redirect("/v1/monitoring-conditions/trail") 
@@ -439,7 +439,7 @@ router.post('/monitoring-type2', function(request, response) {
         response.redirect("/v1/monitoring-conditions/curfew")   
     } else if (monitoringtype2 == "Exclusion zone monitoring"){
         response.redirect("/v1/monitoring-conditions/exclusion") 
-    } else if (monitoringtype2 == "Inclusion zone monitoring"){
+    } else if (monitoringtype2 == "Restriction zone monitoring"){
         response.redirect("/v1/monitoring-conditions/inclusion")       
     } else if (monitoringtype2 == "Trail monitoring"){
         response.redirect("/v1/monitoring-conditions/trail")   
@@ -955,7 +955,7 @@ router.post('/type-change-areyousure', function(request, response) {
     var clarification = request.session.data['clarification']
     var usertype = request.session.data['usertype']
     if (usertype == "Probation user"){
-        response.redirect("/v1/dataissue-interupt?view=false") 
+        response.redirect("/v1/variations/sr-question?view=false") 
     } else if (clarification == "true") {     
         response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false") 
     } else {

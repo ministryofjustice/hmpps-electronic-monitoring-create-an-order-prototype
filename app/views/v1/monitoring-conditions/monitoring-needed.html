@@ -105,6 +105,11 @@
                   From {{ data['exclusionstart-date'] or '12 Dec 2024' }} to {{ data['exclusionend-date'] or '12 Dec 2025' }}
                    {% endif %} 
 
+                    {% if (data['monitoringtype'] == "Restriction zone monitoring") %}
+                  {{ data['exclusion-name'] or 'Salford' }}   <br>
+                  From {{ data['exclusionstart-date'] or '12 Dec 2024' }} to {{ data['exclusionend-date'] or '12 Dec 2025' }}
+                   {% endif %} 
+
                    {% if (data['monitoringtype'] == "Curfew") %}
                    From {{ data['curfewstart-date'] or '12 Dec 2024' }} to {{ data['curfewend-date'] or '12 Dec 2025' }}
                    {% endif %} 
@@ -147,6 +152,12 @@
 
                    {% if (data['monitoringtype2'] == "Exclusion zone monitoring") %}
                   {{ data['exclusion-name'] or 'Partners house' }}   <br>
+                  From {{ data['exclusionstart-date'] or '12 Dec 2024' }} to {{ data['exclusionend-date'] or '12 Dec 2025' }}
+                   {% endif %} 
+
+
+                    {% if (data['monitoringtype2'] == "Restriction zone monitoring") %}
+                  {{ data['exclusion-name'] or 'Salford' }}   <br>
                   From {{ data['exclusionstart-date'] or '12 Dec 2024' }} to {{ data['exclusionend-date'] or '12 Dec 2025' }}
                    {% endif %} 
 

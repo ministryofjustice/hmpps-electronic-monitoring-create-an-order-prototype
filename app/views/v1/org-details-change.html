@@ -20,9 +20,18 @@
        Your details
       </h1>
 
-      
+   
+        {% if (data['usertype'] == "Probation user" and data['dirtydata'] == "true")  %}       
 
-       <form class="form" action="submitted-form" method="post">
+       <form class="form" action="dataissue-interupt" method="post">
+
+  
+
+        {% else  %}    
+
+          <form class="form" action="submitted-form" method="post">
+
+        {% endif  %}  
 
 
 

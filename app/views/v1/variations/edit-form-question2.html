@@ -1,0 +1,165 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+Details of the changes - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+         {% set html %}
+        <p class="govuk-notification-banner__heading">
+         You are viewing a submitted form. 
+        </p>
+          {% endset %}
+
+       {% if (data['view'] == 'true') %}
+
+          {{ govukNotificationBanner({
+            html: html
+          }) }}
+
+        {% else %}
+                  
+        {% endif %}
+
+  <span class="govuk-caption-l">About the changes in this version of the form</span>
+ 
+
+
+     {% if (data['cya6'] == 'true') %}
+
+     <form class="form" action="check-answers-view" method="post">
+
+       {% else %}
+
+        <form class="form" action="edit-form-question4" method="post">
+
+ {% endif %}
+
+
+    
+
+        {{ govukRadios({
+            name: "variation-type",
+            fieldset: {
+              legend: {
+                text: "What have you changed in the form?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+
+             
+              {
+                value: "The device wearer's address",
+                checked: (true if data['variation-type'] == "The device wearer's address"),
+                disabled: (true if data['view'] == 'true'),
+                text: "The device wearer's address"
+              },
+              {
+                value: "The device wearer's personal details",
+                checked: (true if data['variation-type'] == "The device wearer's personal details"),
+                disabled: (true if data['view'] == 'true'),
+                text: "The device wearer's personal details"
+              },
+               {
+                value: "The curfew hours",
+                checked: (true if data['variation-type'] == 'The curfew hours'),
+                disabled: (true if data['view'] == 'true'),
+                text: "The curfew hours"
+              },
+              {
+                value: "Change to an existing exclusion zone(s)",
+                checked: (true if data['variation-type'] == 'Change to an existing exclusion zone(s)'),
+                disabled: (true if data['view'] == 'true'),
+                text: "Change to an existing exclusion zone(s)"
+              },
+               {
+                value: "Change to add an exclusion zone(s)",
+                checked: (true if data['variation-type'] == 'Change to add an exclusion zone(s)'),
+                disabled: (true if data['view'] == 'true'),
+                text: "Change to add an exclusion zone(s)"
+              },
+              
+             
+              {
+                value: "Change to enforceable condition",
+                checked: (true if data['variation-type'] == 'Change to enforceable condition'),
+                disabled: (true if data['view'] == 'true'),
+                text: "Change to enforceable condition"
+              },   
+              {
+                value: "Temporary change in monitoring for the device wearer",
+                checked: (true if data['variation-type'] == 'Temporary change in monitoring for the device wearer'),
+                disabled: (true if data['view'] == 'true'),
+                text: "Temporary suspend monitoring (attend a funeral or go on holiday)"
+              },
+              {
+                value: "Change of device type (fitted/non fitted)",
+                checked: (true if data['variation-type'] == 'Change of device type (fitted/non fitted)'),
+                disabled: (true if data['view'] == 'true'),
+                text: "Change of device type (fitted/non fitted)"
+              },
+              {
+                value: "I have changed something due to an administration error",
+                checked: (true if data['variation-type'] == 'I have changed something due to an administration error'),
+                disabled: (true if data['view'] == 'true'),
+                text: "I have changed something due to an administration error"
+              },
+               {
+                value: "I have changed something else in the form",
+                checked: (true if data['variation-type'] == 'I have changed something else in the form'),
+                disabled: (true if data['view'] == 'true'),
+                text: "I have changed something else in the form"
+              }
+            ]
+          }) }}
+
+    
+
+          <div class="govuk-button-group">
+
+                {% if (data['view'] == 'true') %}
+                   {{ govukButton({
+                      text: "Return to main form menu",
+                      href: "../submitted-form"
+                    }) }}
+
+                {% else %}
+                  {{ govukButton({
+                    text: "Save and continue"
+                  }) }}
+
+             {{ govukButton({
+                    text: "Save as draft",
+                    href: ('../submitted-form' if data['view'] == 'false' else '#' ),
+                    classes: "govuk-button--secondary"
+                  }) }}
+
+
+                {% endif %}
+
+
+
+             
+
+          </div>
+
+      </form>
+
+
+        
+
+        </div>
+      </div>
+{% endblock %}

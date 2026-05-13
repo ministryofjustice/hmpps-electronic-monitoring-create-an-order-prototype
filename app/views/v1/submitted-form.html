@@ -47,6 +47,15 @@
 
     {% if (data['usertype'] == 'Probation user' and data['dirtydata'] == 'true') %}
 
+    {%- from "moj/components/alert/macro.njk" import mojAlert -%}
+    
+    {{ mojAlert({
+      variant: "warning",
+      title: "Some information could not be imported",
+      dismissible: false,
+      html: 'Information on this form may be out of date. View <a href="dataissue-interupt">what you need to do</a>.'
+    }) }}
+
    <!--     {{ mojAlert({
             variant: "warning",
             title: "Some information could be out of date",
@@ -257,7 +266,7 @@
             title: {
               text: "About the changes in this version of the form"
             },
-            href: ("variations/edit-form-question"),
+            href: ("variations/check-answers-view"),
             classes: ("govuk-visually-hidden" if data['variation'] == 'false'),
             status: ( viewStatus )
           }
@@ -265,6 +274,55 @@
 
         ]
       }) }}
+
+       {% elseif (data['usertype'] == 'Home Office user') %}
+
+
+      {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+         
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: (viewStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+             status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers-view"),
+            status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers-view"),
+            status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "About the changes in this version of the form"
+            },
+            href: ("variations/check-answers-view"),
+            classes: ("govuk-visually-hidden" if data['variation'] == 'false'),
+            status: ( viewStatus )
+          }
+          
+
+        ]
+      }) }}
+
 
          {% else %}
 
@@ -311,7 +369,7 @@
             title: {
               text: "About the changes in this version of the form"
             },
-            href: ("variations/edit-form-question"),
+            href: ("variations/check-answers-view"),
             classes: ("govuk-visually-hidden" if data['variation'] == 'false'),
             status: ( viewStatus )
           }
@@ -366,7 +424,7 @@
         ]
       }) }}
 
-{% elseif (data['usertype'] == 'Court user' or data['usertype'] == 'Home Office user')  %}
+{% elseif (data['usertype'] == 'Court user')  %}
 
 
      {{ govukTaskList({
@@ -411,13 +469,60 @@
             title: {
               text: ("About the changes in this version of the form")
             },
-            href: ("variations/edit-form-question" if data['section-6-complete'] == 'true' else "variations/edit-form-question"),
+            href: ("variations/check-answers-view" if data['section-6-complete'] == 'true' else "variations/edit-form-question?cya6=false"),
            status: ( completedSectionStatus if data['section-6-complete'] == 'true' else incompleteStatus)
 
           }
 
         ]
       }) }}
+
+   {% elseif (data['usertype'] == 'Home Office user')  %}
+
+
+     {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+         
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: ( completedStatus if data['section-1-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers-view"),
+           status: ( completedStatus if data['section-3-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers-view"),
+           status: ( completedStatus if data['section-5-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: ("About the changes in this version of the form")
+            },
+            href: ("variations/check-answers-view" if data['section-6-complete'] == 'true' else "variations/edit-form-question?cya6=false"),
+           status: ( completedSectionStatus if data['section-6-complete'] == 'true' else incompleteStatus)
+
+          }
+
+        ]
+      }) }}   
 
  {% elseif (data['usertype'] == 'Probation user')  %}     
 
@@ -457,7 +562,7 @@
             title: {
               text: ("About the changes in this version of the form")
             },
-            href: ("variations/edit-form-question" if data['section-6-complete'] == 'true' else "variations/edit-form-question"),
+            href: ("variations/check-answers-view" if data['section-6-complete'] == 'true' else "variations/edit-form-question3?cya6=false"),
            status: ( completedSectionStatus if data['section-6-complete'] == 'true' else incompleteStatus)
 
           }
@@ -510,7 +615,7 @@
             title: {
               text: ("About the changes in this version of the form")
             },
-            href: ("variations/edit-form-question" if data['section-6-complete'] == 'true' else "variations/edit-form-question"),
+            href: ("variations/check-answers-view" if data['section-6-complete'] == 'true' else "variations/edit-form-question?cya6=false"),
            status: ( completedSectionStatus if data['section-6-complete'] == 'true' else incompleteStatus)
 
           }

@@ -36,7 +36,39 @@
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
- 
+         {% if (data['usertype'] == "Probation user") %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Does this form already include any of the changes you came here to make?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['revert-question'] or "No" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                  <a class="govuk-link" href="edit-form-question3">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+        
+           </dd>
+          </div>
+          {% if (data['revert-question'] == "Yes") %}
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Provide details of the changes you need that are already in this form
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['revert'] or "Fixed address was already in the form" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                  <a class="govuk-link" href="edit-form-question3">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+        
+           </dd>
+          </div>
+
+          {% endif %}
+          {% endif %}
+
        
         
 
@@ -74,26 +106,44 @@
             </dd>
             <dd class="govuk-summary-list__actions">
              
-                  <a class="govuk-link" href="edit-form-question">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+                  <a class="govuk-link" href="edit-form-question2">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+        
+           </dd>
+          </div>
+
+          {% endif %}
+         
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           Is there any other information to be aware of about the changes?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['variation-description-question'] or "No" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                  <a class="govuk-link" href="edit-form-question4">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+        
+           </dd>
+          </div>
+          {% if (data['variation-description-question'] == "Yes") %}
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Provide additional information about the changes
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['needs'] or "Device wearer has moved in with his girlfriend" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                  <a class="govuk-link" href="edit-form-question4">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
         
            </dd>
           </div>
 
           {% endif %}
 
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-            Enter details of what you have changed
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {{ data['edit-text'] or "Added the device wearer's new tel number" }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-             
-                  <a class="govuk-link" href="edit-form-question">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
-        
-           </dd>
-          </div>
+
 
         </dl>
      

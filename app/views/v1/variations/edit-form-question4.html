@@ -1,0 +1,132 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+Details of the changes - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+         {% set html %}
+        <p class="govuk-notification-banner__heading">
+         You are viewing a submitted form. 
+        </p>
+          {% endset %}
+
+       {% if (data['view'] == 'true') %}
+
+          {{ govukNotificationBanner({
+            html: html
+          }) }}
+
+        {% else %}
+                  
+        {% endif %}
+
+       <span class="govuk-caption-l">About the changes in this version of the form</span>
+      
+
+      {% if (data['cya6'] == 'true') %}
+
+     <form class="form" action="check-answers-view" method="post">
+
+       {% else %}
+
+        <form class="form" action="check-answers-view" method="post">
+
+  {% endif %}
+
+  {% set needsHtml %}
+          {{ govukTextarea({
+            id: "needs",
+            name: "needs",
+            spellcheck: false,
+            value: data['description'],
+            hint: {
+              text: ""
+            },
+            label: {
+              text: "Provide additional information about the changes"
+            }
+          }) }}
+          {% endset -%}
+
+         
+
+          {{ govukRadios({
+            name: "variation-description-question",
+            fieldset: {
+              legend: {
+                text: "Is there any other information to be aware of about the changes?",
+                  isPageHeading: true,
+                 classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['variation-description-question'] == 'Yes'),
+                disabled:  (true if data['view'] == 'true'),
+                conditional: {
+                  html: needsHtml
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (true if data['view'] == 'true'),
+                disabled:  (true if data['view'] == 'true'),
+                conditional: {
+                 
+                }
+              }
+            ]
+          }) }}
+
+
+
+          <div class="govuk-button-group">
+
+                {% if (data['view'] == 'true') %}
+                   {{ govukButton({
+                      text: "Return to main form menu",
+                      href: "../submitted-form"
+                    }) }}
+
+                {% else %}
+                  {{ govukButton({
+                    text: "Save and continue"
+                  }) }}
+
+              {{ govukButton({
+                    text: "Save as draft",
+                    href: ('../submitted-form' if data['view'] == 'false' else '#' ),
+                    classes: "govuk-button--secondary"
+                  }) }}
+
+
+                {% endif %}
+
+
+
+             
+
+          </div>
+
+      </form>
+
+
+        
+
+        </div>
+      </div>
+{% endblock %}

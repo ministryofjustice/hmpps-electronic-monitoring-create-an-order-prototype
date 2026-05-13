@@ -77,6 +77,14 @@
                 },
                 text: "Exclusion zone monitoring"
               },
+                 {
+                value: "Restriction zone monitoring",
+                disabled: (true if data['addressquestion'] == 'No'),
+                hint: {
+                  text: "Prevents the device wearer leaving areas or locations at set times."
+                },
+                text: "Restriction zone monitoring"
+              },
               
               {
                 value: "Trail monitoring",

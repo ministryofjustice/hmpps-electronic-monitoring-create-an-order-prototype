@@ -16,23 +16,23 @@
   {%- from "moj/components/interruption-card/macro.njk" import interruptionCard -%}
       
   {% call interruptionCard({
-      heading: "Some information shown on this form may be out of date",
+      heading: "Information on this form may be out of date",
       primaryAction: {
-        text: "Continue",
-        href: "/v1/variations/sr-question?view=false"
+        text: "I confirm that I understand",
+        href: "submitted-form"
       }
       }) -%}
        <p>What you need to know:</p>
       <ul class="govuk-list govuk-list--bullet">
   
-        <li>This form shows the most recent version sent through the EMO service.</li>
-        <li>It does not include any updates that have been requested by email.</li>
+        <li>It is the most recent version sent through the EMO service.</li>
+        <li>It does not include any changes that have been sent to EMS by email.</li>
       </ul>
 
 
        <p>What you need to do:</p>
        <ul class="govuk-list govuk-list--bullet">
-                    <li>Do not change details you have already sent to EMS by email.</li>
+                    <li>Do not change details you have already sent by email.</li>
                     <li>Only enter the changes you want to make now.</li>
                     <li>If you want a detail to be changed and it is already shown, enter the details in “About the changes in this version of the form”.</li>
                   </ul>
