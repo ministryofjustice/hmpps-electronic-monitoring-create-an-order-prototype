@@ -25,7 +25,7 @@
 
       <form class="form" action="" method="post">
 
-        <h2 class="govuk-heading-m">Personal details</h2>
+        <h2 class="govuk-heading-m">Identity numbers</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
            <div class="govuk-summary-list__row">
@@ -123,6 +123,12 @@
           </div>
           {% endif %}
           {% endif %}
+
+        </dl>
+
+
+        <h2 class="govuk-heading-m">Personal details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -247,34 +253,38 @@
           </div>
        {% endif %}
        {% endif %}
+
+   
  
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Does the device wearer have a fixed address?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['addressquestion'] or 'No' }}
+              {{ data['addressquestion'] or 'Yes' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="contact-address-question?cya1=true">Change<span class="govuk-visually-hidden"> Does the device wearer have a fixed address?</span></a>
             </dd>
           </div>
-          {% if (data['addressquestion'] == "Yes") %}
+      {% if (data['addressquestion'] == "Yes") %}
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Device wearer's main address
+              What is the device wearer's main address?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['contactaddressLine1'] or '123 Main street' }}<br>
-              {{ data['contactaddressTown'] or 'Glossop' }}<br>
-              {{ data['contactaddressPostcode'] or 'SK22 2RD' }}
+              {{ data['contactaddressLine1'] or '1 Washington Street' }}<br>
+              {{ data['contactaddressTown'] or 'Worcester' }}<br>
+              {{ data['contactaddressPostcode'] or 'WR1 1NL' }}
+
+             
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/v1/postcode-lookup/postcode">Change<span class="govuk-visually-hidden"> What is the device wearer's contact address?</span></a>
             </dd>
           </div>
 
-          {% endif %}
+        {% endif %}
          
 
         </dl>

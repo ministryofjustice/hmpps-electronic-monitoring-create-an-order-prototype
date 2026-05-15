@@ -119,9 +119,12 @@ router.post('/contact-address', function(request, response) {
 router.post('/postcode', function(request, response) {
 
     var sectionid = request.session.data['sectionid']
+    var view = request.session.data['view']
     var postcodetype = request.session.data['postcodetype']
-    if (sectionid == "About the device wearer"){
-        response.redirect("/v1/device-wearer/check-answers")
+    if (view == "false"){
+        response.redirect("/v1/device-wearer/check-answers-view")
+     } else  if (sectionid == "About the device wearer"){
+        response.redirect("/v1/device-wearer/check-answers")    
     } else if (postcodetype == "appointment"){
         response.redirect("/v1/monitoring-conditions/monitoring-needed")       
     } else if (postcodetype == "curfew"){
@@ -956,8 +959,10 @@ router.post('/type-change-areyousure', function(request, response) {
     var usertype = request.session.data['usertype']
     if (usertype == "Probation user"){
         response.redirect("/v1/variations/sr-question?view=false") 
+    } else if (usertype == "Home Office user"){
+        response.redirect("/v1/variations/sr-question?view=false")     
     } else if (clarification == "true") {     
-        response.redirect("/v1/submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false") 
+        response.redirect("/v1/submitted-form?sr-address=view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false") 
     } else {
         response.redirect("/v1/variations/sr-question3?view=false") 
     }
@@ -970,9 +975,9 @@ router.post('/type-change', function(request, response) {
 
     var clarification = request.session.data['clarification']
     if (clarification == "false"){
-        response.redirect("/v1/org-details-change?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&sr-type=I have changed something else in the form&view=false") 
+        response.redirect("/v1/org-details-change?sr-address=false&view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&sr-type=I have changed something else in the form&view=false") 
     } else {
-        response.redirect("/v1/org-details-change?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false")
+        response.redirect("/v1/org-details-change?sr-address=false&view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false")
     }
 })
 
@@ -1117,10 +1122,10 @@ router.post('/hard-stop', function(request, response) {
 router.post('/sr-address', function(request, response) {
 
     var sraddress = request.session.data['sr-address']
-    if (sraddress == "No"){
-        response.redirect("/v1/variations/sr-question3")     
+    if (sraddress == "Yes"){
+        response.redirect("/v1/org-details-change?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&sr-type=I need monitoring equipment reinstalled or checked")     
     } else {
-        response.redirect("/v1/org-details-change?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&sr-type=I need monitoring equipment reinstalled or checked")
+        response.redirect("/v1/variations/sr-question3?sr-address=No")
     }
 })
 

@@ -20,18 +20,17 @@
        Your details
       </h1>
 
-   
-        {% if (data['usertype'] == "Probation user" and data['dirtydata'] == "true")  %}       
 
-       <form class="form" action="dataissue-interupt" method="post">
+        {% if (data['sr-address'] == "Yes" and data['dirtydata'] == "true")  %}  
 
-  
+        <form class="form" action="/v1/postcode-lookup/postcode?sectionid=About the device wearer&postcodetype=device wearer's&variation-simple=false" method="post">
 
-        {% else  %}    
+
+        {% else %}    
 
           <form class="form" action="submitted-form" method="post">
 
-        {% endif  %}  
+        {% endif %}  
 
 
 

@@ -37,7 +37,7 @@ Details of the changes - Electronic Monitoring
 
     
 
-   {% if (data['usertype'] == 'Probation user') %}
+   {% if (data['usertype'] == 'Probation user' or data['usertype'] == 'Home Office user') %}
 
    <form class="form" action="/hard-stop" method="post">
 

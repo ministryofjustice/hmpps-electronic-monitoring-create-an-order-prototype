@@ -106,7 +106,7 @@ items: [
 
         {{ govukButton({
           text: "Save as draft",
-          href: '../new-form',
+          href: '../submitted-form' if data['view'] == 'false' else '../new-form',
           classes: "govuk-button--secondary"
         }) }}
 
