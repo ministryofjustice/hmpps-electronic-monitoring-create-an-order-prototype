@@ -20,10 +20,27 @@
        Your details
       </h1>
 
+       {% if (data['usertype'] == "Probation user" and data['dirtydata'] == "true")  %}  
 
-        {% if (data['sr-address'] == "Yes" and data['dirtydata'] == "true")  %}  
+   <form class="form" action="probation-aba" method="post">
 
-        <form class="form" action="/v1/postcode-lookup/postcode?sectionid=About the device wearer&postcodetype=device wearer's&variation-simple=false" method="post">
+
+
+
+
+        {% elseif (data['sr-address'] == "Yes" and data['dirtydata'] == "true")  %}  
+
+    <!--    <form class="form" action="/v1/postcode-lookup/postcode?sectionid=About the device wearer&postcodetype=device wearer's&variation-simple=false" method="post">-->
+
+          <form class="form" action="submitted-form" method="post">
+
+    {% elseif (data['sr-type'] == "I need monitoring equipment installed at a new address" and data['dirtydata'] == "true")  %}  
+
+     <!--    <form class="form" action="/v1/postcode-lookup/postcode?sectionid=Monitoring conditions&postcodetype=curfew&variation-simple=false" method="post"> -->
+
+<!--   <form class="form" action="/v1/monitoring-conditions/curfew" method="post">  -->
+
+  <form class="form" action="submitted-form" method="post">
 
 
         {% else %}    

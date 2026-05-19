@@ -119,9 +119,9 @@ router.post('/contact-address', function(request, response) {
 router.post('/postcode', function(request, response) {
 
     var sectionid = request.session.data['sectionid']
-    var view = request.session.data['view']
+    var sraddress = request.session.data['sr-address']
     var postcodetype = request.session.data['postcodetype']
-    if (view == "false"){
+    if (sraddress == "Yes"){
         response.redirect("/v1/device-wearer/check-answers-view")
      } else  if (sectionid == "About the device wearer"){
         response.redirect("/v1/device-wearer/check-answers")    
@@ -480,8 +480,11 @@ router.post('/install-type2', function(request, response) {
 router.post('/curfew-address-question', function(request, response) {
 
     var curfewaddressquestion = request.session.data['curfewaddressquestion']
+    var view = request.session.data['view']
     if (curfewaddressquestion == "Yes"){
         response.redirect("/v1/postcode-lookup/postcode")
+    } else if (view == "false"){
+        response.redirect("/v1/monitoring-conditions/check-answers-view")     
     } else {
         response.redirect("/v1/monitoring-conditions/curfew-1")
     }

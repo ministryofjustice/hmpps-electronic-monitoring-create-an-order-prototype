@@ -10,38 +10,50 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-two-thirds">
 
       
-  {%- from "moj/components/interruption-card/macro.njk" import interruptionCard -%}
-      
-  {% call interruptionCard({
-      heading: "Information on this form may be out of date",
-      primaryAction: {
-        text: "I confirm that I understand",
-        href: "submitted-form"
-      }
-      }) -%}
-       <p>What you need to know:</p>
-      <ul class="govuk-list govuk-list--bullet">
-  
-        <li>It is the most recent version sent through the EMO service.</li>
-        <li>It does not include any changes that have been sent to EMS by email.</li>
-      </ul>
 
 
-       <p>What you need to do:</p>
-       <ul class="govuk-list govuk-list--bullet">
-                    <li>Do not change details you have already sent by email.</li>
-                    <li>Only enter the changes you want to make now.</li>
-                    <li>If you want something to be changed and it is already shown, enter the details in “About the changes in this version of the form”.</li>
-                  </ul>
+  <!--  <div class="moj-interruption-card">
+      <div class="moj-interruption-card__content">
+        <h1 class="moj-interruption-card__heading">Information on this form may be out of date</h1>
+        <div class="moj-interruption-card__body">
+           <p>What you need to know:</p>
+              <ul class="govuk-list govuk-list--bullet">
+          
+                <li>It is the most recent version sent through the EMO service.</li>
+                <li>It does not include any changes that have been sent to EMS by email.</li>
+              </ul>
 
-  <!--  <p>If the change you want to make is already shown, enter the details in the “About the changes in this version of the form” section.</p>-->
 
-    {%- endcall %}
+               <p>What you need to do:</p>
+               <ul class="govuk-list govuk-list--bullet">
+                            <li>Do not change details you have already sent by email.</li>
+                            <li>Only enter the changes you want to make now.</li>
+                            <li>Even if your change is already in this version of the form, you still need to submit it.</li>
+                          </ul>
 
-   
+        </div>
+        <div class="govuk-button-group moj-interruption-card__actions">
+          <a href="#" role="button" draggable="false" class="govuk-button govuk-button--inverse" data-module="govuk-button" onclick="window.history.go(-1); return false;">
+            I confirm that I understand
+          </a>
+        
+        </div>
+      </div>
+    </div>-->
+
+      <h1 class="govuk-heading-l">Information in this form could be out of date</h1>
+
+ 
+                   
+  {% include "/includes/aba-message.html" %}
+
+              
+    <button type="submit" class="govuk-button govuk-button--warning" data-module="govuk-button" onclick="window.history.go(-1); return false;" data-govuk-button-init="">
+      I confirm that I understand
+    </button>
 
 
     </div>

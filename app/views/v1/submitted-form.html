@@ -47,14 +47,18 @@
 
     {% if (data['usertype'] == 'Probation user' and data['dirtydata'] == 'true') %}
 
-    {%- from "moj/components/alert/macro.njk" import mojAlert -%}
+
+
+ <!--{%- from "moj/components/alert/macro.njk" import mojAlert -%}
     
     {{ mojAlert({
       variant: "warning",
       title: "Some information could not be imported",
       dismissible: false,
-      html: 'Information on this form may be out of date. View <a href="dataissue-interupt">what you need to do</a>.'
-    }) }}
+      html: 'Information in this form could be out of date. View <a href="dataissue-interupt">what you need to do</a>.'
+    }) }}-->
+
+
 
    <!--     {{ mojAlert({
             variant: "warning",

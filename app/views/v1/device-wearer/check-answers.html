@@ -226,8 +226,12 @@
               <a class="govuk-link" href="age?cya1=true">Change<span class="govuk-visually-hidden"> Will the device wearer be 18 years old or over when the electronic monitoring device is installed?</span></a>
             </dd>
           </div>
+        </dl>
 
        {% if (data['eighteen'] == "No") %}
+
+       <h2 class="govuk-heading-m">Telephone number</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
          <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Does the device wearer have a contact telephone number?
@@ -251,10 +255,13 @@
               <a class="govuk-link" href="device-wearer-contact?cya1=true">Change<span class="govuk-visually-hidden"> What is the device wearer's telephone number?</span></a>
             </dd>
           </div>
+
        {% endif %}
+     </dl>
        {% endif %}
 
-   
+   <h2 class="govuk-heading-m">Device wearer's addresses</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
  
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">

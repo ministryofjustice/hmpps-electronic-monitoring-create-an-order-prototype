@@ -48,18 +48,17 @@
               html: htmlfail
             }) }}
 
-          {% elseif (data['view'] == 'true') %}
+         {% elseif (data['view'] == 'true') %} 
 
-          {{ govukNotificationBanner({
-              html: html
-            }) }}
+                
 
-          {% else %}
+              <!--    {{ govukNotificationBanner({
+                      html: html
+                    }) }}-->
 
-          
-                    
           {% endif %}
-
+    
+         {% include "/includes/aba-banner.html" %}
           
     
 
@@ -440,6 +439,9 @@
         </dl>
         
     <h2 class="govuk-heading-m">Curfew timetable</h2>
+    <!--   {% if (data['usertype'] == 'Probation user' and data['dirtydata'] == 'true') %}
+         <p> This curfew timetable may be out of date. View <a href="../dataissue-interupt">what you need to do</a>.</p>
+        {% endif %}-->
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
   
           <div class="govuk-summary-list__row">
@@ -1043,36 +1045,7 @@
               <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What type of alcohol monitoring is needed? </span></a>
             </dd>
           </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-               What is the address of the base station? 
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if (data['alcoholaddress'] == "Contact") %}
-
-              {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
-              {{ data['contactaddressTown'] or "Glossop" }}<br>
-              {{ data['contactaddressCounty'] or "High Peak" }}<br>
-              {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
-
-              {% elseif (data['alcoholaddress'] == "Installation") %}
-
-
-              {{ data['installaddressLine1'] }}<br>
-              {{ data['installaddressTown'] }}<br>
-              {{ data['installaddressPostcode'] }}
-         
-              {% else %}
-              {{ data['alcoholaddressLine1'] }}<br>
-              {{ data['alcoholaddressTown'] }}<br>
-              {{ data['alcoholaddressPostcode'] }}
-              {% endif %}
-
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden">  Where will alcohol base station monitoring equipment be installed? </span></a>
-            </dd>
-          </div>
+     
 
 
 
