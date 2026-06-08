@@ -20,8 +20,15 @@
       </h1>
 -->
       
+       {% if (data['view'] == 'false') %}
+           <form class="form" action="check-answers-view" method="post">
 
-       <form class="form" action="risk-2" method="post">
+         {% else %}
+                <form class="form" action="check-answers" method="post">
+
+           {% endif %}
+
+
 
 
 

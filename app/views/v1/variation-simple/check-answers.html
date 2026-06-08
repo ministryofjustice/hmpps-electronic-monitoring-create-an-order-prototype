@@ -39,21 +39,33 @@
             </dd>
           </div>
 
-          {% if (data['sr-type-simple'] == "I need to end all monitoring for the device wearer") %}
+     
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Is the device wearer on bail?
+             Is the device wearer on a Domestic Abuse Protection Order (DAPO) or Community sentence
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['bail-order'] or 'No' }} 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="sr-question?cyasimple=true">Change<span class="govuk-visually-hidden"> What identity numbers do you have for the device wearer?</span></a>
+              <a class="govuk-link" href="bail?cyasimple=true">Change<span class="govuk-visually-hidden"> What identity numbers do you have for the device wearer?</span></a>
             </dd>
           </div>
 
+          {% if (data['bail-order'] == "Yes") %}
 
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             What court sentenced the device wearer?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['bail-order'] or 'Newcastle Family Court' }} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="court?cyasimple=true">Change<span class="govuk-visually-hidden"> What identity numbers do you have for the device wearer?</span></a>
+            </dd>
+          </div>
 
           {% endif %}
 
@@ -175,17 +187,7 @@
               <a class="govuk-link" href="personal-details?cyasimple=true">Change<span class="govuk-visually-hidden"> What is the device wearer's last name?</span></a>
             </dd>
           </div>
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             What is the sex of the device wearer?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['wearer-gender'] or 'Male' }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="personal-details?cyasimple=true">Change<span class="govuk-visually-hidden"> How does the device wearer describe themselves?</span></a>
-            </dd>
-          </div>
+          
 
                <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -196,6 +198,17 @@
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="personal-details?cyasimple=true">Change<span class="govuk-visually-hidden"> What is the device wearer's date of birth?</span></a>
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             What is the sex of the device wearer?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['wearer-gender'] or 'Male' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="personal-details?cyasimple=true">Change<span class="govuk-visually-hidden"> How does the device wearer describe themselves?</span></a>
             </dd>
           </div>
            <div class="govuk-summary-list__row">
@@ -226,12 +239,45 @@
 
           {% endif %}
 
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             What is the date for the first day of all monitoring?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             12/1/2026
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="monitoring-dates?cyasimple=true">Change<span class="govuk-visually-hidden"> What type of offence has been committed by the device wearer?</span></a>
+            </dd>
+          </div>
+
+           {% if (data['usertype'] == "Home Office user" or data['sr-type-simple'] == "I need to end all monitoring for the device wearer" or data['sr-type-simple'] == "I need to end all monitoring for the device wearer2") %}
+
+    {% else %}
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               What is the date when all monitoring ends? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+             12/1/2027
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="monitoring-dates?cyasimple=true">Change<span class="govuk-visually-hidden"> What type of offence has been committed by the device wearer?</span></a>
+            </dd>
+          </div>
+
+             {% endif %}
+
+
+           {% if (data['usertype'] !== "Home Office user") %}
+
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              What type of offence did the device wearer commit? 
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['offence'] or 'The offence committed is not relevant to the risk of installation' }}
+              {{ data['offence'] or 'Fraud offences' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="offence?cyasimple=true">Change<span class="govuk-visually-hidden"> What type of offence has been committed by the device wearer?</span></a>
@@ -249,6 +295,8 @@
               <a class="govuk-link" href="offence?cyasimple=true">Change<span class="govuk-visually-hidden"> What type of offence has been committed by the device wearer?</span></a>
             </dd>
           </div>
+
+          {% endif %}
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">

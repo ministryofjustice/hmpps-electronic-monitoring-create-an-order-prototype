@@ -73,7 +73,7 @@
 
       
 
-               {% include "/includes/aba-banner.html" %}
+            <!--   {% include "/includes/aba-banner.html" %}-->
               
 
    
@@ -140,36 +140,7 @@
  <h2 class="govuk-heading-m">Installation risk</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
-            <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              What type of offence did the device wearer commit? 
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Criminal damage and arson
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
-                {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
-                {% endif %}
-            </dd>
-          </div>
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-             Is there any other information to be aware of about the offence committed?
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['offence-question'] or 'No' }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              {% if (data['view'] == 'true') %}
-                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
-                {% else %}
-                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
-                {% endif %}
-            </dd>
-          </div>
+        
 
          
             <div class="govuk-summary-list__row">
@@ -190,10 +161,41 @@
 
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             At installation what are the possible risks at the installation address?
+             At installation what are the possible risks at the address?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['risk'] or 'There are no risks that the installer should be aware of' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+              <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What type of offence did the device wearer commit? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Criminal damage and arson
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Is there any other information to be aware of about the offence committed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['offence-question'] or 'No' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               {% if (data['view'] == 'true') %}

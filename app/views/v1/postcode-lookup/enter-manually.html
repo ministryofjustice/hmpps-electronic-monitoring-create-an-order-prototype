@@ -30,7 +30,19 @@
 
  {% else %}
       <form class="form" action="/postcode" method="post">
-{% endif %}      
+{% endif %}   
+
+<!--   
+
+{%- from "moj/components/alert/macro.njk" import mojAlert -%}
+    
+    {{ mojAlert({
+      variant: "warning",
+      title: "Some information could not be imported",
+      dismissible: false,
+      html: 'The address lookup service is temporarily unavailable. Enter the address manually.'
+    }) }}
+-->
 
        <span class="govuk-caption-l"> {{ data['sectionid'] or 'About the device wearer'}}</span>
          <h1 class="govuk-heading-l">What is the {{ data['postcodetype'] or "device wearer's"}} address?</h1>

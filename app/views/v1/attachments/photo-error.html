@@ -1,0 +1,73 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Upload the photo identification document - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if (data['view'] == 'false') %}
+           <form class="form" action="check-answers-view" method="post">
+
+         {% else %}
+            <form class="form" action="check-answers" method="post">
+
+           {% endif %}
+     
+
+      <form class="form" action="check-answers" method="post">
+
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              text: "The selected file could not be uploaded - there is an issue with the file",
+              href: "#"
+            }
+          ]
+        }) }}
+
+           <span class="govuk-caption-l">Additional documents</span>
+             {{ govukFileUpload({
+            id: "photo",
+            name: "photo",
+            isPageHeading: true,
+            label: {
+              text: "Upload a photo of the device wearer",
+              classes: 'govuk-label--l'
+            },
+            errorMessage: {
+              text: "The selected file could not be uploaded - there is an issue with the file"
+            },
+             hint: {
+              text: 'If the licence or court order doesn’t include a photo, upload one that clearly shows the device wearer. The file must be a PDF, PNG, JPEG, or JPG and under 10MB.'
+            }
+          }) }}
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

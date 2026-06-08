@@ -141,30 +141,49 @@ USED IF INSTALL ADDRESS IS PER MONITORING TYPE
    <div class="govuk-date-input ">
 
 
-        <div class="govuk-hint">If the installation can’t be done at this time, it will happen during standard hours. Enter time using a 24 hour clock. For example, enter 14:30 instead of 2:30pm</div>
+        <div class="govuk-hint">Enter time using a 24 hour clock. For example, enter 14:30 instead of 2:30pm</div>
+
+           <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+             <label class="govuk-label govuk-date-input__label" for="installation-hours"><span class="govuk-visually-hidden">End</span> Hour</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="installation-hours" name="installation-hours" value="{{ data['installation-hours'] }}">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <label class="govuk-label govuk-date-input__label">:</label>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+            <label class="govuk-label govuk-date-input__label" for="installation-minutes"><span class="govuk-visually-hidden">Start</span> Minutes</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="installation-minutes" name="installation-minutes" value="{{ data['installation-minutes'] }}">
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">If the installation can’t be done at the preferred time when can it take place?</legend>
+
+     
+
+        <div class="govuk-hint">Enter details of times it can take place and any other details needed for the installation. For example, during office hours 9-5.</div>
+
+
+
+   <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
         
 
-    {% elseif (data['appointmentquestion'] == "At another address" and data['usertype'] == "Home Office user" ) %}
+    {% elseif (data['appointmentquestion'] == "At another address") %}
 
      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What is the preferred time installation take place?</legend>
 
        <div class="govuk-date-input ">
 
 
-        <div class="govuk-hint">If the installation can’t be done at this time, it will happen during standard hours. Enter time using a 24 hour clock. For example, enter 14:30 instead of 2:30pm</div>
-
-    {% else %}
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What time will installation take place?</legend>
-
-         
-
-      <div class="govuk-date-input ">
-
-
         <div class="govuk-hint">Enter time using a 24 hour clock. For example, enter 14:30 instead of 2:30pm</div>
-        
-{% endif %}
-        
+
         <div class="govuk-date-input__item">
           <div class="govuk-form-group form-group-start-hours">
              <label class="govuk-label govuk-date-input__label" for="installation-hours"><span class="govuk-visually-hidden">End</span> Hour</label>
@@ -184,6 +203,50 @@ USED IF INSTALL ADDRESS IS PER MONITORING TYPE
     </fieldset>
   </div>
 
+
+         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">If the installation can’t be done at the preferred time when can it take place?</legend>
+
+     
+
+        <div class="govuk-hint">Enter details of times it can take place and any other details needed for the installation. For example, during office hours 9-5.</div>
+
+
+
+   <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+
+
+
+    {% else %}
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What time will installation take place?</legend>
+
+         
+
+      <div class="govuk-date-input ">
+
+
+        <div class="govuk-hint">Enter time using a 24 hour clock. For example, enter 14:30 instead of 2:30pm</div>
+        
+
+        
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+             <label class="govuk-label govuk-date-input__label" for="installation-hours"><span class="govuk-visually-hidden">End</span> Hour</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="installation-hours" name="installation-hours" value="{{ data['installation-hours'] }}">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <label class="govuk-label govuk-date-input__label">:</label>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+            <label class="govuk-label govuk-date-input__label" for="installation-minutes"><span class="govuk-visually-hidden">Start</span> Minutes</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="installation-minutes" name="installation-minutes" value="{{ data['installation-minutes'] }}">
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+{% endif %}
 
 
 <input type="hidden" id="sectionid" name="sectionid" value="Electronic monitoring required">

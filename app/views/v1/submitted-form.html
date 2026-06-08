@@ -552,8 +552,8 @@
             title: {
               text: "Access needs and installation risk"
             },
-            href: ("installation/check-answers-view"),
-           status: ( completedStatus if data['section-3-complete'] == 'true' else tocheckStatus)
+             href: ("installation/check-answers-view" if data['section-3-complete'] == 'true' else "installation/check-risk"),
+           status: ( completedSectionStatus if data['section-3-complete'] == 'true' else incompleteStatus)
           },
           {
             title: {

@@ -50,7 +50,7 @@ Details of the changes - Electronic Monitoring
               {
                 value: "Yes",
                 checked: (true if data['sr-address'] == "Yes"),
-                disabled: (true if data['view'] == 'true'),
+            
                 text: "Yes",
                 hint: {
                   text: ""
@@ -60,7 +60,7 @@ Details of the changes - Electronic Monitoring
                {
                 value: "No",
                 checked: (true if data['sr-address'] == "No"),
-                disabled: (true if data['view'] == 'true'),
+              
                 text: "No",
                  hint: {
                   text: ""
@@ -99,13 +99,7 @@ Details of the changes - Electronic Monitoring
                     text: "Save and continue"
                   }) }}
 
-                    {{ govukButton({
-                    text: "Save as draft",
-                    href: ('../submitted-form' if data['view'] == 'false' else '#' ),
-                    classes: "govuk-button--secondary"
-                  }) }}
-
-
+                  
                 {% endif %}
 
 

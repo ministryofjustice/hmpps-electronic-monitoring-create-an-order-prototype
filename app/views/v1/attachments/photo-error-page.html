@@ -1,0 +1,73 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+     <span class="govuk-caption-l">Additional documents</span>
+
+    <h1 class="govuk-heading-l">
+     
+
+
+  There is an issue with the photo
+  
+      </h1>
+
+ 
+
+
+      <p>The photo couldn’t be uploaded because there’s a problem with the file type—it doesn’t match the file extension.</p>
+
+  
+<p>To to fix it:</p>
+      <ul class="govuk-list govuk-list--number">
+              <li>Find the file on your computer</li>
+              <li>Double-click on it. </li>
+              <li>Click File and Save As.</li>
+              <li>In the file type options, choose PNG (*.png).</li>
+              <li>Save the file.</li>
+                <li> Go back and try uploading the new version of the file.</li>
+
+            </ul>
+
+           
+
+
+
+
+       <div class="govuk-!-margin-top-5">
+       <div class="govuk-button-group">     
+
+
+     {{ govukButton({
+          text: "Go back and upload new file",
+          href: ('#' ),
+          classes: "govuk-button"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: ('#' ),
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+    </div>
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -28,10 +28,10 @@
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
           {{ govukCheckboxes({
-            name: "risk",
+            name: "risk2",
             fieldset: {
               legend: {
-                text: "At installation what are the possible risks at the installation address?",
+                text: "At installation what are the possible risks at the address?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--l"
               }
@@ -43,45 +43,55 @@
              
               {
                 value: "History of substance abuse",
-                checked: (true if data['risk'] == 'History of substance abuse'),
+                checked: (true if data['risk2'] == 'History of substance abuse'),
                 text: "History of substance abuse"
               },
               {
                 value: "Diversity concerns (mental health issues, learning difficulties etc)",
-                checked: (true if data['risk'] == 'Diversity concerns (mental health issues, learning difficulties etc)'),
+                checked: (true if data['risk2'] == 'Diversity concerns (mental health issues, learning difficulties etc)'),
                 text: "Diversity concerns (mental health issues, learning difficulties etc)"
               },
               
               {
                 value: "Managed through Integrated Offender Management (IOM)",
-                checked: (true if data['risk'] == 'Managed through Integrated Offender Management (IOM)'),
+                checked: (true if data['risk2'] == 'Managed through Integrated Offender Management (IOM)'),
                 text: "Managed through Integrated Offender Management (IOM)"
               },
               {
-                value: "Safeguarding issues",
-                checked: (true if data['risk'] == 'Safeguarding issues'),
-                text: "Safeguarding issues"
+                value: "Safeguarding adult",
+                checked: (true if data['risk2'] == 'Safeguarding adult'),
+                text: "Safeguarding adult"
+              },
+              {
+                value: "Safeguarding child",
+                checked: (true if data['risk2'] == 'Safeguarding child'),
+                text: "Safeguarding child"
+              },
+              {
+                value: "Safeguarding domestic abuse",
+                checked: (true if data['risk2'] == 'Safeguarding domestic abuse'),
+                text: "Safeguarding domestic abuse"
               },
               {
                 value: "Another person or people living at the property who are threatening or violent",
-                checked: (true if data['risk'] == 'Another person or people living at the property who are threatening or violent'),
+                checked: (true if data['risk2'] == 'Another person or people living at the property who are threatening or violent'),
                 text: "Another person or people living at the property who are threatening or violent"
               },
               {
                 value: "Children under the age of 18 are living at the property",
-                checked: (true if data['risk'] == 'Children under the age of 18 are living at the property'),
+                checked: (true if data['risk2'] == 'Children under the age of 18 are living at the property'),
                 text: "Children under the age of 18 are living at the property"
               },
               {
                 value: "Animals at the property, for example dogs",
-                checked: (true if data['risk'] == 'Animals at the property, for example dogs'),
+                checked: (true if data['risk2'] == 'Animals at the property, for example dogs'),
                 text: "Animals at the property, for example dogs"
               },
               
               
               {
                 value: "Other known risks",
-                checked: (true if data['risk'] == 'Other known risks'),
+                checked: (true if data['risk2'] == 'Other known risks'),
                 text: "Other known risks"
               },
 
@@ -90,7 +100,7 @@
               },
               {
                 value: "There are no risks that the installer should be aware of",
-                checked: (true if data['risk'] == 'There are no risks that the installer should be aware of'),
+                checked: (true if data['risk2'] == 'There are no risks that the installer should be aware of'),
                 text: "There are no risks that the installer should be aware of",
                 behaviour: "exclusive"
               },
@@ -99,7 +109,7 @@
               },
               {
                 value: "Not able to provide this information",
-                checked: (true if data['risk'] == 'Not able to provide this information'),
+                checked: (true if data['risk2'] == 'Not able to provide this information'),
                 text: "Not able to provide this information"
               }
             ]
@@ -117,7 +127,7 @@
 
         {{ govukButton({
           text: "Save as draft",
-          href: '../new-form',
+          href: '../submitted-form' if data['view'] == 'false' else '../new-form',
           classes: "govuk-button--secondary"
         }) }}
 

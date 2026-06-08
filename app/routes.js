@@ -110,7 +110,7 @@ router.post('/contact-address', function(request, response) {
     if (addressquestion == "Yes"){
         response.redirect("/v1/postcode-lookup/postcode")
     } else if (variationsimple == "true"){
-        response.redirect("/v1/variation-simple/offence")      
+        response.redirect("/v1/variation-simple/monitoring-dates")      
     } else {
         response.redirect("/v1/device-wearer/check-answers")
     }
@@ -121,8 +121,10 @@ router.post('/postcode', function(request, response) {
     var sectionid = request.session.data['sectionid']
     var sraddress = request.session.data['sr-address']
     var postcodetype = request.session.data['postcodetype']
-    if (sraddress == "Yes"){
-        response.redirect("/v1/device-wearer/check-answers-view")
+    if (sectionid == " "){
+        response.redirect("/v1/variation-simple/monitoring-dates")
+     } else  if (sraddress == "Yes"){
+        response.redirect("/v1/device-wearer/check-answers-view")        
      } else  if (sectionid == "About the device wearer"){
         response.redirect("/v1/device-wearer/check-answers")    
     } else if (postcodetype == "appointment"){
@@ -132,7 +134,7 @@ router.post('/postcode', function(request, response) {
     } else if (postcodetype == "installation"){
         response.redirect("/v1/monitoring-conditions/check-answers")            
     } else {
-        response.redirect("/v1/variation-simple/offence")
+        response.redirect("/v1/variation-simple/monitoring-dates")
     }
 })
 
@@ -144,7 +146,7 @@ router.post('/disability', function(request, response) {
     } else if (disability == "Not able to provide this information"){
         response.redirect("/v1/installation/language")    
     } else {
-        response.redirect("/v1/installation/disability-needs")
+        response.redirect("/v1/installation/language")
     }
 })
 
@@ -916,7 +918,9 @@ router.post('/sr-question', function(request, response) {
     } else if (srtypesimple == "I need to end all monitoring for the device wearer2") {
         response.redirect("/v1/variation-simple/bail") 
     } else if (srtypesimple == "I need to end all monitoring for the device wearer") {
-        response.redirect("/v1/variation-simple/bail")     
+        response.redirect("/v1/variation-simple/bail")  
+     } else if (srtypesimple == "I need monitoring equipment installed at a new address") {
+        response.redirect("/v1/new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")       
     } else if (srtypesimple == "hardstop") {
         response.redirect("/v1/variations/hard-stop?equipment=true")  
     } else if (srtypesimple == "hardstop2") {
@@ -932,7 +936,7 @@ router.post('/sr-address-simple', function(request, response) {
     if (sraddress == "No"){
         response.redirect("/v1/variation-simple/sr-question")     
     } else {
-        response.redirect("/v1/variation-simple/identity-numbers")
+        response.redirect("/v1/variation-simple/bail")
     }
 })
 
@@ -950,7 +954,7 @@ router.post('/bail-simple', function(request, response) {
 
     var bailorder = request.session.data['bail-order']
     if (bailorder == "Yes"){
-        response.redirect("/v1/variation-simple/identity-numbers") 
+        response.redirect("/v1/variation-simple/court") 
     } else {
         response.redirect("/v1/variation-simple/identity-numbers")
     }
@@ -996,11 +1000,9 @@ router.post('/document-question', function(request, response) {
 
 router.post('/identity-numbers', function(request, response) {
 
-    var identitynumbers = request.session.data['identity-numbers']
-    if (identitynumbers == "Magistrate Court Case Reference Number"){
-        response.redirect("/v1/variation-simple/court")  
-    } else if (identitynumbers == "Court Case Reference Number (CCRN)") {
-        response.redirect("/v1/variation-simple/court")     
+    var usertype = request.session.data['usertype']
+    if (usertype == "Home Office user"){
+        response.redirect("/v1/variation-simple/personal-details")      
     } else {
         response.redirect("/v1/variation-simple/personal-details")
     }
@@ -1015,7 +1017,7 @@ router.post('/language', function(request, response) {
     } else if (notifyingorg == "Civil and County Court") {
         response.redirect("/v1/installation/risk-civil")
      } else if (usertype == "Home Office user") {
-        response.redirect("/v1/installation/risk-2")         
+        response.redirect("/v1/installation/mappa")         
     } else {
         response.redirect("/v1/installation/risk")
     }
@@ -1076,7 +1078,7 @@ router.post('/risk-list', function(request, response) {
     if (offencelistquestion == "Yes"){
         response.redirect("/v1/installation/risk-civil")     
     } else {
-        response.redirect("/v1/installation/risk-1")
+        response.redirect("/v1/installation/check-answers")
     }
 })
 
@@ -1106,7 +1108,7 @@ router.post('/risk-listdapo', function(request, response) {
     if (dapoquestion == "Yes"){
         response.redirect("/v1/installation/risk-dapo")     
     } else {
-        response.redirect("/v1/installation/risk-2")
+        response.redirect("/v1/installation/check-answers")
     }
 })
 

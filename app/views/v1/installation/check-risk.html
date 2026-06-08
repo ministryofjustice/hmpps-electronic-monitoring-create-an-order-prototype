@@ -1,0 +1,84 @@
+{% extends "layouts/moj.html" %}
+
+{% block pageTitle %}
+  Are you sure that you want to delete this document- Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+     <form class="form" action="risk-2?risk=Violent behaviour or threats of violence&risk-question=No&risk2=There are no risks that the installer should be aware of" method="post">
+
+      <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">Access needs and installation risk</span>
+        Check if the device wearer's risk has changed
+       </h1>
+
+       <p class="govuk-body">You must review the device wearer's risk if:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>There is a change in the device wearer's address.</li>
+          <li>There is a change in responsible officer.</li>
+          <li>You are adding monitoring conditions.</li>
+          <li>The device wearer's risk has changed (RoSH, Risk to Staff, Domestic Abuse Perpetrator and/or Child Protection Flag).</li>
+        </ul>
+
+
+
+
+
+
+     <!--   {{ govukRadios({
+          classes: "govuk-radios--inline",
+          name: "checkdocument",
+          fieldset: {
+            legend: {
+              text: "Has their risk changed?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+   
+          items: [
+            {
+              value: "Yes",
+              checked: (true if data['checkdocument'] == "Yes"),
+              text: "Yes"
+            },
+            {
+              value: "No",
+              checked: (true if data['checkdocument'] == "No"),
+              text: "No"
+            }
+          ]
+          }) }}
+
+-->
+<br>
+
+           <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+     <!--   {{ govukButton({
+          text: "Save as draft",
+           href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
+          classes: "govuk-button--secondary"
+        }) }}-->
+
+      </div>
+
+
+</form>
+
+        
+     
+        </div>
+      </div>
+{% endblock %}
