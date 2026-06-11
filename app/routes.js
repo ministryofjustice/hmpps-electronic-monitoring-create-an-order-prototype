@@ -1118,7 +1118,8 @@ router.post('/hard-stop', function(request, response) {
     if (srtype == "hardstop"){
         response.redirect("/v1/variations/hard-stop?equipment=true")     
      } else if (srtype == "hardstop2") {
-        response.redirect("/v1/variations/hard-stop?equipment=false")      
+        response.redirect("/v1/variations/hard-stop?equipment=false") 
+   
     } else {
         response.redirect("/v1/org-details-change?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false")
     }

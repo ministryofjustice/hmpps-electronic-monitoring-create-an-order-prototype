@@ -124,6 +124,40 @@ Details of the changes - Electronic Monitoring
        <form class="form" action="/type-change" method="post">
 
            {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "clarification",
+            fieldset: {
+              legend: {
+                text: "Are you making changes to this form because the original was rejected by email?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+
+             
+              {
+                value: "true",
+                checked: (true if data['type-change'] == "true"),
+                
+                text: "Yes"
+              },
+              {
+                value: "false",
+                checked: (true if data['type-change'] == "false"),
+               
+                text: "No"
+              }
+            ]
+          }) }}
+
+
+        <!--
+
+           {{ govukRadios({
             name: "clarification",
             fieldset: {
               legend: {
@@ -158,7 +192,7 @@ Details of the changes - Electronic Monitoring
                 text: "I need to change something else in the form"
               }
             ]
-          }) }}
+          }) }}-->
 
 
      {% endif %}

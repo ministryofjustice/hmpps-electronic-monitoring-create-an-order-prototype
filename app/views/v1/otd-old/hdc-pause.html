@@ -1,0 +1,84 @@
+{% extends "layouts/moj.html" %}
+
+{% block pageTitle %}
+  Are you sure that you want to delete this electronic monitoring type? - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l"><span class="govuk-caption-l">Electronic monitoring required</span>
+
+      HDC releases and re-releases</h1>
+
+      <p>Device wearers must not be released or re-released on HDC on or after 2 September 2026.</p>
+
+      <p>Exception: A device wearer may be re-released only if all of the following apply:</p>
+      <ul class="govuk-list govuk-list--bullet">
+      <li>They were on HDC in the community./li>
+      <li>They were recalled during their HDC period on or after 2 September 2026.</li>
+      <li>The recall was under Section 255(1)(b) (inability to monitor).</li>
+      <li>They are being re-released.</li>
+      <li>They meet HDC policy, eligibility criteria, and pass the risk assessment.</li>
+      </ul>
+
+      <p>If you are unsure about eligibility, check with the COM.</p>
+
+
+
+
+
+
+
+       {{ govukRadios({
+          classes: "govuk-radios--inline",
+          name: "hdcpause",
+          fieldset: {
+            legend: {
+              text: "Are you sure the device wearer is on a Home Detention Curfew (HDC)?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: (true if data['hdcpause'] == 'Yes')
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: (true if data['hdcpause'] == 'No')
+            }
+          ]
+        }) }}
+
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Save and continue",
+              href: '#',
+              classes: "govuk-button"
+            }) }}
+
+            {{ govukButton({
+              text: "Save as draft",
+              href: '#',
+              classes: "govuk-button--secondary"
+            }) }}
+          </div>
+     
+        </div>
+      </div>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+Details of the changes - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+ 
+
+
+
+
+
+
+       <form class="form" action="/v1/org-details-change?sr-address=false&view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false" method="post">
+
+           {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "clarification",
+            fieldset: {
+              legend: {
+                text: "Is the form for a new order where the device wearer isn’t being monitored yet?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+
+             
+              {
+                value: "true",
+                checked: (true if data['type-change'] == "true"),
+                
+                text: "Yes"
+              },
+              {
+                value: "false",
+                checked: (true if data['type-change'] == "false"),
+               
+                text: "No"
+              }
+            ]
+          }) }}
+
+
+     
+
+
+
+          <div class="govuk-button-group">
+
+             {% if (data['view'] == 'true') %}
+                   {{ govukButton({
+                      text: "Return to main form menu",
+                      href: "../submitted-form"
+                    }) }}
+                {% else %}
+                  {{ govukButton({
+                    text: "Save and continue"
+                  }) }}
+
+          <!--          {{ govukButton({
+                    text: "Save as draft",
+                    href: ('../submitted-form' if data['view'] == 'false' else '#' ),
+                    classes: "govuk-button--secondary"
+                  }) }}-->
+
+
+                {% endif %}
+
+
+             
+
+          </div>
+
+      </form>
+
+
+        
+
+        </div>
+      </div>
+{% endblock %}

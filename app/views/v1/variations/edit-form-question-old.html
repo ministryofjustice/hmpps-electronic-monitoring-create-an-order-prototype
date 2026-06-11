@@ -42,7 +42,7 @@ Details of the changes - Electronic Monitoring
 
       {% endif %}  
 
-       {% if (data['usertype'] == 'Probation user') %}
+  <!--     {% if (data['usertype'] == 'Probation user') %}
 
 {% set revertHtml %}
           {{ govukTextarea({
@@ -97,7 +97,7 @@ Details of the changes - Electronic Monitoring
 
 
 
-  {% endif %}
+  {% endif %} -->
 
        <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
@@ -187,7 +187,7 @@ Details of the changes - Electronic Monitoring
 
        </div>-->
 
- {% if (data['sr-type'] == 'I have changed something else in the form') %}
+<!-- {% if (data['sr-type'] == 'I have changed something else in the form') %}
 
         {{ govukRadios({
             name: "variation-type",
@@ -271,7 +271,7 @@ Details of the changes - Electronic Monitoring
 
     {% endif %}
 
-<!--
+
 
               <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
                 <h1 class="govuk-label-wrapper">

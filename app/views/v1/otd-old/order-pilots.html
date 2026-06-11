@@ -28,7 +28,7 @@
 
   
 
-       {% elseif (data['region'] == "London") and (data['usertype'] == "Probation") %}
+       {% elseif (data['region'] == "London") and (data['usertype'] == "Probation user") %}
 
 
       {{ govukInsetText({
@@ -98,7 +98,7 @@
                   checked: (true if data['order-description'] == 'Licence Variation Project'),
                   disabled: (true if data['region'] == 'London'),
                   text: "Licence Variation Project",
-                  classes: ("govuk-visually-hidden" if data['notifying-org'] !== 'Probation service'),
+                  classes: ("govuk-visually-hidden" if data['usertype'] !== 'Probation user'),
                   conditional: {
                       html: warningHtml
                     }
@@ -171,7 +171,7 @@
 
     {% elseif (data['order-type'] == "Post release") and (data['hdc'] == "Yes") %}
 
-{% if (data['usertype'] == "Probation") %}
+{% if (data['usertype'] == "Probation user") %}
 
       <form class="form" action="/pilots-probation" method="post">
 

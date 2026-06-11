@@ -91,7 +91,7 @@
             ]
           }) }}
 
-             {% elseif (data['sr-type'] == 'I need to end all monitoring for the device wearer')  %}
+             {% elseif (data['sr-type'] == 'I need to end all monitoring for the device wearer' or data['sr-type'] == 'I need to end all monitoring for the device wearer2')  %}
 
            {{ govukFileUpload({
             id: "licence",
