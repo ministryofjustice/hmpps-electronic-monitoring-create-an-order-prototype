@@ -14,7 +14,7 @@
 
       {% if (data['usertype'] == "Home Office user") %} 
 
-       <form class="form" action="appointment-details" method="post">
+       <form class="form" action="/appointment-address-ho" method="post">
 
 
         {% else %} 
@@ -44,6 +44,8 @@
 
 
             {% if (data['addressquestion'] == "No") %}
+
+                 {% if (data['newform'] == "true") %}
 
                   {{ govukRadios({
                     classes: "govuk-radios",
@@ -90,8 +92,68 @@
                     ]
                   }) }}
 
-          {% else %}    
+                  {% else %} 
 
+                     {{ govukRadios({
+                    classes: "govuk-radios",
+                    name: "appointmentquestion",
+                    fieldset: {
+                      legend: {
+                        text: "Where will installation of the electronic monitoring device take place?",   
+                        isPageHeading: true,
+                       classes: "govuk-fieldset__legend--l"
+                      }
+                    },
+                    hint: {
+                            text: ""
+                          },
+                    items: [
+
+                      {
+                      value: "Device wearer has no fixed address",
+                      checked: (true if data['appointmentquestion'] == 'Device wearer has no fixed address'),
+                      disabled: (true if data['addressquestion'] == 'No'),
+                      text: "Device wearer has no fixed address"
+                      },
+                   
+                      {
+                        value: "At a prison",
+                        checked: (true if data['appointmentquestion'] == 'At a prison'),
+                        text: "At a prison"
+                      },
+                      {
+                        value: "At a probation office",
+                        checked: (true if data['appointmentquestion'] == 'At a probation office'),
+                        text: "At a probation office"
+                      },
+                      {
+                        value: "At an immigration removal centre",
+                        checked: (true if data['appointmentquestion'] == 'At an immigration removal centre'),
+                        text: "At an immigration removal centre"
+                      },
+                      {
+                        value: "At another address",
+                        checked: (true if data['appointmentquestion'] == 'At another address'),
+                        text: "At another address (for example, a relatives address they don't live at)"
+                      },
+                      {
+                        divider: "or"
+                      },
+                      {
+                        value: "Installation has already taken place",
+                        checked: (true if data['appointmentquestion'] == 'Installation has already taken place'),
+                        classes: ("govuk-visually-hidden" if data['variation'] == 'false'),
+                        text: "Installation has already taken place"
+                      }
+                    ]
+                  }) }}
+
+
+
+                  {% endif %}   
+
+          {% else %}    
+                    {% if (data['newform'] == "true") %}
 
                   {{ govukRadios({
                     classes: "govuk-radios",
@@ -136,6 +198,64 @@
                       }
                     ]
                   }) }}
+
+                   {% else %}
+
+
+                    {{ govukRadios({
+                    classes: "govuk-radios",
+                    name: "appointmentquestion",
+                    fieldset: {
+                      legend: {
+                        text: "Where will installation of the electronic monitoring device take place?",   
+                        isPageHeading: true,
+                       classes: "govuk-fieldset__legend--l"
+                      }
+                    },
+                    hint: {
+                            text: ""
+                          },
+                    items: [
+
+                      {
+                      value: "123 Glossop Road, Little Hayfield, High Peak, SK22 2NG",
+                      checked: (true if data['appointmentquestion'] == '123 Glossop Road, Little Hayfield, High Peak, SK22 2NG'),
+                      text: "123 Glossop Road, Little Hayfield, High Peak, SK22 2NG"
+                      },
+                   
+                      {
+                        value: "At a prison",
+                        checked: (true if data['appointmentquestion'] == 'At a prison'),
+                        text: "At a prison"
+                      },
+                      {
+                        value: "At a probation office",
+                        checked: (true if data['appointmentquestion'] == 'At a probation office'),
+                        text: "At a probation office"
+                      },
+                      {
+                        value: "At an immigration removal centre",
+                        checked: (true if data['appointmentquestion'] == 'At an immigration removal centre'),
+                        text: "At an immigration removal centre"
+                      },
+                       {
+                        value: "At another address",
+                        checked: (true if data['appointmentquestion'] == 'At another address'),
+                        text: "At another address (for example, a relatives address they don't live at)"
+                      },
+                      {
+                        divider: "or"
+                      },
+                      {
+                        value: "Installation has already taken place",
+                        checked: (true if data['appointmentquestion'] == 'Installation has already taken place'),
+                        classes: ("govuk-visually-hidden" if data['variation'] == 'false'),
+                        text: "Installation has already taken place"
+                      }
+                    ]
+                  }) }}
+
+                   {% endif %}      
 
           {% endif %} 
 

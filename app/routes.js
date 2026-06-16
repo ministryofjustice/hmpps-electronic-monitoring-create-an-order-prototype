@@ -287,9 +287,23 @@ router.post('/appointment-address', function(request, response) {
     } else if (appointmentquestion == "At an immigration removal centre"){
         response.redirect("/v1/monitoring-conditions/appointment-details")     
     } else if (appointmentquestion == "At another address"){
-        response.redirect("/v1/monitoring-conditions/appointment-details")                 
+        response.redirect("/v1/monitoring-conditions/appointment-details")    
+    } else if (appointmentquestion == "Installation has already taken place"){
+        response.redirect("/v1/monitoring-conditions/check-answers")                   
     } else {
         response.redirect("/v1/monitoring-conditions/check-answers")
+    }
+})
+
+router.post('/appointment-address-ho', function(request, response) {
+    var appointmentquestion = request.session.data['appointmentquestion']
+    var monitoringtype = request.session.data['monitoringtype']
+   
+    
+     if (appointmentquestion == "Installation has already taken place"){
+        response.redirect("/v1/monitoring-conditions/check-answers")                   
+    } else {
+        response.redirect("/v1/monitoring-conditions/appointment-details")
     }
 })
 
