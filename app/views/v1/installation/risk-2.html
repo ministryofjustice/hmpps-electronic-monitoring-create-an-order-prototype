@@ -25,6 +25,24 @@
 
       <form class="form" action="risk-2b" method="post">
 
+        {% set genderriskHtml %}
+          {{ govukInput({
+            id: "contact-by-email",
+            name: "contactByEmail",
+            type: "email",
+            autocomplete: "email",
+            spellcheck: false,
+            classes: "govuk-!-width-full",
+            label: {
+              text: "What sex or gender are they a risk to?"
+            },
+            hint: {
+                text: "For example, Women"
+              }
+          }) }}
+          {% endset -%}
+
+
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
           {{ govukCheckboxes({
@@ -53,7 +71,10 @@
               {
                 value: "Offensive towards someone because of their sex or gender",
                 checked: (true if data['risk'] == 'Offensive towards someone because of their sex or gender'),
-                text: "Offensive towards someone because of their sex or gender"
+                text: "Offensive towards someone because of their sex or gender",
+                conditional: {
+                    html: genderriskHtml
+                  }
               },
               {
                 value: "Offensive towards someone because of their race, nationality, ethnicity or national origin",

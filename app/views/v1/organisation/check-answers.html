@@ -198,6 +198,48 @@
 
       </dl>
 
+        {% if (data['usertype'] == "Court user") %}
+
+     <h2 class="govuk-heading-m">Responsible Police force</h2>
+
+  <dl class="govuk-summary-list govuk-!-margin-bottom-9">  
+
+  <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+         What is name of the Police force area?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['policearea'] or 'Northumberland' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               
+                  <a class="govuk-link" href="police-force?cya2=true">Change<span class="govuk-visually-hidden">  What is the Responsible Organisation's Probation Delivery Unit (PDU)? </span></a>
+                </li>
+                
+            </dd>
+          </div>
+
+               <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+         What is the Police force email address? (optional)
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['org-email'] or 'centralteam@homeoffice.org' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               
+                  <a class="govuk-link" href="police-force?cya2=true">Change<span class="govuk-visually-hidden">  What is the responsible organisation's email address? </span></a>
+                </li>
+                
+            </dd>
+          </div>
+
+    </dl>
+
+          {% else %} 
+
+
          <h2 class="govuk-heading-m">Responsible Organisation's details</h2>
 
 
@@ -264,23 +306,7 @@
             </dd>
           </div>-->
 
-           {% if (data['officer-org'] == "Police") %}
-
-  <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-         What is the Responsible Organisation's  Police Force Area?
-            </dt>
-            <dd class="govuk-summary-list__value">
-             {{ data['policearea'] or 'Northumberland' }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-               
-                  <a class="govuk-link" href="region-police?cya2=true">Change<span class="govuk-visually-hidden">  What is the Responsible Organisation's Probation Delivery Unit (PDU)? </span></a>
-                </li>
-                
-            </dd>
-          </div>
-
+         
    {% endif %}     
 
    {% if (data['officer-org'] == "Probation service") %}

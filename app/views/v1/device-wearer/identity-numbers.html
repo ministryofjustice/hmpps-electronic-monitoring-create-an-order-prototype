@@ -135,7 +135,7 @@
         {% endset -%}
 
 
-{% if (data['usertype'] == "Prison user")  %}
+{% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user")  %}
 
 
      {{ govukCheckboxes({
@@ -229,73 +229,15 @@
               conditional: {
                 html: deliusHtml
               }
-            }
-          ]
-        }) }}
-
-
-
-
-
-{% elseif (data['usertype'] == "Youth user") %}  
-
-
-     {{ govukCheckboxes({
-          name: "identity-numbers",
-          fieldset: {
-            legend: {
-              text: "What identity numbers do you have for the device wearer?",
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          hint: {
-            text: "Select and enter all identity numbers that you have for the device wearer."
-          },
-          items: [
+           
             
-            {
-              value: "Police National Computer (PNC)",
-              checked: (true if data['pnc'] !== NULL and data['pnc'] !== ''),
-              text: "Police National Computer (PNC)",
-              conditional: {
-                html: pncHtml
-              }
-            },
-            {
-              value: "National Offender Management Information System (NOMIS)",
-              checked: (true if data['nomis'] !== NULL and data['nomis'] !== ''),
-              text: "National Offender Management Information System (NOMIS)",
-              conditional: {
-                html: nomisHtml
-              }
-            },
-            {
-              value: "Prison number",
-              checked: (true if data['prison'] !== NULL and data['prison'] !== ''),
-              text: "Prison number",
-              conditional: {
-                html: prisonHtml
-              }
-            },
-          
-            {
-              value: "Court Case Reference Number (CCRN)",
-              checked: (true if data['ccrn'] !== NULL and data['ccrn'] !== ''),
-              text: "Court Case Reference Number",
-              conditional: {
-                html: urnHtml
-              }
-            },
-            {
-              value: "Magistrate Court Case Reference Number",
-              checked: (true if data['mrn'] !== NULL and data['mrn'] !== ''),
-              text: "Crown Court Case Reference Number",
-              conditional: {
-                html: mrnHtml
-              }
             }
           ]
         }) }}
+
+
+
+
 
 
 
@@ -328,18 +270,11 @@
             {
               value: "Court Case Reference Number (CCRN)",
               checked: (true if data['ccrn'] !== NULL and data['ccrn'] !== ''),
-              text: "Court Case Reference Number",
+              text: "Court Case Reference Number (CCRN)",
               conditional: {
                 html: urnHtml
               }
-            },
-            {
-              value: "Magistrate Court Case Reference Number",
-              checked: (true if data['mrn'] !== NULL and data['mrn'] !== ''),
-              text: "Crown Court Case Reference Number",
-              conditional: {
-                html: mrnHtml
-              }
+            
             }
           ]
         }) }}
@@ -451,14 +386,6 @@
               text: "Court Case Reference Number",
               conditional: {
                 html: urnHtml
-              }
-            },
-            {
-              value: "Magistrate Court Case Reference Number",
-              checked: (true if data['mrn'] !== NULL and data['mrn'] !== ''),
-              text: "Crown Court Case Reference Number",
-              conditional: {
-                html: mrnHtml
               }
             }
           ]

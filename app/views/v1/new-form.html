@@ -53,7 +53,7 @@
             title: {
               text: "About the Responsible Organisation"
             },
-            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/org-contact?cya2=false"),
+            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/police-force?cya2=false"),
             status: (completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
           },
           {
@@ -81,7 +81,7 @@
             title: {
               text: "Additional documents"
             },
-            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/licence?cya5=false"),
+            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/photo-question?cya5=false"),
             status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
           }
 

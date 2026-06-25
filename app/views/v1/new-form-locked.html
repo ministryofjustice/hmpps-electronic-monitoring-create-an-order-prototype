@@ -1,0 +1,139 @@
+{% extends "layouts/moj.html" %}
+
+{% block pageTitle %}
+  Electronic Monitoring notification form - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<!-- Breadcrumb -->
+<a href="dashboard" action="action" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ mojAlert({
+          variant: "warning",
+          title: "Some information could not be imported",
+          dismissible: false,
+          html: 'You cannot make changes to this form because it is assigned to Radia Perlman.'
+        }) }}
+
+      <h1 class="govuk-heading-l">Electronic Monitoring application form</h1>
+
+      
+
+ 
+
+      <form class="form" action="new-form" method="post">
+
+
+
+  <!-- <h2 class="govuk-heading-m">Notification form sections</h2>-->
+
+      {% set completedStatus = {
+        text: "Completed"
+      } %}
+
+      {% set incompleteStatus = {
+        tag: {
+          text: "Incomplete",
+          classes: "govuk-tag--blue"
+        }
+      } %}
+
+      {# To switch between the completed and incomplete statues, use some inline logic within the component below, like this: "status: (completedStatus if ... else incompleteStatus)" #}
+
+
+
+    {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the Responsible Organisation"
+            },
+            href: ("organisation/check-answers-view-draft" if data['section-2-complete'] == 'true'),
+            status: (completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("#" if data['section-1-complete'] == 'true'),
+            status: (completedStatus if data['section-1-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("#" if data['section-4-complete'] == 'true'),
+            status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
+          }, 
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("#" if data['section-3-complete'] == 'true'),
+            status: (completedStatus if data['section-3-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("#" if data['section-5-complete'] == 'true'),
+            status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          }
+
+        ]
+      }) }}
+
+
+
+
+
+
+
+    <div class="govuk-!-margin-top-5">
+       <div class="govuk-button-group">
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+           Assign form to me
+          </button>
+
+        <!--
+
+         <input type="hidden" id="email-address" name="emailAddress" value="lisa.rae2@justice.gov.uk">
+
+         {% if (data['newform'] == 'true' and data['usertype'] == 'Home Office user' and data['section-1-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true') %}
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Submit form
+          </button>
+
+
+           {% elseif (data['newform'] == 'true' and data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true') %}
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Submit form
+          </button>
+          {% elseif (data['newform'] == 'false' and data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true' and data['section-6-complete'] == 'true') %}
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Submit form
+          </button>
+          {% else %}
+              <button type="submit" class="govuk-button" disabled data-module="govuk-button">
+                Submit form
+              </button>
+          {% endif %}
+
+          <a class="govuk-link" href="delete-form">Delete form</a>
+
+           -->
+        </div>
+      </div>
+     
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

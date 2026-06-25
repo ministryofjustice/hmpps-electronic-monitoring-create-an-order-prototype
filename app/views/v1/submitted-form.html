@@ -43,7 +43,21 @@
 
     {% if (data['view'] == 'true') %}
 
+    {% if (data['draftversion'] == 'true') %}
+
+   {{ mojAlert({
+  variant: "warning",
+  title: "Some information could not be imported",
+  dismissible: false,
+  html: 'You are viewing the latest submitted version of this form. You cannot make changes to it because it is assigned to Joe Bloggs.'
+}) }}
+
+
+    {% endif %} 
+
     {% else %}
+
+    
 
     {% if (data['usertype'] == 'Probation user' and data['dirtydata'] == 'true') %}
 
@@ -89,7 +103,6 @@
     -->
     
 
-        {% else %}
                   
         {% endif %} 
 
@@ -123,6 +136,8 @@
             
 
             </div>
+
+
 
             {% elseif (data['view-variation'] == 'cancelled') %}
 
@@ -706,7 +721,7 @@
 
            {% if (data['view'] == 'true') %}
 
-            {% if (data['view-variation'] == 'true') %}
+            {% if (data['view-variation'] == 'true' or data['draftversion'] == 'true') %}
 
             {{ govukButton({
             text: "View and download form",
@@ -897,6 +912,8 @@
                     </div>  
                   </div>
 
+
+
             {% else %}
 
             <div class="moj-timeline">
@@ -1002,7 +1019,60 @@
                       <div class="moj-timeline__description govuk-!-padding-bottom-4"><a href="#">View submitted form</a></div>
 
                     </div>  
-                  </div>    
+                  </div>   
+
+                    {% elseif (data['view-variation'] == 'draft') %}    
+           
+             <div class="moj-timeline">
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Draft</h2>
+
+                        <p class="moj-timeline__byline">by Joe Bloggs</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                  
+                           <time datetime="2019-06-07T12:32:00.000Z">From Probation</time><br>
+                    
+                        <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
+                      </p>
+
+                       <div class="moj-timeline__description govuk-!-padding-bottom-4">
+
+                      
+                       </div> 
+
+                    </div>
+
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Form submitted</h2>
+
+                       <p class="moj-timeline__byline">by John Smith</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                   
+                           <time datetime="2019-06-07T12:32:00.000Z">Liverpool Prison</time><br>
+                    
+                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
+                      </p>
+
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4">
+                       
+                          <p>You are viewing this version of the form.</p>
+                      </div>
+
+                    </div>
+
+                    
+                  </div>
+    
 
 
             {% else %}

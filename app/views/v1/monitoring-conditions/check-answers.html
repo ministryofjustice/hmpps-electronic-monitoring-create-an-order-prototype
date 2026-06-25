@@ -393,6 +393,7 @@
           </div>
         </dl>
 
+   {% if (data['usertype'] == 'Probation user' or data['usertype'] == 'Youth user') %}
 
     <h2 class="govuk-heading-m">Curfew on the day of release</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -462,6 +463,8 @@
             </dd>
           </div>-->
         </dl>
+
+     {% endif %}    
         
     <h2 class="govuk-heading-m">Curfew timetable</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">

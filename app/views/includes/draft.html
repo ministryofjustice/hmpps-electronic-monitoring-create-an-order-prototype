@@ -11,7 +11,12 @@
               <select class="govuk-select" name="select"  id="mySelect" onchange="toggleElement()">
                 <option value="hide">My drafts</option>
                 <option value="show">Berwyn Prison's drafts</option>
+                <option value="hide">My failed to submit</option>
               </select>
+
+                <button type="submit" class="govuk-button govuk-button--secondary moj-multi-file-upload__button" data-module="govuk-button">
+                Filter
+              </button>
             </div>
 
 
@@ -53,7 +58,12 @@
 
          
                    <tr class="govuk-table__row" id="targetDiv" style="display:none;">
-                       <td class="govuk-table__cell"><a href="new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=true&section-5-complete=true&newform=true&error=false">Mohammed Mulin</a></td>
+                       <td class="govuk-table__cell">
+                         {% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user") %} 
+                         <a href="new-form-locked?section-1-complete=true&section-2-complete=true&section-3-complete=false&section-4-complete=true&section-5-complete=false&newform=true&error=false">Mohammed Mulin</a></td>
+                         {% else %}
+                         <a href="new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=true&section-5-complete=true&newform=true&error=false">Mohammed Mulin</a></td>
+                         {% endif %}
                     
                     <td class="govuk-table__cell">17/09/2025</td>
                     <td class="govuk-table__cell">

@@ -1,0 +1,72 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible organisation's details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+            <span class="govuk-caption-l">About the Responsible Organisation</span>
+       Responsible Police force
+      </h1>
+
+       <form class="form" action="/region" method="post">
+
+
+
+
+             {% include "/includes/police2.html" %}
+            
+
+
+       
+
+
+    
+        
+               {{ govukInput({
+          label: {
+            text: "What is the Police force email address? (optional)",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: " Provide a functional mailbox not a personal email."
+          },
+          classes: "govuk-input--width-20",
+          id: "org-email",
+          name: "org-email",
+          spellcheck: false,
+          value: data['org-email']
+        }) }}
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1029,11 +1029,23 @@ router.post('/language', function(request, response) {
     if (notifyingorg == "Family Court"){
         response.redirect("/v1/installation/risk-dapo")  
     } else if (notifyingorg == "Civil and County Court") {
-        response.redirect("/v1/installation/risk-civil")
+        response.redirect("/v1/installation/check-answers")
      } else if (usertype == "Home Office user") {
         response.redirect("/v1/installation/mappa")         
     } else {
         response.redirect("/v1/installation/risk")
+    }
+})
+
+router.post('/curfew-dates', function(request, response) {
+
+    var usertype = request.session.data['usertype']
+    if (usertype == "Prison user"){
+        response.redirect("/v1/monitoring-conditions/curfew-3")  
+    } else if (usertype == "Youth user") {
+        response.redirect("/v1/monitoring-conditions/curfew-3")        
+    } else {
+        response.redirect("/v1/monitoring-conditions/curfew-3-question")
     }
 })
 
