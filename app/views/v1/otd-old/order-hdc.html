@@ -24,11 +24,15 @@
  
 
  
-
+  {% if (data['isr-question'] == "true" and data['usertype'] == "Prison user" )  %} 
        
+      <form class="form" action="/order-hdc-isr" method="post">
+
+  {% else  %} 
+
       <form class="form" action="/order-hdc" method="post">
 
-
+  {% endif  %} 
 
         {{ govukRadios({
           classes: "govuk-radios--inline",

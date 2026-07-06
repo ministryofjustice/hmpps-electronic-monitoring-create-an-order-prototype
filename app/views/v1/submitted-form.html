@@ -14,7 +14,17 @@
 
     <div class="govuk-grid-column-two-thirds">
 
+  {% if (data['isr-question'] == "true" and data['usertype'] == "Prison user" and data['view'] !== "true" )  %} 
 
+      {{ mojAlert({
+          variant: "information",
+          title: "This order is subject to the changes in the Sentencing Act 2026.",
+          showTitleAsHeading: false,
+          dismissible: false,
+          html: 'This order is subject to the Sentencing Act 2026 changes.'
+        }) }}
+
+         {% endif  %}
 
      <!-- {% set html %}
 
@@ -112,6 +122,10 @@
 
      <h1 class="govuk-heading-l">Electronic Monitoring application for {{ data['wearer-firstname'] or "Bobbie" }} {{ data['wearer-lastname'] or "Gibbs" }}</h1>
 
+     {% elseif (data['view-variation'] == 'returned') %}
+
+     <h1 class="govuk-heading-l">Electronic Monitoring application for {{ data['wearer-firstname'] or "Ermintrude" }} {{ data['wearer-lastname'] or "Jones" }}</h1>
+
       {% else %}
 
       <h1 class="govuk-heading-l">Electronic Monitoring application for {{ data['fullname'] or "David Murphy" }}</h1>
@@ -139,9 +153,9 @@
 
 
 
-            {% elseif (data['view-variation'] == 'cancelled') %}
+            {% elseif (data['view-variation'] == 'returned') %}
 
-        <!--   <p> You can't make changes to this form because monitoring has ended.</p>-->
+         <p> This order has been returned. You need to review the reason it has been returned and resubmit it with any changes that are needed.</p>
       
 
             {% else %}
@@ -733,9 +747,28 @@
             {% elseif (data['view-variation'] == 'cancelled') %}
 
              {{ govukButton({
-            text: "Make changes to this form",
-            classes: "govuk-button",
+            text: "Make a copy of this form",
+            classes: "govuk-button--secondary",
             href: "hard-stop-ended"
+            }) }}
+
+            {{ govukButton({
+            text: "View and download form",
+            classes: "govuk-button--secondary",
+            href: "submitted-form-all"
+            }) }}
+
+            {% elseif (data['view-variation'] == 'returned') %}
+
+            {{ govukButton({
+              text: "Make changes to this form",
+              href: 'variations/edit-form-variation?fullname=Ermintrude Jones&clarification=true'
+            }) }}
+
+             {{ govukButton({
+            text: "View reason for return",
+            classes: "govuk-button--secondary",
+            href: "return-reason"
             }) }}
 
             {{ govukButton({
@@ -754,8 +787,8 @@
             {% elseif (data['view-variation'] == 'fail') %}
 
             {{ govukButton({
-            text: "Make changes to this form",
-            classes: "govuk-button",
+            text: "Make a copy of this form",
+            classes: "govuk-button--secondary",
             href: "hard-stop-ended"
             }) }}
 
@@ -911,6 +944,36 @@
 
                     </div>  
                   </div>
+
+ {% elseif (data['view-variation'] == 'returned') %}
+
+             <div class="moj-timeline">
+                   
+
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                   
+                        <h2 class="moj-timeline__title">Order returned</h2>
+                   
+
+                      <p class="moj-timeline__byline">by John Smith</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                        
+                           <time datetime="2019-06-07T12:32:00.000Z">From Liverpool Prison</time><br>
+                 
+                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
+                      </p>
+                    <!--  <div class="moj-timeline__description govuk-!-padding-bottom-4">
+                        <p>You are viewing this version of the form.</p>
+                      </div>  -->
+
+                    </div>  
+                  </div>
+
 
 
 

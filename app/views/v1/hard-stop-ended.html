@@ -19,11 +19,11 @@
      
  {% if (data['view-variation'] == 'cancelled') %}
 
-       You cannot make changes to this form because it has ended
+    Are you sure that you want to make a copy of the EMO application form for David Murphy?
 
  {% else %} 
 
-  You cannot make changes to this form because it failed to submit
+    Are you sure that you want to make a copy of the EMO application form for David Murphy?
   
  {% endif %}        
 
@@ -33,7 +33,7 @@
  
  {% if (data['view-variation'] == 'cancelled') %}
 
-      <p>This is due to one of the following:</p>
+   <!--   <p>This is due to one of the following:</p>
 
   
 
@@ -42,7 +42,7 @@
               <li>The device wearer's circumstances have changed and monitoring has ended early.</li>
               <li>The end date of the order has passed.</li>
 
-            </ul>
+            </ul> -->
 
             <p>If the device wearer has been recalled to prison and is being re-released you can make a copy of the form and submit it.</p>
 
@@ -59,17 +59,17 @@
        <div class="govuk-button-group">     
 
 
-     {{ govukButton({
-          text: "Back to start",
-          href: ('dashboard' ),
-          classes: "govuk-button"
-        }) }}
+         {{ govukButton({
+              text: "Yes, make a copy",
+              href: 'org-details-change?sr-address=false&view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false',
+              classes: "govuk-button--warning"
+            }) }}
 
-        {{ govukButton({
-          text: "Make a copy of the form",
-          href: ('submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&clarification=true&view-variation=false' ),
-          classes: "govuk-button--secondary"
-        }) }}
+            {{ govukButton({
+              text: "Cancel and return to form",
+              href: 'submitted-form',
+              classes: "govuk-button--secondary"
+            }) }}
 
       </div>
     </div>

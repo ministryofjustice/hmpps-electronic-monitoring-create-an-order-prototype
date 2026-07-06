@@ -13,7 +13,20 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">Electronic Monitoring application form</h1>
+
+       {% if (data['isr-question'] == "true" and data['usertype'] == "Prison user" )  %} 
+
+      {{ mojAlert({
+          variant: "information",
+          title: "This order is subject to the changes in the Sentencing Act 2026.",
+          showTitleAsHeading: false,
+          dismissible: false,
+          html: 'This order is subject to the Sentencing Act 2026 changes.'
+        }) }}
+
+         {% endif  %}
+
+      <h1 class="govuk-heading-l ">Electronic Monitoring application form</h1>
 
       
 

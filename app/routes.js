@@ -788,11 +788,26 @@ router.post('/order-hdc', function(request, response) {
   
     var ordersentence = request.session.data['order-sentence']
     if (ordersentence == "Section 250 / Section 91"){
-        response.redirect("/v1/otd-old/order-prrar") 
+        response.redirect("/v1/otd-old/order-prrar")      
     } else {
         response.redirect("/v1/otd-old/order-pilots")
     }
 })
+
+router.post('/order-hdc-isr', function(request, response) {
+
+  
+    var ordersentence = request.session.data['order-sentence']
+    var hdc = request.session.data['hdc']
+    if (ordersentence == "Section 250 / Section 91"){
+        response.redirect("/v1/otd-old/order-prrar") 
+    } else if (hdc == "Yes") {
+        response.redirect("/v1/otd-old/hdc-pause")      
+    } else {
+        response.redirect("/v1/otd-old/order-pilots")
+    }
+})
+
 
 router.post('/order-issp', function(request, response) {
 
@@ -982,10 +997,8 @@ router.post('/type-change-areyousure', function(request, response) {
         response.redirect("/v1/variations/sr-question?view=false") 
     } else if (usertype == "Home Office user"){
         response.redirect("/v1/variations/sr-question?view=false")     
-    } else if (clarification == "true") {     
-        response.redirect("/v1/submitted-form?sr-address=view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false") 
-    } else {
-        response.redirect("/v1/variations/sr-question3?view=false") 
+     } else {
+        response.redirect("/v1/org-details-change?sr-address=false&view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false") 
     }
 })
 
