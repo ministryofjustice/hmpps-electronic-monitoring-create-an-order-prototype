@@ -59,7 +59,7 @@
   variant: "warning",
   title: "Some information could not be imported",
   dismissible: false,
-  html: 'You are viewing the latest submitted version of this form. You cannot make changes to it because it is assigned to Joe Bloggs.'
+  html: 'You cannot make changes to this form because it is assigned to Joe Bloggs.'
 }) }}
 
 
@@ -155,7 +155,7 @@
 
             {% elseif (data['view-variation'] == 'returned') %}
 
-         <p> This order has been returned. You need to review the reason it has been returned and resubmit it with any changes that are needed.</p>
+         <p> This form has been returned. You need to review the reason it has been returned, make any necessary changes, and resubmit it.</p>
       
 
             {% else %}
@@ -253,7 +253,52 @@
 
  {% if (data['view'] == 'true') %}
 
-     {% if (data['usertype'] == 'Probation user') %}
+     {% if (data['draftversion'] == 'true') %}
+
+
+      {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the Responsible Organisation"
+            },
+            href: ("organisation/check-answers-view"),
+            status: ( completedStatus if data['section-2-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: ( completedStatus if data['section-1-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+           status: ( completedStatus if data['section-3-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+           status: ( completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          }
+
+        ]
+      }) }}
+
+
+
+     {% elseif (data['usertype'] == 'Probation user') %}
 
 
       {{ govukTaskList({
@@ -737,11 +782,13 @@
 
             {% if (data['view-variation'] == 'true' or data['draftversion'] == 'true') %}
 
-            {{ govukButton({
-            text: "View and download form",
-            classes: "govuk-button--secondary",
-            href: "submitted-form-all"
+             {{ govukButton({
+            text: "Assign form to me",
+            classes: "govuk-button",
+            href: "#"
             }) }}
+
+           
 
 
             {% elseif (data['view-variation'] == 'cancelled') %}
@@ -898,7 +945,7 @@
 
  
 
-                       <p class="moj-timeline__byline">by John Smith</p>
+                       <p class="moj-timeline__byline">by Ada Lovelace</p>
 
                       </div>
 
@@ -928,7 +975,7 @@
                         <h2 class="moj-timeline__title">Failed to submit</h2>
                    
 
-                      <p class="moj-timeline__byline">by John Smith</p>
+                      <p class="moj-timeline__byline">by Ada Lovelace</p>
 
                       </div>
 
@@ -954,10 +1001,10 @@
 
                       <div class="moj-timeline__header">
                    
-                        <h2 class="moj-timeline__title">Order returned</h2>
+                        <h2 class="moj-timeline__title">Form returned</h2>
                    
 
-                      <p class="moj-timeline__byline">by John Smith</p>
+                      <p class="moj-timeline__byline">by Ada Lovelace</p>
 
                       </div>
 
@@ -1010,7 +1057,7 @@
                       <div class="moj-timeline__header">
                         <h2 class="moj-timeline__title">Form submitted</h2>
 
-                       <p class="moj-timeline__byline">by John Smith</p>
+                       <p class="moj-timeline__byline">by Ada Lovelace</p>
 
                       </div>
 
@@ -1068,7 +1115,7 @@
                       <div class="moj-timeline__header">
                         <h2 class="moj-timeline__title">Form submitted</h2>
 
-                        <p class="moj-timeline__byline">by John Smith</p>
+                        <p class="moj-timeline__byline">by Ada Lovelace</p>
 
                       </div>
 
@@ -1105,7 +1152,7 @@
 
                        <div class="moj-timeline__description govuk-!-padding-bottom-4">
 
-                      
+                       <p>You are viewing this version of the form.</p>
                        </div> 
 
                     </div>
@@ -1115,7 +1162,7 @@
                       <div class="moj-timeline__header">
                         <h2 class="moj-timeline__title">Form submitted</h2>
 
-                       <p class="moj-timeline__byline">by John Smith</p>
+                       <p class="moj-timeline__byline">by Ada Lovelace</p>
 
                       </div>
 
@@ -1128,7 +1175,7 @@
 
                       <div class="moj-timeline__description govuk-!-padding-bottom-4">
                        
-                          <p>You are viewing this version of the form.</p>
+                          <div class="moj-timeline__description govuk-!-padding-bottom-4"><a href="#">View submitted form</a></div>
                       </div>
 
                     </div>
@@ -1171,7 +1218,7 @@
                       <div class="moj-timeline__header">
                         <h2 class="moj-timeline__title">Form submitted</h2>
 
-                       <p class="moj-timeline__byline">by John Smith</p>
+                       <p class="moj-timeline__byline">by Ada Lovelace</p>
 
                       </div>
 
