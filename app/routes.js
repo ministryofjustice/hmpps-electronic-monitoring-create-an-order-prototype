@@ -1040,7 +1040,7 @@ router.post('/language', function(request, response) {
     var notifyingorg = request.session.data['notifying-org']
     var usertype = request.session.data['usertype']
     if (notifyingorg == "Family Court"){
-        response.redirect("/v1/installation/risk-dapo")  
+        response.redirect("/v1/installation/check-answers")  
     } else if (notifyingorg == "Civil and County Court") {
         response.redirect("/v1/installation/check-answers")
      } else if (usertype == "Home Office user") {

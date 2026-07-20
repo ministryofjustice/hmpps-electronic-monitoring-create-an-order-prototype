@@ -206,7 +206,7 @@
 
        {% if (data['notifying-org'] == "Family Court") %}
 
-        <div class="govuk-summary-list__row">
+   <!--     <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
             DAPO order clauses
             </dt>
@@ -217,7 +217,7 @@
               <a class="govuk-link" href="risk-listdapo?cya3=true">Change<span class="govuk-visually-hidden"> What type of offence has been committed by the device wearer?</span></a>
             </dd>
           </div>
-
+-->
        {% elseif (data['notifying-org'] == "Civil and County Court") %}
 
    <!--      <div class="govuk-summary-list__row">
@@ -340,10 +340,17 @@
     {% from "govuk/components/button/macro.njk" import govukButton %}
 
       <div class="govuk-button-group">
+     {% if (data['usertype'] == "Court user" or data['usertype'] == "Home Office user") %}
+        {{ govukButton({
+          text: "Save and go to next section",
+          href: ("../attachments/check-answers?section-3-complete=true" if data['section-5-complete'] == 'true' else "../attachments/photo-question?section-3-complete=true")
+        }) }}
+     {% else %}
         {{ govukButton({
           text: "Save and go to next section",
           href: ("../attachments/check-answers?section-3-complete=true" if data['section-5-complete'] == 'true' else "../attachments/licence?section-3-complete=true")
         }) }}
+     {% endif %}   
 
         {{ govukButton({
           text: "Save as draft",
