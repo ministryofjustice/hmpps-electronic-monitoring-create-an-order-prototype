@@ -61,7 +61,53 @@
 {% if (data['order-type'] == "Post release") and (data['hdc'] == "No") %}
 
 
-{% if (data['usertype'] == "Probation user") %}
+{% if (data['isr-question'] == "true") %}
+
+  <form class="form" action="/pilots" method="post">
+
+            {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-description",
+              fieldset: {
+                legend: {
+                  text: "What pilot project is the device wearer part of?",
+                  isPageHeading: true,
+                classes: "govuk-visually-hidden"
+                }
+              },
+
+            hint: {
+              text: ""
+            },
+              items: [
+               
+                {
+                  value: "Domestic Abuse Perpetrator on Licence (DAPOL)",
+                  disabled: (true if data['region'] == 'North East'),
+                  checked: (true if data['order-description'] == 'Domestic Abuse Perpetrator on Licence (DAPOL)'),
+                  text: "Domestic Abuse Perpetrator on Licence (DAPOL)"
+                },
+                {
+                  value: "GPS acquisitive crime",
+                  checked: (true if data['order-description'] == 'GPS acquisitive crime'),
+                  text: "GPS acquisitive crime (EMAC)"
+                },
+                 
+
+                 {
+                  divider: "or"
+                },
+                {
+                  value: "They are not part of any of these pilots",
+                  checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
+                  text: "They are not part of any of these pilots"
+
+                }
+              ]
+            }) }}
+
+
+{% elseif (data['usertype'] == "Probation user") %}
 
       <form class="form" action="/pilots-probation" method="post">
 

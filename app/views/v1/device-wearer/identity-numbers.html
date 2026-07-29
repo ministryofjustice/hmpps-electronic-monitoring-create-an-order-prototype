@@ -134,8 +134,21 @@
         }) }}
         {% endset -%}
 
+{% if (data['usertype'] == "Prison user") %}   
 
-{% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user")  %}
+{{ govukInput({
+  label: {
+    text: "What is the device wearer's prison number?",
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  id: "event-name",
+  classes: "govuk-input--width-20",
+  name: "eventName"
+}) }}     
+
+
+{% elseif (data['usertype'] == "Youth user")  %}
 
 
      {{ govukCheckboxes({
@@ -159,14 +172,7 @@
                 html: pncHtml
               }
             },
-            {
-              value: "National Offender Management Information System (NOMIS)",
-              checked: (true if data['nomis'] !== NULL and data['nomis'] !== ''),
-              text: "National Offender Management Information System (NOMIS)",
-              conditional: {
-                html: nomisHtml
-              }
-            },
+           
             {
               value: "Prison number",
               checked: (true if data['prison'] !== NULL and data['prison'] !== ''),
@@ -198,22 +204,7 @@
           },
           items: [
             
-            {
-              value: "Police National Computer (PNC)",
-              checked: (true if data['pnc'] !== NULL and data['pnc'] !== ''),
-              text: "Police National Computer (PNC)",
-              conditional: {
-                html: pncHtml
-              }
-            },
-            {
-              value: "National Offender Management Information System (NOMIS)",
-              checked: (true if data['nomis'] !== NULL and data['nomis'] !== ''),
-              text: "National Offender Management Information System (NOMIS)",
-              conditional: {
-                html: nomisHtml
-              }
-            },
+         
             {
               value: "Prison number",
               checked: (true if data['prison'] !== NULL and data['prison'] !== ''),
@@ -244,8 +235,19 @@
 
 {% elseif (data['usertype'] == "Court user") %} 
 
+{{ govukInput({
+  label: {
+    text: "What is the device wearer's Court Case Reference Number (CCRN)?",
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  id: "event-name",
+  classes: "govuk-input--width-20",
+  name: "eventName"
+}) }}  
 
-     {{ govukCheckboxes({
+<!--
+    {{ govukCheckboxes({
           name: "identity-numbers",
           fieldset: {
             legend: {
@@ -279,13 +281,24 @@
           ]
         }) }}
 
-
-
+-->
 
 {% elseif (data['usertype'] == "Home Office user") %}  
 
+{{ govukInput({
+  label: {
+    text: "What is the device wearer's Compliance and Enforcement Person Reference (CEPR)?",
+    classes: "govuk-label--l",
+    isPageHeading: true
+  },
+  id: "event-name",
+  classes: "govuk-input--width-20",
+  name: "eventName"
+}) }}  
 
-   {{ govukCheckboxes({
+
+
+  <!-- {{ govukCheckboxes({
           name: "identity-numbers",
           fieldset: {
             legend: {
@@ -321,7 +334,7 @@
 
 
 
-
+-->
 {% else %}  
 
 

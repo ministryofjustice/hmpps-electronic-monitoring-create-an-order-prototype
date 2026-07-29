@@ -22,6 +22,28 @@
 
    {% endif %}
 
+   {% if (data['usertype'] == "Home Office user") %}
+    <div class="govuk-phase-banner" style=" padding-bottom:20px">
+              <label class="govuk-label" for="select">
+                Showing:
+              </label>
+              <select class="govuk-select" name="select"  id="mySelect" onchange="toggleElement()">
+                <option value="hide">My forms</option>
+                <option value="show">Home Office's forms</option>
+              
+              </select>
+
+                <button type="submit" class="govuk-button govuk-button--secondary moj-multi-file-upload__button" data-module="govuk-button">
+                Filter
+              </button>
+            </div>
+
+
+   {% endif %}
+
+
+
+
 
      <table class="govuk-table  govuk-table--small-text-until-tablet">
             <thead class="govuk-table__head">
