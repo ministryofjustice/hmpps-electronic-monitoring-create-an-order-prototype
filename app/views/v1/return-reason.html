@@ -51,11 +51,21 @@
               Details
             </dt>
             <dd class="govuk-summary-list__value">
-              The monitoring conditions in the licence do not match the form.
+              {% if (data['usertype'] == "Home Office user") %}
+             
+              This ‘New order’ request has been rejected because you selected the wrong monitoring conditions.  
+
+              Immigration orders require to have, at minimum, one of the following conditions. Trail Monitoring (Fitted device) or Trail Monitoring (non-Fitted device).
+
+                 {% else %}
+
+               The monitoring conditions in the licence do not match the form.
 
               The licence has both trail and curfew monitoring and the form has just trail monitoring.
 
               The licence and the form must match therefore one of them must be changed.
+                {% endif %}
+
             </dd>
             <dd class="govuk-summary-list__actions">
               
