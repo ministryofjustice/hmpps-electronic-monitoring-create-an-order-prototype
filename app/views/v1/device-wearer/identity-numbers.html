@@ -80,8 +80,11 @@
           name: "prison",
           classes: "govuk-!-width-two-thirds",
           value: data['prison'],
+          hint: {
+    text: "This is sometimes known as a ‘NOMIS number’ or ‘alpha number’. For example, A1234BC"
+  },
           label: {
-            text: "Enter Prison number"
+            text: "Enter prison number"
           }
         }) }}
         {% endset -%}
@@ -143,6 +146,9 @@
     isPageHeading: true
   },
   id: "event-name",
+   hint: {
+    text: "This is sometimes known as a ‘NOMIS number’ or ‘alpha number’. For example, A1234BC"
+  },
   classes: "govuk-input--width-20",
   name: "eventName"
 }) }}     

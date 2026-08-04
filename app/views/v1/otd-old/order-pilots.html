@@ -16,14 +16,14 @@
 
          <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
-        What pilot project is the device wearer part of?
+        What pathfinder or programme is the device wearer part of?
       </h1>
 
      {% if (data['region'] == "North East") %}
 
 
       {{ govukInsetText({
-        text: "The device wearer is being managed by the North East probation region. To be eligible for the DAPOL pilot they must be managed by an in-scope region. Any queries around pilot eligibility need to be raised with the appropriate COM. "
+        text: "The device wearer is being managed by the North East probation region. To be eligible for the DAPOL pathfinder they must be managed by an in-scope region. Any queries around pathfinder eligibility need to be raised with the appropriate COM. "
       }) }}
 
   
@@ -32,7 +32,7 @@
 
 
       {{ govukInsetText({
-        text: "The device wearer is being managed by the London probation region. To be eligible for the Licence Variation pilot they must be managed by an in-scope region."
+        text: "The device wearer is being managed by the London probation region. To be eligible for the Licence Variation pathfinder they must be managed by an in-scope region."
       }) }}
 
       {% else %}  
@@ -47,11 +47,11 @@
        
 
          {% set warningHtml %}
-           <p class="govuk-body">This pilot is only for probation practitioners varying a licence in response to an escalation of risk or as an alternative to recall.</p>
+           <p class="govuk-body">This pathfinder is only for probation practitioners varying a licence in response to an escalation of risk or as an alternative to recall.</p>
             {% endset -%}
 
             {% set amlHtml %}
-           <p class="govuk-body">To be eligible for tagging the device wearer must either be part of a pilot or have Alcohol Monitoring on Licence (AML) as a licence condition.</p>
+           <p class="govuk-body">To be eligible for tagging the device wearer must either be part of a pathfinder or have Alcohol Monitoring on Licence (AML) as a licence condition.</p>
 
            
             {% endset -%}
@@ -70,7 +70,7 @@
               name: "order-description",
               fieldset: {
                 legend: {
-                  text: "What pilot project is the device wearer part of?",
+                  text: "What pathfinder or programme is the device wearer part of?",
                   isPageHeading: true,
                 classes: "govuk-visually-hidden"
                 }
@@ -100,7 +100,7 @@
                 {
                   value: "They are not part of any of these pilots",
                   checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
-                  text: "They are not part of any of these pilots"
+                  text: "They are not part of any of these pathfinders or programmes"
 
                 }
               ]
@@ -156,7 +156,7 @@
                 {
                   value: "They are not part of any of these pilots",
                   checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
-                  text: "They are not part of any of these pilots",
+                  text: "They are not part of any of these pathfinders or programmes",
                   behaviour: "exclusive",
                   conditional: {
                       html: amlHtml
@@ -204,7 +204,7 @@
                 {
                   value: "They are not part of any of these pilots",
                   checked: (true if data['order-description'] == 'They are not part of any of these pilots'),
-                  text: "They are not part of any of these pilots",
+                  text: "They are not part of any of these  pathfinders or programmes",
                   behaviour: "exclusive",
                   conditional: {
                       html: amlHtml

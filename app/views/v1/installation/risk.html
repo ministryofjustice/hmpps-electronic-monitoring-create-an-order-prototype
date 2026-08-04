@@ -111,11 +111,15 @@
                 checked: (true if data['offence'] == 'Terrorism offence'),
                 text: "Terrorism offence"
               },
+              {
+                divider: "or"
+              },
 
               {
                 value: "Offence not recorded",
                 checked: (true if data['offence'] == 'Offence not recorded'),
-                text: "Offence not recorded"
+                text: "Offence not recorded",
+                behaviour: "exclusive"
               },
               {
                 divider: "or"
@@ -220,9 +224,13 @@
                 text: "Terrorism offence"
               },
               {
+                divider: "or"
+              },
+              {
                 value: "Offence not recorded",
                 checked: (true if data['offence'] == 'Offence not recorded'),
-                text: "Offence not recorded"
+                text: "Offence not recorded",
+                behaviour: "exclusive"
               }
             ]
           }) }}
