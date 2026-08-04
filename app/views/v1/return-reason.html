@@ -23,24 +23,39 @@
 
       </h1>
 
-      <p>Date of return - 23 July 2026 at 13:34</p>
 
-      <h2 class="govuk-heading-s"> Incorrect monitoring conditions</h2>
 
       {% if (data['usertype'] == "Home Office user") %}
+
+            {% if (data['wearer-firstname'] == "Ermintrude") %}
+              <h2 class="govuk-heading-s"> Incorrect monitoring conditions</h2>
              
               <p>This ‘New order’ request has been rejected because you selected the wrong monitoring conditions.  </p>
 
-              <p>Immigration orders require to have, at minimum, one of the following conditions. Trail Monitoring (Fitted device) or Trail Monitoring (non-Fitted device).</p>
+              <p>Immigration orders require to have, at a minimum, Trail Monitoring (Fitted device) or Trail Monitoring (non-Fitted device).</p>
 
-                 {% else %}
+              {% else %}
+             
+              <h2 class="govuk-heading-s"> Incorrect address</h2>
+
+              <p>This ‘New order’ request has been rejected because the installation address provided is incorrect or invalid. </p>
+
+              <p>Please ensure that the installation address is complete and accurate.  </p>
+
+              <p>Where possible, please use the built‑in address lookup to reduce the risk of incorrect details and delays when resubmitting. </p>
+
+              <p>If entering the address manually, you should verify it using reliable tools such as the Post Office postcode finder or Google Maps. </p>
+                {% endif %}
+
+       {% else %}
+              <h2 class="govuk-heading-s"> Incorrect monitoring conditions</h2>
 
                <p>The monitoring conditions in the licence do not match the form.</p>
 
              <p> The licence has both trail and curfew monitoring and the form has just trail monitoring.</p>
 
              <p> The licence and the form must match therefore one of them must be changed.</p>
-                {% endif %}
+        {% endif %}
 
 
     <!--  <dl class="govuk-summary-list govuk-!-margin-bottom-9">

@@ -14,7 +14,13 @@
 
               <form class="form" action="/type-change-areyousure" method="post">
 
+   {% if (data['view-variation'] == 'returned') %}
+      <h1 class="govuk-heading-l">Are you sure that you want to make changes to the EMO application form for {{ data['wearer-firstname'] or "Ermintrude" }} {{ data['wearer-lastname'] or "Jones" }}?</h1>   
+          
+  {% else %}
       <h1 class="govuk-heading-l">Are you sure that you want to make changes to the EMO application form for {{ data['fullname'] or "David Murphy" }}?</h1>
+
+  {% endif %}    
 
     
       

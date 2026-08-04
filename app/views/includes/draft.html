@@ -57,9 +57,21 @@
             </thead>
             <tbody class="govuk-table__body">
               <tr class="govuk-table__row">
-                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=returned&newform=true&draftversion=false">Ermintrude Jones</a></td>
-                <td class="govuk-table__cell">18/09/2025</td>
+                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=returned&newform=true&draftversion=false&wearer-firstname=Ermintrude&wearer-lastname=Jones">Ermintrude Jones</a></td>
+                <td class="govuk-table__cell">04/08/2026</td>
                 <td class="govuk-table__cell">Ada Lovelace</td>
+               
+                <td class="govuk-table__cell">
+                  {{govukTag({
+                      text: "Returned",
+                      classes: "govuk-tag--red"
+                    })}}</td>
+              </tr>
+
+                <tr class="govuk-table__row" id="targetDiv2" style="display:none;">
+                <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=returned&newform=true&draftversion=false&wearer-firstname=Bob&wearer-lastname=Brown">Bob Brown</a></td>
+                <td class="govuk-table__cell">04/08/2026</td>
+                <td class="govuk-table__cell">Radia Perlman</td>
                
                 <td class="govuk-table__cell">
                   {{govukTag({
@@ -70,7 +82,7 @@
 
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=true&section-5-complete=true&newform=true&error=false">David Francis</a></td>
-                <td class="govuk-table__cell">18/09/2025</td>
+                <td class="govuk-table__cell">03/08/2026</td>
                 <td class="govuk-table__cell">Ada Lovelace</td>
                
                 <td class="govuk-table__cell">
@@ -82,7 +94,7 @@
                <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="new-form-error?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=false&section-5-complete=true&newform=true">Dylan Davies</a></td>
              
-                <td class="govuk-table__cell">17/09/2025</td>
+                <td class="govuk-table__cell">02/08/2026</td>
                 <td class="govuk-table__cell">Ada Lovelace</td>
                
                 <td class="govuk-table__cell">
@@ -93,17 +105,17 @@
               </tr>
 
          
-                   <tr class="govuk-table__row" id="targetDiv" style="display:none;">
+                   <tr class="govuk-table__row" id="targetDiv1" style="display:none;">
                        <td class="govuk-table__cell">
-                         {% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user") %} 
+                         {% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user" or data['usertype'] == "Home Office user") %} 
                          <a href="new-form-locked?section-1-complete=true&section-2-complete=true&section-3-complete=false&section-4-complete=true&section-5-complete=false&newform=true&error=false">Mohammed Mulin</a></td>
                          {% else %}
                          <a href="new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=true&section-5-complete=true&newform=true&error=false">Mohammed Mulin</a></td>
                          {% endif %}
                     
-                    <td class="govuk-table__cell">17/09/2025</td>
+                    <td class="govuk-table__cell">02/08/2026</td>
                     <td class="govuk-table__cell">
-                      {% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user") %} 
+                      {% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user" or data['usertype'] == "Home Office user") %} 
                       Radia Perlman
                       {% else %}
                       Ada Lovelace
@@ -120,7 +132,7 @@
 
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="submitted-form?view=true&variation=false&view-variation=fail&newform=true&draftversion=false">{{ data['wearer-firstname'] or "Bobbie" }} {{ data['wearer-lastname'] or "Gibbs" }}</a></td>
-                <td class="govuk-table__cell">05/09/2025</td>
+                <td class="govuk-table__cell">02/08/2026</td>
                 <td class="govuk-table__cell">Ada Lovelace</td>
                 <td class="govuk-table__cell">
                 {{govukTag({
@@ -137,12 +149,15 @@
 <script>
 function toggleElement() {
   const select = document.getElementById("mySelect");
-  const div = document.getElementById("targetDiv");
-  
+  const div1 = document.getElementById("targetDiv1");
+  const div2 = document.getElementById("targetDiv2");
+
   if (select.value === "show") {
-    div.style.display = "table-row";
+    div1.style.display = "table-row";
+    div2.style.display = "table-row";
   } else {
-    div.style.display = "none";
+    div1.style.display = "none";
+    div2.style.display = "none";
   }
 }
 </script>

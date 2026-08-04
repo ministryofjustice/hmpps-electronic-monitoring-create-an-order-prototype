@@ -83,7 +83,7 @@
       <form class="form" action="../submitted-form?section-4-complete=true" method="post">
 
        
-
+   {% if (data['usertype'] !== 'Home Office user') %}
 
     <h2 class="govuk-heading-m">Order information</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -189,6 +189,8 @@
           </div>
 
            </dl>
+
+           {% endif %}
 
         <h2 class="govuk-heading-m">Monitoring details</h2>
             <dl class="govuk-summary-list govuk-!-margin-bottom-9">
