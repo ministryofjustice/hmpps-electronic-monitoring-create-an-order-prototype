@@ -1026,13 +1026,33 @@
                       <div class="moj-timeline__header">
                         <h2 class="moj-timeline__title">Form submitted</h2>
 
+                    {% if (data['wearer-firstname'] == "Bob") %}
+
                        <p class="moj-timeline__byline">by Radia Perlman</p>
+
+                    {% else %}   
+
+                      <p class="moj-timeline__byline">by Ada Lovelace</p>
+
+
+                    {% endif %}   
 
                       </div>
 
                       <p class="moj-timeline__date">
+
+                        {% if (data['usertype'] == "Home Office user") %}
+                        
+                        <time datetime="2019-06-07T12:32:00.000Z">Home Office</time><br>
+
+                         {% else %}   
+                        <time datetime="2019-06-07T12:32:00.000Z">Liverpool Prison</time><br>
+
+                        {% endif %}  
+
+        
                    
-                           <time datetime="2019-06-07T12:32:00.000Z">Liverpool Prison</time><br>
+                           
                     
                         <time datetime="2019-06-07T12:32:00.000Z">4 August 2026 at 12:32pm</time>
                       </p>
