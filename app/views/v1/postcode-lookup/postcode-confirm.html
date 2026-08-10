@@ -42,17 +42,55 @@
           Confirm the {{ data['postcodetype'] or "device wearer's"}} address
           </h1>
 
+          {% if (data['address-found'] == "true") %}
+
+           {% if (data['sectionid'] == "About the device wearer") %}
+
+          
+          {% call govukInsetText({ classes: "govuk-!-margin-10 guidance-panel" }) %}
+             <p>Check that this is the address where the person wearing the monitoring device will live while they are being electronically monitored.</p>
+       
+             <p>1 Washington Street<br>Worcester<br>WR1 1NL</p>
+             
+          {% endcall %}
+
+
+
+
+      
+
+          <p class="govuk-body"><a href="postcode?address-found=false" class="govuk-link">Search for a different address</a></p>
+          <p class="govuk-body"><a href="enter-manually?address-found=false" class="govuk-link">Enter address manually</a></p>
+          <p class="govuk-body"><a href="../device-wearer/contact-address-question?address-found=false" class="govuk-link">The device wearer does not have a fixed address</a></p>
+          </div>
+
+          {% endif %} 
+
+          {% else %}  
+
+           {% if (data['search'] == "true") %}
+
           <p>6 addresses found for <b>wr11nl</b> and <b>1</b>. <a href="postcode">Search again</a></p>
 
-          {{ govukInsetText({
+          {% else %}  
+
+           <p>0 addresses found. <a href="postcode">Search again</a></p>
+
+          {% endif %}  
+
+           {{ govukInsetText({
           html: "1 Washington Street<br>Worcester<br>WR1 1NL"
           }) }}
 
       
 
           <p class="govuk-body"><a href="postcode-list" class="govuk-link">Use a different address</a></p>
-          <p class="govuk-body"><a href="enter-manually" class="govuk-link">Enter address manually</a></p>
+          <p class="govuk-body"><a href="enter-manually?search=false" class="govuk-link">Enter address manually</a></p>
           </div>
+
+          {% endif %} 
+
+         
                  
 
     {% from "govuk/components/button/macro.njk" import govukButton %}

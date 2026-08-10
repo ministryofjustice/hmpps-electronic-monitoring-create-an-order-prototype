@@ -1035,6 +1035,21 @@ router.post('/identity-numbers', function(request, response) {
     }
 })
 
+router.post('/identity-numbers-lookup', function(request, response) {
+
+    var usertype = request.session.data['usertype']
+    if (usertype == "Home Office user"){
+        response.redirect("/v1/device-wearer/personal-details")  
+    } else if (usertype == "Family court user") {
+        response.redirect("/v1/device-wearer/personal-details") 
+    } else if (usertype == "Civil court user") {
+        response.redirect("/v1/device-wearer/personal-details")             
+    } else {
+        response.redirect("/v1/device-wearer/device-wearer-confirm")
+    }
+})
+
+
 router.post('/language', function(request, response) {
 
     var notifyingorg = request.session.data['notifying-org']

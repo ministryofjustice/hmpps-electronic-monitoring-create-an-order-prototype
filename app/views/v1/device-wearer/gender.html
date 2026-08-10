@@ -31,7 +31,7 @@
 
         {% else %}
 
-        <form class="form" action="age" method="post">
+        <form class="form" action="gender-old" method="post">
 
         {% endif %}
 
@@ -43,7 +43,7 @@
 
        
           {{ govukRadios({
-            name: "wearer-gender",
+            name: "wearer-sex",
             fieldset: {
               legend: {
                 text: "What is the sex of the device wearer?",
@@ -57,12 +57,12 @@
             items: [
               {
                 value: "Male",
-                checked: (true if data['wearer-gender'] == 'Male'),
+                checked: (true if data['wearer-sex'] == 'Male'),
                 text: "Male"
               },
               {
                 value: "Female",
-                checked: (true if data['wearer-gender'] == 'Female'),
+                checked: (true if data['wearer-sex'] == 'Female'),
                 text: "Female"
               },
               
@@ -71,7 +71,7 @@
               },
               {
                 value: "Not able to provide this information",
-                checked: (true if data['wearer-gender'] == 'Not able to provide this information'),
+                checked: (true if data['wearer-sex'] == 'Not able to provide this information'),
                 text: "Not able to provide this information"
               }
             ]
