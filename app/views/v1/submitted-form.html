@@ -908,6 +908,16 @@
               <button type="submit" class="govuk-button" data-module="govuk-button">
                 Submit changes to the form
               </button>
+
+                  {% if (data['view-variation'] == 'returned') %}
+
+                     {{ govukButton({
+                      text: "View reason for return",
+                      classes: "govuk-button--secondary",
+                      href: "return-reason"
+                      }) }}
+
+                 {% endif %}   
           
               <a class="govuk-link" href="delete-form">Delete draft</a>
 
@@ -915,6 +925,16 @@
               <button type="submit" class="govuk-button" disabled data-module="govuk-button">
                 Submit changes to the form
               </button>
+
+                 {% if (data['view-variation'] == 'returned') %}
+
+                     {{ govukButton({
+                      text: "View reason for return",
+                      classes: "govuk-button--secondary",
+                      href: "return-reason"
+                      }) }}
+
+                 {% endif %}    
 
                <a class="govuk-link" href="delete-form">Delete draft</a>
 
