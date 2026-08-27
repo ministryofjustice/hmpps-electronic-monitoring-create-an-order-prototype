@@ -24,9 +24,10 @@
 
 
 
-          
+       {% if (data['usertype'] == "Probation user") %}   
+      
            
-   <!--        <div class="govuk-summary-list__row">
+     <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               What is the order type?
             </dt>
@@ -37,6 +38,10 @@
               <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
             </dd>
           </div>
+
+          {% endif %}  
+
+          <!--
 
         {% if (data['order-type'] == "Release from prison")   %}    
 

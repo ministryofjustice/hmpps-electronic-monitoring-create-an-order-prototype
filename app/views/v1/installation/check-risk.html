@@ -13,7 +13,7 @@
     <div class="govuk-grid-column-two-thirds">
 
 
-     <form class="form" action="risk-2?risk=Violent behaviour or threats of violence&risk-question=No&risk2=There are no risks that the installer should be aware of" method="post">
+     <form class="form" action="/checkrisk" method="post">
 
       <h1 class="govuk-heading-l">
       <span class="govuk-caption-l">Access needs and installation risk</span>
@@ -35,12 +35,12 @@
 
 
 
-     <!--   {{ govukRadios({
+        {{ govukRadios({
           classes: "govuk-radios--inline",
-          name: "checkdocument",
+          name: "checkrisk",
           fieldset: {
             legend: {
-              text: "Has their risk changed?",
+              text: "Do you need to review their risk?",
               isPageHeading: false,
               classes: "govuk-fieldset__legend--s"
             }
@@ -49,19 +49,19 @@
           items: [
             {
               value: "Yes",
-              checked: (true if data['checkdocument'] == "Yes"),
+              checked: (true if data['checkrisk'] == "Yes"),
               text: "Yes"
             },
             {
               value: "No",
-              checked: (true if data['checkdocument'] == "No"),
+              checked: (true if data['checkrisk'] == "No"),
               text: "No"
             }
           ]
           }) }}
 
--->
-<br>
+
+
 
            <div class="govuk-button-group">
         {{ govukButton({

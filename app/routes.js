@@ -1203,6 +1203,17 @@ router.post('/check-document', function(request, response) {
     }
 })
 
+router.post('/checkrisk', function(request, response) {
+
+    var checkrisk = request.session.data['checkrisk']
+    if (checkrisk == "Yes"){
+        response.redirect("/v1/installation/risk-2?risk=Violent behaviour or threats of violence&risk-question=No&risk2=There are no risks that the installer should be aware of")     
+    } else {
+        response.redirect("/v1/installation/check-answers-view")
+    }
+})
+
+
 
 router.post('/user-type-cohort', function(request, response) {
 

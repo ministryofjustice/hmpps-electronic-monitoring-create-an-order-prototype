@@ -370,10 +370,25 @@
     {% from "govuk/components/button/macro.njk" import govukButton %}
 
       <div class="govuk-button-group">
+
+     {% if (data['usertype'] == "Court user" or data['usertype'] == "Home Office user") %}  
+        {{ govukButton({
+          text: "Save and go to next section",
+          href: ("../monitoring-conditions/check-answers?section-1-complete=true" if data['section-4-complete'] == 'true' else "../monitoring-conditions/monitoring-details?section-1-complete=true")
+        }) }}
+
+     {% elseif (data['usertype'] == "Prison user" or data['usertype'] == "Youth user") %}  
+        {{ govukButton({
+          text: "Save and go to next section",
+          href: ("../monitoring-conditions/check-answers?section-1-complete=true" if data['section-4-complete'] == 'true' else "../otd-old/order-sentence?section-1-complete=true")
+        }) }}
+        
+      {% else %}  
         {{ govukButton({
           text: "Save and go to next section",
           href: ("../monitoring-conditions/check-answers?section-1-complete=true" if data['section-4-complete'] == 'true' else "../otd-old/order-information?section-1-complete=true")
-        }) }}
+        }) }}  
+    {% endif %} 
 
         {{ govukButton({
           text: "Save as draft",

@@ -1,0 +1,111 @@
+{% extends "layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Confirm address - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    
+  
+
+     <form class="form" action="personal-details?wearer-firstname=Ermintrude&wearer-lastname=Jones&wearer-alias-question=No&wearer-sex=Female&wearer-dob-day=19&wearer-dob-month=1&wearer-dob-year=1974&wearer-tel-question=No&addressquestion=Yes&address-found=true" method="post"> 
+
+
+  
+
+           {% from "govuk/components/button/macro.njk" import govukButton %}
+          {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+
+          <div class="govuk-width-container">
+          <h1 class="govuk-heading-l">  
+           <span class="govuk-caption-l">About the device wearer</span>
+         Select the most up to date record for the device wearer
+          </h1>
+
+          <p>2 records associated <b>A1234BC</b>. <a href="identity-numbers">Search again</a></p>
+
+            <table class="govuk-table" data-module="moj-multi-select" data-id-prefix="cases-">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th class="govuk-table__header" scope="col"></th>
+                  <th class="govuk-table__header" scope="col">Name</th>
+                  <th class="govuk-table__header" scope="col">Alias</th>
+                  <th class="govuk-table__header" scope="col">Date of birth</th>
+                  <th class="govuk-table__header" scope="col">Prison number</th>
+                  <th class="govuk-table__header" scope="col">Address</th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row govuk-table__row--selected">
+                  <td class="govuk-table__cell">
+                    <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="changedName" name="changedName" type="radio" value="month">
+                        <label class="govuk-label govuk-radios__label" for="changedName">
+                          <span class="govuk-visually-hidden">Select Ermintrude Jones</span>
+                        </label>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="govuk-table__cell">Ermintrude Jones</td>
+                  <td class="govuk-table__cell">Ermie Crangle</td>
+                  <td class="govuk-table__cell">19/01/1974</td>
+                  <td class="govuk-table__cell">A1234BC</td>
+                  <td class="govuk-table__cell">37a High Street<br>New Mills<br>High Peak<br>SK22 2GH</td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">
+                   <div class="govuk-radios govuk-radios--small" data-module="govuk-radios"> 
+                   <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="changedName-2" name="changedName" type="radio" value="year">
+                      <label class="govuk-label govuk-radios__label" for="changedName-2">
+                        <span class="govuk-visually-hidden">Select Ermintrude Jones</span>
+                      </label>
+                   </div>   
+                 </div>
+                  </td>
+                  <td class="govuk-table__cell">Ermintrude Jones</td>
+                  <td class="govuk-table__cell"></td>
+                  <td class="govuk-table__cell">19/01/1974</td>
+                  <td class="govuk-table__cell">B4354DE</td>
+                  <td class="govuk-table__cell">123 Main street<br>Glossop<br>High Peak<br>SK22 2NG</td>
+                </tr>
+               
+               
+              </tbody>
+            </table>
+
+
+      
+          <p class="govuk-body"><a href="personal-details?wearer-firstname=&wearer-lastname=&wearer-alias-question=&wearer-sex=&wearer-dob-day=&wearer-dob-month=&wearer-dob-year=&wearer-tel-question=&addressquestion=&address-found=false" class="govuk-link">Enter details manually</a></p>
+          </div>
+                 
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Use this device wearer"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../submitted-form' if data['view'] == 'false' else '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

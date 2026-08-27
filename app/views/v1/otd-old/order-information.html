@@ -24,10 +24,42 @@
        
       <form class="form" action="/order-type" method="post" name="redirect">
 
-      
+      {% if (data['usertype'] == "Probation user") %}  
 
 
             {{ govukRadios({
+              classes: "govuk-radios",
+              name: "order-type",
+              fieldset: {
+                legend: {
+                  text: "   What is the order type?",
+                  isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+                }
+              },
+              items: [
+                {
+                  value: "Post release",
+                  checked: (true if data['order-type'] == 'Post release'),
+                  text: "Release from prison",
+                  hint: {
+                    text: "Monitoring is a condition of being released from prison following a custodial sentence."
+                  }
+                },
+                {
+                  value: "Community",
+                  checked: (true if data['order-type'] == 'Community'),
+                  text: "Community",
+                  hint: {
+                    text: "Monitoring is a condition of a court order where they were convicted of a crime, but received a community rather than custodial sentence."
+                  }
+              }
+              ]
+            }) }}
+
+            {% else %} 
+
+              {{ govukRadios({
               classes: "govuk-radios",
               name: "order-type",
               fieldset: {
@@ -82,6 +114,10 @@
                 }
               ]
             }) }}
+
+
+
+             {% endif %}   
 
 
 
