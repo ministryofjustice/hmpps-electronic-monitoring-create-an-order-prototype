@@ -1,0 +1,82 @@
+{% extends "layouts/moj.html" %}
+
+{% block pageTitle %}
+  Are you sure that you want to delete this electronic monitoring type? - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l"><span class="govuk-caption-l">Electronic monitoring required</span>
+
+     Sentencing Act 2026 excluded offences</h1>
+
+
+      <p>The following offences are excluded under the Sentencing Act 2026:</p>
+      <ul class="govuk-list govuk-list--bullet">
+      <li>Unlawful killing</li>
+      <li>Rape</li>
+      <li>Serious child sex and grooming offences</li>
+      <li>Indecent assault</li>
+      </ul>
+
+      <p>If you are not sure whether the device wearer's offence is excluded, check the <a href='https://www.gov.uk/government/publications/sentencing-act-offence-exclusions#full-publication-update-history'>full list of excluded offences</a>.</p>
+
+
+
+
+
+
+
+       {{ govukRadios({
+          classes: "govuk-radios--inline",
+          name: "hdcpause",
+          fieldset: {
+            legend: {
+              text: "Has the device wearer committed an excluded offence?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: (true if data['hdcpause'] == 'Yes')
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: (true if data['hdcpause'] == 'No')
+            }
+          ]
+        }) }}
+
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Save and continue",
+              href: 'order-pilots',
+              classes: "govuk-button"
+            }) }}
+
+            {{ govukButton({
+              text: "Save as draft",
+              href: '#',
+              classes: "govuk-button--secondary"
+            }) }}
+          </div>
+     
+        </div>
+      </div>
+{% endblock %}
