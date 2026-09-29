@@ -15,13 +15,14 @@
       {% if (data['view'] == 'false') %}
            <form class="form" action="check-answers-view" method="post">
 
-         {% else %}
+       {% else %}
             <form class="form" action="check-answers" method="post">
 
-           {% endif %}
-     
+           {% endif %}      
 
-      <form class="form" action="check-answers" method="post">
+          
+
+      <form class="form" action="map-question" method="post">
 
            <span class="govuk-caption-l">Additional documents</span>
              {{ govukFileUpload({

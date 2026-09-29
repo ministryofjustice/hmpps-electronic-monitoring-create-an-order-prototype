@@ -549,6 +549,26 @@ router.post('/exclusion-question', function(request, response) {
     }
 })
 
+router.post('/map-question', function(request, response) {
+
+    var mapquestion = request.session.data['mapquestion']
+    if (mapquestion == "Yes"){
+        response.redirect("/v1/attachments/map-upload")
+    } else {
+        response.redirect("/v1/attachments/check-answers")
+    }
+})
+
+router.post('/map-another', function(request, response) {
+
+    var another = request.session.data['another']
+    if (another == "yes"){
+        response.redirect("/v1/attachments/map-upload")
+    } else {
+        response.redirect("/v1/attachments/check-answers")
+    }
+})
+
 router.post('/inclusion-question', function(request, response) {
 
     var exclusionquestion = request.session.data['exclusionquestion']
@@ -612,7 +632,7 @@ router.post('/licence-question', function(request, response) {
     if (licencequestion == "Yes"){
         response.redirect("/v1/attachments/licence-ho")  
     } else {
-        response.redirect("/v1/attachments/photo-question?photoquestion=No")
+        response.redirect("/v1/attachments/photo-question")
     }
 })
 
@@ -623,9 +643,31 @@ router.post('/photo-question', function(request, response) {
     if (photoquestion == "Yes"){
         response.redirect("/v1/attachments/photo")
     } else {
+        response.redirect("/v1/attachments/map-question")
+    }
+})
+
+
+router.post('/photo-questioncvl', function(request, response) {
+
+    var photoquestion = request.session.data['photoquestion']
+    if (photoquestion == "Yes"){
+        response.redirect("/v1/attachments/photo")
+    } else {
+        response.redirect("/v1/attachments/map-list")
+    }
+})
+
+router.post('/photo-questionnomap', function(request, response) {
+
+    var photoquestion = request.session.data['photoquestion']
+    if (photoquestion == "Yes"){
+        response.redirect("/v1/attachments/photo")
+    } else {
         response.redirect("/v1/attachments/check-answers")
     }
 })
+
 
 router.post('/photo-question2', function(request, response) {
 
@@ -939,7 +981,7 @@ router.post('/pdu', function(request, response) {
     }
 })
 
-router.post('/sr-question', function(request, response) {
+router.post('/sr-question-OLD', function(request, response) {
 
     var srtypesimple = request.session.data['sr-type-simple']
     if (srtypesimple == "I have changed something else in the form"){
@@ -960,6 +1002,32 @@ router.post('/sr-question', function(request, response) {
 })
 
 router.post('/sr-address-simple', function(request, response) {
+
+    var sraddress = request.session.data['sr-address']
+    if (sraddress == "No"){
+        response.redirect("/v1/variation-simple/sr-question")     
+    } else {
+        response.redirect("/v1/new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")
+    }
+})
+
+router.post('/sr-question', function(request, response) {
+
+    var srtypesimple = request.session.data['sr-type-simple']
+    if (srtypesimple == "I have changed something else in the form"){
+        response.redirect("/v1/new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")      
+     } else if (srtypesimple == "I need monitoring equipment installed at a new address") {
+        response.redirect("/v1/new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")       
+    } else if (srtypesimple == "hardstop") {
+        response.redirect("/v1/variations/hard-stop?equipment=true")  
+    } else if (srtypesimple == "hardstop2") {
+        response.redirect("/v1/variations/hard-stop?equipment=false")         
+    } else {
+        response.redirect("/v1/new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")
+    }
+})
+
+router.post('/sr-address-simple-OLD', function(request, response) {
 
     var sraddress = request.session.data['sr-address']
     if (sraddress == "No"){

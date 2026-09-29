@@ -12,10 +12,23 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">About the device wearer</span>
-        Date of birth
-      </h1>
+    {% if (data['usertype'] == "Home Office user") %}
+
+    <form class="form" action="device-wearer-contact" method="post">
+
+    {% elseif (data['usertype'] == "Family court user") %}
+
+    <form class="form" action="device-wearer-contact" method="post">
+
+    {% elseif (data['usertype'] == "Civil court user") %}
+
+    <form class="form" action="device-wearer-contact" method="post">
+
+    {% else %}
+
+    <form class="form" action="responsible-adult-question" method="post">
+
+    {% endif %}
 
       <form class="form" action="/eighteen-answer" method="post">
 
@@ -27,7 +40,8 @@
 
           <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
-              <legend class="govuk-label govuk-label--s">
+              <legend class="govuk-label govuk-label--l">
+                <span class="govuk-caption-l">About the device wearer</span>
                 What is the device wearer's date of birth?
               </legend>
               <div id="passport-issued-hint" class="govuk-hint">
@@ -62,42 +76,7 @@
             </fieldset>
           </div>
 
-    {% if (data['usertype'] == "Home Office user") %}
-
-    {% elseif (data['usertype'] == "Family court user") %}
-
-    {% elseif (data['usertype'] == "Civil court user") %}
-
-    {% else %}
-
-          {{ govukRadios({
-            classes: "govuk-radios--inline",
-            name: "eighteen",
-            fieldset: {
-              legend: {
-                text: "Is a responsible adult required?",
-                isPageHeading: false,
-                classes: "govuk-fieldset__legend--s"
-              }
-            }, 
-            hint: {
-              text: "If the device wearer is under 18 a reponsible adult must be present at installation. A responsible adult is a parent, guardian or someone with parental rights. "
-            },
-            items: [
-              {
-                value: "Yes",
-                text: "Yes",
-                checked: (true if data['eighteen'] == 'Yes')
-              },
-              {
-                value: "No",
-                text: "No",
-                checked: (true if data['eighteen'] == 'No')
-              }
-            ]
-          }) }}
-
-     {% endif %}          
+           
        
 
     {% from "govuk/components/button/macro.njk" import govukButton %}

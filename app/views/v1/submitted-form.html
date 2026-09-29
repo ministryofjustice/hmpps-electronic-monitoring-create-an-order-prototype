@@ -799,11 +799,7 @@
             href: "hard-stop-ended"
             }) }}
 
-            {{ govukButton({
-            text: "View and download form",
-            classes: "govuk-button--secondary",
-            href: "submitted-form-all"
-            }) }}
+            <a class="govuk-link" href="submitted-form-all">View and download form</a>
 
             {% elseif (data['view-variation'] == 'returned') %}
 
@@ -818,12 +814,8 @@
             href: "return-reason"
             }) }}
 
-            {{ govukButton({
-            text: "View and download form",
-            classes: "govuk-button--secondary",
-            href: "submitted-form-all"
-            }) }}
-
+              <a class="govuk-link" href="submitted-form-all">View and download form</a>
+              
         <!--    {{ govukButton({
             text: "Copy and send as new order",
             classes: "govuk-button--secondary",
@@ -839,11 +831,7 @@
             href: "hard-stop-ended"
             }) }}
 
-            {{ govukButton({
-            text: "View and download form",
-            classes: "govuk-button--secondary",
-            href: "submitted-form-all"
-            }) }}
+               <a class="govuk-link" href="submitted-form-all">View and download form</a>
 
           
            {% else %}
@@ -852,11 +840,7 @@
            Make changes to this form
           </button>
 
-           {{ govukButton({
-            text: "View and download form",
-            classes: "govuk-button--secondary",
-            href: "submitted-form-all"
-            }) }}
+              <a class="govuk-link" href="submitted-form-all">View and download form</a>
 
      <!--    {{ govukButton({
             text: "End all monitoring",

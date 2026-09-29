@@ -14,34 +14,21 @@
 
       <h1 class="govuk-heading-l"><span class="govuk-caption-l">Electronic monitoring required</span>
 
-     Sentencing Act 2026 excluded offences</h1>
+     Has the device wearer committed an offence that is excluded under the Sentencing Act 2026?</h1>
 
-
-      <p>The following offences are excluded under the Sentencing Act 2026:</p>
-      <ul class="govuk-list govuk-list--bullet">
-      <li>Unlawful killing</li>
-      <li>Rape</li>
-      <li>Serious child sex offences</li>
-      <li>Grooming offences</li>
-      <li>Indecent assault</li>
-      </ul>
 
       <p>If you are not sure whether the device wearer's offence is excluded, check the <a href='https://www.gov.uk/government/publications/sentencing-act-offence-exclusions#full-publication-update-history' target="_blank">full list of excluded offences (opens in new tab)</a>.</p>
 
 
 
-
-
-
-
        {{ govukRadios({
-          classes: "govuk-radios--inline",
+      
           name: "hdcpause",
           fieldset: {
             legend: {
               text: "Has the device wearer committed an excluded offence?",
               isPageHeading: false,
-              classes: "govuk-fieldset__legend--s"
+              classes: "govuk-visually-hidden"
             }
           },
           hint: {
@@ -49,14 +36,37 @@
           },
           items: [
             {
-              value: "Yes",
-              text: "Yes",
-              checked: (true if data['hdcpause'] == 'Yes')
+              value: "Unlawful killing",
+              text: "Unlawful killing",
+              checked: (true if data['hdcpause'] == 'Unlawful killing')
             },
             {
-              value: "No",
-              text: "No",
-              checked: (true if data['hdcpause'] == 'No')
+              value: "Rape",
+              text: "Rape",
+              checked: (true if data['hdcpause'] == 'Rape')
+            },
+            {
+              value: "Serious child sex offences",
+              text: "Serious child sex offences",
+              checked: (true if data['hdcpause'] == 'Serious child sex offences')
+            },
+            {
+              value: "Grooming offences",
+              text: "Grooming offences",
+              checked: (true if data['hdcpause'] == 'Grooming offences')
+            },
+            {
+              value: "Indecent assault",
+              text: "Indecent assault",
+              checked: (true if data['hdcpause'] == 'Indecent assault')
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "They have not committed an excluded offence",
+              text: "They have not committed an excluded offence",
+              checked: (true if data['hdcpause'] == 'They have not committed an excluded offence')
             }
           ]
         }) }}

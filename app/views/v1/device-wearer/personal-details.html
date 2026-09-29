@@ -44,6 +44,19 @@
 
         {{ govukInput({
           label: {
+            text: "What is the device wearer's middle name? (optional)",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "wearer-middlename",
+          name: "wearer-middlename",
+          spellcheck: false,
+          value: data['wearer-middlename']
+        }) }}
+
+
+        {{ govukInput({
+          label: {
             text: "What is the device wearer's last name?",
             classes: "govuk-label--s"
           },

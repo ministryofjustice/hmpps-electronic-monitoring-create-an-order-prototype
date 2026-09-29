@@ -23,16 +23,19 @@
               </div>
 
              
+  
 
-              <input class="govuk-input moj-search__input" id="search" name="search" type="search" aria-describedby="search-hint" value="{{ data['search'] }} ">
 
-            </div>
+           <div class="govuk-input__wrapper moj-search__input-wrapper">
+        <input class="govuk-input moj-search__input " id="search" name="search" type="search" aria-describedby="search-hint">
+        <button type="submit" class="govuk-button govuk-button--secondary moj-search__button" data-module="govuk-button" value="{{ data['search'] }} ">
+          Search
+        </button>
+      </div>
 
-            <button style="margin-bottom:0px ; margin-left:10px" class="govuk-button govuk-button--secondary moj-search__button">
-              Search
-            </button>
+       </form>
 
-          </form>
+     </div>
         
       </fieldset>
       </div>

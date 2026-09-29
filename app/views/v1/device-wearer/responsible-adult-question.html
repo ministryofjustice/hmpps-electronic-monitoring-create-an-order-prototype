@@ -1,7 +1,7 @@
 {% extends "layouts/moj-level2.html" %}
 
 {% block pageTitle %}
-  Do you have a photo identification document to upload? - Electronic Monitoring
+  Date of birth - Electronic Monitoring
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,62 +12,45 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% if (data['view'] == 'false') %}
+    
 
-       <form class="form" action="/photo-question2" method="post">
+      <form class="form" action="/eighteen-answer" method="post">
 
-         {% else %}  
-
-          <form class="form" action="/photo-questionnomap" method="post">
-
-
-          {% endif %}  
-
-  
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
 
 
+        <span class="govuk-caption-l">About the device wearer</span>
 
-   
-         
-        <span class="govuk-caption-l">Additional documents</span>
           {{ govukRadios({
             classes: "govuk-radios--inline",
-            name: "photoquestion",
+            name: "eighteen",
             fieldset: {
               legend: {
-                text: "Do you have a photo to upload?",
+                text: "Is a responsible adult required?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--l"
               }
-            },
+            }, 
             hint: {
-              text: "We need a photo to help identify the device wearer if there is not one on the licence."
+              text: "If the device wearer is under 18 a reponsible adult must be present at installation. A responsible adult is a parent, guardian or someone with parental rights. "
             },
             items: [
               {
                 value: "Yes",
                 text: "Yes",
-                checked: (true if data['photoquestion'] == 'Yes'),
-                conditional: {
-                
-                }
+                checked: (true if data['eighteen'] == 'Yes')
               },
               {
                 value: "No",
                 text: "No",
-                checked: (true if data['photoquestion'] == 'No'),
-                conditional: {
-                 
-                }
+                checked: (true if data['eighteen'] == 'No')
               }
             ]
           }) }}
 
-
-     
-        
-
+       
        
 
     {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -82,6 +65,8 @@
           href: '../new-form',
           classes: "govuk-button--secondary"
         }) }}
+
+       
 
       </div>
  

@@ -1,0 +1,110 @@
+{% extends "layouts/moj-level2.html" %}
+
+
+
+{% block pageScripts %}
+
+
+
+
+{% endblock %}
+
+{% block pageTitle %}
+  Upload the photo identification document - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+
+
+
+
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        
+<form class="form" action="/map-another" method="post">  
+
+  <span class="govuk-caption-l">Additional documents</span>
+     <h1 class="govuk-heading-l">Restriction or exclusion zone maps</h1>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">Maps added</h2>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          File 1
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <a download href="/" class="govuk-link">mapa.jpg</a>, 2MB
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Delete<span class="govuk-visually-hidden"> file 1</span></a>
+        </dd>
+      </div>
+       {% if (data['another'] == 'yes') %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          File 2
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <a download href="/" class="govuk-link">mapmanchester2.jpg</a>, 5MB
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Delete<span class="govuk-visually-hidden"> file 2</span></a>
+        </dd>
+      </div>
+       {% endif %}
+    </dl>
+  </div>
+</div>
+
+{{ govukRadios({
+  classes: "govuk-radios--inline",
+  idPrefix: "another",
+  name: "another",
+  fieldset: {
+    legend: {
+      text: "Do you need to upload another map?",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "yes",
+      text: "Yes"
+    },
+    {
+      value: "no",
+      text: "No"
+    }
+  ]
+}) }}
+
+
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

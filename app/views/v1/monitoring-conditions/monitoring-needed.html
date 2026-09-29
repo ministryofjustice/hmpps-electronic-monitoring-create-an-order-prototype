@@ -85,97 +85,151 @@
 
 
            {% endif %}
+
+         
    
 
           <dl class="govuk-summary-list">
        
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  {{ data['monitoringtype'] }}
+                  {% if (data['cvl'] == "yes") %}
+
+                  Trail monitoring
+
+                   {% else %}
+
+                   {{ data['monitoringtype'] }}
+
+                    {% endif %}
+
                 </dt>
+                
                 <dd class="govuk-summary-list__value">
-                   {% if (data['monitoringtype'] == "Mandatory attendance monitoring") %}
+
+                  {% if (data['cvl'] == "yes") %}
+          
+                   From {{ data['trailstart-date'] or '12 Dec 2024' }} to {{ data['trailend-date']  or '12 Dec 2025' }}
+
+                   {% elseif (data['monitoringtype'] == "Mandatory attendance monitoring") %}
                   {{ data['appointment-reason'] or 'Anger management meetings' }}   <br>
                   From {{ data['attendancestart-date'] or '12 Dec 2024' }} to {{ data['attendanceend-date' or '12 Dec 2025'] }}
 
-                   {% endif %}     
+          
 
-                   {% if (data['monitoringtype'] == "Exclusion zone monitoring") %}
+                   {% elseif (data['monitoringtype'] == "Exclusion zone monitoring") %}
                   {{ data['exclusion-name'] or 'Partners house' }}   <br>
                   From {{ data['exclusionstart-date'] or '12 Dec 2024' }} to {{ data['exclusionend-date'] or '12 Dec 2025' }}
-                   {% endif %} 
-
-                    {% if (data['monitoringtype'] == "Restriction zone monitoring") %}
+                 
+                    {% elseif (data['monitoringtype'] == "Restriction zone monitoring") %}
                   {{ data['exclusion-name'] or 'Salford' }}   <br>
                   From {{ data['exclusionstart-date'] or '12 Dec 2024' }} to {{ data['exclusionend-date'] or '12 Dec 2025' }}
-                   {% endif %} 
+                  
 
-                   {% if (data['monitoringtype'] == "Curfew") %}
+                   {% elseif (data['monitoringtype'] == "Curfew") %}
                    From {{ data['curfewstart-date'] or '12 Dec 2024' }} to {{ data['curfewend-date'] or '12 Dec 2025' }}
-                   {% endif %} 
+                   
 
-                    {% if (data['monitoringtype'] == "Trail monitoring") or (data['monitoringtype'] == "Trail monitoring (Home Office)")%}
+                    {% elseif (data['monitoringtype'] == "Trail monitoring") or (data['monitoringtype'] == "Trail monitoring (Home Office)")%}
                      From {{ data['trailstart-date'] or '12 Dec 2024' }} to {{ data['trailend-date'] or '12 Dec 2025' }}
-                   {% endif %} 
-
-                   {% if (data['monitoringtype'] == "Alcohol monitoring") %}
+                 
+                   {% elseif (data['monitoringtype'] == "Alcohol monitoring") %}
                    From {{ data['alcoholstart-date'] or '12 Dec 2024'  }} to {{ data['alcoholend-date'] or '12 Dec 2025'  }}
                    {% endif %} 
 
                             
                 </dd>  
-                </dd>  
+                   {% if (data['cvl-incomplete'] == "yes") %}
+                   <dd class="govuk-summary-list__value">
+                  <strong class="govuk-tag govuk-tag--blue govuk-!-margin-top-1">
+                    Incomplete
+                  </strong>
+                  </dd>
+                  {% endif %}
+               
+            
                 <dd class="govuk-summary-list__actions">
                   <ul class="govuk-summary-list__actions-list">
                      <li class="govuk-summary-list__actions-list-item">
                     <a class="govuk-link" href="#">Delete<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
                     </li>
                     <li class="govuk-summary-list__actions-list-item">
-                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
+                    {% if (data['cvl-incomplete'] == "yes") %}
+                    <a class="govuk-link" href="trail?trailstart-day=12&trailstart-month=12&trailstart-year=2024&">Change<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
+                    {% else %}
+                     <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
+                     {% endif %}
                     </li>       
                   </ul>
                 </dd>
               </div>
 
-              {% if (data['monitoringtypeadded'] == "Yes") %}
+              {% if (data['monitoringtypeadded'] == "Yes" or data['cvl'] == "yes") %}
 
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  {{ data['monitoringtype2'] }}
+                 {% if (data['cvl'] == "yes") %}
+
+                  Curfew monitoring
+
+                   {% else %}
+
+                   {{ data['monitoringtype2'] }}
+
+                    {% endif %}
+
+
                 </dt>
+               
                 <dd class="govuk-summary-list__value">
-                  {% if (data['monitoringtype2'] == "Mandatory attendance monitoring") %}
+
+                  {% if (data['cvl'] == "yes") %}
+                  
+                           From {{ data['curfewstart-date'] or '12 Dec 2024' }} to {{ data['curfewend-date'] or '12 Dec 2025' }}
+               
+
+
+                  {% elseif (data['monitoringtype2'] == "Mandatory attendance monitoring") %}
                   {{ data['appointment-reason'] or 'Anger management meetings' }}   <br>
                   From {{ data['attendancestart-date'] or '12 Dec 2024' }} to {{ data['attendanceend-date' or '12 Dec 2025'] }}
 
-                   {% endif %}     
+         
 
-                   {% if (data['monitoringtype2'] == "Exclusion zone monitoring") %}
+                   {% elseif (data['monitoringtype2'] == "Exclusion zone monitoring") %}
                   {{ data['exclusion-name'] or 'Partners house' }}   <br>
                   From {{ data['exclusionstart-date'] or '12 Dec 2024' }} to {{ data['exclusionend-date'] or '12 Dec 2025' }}
-                   {% endif %} 
+                 
 
 
-                    {% if (data['monitoringtype2'] == "Restriction zone monitoring") %}
+                    {% elseif (data['monitoringtype2'] == "Restriction zone monitoring") %}
                   {{ data['exclusion-name'] or 'Salford' }}   <br>
                   From {{ data['exclusionstart-date'] or '12 Dec 2024' }} to {{ data['exclusionend-date'] or '12 Dec 2025' }}
-                   {% endif %} 
+            
 
-                   {% if (data['monitoringtype2'] == "Curfew") %}
+                   {% elseif (data['monitoringtype2'] == "Curfew") %}
                    From {{ data['curfewstart-date'] or '12 Dec 2024' }} to {{ data['curfewend-date'] or '12 Feb 2025' }}
-                   {% endif %} 
+            
 
-                    {% if (data['monitoringtype2'] == "Trail monitoring" or (data['monitoringtype2'] == "Trail monitoring (Home Office)")) %}
+                    {% elseif (data['monitoringtype2'] == "Trail monitoring" or (data['monitoringtype2'] == "Trail monitoring (Home Office)")) %}
                      From {{ data['trailstart-date'] or '12 Dec 2024' }} to {{ data['trailend-date'] or '12 Dec 2025' }}
-                   {% endif %} 
+                  
 
-                   {% if (data['monitoringtype2'] == "Alcohol monitoring") %}
+                   {% elseif (data['monitoringtype2'] == "Alcohol monitoring") %}
                    From {{ data['alcoholstart-date'] or '12 Dec 2024'  }} to {{ data['alcoholend-date'] or '12 Dec 2025'  }}
+                 
+
                    {% endif %} 
 
 
                 </dd>  
-                </dd>  
+
+                   {% if (data['cvl-incomplete'] == "yes") %}
+                   <dd class="govuk-summary-list__value">
+                  
+                  </dd>
+                  {% endif %}
+
+         
                 <dd class="govuk-summary-list__actions">
                   <ul class="govuk-summary-list__actions-list">
                      <li class="govuk-summary-list__actions-list-item">
@@ -230,9 +284,29 @@
 
           {% else %}
 
+             {% if (data['error'] == "true") %}
+
+             {{ govukButton({
+                text: "Save and continue",
+                disabled: true
+              }) }}
+
+               {% elseif (data['cvl-incomplete'] == "yes") %}
+
+             {{ govukButton({
+                text: "Save and continue",
+                disabled: true
+              }) }}
+
+
+
+              {% else %}
+
              {{ govukButton({
                 text: "Save and continue"
               }) }}
+
+               {% endif %}
 
               {{ govukButton({
                 text: "Save as draft",

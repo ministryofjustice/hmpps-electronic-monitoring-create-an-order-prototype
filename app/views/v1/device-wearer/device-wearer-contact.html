@@ -29,11 +29,13 @@
 
              {% if (data['address-found'] == "true") %}
 
-             <form class="form" action="../postcode-lookup/postcode-confirm" method="post">
+                   <form class="form" action="contact-address-question?address-found=false" method="post">
+
+         <!--    <form class="form" action="../postcode-lookup/postcode-confirm" method="post">
 
               <input type="hidden" id="sectionid" name="sectionid" value="About the device wearer">
               <input type="hidden" id="postcodetype" name="postcodetype" value="device wearer's">
-              <input type="hidden" id="variation-simple" name="variation-simple" value="false">
+              <input type="hidden" id="variation-simple" name="variation-simple" value="false">-->
 
 
              {% else %}

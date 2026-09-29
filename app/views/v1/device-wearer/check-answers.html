@@ -129,6 +129,17 @@
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
+              What is the device wearer's middle name?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['wearer-middlename'] or "" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="personal-details?cya1=true">Change<span class="govuk-visually-hidden"> What is the device wearer's first name?</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
               What is the device wearer's last name?
             </dt>
             <dd class="govuk-summary-list__value">
@@ -217,7 +228,7 @@
               {{ data['eighteen'] or 'No' }}
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="age?cya1=true">Change<span class="govuk-visually-hidden"> Will the device wearer be 18 years old or over when the electronic monitoring device is installed?</span></a>
+              <a class="govuk-link" href="responsible-adult-question?cya1=true">Change<span class="govuk-visually-hidden"> Will the device wearer be 18 years old or over when the electronic monitoring device is installed?</span></a>
             </dd>
           </div>
 
