@@ -95,7 +95,7 @@
             </dd>
           </div>
           {% endif %}
-           {% if (data['usertype'] == "Family court user") or (data['usertype'] == "Civil court user") %}
+           {% if (data['usertype'] == "Court user") %}
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
                What is the device wearer's Court Case reference number (CCRN)?
@@ -215,9 +215,8 @@
 
    {% if (data['usertype'] == "Home Office user") %}
 
-    {% elseif (data['usertype'] == "Family court user") %}
+    {% elseif (data['usertype'] == "Court user") %}
 
-    {% elseif (data['usertype'] == "Civil court user") %}
 
     {% else %}
           <div class="govuk-summary-list__row">

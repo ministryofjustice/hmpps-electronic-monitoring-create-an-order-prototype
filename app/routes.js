@@ -1108,9 +1108,9 @@ router.post('/identity-numbers-lookup', function(request, response) {
     var usertype = request.session.data['usertype']
     if (usertype == "Home Office user"){
         response.redirect("/v1/device-wearer/personal-details")  
-    } else if (usertype == "Family court user") {
+    } else if (usertype == "Court user") {
         response.redirect("/v1/device-wearer/personal-details") 
-    } else if (usertype == "Civil court user") {
+    } else if (usertype == "Court user") {
         response.redirect("/v1/device-wearer/personal-details")             
     } else {
         response.redirect("/v1/device-wearer/device-wearer-confirm")
