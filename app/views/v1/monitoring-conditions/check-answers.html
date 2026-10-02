@@ -425,7 +425,7 @@
               On the day of release, what time does the curfew start?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['release-starttime-hours'] }}:{{ data['release-starttime-minutes'] }}
+              {{ data['release-starttime-hours'] }}:{{ data['release-starttime-minutes'] }}pm
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="curfew-3?cya4=true">Change<span class="govuk-visually-hidden"> What is the start time for curfew this day? </span></a>
@@ -436,7 +436,7 @@
               On the day of release, what time does the curfew end?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['release-endtime-hours'] }}:{{ data['release-endtime-hours'] }} {{ data['curfew-same-next-day'] }}
+              {{ data['release-endtime-hours'] }}:{{ data['release-endtime-hours'] }}am
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="curfew-3?cya4=true">Change<span class="govuk-visually-hidden"> WWhat is the end time for curfew? </span></a>
@@ -490,49 +490,112 @@
                  {% if (data['curfewstandard'] == "false") %}
                      Monday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                    Monday 19:00 until 07:00 
+                    Monday 7:00pm until 7:00am 
                  {% endif %} 
                  <br>
                   {% if (data['curfewstandard'] == "false") %}
                     Tuesday  {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                    Tuesday 19:00 until 07:00 
+                    Tuesday 7:00pm until 7:00am 
                  {% endif %} 
                  <br>
                   {% if (data['curfewstandard'] == "false") %}
                     Wednesday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                    Wednesday 19:00 until 07:00 
+                    Wednesday 7:00pm until 7:00am  
                  {% endif %} 
                  <br>
                   {% if (data['curfewstandard'] == "false") %}
                      Thursday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                   Thursday 19:00 until 07:00 
+                   Thursday 7:00pm until 7:00am 
                  {% endif %} 
                  <br>
                   {% if (data['curfewstandard'] == "false") %}
                     Friday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                    Friday 19:00 until 07:00 
+                    Friday 7:00pm until 7:00am 
                  {% endif %} 
                  <br>
                   {% if (data['curfewstandard'] == "false") %}
                      Saturday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                   Saturday 19:00 until 07:00 
+                   Saturday 7:00pm until 7:00am 
                  {% endif %} 
                  <br>
                   {% if (data['curfewstandard'] == "false") %}
                     Sunday  {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
                 {% else %} 
-                   Sunday  19:00 until 07:00 
+                   Sunday 7:00pm until 7:00am 
                  {% endif %} 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="curfew-4?cya4=true">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
             </dd>
           </div>
+
+          {% if (data['addcurfewaddress'] == "Yes") %}
+
+   
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                 {{ data['curfewaddressLine1'] or "1 Washington Street" }}
+            </dt>
+            <dd class="govuk-summary-list__value">
+           
+
+                 {% if (data['curfewstandard'] == "false") %}
+                     Monday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
+                {% else %} 
+                    Monday 7:00pm until 7:00am 
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                    Tuesday  {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
+                {% else %} 
+                    Tuesday 7:00pm until 7:00am 
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                    Wednesday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
+                {% else %} 
+                    Wednesday 7:00pm until 7:00am  
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     Thursday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
+                {% else %} 
+                   Thursday 7:00pm until 7:00am 
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                    Friday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
+                {% else %} 
+                    Friday 7:00pm until 7:00am 
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     Saturday {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
+                {% else %} 
+                   Saturday 7:00pm until 7:00am 
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                    Sunday  {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} 
+                {% else %} 
+                   Sunday 7:00pm until 7:00am 
+                 {% endif %} 
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="curfew-4?cya4=true">Change<span class="govuk-visually-hidden"> Curfew timetable </span></a>
+            </dd>
+          </div>
+
+
+
+          {% endif %}
+
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Do you want to change the standard curfew address boundary of “front door to back door” for any of the curfew addresses?

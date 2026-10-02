@@ -19,7 +19,7 @@
         Curfew on release day
       </h1>
 
-
+ <!--<p>Enter time using a 24 hour clock. For example 19:00 instead of 7:00pm.</p>-->
 
 
        <form class="form" action="curfew-3-question" method="post">
@@ -89,7 +89,7 @@
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">On the day of release, what time does the curfew start?</legend>
 
       <div class="govuk-date-input ">
-        <div class="govuk-hint">Enter time using a 24 hour clock. For example 19:00 instead of 7:00pm.</div>
+       
         
 
         
@@ -108,6 +108,24 @@
               <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="release-starttime-minutes" name="release-starttime-minutes" value="{{ data['release-starttime-minutes'] }}">
           </div>
         </div>
+        <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-date-input__label" for="releaseCurfewStart-ampm">
+                            am or pm
+                        </label>
+                        <select class="govuk-select govuk-date-input__input govuk-input--width-2 " id="releaseCurfewStart-ampm" name="releaseCurfewStart-ampm" aria-label="Choose am or pm">
+                            <option value="" selected>
+                                Choose am or pm
+                            </option>
+                            <option value="am">
+                                am
+                            </option>
+                            <option value="pm">
+                                pm
+                            </option>
+                        </select>
+                    </div>
+                </div>
       </div>
     </fieldset>
   </div>
@@ -117,7 +135,7 @@
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">On the day after release, what time does the curfew end?</legend>
 
       <div class="govuk-date-input ">
-        <div class="govuk-hint">Enter time using a 24 hour clock. For example 07:00 instead of 7:00am.</div>
+     
         
 
         <div class="govuk-date-input__item">
@@ -135,6 +153,25 @@
               <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="release-endtime-minutes" name="release-endtime-minutes" value="{{ data['release-endtime-minutes'] }}">
           </div>
         </div>
+        <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-date-input__label" for="releaseCurfewend-ampm">
+                            am or pm
+                        </label>
+                        <select class="govuk-select govuk-date-input__input govuk-input--width-2 " id="releaseCurfewend-ampm" name="releaseCurfewend-ampm" aria-label="Choose am or pm">
+                            <option value="" selected>
+                                Choose am or pm
+                            </option>
+                            <option value="am">
+                                am
+                            </option>
+                            <option value="pm">
+                                pm
+                            </option>
+                        </select>
+                    </div>
+         </div>
+
         
       </div>
     </fieldset>

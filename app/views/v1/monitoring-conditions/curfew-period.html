@@ -12,6 +12,20 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+
+
+{% set oneHtml %}
+  {% include "/includes/curfew-period.html" %}
+{% endset -%}
+ 
+{% set twoHtml %} 
+ {% include "/includes/curfew-period-two.html" %}
+{% endset -%}
+
+{% set threeHtml %}
+ {% include "/includes/curfew-period-three.html" %}
+{% endset -%}
+
  
  {% if (data['curfewstandard'] == "false") %}     
 
@@ -27,18 +41,39 @@
           text: "By law, the curfew must last at least 9 hours each day (except on the first day of release). It is usually set for 12 hours a day and should only be longer if there is clear evidence it will greatly help rehabilitation. The curfew cannot be more than 16 hours a day."
         }) }}-->
 
-         <form class="form" action="curfew-change" method="post">
+         <form class="form" action="curfew-4" method="post">
 
  {% else %}
+         <form class="form" action="curfew-4" method="post">
+
+      {% if (data['addcurfewaddress'] == "Yes" and data['address'] == "1") %}
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        How many curfew periods are there on {{ data['day'] }} at {{ data['contactaddressLine1']  or "123 Carter Bar" }}?
+      </h1>
+    
+
+      {% elseif (data['addcurfewaddress'] == "Yes" and data['address'] == "2") %}   
 
        <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">Electronic monitoring required</span>
-        How many curfew periods are there on {{ data['day'] }}?
+        How many curfew periods are there on {{ data['day'] }} at {{ data['curfewaddressLine1'] or "1 Washington Street" }}?
       </h1>
 
-         <form class="form" action="curfew-change" method="post">
+       {% else %}
+
+       <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        How many curfew periods are there on {{ data['day'] }} at {{ data['contactaddressLine1']  or "123 Carter Bar" }}?
+      </h1>
+
+      {% endif %}  
+
       
-{% endif %}     
+{% endif %}    
+
+
 
 
 
@@ -47,25 +82,46 @@
   fieldset: {
     legend: {
       text: "Where do you live?",
-      isPageHeading: false,
+      isPageHeading: true,
       classes: "govuk-visually-hidden"
     }
   },
+   hint: {
+    text: ""
+  },
   items: [
+    
     {
       value: "one",
       checked: (true if data['curfewperiods'] == 'one'),
-      text: "One"
+      text: "One",
+       conditional: {
+        html: oneHtml
+      }
     },
     {
       value: "two",
       checked: (true if data['curfewperiods'] == 'two'),
-      text: "Two"
+      text: "Two",
+       conditional: {
+        html: twoHtml
+      }
     },
     {
       value: "three",
       checked: (true if data['curfewperiods'] == 'three'),
-      text: "Three"
+      text: "Three",
+       conditional: {
+        html: threeHtml
+      }
+    },
+    {
+      divider: "or"
+    },
+    {
+      value: "No curfew periods",
+      checked: (true if data['curfewperiods'] == 'No curfew periods'),
+      text: "No curfew periods"
     }
   ]
 }) }}

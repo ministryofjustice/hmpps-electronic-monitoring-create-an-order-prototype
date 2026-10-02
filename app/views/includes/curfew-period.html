@@ -1,0 +1,167 @@
+<div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What time does the curfew start?</legend>
+
+      <div class="govuk-date-input ">
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+            <label class="govuk-label govuk-date-input__label" for="curfewchange-starttime-hours"><span class="govuk-visually-hidden">Start</span> Hour</label>
+             {% if (data['curfewtimetableday'] == "true") %}
+               <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-starttime-hours" name="curfewchange-starttime{{ data['day'] }}-hours" value="{{ data['curfewchange-starttime-hours'] }}">
+            {% elseif (data['curfewstandard'] == "false") %}
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-starttime-hours" name="curfewchange-starttime-hours" value="">
+            {% else %}  
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-starttime-hours" name="curfewchange-starttime-hours" value="19">
+            {% endif %}    
+          </div>       
+        </div>
+        <div class="govuk-date-input__item">
+          <label class="govuk-label govuk-date-input__label">:</label>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+            <label class="govuk-label govuk-date-input__label" for="curfewchange-starttime-minutes"><span class="govuk-visually-hidden">Start</span> Minutes</label>
+            {% if (data['curfewtimetableday'] == "true") %}
+               <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-starttime-minutes" name="curfewchange-starttime{{ data['day'] }}-minutes" value="{{ data['curfewchange-starttime-minutes'] }}">
+            {% elseif (data['curfewstandard'] == "false") %}
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-starttime-minutes2" name="curfewchange-starttime-minutes" value="">
+            {% else %}  
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-starttime-minutes2" name="curfewchange-starttime-minutes" value="00">
+            {% endif %}    
+          </div>       
+        </div>
+        <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="CurfewStart-ampm">
+                    am or pm
+                </label>
+                <select class="govuk-select govuk-date-input__input govuk-input--width-2 " id="CurfewStart-ampm" name="CurfewStart-ampm" aria-label="Choose am or pm">
+                    <option value="" selected>
+                        Choose am or pm
+                    </option>
+                    <option value="am">
+                        am
+                    </option>
+                    <option value="pm">
+                        pm
+                    </option>
+                </select>
+            </div>
+       </div>
+
+         
+        
+      </div>
+    </fieldset>
+  </div>
+
+ <div id="curfewTimes-form" class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What time does the curfew end?</legend>
+
+      <div class="govuk-date-input ">
+        <div class="govuk-date-input__item">
+          <label class="govuk-label govuk-date-input__label" for="curfewchange-starttime-hours"><span class="govuk-visually-hidden">Start</span> Hour</label>
+          <div class="govuk-form-group form-group-start-hours">
+             {% if (data['curfewtimetableday'] == "true") %}
+               <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-endtime-hours" name="curfewchange-endtime{{ data['day'] }}-hours" value="{{ data['curfewchange-endtime-hours'] }}">
+            {% elseif (data['curfewstandard'] == "false") %}
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-endtime-hours" name="curfewchange-endtime-hours" value="">
+            {% else %}  
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-endtime-hours" name="curfewchange-endtime-hours" value="07">
+            {% endif %}
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <label class="govuk-label govuk-date-input__label">:</label>
+        </div>
+         <div class="govuk-date-input__item">
+          <label class="govuk-label govuk-date-input__label" for="curfewchange-starttime-minutes"><span class="govuk-visually-hidden">Start</span> Minutes</label>
+          <div class="govuk-form-group form-group-start-hours">
+            {% if (data['curfewtimetableday'] == "true") %}
+               <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-endtime-minutes" name="curfewchange-endtime{{ data['day'] }}-minutes" value="{{ data['curfewchange-endtime-minutes'] }}">
+            {% elseif (data['curfewstandard'] == "false") %}
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-endtime-minutes" name="curfewchange-endtime-minutes" value="">
+            {% else %}  
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="curfewchange-endtime-minutes" name="curfewchange-endtime-minutes" value="00">
+            {% endif %}
+          </div>
+        </div>
+       <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="CurfewEnd-ampm">
+                    am or pm
+                </label>
+                <select class="govuk-select govuk-date-input__input govuk-input--width-2 " id="CurfewEnd-ampm" name="CurfewEnd-ampm" aria-label="Choose am or pm">
+                    <option value="" selected>
+                        Choose am or pm
+                    </option>
+                    <option value="am">
+                        am
+                    </option>
+                    <option value="pm">
+                        pm
+                    </option>
+                </select>
+            </div>
+       </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <!--
+
+  {% if (data['addcurfewaddress'] == "Yes") %}
+  
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-label govuk-label--s">
+        What address will the device wearer be at during curfew hours?
+    </legend>
+    <div id="address-hint" class="govuk-hint">
+ 
+    </div>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+     {% if (data['curfewtimetableday'] == "true") %} 
+           
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address{{ data['day'] }}" type="checkbox" checked value="{{ data['contactaddressLine1'] or "123 Carter Bar" }}">
+              <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive">
+               {{ data['contactaddressLine1'] or "123 Carter Bar" }}
+              </label>
+            </div>  
+          
+            {% if (data['addcurfewaddress'] == "Yes") %}
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="whereDoYouLive-3" name="day-address{{ data['day'] }}" type="checkbox" value="{{ data['curfewaddressname'] }} - {{ data['curfewaddressLine1'] }}">
+              <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive-3">
+                {{ data['curfewaddressLine1'] or "1 Washington Street" }}
+              </label>
+            </div>
+            {% endif %}
+    {% elseif (data['curfewstandard'] == "false") %}
+            
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="whereDoYouLive" name="day-address" type="checkbox" value="{{ data['contactaddressLine1'] or "123 Carter Bar" }}">
+              <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive">
+               {{ data['contactaddressLine1'] or "123 Carter Bar" }}
+              </label>
+            </div>    
+          
+            {% if (data['addcurfewaddress'] == "Yes") %}
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="whereDoYouLive-3" name="day-address" type="checkbox" value="{{ data['curfewaddressname'] }} - {{ data['curfewaddressLine1'] }}">
+              <label class="govuk-label govuk-checkboxes__label" for="whereDoYouLive-3">
+                {{ data['curfewaddressLine1'] or "1 Washington Street" }}
+              </label>
+            </div>
+            {% endif %}
+
+    {% endif %}
+    </div>
+  </fieldset>
+</div>
+{% endif %}      
+
+-->

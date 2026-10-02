@@ -520,7 +520,7 @@ router.post('/curfew-times-question', function(request, response) {
 
     var curfewtimesquestion = request.session.data['curfewtimesquestion']
     if (curfewtimesquestion == "Yes"){
-        response.redirect("/v1/monitoring-conditions/curfew-4?curfewtimetableday=false&curfewstandard=true&curfewchange-starttime-hours=19&curfewchange-starttime-minutes=00&curfewchange-endtime-hours=07&curfewchange-endtime-minutes=00&curfewperiods=one")
+        response.redirect("/v1/monitoring-conditions/curfew-4?curfewtimetableday=false&curfewstandard=true&curfewchange-starttime-hours=7&CurfewStart-ampm=pm&curfewchange-starttime-minutes=00&curfewchange-endtime-hours=07&curfewchange-endtime-minutes=00&CurfewEnd-ampm=am&curfewperiods=one")
     } else {
         response.redirect("/v1/monitoring-conditions/curfew-period?curfewstandard=false&curfewtimetableday=false")
     }
