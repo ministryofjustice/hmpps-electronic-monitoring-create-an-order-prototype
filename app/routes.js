@@ -1305,9 +1305,9 @@ router.post('/user-type', function(request, response) {
 
     var usertype = request.session.data['usertype']
     if (usertype == "Prison user"){
-        response.redirect("start?order-type=Post release")  
+        response.redirect("isr?order-type=Post release")  
     } else if (usertype == "Probation user") {
-        response.redirect("start?order-type=Post release") 
+        response.redirect("isr?order-type=Post release") 
     } else if (usertype == "Youth user") {
         response.redirect("start?order-type=Post release")  
     } else if (usertype == "Family court user") {

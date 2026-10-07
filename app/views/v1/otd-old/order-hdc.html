@@ -24,7 +24,7 @@
  
 
  
-  {% if (data['isr-question'] == "true" and data['usertype'] == "Prison user" )  %} 
+  {% if (data['isr-question'] == "true" and data['usertype'] == "Prison user" or data['usertype'] == "Probation user" )  %} 
        
       <form class="form" action="/order-hdc-isr" method="post">
 
