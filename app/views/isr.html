@@ -51,11 +51,11 @@
           }) }} -->
 
           {{ govukRadios({
-            classes: "govuk-radios--inline",
+          
             name: "isr-question",
             fieldset: {
               legend: {
-                text: "Is the device wearer being released on or after 1 October 2026?",
+                text: "What monitoring eligibility rules do you want the prototype to show?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--l"
               }
@@ -70,13 +70,13 @@
                 value: "true",
                 checked: (true if data['isr-question'] == "true"),
                 
-                text: "Yes"
+                text: "Released on or after 1 October 2026 and subject to ISR"
               },
               {
                 value: "false",
                 checked: (true if data['isr-question'] == "false"),
                
-                text: "No"
+                text: "Released before 1 October 2026"
               }
             ]
           }) }}

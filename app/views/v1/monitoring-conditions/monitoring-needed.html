@@ -109,7 +109,7 @@
 
                   {% if (data['cvl'] == "yes") %}
           
-                   From {{ data['trailstart-date'] or '12 Dec 2024' }} to {{ data['trailend-date']  or '12 Dec 2025' }}
+                   From {{ data['trailstart-date'] or '12 Dec 2024' }} to {{ data['trailend-day'] }} {{ data['trailend-month2'] }} {{ data['trailend-year'] }}
 
                    {% elseif (data['monitoringtype'] == "Mandatory attendance monitoring") %}
                   {{ data['appointment-reason'] or 'Anger management meetings' }}   <br>
@@ -150,16 +150,17 @@
             
                 <dd class="govuk-summary-list__actions">
                   <ul class="govuk-summary-list__actions-list">
-                     <li class="govuk-summary-list__actions-list-item">
-                    <a class="govuk-link" href="#">Delete<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
-                    </li>
+                    
                     <li class="govuk-summary-list__actions-list-item">
                     {% if (data['cvl-incomplete'] == "yes") %}
                     <a class="govuk-link" href="trail?trailstart-day=12&trailstart-month=12&trailstart-year=2024&">Change<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
                     {% else %}
                      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
                      {% endif %}
-                    </li>       
+                    </li>  
+                     <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link" href="#">Delete<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
+                    </li>     
                   </ul>
                 </dd>
               </div>
@@ -207,7 +208,7 @@
             
 
                    {% elseif (data['monitoringtype2'] == "Curfew") %}
-                   From {{ data['curfewstart-date'] or '12 Dec 2024' }} to {{ data['curfewend-date'] or '12 Feb 2025' }}
+                   From {{ data['curfewstart-date'] or '12 Dec 2024' }} to {{ data['curfewend-date'] or '12 Dec 2025' }}
             
 
                     {% elseif (data['monitoringtype2'] == "Trail monitoring" or (data['monitoringtype2'] == "Trail monitoring (Home Office)")) %}
@@ -232,12 +233,13 @@
          
                 <dd class="govuk-summary-list__actions">
                   <ul class="govuk-summary-list__actions-list">
-                     <li class="govuk-summary-list__actions-list-item">
-                    <a class="govuk-link" href="are-you-sure">Delete<span class="govuk-visually-hidden"> {{ data['monitoringtype2'] }}</span></a>
-                    </li>
+                    
                     <li class="govuk-summary-list__actions-list-item">
                     <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> {{ data['monitoringtype2'] }}</span></a>
-                    </li>       
+                    </li> 
+                     <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link" href="are-you-sure">Delete<span class="govuk-visually-hidden"> {{ data['monitoringtype2'] }}</span></a>
+                    </li>      
                   </ul>
                 </dd>
               </div>

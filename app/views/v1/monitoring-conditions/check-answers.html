@@ -25,11 +25,13 @@
 
 
        {% if (data['usertype'] == "Probation user") %}   
+
+        <h2 class="govuk-heading-m">Order type</h2>
       
-           
+         <dl class="govuk-summary-list govuk-!-margin-bottom-9">     
      <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              What is the order type?
+              Which type of order has electronic monitoring as one of its conditions?
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['order-type'] or 'Release from prison' }}
@@ -38,6 +40,7 @@
               <a class="govuk-link" href="order-information?cya4=true">Change<span class="govuk-visually-hidden"> What is the type of the order? </span></a>
             </dd>
           </div>
+        </dl>
 
           {% endif %}  
 

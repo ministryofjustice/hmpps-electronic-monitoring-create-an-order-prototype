@@ -30,7 +30,7 @@
         <form class="form" action="../monitoring-conditions/monitoring-needed" method="post">
 
 
-           {% elseif (data['cvl'] == "yes") %}
+           {% elseif (data['cvl'] == "yes" and data['newform'] == "true")  %}
 
         <form class="form" action="../monitoring-conditions/monitoring-needed?cvl-incomplete=yes&monitoringtype=Curfew&monitoringtype2=Trail monitoring" method="post">
 
