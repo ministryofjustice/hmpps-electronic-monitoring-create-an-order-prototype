@@ -12,14 +12,10 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-   <h1 class="govuk-heading-l">
+
         <span class="govuk-caption-l">Access needs and installation risk</span>
-        Disability or health conditions
-      </h1>
-
-    <p>Provide disability or health conditions information to help plan installation.</p>
-
-      <p>Answer questions based on what you know about the device wearer's access needs and requirements.</p>
+      
+   
 
 
       <form class="form" action="/disability" method="post">
@@ -31,13 +27,13 @@
             fieldset: {
               legend: {
                 text: "Does the device wearer have any disabilities or health conditions that could affect installation? ",
-                isPageHeading: false,
-          classes: "govuk-fieldset__legend--s"
+                isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
 
               }
             },
             hint: {
-              text: "Select all that apply"
+              text: "Provide disability or health conditions information to help plan installation. Answer questions based on what you know about the device wearer's access needs and requirements."
             },
             items: [
                {
