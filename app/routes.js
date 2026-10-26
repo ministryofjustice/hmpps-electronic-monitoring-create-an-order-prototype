@@ -520,7 +520,7 @@ router.post('/curfew-times-question', function(request, response) {
 
     var curfewtimesquestion = request.session.data['curfewtimesquestion']
     if (curfewtimesquestion == "Yes"){
-        response.redirect("/v1/monitoring-conditions/curfew-4?curfewtimetableday=false&curfewstandard=true&curfewchange-starttime-hours=7&CurfewStart-ampm=pm&curfewchange-starttime-minutes=00&curfewchange-endtime-hours=07&curfewchange-endtime-minutes=00&CurfewEnd-ampm=am&curfewperiods=one")
+        response.redirect("/v1/monitoring-conditions/curfew-4?curfewtimetableday=false&curfewstandard=true&curfewchange-starttime-hours=19&CurfewStart-ampm=pm&curfewchange-starttime-minutes=00&curfewchange-endtime-hours=07&curfewchange-endtime-minutes=00&CurfewEnd-ampm=am&curfewperiods=one")
     } else {
         response.redirect("/v1/monitoring-conditions/curfew-period?curfewstandard=false&curfewtimetableday=false")
     }
@@ -599,7 +599,7 @@ router.post('/monitoring-list', function(request, response) {
     } else if (monitoringtype2 == "Alcohol monitoring"){
         response.redirect("/v1/monitoring-conditions/appointment-question") 
     } else if (usertype == "Home Office user"){
-        response.redirect("/v1/monitoring-conditions/appointment-question")          
+        response.redirect("/v1/monitoring-conditions/appointment-question")             
     } else {
         response.redirect("/v1/monitoring-conditions/check-answers")
     }
@@ -608,8 +608,11 @@ router.post('/monitoring-list', function(request, response) {
 router.post('/monitoring-list-edit', function(request, response) {
 
     var monitoringtypesquestion = request.session.data['monitoringtypesquestion']
+    var change = request.session.data['change']
     if (monitoringtypesquestion == "Yes"){
         response.redirect("/v1/monitoring-conditions/monitoring-details2")
+    } else if (change == "true"){
+        response.redirect("/v1/monitoring-conditions/check-answers-view")       
     } else {
         response.redirect("/v1/monitoring-conditions/check-answers")
     }
@@ -1281,6 +1284,16 @@ router.post('/checkrisk', function(request, response) {
     }
 })
 
+
+router.post('/checkconditions', function(request, response) {
+
+    var checkconditions = request.session.data['checkconditions']
+    if (checkconditions == "Yes"){
+        response.redirect("/v1/monitoring-conditions/monitoring-needed?cvl=yes&cvl-incomplete=yes")     
+    } else {
+        response.redirect("/v1/monitoring-conditions/check-answers-view?cvl=no&cvl-incomplete=no")
+    }
+})
 
 
 router.post('/user-type-cohort', function(request, response) {

@@ -43,10 +43,30 @@
 
       
 
-      <h1 class="govuk-heading-l">
-        <span class="govuk-caption-l">Electronic monitoring required</span>
-       Types of monitoring needed
-      </h1>
+      
+
+      <div class="moj-page-header-actions">
+          <div class="moj-page-header-actions__title">
+            <h1 class="govuk-heading-l">
+              <span class="govuk-caption-l">Electronic monitoring required</span>
+             Types of monitoring needed
+            </h1>
+          </div>
+
+           {% if (data['cvl'] == "yes" and data['usertype'] == "Prison user" or data['usertype'] == "Probation user" ) %}
+          <div class="moj-page-header-actions__actions">
+            <div class="moj-button-group moj-button-group--inline">
+              <a class="govuk-button govuk-button--secondary" style="text-decoration:none" href="cvl-areyousure" data-module="govuk-button">
+                Update from licence
+              </a>
+              
+            </div>
+          </div>
+
+           {% endif %}
+        </div>
+
+
 
 
         {% if (data['view'] == 'false') %}
