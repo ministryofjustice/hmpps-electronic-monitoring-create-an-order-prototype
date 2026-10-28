@@ -2,35 +2,53 @@
 
 {% set pageName = "Prototype versions" %}
 
+{% block header %}
+  {% from "moj/components/header/macro.njk" import mojHeader %}
+
+  {{ mojHeader({
+    organisationLabel: {
+      text: "HMPPS",
+      href: "/"
+    },
+    serviceLabel: {
+      text: "Apply, change or end an Electronic Monitoring Order (EMO)",
+      href: "/"
+    }
+  }) }}
+{% endblock %}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-l">Electronic Monitoring prototype</span>
       <h1 class="govuk-heading-l">Prototype versions</h1>
-      <p class="govuk-body">Choose a version of the prototype to explore.</p>
 
       <div class="govuk-summary-card">
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">Version 2</h2>
-          {{ govukTag({
-            text: "In progress",
-            classes: "govuk-tag--blue"
-          }) }}
+          <div>
+            {{ govukTag({
+              text: "Experimental",
+              classes: "govuk-tag--orange"
+            }) }}
+          </div>
         </div>
         <div class="govuk-summary-card__content">
+          <!--
           <h3 class="govuk-heading-m">What you can do with this prototype</h3>
           <ul class="govuk-list govuk-list--bullet">
             <li>Create and send an electronic monitoring order form</li>
             <li>Search for forms and view drafts</li>
             <li>Change an existing order</li>
           </ul>
+        -->
 
-          <h3 class="govuk-heading-m">Notes</h3>
-          <p class="govuk-body">The current working version, copied from version 1. Unused design alternatives have been removed.</p>
+          <p class="govuk-body">New version currently being created, copied from version 1.</p>
+          <p class="govuk-body">Unused design alternatives have been removed.</p>
+          <p class="govuk-body">Forked on 27 October 2026.</p>
 
           {{ govukButton({
             text: "Start version 2",
-            href: "/v2/"
+            href: "/v2/start"
           }) }}
         </div>
       </div>
@@ -38,24 +56,19 @@
       <div class="govuk-summary-card">
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">Version 1</h2>
-          {{ govukTag({
-            text: "Previous version",
-            classes: "govuk-tag--grey"
-          }) }}
+          <div>
+            {{ govukTag({
+              text: "Current",
+              classes: "govuk-tag--green"
+            }) }}
+          </div>
         </div>
         <div class="govuk-summary-card__content">
-          <h3 class="govuk-heading-m">What you can do with this prototype</h3>
-          <ul class="govuk-list govuk-list--bullet">
-            <li>Explore the original prototype journeys</li>
-            <li>View research scenarios and error pages</li>
-            <li>Compare earlier search and dashboard designs</li>
-          </ul>
-
-          <h3 class="govuk-heading-m">Notes</h3>
-          <p class="govuk-body">Kept for reference. The version overview includes the original notes and links to individual journeys.</p>
+          <p class="govuk-body">Use this prototype for usability testing and UR sessions.</p>
+          <p class="govuk-body">This version retains all the original routing and functionality, which can be a bit hacky in places. We'll try to clean it up in v2.</p>
 
           {{ govukButton({
-            text: "View version 1",
+            text: "Start version 1",
             href: "/v1/index"
           }) }}
         </div>
