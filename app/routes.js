@@ -133,8 +133,8 @@ router.get(/.*/, function (req, res, next) {
 
 registerPost('/eighteen-answer', function(request, response) {
 
-    var eighteen = request.session.data['eighteen']
-    if (eighteen == "Yes"){
+    var under18 = request.session.data['under-18'] || request.session.data['eighteen']
+    if (under18 == "Yes"){
         response.redirect("/v1/device-wearer/responsible-adult")
     } else {
         response.redirect("/v1/device-wearer/device-wearer-contact")

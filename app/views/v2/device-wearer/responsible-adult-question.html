@@ -25,7 +25,7 @@
 
           {{ govukRadios({
             classes: "govuk-radios--inline",
-            name: "eighteen",
+            name: "under-18",
             fieldset: {
               legend: {
                 text: "Is a responsible adult required?",
@@ -40,12 +40,12 @@
               {
                 value: "Yes",
                 text: "Yes",
-                checked: (true if data['eighteen'] == 'Yes')
+                checked: (true if data['under-18'] == 'Yes')
               },
               {
                 value: "No",
                 text: "No",
-                checked: (true if data['eighteen'] == 'No')
+                checked: (true if data['under-18'] == 'No')
               }
             ]
           }) }}

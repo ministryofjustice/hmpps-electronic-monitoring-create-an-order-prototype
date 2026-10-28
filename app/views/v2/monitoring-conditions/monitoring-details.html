@@ -17,7 +17,7 @@
         What monitoring does the device wearer need?
       </h1>
 
-    {% if (data['addressquestion'] == "No" and data['eighteen'] == "No") %}
+    {% if (data['addressquestion'] == "No" and data['under-18'] == "Yes") %}
 
       {{ govukInsetText({
         text: "Some monitoring types can't be selected because the device wearer has no fixed address. Alcohol monitoring is not an option because the device wearer is not 18 years old or older when the electronic monitoring device is installed."
@@ -33,7 +33,7 @@
       }) }}
 
 
-     {% elseif (data['eighteen'] == "Yes") %}
+    {% elseif (data['under-18'] == "Yes") %}
 
 
       {{ govukInsetText({
@@ -243,7 +243,7 @@
               {
                 value: "Alcohol monitoring",
                 checked: (true if data['monitoringtype'] == 'Alcohol monitoring'),
-                disabled: (true if data['eighteen'] == 'Yes'),
+                disabled: (true if data['under-18'] == 'Yes'),
                 hint: {
                   text: "Measuring alcohol levels of the device wearer or recording they are abstaining from drinking alcohol."
                 },
@@ -322,7 +322,7 @@
               {
                 value: "Alcohol monitoring",
                 checked: (true if data['monitoringtype'] == 'Alcohol monitoring'),
-                disabled: (true if data['eighteen'] == 'Yes'),
+                disabled: (true if data['under-18'] == 'Yes'),
                 hint: {
                   text: "Measuring alcohol levels of the device wearer or recording they are abstaining from drinking alcohol."
                 },
