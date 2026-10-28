@@ -1,0 +1,41 @@
+{#
+    For guidance on how to use layouts see:
+    https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+    #}
+    {% extends "layouts/main.html" %}
+    
+    {% block header %}
+    
+    {%- from "moj/components/header/macro.njk" import mojHeader -%}
+
+{{ mojHeader({
+  organisationLabel: {
+    text: 'HMPPS',
+    href: '#'
+  },
+  serviceLabel: {
+    text: 'Digital Services',
+    href: '#'
+  },
+  navigation: {
+    label: 'Account navigation',
+    items: [{
+      text: '',
+      href: '',
+      active: true
+    }, {
+      text: '',
+      href: ''
+    }]
+  }
+
+}) }}
+
+ 
+    
+    
+    {% block backlink %}
+    
+    {% endblock %}
+    
+    {% endblock %}

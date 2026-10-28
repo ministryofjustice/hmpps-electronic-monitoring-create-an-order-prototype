@@ -1,0 +1,109 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Curfew address boundary - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        Curfew address boundary
+      </h1>
+
+      <p>The standard curfew address boundary is “front door to back door” and does not include garden or adjoining areas. Occasionally there will be a need to extend the range.</p>
+
+     <!--   <p> For example, where the device wearer needs access to a bathroom but there isn’t one within the main building.</p>
+
+    <p>Extending the range is only by exception and the access must be essential. Most essential activities can be timed to take place outside of curfew hours and/or be carried out by others</p>-->
+      
+      <p>Where a need for extending the range has been identified it must be agreed by the decision makers within the organisation. For example, the probation officer and their manager.</p>
+
+
+
+       <form class="form" action="monitoring-needed" method="post">
+
+
+     <div class="govuk-form-group">
+          {% set boundaryHtml %}
+          {{ govukTextarea({
+            id: "curfew-boundary",
+            name: "curfew-boundary",
+            spellcheck: false,
+            value: data['curfew-boundary'],
+            hint: {
+              text: "For example, access to the patio up to the lawn at the main curfew address."
+            },
+            label: {
+              text: "Enter details of what the curfew address boundary should include"
+            }
+          }) }}
+          {% endset -%}
+
+         
+
+          {{ govukRadios({
+            name: "curfew-boundary-question",
+            fieldset: {
+              legend: {
+                text: "Do you want to change the standard curfew address boundary for any of the curfew addresses?",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['curfew-boundary-question'] == 'Yes'),
+                conditional: {
+                  html: boundaryHtml
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (true if data['curfew-boundary-question'] == 'No'),
+                conditional: {
+                 
+                }
+              }
+            ]
+          }) }}
+        </div>
+
+         
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

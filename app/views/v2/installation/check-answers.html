@@ -1,0 +1,368 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Check your answers - Electronic Monitoring
+{% endblock %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Access needs and installation risk</span>
+        Check your answers
+      </h1>
+
+
+      <form class="form" action="" method="post">
+
+       
+
+
+    <h2 class="govuk-heading-m">Device wearer's access needs</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Does the device wearer have any of the disabilities or health conditions listed? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['disability'] or 'The device wearer does not have any of these disabilities or health conditions' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="disability?cya3=true">Change<span class="govuk-visually-hidden"> Does the device wearer have any of these disabilities or health conditions? </span></a>
+            </dd>
+          </div>
+          {% if (data['disability-needs-question'] !== NULL and data['disability-needs-question'] !== '') %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Is there anything we need to know about the device wearer’s disability or health condition?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['disability-needs-question'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="disability-needs?cya3=true">Change<span class="govuk-visually-hidden"> Is there anything you want to share about the device wearer’s disability or health condition to help us plan installation?</span></a>
+            </dd>
+          </div>
+          {% if (data['disability-needs-question'] == "Yes") %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               What should we know about the device wearer's disability or health condition?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['needs'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="disability-needs?cya3=true">Change<span class="govuk-visually-hidden"> What should we know about the device wearer's disability or health condition?</span></a>
+            </dd>
+          </div>
+
+          {% endif %}
+
+          {% endif %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Is an interpreter needed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['wearer-language'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="language?cya3=true">Change<span class="govuk-visually-hidden"> Does the device wearer require an interpreter?</span></a>
+            </dd>
+          </div>
+          {% if (data['wearer-language'] == "Yes") %}
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               What language should be used when speaking to the device wearer?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['language'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="language?cya3=true">Change<span class="govuk-visually-hidden"> What language should be used when speaking to the device wearer?</span></a>
+            </dd>
+          </div>
+          {% endif %}
+         
+ </dl>
+
+ <h2 class="govuk-heading-m">Installation risk</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+     
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             At installation what are the possible risks from the device wearer's behaviour?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['risk'] or 'There are no risks that the installer should be aware of' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="risk-2?cya3=true">Change<span class="govuk-visually-hidden"> What are the risks that apply to the device wearer?</span></a>
+            </dd>
+          </div>
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             At installation what are the possible risks at the address?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['risk2'] or 'There are no risks that the installer should be aware of' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="risk-2b?cya3=true">Change<span class="govuk-visually-hidden"> What are the risks that apply to the device wearer?</span></a>
+            </dd>
+          </div>
+
+        <!--    <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Has the device wearer had a risk of harm assessment?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['oasys'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="oasys?cya3=true">Change<span class="govuk-visually-hidden"> What should we know that will help lower risk of violence or threatening behaviour? </span></a>
+            </dd>
+          </div>
+
+        
+          {% if (data['oasys'] == "Yes") %}
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               What is the risk of serious harm to staff?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['rosh-staff'] or 'Low' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="oasys2?cya3=true">Change<span class="govuk-visually-hidden"> Is there anything else the installer should know that will help lower risk of violence or threatening behaviour?</span></a>
+            </dd>
+          </div>
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               What is the risk of serious harm to self?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['rosh-self'] or 'Low' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="oasys3?cya3=true">Change<span class="govuk-visually-hidden"> Is there anything else the installer should know that will help lower risk of violence or threatening behaviour?</span></a>
+            </dd>
+          </div>
+        {% endif %}
+
+          -->
+
+          {% if (data['risk'] == "There are no risks that apply to the device wearer") %}
+
+          {% else %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Are there other risks to be aware of?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['risk-question'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="risk-3?cya3=true">Change<span class="govuk-visually-hidden"> Is there anything else the installer should know that will help lower risk of violence or threatening behaviour?</span></a>
+            </dd>
+          </div>
+          {% if (data['risk-question'] == "Yes") %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What other risks are there to be aware of?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['risk-needs'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="risk-3?cya3=true">Change<span class="govuk-visually-hidden"> What should we know that will help lower risk of violence or threatening behaviour? </span></a>
+            </dd>
+          </div>
+
+
+          {% endif %}
+          {% endif %}
+
+           {% if (data['usertype'] == "Home Office user") %}    
+
+      {% else %}
+
+       {% if (data['notifying-org'] == "Family Court") %}
+
+   <!--     <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            DAPO order clauses
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['dapoclause'] or '12345642' }} on {{ data['dapoclauseday'] or '12' }}/{{ data['dapoclausemonth'] or '01' }}/{{ data['dapoclauseyear'] or '2025' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="risk-listdapo?cya3=true">Change<span class="govuk-visually-hidden"> What type of offence has been committed by the device wearer?</span></a>
+            </dd>
+          </div>
+-->
+       {% elseif (data['notifying-org'] == "Civil and County Court") %}
+
+   <!--      <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Offences
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['offence'] or 'Robbery' }} on {{ data['offenceday'] or '12' }}/{{ data['offencemonth'] or '01' }}/{{ data['offenceyear'] or '2025' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="risk-list?cya3=true">Change<span class="govuk-visually-hidden"> What type of offence has been committed by the device wearer?</span></a>
+            </dd>
+          </div>
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Is there any other information to be aware of about the offence committed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['offence-question'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="risk-1?cya3=true">Change<span class="govuk-visually-hidden">   Is there any other information to be aware of about the offence committed?</span></a>
+            </dd>
+          </div>
+       -->
+
+       {% else %}
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             What type of offence did the device wearer commit? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['offence'] or 'The offence committed is not relevant to the risk of installation' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="risk?cya3=true">Change<span class="govuk-visually-hidden"> What type of offence has been committed by the device wearer?</span></a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Is there any other information to be aware of about the offence committed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['offence-question'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="risk-1?cya3=true">Change<span class="govuk-visually-hidden">   Is there any other information to be aware of about the offence committed?</span></a>
+            </dd>
+          </div>
+
+          {% endif %}
+
+          {% if (data['offence-question'] == "Yes") %}
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Provide additional risk information about the device wearer's offence.
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['offence-needs'] or '' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="risk-1?cya3=true">Change<span class="govuk-visually-hidden"> Provide additional risk information about the device wearer's offence.</span></a>
+            </dd>
+          </div>
+
+          {% endif %}
+
+          {% endif %}
+
+            {% if (data['notifying-org'] == "Home Office") %}
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Is the device wearer a MAPPA offender?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['mappaquestion'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="mappa?cya3=true">Change<span class="govuk-visually-hidden"> Is the device wearer a MAPPA offender?</span></a>
+            </dd>
+          </div>
+          {% if (data['mappaquestion'] == "Yes") %}
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Which level of MAPPA applies to the device wearer?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['mappa-level'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="mappa-2?cya3=true">Change<span class="govuk-visually-hidden"> Which level of MAPPA applies to the device wearer?</span></a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           What is the MAPPA case type applied to the device wearer?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['mappa-type'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="mappa-2?cya3=true">Change<span class="govuk-visually-hidden"> What is the MAPPA case type applied to the device wearer?</span></a>
+            </dd>
+          </div>
+
+           {% endif %}
+           {% endif %}
+
+
+        </dl>
+      
+
+       
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+     {% if (data['usertype'] == "Court user" or data['usertype'] == "Home Office user") %}
+        {{ govukButton({
+          text: "Save and go to next section",
+          href: ("../attachments/check-answers?section-3-complete=true" if data['section-5-complete'] == 'true' else "../attachments/photo-question?section-3-complete=true")
+        }) }}
+     {% else %}
+        {{ govukButton({
+          text: "Save and go to next section",
+          href: ("../attachments/check-answers?section-3-complete=true" if data['section-5-complete'] == 'true' else "../attachments/licence?section-3-complete=true")
+        }) }}
+     {% endif %}   
+
+        {{ govukButton({
+          text: "Save as draft",
+          classes: "govuk-button--secondary",
+          href: "../new-form?section-3-complete=true"
+        }) }}
+
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

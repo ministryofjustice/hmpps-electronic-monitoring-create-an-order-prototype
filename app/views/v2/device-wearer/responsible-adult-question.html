@@ -1,0 +1,77 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Date of birth - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    
+
+      <form class="form" action="{{ basePath }}/eighteen-answer" method="post">
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+
+        <span class="govuk-caption-l">About the device wearer</span>
+
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "eighteen",
+            fieldset: {
+              legend: {
+                text: "Is a responsible adult required?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            }, 
+            hint: {
+              text: "If the device wearer is under 18 a reponsible adult must be present at installation. A responsible adult is a parent, guardian or someone with parental rights. "
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['eighteen'] == 'Yes')
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (true if data['eighteen'] == 'No')
+              }
+            ]
+          }) }}
+
+       
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+       
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

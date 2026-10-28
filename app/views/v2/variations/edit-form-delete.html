@@ -1,0 +1,69 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+ Are you sure that you want to end all monitoring? - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Are you sure that you want to end all monitoring for {{ data['fullname'] or "David Murphy" }}?</h1>
+
+
+         <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              19 January 1984
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> name</span></a>
+            </dd>
+          </div>
+       <!--   <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              NOMIS ID
+            </dt>
+            <dd class="govuk-summary-list__value">
+              BDNRTVBC
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> date of birth</span></a>
+            </dd>
+          </div>-->
+         
+        </dl>
+
+
+    
+      <p> If you are not sure it the correct person <a href="submitted-form">check the device wearer's details</a>.</p><br>
+
+
+
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Yes, end all monitoring",
+              href: '../delete-form-confirmation?cancelled=true',
+              classes: "govuk-button--warning"
+            }) }}
+
+            {{ govukButton({
+              text: "Cancel and return back to form",
+              href: '../submitted-form?view=true',
+              classes: "govuk-button--secondary"
+            }) }}
+          </div>
+     
+        </div>
+      </div>
+{% endblock %}

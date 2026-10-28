@@ -1,0 +1,97 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Find an address - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    
+
+
+      <form class="form" action="postcode-list?search=true" method="post">
+
+        <div class="govuk-width-container">
+         <span class="govuk-caption-l"> {{ data['sectionid'] or 'About the device wearer'}}</span>
+        <h1 class="govuk-heading-l">Find the {{ data['postcodetype'] or "device wearer's"}} address</h1>
+
+        <!--
+
+        {% if (data['sectionid'] == "About the device wearer") %}
+
+       <p class="govuk-body"> If the device wearer has more than one address, enter the address they are legally registered at. If they divide their time across properties, enter the address they spend the most time or consider their home address.<p class="govuk-body">
+
+         {% endif %}-->
+
+
+         {% if (data['postcodetype'] == "installation") %}
+
+       <p class="govuk-body"> 
+         For installation at source this is the address of the prison, probation office or immigration removal centre.</p>
+
+         {% endif %}
+
+
+
+
+
+        {{ govukInput({
+        label: {
+          text: "Postcode",
+          classes: "govuk-label--s"
+        },
+        classes: "govuk-!-width-two-thirds",
+        hint: {
+          text: "For example, AA3 1AB."
+        },
+        id: "postcode",
+        name: "postcode"
+        }) }}
+
+        {{ govukInput({
+        label: {
+          text: "Building number or name (optional)",
+          classes: "govuk-label--s"
+
+        },
+        classes: "govuk-!-width-two-thirds",
+        hint: {
+          text: "For example, 15 or Prospect Cottage."
+        },
+        id: "searchString",
+        name: "searchString"
+        }) }}
+      </div>
+
+          <p class="govuk-body"><a href="enter-manually" class="govuk-link">Enter address manually</a></p>
+
+        
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Find address"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../submitted-form' if data['view'] == 'false' else '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

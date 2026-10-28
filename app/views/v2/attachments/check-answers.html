@@ -1,0 +1,166 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Check your answers - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Additional documents</span>
+        Check your answers
+      </h1>
+
+
+
+      <form class="form" action="../new-form?section-5-complete=true" method="post">
+
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+           {% if (data['usertype'] == 'Home Office user' or data['usertype'] == 'Court user') %}
+
+  <!--  <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Do you have a Grant of Bail document to upload?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['licencequestion'] or "No" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="licence-question">Change<span class="govuk-visually-hidden"> Do you have a licence document to upload? </span></a>
+            </dd>
+          </div>-->
+
+           {% if (data['licencequestion'] == 'Yes') %}
+
+     <!--      <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Upload a copy of the Grant of Bail document 
+            </dt>
+            <dd class="govuk-summary-list__value">
+             <a href="#">{{ data['licence'] }}</a>
+            </dd>
+            <dd class="govuk-summary-list__actions">        
+                  <a class="govuk-link" href="licence">Change<span class="govuk-visually-hidden"> Licence </span></a>    
+            </dd>
+          </div>-->
+        
+       
+         {% endif %}
+
+         {% else %}
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Upload a copy of the licence or court order document
+            </dt>
+            <dd class="govuk-summary-list__value">
+             <a href="#">{{ data['licence'] }}</a>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+                       
+                  <a class="govuk-link" href="licence">Change<span class="govuk-visually-hidden"> Licence </span></a>
+       
+            </dd>
+          </div>
+
+          {% endif %}
+
+          
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Do you have a photo to upload?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['photoquestion'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="photo-question">Change<span class="govuk-visually-hidden"> Licence </span></a>
+            </dd>
+          </div>
+
+      
+
+          {% if (data['photoquestion'] == "Yes") %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Upload a photo of the device wearer
+            </dt>
+            <dd class="govuk-summary-list__value">
+             <a href="#">{{ data['photo'] }}</a>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                  <a class="govuk-link" href="photo">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+        
+           </dd>
+          </div>
+
+          {% endif %}
+
+<!--             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Do you have any maps to upload to show us where any exclusion or restriction zone is?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['mapquestion'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="map-question">Change<span class="govuk-visually-hidden"> Licence </span></a>
+            </dd>
+          </div>
+
+      
+
+          {% if (data['mapquestion'] == "Yes") %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Restriction or exclusion zone maps
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <a download href="/" class="govuk-link">mapa.jpg</a>, 2MB<br>
+               <a download href="/" class="govuk-link">mapmanchester2.jpg</a>, 5MB
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                  <a class="govuk-link" href="map-list">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+        
+           </dd>
+          </div>
+
+          {% endif %}-->
+
+        </dl>
+     
+        
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and return to main form menu"
+        }) }}
+
+      
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

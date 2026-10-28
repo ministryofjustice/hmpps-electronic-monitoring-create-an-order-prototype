@@ -1,0 +1,134 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible adult details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the device wearer</span>
+        Responsible adult details
+      </h1>
+
+      <p class="govuk-body">
+      A responsible adult is a parent, legal guardian or someone with parental rights. A responsible adult must attend installation of the electronic monitoring devices.
+      </p>
+
+ 
+
+        <form class="form" action="device-wearer-contact" method="post">
+
+
+     
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukInput({
+          label: {
+            text: "What is the responsible adult's first name?",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "adult-firstname",
+          name: "adult-firstname",
+          spellcheck: false,
+          value: data['adult-firstname']
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "What is the responsible adult's last name?",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "adult-lastname",
+          name: "adult-lastname",
+          spellcheck: false,
+          value: data['adult-lastname']
+        }) }}
+
+
+
+       
+{% set otherHtml %}
+
+          {{ govukInput({
+            id: "relationship-other",
+            name: "relationship-other",
+            spellcheck: false,
+            value: data['relationship-other'],
+            classes: "govuk-input--width-20",
+            label: {
+              text: "Describe their relationship to device wearer",
+              classes: "govuk-label--s"
+            }
+          }) }}
+          
+{% endset -%}
+         
+
+          {{ govukRadios({
+            name: "relationship",
+            fieldset: {
+              legend: {
+                text: "What is the responsible adult's relationship to the device wearer?",
+               classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Parent",
+                checked: (true if data['relationship'] == 'Parent'),
+                text: "Parent"
+              },
+              {
+                value: "Guardian",
+                checked: (true if data['relationship'] == 'Guardian'),
+                text: "Guardian"
+              },
+              {
+                value: "Other",
+                checked: (true if data['relationship'] == 'Other'),
+                text: "Other",
+                conditional: {
+                html: otherHtml
+              }
+              }
+            ]
+          }) }}
+
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

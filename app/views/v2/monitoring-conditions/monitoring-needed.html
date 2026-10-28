@@ -1,0 +1,347 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+ Types of monitoring needed - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+  <!--       {% set html %}
+        <p class="govuk-notification-banner__heading">
+         You are viewing a submitted form. This form was submitted on the 14 December 2024.
+        </p>
+      {% endset %}
+
+      {% set htmlcancelled %}
+        <p class="govuk-notification-banner__heading">
+         You are viewing a cancelled form. This form was cancelled on the 22 December 2024.
+        </p>
+      {% endset %}
+
+
+          {% if (data['view-variation'] == 'cancelled') %}
+
+           {{ govukNotificationBanner({
+              html: htmlcancelled
+            }) }}
+
+          {% elseif (data['view'] == 'true') %}
+
+          {{ govukNotificationBanner({
+              html: html
+            }) }}
+
+          {% else %}
+
+           {% endif %}-->
+
+      
+
+      
+
+      <div class="moj-page-header-actions">
+          <div class="moj-page-header-actions__title">
+            <h1 class="govuk-heading-l">
+              <span class="govuk-caption-l">Electronic monitoring required</span>
+             Types of monitoring needed
+            </h1>
+          </div>
+
+           {% if (data['cvl'] == "yes" and data['usertype'] == "Prison user" or data['usertype'] == "Probation user" ) %}
+          <div class="moj-page-header-actions__actions">
+            <div class="moj-button-group moj-button-group--inline">
+              <a class="govuk-button govuk-button--secondary" style="text-decoration:none" href="cvl-areyousure" data-module="govuk-button">
+                Update from licence
+              </a>
+              
+            </div>
+          </div>
+
+           {% endif %}
+        </div>
+
+
+
+
+        {% if (data['view'] == 'false') %}
+
+           <form class="form" action="{{ basePath }}/monitoring-list-edit" method="post">
+
+          {% else %}
+
+           <form class="form" action="{{ basePath }}/monitoring-list" method="post">
+
+           {% endif %}
+
+
+           {% if (data['error'] == "true") %}
+
+           {% call govukInsetText({ classes: "govuk-!-margin-0 guidance-panel" }) %}
+               <p>The device wearer has no fixed address so only Alcohol Monitoring is allowed. </p>
+               <h2 class="govuk-heading-s govuk-!-margin-0">You must:</h2>
+               <ul class="govuk-list govuk-list--bullet">
+                 <li>delete the invalid monitoring conditions from the order</li>
+                 <li>ensure any required documents are also updated and attached to the order. For example, the licence.</li>
+               </ul>
+              
+            {% endcall %}
+
+            <br>
+
+          <!--  <div class="govuk-inset-text">
+              <p>The device wearer has no fixed address so only Alcohol Monitoring is allowed. </p>
+               <h2 class="govuk-heading-s govuk-!-margin-0">You must:</h2>
+               <ul class="govuk-list govuk-list--bullet">
+                 <li>delete the invalid monitoring conditions from the order</li>
+                 <li>ensure any required documents are also updated and attached to the order. For example, the licence.</li>
+               </ul>
+            </div>-->
+
+
+           {% endif %}
+
+         
+   
+
+          <dl class="govuk-summary-list">
+       
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  {% if (data['cvl'] == "yes") %}
+
+                  Trail monitoring
+
+                   {% else %}
+
+                   {{ data['monitoringtype'] }}
+
+                    {% endif %}
+
+                </dt>
+                
+                <dd class="govuk-summary-list__value">
+
+                  {% if (data['cvl'] == "yes") %}
+          
+                   From {{ data['trailstart-date'] or '12 Dec 2024' }} to {{ data['trailend-day'] }} {{ data['trailend-month2'] }} {{ data['trailend-year'] }}
+
+                   {% elseif (data['monitoringtype'] == "Mandatory attendance monitoring") %}
+                  {{ data['appointment-reason'] or 'Anger management meetings' }}   <br>
+                  From {{ data['attendancestart-date'] or '12 Dec 2024' }} to {{ data['attendanceend-date' or '12 Dec 2025'] }}
+
+          
+
+                   {% elseif (data['monitoringtype'] == "Exclusion zone monitoring") %}
+                  {{ data['exclusion-name'] or 'Partners house' }}   <br>
+                  From {{ data['exclusionstart-date'] or '12 Dec 2024' }} to {{ data['exclusionend-date'] or '12 Dec 2025' }}
+                 
+                    {% elseif (data['monitoringtype'] == "Restriction zone monitoring") %}
+                  {{ data['exclusion-name'] or 'Salford' }}   <br>
+                  From {{ data['exclusionstart-date'] or '12 Dec 2024' }} to {{ data['exclusionend-date'] or '12 Dec 2025' }}
+                  
+
+                   {% elseif (data['monitoringtype'] == "Curfew") %}
+                   From {{ data['curfewstart-date'] or '12 Dec 2024' }} to {{ data['curfewend-date'] or '12 Dec 2025' }}
+                   
+
+                    {% elseif (data['monitoringtype'] == "Trail monitoring") or (data['monitoringtype'] == "Trail monitoring (Home Office)")%}
+                     From {{ data['trailstart-date'] or '12 Dec 2024' }} to {{ data['trailend-date'] or '12 Dec 2025' }}
+                 
+                   {% elseif (data['monitoringtype'] == "Alcohol monitoring") %}
+                   From {{ data['alcoholstart-date'] or '12 Dec 2024'  }} to {{ data['alcoholend-date'] or '12 Dec 2025'  }}
+                   {% endif %} 
+
+                            
+                </dd>  
+                   {% if (data['cvl-incomplete'] == "yes") %}
+                   <dd class="govuk-summary-list__value">
+                  <strong class="govuk-tag govuk-tag--blue govuk-!-margin-top-1">
+                    Incomplete
+                  </strong>
+                  </dd>
+                  {% endif %}
+               
+            
+                <dd class="govuk-summary-list__actions">
+                  <ul class="govuk-summary-list__actions-list">
+                    
+                    <li class="govuk-summary-list__actions-list-item">
+                    {% if (data['cvl-incomplete'] == "yes") %}
+                    <a class="govuk-link" href="trail?trailstart-day=12&trailstart-month=12&trailstart-year=2024&">Change<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
+                    {% else %}
+                     <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
+                     {% endif %}
+                    </li>  
+                     <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link" href="#">Delete<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
+                    </li>     
+                  </ul>
+                </dd>
+              </div>
+
+              {% if (data['monitoringtypeadded'] == "Yes" or data['cvl'] == "yes") %}
+
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 {% if (data['cvl'] == "yes") %}
+
+                  Curfew monitoring
+
+                   {% else %}
+
+                   {{ data['monitoringtype2'] }}
+
+                    {% endif %}
+
+
+                </dt>
+               
+                <dd class="govuk-summary-list__value">
+
+                  {% if (data['cvl'] == "yes") %}
+                  
+                           From {{ data['curfewstart-date'] or '12 Dec 2024' }} to {{ data['curfewend-date'] or '12 Dec 2025' }}
+               
+
+
+                  {% elseif (data['monitoringtype2'] == "Mandatory attendance monitoring") %}
+                  {{ data['appointment-reason'] or 'Anger management meetings' }}   <br>
+                  From {{ data['attendancestart-date'] or '12 Dec 2024' }} to {{ data['attendanceend-date' or '12 Dec 2025'] }}
+
+         
+
+                   {% elseif (data['monitoringtype2'] == "Exclusion zone monitoring") %}
+                  {{ data['exclusion-name'] or 'Partners house' }}   <br>
+                  From {{ data['exclusionstart-date'] or '12 Dec 2024' }} to {{ data['exclusionend-date'] or '12 Dec 2025' }}
+                 
+
+
+                    {% elseif (data['monitoringtype2'] == "Restriction zone monitoring") %}
+                  {{ data['exclusion-name'] or 'Salford' }}   <br>
+                  From {{ data['exclusionstart-date'] or '12 Dec 2024' }} to {{ data['exclusionend-date'] or '12 Dec 2025' }}
+            
+
+                   {% elseif (data['monitoringtype2'] == "Curfew") %}
+                   From {{ data['curfewstart-date'] or '12 Dec 2024' }} to {{ data['curfewend-date'] or '12 Dec 2025' }}
+            
+
+                    {% elseif (data['monitoringtype2'] == "Trail monitoring" or (data['monitoringtype2'] == "Trail monitoring (Home Office)")) %}
+                     From {{ data['trailstart-date'] or '12 Dec 2024' }} to {{ data['trailend-date'] or '12 Dec 2025' }}
+                  
+
+                   {% elseif (data['monitoringtype2'] == "Alcohol monitoring") %}
+                   From {{ data['alcoholstart-date'] or '12 Dec 2024'  }} to {{ data['alcoholend-date'] or '12 Dec 2025'  }}
+                 
+
+                   {% endif %} 
+
+
+                </dd>  
+
+                   {% if (data['cvl-incomplete'] == "yes") %}
+                   <dd class="govuk-summary-list__value">
+                  
+                  </dd>
+                  {% endif %}
+
+         
+                <dd class="govuk-summary-list__actions">
+                  <ul class="govuk-summary-list__actions-list">
+                    
+                    <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> {{ data['monitoringtype2'] }}</span></a>
+                    </li> 
+                     <li class="govuk-summary-list__actions-list-item">
+                    <a class="govuk-link" href="are-you-sure">Delete<span class="govuk-visually-hidden"> {{ data['monitoringtype2'] }}</span></a>
+                    </li>      
+                  </ul>
+                </dd>
+              </div>
+
+              {% endif %}
+  
+            </dl>
+
+
+
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "monitoringtypesquestion",
+            fieldset: {
+              legend: {
+                text: "Are there any other types of monitoring needed for the device wearer?",
+               classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+           
+              {
+                value: "Yes",
+                text: "Yes"
+              },
+              {
+                value: "No",
+                text: "No"
+              }
+            ]
+          }) }}
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+            {% if (data['view'] == 'true') %}
+
+                {{ govukButton({
+                text: "Return to check your answers",
+                href: 'check-answers-view'
+              }) }}
+
+          {% else %}
+
+             {% if (data['error'] == "true") %}
+
+             {{ govukButton({
+                text: "Save and continue",
+                disabled: true
+              }) }}
+
+               {% elseif (data['cvl-incomplete'] == "yes") %}
+
+             {{ govukButton({
+                text: "Save and continue",
+                disabled: true
+              }) }}
+
+
+
+              {% else %}
+
+             {{ govukButton({
+                text: "Save and continue"
+              }) }}
+
+               {% endif %}
+
+              {{ govukButton({
+                text: "Save as draft",
+                href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
+                classes: "govuk-button--secondary"
+              }) }}
+
+           {% endif %}   
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

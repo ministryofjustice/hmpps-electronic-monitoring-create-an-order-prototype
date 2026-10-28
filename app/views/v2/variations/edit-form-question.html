@@ -1,0 +1,147 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+Details of the changes - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+         {% set html %}
+        <p class="govuk-notification-banner__heading">
+         You are viewing a submitted form. 
+        </p>
+          {% endset %}
+
+       {% if (data['view'] == 'true') %}
+
+          {{ govukNotificationBanner({
+            html: html
+          }) }}
+
+        {% else %}
+                  
+        {% endif %}
+
+     <span class="govuk-caption-l">About the changes in this version of the form</span>
+
+     {% if (data['cya6'] == 'true') %}
+
+     <form class="form" action="check-answers-view" method="post">
+    
+
+
+
+{% else %} 
+
+        <form class="form" action="edit-form-question4" method="post">
+
+
+      {% endif %}  
+
+       <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+               <h1 class="govuk-label-wrapper">
+                  <label class="govuk-label govuk-label--l" for="example">
+                        What is the date you want the changes to take effect?
+                  </label>
+                </h1>
+              <div id="passport-issued-hint" class="govuk-hint">
+                 For example, 17/5/2024.
+              </div>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    {% if (data['view'] == 'true') %}
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="variation-date-day" disabled type="text" inputmode="numeric" value="12">
+                    {% else %}
+                     <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="variation-date-day" type="text" inputmode="numeric" value="{{ data['variation-date-day'] }}">
+
+                    {% endif %}
+
+                  </div>
+                  
+
+
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    {% if (data['view'] == 'true') %}
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="variation-date-month" disabled type="text" inputmode="numeric" value="01">
+                    {% else %}
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="variation-date-month" type="text" inputmode="numeric" value="{{ data['variation-date-month'] }}">
+
+                    {% endif %}
+
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    {% if (data['view'] == 'true') %}
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="variation-date-year" disabled type="text" inputmode="numeric" value="2026">
+                    {% else %}
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="variation-date-year" type="text" inputmode="numeric" value="{{ data['variation-date-year'] }}">
+
+                    {% endif %}
+
+
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+ 
+
+
+          <div class="govuk-button-group">
+
+                {% if (data['view'] == 'true') %}
+                   {{ govukButton({
+                      text: "Return to main form menu",
+                      href: "../submitted-form"
+                    }) }}
+
+                {% else %}
+                  {{ govukButton({
+                    text: "Save and continue"
+                  }) }}
+
+               {{ govukButton({
+                    text: "Save as draft",
+                    href: ('../submitted-form' if data['view'] == 'false' else '#' ),
+                    classes: "govuk-button--secondary"
+                  }) }}
+
+
+                {% endif %}
+
+
+
+             
+
+          </div>
+
+      </form>
+
+
+        
+
+        </div>
+      </div>
+{% endblock %}

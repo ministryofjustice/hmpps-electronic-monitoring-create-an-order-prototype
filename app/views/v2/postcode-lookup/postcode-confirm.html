@@ -1,0 +1,115 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Confirm address - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    
+   {% if (data['postcodetype'] == "installation") %}   
+
+     <form class="form" action="{{ basePath }}/monitoring-conditions/check-answers" method="post"> 
+
+
+  <!--    {% if (data['monitoringtypeadded'] == "Yes") %}
+
+       <form class="form" action="{{ basePath }}/install-type2" method="post">
+
+      {% else %}
+
+      <form class="form" action="{{ basePath }}/install-type" method="post">
+
+      {% endif %} -->
+
+ {% else %}
+      <form class="form" action="{{ basePath }}/postcode" method="post">
+{% endif %}  
+
+           {% from "govuk/components/button/macro.njk" import govukButton %}
+          {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+
+          <div class="govuk-width-container">
+          <h1 class="govuk-heading-l">  
+           <span class="govuk-caption-l"> {{ data['sectionid'] or 'About the device wearer'}}</span>
+          Confirm the {{ data['postcodetype'] or "device wearer's"}} address
+          </h1>
+
+          {% if (data['address-found'] == "true") %}
+
+           {% if (data['sectionid'] == "About the device wearer") %}
+
+          
+          {% call govukInsetText({ classes: "govuk-!-margin-10 guidance-panel" }) %}
+             <p>Check that this is the address where the person wearing the monitoring device will live while they are being electronically monitored.</p>
+       
+             <p>1 Washington Street<br>Worcester<br>WR1 1NL</p>
+             
+          {% endcall %}
+
+
+
+
+      
+
+          <p class="govuk-body"><a href="postcode?address-found=false" class="govuk-link">Search for a different address</a></p>
+          <p class="govuk-body"><a href="enter-manually?address-found=false" class="govuk-link">Enter address manually</a></p>
+          <p class="govuk-body"><a href="../device-wearer/contact-address-question?address-found=false" class="govuk-link">The device wearer does not have a fixed address</a></p>
+          </div>
+
+          {% endif %} 
+
+          {% else %}  
+
+           {% if (data['search'] == "true") %}
+
+          <p>6 addresses found for <b>wr11nl</b> and <b>1</b>. <a href="postcode">Search again</a></p>
+
+          {% else %}  
+
+           <p>0 addresses found. <a href="postcode">Search again</a></p>
+
+          {% endif %}  
+
+           {{ govukInsetText({
+          html: "1 Washington Street<br>Worcester<br>WR1 1NL"
+          }) }}
+
+      
+
+          <p class="govuk-body"><a href="postcode-list" class="govuk-link">Use a different address</a></p>
+          <p class="govuk-body"><a href="enter-manually?search=false" class="govuk-link">Enter address manually</a></p>
+          </div>
+
+          {% endif %} 
+
+         
+                 
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Use this address"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../submitted-form' if data['view'] == 'false' else '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

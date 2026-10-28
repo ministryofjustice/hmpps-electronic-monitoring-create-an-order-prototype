@@ -1,0 +1,87 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Multi-Agency Public Protection Arrangements (MAPPA) - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+ <span class="govuk-caption-l">Access needs and installation risk</span>
+   <!--   <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Access needs and installation risk</span>
+        Multi-Agency Public Protection Arrangements (MAPPA)
+      </h1>-->
+
+      <form class="form" action="risk-3" method="post">
+
+        
+         
+
+          {{ govukRadios({
+            name: "rosh-self",
+            fieldset: {
+              legend: {
+                text: "What is the risk of serious harm to self?",
+                isPageHeading: true,
+         classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Low",
+                text: "Low",
+                checked: (true if data['rosh-self'] == 'Low')
+              },
+              {
+                value: "Medium",
+                text: "Medium",
+                checked: (true if data['rosh-self'] == 'Medium')
+              },
+              {
+                value: "High",
+                checked: (true if data['rosh-self'] == 'High'),
+                text: "High"
+              },
+              {
+                value: "Very high",
+                checked: (true if data['rosh-self'] == 'Very high'),
+                text: "Very high"
+              }
+            ]
+          }) }}
+
+
+
+
+     
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

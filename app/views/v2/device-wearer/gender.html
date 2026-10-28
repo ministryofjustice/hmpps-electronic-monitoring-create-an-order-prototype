@@ -1,0 +1,101 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Gender - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">About the device wearer</span>
+
+  <!--    <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the device wearer</span>
+       What is the device wearer's gender?
+      </h1>-->
+
+     <!-- <p>
+        Gender helps the installer use the correct language when talking to the device wearer.
+      </p>
+
+      <p>Select how the device wearer identifies and describes themselves. The device wearer's gender can be different to their sex registered at birth.</p>-->
+
+       {% if (data['cya1'] == "true") %}
+
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+        <form class="form" action="gender-old" method="post">
+
+        {% endif %}
+
+      
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+
+       
+          {{ govukRadios({
+            name: "wearer-sex",
+            fieldset: {
+              legend: {
+                text: "What is the sex of the device wearer?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: "Select the sex recorded on the device wearer's birth certificate."
+            },
+            items: [
+              {
+                value: "Male",
+                checked: (true if data['wearer-sex'] == 'Male'),
+                text: "Male"
+              },
+              {
+                value: "Female",
+                checked: (true if data['wearer-sex'] == 'Female'),
+                text: "Female"
+              },
+              
+              {
+                divider: "or"
+              },
+              {
+                value: "Not able to provide this information",
+                checked: (true if data['wearer-sex'] == 'Not able to provide this information'),
+                text: "Not able to provide this information"
+              }
+            ]
+          }) }}
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

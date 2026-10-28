@@ -1,0 +1,92 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Do you have a photo identification document to upload? - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if (data['view'] == 'false') %}
+
+       <form class="form" action="{{ basePath }}/photo-question2" method="post">
+
+         {% else %}  
+
+          <form class="form" action="{{ basePath }}/photo-questionnomap" method="post">
+
+
+          {% endif %}  
+
+  
+
+
+
+
+   
+         
+        <span class="govuk-caption-l">Additional documents</span>
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "photoquestion",
+            fieldset: {
+              legend: {
+                text: "Do you have a photo to upload?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: "We need a photo to help identify the device wearer if there is not one on the licence."
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['photoquestion'] == 'Yes'),
+                conditional: {
+                
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (true if data['photoquestion'] == 'No'),
+                conditional: {
+                 
+                }
+              }
+            ]
+          }) }}
+
+
+     
+        
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

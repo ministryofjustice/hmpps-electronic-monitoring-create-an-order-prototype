@@ -1,0 +1,1303 @@
+{% extends "v2/layouts/moj.html" %}
+
+{% block pageTitle %}
+  Electronic Monitoring notification form - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<!-- Breadcrumb -->
+<a href="dashboard" action="action" class="govuk-back-link">Back to all forms</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+  {% if (data['isr-question'] == "true" and data['usertype'] == "Prison user" and data['view'] !== "true" )  %} 
+
+      {{ mojAlert({
+          variant: "information",
+          title: "This order is subject to the changes in the Sentencing Act 2026.",
+          showTitleAsHeading: false,
+          dismissible: false,
+          html: 'This order is subject to the Sentencing Act 2026 changes.'
+        }) }}
+
+         {% endif  %}
+
+     <!-- {% set html %}
+
+        <p class="govuk-notification-banner__heading">
+         This form was submitted on the 14 December 2024.
+
+         <div class="govuk-button-group">
+           <button type="submit" class="govuk-button" data-module="govuk-button" data-govuk-button-init="">
+           Make changes to this form
+          </button>    
+        </div>
+
+        </p>
+
+      {% endset %}
+
+   {% if (data['view'] == 'true') %}
+
+      {{ govukNotificationBanner({
+        html: html
+      }) }}
+
+    {% else %}
+              
+    {% endif %}   -->
+
+    {% if (data['view'] == 'true') %}
+
+    {% if (data['draftversion'] == 'true') %}
+
+   {{ mojAlert({
+  variant: "warning",
+  title: "Some information could not be imported",
+  dismissible: false,
+  html: 'You cannot make changes to this form because it is assigned to Joe Bloggs.'
+}) }}
+
+
+    {% endif %} 
+
+    {% else %}
+
+    
+
+    {% if (data['usertype'] == 'Probation user' and data['dirtydata'] == 'true') %}
+
+
+
+ <!--{%- from "moj/components/alert/macro.njk" import mojAlert -%}
+    
+    {{ mojAlert({
+      variant: "warning",
+      title: "Some information could not be imported",
+      dismissible: false,
+      html: 'Information in this form could be out of date. View <a href="dataissue-interupt">what you need to do</a>.'
+    }) }}-->
+
+
+
+   <!--     {{ mojAlert({
+            variant: "warning",
+            title: "Some information could be out of date",
+            dismissible: false,
+            html: 'This information may be out of date. Don’t correct details already emailed to EMS. Do provide details about changes you came here to make that are already in this form.'
+          }) }}-->
+    
+
+    <!--
+<div role="region" class="moj-alert moj-alert--warning" aria-label="warning: Some information could not be imported" data-module="moj-alert">
+      <div>
+        <svg class="moj-alert__icon" role="presentation" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" height="30" width="30">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M15 2.44922L28.75 26.1992H1.25L15 2.44922ZM13.5107 9.49579H16.4697L16.2431 17.7678H13.7461L13.5107 9.49579ZM13.1299 21.82C13.1299 21.5661 13.1787 21.3285 13.2764 21.1071C13.374 20.8793 13.5075 20.6807 13.6768 20.5114C13.8525 20.3421 14.0544 20.2087 14.2822 20.111C14.5101 20.0134 14.7542 19.9645 15.0146 19.9645C15.2686 19.9645 15.5062 20.0134 15.7275 20.111C15.9554 20.2087 16.154 20.3421 16.3232 20.5114C16.4925 20.6807 16.626 20.8793 16.7236 21.1071C16.8213 21.3285 16.8701 21.5661 16.8701 21.82C16.8701 22.0804 16.8213 22.3246 16.7236 22.5524C16.626 22.7803 16.4925 22.9789 16.3232 23.1481C16.154 23.3174 15.9554 23.4509 15.7275 23.5485C15.5062 23.6462 15.2686 23.695 15.0146 23.695C14.7542 23.695 14.5101 23.6462 14.2822 23.5485C14.0544 23.4509 13.8525 23.3174 13.6768 23.1481C13.5075 22.9789 13.374 22.7803 13.2764 22.5524C13.1787 22.3246 13.1299 22.0804 13.1299 21.82Z" fill="currentColor" />
+        </svg>
+      </div>
+      <div class="moj-alert__content"><h2 class="moj-alert__heading">This information may be out of date</h2>
+                                      <ul class="govuk-list govuk-list--bullet">
+                                      <li>Do not correct details already emailed to EMS. </li>
+                                      <li>Only provide details for the changes you’re making now, even if those details already appear on this form.</li>
+                                    </ul>
+      </div>
+      <div class="moj-alert__action">
+        <button class="moj-alert__dismiss" hidden>Dismiss</button>
+      </div>
+    </div>
+
+    -->
+    
+
+                  
+        {% endif %} 
+
+      {% endif %}    
+
+     {% if (data['view-variation'] == 'fail') %}
+
+     <h1 class="govuk-heading-l">Electronic Monitoring application for {{ data['wearer-firstname'] or "Bobbie" }} {{ data['wearer-lastname'] or "Gibbs" }}</h1>
+
+     {% elseif (data['view-variation'] == 'returned') %}
+
+     <h1 class="govuk-heading-l">Electronic Monitoring application for {{ data['wearer-firstname'] or "Ermintrude" }} {{ data['wearer-lastname'] or "Jones" }}</h1>
+
+      {% else %}
+
+      <h1 class="govuk-heading-l">Electronic Monitoring application for {{ data['fullname'] or "David Murphy" }}</h1>
+
+      {% endif %}
+
+
+
+       {% if (data['view'] == 'true') %}
+
+           {% if (data['variation'] == 'false') %}
+
+           {% if (data['view-variation'] == 'false') %}
+
+      <!-- <p> You can make a change to this form or end all monitoring for the device wearer.</p>-->
+
+         <form class="form" action="variations/edit-form-variation" method="post">
+
+            {% elseif (data['view-variation'] == 'fail') %}
+
+            <div class="govuk-inset-text">
+              <p>Your application form and attachments failed to submit. This was due to a technical problem. For more information <a href="https://ministryofjustice.github.io/hmpps-electronic-monitoring-create-an-order-docs/problems-submitting-forms.html#problems-submitting-forms">View the guidance (opens in a new tab)</a>.</p>
+
+            
+
+            </div>
+
+
+
+            {% elseif (data['view-variation'] == 'returned') %}
+
+         <p> This form has been returned. You need to review the reason it has been returned, make any necessary changes, and resubmit it.</p>
+      
+
+            {% else %}
+
+            <p> You can't make changes to this form because there are more recent versions of it. </p>
+
+            
+
+            
+            {% endif %}      
+
+
+            {% else %}
+
+     <!--       <p> You can make changes to this form or end all monitoring for the device wearer. </p>-->
+            
+
+           
+
+                 <form class="form" action="variations/edit-form-variation" method="post">
+
+            {% endif %} 
+
+        {% else %}
+
+        {% if (data['clarification'] == 'true') %}
+
+        <p>  </p>
+
+        {% elseif (data['sr-type'] == 'I need monitoring equipment installed at a new address') %}
+
+         <p> You are requesting monitoring equipment to be installed at an additional address. </p>
+
+        {% elseif (data['sr-type'] == 'I need monitoring equipment reinstalled or checked') %}
+
+         <p> You are requesting monitoring equipment to be reinstalled. </p>
+
+        {% elseif (data['sr-type'] == 'I need to end all monitoring for the device wearer') %}
+
+         <p> You are revoking monitoring for the device wearer.</p>
+
+         {% elseif (data['sr-type'] == 'I need to end all monitoring for the device wearer2') %}
+
+         <p> You are ending all monitoring for the device wearer.</p>
+
+          {% elseif (data['sr-type'] == 'I have changed something else in the form') %}
+
+         <p> You are making changes to a submitted form. </p>
+
+
+         
+
+        {% endif %}   
+
+
+              <form class="form" action="submit-confirmation?variation=true" method="post">
+              
+       {% endif %}   
+
+
+
+  <!-- <h2 class="govuk-heading-m">Notification form sections</h2>-->
+
+<!-- changed status -->
+      {% set completedStatus = {
+        text: "Completed"
+      } %}
+
+      {% set viewStatus = {
+        text: ""
+      } %}
+
+       {% set completedSectionStatus = {
+        text: "Completed"
+      } %}
+
+  <!--    {% set tocheckStatus = {
+        tag: {
+          text: "To check",
+          classes: "govuk-tag--blue"
+        }
+      } %} -->
+
+<!-- not changed -->
+     {% set tocheckStatus = {
+          text: "Optional"
+      } %} 
+
+      {% set incompleteStatus = {
+        tag: {
+          text: "Incomplete",
+          classes: "govuk-tag--blue"
+        }
+      } %}
+
+ {% if (data['view'] == 'true') %}
+
+     {% if (data['draftversion'] == 'true') %}
+
+
+      {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the Responsible Organisation"
+            },
+            href: ("organisation/check-answers-view"),
+            status: ( completedStatus if data['section-2-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: ( completedStatus if data['section-1-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+           status: ( completedStatus if data['section-3-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+           status: ( completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          }
+
+        ]
+      }) }}
+
+
+
+     {% elseif (data['usertype'] == 'Probation user') %}
+
+
+      {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the Responsible Organisation"
+            },
+             classes: ("govuk-visually-hidden" if data['variation'] == 'true'),
+            href: ("organisation/check-answers-view"),
+             status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: (viewStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+             status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers-view"),
+            status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers-view"),
+            status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "About the changes in this version of the form"
+            },
+            href: ("variations/check-answers-view"),
+            classes: ("govuk-visually-hidden" if data['variation'] == 'false'),
+            status: ( viewStatus )
+          }
+          
+
+        ]
+      }) }}
+
+       {% elseif (data['usertype'] == 'Home Office user') %}
+
+
+      {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+         
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: (viewStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+             status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers-view"),
+            status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers-view"),
+            status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "About the changes in this version of the form"
+            },
+            href: ("variations/check-answers-view"),
+            classes: ("govuk-visually-hidden" if data['variation'] == 'false'),
+            status: ( viewStatus )
+          }
+          
+
+        ]
+      }) }}
+
+
+         {% else %}
+
+
+      {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the Responsible Organisation"
+            },
+            href: ("organisation/check-answers-view"),
+             status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: (viewStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+             status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers-view"),
+            status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers-view"),
+            status: ( viewStatus)
+          },
+          {
+            title: {
+              text: "About the changes in this version of the form"
+            },
+            href: ("variations/check-answers-view"),
+            classes: ("govuk-visually-hidden" if data['variation'] == 'false'),
+            status: ( viewStatus )
+          }
+
+        ]
+      }) }}
+
+
+         {% endif %}
+
+      {% elseif (data['clarification'] == 'true')  %}
+
+        {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the Responsible Organisation"
+            },
+            href: ("organisation/check-answers-view"),
+            status: ( completedStatus if data['section-2-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: ( completedStatus if data['section-1-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers-view"),
+           status: ( completedStatus if data['section-3-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers-view"),
+           status: ( completedStatus if data['section-5-complete'] == 'true' else tocheckStatus)
+          }
+
+        ]
+      }) }}
+
+{% elseif (data['usertype'] == 'Court user')  %}
+
+
+     {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the Responsible Organisation"
+            },
+            href: ("organisation/check-answers-view"),
+            status: ( completedStatus if data['section-2-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: ( completedStatus if data['section-1-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers-view"),
+           status: ( completedStatus if data['section-3-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers-view"),
+           status: ( completedStatus if data['section-5-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: ("About the changes in this version of the form")
+            },
+            href: ("variations/check-answers-view" if data['section-6-complete'] == 'true' else "variations/edit-form-question?cya6=false"),
+           status: ( completedSectionStatus if data['section-6-complete'] == 'true' else incompleteStatus)
+
+          }
+
+        ]
+      }) }}
+
+   {% elseif (data['usertype'] == 'Home Office user')  %}
+
+
+     {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+         
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: ( completedStatus if data['section-1-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers-view"),
+           status: ( completedStatus if data['section-3-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers-view"),
+           status: ( completedStatus if data['section-5-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: ("About the changes in this version of the form")
+            },
+            href: ("variations/check-answers-view" if data['section-6-complete'] == 'true' else "variations/edit-form-question?cya6=false"),
+           status: ( completedSectionStatus if data['section-6-complete'] == 'true' else incompleteStatus)
+
+          }
+
+        ]
+      }) }}   
+
+ {% elseif (data['usertype'] == 'Probation user')  %}  
+
+
+ {% if (data['sr-type'] == 'I need to end all monitoring for the device wearer' or data['sr-type'] == 'I need to end all monitoring for the device wearer2')  %}    
+
+ {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: ( completedStatus if data['section-1-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+             href: ("installation/check-answers-view"),
+           status: ( completedSectionStatus if data['section-3-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers-view" if data['section-5-complete'] == 'true' else "attachments/check-licence"),
+           status: ( completedSectionStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: ("About the changes in this version of the form")
+            },
+            href: ("variations/check-answers-view" if data['section-6-complete'] == 'true' else "variations/edit-form-question?cya6=false"),
+           status: ( completedSectionStatus if data['section-6-complete'] == 'true' else incompleteStatus)
+
+          }
+
+        ]
+      }) }}
+
+  {% else %}
+
+  {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: ( completedStatus if data['section-1-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+             href: ("installation/check-answers-view" if data['section-3-complete'] == 'true' else "installation/check-risk"),
+           status: ( completedSectionStatus if data['section-3-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers-view" if data['section-5-complete'] == 'true' else "attachments/check-licence"),
+           status: ( completedSectionStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: ("About the changes in this version of the form")
+            },
+            href: ("variations/check-answers-view" if data['section-6-complete'] == 'true' else "variations/edit-form-question?cya6=false"),
+           status: ( completedSectionStatus if data['section-6-complete'] == 'true' else incompleteStatus)
+
+          }
+
+        ]
+      }) }}
+
+{% endif %}
+
+
+ {% else %}
+
+        {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the Responsible Organisation"
+            },
+            href: ("organisation/check-answers-view"),
+            status: ( completedStatus if data['section-2-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers-view"),
+            status: ( completedStatus if data['section-1-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers-view"),
+           status: ( completedStatus if data['section-3-complete'] == 'true' else tocheckStatus)
+          },
+           {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers-view"),
+           status: ( completedStatus if data['section-5-complete'] == 'true' else tocheckStatus)
+          },
+          {
+            title: {
+              text: ("About the changes in this version of the form")
+            },
+            href: ("variations/check-answers-view" if data['section-6-complete'] == 'true' else "variations/edit-form-question?cya6=false"),
+           status: ( completedSectionStatus if data['section-6-complete'] == 'true' else incompleteStatus)
+
+          }
+
+        ]
+      }) }}
+
+      {% endif %}
+
+       {% if (data['view'] == 'true') %}
+
+  <!--    <img src="/public/images/form_download.svg" alt="PDF download icon" style="width:62px;height:85px;">
+
+           {{ govukButton({
+          text: ("View and download completed application form" if data['variation'] == 'true' else "View and download completed application form"),
+          href: 'submitted-form-all',
+          classes: "govuk-button--secondary"
+        }) }}-->
+
+
+         
+          {% else %}    
+
+          
+
+          {% endif %}  
+
+
+
+
+      <div class="govuk-!-margin-top-5">
+       <div class="govuk-button-group">
+
+           {% if (data['view'] == 'true') %}
+
+            {% if (data['view-variation'] == 'true' or data['draftversion'] == 'true') %}
+
+             {{ govukButton({
+            text: "Assign form to me",
+            classes: "govuk-button",
+            href: "#"
+            }) }}
+
+           
+
+
+            {% elseif (data['view-variation'] == 'cancelled') %}
+
+             {{ govukButton({
+            text: "Make a copy of this form",
+            classes: "govuk-button--secondary",
+            href: "hard-stop-ended"
+            }) }}
+
+            <a class="govuk-link" href="submitted-form-all">View and download form</a>
+
+            {% elseif (data['view-variation'] == 'returned') %}
+
+            {{ govukButton({
+              text: "Make changes to this form",
+              href: 'variations/edit-form-variation?clarification=false'
+            }) }}
+
+             {{ govukButton({
+            text: "View reason for return",
+            classes: "govuk-button--secondary",
+            href: "return-reason"
+            }) }}
+
+              <a class="govuk-link" href="submitted-form-all">View and download form</a>
+              
+        <!--    {{ govukButton({
+            text: "Copy and send as new order",
+            classes: "govuk-button--secondary",
+            href: "submitted-form?view=false&section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false"
+            }) }}-->
+
+
+            {% elseif (data['view-variation'] == 'fail') %}
+
+            {{ govukButton({
+            text: "Make a copy of this form",
+            classes: "govuk-button--secondary",
+            href: "hard-stop-ended"
+            }) }}
+
+               <a class="govuk-link" href="submitted-form-all">View and download form</a>
+
+          
+           {% else %}
+
+           <button type="submit" class="govuk-button" data-module="govuk-button">
+           Make changes to this form
+          </button>
+
+              <a class="govuk-link" href="submitted-form-all">View and download form</a>
+
+            {% endif %}
+
+
+          {% elseif (data['clarification'] == 'true') %}
+
+               <button type="submit" class="govuk-button" data-module="govuk-button">
+                Submit changes to the form
+              </button>
+
+               <a class="govuk-link" href="delete-form">Delete draft</a>
+
+         <!--     {% if (data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true') %}
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                Submit changes to the form
+              </button>
+
+              <a class="govuk-link" href="delete-form">Delete draft</a>
+              {% else %}
+              <button type="submit" class="govuk-button" disabled data-module="govuk-button">
+                Submit changes to the form
+              </button>
+
+               <a class="govuk-link" href="delete-form">Delete draft</a>
+
+              {% endif %} -->
+
+             {% elseif (data['clarification'] == 'false') %}
+
+
+
+              {% if (data['usertype'] == 'Probation user' and data['section-5-complete'] == 'true' and data['section-6-complete'] == 'true') %}
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                Submit changes to the form
+              </button>
+          
+              <a class="govuk-link" href="delete-form">Delete draft</a>
+
+             <!-- {% elseif (data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true' and data['section-6-complete'] == 'true') %}-->
+
+             {% elseif (data['usertype'] != 'Probation user' and data['section-6-complete'] == 'true') %}
+
+              <button type="submit" class="govuk-button" data-module="govuk-button">
+                Submit changes to the form
+              </button>
+
+                  {% if (data['view-variation'] == 'returned') %}
+
+                     {{ govukButton({
+                      text: "View reason for return",
+                      classes: "govuk-button--secondary",
+                      href: "return-reason"
+                      }) }}
+
+                 {% endif %}   
+          
+              <a class="govuk-link" href="delete-form">Delete draft</a>
+
+              {% else %}
+              <button type="submit" class="govuk-button" disabled data-module="govuk-button">
+                Submit changes to the form
+              </button>
+
+                 {% if (data['view-variation'] == 'returned') %}
+
+                     {{ govukButton({
+                      text: "View reason for return",
+                      classes: "govuk-button--secondary",
+                      href: "return-reason"
+                      }) }}
+
+                 {% endif %}    
+
+               <a class="govuk-link" href="delete-form">Delete draft</a>
+
+              {% endif %}   
+          {% endif %}
+        
+        </div>
+      </div>
+    </form>
+
+    </div>
+    <div class="govuk-grid-column-one-third govuk-!-static-padding-left-9">
+
+        {% if (data['view'] == 'true') %}
+
+           {% if (data['variation'] == 'false') %}
+
+           {% if (data['view-variation'] == 'false') %}
+
+            <div class="moj-timeline">
+                   
+
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                  
+                     <h2 class="moj-timeline__title">Form submitted</h2>   
+
+ 
+
+                       <p class="moj-timeline__byline">by Ada Lovelace</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                        
+                           <time datetime="2019-06-07T12:32:00.000Z">From Liverpool Prison</time><br>
+                      
+
+                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
+                      </p>
+                  <!--    <div class="moj-timeline__description govuk-!-padding-bottom-4">
+                        <p>You are viewing this version of the form.</p>
+                       </div> -->
+
+                    </div>  
+                  </div>
+
+            {% elseif (data['view-variation'] == 'fail') %}
+
+             <div class="moj-timeline">
+                   
+
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                   
+                        <h2 class="moj-timeline__title">Failed to submit</h2>
+                   
+
+                      <p class="moj-timeline__byline">by Ada Lovelace</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                        
+                           <time datetime="2019-06-07T12:32:00.000Z">From Liverpool Prison</time><br>
+                 
+                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
+                      </p>
+                    <!--  <div class="moj-timeline__description govuk-!-padding-bottom-4">
+                        <p>You are viewing this version of the form.</p>
+                      </div>  -->
+
+                    </div>  
+                  </div>
+
+ {% elseif (data['view-variation'] == 'returned') %}
+
+             <div class="moj-timeline">
+                   
+
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                   
+                        <h2 class="moj-timeline__title">Form returned</h2>
+                   
+
+                      <p class="moj-timeline__byline">by</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                        
+                          <time datetime="2019-06-07T12:32:00.000Z">The Electronic Monitoring Service (EMS)</time><br>
+                 
+                        <time datetime="2019-06-07T12:32:00.000Z">4 August 2024 at 4:12pm</time>
+                      </p>
+                    <div class="moj-timeline__description govuk-!-padding-bottom-4">
+                        <p>You are viewing this version of the form.</p>
+                      </div>  
+
+
+                    </div>  
+
+                      <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Form submitted</h2>
+
+                    {% if (data['wearer-firstname'] == "Bob") %}
+
+                       <p class="moj-timeline__byline">by Radia Perlman</p>
+
+                    {% else %}   
+
+                      <p class="moj-timeline__byline">by Ada Lovelace</p>
+
+
+                    {% endif %}   
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+
+                        {% if (data['usertype'] == "Home Office user") %}
+                        
+                        <time datetime="2019-06-07T12:32:00.000Z">Home Office</time><br>
+
+                         {% else %}   
+                        <time datetime="2019-06-07T12:32:00.000Z">Liverpool Prison</time><br>
+
+                        {% endif %}  
+
+        
+                   
+                           
+                    
+                        <time datetime="2019-06-07T12:32:00.000Z">4 August 2026 at 12:32pm</time>
+                      </p>
+
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4">
+                       
+                          <div class="moj-timeline__description govuk-!-padding-bottom-4"><a href="#">View submitted form</a></div>
+                      </div>
+
+                    </div>
+
+
+
+
+                  </div>
+
+
+
+
+            {% else %}
+
+            <div class="moj-timeline">
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Changes submitted</h2>
+
+                        <p class="moj-timeline__byline">by Joe Bloggs</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                  
+                           <time datetime="2019-06-07T12:32:00.000Z">From Probation</time><br>
+                    
+                        <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
+                      </p>
+
+                       <div class="moj-timeline__description govuk-!-padding-bottom-4">
+
+                         <p>Reinstall at different address.</p>
+
+                         <a href="submitted-form?view=true&view-variation=false&variation=true">View submitted form</a>.<br>
+                       </div> 
+
+                    </div>
+
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Form submitted</h2>
+
+                       <p class="moj-timeline__byline">by Ada Lovelace</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                   
+                           <time datetime="2019-06-07T12:32:00.000Z">Liverpool Prison</time><br>
+                    
+                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
+                      </p>
+
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4">
+                        <p>You are viewing this version of the form.</p>
+                      </div>
+
+                    </div>
+
+                    
+                  </div>
+
+            
+
+            
+            {% endif %}  
+
+              {% elseif (data['view-variation'] == 'cancelled') %}
+
+             <div class="moj-timeline">
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Monitoring ended</h2>
+
+                        <p class="moj-timeline__byline">by Joe Bloggs</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                      
+                           <time datetime="2019-06-07T12:32:00.000Z">From Probation</time><br>
+                      
+                        <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
+                      </p>
+
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4">
+
+                  
+
+                        <p>You are viewing this version of the form.</p>
+                      </div>
+
+                    </div>
+
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Form submitted</h2>
+
+                        <p class="moj-timeline__byline">by Ada Lovelace</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                     
+                           <time datetime="2019-06-07T12:32:00.000Z">From Liverpool Prison</time><br>
+                        
+                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
+                      </p>
+
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4"><a href="#">View submitted form</a></div>
+
+                    </div>  
+                  </div>   
+
+                    {% elseif (data['view-variation'] == 'draft') %}    
+           
+             <div class="moj-timeline">
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Draft</h2>
+
+                        <p class="moj-timeline__byline">by Joe Bloggs</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                  
+                           <time datetime="2019-06-07T12:32:00.000Z">From Probation</time><br>
+                    
+                        <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
+                      </p>
+
+                       <div class="moj-timeline__description govuk-!-padding-bottom-4">
+
+                       <p>You are viewing this version of the form.</p>
+                       </div> 
+
+                    </div>
+
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Form submitted</h2>
+
+                       <p class="moj-timeline__byline">by Ada Lovelace</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                   
+                           <time datetime="2019-06-07T12:32:00.000Z">Liverpool Prison</time><br>
+                    
+                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
+                      </p>
+
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4">
+                       
+                          <div class="moj-timeline__description govuk-!-padding-bottom-4"><a href="#">View submitted form</a></div>
+                      </div>
+
+                    </div>
+
+                    
+                  </div>
+    
+
+
+            {% else %}
+
+             <div class="moj-timeline">
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Changes submitted</h2>
+
+                          <p class="moj-timeline__byline">by Joe Bloggs</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                     
+                           <time datetime="2019-06-07T12:32:00.000Z">From Probation</time><br>
+                 
+                        <time datetime="2019-06-14T14:01:00.000Z">14 December 2024 at 2:01pm</time>
+                      </p>
+
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4">
+
+                         <p>Reinstall at different address.</p>
+                         
+                        <p>You are viewing this version of the form.</p>
+                      </div>
+
+                    </div>
+
+                    <div class="moj-timeline__item">
+
+                      <div class="moj-timeline__header">
+                        <h2 class="moj-timeline__title">Form submitted</h2>
+
+                       <p class="moj-timeline__byline">by Ada Lovelace</p>
+
+                      </div>
+
+                      <p class="moj-timeline__date">
+                
+                           <time datetime="2019-06-07T12:32:00.000Z">From Liverpool Prison</time><br>
+                      
+                        <time datetime="2019-06-07T12:32:00.000Z">1 December 2024 at 12:32pm</time>
+                      </p>
+
+                      <div class="moj-timeline__description govuk-!-padding-bottom-4"><a href="submitted-form?view=true&view-variation=true&variation=false">View submitted form</a></div>
+
+                    </div>  
+                  </div>
+      
+
+            {% endif %} 
+
+        {% else %}
+
+         
+              
+       {% endif %}   
+
+
+
+
+
+
+
+
+    </div>  
+  </div>
+{% endblock %}

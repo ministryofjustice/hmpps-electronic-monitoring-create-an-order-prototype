@@ -1,0 +1,210 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible organisation's details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+  {% if (data['officer-org'] == "Probation service") %}
+
+     <span class="govuk-caption-l">About the Responsible Organisation</span>
+   <!--   <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+      What is the Probation region?
+      </h1>-->
+
+      
+   
+<form class="form" action="region2" method="post">    
+
+
+          {{ govukRadios({
+            name: "region",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's Probation service region?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "East Midlands",
+                checked: (true if data['region'] == 'East Midlands'),
+                text: "East Midlands"
+                
+              },
+              {
+                value: "East of England",
+                checked: (true if data['region'] == 'East of England'),
+                text: "East of England"
+                
+              },
+              {
+                value: "Greater Manchester",
+                checked: (true if data['region'] == 'Greater Manchester'),
+                text: "Greater Manchester"
+                
+              },
+              {
+                value: "Kent, Surrey & Sussex",
+                checked: (true if data['region'] == 'Kent, Surrey & Sussex'),
+                text: "Kent, Surrey & Sussex"
+                
+              },
+              {
+                value: "London",
+                checked: (true if data['region'] == 'London'),
+                text: "London"
+                
+              },
+              {
+                value: "North East",
+                checked: (true if data['region'] == 'North East'),
+                text: "North East"
+              },
+              {
+                value: "North West",
+                checked: (true if data['region'] == 'North West'),
+                text: "North West"
+              },
+              {
+                value: "South Central",
+                checked: (true if data['region'] == 'South Central'),
+                text: "South Central"
+                
+              },
+              {
+                value: "South West",
+                checked: (true if data['region'] == 'South West'),
+                text: "South West"
+                
+              },
+              {
+                value: "Wales",
+                checked: (true if data['region'] == 'Wales'),
+                text: "Wales"
+                
+              },
+              {
+                value: "West Midlands",
+                checked: (true if data['region'] == 'West Midlands'),
+                text: "West Midlands"
+                
+              },
+              {
+                value: "Yorkshire and The Humber",
+                checked: (true if data['region'] == 'Yorkshire and The Humber'),
+                text: "Yorkshire and The Humber"
+              }
+            ]
+          }) }}
+
+        
+  {% else %}
+
+
+   <form class="form" action="region4" method="post">
+
+  <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+  <!--    <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the Notifying and Responsible Organisations</span>
+      What is the Youth Justice Service (YJS) region?
+      </h1>-->
+
+
+   {{ govukRadios({
+            name: "region",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Organisation's Youth Justice Service (YJS) region?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "East",
+                checked: (true if data['region'] == 'East'),
+                text: "East"
+                
+              },
+              {
+                value: "London",
+                checked: (true if data['region'] == 'London'),
+                text: "London"
+                
+              },
+              {
+                value: "Midlands",
+                checked: (true if data['region'] == 'Midlands'),
+                text: "Midlands"
+                
+              },
+              {
+                value: "North East and Cumbria",
+                checked: (true if data['region'] == 'North East and Cumbria'),
+                text: "North East and Cumbria"
+                
+              },
+              {
+                value: "North West",
+                checked: (true if data['region'] == 'North West'),
+                text: "North West"
+                
+              },
+              {
+                value: "South West",
+                checked: (true if data['region'] == 'South West'),
+                text: "South West"
+              },
+              {
+                value: "Wales",
+                checked: (true if data['region'] == 'Wales'),
+                text: "Wales"
+              },
+              {
+                value: "Yorkshire and Cumbria",
+                checked: (true if data['region'] == 'Yorkshire and Cumbria'),
+                text: "Yorkshire and Cumbria"
+                
+              }
+            ]
+          }) }}
+
+  {% endif %}
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

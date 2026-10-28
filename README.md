@@ -22,6 +22,37 @@ npm install
 ### Running the prototype
 Run the command npm run dev and open http://localhost:3000 in a web browser.
 
+### Prototype versions
+
+The prototype versions live in separate view folders and use versioned URLs:
+
+- `/` lists the versions with status, notes and entry links.
+- `/v1/index` contains the original v1 notes and links to its journeys.
+- `/v1/dashboard` still opens the existing dashboard directly.
+- `/v2/` opens the new working copy.
+
+When adding version-specific links or form actions, use the `basePath` template variable
+so they stay within the current version. Shared route handlers support the legacy
+unversioned form actions as well as versioned submissions; add v2-specific route
+overrides in `app/routes/v2.js`.
+
+The prototype uses the same session data across versions, so answers entered in v1
+may also appear in v2.
+
+V2 omits unreferenced design alternatives, research entry pages and unused copied
+layouts. Historical copies remain in v1. Both dashboard pages are still needed
+for search and draft forms, and some pages under `otd-old` and `mvp` are still
+redirect destinations. Error/demo pages are also retained, even when they are
+not linked from the main journey. Check links, shared includes and route
+redirects before removing a page; an `old` suffix alone does not mean it is unused.
+
+`setupRouter('/v2')` mounts the v2 router automatically. Do not mount that router
+again or create it at `/`, as its landing-page redirect would replace the prototype
+home page.
+
+Prototype Kit 14 is used with GOV.UK Frontend 6 so the Kit's management and error
+pages have matching header markup and styles.
+
 ### Deployment (COMING SOON)
 The prototype is configured to build and deploy automatically upon new commits to the main branch.
 

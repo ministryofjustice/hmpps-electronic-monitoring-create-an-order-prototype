@@ -1,0 +1,69 @@
+{% extends "v2/layouts/moj-signedout.html" %}
+
+{% set pageName="Sign in - Electronic Monitoring" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Sign in</h1>
+
+    <form class="form" action="{{ basePath }}/dashboard?searchresults=false&search=" method="post">
+
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="username">Username</label>
+        
+        <input class="govuk-input govuk-input--width-20" id="username" name="username" type="text" autofocus="autofocus" autocomplete="username" data-element-id="username" aria-describedby="username-error">
+      </div>
+  
+
+      {% from "govuk/components/password-input/macro.njk" import govukPasswordInput %}
+
+        {{ govukPasswordInput({
+          label: {
+            text: "Password"
+          },
+          classes: "govuk-input--width-20",
+          id: "password-input",
+          name: "password"
+        }) }}
+  
+
+    <button type="submit" class="govuk-button" data-module="govuk-button" data-govuk-button-init="">
+      Sign in
+    </button>
+
+
+      </form>
+
+     
+         <p> <a class="govuk-link" id="oauth2-client-microsoft" href="#">Sign in with a justice.gov.uk email</a></p>
+      
+
+      <div class="govuk-form-group">
+      <h2 class="govuk-heading-m">Problems signing in</h2>
+      <ul class="govuk-list">
+        <li><a class="govuk-link" href="#" id="forgotten-password">I have forgotten my password</a>
+        </li>
+      </ul>
+      <ul class="govuk-list">
+        <li><a class="govuk-link" href="#" id="forgotten-username">I have forgotten my username</a>
+        </li>
+      </ul>
+    </div>
+
+    {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+      {{ govukDetails({
+        summaryText: "Why won't my password work?",
+        text: "Your password is case sensitive which means you must enter your password exactly as you first created it. For example if your password is H3LloWorlD you must enter it exactly like that."
+      }) }}
+    
+
+    
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,171 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Check your answers - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the changes in this version of the form</span>
+        Check your answers
+      </h1>
+
+
+
+  {% if (data['newform'] == 'false') %}
+
+        <form class="form" action="../new-form?section-6-complete=true" method="post">
+
+        {% else %}   
+
+         <form class="form" action="../submitted-form?section-6-complete=true" method="post">
+
+
+      {% endif %}  
+
+
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+      {% if (data['usertype'] == "Probation user") %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Does this form already include any of the changes you came here to make?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['revert-question'] or "No" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                  <a class="govuk-link" href="edit-form-question3">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+        
+           </dd>
+          </div>
+          {% if (data['revert-question'] == "Yes") %}
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Provide details of the changes you need that are already in this form
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['revert'] or "Fixed address was already in the form" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                  <a class="govuk-link" href="edit-form-question3">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+        
+           </dd>
+          </div>
+
+          {% endif %}
+          {% endif %}
+
+  
+
+       
+        
+
+       <!--    <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Why are you making changes to the form?
+            </dt>
+            <dd class="govuk-summary-list__value">
+            {{ data['sr-type'] or "I need monitoring equipment installed at a new address" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               <a class="govuk-link" href="sr-question">Change<span class="govuk-visually-hidden"> Licence </span></a>
+            </dd>
+          </div>-->
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            What is the date you want the changes to take effect?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['variation-date'] or '20/09/2025' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="edit-form-question">Change<span class="govuk-visually-hidden"> Licence </span></a>
+            </dd>
+          </div>
+          {% if (data['sr-type'] == "I have changed something else in the form") %}
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            What have you changed in the form?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['variation-type'] or "The device wearer's personal details" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                  <a class="govuk-link" href="edit-form-question2">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+        
+           </dd>
+          </div>
+
+          {% endif %}
+         
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+           Is there any other information to be aware of about the changes?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['variation-description-question'] or "No" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                  <a class="govuk-link" href="edit-form-question4">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+        
+           </dd>
+          </div>
+          {% if (data['variation-description-question'] == "Yes") %}
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Provide additional information about the changes
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['needs'] or "Device wearer has moved in with his girlfriend" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+             
+                  <a class="govuk-link" href="edit-form-question4">Change<span class="govuk-visually-hidden"> Photo identification </span></a>
+        
+           </dd>
+          </div>
+
+          {% endif %}
+
+
+
+        </dl>
+     
+        
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and return to main form menu"
+        }) }}
+
+      
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

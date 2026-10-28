@@ -1,0 +1,139 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Contacting the device wearer - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">About the device wearer</span>
+
+    <!--  <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the device wearer</span>
+        Does the device wearer have a contact telephone number?
+      </h1>-->
+
+  
+    
+      {% if (data['cya1'] == "true") %}
+
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+             {% if (data['address-found'] == "true") %}
+
+                   <form class="form" action="contact-address-question?address-found=false" method="post">
+
+         <!--    <form class="form" action="../postcode-lookup/postcode-confirm" method="post">
+
+              <input type="hidden" id="sectionid" name="sectionid" value="About the device wearer">
+              <input type="hidden" id="postcodetype" name="postcodetype" value="device wearer's">
+              <input type="hidden" id="variation-simple" name="variation-simple" value="false">-->
+
+
+             {% else %}
+
+            <form class="form" action="contact-address-question" method="post">
+
+              {% endif %}
+
+        {% endif %}
+
+ <!--       {{ govukInput({
+            id: "wearer-telephone",
+            name: "wearer-telephone",
+            type: "tel",
+            spellcheck: false,
+            value: data['wearer-telephone'],
+            classes: "govuk-input--width-20",
+            label: {
+              text: "What is the device wearer's telephone number?",
+              classes: "govuk-fieldset__legend--s"
+            },
+            hint: {
+              text: "Provide either a landline or mobile number"
+            }
+          }) }}-->
+
+     
+
+
+
+         {% set telHtml %}
+          {{ govukInput({
+            id: "wearer-telephone",
+            name: "wearer-telephone",
+            type: "tel",
+            spellcheck: false,
+            value: data['wearer-telephone'],
+            classes: "govuk-input--width-20",
+            label: {
+              text: "What is the device wearer's telephone number?"
+            },
+            hint: {
+              text: "Enter a mobile telephone number or a landline phone number including the area code"
+            }
+          }) }}
+          {% endset -%}
+
+    
+
+          {{ govukRadios({
+            name: "wearer-tel-question",
+            fieldset: {
+              legend: {
+                text: "Does the device wearer have a contact telephone number?",
+               classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: "The contact number can be the number of an Approved Premises (AP)."
+            },
+            items: [
+           
+              {
+                value: "Yes",
+                checked: (true if data['wearer-tel-question'] == 'Yes'),
+                text: "Yes",
+                conditional: {
+                  html: telHtml
+                }
+              },
+              {
+                value: "No",
+                checked: (true if data['wearer-tel-question'] == 'No'),
+                text: "No"
+              }
+            ]
+          }) }}
+  
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

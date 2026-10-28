@@ -1,0 +1,75 @@
+{% extends "v2/layouts/moj.html" %}
+
+{% block pageTitle %}
+ The notification form has failed to submit - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+    
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper govuk-main-wrapper--l" id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation"  style="background-color: #aa2a16;">
+          <h1 class="govuk-panel__title">
+           
+            Failed to submit attachments
+
+          </h1>
+          <!-- <div class="govuk-panel__body">
+            Reference number<br><strong>123654</strong>
+          </div>-->
+
+        </div>
+     
+
+        <p>Check that there is nothing wrong with your attachments and that you can open them.</p>
+
+        <h2 class="govuk-heading-s">If you can't open your attachments</h2>
+
+         <p>Your attachments failed to submit due to a problem with your files.</p>
+
+         <p>Resubmit your order with a new attachments.</p>
+
+         <h2 class="govuk-heading-s">If you can open your attachments</h2>
+
+
+        <p>Your attachments failed to submit with your application form due to a technical problem.</p>
+
+        <p>Download and submit your application form and attachments by email to:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="mailto:hoieorders@ems.co.uk">hoieorders@ems.co.uk</a> if you work at the Home Office </li>
+          <li><a href="mailto:EMNotifications@ems.co.uk">EMNotifications@ems.co.uk</a> if you work in any other service or department</li>
+        </ul>
+      
+        <img src="/public/images/form_download.svg" alt="PDF download icon">
+
+
+           {{ govukButton({
+          text: "View and download completed application form",
+          href: 'submitted-form-all',
+           classes: "govuk-button--secondary"
+        }) }}
+
+
+ 
+
+  <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Back to start",
+          href: "dashboard"
+        }) }}
+       
+</div>
+
+<p><a href="feedback">What did you think of this service? (takes 30 seconds)</a></p>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

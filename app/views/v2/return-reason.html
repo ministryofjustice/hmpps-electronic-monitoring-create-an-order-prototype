@@ -1,0 +1,137 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+
+    <h1 class="govuk-heading-l">
+     
+
+
+    EMS gave these reasons for returning this form
+
+      </h1>
+
+
+
+      {% if (data['usertype'] == "Home Office user") %}
+
+            {% if (data['wearer-firstname'] == "Bob") %}
+              <h2 class="govuk-heading-s"> Incorrect monitoring conditions</h2>
+             
+              <p>This ‘New order’ request has been rejected because you selected the wrong monitoring conditions. Immigration orders require to have, at a minimum, Trail Monitoring (Fitted device) or Trail Monitoring (non-Fitted device). </p>
+
+           <!--   <p>Immigration orders require to have, at a minimum, Trail Monitoring (Fitted device) or Trail Monitoring (non-Fitted device).</p>-->
+
+              {% else %}
+             
+              <h2 class="govuk-heading-s"> Incorrect address</h2>
+
+              <p>This ‘New order’ request has been rejected because the installation address provided is incorrect or invalid. Please ensure that the installation address is complete and accurate. Where possible, please use the built‑in address lookup to reduce the risk of incorrect details and delays when resubmitting. If entering the address manually, you should verify it using reliable tools such as the Post Office postcode finder or Google Maps. </p>
+
+          <!--    <p>Please ensure that the installation address is complete and accurate.  </p>
+
+              <p>Where possible, please use the built‑in address lookup to reduce the risk of incorrect details and delays when resubmitting. </p>
+
+              <p>If entering the address manually, you should verify it using reliable tools such as the Post Office postcode finder or Google Maps. </p>-->
+                {% endif %}
+
+       {% else %}
+              <h2 class="govuk-heading-s"> Incorrect monitoring conditions</h2>
+
+               <p>The monitoring conditions in the licence do not match the form. The licence has both trail and curfew monitoring and the form has just trail monitoring. The licence and the form must match therefore one of them must be changed.</p>
+
+           <!--  <p> The licence has both trail and curfew monitoring and the form has just trail monitoring.</p>
+
+             <p> The licence and the form must match therefore one of them must be changed.</p>-->
+        {% endif %}
+
+
+    <!--  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of return
+            </dt>
+            <dd class="govuk-summary-list__value">
+              23 July 2026 at 13:34
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Reason for return
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Incorrect monitoring conditions
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Details
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if (data['usertype'] == "Home Office user") %}
+             
+              This ‘New order’ request has been rejected because you selected the wrong monitoring conditions.  
+
+              Immigration orders require to have, at minimum, one of the following conditions. Trail Monitoring (Fitted device) or Trail Monitoring (non-Fitted device).
+
+                 {% else %}
+
+               The monitoring conditions in the licence do not match the form.
+
+              The licence has both trail and curfew monitoring and the form has just trail monitoring.
+
+              The licence and the form must match therefore one of them must be changed.
+                {% endif %}
+
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              
+            </dd>
+          </div>
+        </dl> 
+-->
+     
+
+ 
+
+
+       <div class="govuk-!-margin-top-5">
+       <div class="govuk-button-group">     
+
+
+     
+
+            {{ govukButton({
+              text: "Back to form",
+              href: 'submitted-form',
+              classes: "govuk-button"
+            }) }}
+
+      </div>
+    </div>
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

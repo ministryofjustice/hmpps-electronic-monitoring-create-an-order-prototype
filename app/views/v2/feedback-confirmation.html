@@ -1,0 +1,40 @@
+{% extends "v2/layouts/moj.html" %}
+
+{% block pageTitle %}
+ Thank you for your feedback - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+    
+{% block content %}
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper govuk-main-wrapper--l" id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            Thank you for your feedback
+          </h1>
+         
+        </div>
+        <p class="govuk-body">
+          Your feedback will be used to improve the form.
+
+        </p>
+      
+        <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Back to start",
+          href: "dashboard"
+        }) }}
+       
+      </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

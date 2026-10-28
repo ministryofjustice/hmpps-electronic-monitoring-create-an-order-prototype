@@ -1,0 +1,248 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Monitoring dates - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        Overall monitoring dates
+      </h1>
+
+      
+
+    
+  {% if (data['cya4'] == "true") %}
+
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+       <form class="form" action="monitoring-details" method="post">
+
+        {% endif %}
+
+
+ 
+       
+
+         <!--   <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-label govuk-label--s">
+                What is the date the monitoring starts?
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 27 3 2020
+              </div>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoring-day" name="monitoringstart-day" type="text" inputmode="numeric" value="{{ data['monitoringstart-day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoring-month" name="monitoringstart-month" type="text" inputmode="numeric" value="{{ data['monitoringstart-month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="monitoring-year" name="monitoringstart-year" type="text" inputmode="numeric" value="{{ data['monitoringstart-year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>-->
+
+          <div class="moj-datepicker" data-module="moj-date-picker">
+
+            <div class="govuk-form-group">
+              <label class="govuk-label  govuk-label--s" for="date">
+               What is the date for the first day of all monitoring?
+              </label>
+
+              <div id="date-hint" class="govuk-hint">
+                For example, 17/5/2024.  If more than one type of monitoring is required, provide the start date of when the first type of monitoring begins.
+              </div>
+
+              <input class="govuk-input moj-js-datepicker-input " id="date" name="monitoring-date-start" type="text" aria-describedby="date-hint" autocomplete="off" value="{{ data['monitoring-date-start'] }}">
+
+            </div>
+
+          </div>
+
+
+
+       <!--    <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">What is the start time on the first day of monitoring? (optional)</legend>
+
+      <div class="govuk-date-input ">
+        <div class="govuk-hint">Enter time using a 24 hour clock. For example, enter 14:30 instead of 2:30pm</div>
+        
+
+        
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+             <label class="govuk-label govuk-date-input__label" for="starttime-hours"><span class="govuk-visually-hidden">End</span> Hour</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="starttime-hours" name="starttime-hours" value="{{ data['starttime-hours'] }}">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <label class="govuk-label govuk-date-input__label">:</label>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+            <label class="govuk-label govuk-date-input__label" for="starttime-minutes"><span class="govuk-visually-hidden">Start</span> Minutes</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="starttime-minutes" name="starttime-minutes" value="{{ data['starttime-minutes'] }}">
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>-->
+
+      
+
+       <!--     <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <legend class="govuk-label govuk-label--s">
+                What is the date monitoring ends? (optional)
+              </legend>
+              <div id="passport-issued-hint" class="govuk-hint">
+                For example, 27 3 2020
+              </div>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoringend-day" name="monitoringend-day" type="text" inputmode="numeric" value="{{ data['monitoringend-day'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="monitoringend-month" name="monitoringend-month" type="text" inputmode="numeric" value="{{ data['monitoringend-month'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="monitoringend-year" name="monitoringend-year" type="text" inputmode="numeric" value="{{ data['monitoringend-year'] }}">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>-->
+
+          <div class="moj-datepicker" data-module="moj-date-picker">
+
+            <div class="govuk-form-group">
+              <label class="govuk-label  govuk-label--s" for="date">
+               {% if (data['order-type'] == "Immigration") or (data['order-type'] == "Pre trial") %}
+               What is the date when all monitoring ends? (optional)
+               {% else %}
+               What is the date when all monitoring ends? 
+               {% endif %}
+
+              </label>
+
+              <div id="date-hint" class="govuk-hint">
+                For example, 17/5/2024.  If more than one type of monitoring is required, provide the date when all monitoring finishes.
+              </div>
+
+              <input class="govuk-input moj-js-datepicker-input " id="date" name="monitoring-date-end" type="text" aria-describedby="date-hint" autocomplete="off" value="{{ data['monitoring-date-end'] }}">
+
+            </div>
+
+          </div>
+
+           
+            
+          </div>
+        </fieldset>
+      </div>
+       
+ <!--       <div id="curfewTimes-form" class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+
+              {% if (data['order-type'] == "Pre trial") or (data['order-type'] == "Immigration") %}
+               What is the end time on the last day of monitoring? (optional)
+               {% else %}
+               What is the end time on the last day of monitoring? (optional)
+               {% endif %}
+
+    </legend>
+
+      <div class="govuk-date-input ">
+        <div class="govuk-hint">Enter time using a 24 hour clock. For example, enter 14:30 instead of 2:30pm</div>
+        
+
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+             <label class="govuk-label govuk-date-input__label" for="endtime-hours"><span class="govuk-visually-hidden">End</span> Hour</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="endtime-hours" name="endtime-hours" value="{{ data['endtime-hours'] }}">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <label class="govuk-label govuk-date-input__label">:</label>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group form-group-start-hours">
+            <label class="govuk-label govuk-date-input__label" for="endtime-minutes"><span class="govuk-visually-hidden">Start</span> Minutes</label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="endtime-minutes" name="endtime-minutes" value="{{ data['endtime-minutes'] }}">
+          </div>
+        </div>
+        
+      </div>
+    </fieldset>
+  </div>-->
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+    {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

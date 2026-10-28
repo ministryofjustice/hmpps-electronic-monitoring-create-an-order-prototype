@@ -1,0 +1,108 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   On the day of release, is the curfew from 15:00 to 07:00 the following day? - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <form class="form" action="{{ basePath }}/curfew-release-question" method="post">
+
+        
+
+
+   <span class="govuk-caption-l">Electronic monitoring required</span>
+
+     {% if (data['hdc'] == "Yes") %}
+        
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "curfewreleasequestion",
+            fieldset: {
+              legend: {
+                text: "On the day of release do you want to use the standard curfew times?",   
+                isPageHeading: true,
+               classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+                    text: "On the day of release the standard times are 15:00 to 07:00 the next day. This earlier start time on the first day allows for the installation of the electronic monitoring equipment. It can be later if the device wearer has a long way to travel."
+                  },
+            items: [
+           
+              {
+                value: "Yes",
+                checked: (true if data['curfewreleasequestion'] == 'Yes'),
+                text: "Yes"
+              },
+              {
+                value: "No",
+                checked: (true if data['curfewreleasequestion'] == 'No'),
+                text: "No"
+              }
+            ]
+          }) }}
+
+         {% else %}   
+
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "curfewreleasequestion",
+            fieldset: {
+              legend: {
+                text: "On the day of release do you want to use the standard curfew times?",   
+                isPageHeading: true,
+               classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+                    text: "On the day of release the standard times are 19:00 to 7:00 the next day. It can be later if the device wearer has a long way to travel."
+                  },
+            items: [
+           
+              {
+                value: "Yes",
+                checked: (true if data['curfewreleasequestion'] == 'Yes'),
+                text: "Yes"
+              },
+              {
+                value: "No",
+                checked: (true if data['curfewreleasequestion'] == 'No'),
+                text: "No"
+              }
+            ]
+          }) }}
+
+
+
+         {% endif %} 
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -8,6 +8,44 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
+const v2Router = govukPrototypeKit.requests.setupRouter('/v2')
+
+function registerPost(path, handler) {
+  router.post(path, handler)
+  router.post(`/v1${path}`, handler)
+  v2Router.post(path, handler)
+}
+
+// Legacy forms post to root-level routes, so use the referrer to retain their version.
+router.use((req, res, next) => {
+  const requestVersion = req.path.match(/^\/(v\d+)(?=\/|$)/)
+  const referrerVersion = req.get('Referrer')?.match(/\/(v\d+)(?=\/|$)/)
+  const version = requestVersion?.[1] || referrerVersion?.[1]
+
+  res.locals.basePath = version ? `/${version}` : ''
+
+  if (version) {
+    const redirect = res.redirect
+
+    res.redirect = function (...args) {
+      const locationIndex = typeof args[0] === 'number' ? 1 : 0
+      const location = args[locationIndex]
+
+      if (typeof location === 'string' && !/^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(location)) {
+        const absoluteLocation = location.startsWith('/') ? location : `/${location}`
+        const locationVersion = absoluteLocation.match(/^\/v\d+(?=\/|$)/)
+        args[locationIndex] = locationVersion
+          ? `${res.locals.basePath}${absoluteLocation.slice(locationVersion[0].length)}`
+          : `${res.locals.basePath}${absoluteLocation}`
+      }
+
+      return redirect.apply(this, args)
+    }
+  }
+
+  next()
+})
+
 // Add your routes here
 
 // Logging session data 
@@ -31,9 +69,9 @@ console.log('previous page is: ' + res.locals.prevURL + " and current page is " 
   next();
 });
 
+require('./routes/v2')(v2Router)
 
-
-router.get('*', function (req, res, next) {
+router.get(/.*/, function (req, res, next) {
   // These functions are available on all pages in the prototype.
   // To use call the function inside curly brackets, for example {{ example_function() }}
 
@@ -93,7 +131,7 @@ router.get('*', function (req, res, next) {
   next()
 })
 
-router.post('/eighteen-answer', function(request, response) {
+registerPost('/eighteen-answer', function(request, response) {
 
     var eighteen = request.session.data['eighteen']
     if (eighteen == "Yes"){
@@ -103,7 +141,7 @@ router.post('/eighteen-answer', function(request, response) {
     }
 })
 
-router.post('/contact-address', function(request, response) {
+registerPost('/contact-address', function(request, response) {
 
     var addressquestion = request.session.data['addressquestion']
     var variationsimple = request.session.data['variation-simple']
@@ -116,7 +154,7 @@ router.post('/contact-address', function(request, response) {
     }
 })
 
-router.post('/postcode', function(request, response) {
+registerPost('/postcode', function(request, response) {
 
     var sectionid = request.session.data['sectionid']
     var sraddress = request.session.data['sr-address']
@@ -138,7 +176,7 @@ router.post('/postcode', function(request, response) {
     }
 })
 
-router.post('/disability', function(request, response) {
+registerPost('/disability', function(request, response) {
 
     var disability = request.session.data['disability']
     if (disability == "The device wearer does not have any of the disabilities or health conditions listed"){
@@ -150,7 +188,7 @@ router.post('/disability', function(request, response) {
     }
 })
 
-router.post('/risk', function(request, response) {
+registerPost('/risk', function(request, response) {
 
     var risk = request.session.data['risk']
     var usertype = request.session.data['usertype']
@@ -162,7 +200,7 @@ router.post('/risk', function(request, response) {
     }
 })
 
-router.post('/mappa', function(request, response) {
+registerPost('/mappa', function(request, response) {
 
     var mappaquestion = request.session.data['mappaquestion']
     if (mappaquestion == "Yes"){
@@ -172,7 +210,7 @@ router.post('/mappa', function(request, response) {
     }
 })
 
-router.post('/oasys', function(request, response) {
+registerPost('/oasys', function(request, response) {
 
     var oasys = request.session.data['oasys']
     if (oasys == "Yes"){
@@ -182,7 +220,7 @@ router.post('/oasys', function(request, response) {
     }
 })
 
-router.post('/install-address-question', function(request, response) {
+registerPost('/install-address-question', function(request, response) {
 
 
     var addressquestion = request.session.data['addressquestion']
@@ -194,7 +232,7 @@ router.post('/install-address-question', function(request, response) {
     }
 })
 
-router.post('/install-address-question2', function(request, response) {
+registerPost('/install-address-question2', function(request, response) {
 
 
     var installaddressquestion = request.session.data['installaddressquestion']
@@ -206,7 +244,7 @@ router.post('/install-address-question2', function(request, response) {
     }
 })
 
-router.post('/installation-address', function(request, response) {
+registerPost('/installation-address', function(request, response) {
 
 
     var installaddressquestion = request.session.data['installaddressquestion']
@@ -229,7 +267,7 @@ router.post('/installation-address', function(request, response) {
     }
 })
 
-router.post('/installation-address2', function(request, response) {
+registerPost('/installation-address2', function(request, response) {
 
 
     var installaddressquestion = request.session.data['installaddressquestion']
@@ -252,7 +290,7 @@ router.post('/installation-address2', function(request, response) {
     }
 })
 
-router.post('/appointment-addressold', function(request, response) {
+registerPost('/appointment-addressold', function(request, response) {
 
 
     var appointmentquestion = request.session.data['appointmentquestion']
@@ -275,7 +313,7 @@ router.post('/appointment-addressold', function(request, response) {
     }
 })
 
-router.post('/appointment-address', function(request, response) {
+registerPost('/appointment-address', function(request, response) {
     var appointmentquestion = request.session.data['appointmentquestion']
     var monitoringtype = request.session.data['monitoringtype']
    
@@ -295,7 +333,7 @@ router.post('/appointment-address', function(request, response) {
     }
 })
 
-router.post('/appointment-address-ho', function(request, response) {
+registerPost('/appointment-address-ho', function(request, response) {
     var appointmentquestion = request.session.data['appointmentquestion']
     var monitoringtype = request.session.data['monitoringtype']
    
@@ -307,7 +345,7 @@ router.post('/appointment-address-ho', function(request, response) {
     }
 })
 
-router.post('/appointment-address2', function(request, response) {
+registerPost('/appointment-address2', function(request, response) {
     var appointmentquestion = request.session.data['appointmentquestion']
     var monitoringtype2 = request.session.data['monitoringtype2']
    
@@ -324,7 +362,7 @@ router.post('/appointment-address2', function(request, response) {
 })
 
 
-router.post('/appointment-address2old', function(request, response) {
+registerPost('/appointment-address2old', function(request, response) {
 
 
     var appointmentquestion = request.session.data['appointmentquestion']
@@ -349,7 +387,7 @@ router.post('/appointment-address2old', function(request, response) {
 
 
 
-router.post('/monitoring-questionold', function(request, response) {
+registerPost('/monitoring-questionold', function(request, response) {
 
     var monitoringtype = request.session.data['monitoringtype']
     var addressquestion = request.session.data['addressquestion']
@@ -363,7 +401,7 @@ router.post('/monitoring-questionold', function(request, response) {
     }
 })
 
-router.post('/monitoring-question', function(request, response) {
+registerPost('/monitoring-question', function(request, response) {
 
     var monitoringtype = request.session.data['monitoringtype']
     var addressquestion = request.session.data['addressquestion']
@@ -382,7 +420,7 @@ router.post('/monitoring-question', function(request, response) {
     }
 })
 
-router.post('/monitoring-question2old', function(request, response) {
+registerPost('/monitoring-question2old', function(request, response) {
 
     var monitoringtype2 = request.session.data['monitoringtype2']
     var addressquestion = request.session.data['addressquestion']
@@ -396,7 +434,7 @@ router.post('/monitoring-question2old', function(request, response) {
     }
 })
 
-router.post('/monitoring-question2', function(request, response) {
+registerPost('/monitoring-question2', function(request, response) {
 
     var monitoringtype2 = request.session.data['monitoringtype2']
 
@@ -408,7 +446,7 @@ router.post('/monitoring-question2', function(request, response) {
     }
 })
 
-router.post('/monitoring-type', function(request, response) {
+registerPost('/monitoring-type', function(request, response) {
 
     var monitoringtype = request.session.data['monitoringtype']
     
@@ -429,7 +467,7 @@ router.post('/monitoring-type', function(request, response) {
     }
 })
 
-router.post('/install-type', function(request, response) {
+registerPost('/install-type', function(request, response) {
 
     var monitoringtype = request.session.data['monitoringtype']
     
@@ -450,7 +488,7 @@ router.post('/install-type', function(request, response) {
     }
 })
 
-router.post('/monitoring-type2', function(request, response) {
+registerPost('/monitoring-type2', function(request, response) {
 
     var monitoringtype2 = request.session.data['monitoringtype2']
     
@@ -471,7 +509,7 @@ router.post('/monitoring-type2', function(request, response) {
     }
 })
 
-router.post('/install-type2', function(request, response) {
+registerPost('/install-type2', function(request, response) {
 
     var monitoringtype2 = request.session.data['monitoringtype2']
     
@@ -493,7 +531,7 @@ router.post('/install-type2', function(request, response) {
 })
 
 
-router.post('/curfew-address-question', function(request, response) {
+registerPost('/curfew-address-question', function(request, response) {
 
     var curfewaddressquestion = request.session.data['curfewaddressquestion']
     var view = request.session.data['view']
@@ -506,7 +544,7 @@ router.post('/curfew-address-question', function(request, response) {
     }
 })
 
-router.post('/curfew-change', function(request, response) {
+registerPost('/curfew-change', function(request, response) {
 
     var curfewperiods = request.session.data['curfewperiods']
     if (curfewperiods == "one"){
@@ -516,7 +554,7 @@ router.post('/curfew-change', function(request, response) {
     }
 })
 
-router.post('/curfew-times-question', function(request, response) {
+registerPost('/curfew-times-question', function(request, response) {
 
     var curfewtimesquestion = request.session.data['curfewtimesquestion']
     if (curfewtimesquestion == "Yes"){
@@ -527,7 +565,7 @@ router.post('/curfew-times-question', function(request, response) {
 })
 
 
-router.post('/alcohol', function(request, response) {
+registerPost('/alcohol', function(request, response) {
 
     var alcoholaddress = request.session.data['alcoholaddress']
     if (alcoholaddress == "At another location or address"){
@@ -539,7 +577,7 @@ router.post('/alcohol', function(request, response) {
 
 
 
-router.post('/exclusion-question', function(request, response) {
+registerPost('/exclusion-question', function(request, response) {
 
     var exclusionquestion = request.session.data['exclusionquestion']
     if (exclusionquestion == "Yes"){
@@ -549,7 +587,7 @@ router.post('/exclusion-question', function(request, response) {
     }
 })
 
-router.post('/map-question', function(request, response) {
+registerPost('/map-question', function(request, response) {
 
     var mapquestion = request.session.data['mapquestion']
     if (mapquestion == "Yes"){
@@ -559,7 +597,7 @@ router.post('/map-question', function(request, response) {
     }
 })
 
-router.post('/map-another', function(request, response) {
+registerPost('/map-another', function(request, response) {
 
     var another = request.session.data['another']
     if (another == "yes"){
@@ -569,7 +607,7 @@ router.post('/map-another', function(request, response) {
     }
 })
 
-router.post('/inclusion-question', function(request, response) {
+registerPost('/inclusion-question', function(request, response) {
 
     var exclusionquestion = request.session.data['exclusionquestion']
     if (exclusionquestion == "Yes"){
@@ -582,7 +620,7 @@ router.post('/inclusion-question', function(request, response) {
 
 
 
-router.post('/monitoring-list', function(request, response) {
+registerPost('/monitoring-list', function(request, response) {
 
     var monitoringtypesquestion = request.session.data['monitoringtypesquestion']
     var monitoringtype = request.session.data['monitoringtype']
@@ -605,7 +643,7 @@ router.post('/monitoring-list', function(request, response) {
     }
 })
 
-router.post('/monitoring-list-edit', function(request, response) {
+registerPost('/monitoring-list-edit', function(request, response) {
 
     var monitoringtypesquestion = request.session.data['monitoringtypesquestion']
     var change = request.session.data['change']
@@ -618,7 +656,7 @@ router.post('/monitoring-list-edit', function(request, response) {
     }
 })
 
-router.post('/ho-question', function(request, response) {
+registerPost('/ho-question', function(request, response) {
 
     var notifyingorg = request.session.data['notifying-org']
     if (notifyingorg == "Home Office"){
@@ -630,7 +668,7 @@ router.post('/ho-question', function(request, response) {
 
 
 
-router.post('/licence-question', function(request, response) {
+registerPost('/licence-question', function(request, response) {
     var licencequestion = request.session.data['licencequestion']
     if (licencequestion == "Yes"){
         response.redirect("/v1/attachments/licence-ho")  
@@ -640,7 +678,7 @@ router.post('/licence-question', function(request, response) {
 })
 
 
-router.post('/photo-question', function(request, response) {
+registerPost('/photo-question', function(request, response) {
 
     var photoquestion = request.session.data['photoquestion']
     if (photoquestion == "Yes"){
@@ -651,7 +689,7 @@ router.post('/photo-question', function(request, response) {
 })
 
 
-router.post('/photo-questioncvl', function(request, response) {
+registerPost('/photo-questioncvl', function(request, response) {
 
     var photoquestion = request.session.data['photoquestion']
     if (photoquestion == "Yes"){
@@ -661,7 +699,7 @@ router.post('/photo-questioncvl', function(request, response) {
     }
 })
 
-router.post('/photo-questionnomap', function(request, response) {
+registerPost('/photo-questionnomap', function(request, response) {
 
     var photoquestion = request.session.data['photoquestion']
     if (photoquestion == "Yes"){
@@ -672,7 +710,7 @@ router.post('/photo-questionnomap', function(request, response) {
 })
 
 
-router.post('/photo-question2', function(request, response) {
+registerPost('/photo-question2', function(request, response) {
 
     var photoquestion = request.session.data['photoquestion']
     if (photoquestion == "Yes"){
@@ -682,7 +720,7 @@ router.post('/photo-question2', function(request, response) {
     }
 })
 
-router.post('/equipmentaddressquestion', function(request, response) {
+registerPost('/equipmentaddressquestion', function(request, response) {
 
     var equipmentaddressquestion = request.session.data['equipmentaddressquestion']
     if (equipmentaddressquestion == "No"){
@@ -692,7 +730,7 @@ router.post('/equipmentaddressquestion', function(request, response) {
     }
 })
 
-router.post('/region', function(request, response) {
+registerPost('/region', function(request, response) {
 
     var officerorg = request.session.data['officer-org']
     if (officerorg == "Probation service"){
@@ -706,7 +744,7 @@ router.post('/region', function(request, response) {
     }
 })
 
-router.post('/specialsquestion', function(request, response) {
+registerPost('/specialsquestion', function(request, response) {
 
     var specialsquestion = request.session.data['specialsquestion']
     if (specialsquestion == "Yes"){
@@ -716,7 +754,7 @@ router.post('/specialsquestion', function(request, response) {
     }
 })
 
-router.post('/order-type', function(request, response) {
+registerPost('/order-type', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     if (ordertype == "Civil"){
@@ -734,7 +772,7 @@ router.post('/order-type', function(request, response) {
     }
 })
 
-router.post('/order-type2', function(request, response) {
+registerPost('/order-type2', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     if (ordertype == "Civil"){
@@ -755,7 +793,7 @@ router.post('/order-type2', function(request, response) {
 
 
 
-router.post('/pilots', function(request, response) {
+registerPost('/pilots', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     var orderdescription = request.session.data['order-description']
@@ -770,7 +808,7 @@ router.post('/pilots', function(request, response) {
     }
 })
 
-router.post('/pilots-probation', function(request, response) {
+registerPost('/pilots-probation', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     var orderdescription = request.session.data['order-description']
@@ -788,7 +826,7 @@ router.post('/pilots-probation', function(request, response) {
     }
 })
 
-router.post('/order-region', function(request, response) {
+registerPost('/order-region', function(request, response) {
 
     var orderdescription = request.session.data['order-description']
     if (orderdescription == "GPS acquisitive crime"){
@@ -798,7 +836,7 @@ router.post('/order-region', function(request, response) {
     }
 })
 
-router.post('/order-conditions', function(request, response) {
+registerPost('/order-conditions', function(request, response) {
 
     var ordercondition = request.session.data['order-condition']
     if (ordercondition == "Yes"){
@@ -808,7 +846,7 @@ router.post('/order-conditions', function(request, response) {
     }
 })
 
-router.post('/order-sentence', function(request, response) {
+registerPost('/order-sentence', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     var ordersentence = request.session.data['order-sentence']
@@ -828,7 +866,7 @@ router.post('/order-sentence', function(request, response) {
     }
 })
 
-router.post('/order-hdc', function(request, response) {
+registerPost('/order-hdc', function(request, response) {
 
   
     var ordersentence = request.session.data['order-sentence']
@@ -839,7 +877,7 @@ router.post('/order-hdc', function(request, response) {
     }
 })
 
-router.post('/order-hdc-isr', function(request, response) {
+registerPost('/order-hdc-isr', function(request, response) {
 
   
     var ordersentence = request.session.data['order-sentence']
@@ -854,7 +892,7 @@ router.post('/order-hdc-isr', function(request, response) {
 })
 
 
-router.post('/order-issp', function(request, response) {
+registerPost('/order-issp', function(request, response) {
 
   
     var ordersentence = request.session.data['order-sentence']
@@ -865,7 +903,7 @@ router.post('/order-issp', function(request, response) {
     }
 })
 
-router.post('/order-information', function(request, response) {
+registerPost('/order-information', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     if (ordertype == "Release from prison"){
@@ -875,7 +913,7 @@ router.post('/order-information', function(request, response) {
     }
 })
 
-router.post('/hdc', function(request, response) {
+registerPost('/hdc', function(request, response) {
 
     var hdc = request.session.data['hdc']
     if (hdc == "No"){
@@ -885,7 +923,7 @@ router.post('/hdc', function(request, response) {
     }
 })
 
-router.post('/order-description', function(request, response) {
+registerPost('/order-description', function(request, response) {
 
     var ordertype = request.session.data['order-type']
     if (ordertype == "Release from prison"){
@@ -895,7 +933,7 @@ router.post('/order-description', function(request, response) {
     }
 })
 
-router.post('/curfew-dates-question', function(request, response) {
+registerPost('/curfew-dates-question', function(request, response) {
 
     var curfewdatesquestion = request.session.data['curfewdatesquestion']
     if (curfewdatesquestion == "No"){
@@ -905,7 +943,7 @@ router.post('/curfew-dates-question', function(request, response) {
     }
 })
 
-router.post('/curfew-release-question', function(request, response) {
+registerPost('/curfew-release-question', function(request, response) {
 
     var curfewreleasequestion = request.session.data['curfewreleasequestion']
     if (curfewreleasequestion == "No"){
@@ -915,7 +953,7 @@ router.post('/curfew-release-question', function(request, response) {
     }
 })
 
-router.post('/exclusion-dates-question', function(request, response) {
+registerPost('/exclusion-dates-question', function(request, response) {
 
     var exclusiondatesquestion = request.session.data['exclusiondatesquestion']
     if (exclusiondatesquestion == "No"){
@@ -925,7 +963,7 @@ router.post('/exclusion-dates-question', function(request, response) {
     }
 })
 
-router.post('/alcohol-dates-question', function(request, response) {
+registerPost('/alcohol-dates-question', function(request, response) {
 
     var alcoholdatesquestion = request.session.data['alcoholdatesquestion']
     if (alcoholdatesquestion == "No"){
@@ -935,7 +973,7 @@ router.post('/alcohol-dates-question', function(request, response) {
     }
 })
 
-router.post('/attendance-dates-question', function(request, response) {
+registerPost('/attendance-dates-question', function(request, response) {
 
     var attendancedatesquestion = request.session.data['attendancedatesquestion']
     if (attendancedatesquestion == "No"){
@@ -945,7 +983,7 @@ router.post('/attendance-dates-question', function(request, response) {
     }
 })
 
-router.post('/trail-dates-question', function(request, response) {
+registerPost('/trail-dates-question', function(request, response) {
 
     var traildatesquestion = request.session.data['traildatesquestion']
     var monitoringtype = request.session.data['monitoringtype']
@@ -963,7 +1001,7 @@ router.post('/trail-dates-question', function(request, response) {
 })
 
 
-router.post('/pdu', function(request, response) {
+registerPost('/pdu', function(request, response) {
 
     var pdu = request.session.data['pdu']
 
@@ -984,7 +1022,7 @@ router.post('/pdu', function(request, response) {
     }
 })
 
-router.post('/sr-question-OLD', function(request, response) {
+registerPost('/sr-question-OLD', function(request, response) {
 
     var srtypesimple = request.session.data['sr-type-simple']
     if (srtypesimple == "I have changed something else in the form"){
@@ -1004,7 +1042,7 @@ router.post('/sr-question-OLD', function(request, response) {
     }
 })
 
-router.post('/sr-address-simple', function(request, response) {
+registerPost('/sr-address-simple', function(request, response) {
 
     var sraddress = request.session.data['sr-address']
     if (sraddress == "No"){
@@ -1014,7 +1052,7 @@ router.post('/sr-address-simple', function(request, response) {
     }
 })
 
-router.post('/sr-question', function(request, response) {
+registerPost('/sr-question', function(request, response) {
 
     var srtypesimple = request.session.data['sr-type-simple']
     if (srtypesimple == "I have changed something else in the form"){
@@ -1030,7 +1068,7 @@ router.post('/sr-question', function(request, response) {
     }
 })
 
-router.post('/sr-address-simple-OLD', function(request, response) {
+registerPost('/sr-address-simple-OLD', function(request, response) {
 
     var sraddress = request.session.data['sr-address']
     if (sraddress == "No"){
@@ -1040,7 +1078,7 @@ router.post('/sr-address-simple-OLD', function(request, response) {
     }
 })
 
-router.post('/bail', function(request, response) {
+registerPost('/bail', function(request, response) {
 
     var bailorder = request.session.data['bail-order']
     if (bailorder == "No"){
@@ -1050,7 +1088,7 @@ router.post('/bail', function(request, response) {
     }
 })
 
-router.post('/bail-simple', function(request, response) {
+registerPost('/bail-simple', function(request, response) {
 
     var bailorder = request.session.data['bail-order']
     if (bailorder == "Yes"){
@@ -1060,7 +1098,7 @@ router.post('/bail-simple', function(request, response) {
     }
 })
 
-router.post('/type-change-areyousure', function(request, response) {
+registerPost('/type-change-areyousure', function(request, response) {
 
     var clarification = request.session.data['clarification']
     var usertype = request.session.data['usertype']
@@ -1076,7 +1114,7 @@ router.post('/type-change-areyousure', function(request, response) {
 
 
 
-router.post('/type-change', function(request, response) {
+registerPost('/type-change', function(request, response) {
 
     var clarification = request.session.data['clarification']
     if (clarification == "false"){
@@ -1086,7 +1124,7 @@ router.post('/type-change', function(request, response) {
     }
 })
 
-router.post('/document-question', function(request, response) {
+registerPost('/document-question', function(request, response) {
 
     var licencequestion = request.session.data['licencequestion']
     if (licencequestion == "Yes"){
@@ -1096,7 +1134,7 @@ router.post('/document-question', function(request, response) {
     }
 })
 
-router.post('/identity-numbers', function(request, response) {
+registerPost('/identity-numbers', function(request, response) {
 
     var usertype = request.session.data['usertype']
     if (usertype == "Home Office user"){
@@ -1106,7 +1144,7 @@ router.post('/identity-numbers', function(request, response) {
     }
 })
 
-router.post('/identity-numbers-lookup', function(request, response) {
+registerPost('/identity-numbers-lookup', function(request, response) {
 
     var usertype = request.session.data['usertype']
     if (usertype == "Home Office user"){
@@ -1121,7 +1159,7 @@ router.post('/identity-numbers-lookup', function(request, response) {
 })
 
 
-router.post('/language', function(request, response) {
+registerPost('/language', function(request, response) {
 
     var notifyingorg = request.session.data['notifying-org']
     var usertype = request.session.data['usertype']
@@ -1136,7 +1174,7 @@ router.post('/language', function(request, response) {
     }
 })
 
-router.post('/curfew-dates', function(request, response) {
+registerPost('/curfew-dates', function(request, response) {
 
     var usertype = request.session.data['usertype']
     if (usertype == "Prison user"){
@@ -1148,7 +1186,7 @@ router.post('/curfew-dates', function(request, response) {
     }
 })
 
-router.post('/order-aq', function(request, response) {
+registerPost('/order-aq', function(request, response) {
 
     var orderaq = request.session.data['order-aq']
     if (orderaq == "They did not commit one of these offences"){
@@ -1158,7 +1196,7 @@ router.post('/order-aq', function(request, response) {
     }
 })
 
-router.post('/order-aq-region', function(request, response) {
+registerPost('/order-aq-region', function(request, response) {
 
     var regioneligibility = request.session.data['region-eligibility']
     if (regioneligibility == "The device wearer's release address is in a different police force area"){
@@ -1169,7 +1207,7 @@ router.post('/order-aq-region', function(request, response) {
 })
 
 
-router.post('/org-details', function(request, response) {
+registerPost('/org-details', function(request, response) {
 
     var notifyingorg = request.session.data['notifying-org']
     var usertype = request.session.data['usertype']
@@ -1197,7 +1235,7 @@ router.post('/org-details', function(request, response) {
 })
 
 
-router.post('/risk-list', function(request, response) {
+registerPost('/risk-list', function(request, response) {
 
     var offencelistquestion = request.session.data['offencelistquestion']
     if (offencelistquestion == "Yes"){
@@ -1207,7 +1245,7 @@ router.post('/risk-list', function(request, response) {
     }
 })
 
-router.post('/risk-1', function(request, response) {
+registerPost('/risk-1', function(request, response) {
 
     var offence = request.session.data['offence']
     if (offence == "Terrorism offence"){
@@ -1217,7 +1255,7 @@ router.post('/risk-1', function(request, response) {
     }
 })
 
-router.post('/risk-civil', function(request, response) {
+registerPost('/risk-civil', function(request, response) {
 
     var offence = request.session.data['offence']
     if (offence == "Terrorism offence"){
@@ -1227,7 +1265,7 @@ router.post('/risk-civil', function(request, response) {
     }
 })
 
-router.post('/risk-listdapo', function(request, response) {
+registerPost('/risk-listdapo', function(request, response) {
 
     var dapoquestion = request.session.data['dapoquestion']
     if (dapoquestion == "Yes"){
@@ -1237,7 +1275,7 @@ router.post('/risk-listdapo', function(request, response) {
     }
 })
 
-router.post('/hard-stop', function(request, response) {
+registerPost('/hard-stop', function(request, response) {
 
     var srtype = request.session.data['sr-type']
     if (srtype == "hardstop"){
@@ -1250,7 +1288,7 @@ router.post('/hard-stop', function(request, response) {
     }
 })
 
-router.post('/sr-address', function(request, response) {
+registerPost('/sr-address', function(request, response) {
 
     var sraddress = request.session.data['sr-address']
     if (sraddress == "Yes"){
@@ -1264,7 +1302,7 @@ router.post('/sr-address', function(request, response) {
 
 
 
-router.post('/check-document', function(request, response) {
+registerPost('/check-document', function(request, response) {
 
     var checkdocument = request.session.data['checkdocument']
     if (checkdocument == "Yes"){
@@ -1274,7 +1312,7 @@ router.post('/check-document', function(request, response) {
     }
 })
 
-router.post('/checkrisk', function(request, response) {
+registerPost('/checkrisk', function(request, response) {
 
     var checkrisk = request.session.data['checkrisk']
     if (checkrisk == "Yes"){
@@ -1285,7 +1323,7 @@ router.post('/checkrisk', function(request, response) {
 })
 
 
-router.post('/checkconditions', function(request, response) {
+registerPost('/checkconditions', function(request, response) {
 
     var checkconditions = request.session.data['checkconditions']
     if (checkconditions == "Yes"){
@@ -1296,7 +1334,7 @@ router.post('/checkconditions', function(request, response) {
 })
 
 
-router.post('/user-type-cohort', function(request, response) {
+registerPost('/user-type-cohort', function(request, response) {
 
     var usertype = request.session.data['usertype']
     if (usertype == "Prison user"){
@@ -1314,7 +1352,7 @@ router.post('/user-type-cohort', function(request, response) {
     }                        
 })
 
-router.post('/user-type', function(request, response) {
+registerPost('/user-type', function(request, response) {
 
     var usertype = request.session.data['usertype']
     if (usertype == "Prison user"){

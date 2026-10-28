@@ -1,0 +1,331 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Check your answers - Electronic Monitoring
+{% endblock %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+
+ <script>
+            var checker = document.getElementById('checkme');
+            var sendbtn = document.getElementById('sendNewSms');
+            checker.onchange = function() {
+              sendbtn.disabled = !!this.checked;
+            };
+          </script>
+      
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+         {% set html %}
+        <p class="govuk-notification-banner__heading">
+          You are viewing a submitted form. 
+        </p>
+      {% endset %}
+
+      {% set htmlcancelled %}
+           <!--  <p class="govuk-notification-banner__heading">
+          You are viewing an ended order. This order ended on the 22 December 2024.
+        </p>-->
+        <p class="govuk-notification-banner__heading">
+          You are viewing a submitted form. 
+        </p>
+      {% endset %}
+
+       {% set htmlfail %}
+        <p class="govuk-notification-banner__heading">
+         This form failed to submit on 14 December 2024. This was due to a technical problem. For more information <a href="https://ministryofjustice.github.io/hmpps-electronic-monitoring-create-an-order-docs/problems-submitting-forms.html#problems-submitting-forms">View the guidance (opens in a new tab)</a>.
+        </p>
+      {% endset %}
+
+
+          {% if (data['view-variation'] == 'cancelled') %}
+
+           {{ govukNotificationBanner({
+              html: htmlcancelled
+            }) }}
+
+              {% elseif (data['view-variation'] == 'fail') %}
+
+           {{ govukNotificationBanner({
+              html: htmlfail
+            }) }}
+
+             {% elseif (data['view'] == 'true') %}
+
+                
+
+                  <!--    {{ govukNotificationBanner({
+                      html: html
+                    }) }}-->
+
+                 {% endif %}    
+
+      
+
+            <!--   {% include "/includes/aba-banner.html" %}-->
+              
+
+   
+
+      {% if (data['view'] == 'true') %}
+
+         <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Access needs and installation risk</span>
+       View answers
+      </h1>
+
+      {% else %}
+
+         <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Access needs and installation risk</span>
+        Check your answers
+      </h1>
+
+
+      {% endif %}
+
+      <form class="form" action="" method="post">
+
+       
+
+
+    <h2 class="govuk-heading-m">Device wearer's access needs</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Does the device wearer have any of these disabilities or health conditions? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+             The device wearer does not have any of these disabilities or health conditions
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               Is an interpreter needed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+         
+ </dl>
+
+ <h2 class="govuk-heading-m">Installation risk</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+        
+
+         
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             At installation what are the possible risks from the device wearer's behaviour?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['risk'] or 'There are no risks that the installer should be aware of' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             At installation what are the possible risks at the address?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['risk'] or 'There are no risks that the installer should be aware of' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+              <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What type of offence did the device wearer commit? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Criminal damage and arson
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Is there any other information to be aware of about the offence committed?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['offence-question'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+       <!--      <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Has the device wearer had a risk of harm assessment?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['oasys'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> What should we know that will help lower risk of violence or threatening behaviour? </span></a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Are there other risks to be aware of in order to assess the risk to staff fitting the device?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['risk-question'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> Is there anything else the installer should know that will help lower risk of violence or threatening behaviour?</span></a>
+            </dd>
+          </div>-->
+
+        </dl>
+      
+
+        {% if (data['view'] == 'true') %}
+
+    <!--      {{ govukButton({
+          text: "Go to next section",
+          href: "../attachments/check-answers-view"
+        }) }}
+-->
+           {{ govukButton({
+          text: "Return to main form menu",
+          href: "../submitted-form",
+          classes: "govuk-button"
+        }) }}
+               
+
+         {% else %}
+
+    
+
+      {% if (data['sr-type'] == 'I need monitoring equipment reinstalled or checked' or data['sr-type'] == 'I need monitoring equipment installed at a new address') %}
+
+
+      <!--     <h2 class="govuk-heading-s">Check if the installation risk has changed</h2>
+
+           <p>If the device wearer has moved to a new address, you must check and update any risk information that has changed.</p>
+
+
+       
+           {{ govukCheckboxes({
+                    name: "waste",
+                    classes: "govuk-checkboxes--small",
+                    fieldset: {
+                      legend: {
+                        text: "Check if the risk has changed",
+                        isPageHeading: true,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+             
+                    items: [
+                      {
+                        value: "carcasses",
+                        id: "checkme",
+                        text: "I have checked and updated any risk information that has changed"
+                      }
+                    ]
+                    }) }}
+
+               -->
+
+            {% else %}
+
+            
+                      
+            {% endif %}   
+
+     <div class="govuk-button-group">    
+
+
+  <!--      {% if (data['usertype'] == 'Probation user') %}     
+
+         {{ govukButton({
+          text: "Save and go to next section",
+          id: "sendNewSms",
+          href: "../attachments/check-licence?section-3-complete=true"
+        }) }}
+
+         {% else %}
+
+           {{ govukButton({
+          text: "Save and go to next section",
+          id: "sendNewSms",
+          href: "../attachments/check-answers-view?section-3-complete=true"
+        }) }}
+
+
+                      
+            {% endif %}  -->
+
+          {{ govukButton({
+          text: "Save and return to main form menu",
+          href: "../submitted-form?section-3-complete=true",
+          classes: "govuk-button"
+
+        }) }}
+                
+          {% endif %}
+
+         </div>
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

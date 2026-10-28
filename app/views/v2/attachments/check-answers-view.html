@@ -1,0 +1,241 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Check your answers - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {% set html %}
+        <p class="govuk-notification-banner__heading">
+         You are viewing a submitted form. 
+        </p>
+      {% endset %}
+
+      {% set htmlcancelled %}
+      <!--  <p class="govuk-notification-banner__heading">
+          You are viewing an ended order. This order ended on the 22 December 2024.
+        </p>-->
+        <p class="govuk-notification-banner__heading">
+         You are viewing a submitted form. 
+        </p>
+        
+      {% endset %}
+
+       {% set htmlfail %}
+        <p class="govuk-notification-banner__heading">
+         This form failed to submit on 14 December 2024. This was due to a technical problem. For more information <a href="https://ministryofjustice.github.io/hmpps-electronic-monitoring-create-an-order-docs/problems-submitting-forms.html#problems-submitting-forms">View the guidance (opens in a new tab)</a>.
+        </p>
+      {% endset %}
+
+     
+
+
+          {% if (data['view-variation'] == 'cancelled') %}
+
+           {{ govukNotificationBanner({
+              html: htmlcancelled
+            }) }}
+
+           {% elseif (data['view-variation'] == 'fail') %}
+
+           {{ govukNotificationBanner({
+              html: htmlfail
+            }) }}
+
+              {% elseif (data['view'] == 'true') %}
+
+               
+                    <!--    {{ govukNotificationBanner({
+                      html: html
+                    }) }}-->
+
+                 {% endif %}    
+    
+
+
+
+{% if (data['view'] == 'true') %}
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Additional documents</span>
+        View answers
+      </h1>
+
+   {% else %}
+
+         <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Additional documents</span>
+        Check your answers
+      </h1>
+
+   
+    {% endif %}    
+
+      <form class="form" action="../submitted-form?section-5-complete=true" method="post">
+
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+
+     
+
+ {% if (data['usertype'] == 'Home Office user') %} 
+
+ {% else %} 
+
+   <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+
+                {% if (data['usertype'] == 'Court user') %} 
+                 Do you have a licence or court order document to upload?
+                {% elseif (data['usertype'] == 'Home Office user') %}  
+                  Do you have a Grant of Bail document to upload? 
+                {% else %}  
+                  Do you need to upload a new document?
+                {% endif %}  
+       
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['checkdocument'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="check-licence">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+
+          
+
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+
+              {% if (data['sr-type'] == 'I need to end all monitoring for the device wearer') %}
+              Upload a copy of the recall paperwork
+              {% else %}
+              Upload a copy of the licence or court order document
+              {% endif %}
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+             <a href="#">{{ data['licence'] or 'Murphy - licence 3245' }}</a>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               <ul class="govuk-summary-list__actions-list">
+                 {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}         
+              </ul>
+            </dd>
+          </div>
+
+       {% endif %} 
+          
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Do you have a photo to upload?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+ <!--              <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            Do you have any maps to upload to show us where any exclusion or restriction zones are?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {{ data['mapquestion'] or 'No' }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="map-question">Change<span class="govuk-visually-hidden"> Licence </span></a>
+            </dd>
+          </div>-->
+          
+
+        </dl>
+
+
+ <!--{% if (data['sr-type'] == 'I need to end all monitoring for the device wearer') %}
+
+
+ <h2 class="govuk-heading-m">Check if you need to upload a new licence</h2>
+
+ <p>You need to update the licence and upload it if the electronic monitoring conditions have changed.</p>
+
+
+        {{ govukCheckboxes({
+          name: "waste",
+          fieldset: {
+            legend: {
+              text: "Which types of waste do you transport?",
+              isPageHeading: true,
+              classes: "govuk-visually-hidden"
+            }
+          },
+   
+          items: [
+            {
+              value: "carcasses",
+              text: "I do not have to upload a new licence"
+            }
+          ]
+          }) }}
+
+     
+
+  {% else %}
+
+  
+            
+  {% endif %}    -->
+        
+
+       
+
+     {% if (data['view'] == 'true') %}
+
+           {{ govukButton({
+          text: "Return to main form menu",
+          href: "../submitted-form"
+        }) }}
+               
+
+         {% else %}
+          {{ govukButton({
+          text: "Save and return to main form menu"
+        }) }}
+
+    
+                    
+     {% endif %}
+      
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,126 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Risk at installation - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Access needs and installation risk</span>
+
+      <!--
+
+      <h1 class="govuk-heading-l">
+       <span class="govuk-caption-l">Access needs and installation risk</span>
+       Risk at installation
+      </h1>
+
+      <p>Risks relate to the device wearer's behaviour and installation address. </p>-->
+
+      <form class="form" action="risk-2b" method="post">
+
+        {% set genderriskHtml %}
+          {{ govukInput({
+            id: "contact-by-email",
+            name: "contactByEmail",
+            type: "email",
+            autocomplete: "email",
+            spellcheck: false,
+            classes: "govuk-!-width-full",
+            label: {
+              text: "What sex or gender are they a risk to?"
+            },
+            hint: {
+                text: "For example, Women"
+              }
+          }) }}
+          {% endset -%}
+
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {{ govukCheckboxes({
+            name: "risk",
+            fieldset: {
+              legend: {
+                text: "At installation what are the possible risks from the device wearer's behaviour?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+             hint: {
+              text: "Check if there are any alerts for the device wearer and answer questions based on what you know about the device wearer's behaviour."
+            },
+            items: [
+              {
+                value: "Violent behaviour or threats of violence",
+                checked: (true if data['risk'] == 'Violent behaviour or threats of violence'),
+                text: "Violent behaviour or threats of violence"
+              },
+              {
+                value: "Sex offender",
+                checked: (true if data['risk'] == 'Sex offender'),
+                text: "Sex offender"
+              },
+              {
+                value: "Offensive towards someone because of their sex or gender",
+                checked: (true if data['risk'] == 'Offensive towards someone because of their sex or gender'),
+                text: "Offensive towards someone because of their sex or gender",
+                conditional: {
+                    html: genderriskHtml
+                  }
+              },
+              {
+                value: "Offensive towards someone because of their race, nationality, ethnicity or national origin",
+                checked: (true if data['risk'] == 'Offensive towards someone because of their race, nationality, ethnicity or national origin'),
+                text: "Offensive towards someone because of their race, nationality, ethnicity or national origin"
+              },
+
+              {
+                value: "Offensive towards someone because of their sexual orientation",
+                checked: (true if data['risk'] == 'Offensive towards someone because of their sexual orientation'),
+                text: "Offensive towards someone because of their sexual orientation"
+              },
+              
+
+              {
+                divider: "or"
+              },
+              {
+                value: "There are no risks that the installer should be aware of",
+                checked: (true if data['risk'] == 'There are no risks that the installer should be aware of'),
+                text: "There are no risks that the installer should be aware of",
+                behaviour: "exclusive"
+              }
+            ]
+          }) }}
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../submitted-form' if data['view'] == 'false' else '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

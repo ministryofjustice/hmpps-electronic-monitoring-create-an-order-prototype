@@ -1,0 +1,77 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Are you sure that you want to make changes to this notification form? - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+              <form class="form" action="{{ basePath }}/type-change-areyousure" method="post">
+
+   {% if (data['view-variation'] == 'returned') %}
+      <h1 class="govuk-heading-l">Are you sure that you want to make changes to the EMO application form for {{ data['wearer-firstname'] or "Ermintrude" }} {{ data['wearer-lastname'] or "Jones" }}?</h1>   
+          
+  {% else %}
+      <h1 class="govuk-heading-l">Are you sure that you want to make changes to the EMO application form for {{ data['fullname'] or "David Murphy" }}?</h1>
+
+  {% endif %}    
+
+    
+      
+         <!--    <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of birth
+            </dt>
+            <dd class="govuk-summary-list__value">
+              19 January 1984
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> name</span></a>
+            </dd>
+          </div>
+      <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              NOMIS ID
+            </dt>
+            <dd class="govuk-summary-list__value">
+              BDNRTVBC
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> date of birth</span></a>
+            </dd>
+          </div>-->
+         
+        </dl>
+
+         <p>Check and update the licence before making changes to the EMO application form.</p>
+
+         <p>You can make changes to the EMO application form now if the information you are changing isn't included in the licence or court order.</p>
+
+
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Yes, make changes",
+              classes: "govuk-button--warning"
+            }) }}
+
+            {{ govukButton({
+              text: "Cancel",
+              href: '../submitted-form?view=true',
+              classes: "govuk-button--secondary"
+            }) }}
+          </div>
+</form>
+     
+        </div>
+      </div>
+{% endblock %}

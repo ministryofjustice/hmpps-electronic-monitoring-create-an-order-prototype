@@ -1,0 +1,376 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Check your answers - Electronic Monitoring
+{% endblock %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    {% set html %}
+
+              <p class="govuk-notification-banner__heading">
+                 You are viewing a submitted form. 
+              </p>
+
+        
+      {% endset %}
+
+      {% set htmlcancelled %}
+          <!--  <p class="govuk-notification-banner__heading">
+          You are viewing an ended order. This order ended on the 22 December 2024.
+        </p>-->
+      
+
+        <p class="govuk-notification-banner__heading">
+         You are viewing a submitted form. 
+        </p>
+
+     
+
+      {% endset %}
+
+       {% set htmlfail %}
+        <p class="govuk-notification-banner__heading">
+         This form failed to submit on 14 December 2024. This was due to a technical problem. For more information <a href="https://ministryofjustice.github.io/hmpps-electronic-monitoring-create-an-order-docs/problems-submitting-forms.html#problems-submitting-forms">View the guidance (opens in a new tab)</a>.
+        </p>
+      {% endset %}
+
+
+          {% if (data['view-variation'] == 'cancelled') %}
+
+           {{ govukNotificationBanner({
+              html: htmlcancelled
+            }) }}
+
+              {% elseif (data['view-variation'] == 'fail') %}
+
+           {{ govukNotificationBanner({
+              html: htmlfail
+            }) }}
+
+
+
+          {% elseif (data['view'] == 'true') %}
+
+               
+
+              <!--    {{ govukNotificationBanner({
+                      html: html
+                    }) }}-->
+           
+                      
+            {% endif %}
+
+      
+  {% include "/includes/aba-banner.html" %}
+
+
+  {% if (data['view'] == 'true') %}
+
+   <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the device wearer</span>
+        View answers
+      </h1>
+
+   {% else %}
+
+    <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">About the device wearer</span>
+        Check your answers
+      </h1>
+
+
+              
+    {% endif %}
+
+      
+
+      <form class="form" action="" method="post">
+
+        <h2 class="govuk-heading-m">Identity numbers</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               What identity numbers do you have for the device wearer?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             NOMIS ID
+            </dd>
+            <dd class="govuk-summary-list__actions">
+                {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+              
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+               NOMIS ID
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['nomis'] or "BDNRTVBC" }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+        </dl>
+
+     <h2 class="govuk-heading-m">Personal details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's first name?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             David
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's last name?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Murphy
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Does the device wearer have a prefered name that is different to their first name?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              No
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+         
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+            What is the sex of the device wearer?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Male
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+         
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's date of birth?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              19 January 1984
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Is a responsible adult required?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+        </dl>
+                <h2 class="govuk-heading-m">Telephone number</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Does the device wearer have a telephone number?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+      
+
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's telephone number?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              01278 987 987
+            </dd>
+            <dd class="govuk-summary-list__actions">
+               {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+        </dl>
+     <h2 class="govuk-heading-m">Device wearer's addresses</h2>
+
+  <!--  {% if (data['usertype'] == 'Probation user' and data['dirtydata'] == 'true') %}
+     <p> This address could be out of date. View <a href="../dataissue-interupt">what you need to do</a>.</p>
+    {% endif %}-->
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+         
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Does the device wearer have a fixed address?
+            </dt>
+            <dd class="govuk-summary-list__value">
+             Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+        
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What is the device wearer's contact address?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if (data['edited'] == 'true') %}
+              
+               {{ data['contactaddressLine1'] }}<br>
+              {{ data['contactaddressTown'] }}<br>
+              {{ data['contactaddresscounty'] }}<br>
+              {{ data['contactaddressPostcode'] }}
+
+               {% else %}
+
+               1 Washington Street,<br>
+                Worcester,<br>
+                WR1 1NL<br>
+            
+
+              
+
+               {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              {% if (data['view'] == 'true') %}
+                 <a class="govuk-link" href="contact-address-view"><span class="govuk-visually-hidden"> </span></a>
+                {% else %}
+                  <a class="govuk-link" href="../postcode-lookup/postcode?sectionid=About the device wearer&postcodetype=device wearer's&variation-simple=false&sr-address=Yes">Change<span class="govuk-visually-hidden"> </span></a>                  
+                {% endif %}
+            </dd>
+          </div>
+
+
+         
+
+        </dl>
+
+        
+
+
+      <div class="govuk-button-group">
+
+          {% if (data['view'] == 'true') %}
+
+       <!--   {{ govukButton({
+          text: "Go to next section",
+          href: "../monitoring-conditions/check-answers-view"
+        }) }}-->
+
+           {{ govukButton({
+          text: "Return to main form menu",
+          href: "../submitted-form",
+          classes: "govuk-button"
+        }) }}
+               
+
+         {% else %}
+   <!--      {{ govukButton({
+          text: "Save and go to next section",
+          href: "../monitoring-conditions/check-answers-view?section-1-complete=true"
+        }) }}-->
+
+          {{ govukButton({
+          text: "Save and return to main form menu",
+          href: "../submitted-form?section-1-complete=true",
+          classes: "govuk-button"
+        }) }}
+                
+          {% endif %}
+       
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

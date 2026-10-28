@@ -1,0 +1,106 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+   Order information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+       <span class="govuk-caption-l">Electronic monitoring required</span>
+
+  <!--    <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        Release conditions
+      </h1>
+-->
+ 
+
+      {% if (data['cya4'] == "true") %}
+
+        <form class="form" action="../monitoring-conditions/check-answers" method="post">
+
+        {% elseif (data['error'] == "true") %}
+
+        <form class="form" action="../monitoring-conditions/monitoring-needed" method="post">
+
+
+           {% elseif (data['cvl'] == "yes" and data['newform'] == "true")  %}
+
+        <form class="form" action="../monitoring-conditions/monitoring-needed?cvl-incomplete=yes&monitoringtype=Curfew&monitoringtype2=Trail monitoring" method="post">
+
+
+         {% else %}
+
+       <form class="form" action="../monitoring-conditions/monitoring-details" method="post">
+
+        {% endif %}
+
+       
+
+
+
+
+      
+
+
+        {{ govukRadios({
+          classes: "govuk-radios",
+          name: "prarr",
+          fieldset: {
+            legend: {
+              text: "Has the device wearer been released on a Presumptive Risk Assessed Release Review (P-RARR)?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: ""
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: (true if data['prarr'] == 'Yes')
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: (true if data['prarr'] == 'No')
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "Not able to provide this information",
+              text: "Not able to provide this information",
+              checked: (true if data['prarr'] == 'Not able to provide this information')
+            }
+          ]
+        }) }}
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

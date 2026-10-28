@@ -1,0 +1,469 @@
+{% extends "v2/layouts/moj.html" %}
+
+{% block pageTitle %}
+  Electronic Monitoring notification form - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<!-- Breadcrumb -->
+<a href="dashboard" action="action" class="govuk-back-link">Back to all forms</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+       {% if (data['isr-question'] == "true" and data['usertype'] == "Prison user" or data['usertype'] == "Probation user" )  %} 
+
+      {{ mojAlert({
+          variant: "information",
+          title: "This order is subject to the changes in the Sentencing Act 2026.",
+          showTitleAsHeading: false,
+          dismissible: false,
+          html: 'This order is subject to the Sentencing Act 2026 changes.'
+        }) }}
+
+         {% endif  %}
+
+      <h1 class="govuk-heading-l ">Electronic Monitoring application form</h1>
+
+      
+
+        {% if (data['submit-failure'] == "true")  %} 
+
+         <form class="form" action="submit-failure" method="post"> 
+
+         {% else  %}
+
+      <form class="form" action="submit-confirmation?variation=false" method="post">
+
+         {% endif  %}
+
+  <!-- <h2 class="govuk-heading-m">Notification form sections</h2>-->
+
+      {% set completedStatus = {
+        text: "Completed"
+      } %}
+
+      {% set incompleteStatus = {
+        tag: {
+          text: "Incomplete",
+          classes: "govuk-tag--blue"
+        }
+      } %}
+
+        {% set optionalStatus = {
+          text: "Optional"
+      } %} 
+
+      {# To switch between the completed and incomplete statues, use some inline logic within the component below, like this: "status: (completedStatus if ... else incompleteStatus)" #}
+
+{% if (data['newform'] == 'true') %}
+
+{% if (data['usertype'] == 'Court user') %}
+
+      {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the Responsible Organisation"
+            },
+            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/police-force?cya2=false"),
+            status: (completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers" if data['section-1-complete'] == 'true' else "device-wearer/identity-numbers?cya1=false"),
+            status: (completedStatus if data['section-1-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "./monitoring-conditions/monitoring-details?cya4=false"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
+          }, 
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers" if data['section-3-complete'] == 'true' else "installation/disability?cya3=false"),
+            status: (completedStatus if data['section-3-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/photo-question?cya5=false"),
+            status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          }
+
+        ]
+      }) }}
+
+{% elseif (data['usertype'] == 'Home Office user') %}
+
+      {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+         
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers" if data['section-1-complete'] == 'true' else "device-wearer/identity-numbers?cya1=false"),
+            status: (completedStatus if data['section-1-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "./monitoring-conditions/monitoring-details?cya4=false"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
+          }, 
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers" if data['section-3-complete'] == 'true' else "installation/disability?cya3=false"),
+            status: (completedStatus if data['section-3-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/photo-question?cya5=false"),
+            status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          }
+
+        ]
+      }) }}      
+
+{% elseif (data['usertype'] == 'Probation user') %}
+
+    {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the Responsible Organisation"
+            },
+            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/responsible-officer?cya2=false"),
+            status: (completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers" if data['section-1-complete'] == 'true' else "device-wearer/identity-numbers?cya1=false"),
+            status: (completedStatus if data['section-1-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "./otd-old/order-information?cya4=false"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
+          }, 
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers" if data['section-3-complete'] == 'true' else "installation/disability?cya3=false"),
+            status: (completedStatus if data['section-3-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/licence?cya5=false"),
+            status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          }
+
+        ]
+      }) }}
+
+
+{% elseif (data['usertype'] == 'Prison user' or data['usertype'] == 'Youth user') %}
+
+    {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the Responsible Organisation"
+            },
+            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/responsible-officer?cya2=false"),
+            status: (completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers" if data['section-1-complete'] == 'true' else "device-wearer/identity-numbers?cya1=false"),
+            status: (completedStatus if data['section-1-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "./otd-old/order-sentence?cya4=false"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
+          }, 
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers" if data['section-3-complete'] == 'true' else "installation/disability?cya3=false"),
+            status: (completedStatus if data['section-3-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/licence?cya5=false"),
+            status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          }
+
+        ]
+      }) }}
+
+
+
+{% else %}
+
+ {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+          {
+            title: {
+              text: "About the Responsible Organisation"
+            },
+            href: ("organisation/check-answers" if data['section-2-complete'] == 'true' else "organisation/responsible-officer?cya2=false"),
+            status: (completedStatus if data['section-2-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers" if data['section-1-complete'] == 'true' else "device-wearer/identity-numbers?cya1=false"),
+            status: (completedStatus if data['section-1-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "./otd-old/order-information?cya4=false"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
+          }, 
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers" if data['section-3-complete'] == 'true' else "installation/disability?cya3=false"),
+            status: (completedStatus if data['section-3-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/licence?cya5=false"),
+            status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          }
+
+        ]
+      }) }}
+
+
+{% endif %}
+
+
+{% else %}
+
+{% if (data['usertype'] == 'Home Office user' or data['usertype'] == 'Court user') %}
+
+       {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+         
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers" if data['section-1-complete'] == 'true' else "device-wearer/identity-numbers"),
+            status: (completedStatus if data['section-1-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "./monitoring-conditions/monitoring-details?cya4=false"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers" if data['section-3-complete'] == 'true' else "installation/disability"),
+            status: (completedStatus if data['section-3-complete'] == 'true' else optionalStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/photo-question"),
+            status: (completedStatus if data['section-5-complete'] == 'true' else optionalStatus)
+          },
+          {
+            title: {
+              text: ("About the changes in this version of the form")
+            },
+            href: ("variations/check-answers" if data['section-6-complete'] == 'true' else "variations/edit-form-question?sr-type=I have changed something else in the form&cya6=false"),
+           status: ( completedStatus if data['section-6-complete'] == 'true' else incompleteStatus)
+          }
+
+        ]
+      }) }}
+
+{% elseif (data['usertype'] == 'Probation user') %}
+
+     {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+         
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers" if data['section-1-complete'] == 'true' else "device-wearer/identity-numbers"),
+            status: (completedStatus if data['section-1-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "otd-old/order-information?cya4=false"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers" if data['section-3-complete'] == 'true' else "installation/disability"),
+            status: (completedStatus if data['section-3-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/licence"),
+            status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: ("About the changes in this version of the form")
+            },
+            href: ("variations/check-answers" if data['section-6-complete'] == 'true' else "variations/edit-form-question?sr-type=I have changed something else in the form&cya6=false"),
+           status: ( completedStatus if data['section-6-complete'] == 'true' else incompleteStatus)
+          }
+
+        ]
+      }) }}      
+
+{% else %}
+
+     {{ govukTaskList({
+        idPrefix: "first-section",
+        items: [
+         
+          {
+            title: {
+              text: "About the device wearer"
+            },
+            href: ("device-wearer/check-answers" if data['section-1-complete'] == 'true' else "device-wearer/identity-numbers"),
+            status: (completedStatus if data['section-1-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "otd-old/order-sentence?cya4=false&usertype=Prison user"),
+            status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Access needs and installation risk"
+            },
+            href: ("installation/check-answers" if data['section-3-complete'] == 'true' else "installation/disability"),
+            status: (completedStatus if data['section-3-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/licence"),
+            status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: ("About the changes in this version of the form")
+            },
+            href: ("variations/check-answers" if data['section-6-complete'] == 'true' else "variations/edit-form-question?sr-type=I have changed something else in the form&cya6=false"),
+           status: ( completedStatus if data['section-6-complete'] == 'true' else incompleteStatus)
+          }
+
+        ]
+      }) }}
+
+{% endif %}      
+
+{% endif %}
+
+
+
+
+      <div class="govuk-!-margin-top-5">
+       <div class="govuk-button-group">
+
+         <input type="hidden" id="email-address" name="emailAddress" value="lisa.rae2@justice.gov.uk">
+
+         {% if (data['newform'] == 'true' and data['usertype'] == 'Home Office user' and data['section-1-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true') %}
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Submit form
+          </button>
+
+
+           {% elseif (data['newform'] == 'true' and data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true') %}
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Submit form
+          </button>
+           {% elseif (data['newform'] == 'false' and data['usertype'] == 'Home Office user' and data['section-1-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-6-complete'] == 'true') %}
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Submit form
+          </button>
+           {% elseif (data['newform'] == 'false' and data['usertype'] == 'Court user' and data['section-1-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-6-complete'] == 'true') %}
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Submit form
+          </button>
+          {% elseif (data['newform'] == 'false' and data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true' and data['section-6-complete'] == 'true') %}
+          <button type="submit" class="govuk-button" data-module="govuk-button">
+            Submit form
+          </button>
+          {% else %}
+              <button type="submit" class="govuk-button" disabled data-module="govuk-button">
+                Submit form
+              </button>
+          {% endif %}
+
+          <a class="govuk-link" href="delete-form">Delete form</a>
+        </div>
+      </div>
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

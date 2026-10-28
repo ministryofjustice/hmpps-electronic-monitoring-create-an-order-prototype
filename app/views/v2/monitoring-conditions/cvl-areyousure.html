@@ -1,0 +1,46 @@
+{% extends "v2/layouts/moj.html" %}
+
+{% block pageTitle %}
+  Are you sure that you want to delete this electronic monitoring type? - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l"><span class="govuk-caption-l">Electronic monitoring required</span>
+
+      Are you sure that you want to update this order with the electronic monitoring conditions from the CVL licence?</h1>
+
+      <p>The CVL licence for this device wearer was approved on 25 October 2026.</p>
+
+      <p>Updating this order with the electronic monitoring from the licence will delete all the existing monitoring types and replace them with the ones in the licence.</p>
+
+      
+       <p>Before you submit the form, check that all the changes shown are correct.</p>
+
+
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Yes, update from CVL",
+              href: 'monitoring-needed?cvl-incomplete=yes',
+              classes: "govuk-button--warning"
+            }) }}
+
+            {{ govukButton({
+              text: "Cancel",
+              href: 'monitoring-needed',
+              classes: "govuk-button--secondary"
+            }) }}
+          </div>
+     
+        </div>
+      </div>
+{% endblock %}

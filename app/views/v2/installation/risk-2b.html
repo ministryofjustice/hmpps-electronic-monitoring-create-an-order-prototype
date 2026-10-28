@@ -1,0 +1,135 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Risk at installation - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Access needs and installation risk</span>
+
+      <!--
+
+      <h1 class="govuk-heading-l">
+       <span class="govuk-caption-l">Access needs and installation risk</span>
+       Risk at installation
+      </h1>
+
+      <p>Risks relate to the device wearer's behaviour and installation address. </p>-->
+
+      <form class="form" action="risk-3" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+          {{ govukCheckboxes({
+            name: "risk2",
+            fieldset: {
+              legend: {
+                text: "At installation what are the possible risks at the address?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+             hint: {
+              text: "Answer questions based on what you know now. Risk can be updated when more is known about the address and who lives there."
+            },
+            items: [
+             
+              {
+                value: "History of substance abuse",
+                checked: (true if data['risk2'] == 'History of substance abuse'),
+                text: "History of substance abuse"
+              },
+              
+              {
+                value: "Managed through Integrated Offender Management (IOM)",
+                checked: (true if data['risk2'] == 'Managed through Integrated Offender Management (IOM)'),
+                text: "Managed through Integrated Offender Management (IOM)"
+              },
+              {
+                value: "Safeguarding adult",
+                checked: (true if data['risk2'] == 'Safeguarding adult'),
+                text: "Safeguarding adult"
+              },
+              {
+                value: "Safeguarding child",
+                checked: (true if data['risk2'] == 'Safeguarding child'),
+                text: "Safeguarding child"
+              },
+              {
+                value: "Safeguarding domestic abuse",
+                checked: (true if data['risk2'] == 'Safeguarding domestic abuse'),
+                text: "Safeguarding domestic abuse"
+              },
+              {
+                value: "Another person or people living at the property who are threatening or violent",
+                checked: (true if data['risk2'] == 'Another person or people living at the property who are threatening or violent'),
+                text: "Another person or people living at the property who are threatening or violent"
+              },
+              {
+                value: "Children under the age of 18 are living at the property",
+                checked: (true if data['risk2'] == 'Children under the age of 18 are living at the property'),
+                text: "Children under the age of 18 are living at the property"
+              },
+              {
+                value: "Animals at the property, for example dogs",
+                checked: (true if data['risk2'] == 'Animals at the property, for example dogs'),
+                text: "Animals at the property, for example dogs"
+              },
+              
+              
+              {
+                value: "Other known risks",
+                checked: (true if data['risk2'] == 'Other known risks'),
+                text: "Other known risks"
+              },
+
+              {
+                divider: "or"
+              },
+              {
+                value: "There are no risks that the installer should be aware of",
+                checked: (true if data['risk2'] == 'There are no risks that the installer should be aware of'),
+                text: "There are no risks that the installer should be aware of",
+                behaviour: "exclusive"
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "Not able to provide this information",
+                checked: (true if data['risk2'] == 'Not able to provide this information'),
+                text: "Not able to provide this information"
+              }
+            ]
+          }) }}
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../submitted-form' if data['view'] == 'false' else '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

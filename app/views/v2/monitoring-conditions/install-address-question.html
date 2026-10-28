@@ -1,0 +1,93 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Installation address - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        Installation address
+      </h1>
+
+    
+      <p class="govuk-body">Contact address:</p>
+        <p>
+        {{ data['contactaddressLine1'] or "123 Carter Bar" }}<br>
+        {{ data['contactaddressTown'] or "Glossop" }}<br>
+        {{ data['contactaddressCounty'] or "High Peak" }}<br>
+        {{ data['contactaddressPostcode'] or "SK22 2NG "}}<br>
+        </p>
+
+
+ <form class="form" action="{{ basePath }}/installation-address" method="post">
+    
+<!-- USED IF INSTALL ADDRESS IS PER MONITORING TYPE
+ 
+ 
+      {% if (data['monitoringtypeadded'] == "Yes") %}
+
+       <form class="form" action="{{ basePath }}/installation-address2" method="post">
+
+          {% else %}
+
+      <form class="form" action="{{ basePath }}/installation-address" method="post">
+
+     {% endif %}
+
+-->
+
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            name: "installaddressquestion",
+            fieldset: {
+              legend: {
+                text: "Is this where the installation of the electronic monitoring device will take place?",
+               classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+           
+              {
+                value: "Yes",
+                checked: (true if data['installaddressquestion'] == 'Yes'),
+                text: "Yes"
+              },
+              {
+                value: "No",
+                checked: (true if data['installaddressquestion'] == 'No'),
+                text: "No"
+              }
+            ]
+          }) }}
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

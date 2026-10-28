@@ -1,0 +1,110 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Contact details for the responsible officer - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+     <span class="govuk-caption-l">About the Responsible Organisation</span>
+      Contact details for the Responsible Officer
+      </h1>
+
+ {% if (data['cya2'] == "true") %}
+
+        <form class="form" action="check-answers" method="post">
+
+        {% else %}
+
+       <form class="form" action="org-contact" method="post">
+
+        {% endif %}
+
+        <p>The Responsible Officer checks the device wearer follows the electronic monitoring order. For example, a Responsible Officer is the device wearer's probation officer</p>
+
+
+
+
+
+
+           {{ govukInput({
+          label: {
+            text: "What is the Responsible Officer's first name?",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "officer-firstname",
+          name: "officer-firstname",
+          spellcheck: false,
+          value: data['officer-firstname']
+        }) }}
+
+        {{ govukInput({
+          label: {
+            text: "What is the Responsible Officer's last name?",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "officer-lastname",
+          name: "officer-lastname",
+          spellcheck: false,
+          value: data['officer-lastname']
+        }) }}
+
+
+          {{ govukInput({
+          label: {
+            text: "What is the Responsible Officer's email address?",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "officer-email",
+          name: "officer-email",
+          spellcheck: false,
+          value: data['officer-email']
+        }) }}
+
+    <!--     {{ govukInput({
+          label: {
+            text: "What is the Responsible Officer's telephone number? (optional)",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "officer-tel",
+          name: "officer-tel",
+          spellcheck: false,
+          value: data['officer-tel']
+        }) }}
+-->
+ 
+
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,166 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Responsible organisation's details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      
+
+      <h1 class="govuk-heading-l">
+            <span class="govuk-caption-l">About the Responsible Organisation</span>
+       Responsible Organisation
+      </h1>
+
+       <form class="form" action="{{ basePath }}/region" method="post">
+
+        <p>The Responsible Organisation is the service the Responsible Officer is part of. For example, the Responsible Organisation for a probation officer is the Probation Service.</p>
+
+{% set policeHtml %}
+
+             {% include "/includes/police.html" %}
+            
+            {% endset -%}
+
+
+       
+
+          {{ govukRadios({
+            name: "officer-org",
+            fieldset: {
+              legend: {
+                text: "What is the Responsible Officer's organisation?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+             
+              
+              {
+                value: "Probation service",
+                checked: (true if data['officer-org'] == 'Probation service'),
+                text: "Probation service"
+              },
+              {
+                value: "Field monitoring service",
+                checked: (true if data['officer-org'] == 'Field monitoring service'),
+                text: "Field monitoring service"
+                
+              },
+              {
+                value: "Home Office",
+                checked: (true if data['officer-org'] == 'Home Office'),
+                text: "Home Office"
+                
+              },
+                  {
+                value: "Police force",
+                checked: (true if data['officer-org'] == 'Police force'),
+                text: "Police force"
+                
+              },
+               {
+                value: "Youth Justice Service (YJS)",
+                checked: (true if data['officer-org'] == 'Youth Justice Service (YJS)'),
+                text: "Youth Justice Service (YJS)"
+              }
+            ]
+          }) }}
+
+    <!--       {{ govukInput({
+          label: {
+            text: "What is the Responsible Organisation's telephone number? (optional)",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "org-tel",
+          name: "org-tel",
+          spellcheck: false,
+          value: data['org-tel']
+        }) }}
+
+
+        {{ govukInput({
+          label: {
+            text: "What is the Responsible Organisation's email address? (optional)",
+            classes: "govuk-label--s"
+          },
+          classes: "govuk-input--width-20",
+          id: "org-email",
+          name: "org-email",
+          spellcheck: false,
+          value: data['org-email']
+        }) }} -->
+
+  <!--        {{ xGovukAutocomplete({
+                id: "region",
+                name: "region",
+                value: data['region'],
+                allowEmpty: false,
+                label: {
+                  classes: "govuk-label--s",
+                  text: "What is the Responsible Organisation's region? "
+                },
+
+                items: [
+                  { text: "North East" },
+                  { text: "North West" },
+                  { text: "Yorkshire and The Humber" },
+                  { text: "East Midlands" },
+                  { text: "West Midlands" },
+                  { text: "East of England" },
+                  { text: "London" },
+                  { text: "South East" },
+                  { text: "South West" },
+                  { text: "Wales" }
+                ]
+              }) }}-->
+        
+               {{ govukInput({
+          label: {
+            text: "What is the Responsible Organisation's email address? (optional)",
+            classes: "govuk-label--s"
+          },
+          hint: {
+            text: "Provide an email address that can be used to contact the Responsible Organisation if the Responsible Officer is unavaliable. Provide a functional mailbox not a personal email."
+          },
+          classes: "govuk-input--width-20",
+          id: "org-email",
+          name: "org-email",
+          spellcheck: false,
+          value: data['org-email']
+        }) }}
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

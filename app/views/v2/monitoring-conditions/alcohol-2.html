@@ -1,0 +1,173 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Alcohol monitoring details - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+           <span class="govuk-caption-l">Electronic monitoring required</span>
+
+  <!--    <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Electronic monitoring required</span>
+        Alcohol monitoring details
+      </h1>-->
+
+  <form class="form" action="{{ basePath }}/alcohol" method="post">
+  
+
+          {{ govukRadios({
+            name: "type-alcohol",
+            fieldset: {
+              legend: {
+                text: "What alcohol monitoring does the device wearer need?",
+                classes: "govuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Alcohol level",
+                text: "Alcohol level",
+                hint: {
+                  text: "Monitoring levels of alcohol consumed"
+                },
+                checked: (true if data['type-alcohol'] == 'Alcohol level'),
+                conditional: {
+              
+                }
+              },
+              {
+                value: "Alcohol abstinence",
+                text: "Alcohol abstinence",
+                hint: {
+                  text: "Monitoring that alcohol is not consumed"
+                },
+                checked: (true if data['type-alcohol'] == 'Alcohol abstinence'),
+                conditional: {
+                 
+                }
+              }
+            ]
+          }) }}
+
+ <!--         
+          <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-label govuk-label--s">
+             What is the address of the base station? 
+          </legend>
+          <div id="address-hint" class="govuk-hint">
+           The device wearer must attend the base station address at a certain time every day to send over data.
+          </div>
+          <div class="govuk-radios" data-module="govuk-radios">
+            {% if (data['installaddressquestion'] == "Yes") %}
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="whereDoYouLive" name="alcoholaddress" type="radio" value="Contact">
+              <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+                {{ data['contactaddressLine1'] or "123 Carter Bar" }}
+              </label>
+            </div>
+             <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="whereDoYouLive" name="alcoholaddress" type="radio" value="At a probation office" data-aria-controls="conditional-contact">
+                <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+                  At a probation office
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="contact-by-email">
+                    Enter name of probation office
+                  </label>
+                  <input class="govuk-input" id="contact-by-email" name="contactByEmail" type="email" spellcheck="false" autocomplete="email">
+                </div>
+              </div>
+               <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="whereDoYouLive" name="alcoholaddress" type="radio" value="At a prison" data-aria-controls="conditional-contact2">
+                <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+                  At a prison
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact2">
+                {% include "/includes/prison.html" %}
+              </div>
+            {% endif %}
+            {% if (data['installaddressquestion'] == "No") %}
+            
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="whereDoYouLive" name="alcoholaddress" type="radio" value="Contact">
+              <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+               
+                {{ data['contactaddressLine1'] or "123 Carter Bar" }}
+              </label>
+            </div>
+          
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="whereDoYouLive-2" name="alcoholaddress" type="radio" value="Installation">
+              <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
+               Tag installation address - {{ data['installaddressLine1'] }}
+              </label>
+            </div>
+             <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="whereDoYouLive" name="alcoholaddress" type="radio" value="At a probation office" data-aria-controls="conditional-contact">
+                <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+                  At a probation office
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="contact-by-email">
+                    Enter name of probation office
+                  </label>
+                  <input class="govuk-input" id="contact-by-email" name="contactByEmail" type="email" spellcheck="false" autocomplete="email">
+                </div>
+              </div>
+            {% endif %}
+
+            <div class="govuk-radios__divider">or</div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="whereDoYouLive-3" name="alcoholaddress" type="radio" value="At another location or address">
+              <label class="govuk-label govuk-radios__label" for="whereDoYouLive-3">
+               At another location or address
+              </label>
+            </div>
+            
+           
+            
+          </div>
+        </fieldset>
+      </div>
+       
+
+-->
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+           href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

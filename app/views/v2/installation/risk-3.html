@@ -1,0 +1,110 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Risk at installation additional information - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">Access needs and installation risk</span>
+
+    <!--  <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Access needs and installation risk</span>
+        Risk at installation additional information
+      </h1>
+-->
+      
+        {% if (data['view'] == 'false') %}
+           <form class="form" action="check-answers-view" method="post">
+
+         {% else %}
+                <form class="form" action="{{ basePath }}/language" method="post">
+
+           {% endif %}
+
+   
+
+
+
+
+          {% set riskHtml %}
+          {{ govukTextarea({
+            id: "needs",
+            name: "risk-needs",
+            spellcheck: false,
+            value: data['risk-needs'],
+            hint: {
+              text: "Information subject to sensitive processing must only be shared with the offender’s consent or where strictly necessary for the purpose of EMS managing risk."
+            },
+            label: {
+              text: "What other risks are there to be aware of?"
+            }
+          }) }}
+          {% endset -%}
+
+         
+
+          {{ govukRadios({
+            name: "risk-question",
+            fieldset: {
+              legend: {
+                text: " Are there other risks to be aware of?",
+                 isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: ""
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                checked: (true if data['risk-question'] == 'Yes'),
+                conditional: {
+                  html: riskHtml
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                checked: (true if data['risk-question'] == 'No'),
+                conditional: {
+                 
+                }
+              }
+            ]
+          }) }}
+
+
+         
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../submitted-form' if data['view'] == 'false' else '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

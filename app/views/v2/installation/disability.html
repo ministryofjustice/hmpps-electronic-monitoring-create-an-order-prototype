@@ -1,0 +1,165 @@
+{% extends "v2/layouts/moj-level2.html" %}
+
+{% block pageTitle %}
+  Disability or health conditions - Electronic Monitoring
+{% endblock %}
+
+{% block beforeContent %}
+<a href="#" action="action" class="govuk-back-link" onclick="window.history.go(-1); return false;">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+        <span class="govuk-caption-l">Access needs and installation risk</span>
+      
+   
+
+
+      <form class="form" action="{{ basePath }}/disability" method="post">
+
+
+
+         {{ govukCheckboxes({
+            name: "disability",
+            fieldset: {
+              legend: {
+                text: "Does the device wearer have any disabilities or health conditions that could affect installation? ",
+                isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+
+              }
+            },
+            hint: {
+              text: "Provide disability or health conditions information to help plan installation. Answer questions based on what you know about the device wearer's access needs and requirements."
+            },
+            items: [
+               {
+                value: "Blindness or a visual impairment not corrected by glasses",
+                checked: (true if data['disability'] == 'Blindness or a visual impairment not corrected by glasses'),
+                text: "Visual impairment or blindness not corrected by glasses"
+              },
+              {
+                value: "Deafness or a serious hearing impediment",
+                checked: (true if data['disability'] == 'Deafness or a serious hearing impediment'),
+                text: "Deafness or a serious hearing impediment"
+              },
+                 {
+                value: "Physical disability or mobility issue",
+                text: "Physical disability or mobility issue",
+                checked: (true if data['disability'] == 'Physical disability or mobility issue'),
+                hint: {
+                  text: "For example, impaired use of arms or legs, use of a wheelchair or crutches"
+                }
+              },
+               {
+              value: "Fine motor or dexterity impairment",
+              text: "Fine motor or dexterity impairment",
+              checked: (true if data['disability'] == 'Fine motor or dexterity impairment'),
+              hint: {
+                text: "For example, dyspraxia or neurological conditions such as Parkinson's disease"
+              }
+            },
+               {
+              value: "Skin condition",
+              text: "Skin condition",
+              checked: (true if data['disability'] == 'Skin condition'),
+              hint: {
+                text: "For example, acne, eczema, psoriasis, or skin infections"
+              }
+            },
+
+               {
+                value: "Neurodiversity including conditions affecting learning, understanding or concentration",
+                checked: (true if data['disability'] == 'Neurodiversity including conditions affecting learning, understanding or concentration'),
+                text: "Neurodiversity including conditions affecting learning, understanding or concentration",
+                 hint: {
+                text: "For example, dyslexia or attention deficit hyperactivity disorder (ADHD)"
+                }
+              },
+                  {
+              value: "Condition affecting the memory or retaining information",
+              text: "Condition affecting the memory or retaining information",
+              checked: (true if data['disability'] == 'Condition affecting the memory or retaining information'),
+              hint: {
+                text: "For example, Dementia, Alzheimer's disease or amnesia"
+              }
+            },
+             {
+              value: "Mental health conditions",
+              text: "Mental health conditions",
+              checked: (true if data['disability'] == 'Mental health conditions'),
+              hint: {
+                text: "For example, depression, psychosis, schizophrenia or anxiety disorder"
+              }
+            },
+             {
+                value: "Health condition affecting stamina, breathing or causing fatigue",
+                checked: (true if data['disability'] == 'Health condition affecting stamina, breathing or causing fatigue'),
+                text: "Health condition affecting stamina, breathing or causing fatigue",
+                hint: {
+                text: "For example, Heart conditions or lung conditions such as chronic obstructive pulmonary disease (COPD)"
+              }
+              },
+              {
+                value: "Conditions affecting social skills and behaviour",
+                checked: (true if data['disability'] == 'Conditions affecting social skills and behaviour'),
+                text: "Conditions affecting social skills and behaviour",
+                hint: {
+                text: "For example, Autism Spectrum Disorder (ASD)"
+              }
+              },
+                   
+              {
+                value: "The device wearer has a disability or health condition not listed",
+                checked: (true if data['disability'] == 'Another disability, health condition or impairment affecting daily life'),
+                text: "The device wearer has a disability or health condition not listed"
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "The device wearer does not have any of the disabilities or health conditions listed",
+                checked: (true if data['disability'] == 'The device wearer does not have any of the disabilities or health conditions listed'),
+                text: "The device wearer does not have any of the disabilities or health conditions listed",
+                behaviour: "exclusive"
+              },
+              {
+                divider: "or"
+              },
+              {
+                value: "Not able to provide this information",
+                checked: (true if data['disability'] == 'Not able to provide this information'),
+                text: "Not able to provide this information",
+                behaviour: "exclusive"
+              }
+          ]
+        }) }}
+
+        
+
+
+       
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Save as draft",
+          href: '../new-form',
+          classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
+ 
+    </form>
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "v2/layouts/moj.html" %}
+
+
+
+{% block pageTitle %}
+  Electronic Monitoring application forms - Electronic Monitoring
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+         <form class="form" action="org-details?cvl=no&cvl-incomplete=no" method="post">
+
+        <div class="moj-page-header-actions">
+          <div class="moj-page-header-actions__title">
+            <h1 class="govuk-heading-xl">Electronic Monitoring Order (EMO) forms</h1>
+          </div>
+
+          <div class="moj-page-header-actions__actions">
+            <div class="moj-button-group moj-button-group--inline">
+
+            <!--  <button type="submit" class="govuk-button" data-module="govuk-button">
+                Start new form
+              </button>-->
+
+              
+
+            </div>
+          </div>
+
+        </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+                Start new form
+              </button>
+
+      </form>
+
+{% if (data['usertype'] == "Probation user") %}
+
+    {{ mojSubNavigation({
+        label: "Sub navigation",
+        items: [{
+          text: "Search for a form",
+          href: "dashboard",
+          active: true
+        }, {
+          text: "Draft forms",
+          href: "dashboard2"
+          
+
+        }]
+      }) }}
+
+
+     {% include "/includes/search.html" %}
+
+
+{% else %}
+    
+
+      {{ mojSubNavigation({
+        label: "Sub navigation",
+        items: [{
+          text: "Draft forms",
+          href: "#1",
+          active: true
+        }, {
+          text: "Search for a form",
+          href: "dashboard2?searchresults=false&search="
+        }]
+      }) }}
+
+<!--
+
+{% if (data['usertype'] == "Prison user" or data['usertype'] == "Youth user") %}
+      <div class="govuk-phase-banner" style=" margin:20px 0 0px 0;">
+              <p>
+                 Showing:
+                 <strong style="margin-right:10px;"> 
+                    Berwyn Prison    
+                 </strong>
+                   <a class="govuk-link" href="#">Change location</a>
+                 </p>
+      </div>
+
+  {% else %}
+  
+  {% endif %}    
+
+      -->
+
+
+          {% include "/includes/draft.html" %}
+
+
+{% endif %}
+        
+         
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "v2/layouts/moj.html" %}
+
+{% block pageTitle %}
+  The notification form has been cancelled - Electronic Monitoring
+{% endblock %}
+
+{% block scripts %}
+
+<!-- Spinner --->
+  <script>
+      document.onreadystatechange = function () {
+         if (document.readyState !== "complete") {
+            document.getElementById("content-hide").style.visibility = "hidden";
+            document.getElementById("loading_indicator").style.visibility = "visible";
+         } else {
+            setTimeout(() => {
+               document.getElementById("loading_indicator").style.display ="none";
+               document.getElementById("content-hide").style.visibility = "visible";
+            }, 2000)
+         }
+      };
+   </script>
+   <script>
+     $(document).ready(function() {
+      $("#content-hide").css("display", "block");
+    });
+  </script>
+
+{% endblock %} 
+
+{% block beforeContent %}
+
+{% endblock %}
+    
+{% block content %}
+ {% if (data['cancelled'] == 'true') %}
+<div id='loading_indicator'>
+  <div class="hods-loading-spinner">
+  <div
+    class="hods-loading-spinner__spinner"
+    aria-live="polite"
+    role="status"
+  ></div>
+  <div class="hods-loading-spinner__content">
+    <h1 class="govuk-heading-m">Submitting the order to end all monitoring ...</h1>
+  </div>
+</div>
+</div>
+
+
+<div id='content-hide'> 
+
+   {% endif %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper govuk-main-wrapper--l" id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+
+           {% if (data['cancelled'] == 'true') %}
+           Application to end monitoring early has been successfully submitted
+            </h1>
+           <!--   <div class="govuk-panel__body">
+                Reference number<br><strong>123654</strong>
+              </div>-->
+
+           {% else %} 
+
+          Application form successfully deleted
+
+           {% endif %} 
+          
+         
+        </div>
+
+         {% if (data['cancelled'] == 'true') %}
+
+         <img src="/public/images/form_download.svg" alt="PDF download icon">
+
+         {{ govukButton({
+          text: "View and download completed application form",
+          href: '#',
+          classes: "govuk-button--secondary"
+        }) }}
+
+         {% endif %} 
+        
+        <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Back to start",
+          href: "dashboard"
+        }) }}
+       
+      </div>
+
+<p><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=KEeHxuZx_kGp4S6MNndq2MKbViRqOcdKh99RkWhlTDVUNDNXR05JQUE3U0cwOEJUSTg4M1REUkg5SS4u">What did you think of this service? (takes 30 seconds)</a></p>
+      
+      </div>
+    </div>
+  </main>
+</div>
+</div>
+
+{% endblock %}

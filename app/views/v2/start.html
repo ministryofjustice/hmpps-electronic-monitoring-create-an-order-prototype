@@ -1,0 +1,152 @@
+{% extends "v2/layouts/moj-signedout-service.html" %}
+
+{% set pageName="Start - Electronic Monitoring" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+ <!-- <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Important
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <p class="govuk-notification-banner__heading">
+          Alcohol monitoring is now live
+          <a class="govuk-notification-banner__link" href="#"></a>
+        </p>
+        <p class="govuk-body">You can now create and submit orders that contain Alcohol Monitoring as a monitoring requirement.</p>
+        <p class="govuk-body">Do not send orders with any Alcohol Monitoring requirement via email. You must submit them through this service from Wednesday 15 October.</p>
+      </div>
+    </div>-->
+
+    <h1 class="govuk-heading-l">Apply, change or end an Electronic Monitoring Order (EMO) </h1>
+
+    <form class="form" method="post">
+
+     <h2 class="govuk-heading-s">Use this service to:</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>submit an EMO application form electronically to EMS replacing sending it by email</li>
+        <li>view and download your submitted application forms</li>
+        <li>submit a change to an EMO application form</li>
+        <!--
+        <li>view and download submitted application forms</li>
+        <li>end all monitoring early</li>-->
+      </ul>  
+
+   <!--   <h2 class="govuk-heading-s">How to sign in</h2>
+
+      <p>Use the log in details you set up when your account was created.</p>
+
+      <h2 class="govuk-heading-s">Getting an account</h2>-->
+
+      <h2 class="govuk-heading-s">If you don't have an account:</h2>
+
+       <ul class="govuk-list govuk-list--bullet">
+        <li><a class="govuk-link" target="_blank" href="https://ministryofjustice.github.io/hmpps-electronic-monitoring-create-an-order-docs/training-and-onboarding.html#onboarding-timetable">view the timetable</a> to see if your team uses this service to submit applications. Your team may not be using the online service yet</li>
+        <li>if your team is using this service, <a href="https://ministryofjustice.github.io/hmpps-electronic-monitoring-create-an-order-docs/getting-an-account.html#getting-an-account">follow the instructions to get a new account</a></li>
+       </ul> 
+
+     <!--    <p>You can <a href="https://ministryofjustice.github.io/hmpps-electronic-monitoring-create-an-order-docs/logging-in.html#logging-in-to-your-account">get help with logging in</a> if you don't have your log in details.</p>
+
+  
+   <h2 class="govuk-heading-s">What you need to create an EMO</h2>
+
+       <p>This service does not yet allow you see and use information from other services such as Digital Prison Services (DPS) and Create and Vary a Licence (CVL).</p>
+
+       <p>You will need to have and enter information about the device wearer and the monitoring requirements from the licence.</p>
+
+       <p>To help plan installation you will be asked risk information about the device wearer. Answer questions based on what you know about the device wearers previous offence and behaviour. </p>    -->
+
+
+    <h2 class="govuk-heading-s">This service does not yet allow you to:</h2>
+
+    <ul class="govuk-list govuk-list--bullet">
+        <li>request a visit for refits or equipment checks. For example, if the battery is not working or there is a medical reason for a refit</li>
+        <li>notify EMS of a change to the responsible officer</li>
+        <li>notify EMS of a change to the curfew hours or address for a device wearer serving a community sentence</li>
+       <!-- <li>request installation at a prison for a high-risk device wearer requiring GPS monitoring</li> -->
+        <li>submit a 'Special' EMO application for a Serious Organised Crime case, those convicted of Terrorist Offences, or assessed as Terrorist Connected and Terrorist Risk cases</li>
+    </ul>
+
+      <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              How do I notify EMS of things that are not in the service?
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+
+            <h2 class="govuk-heading-s">How do I request a visit for refits or equipment checks?</h2>
+            <p>Use the service request portal if you have access.</p>
+
+            <p>If you don’t have access mail <a href="mailto:EMSEnforcement@ems.co.uk">EMSEnforcement@ems.co.uk</a>.</p>
+
+            <h2 class="govuk-heading-s">How do I notify EMS of a change to the Responsible Officer?</h2>
+
+            <p>Use the service request portal if you have access.</p>
+
+            <p>If you don’t have access:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>download and complete the <a href="#" download>'Responsible Officer notification'</a> form</li>
+              <li>send the completed form by email to <a href="mailto:EMSEnforcement@ems.co.uk">EMSEnforcement@ems.co.uk</a></li>
+             </ul> 
+
+
+
+            <h2 class="govuk-heading-s">How do I notify EMS for a change in curfew hours or address for a device wearer serving a community sentence?</h2>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>download and complete the <a href="#" download>'PCSC address change'</a> form</li>
+              <li>send the completed form by email to <a href="mailto:LPAdmin@ems.co.uk">LPAdmin@ems.co.uk</a></li>
+             </ul> 
+
+    <!--        <h2 class="govuk-heading-s">How do I request installation at a prison or probation office?</h2>
+
+            <ul class="govuk-list govuk-list--bullet">
+
+              <li>all prisons can request installation at a probation office for Alcohol Monitoring using the service</li>
+
+              <li>prisons that are part of the “Install at Source” pilot can request installation at the prison for all monitoring types using the service</li>
+
+              <li>for GPS monitoring for a high-risk device wearer, the prison should submit a standard order, and probation must contact the EMS Liaison Lead for their region to request installation at the prison</li>
+
+          </ul>-->
+
+          <h2 class="govuk-heading-s">How do I send a 'Special' order for a high-risk device wearer?</h2>
+
+            <ul class="govuk-list govuk-list--bullet">
+              <li>download and complete the <a href="/public/images/EMS NSD CPPC SOC template v1.5 October.docx" download>'EMS NSD CPPC SOC'</a> order form</li>
+              <li>send the completed form by email to <a href="mailto:emCCSpecialCase@ems.co.uk">emCCSpecialCase@ems.co.uk</a></li>
+            </ul>
+
+           <!--   <p> If you don’t have access:</p>
+
+            <ul class="govuk-list govuk-list--bullet">
+            <li>complete the 'Responsible Officer Notification to EMS' form</li>
+                  
+                  <li> download and complete the <a href="/public/images/Post release orders - NAT Probation Practitioner Notification Form to EMS.doc" download>notification form</a></li>
+                  <li>email it to <a href="mailto:EMSEnforcement@ems.co.uk">EMSEnforcement@ems.co.uk</a></li> -->
+            </ul>
+          </div>
+        </details>
+
+       
+      
+      <br> 
+
+
+     {{ govukButton({
+        text: "Start now",
+        href: "signin",
+        isStartButton: true
+      }) }}
+
+    
+  </div>
+</div>
+
+{% endblock %}
