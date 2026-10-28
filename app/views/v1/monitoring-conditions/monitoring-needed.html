@@ -115,7 +115,7 @@
                 <dt class="govuk-summary-list__key">
                   {% if (data['cvl'] == "yes") %}
 
-                  Trail monitoring
+                  Curfew
 
                    {% else %}
 
@@ -129,15 +129,17 @@
 
                   {% if (data['cvl'] == "yes") %}
 
-                  {% if (data['cvl-incomplete'] == "yes") %}
+              <!--    {% if (data['cvl-incomplete'] == "yes") %}
           
                    From {{ data['trailstart-date'] or '12 Dec 2024' }} to {{ data['trailend-day'] }} {{ data['trailend-month2'] }} {{ data['trailend-year'] }}
 
                    {% else %}
 
-                    From {{ data['trailstart-date'] or '12 Dec 2024' }} to 12 Dec 2026
+                    
 
-                   {% endif %}
+                   {% endif %} -->
+
+                   From {{ data['trailstart-date'] or '12 Dec 2024' }} to 12 Dec 2026
 
                    {% elseif (data['monitoringtype'] == "Mandatory attendance monitoring") %}
                   {{ data['appointment-reason'] or 'Anger management meetings' }}   <br>
@@ -167,13 +169,13 @@
 
                             
                 </dd>  
-                   {% if (data['cvl-incomplete'] == "yes") %}
+               <!--    {% if (data['cvl-incomplete'] == "yes") %}
                    <dd class="govuk-summary-list__value">
                   <strong class="govuk-tag govuk-tag--blue govuk-!-margin-top-1">
                     Incomplete
                   </strong>
                   </dd>
-                  {% endif %}
+                  {% endif %}-->
                
             
                 <dd class="govuk-summary-list__actions">
@@ -181,7 +183,7 @@
                     
                     <li class="govuk-summary-list__actions-list-item">
                     {% if (data['cvl-incomplete'] == "yes") %}
-                    <a class="govuk-link" href="trail?trailstart-day=12&trailstart-month=12&trailstart-year=2024&">Change<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
+                    <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
                     {% else %}
                      <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> {{ data['monitoringtype'] }}</span></a>
                      {% endif %}
@@ -193,13 +195,13 @@
                 </dd>
               </div>
 
-              {% if (data['monitoringtypeadded'] == "Yes" or data['cvl'] == "yes") %}
+              {% if (data['monitoringtypeadded'] == "Yes" or data['cvl-update'] == "yes") %}
 
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
                  {% if (data['cvl'] == "yes") %}
 
-                  Curfew monitoring
+                  Trail monitoring
 
                    {% else %}
 
@@ -212,7 +214,7 @@
                
                 <dd class="govuk-summary-list__value">
 
-                  {% if (data['cvl'] == "yes") %}
+                  {% if (data['cvl-update'] == "yes") %}
                   
                            From {{ data['curfewstart-date'] or '12 Dec 2024' }} to {{ data['curfewend-date'] or '12 Dec 2025' }}
                
@@ -252,11 +254,11 @@
 
                 </dd>  
 
-                   {% if (data['cvl-incomplete'] == "yes") %}
+            <!--       {% if (data['cvl-incomplete'] == "yes") %}
                    <dd class="govuk-summary-list__value">
                   
                   </dd>
-                  {% endif %}
+                  {% endif %}-->
 
          
                 <dd class="govuk-summary-list__actions">
@@ -321,12 +323,7 @@
                 disabled: true
               }) }}
 
-               {% elseif (data['cvl-incomplete'] == "yes") %}
 
-             {{ govukButton({
-                text: "Save and continue",
-                disabled: true
-              }) }}
 
 
 

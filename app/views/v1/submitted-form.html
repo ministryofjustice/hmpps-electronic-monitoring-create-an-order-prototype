@@ -759,7 +759,16 @@
               text: "Additional documents"
             },
             href: ("attachments/check-answers-view"),
+            classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'Yes'),
            status: ( completedStatus if data['section-5-complete'] == 'true' else tocheckStatus)
+          },
+             {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers-view"  if data['section-5-complete'] == 'true' else "attachments/check-licence"),
+            classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'No'),
+           status: ( completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
           },
           {
             title: {
@@ -906,7 +915,6 @@
           
               <a class="govuk-link" href="delete-form">Delete draft</a>
 
-             <!-- {% elseif (data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true' and data['section-6-complete'] == 'true') %}-->
 
              {% elseif (data['usertype'] != 'Probation user' and data['section-6-complete'] == 'true') %}
 

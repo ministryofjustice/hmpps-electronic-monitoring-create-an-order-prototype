@@ -1274,6 +1274,17 @@ router.post('/check-document', function(request, response) {
     }
 })
 
+router.post('/licence-update', function(request, response) {
+
+    var licenceupdate = request.session.data['licenceupdate']
+    if (licenceupdate == "Yes"){
+        response.redirect("/v1/submitted-form?monitoringtype2=Trail monitoring&cvl-update=yes")     
+    } else {
+        response.redirect("/v1/submitted-form?monitoringtype2=&cvl-update=no")
+    }
+})
+
+
 router.post('/checkrisk', function(request, response) {
 
     var checkrisk = request.session.data['checkrisk']
