@@ -16,13 +16,13 @@
 
        {% if (data['isr-question'] == "true" and data['usertype'] == "Prison user" or data['usertype'] == "Probation user" )  %} 
 
-      {{ mojAlert({
+   <!--   {{ mojAlert({
           variant: "information",
           title: "This order is subject to the changes in the Sentencing Act 2026.",
           showTitleAsHeading: false,
           dismissible: false,
           html: 'This order is subject to the Sentencing Act 2026 changes.'
-        }) }}
+        }) }}-->
 
          {% endif  %}
 

@@ -25,9 +25,9 @@
    <form class="form" action="probation-aba" method="post">
 
 
- {% elseif (data['usertype'] == "Prison user")  %}
+ {% elseif (data['usertype'] == "Prison user" or data['usertype'] == "Probation user")  %}
 
-        <form class="form" action="submitted-form" method="post">
+        <form class="form" action="licence-update" method="post">
 
 
         {% elseif (data['sr-address'] == "Yes" and data['dirtydata'] == "true")  %}  

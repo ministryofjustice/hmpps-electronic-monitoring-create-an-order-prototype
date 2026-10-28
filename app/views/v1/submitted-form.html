@@ -16,13 +16,13 @@
 
   {% if (data['isr-question'] == "true" and data['usertype'] == "Prison user" and data['view'] !== "true" )  %} 
 
-      {{ mojAlert({
+   <!--   {{ mojAlert({
           variant: "information",
           title: "This order is subject to the changes in the Sentencing Act 2026.",
           showTitleAsHeading: false,
           dismissible: false,
           html: 'This order is subject to the Sentencing Act 2026 changes.'
-        }) }}
+        }) }}-->
 
          {% endif  %}
 
@@ -607,6 +607,7 @@
  {% elseif (data['usertype'] == 'Probation user')  %}  
 
 
+
  {% if (data['sr-type'] == 'I need to end all monitoring for the device wearer' or data['sr-type'] == 'I need to end all monitoring for the device wearer2')  %}    
 
  {{ govukTaskList({
@@ -670,7 +671,16 @@
             title: {
               text: "Electronic monitoring required"
             },
+            href: ("monitoring-conditions/check-answers-view" if data['section-4-complete'] == 'true' else "monitoring-conditions/check-conditions"),
+            classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'No'),
+            status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
             href: ("monitoring-conditions/check-answers-view"),
+            classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'Yes'),
             status: (completedStatus if data['section-4-complete'] == 'true' else tocheckStatus)
           },
           {
@@ -721,11 +731,20 @@
             href: ("device-wearer/check-answers-view"),
             status: ( completedStatus if data['section-1-complete'] == 'true' else tocheckStatus)
           },
+           {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers-view" if data['section-4-complete'] == 'true' else "monitoring-conditions/check-conditions"),
+            classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'No'),
+            status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
+          },
           {
             title: {
               text: "Electronic monitoring required"
             },
             href: ("monitoring-conditions/check-answers-view"),
+            classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'Yes'),
             status: (completedStatus if data['section-4-complete'] == 'true' else tocheckStatus)
           },
           {

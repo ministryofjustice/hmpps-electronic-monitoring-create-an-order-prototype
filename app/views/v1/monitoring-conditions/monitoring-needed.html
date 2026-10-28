@@ -128,8 +128,16 @@
                 <dd class="govuk-summary-list__value">
 
                   {% if (data['cvl'] == "yes") %}
+
+                  {% if (data['cvl-incomplete'] == "yes") %}
           
                    From {{ data['trailstart-date'] or '12 Dec 2024' }} to {{ data['trailend-day'] }} {{ data['trailend-month2'] }} {{ data['trailend-year'] }}
+
+                   {% else %}
+
+                    From {{ data['trailstart-date'] or '12 Dec 2024' }} to 12 Dec 2026
+
+                   {% endif %}
 
                    {% elseif (data['monitoringtype'] == "Mandatory attendance monitoring") %}
                   {{ data['appointment-reason'] or 'Anger management meetings' }}   <br>
