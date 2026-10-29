@@ -17,35 +17,108 @@
        What monitoring does the device wearer need?
       </h1>
 
-      {% if (data['addressquestion'] == "No" and data['under-18'] == "Yes") %}
+    {# True when this order uses ISR monitoring rules. #}
+    {% set isrOrder = data['isr-question'] == 'true' %}
+    {# True for non-ISR GPS acquisitive orders without HDC. #}
+    {% set gpsHdcException = not isrOrder and data['hdc'] == 'No' and data['order-description'] == 'GPS acquisitive crime' %}
+    {# True for non-ISR orders without HDC or a pilot programme. #}
+    {% set nonPilotHdcException = not isrOrder and data['hdc'] == 'No' and data['order-description'] == 'They are not part of any of these pilots' %}
+    {# True when the wearer has no fixed address. #}
+    {% set noFixedAddress = data['addressquestion'] == 'No' %}
+    {# True when no fixed address restricts monitoring for this user type. #}
+    {% set restrictedAddressMonitoring = noFixedAddress and data['usertype'] != 'Home Office user' %}
 
+    {# Start with no address or age warning to show. #}
+    {% set eligibilityNotice = '' %}
+    {% if noFixedAddress and data['under-18'] == 'Yes' %}
+      {# Set the combined no-address and under-18 warning. #}
+      {% set eligibilityNotice = "Some monitoring types can't be selected because the device wearer has no fixed address. Alcohol monitoring is not an option because the device wearer is not 18 years old or older when the electronic monitoring device is installed." %}
+    {% elseif noFixedAddress %}
+      {# Set the no-fixed-address warning. #}
+      {% set eligibilityNotice = "Some monitoring types can't be selected because the device wearer has no fixed address." %}
+    {% elseif data['under-18'] == 'Yes' %}
+      {# Set the under-18 alcohol-monitoring warning. #}
+      {% set eligibilityNotice = "Alcohol monitoring is not an option because the device wearer is not 18 years old or older when the electronic monitoring device is installed." %}
+    {% endif %}
+
+    {% if eligibilityNotice %}
+      {{ govukInsetText({ text: eligibilityNotice }) }}
+    {% endif %}
+
+    {% if gpsHdcException %}
       {{ govukInsetText({
-        text: "Some monitoring types can't be selected because the device wearer has no fixed address. Alcohol monitoring is not an option because the device wearer is not 18 years old or older when the electronic monitoring device is installed."
+        text: "Some monitoring types can’t be selected because the device wearer is not on a Home Detention Curfew (HDC)."
       }) }}
-
-     {% elseif (data['addressquestion'] == "No") %}
-
- 
-
+    {% elseif nonPilotHdcException %}
       {{ govukInsetText({
-        text: "Some monitoring types can't be selected because the device wearer has no fixed address."
+        text: "Some monitoring types can’t be selected because the device wearer is not on a Home Detention Curfew (HDC) or part of any pathfinders or programmes."
       }) }}
-
-
-
-    {% elseif (data['under-18'] == "Yes") %}
-
-
-      {{ govukInsetText({
-        text: "Alcohol monitoring is not an option because the device wearer will not be 18 years old or older when the electronic monitoring device is installed."
-      }) }}
-
-     {% endif %}  
+    {% endif %}
 
       <form class="form" action="{{ basePath }}/monitoring-type2" method="post">
     
      
         <input type="hidden" name="monitoringtypeadded" value="Yes">
+
+        {# Define the available second monitoring choices and their eligibility rules. #}
+        {% set monitoringOptions = [
+              {
+                value: "Curfew",
+                available: data['monitoringtype'] != 'Curfew' and not (noFixedAddress or gpsHdcException or nonPilotHdcException),
+                hint: {
+                  text: "Monitoring the device wearer adheres to set times and days that they must remain at a location."
+                },
+                text: "Curfew"
+              },
+              {
+                value: "Exclusion zone monitoring",
+                available: data['monitoringtype'] != 'Exclusion zone monitoring' and not (gpsHdcException or nonPilotHdcException or restrictedAddressMonitoring),
+                hint: {
+                  text: "Prevents the device wearer entering areas or visiting locations at set times."
+                },
+                text: "Exclusion zone monitoring"
+              },
+              {
+                value: "Restriction zone monitoring",
+                available: data['monitoringtype'] != 'Restriction zone monitoring' and not noFixedAddress,
+                hint: {
+                  text: "Prevents the device wearer leaving areas or locations at set times."
+                },
+                text: "Restriction zone monitoring",
+                isrOnly: true
+              },
+              {
+                value: "Trail monitoring",
+                available: data['monitoringtype'] != 'Trail monitoring' and not (nonPilotHdcException or (not gpsHdcException and restrictedAddressMonitoring)),
+                hint: {
+                  text: "Recording and gathering data on movements of the device wearer throughout the day."
+                },
+                text: "Trail monitoring"
+              },
+              {
+                value: "Alcohol monitoring",
+                available: data['monitoringtype'] != 'Alcohol monitoring' and not (gpsHdcException or data['under-18'] == 'Yes'),
+                hint: {
+                  text: "Measuring alcohol levels of the device wearer or recording they are abstaining from drinking alcohol."
+                },
+                text: "Alcohol monitoring"
+              },
+              {
+                value: "Mandatory attendance monitoring",
+                available: data['monitoringtype'] != 'Mandatory attendance monitoring' and not (noFixedAddress or gpsHdcException or nonPilotHdcException),
+                hint: {
+                  text: "Recording the device wearer's attendance at arranged meetings or places."
+                },
+                text: "Mandatory attendance monitoring"
+              }
+        ] %}
+
+        {# Remove options that are unavailable or already selected on the first page. #}
+        {% set monitoringOptions = monitoringOptions | selectattr('available') %}
+        {% if not isrOrder %}
+          {# Remove the restriction-zone choice from non-ISR orders. #}
+          {% set monitoringOptions = monitoringOptions | rejectattr('isrOnly') %}
+        {% endif %}
 
         {{ govukRadios({
             name: "monitoringtype2",
@@ -60,60 +133,7 @@
             hint: {
               text: "Select one, if you need to you will be able to add other monitoring types later"
             },
-            items: [
-              {
-                value: "Curfew",
-                disabled: (true if data['monitoringtype'] == 'Curfew' or data['addressquestion'] == 'No'),
-                hint: {
-                  text: "Monitoring the device wearer adheres to set times and days that they must remain at a location."
-                },
-                text: "Curfew"
-              },
-              {
-                value: "Exclusion zone monitoring",
-                disabled: (true if data['addressquestion'] == 'No'),
-                hint: {
-                  text: "Prevents the device wearer entering areas or visiting locations at set times."
-                },
-                text: "Exclusion zone monitoring"
-              },
-                 {
-                value: "Restriction zone monitoring",
-                disabled: (true if data['addressquestion'] == 'No'),
-                hint: {
-                  text: "Prevents the device wearer leaving areas or locations at set times."
-                },
-                text: "Restriction zone monitoring"
-              },
-              
-              {
-                value: "Trail monitoring",
-                disabled: (true if data['monitoringtype'] == 'Trail monitoring' or data['addressquestion'] == 'No'),
-                hint: {
-                  text: "Recording and gathering data on movements of the device wearer throughout the day."
-                },
-                text: "Trail monitoring"
-              },
-             
-              {
-                value: "Alcohol monitoring",
-                disabled: (true if data['monitoringtype'] == 'Alcohol monitoring' or data['under-18'] == 'Yes'),
-       
-                hint: {
-                  text: "Measuring alcohol levels of the device wearer or recording they are abstaining from drinking alcohol."
-                },
-                text: "Alcohol monitoring"
-              },
-              {
-                value: "Mandatory attendance monitoring",
-                disabled: (true if data['addressquestion'] == 'No'),
-                hint: {
-                  text: "Recording the device wearer's attendance at arranged meetings or places."
-                },
-                text: "Mandatory attendance monitoring"
-              }
-              
-          ]
+            items: monitoringOptions
         }) }}
 
 

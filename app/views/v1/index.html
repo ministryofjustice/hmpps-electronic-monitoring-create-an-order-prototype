@@ -2,6 +2,21 @@
 
 {% set pageName = "Version 1 overview" %}
 
+{% block header %}
+  {% from "moj/components/header/macro.njk" import mojHeader %}
+
+  {{ mojHeader({
+    organisationLabel: {
+      text: "HMPPS",
+      href: "/"
+    },
+    serviceLabel: {
+      text: "Apply, change or end an Electronic Monitoring Order (EMO)",
+      href: "/"
+    }
+  }) }}
+{% endblock %}
+
 {% block beforeContent %}
   {{ govukBackLink({
     text: "All prototype versions",

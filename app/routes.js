@@ -8,42 +8,76 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-const v2Router = govukPrototypeKit.requests.setupRouter('/v2')
+const sessionDataDefaults = require('./data/session-data-defaults')
+const versionedSessionDataKey = '_prototypeVersions'
 
 function registerPost(path, handler) {
-  router.post(path, handler)
-  router.post(`/v1${path}`, handler)
-  v2Router.post(path, handler)
+    router.post(path, handler)
+    router.post(`/v1${path}`, handler)
+}
+
+function redirectToCurfewPage(response, page, query = '') {
+    response.redirect(`/v1/monitoring-conditions/${page}${query}`)
 }
 
 // Legacy forms post to root-level routes, so use the referrer to retain their version.
 router.use((req, res, next) => {
-  const requestVersion = req.path.match(/^\/(v\d+)(?=\/|$)/)
+    const requestVersion = req.originalUrl.match(/^\/(v\d+)(?=\/|$)/)
   const referrerVersion = req.get('Referrer')?.match(/\/(v\d+)(?=\/|$)/)
   const version = requestVersion?.[1] || referrerVersion?.[1]
 
   res.locals.basePath = version ? `/${version}` : ''
 
-  if (version) {
-    const redirect = res.redirect
-
-    res.redirect = function (...args) {
-      const locationIndex = typeof args[0] === 'number' ? 1 : 0
-      const location = args[locationIndex]
-
-      if (typeof location === 'string' && !/^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(location)) {
-        const absoluteLocation = location.startsWith('/') ? location : `/${location}`
-        const locationVersion = absoluteLocation.match(/^\/v\d+(?=\/|$)/)
-        args[locationIndex] = locationVersion
-          ? `${res.locals.basePath}${absoluteLocation.slice(locationVersion[0].length)}`
-          : `${res.locals.basePath}${absoluteLocation}`
-      }
-
-      return redirect.apply(this, args)
-    }
-  }
-
   next()
+})
+
+router.use((req, res, next) => {
+    if (req.originalUrl.startsWith('/manage-prototype/')) {
+        next()
+        return
+    }
+
+    const requestVersion = res.locals.basePath === '/v2' ? 'v2' : 'v1'
+    const storedData = req.session.data || {}
+    let versionedData = storedData[versionedSessionDataKey]
+
+    if (!versionedData) {
+        versionedData = {
+            v1: { ...sessionDataDefaults, ...storedData },
+            v2: { ...sessionDataDefaults }
+        }
+        delete versionedData.v1[versionedSessionDataKey]
+    }
+
+    const currentVersionData = versionedData[requestVersion] || { ...sessionDataDefaults }
+
+    for (const input of [req.body, req.query]) {
+        for (const key of Object.keys(input || {})) {
+            if (key.startsWith('_')) {
+                continue
+            }
+
+            if (Object.prototype.hasOwnProperty.call(storedData, key)) {
+                currentVersionData[key] = storedData[key]
+            } else {
+                delete currentVersionData[key]
+            }
+        }
+    }
+
+    versionedData[requestVersion] = currentVersionData
+    req.session.data = currentVersionData
+    res.locals.data = currentVersionData
+
+    const endResponse = res.end
+    res.end = function (...args) {
+        versionedData[requestVersion] = req.session.data
+        req.session.data = { [versionedSessionDataKey]: versionedData }
+        res.end = endResponse
+        return endResponse.apply(this, args)
+    }
+
+    next()
 })
 
 // Add your routes here
@@ -68,8 +102,6 @@ router.use('/', (req, res, next) => {
 console.log('previous page is: ' + res.locals.prevURL + " and current page is " + req.url + " " + res.locals.currentURL );
   next();
 });
-
-require('./routes/v2')(v2Router)
 
 router.get(/.*/, function (req, res, next) {
   // These functions are available on all pages in the prototype.
@@ -393,7 +425,7 @@ registerPost('/monitoring-questionold', function(request, response) {
     var addressquestion = request.session.data['addressquestion']
     
     if (monitoringtype == "Curfew"){
-        response.redirect("/v1/monitoring-conditions/curfew")   
+        redirectToCurfewPage(response, 'curfew')
     } else if (addressquestion == "No"){
         response.redirect("/v1/monitoring-conditions/install-address")   
     } else {
@@ -408,7 +440,7 @@ registerPost('/monitoring-question', function(request, response) {
 
     
     if (monitoringtype == "Curfew"){
-        response.redirect("/v1/monitoring-conditions/curfew")     
+        redirectToCurfewPage(response, 'curfew')
     } else if (monitoringtype == "Alcohol monitoring"){
     response.redirect("/v1/monitoring-conditions/appointment-question") 
     } else if (monitoringtype == "Trail monitoring (Home Office)"){
@@ -426,7 +458,7 @@ registerPost('/monitoring-question2old', function(request, response) {
     var addressquestion = request.session.data['addressquestion']
     
     if (monitoringtype2 == "Curfew"){
-        response.redirect("/v1/monitoring-conditions/curfew")   
+        redirectToCurfewPage(response, 'curfew')
     } else if (addressquestion == "No"){
         response.redirect("/v1/monitoring-conditions/install-address")   
     } else {
@@ -440,7 +472,7 @@ registerPost('/monitoring-question2', function(request, response) {
 
     
     if (monitoringtype2 == "Curfew"){
-        response.redirect("/v1/monitoring-conditions/curfew")     
+        redirectToCurfewPage(response, 'curfew')
     } else {
         response.redirect("/v1/monitoring-conditions/appointment-question")
     }
@@ -451,7 +483,7 @@ registerPost('/monitoring-type', function(request, response) {
     var monitoringtype = request.session.data['monitoringtype']
     
     if (monitoringtype == "Curfew"){
-        response.redirect("/v1/monitoring-conditions/curfew")   
+        redirectToCurfewPage(response, 'curfew')
     } else if (monitoringtype == "Exclusion zone monitoring"){
         response.redirect("/v1/monitoring-conditions/exclusion")  
     } else if (monitoringtype == "Restriction zone monitoring"){
@@ -472,7 +504,7 @@ registerPost('/install-type', function(request, response) {
     var monitoringtype = request.session.data['monitoringtype']
     
     if (monitoringtype == "Curfew"){
-        response.redirect("/v1/monitoring-conditions/curfew")   
+        redirectToCurfewPage(response, 'curfew')
     } else if (monitoringtype == "Exclusion zone monitoring"){
         response.redirect("/v1/monitoring-conditions/exclusion")  
     } else if (monitoringtype == "Inclusion zone monitoring"){
@@ -493,7 +525,7 @@ registerPost('/monitoring-type2', function(request, response) {
     var monitoringtype2 = request.session.data['monitoringtype2']
     
     if (monitoringtype2 == "Curfew"){
-        response.redirect("/v1/monitoring-conditions/curfew")   
+        redirectToCurfewPage(response, 'curfew')
     } else if (monitoringtype2 == "Exclusion zone monitoring"){
         response.redirect("/v1/monitoring-conditions/exclusion") 
     } else if (monitoringtype2 == "Restriction zone monitoring"){
@@ -514,7 +546,7 @@ registerPost('/install-type2', function(request, response) {
     var monitoringtype2 = request.session.data['monitoringtype2']
     
     if (monitoringtype2 == "Curfew"){
-        response.redirect("/v1/monitoring-conditions/curfew")   
+        redirectToCurfewPage(response, 'curfew')
     } else if (monitoringtype2 == "Exclusion zone monitoring"){
         response.redirect("/v1/monitoring-conditions/exclusion") 
     } else if (monitoringtype2 == "Inclusion zone monitoring"){
@@ -540,7 +572,7 @@ registerPost('/curfew-address-question', function(request, response) {
     } else if (view == "false"){
         response.redirect("/v1/monitoring-conditions/check-answers-view")     
     } else {
-        response.redirect("/v1/monitoring-conditions/curfew-1")
+        redirectToCurfewPage(response, 'curfew-1')
     }
 })
 
@@ -548,7 +580,7 @@ registerPost('/curfew-change', function(request, response) {
 
     var curfewperiods = request.session.data['curfewperiods']
     if (curfewperiods == "one"){
-        response.redirect("/v1/monitoring-conditions/curfew-4")
+        redirectToCurfewPage(response, 'curfew-4')
     } else {
         response.redirect("/v1/monitoring-conditions/curfew-change2")
     }
@@ -558,9 +590,9 @@ registerPost('/curfew-times-question', function(request, response) {
 
     var curfewtimesquestion = request.session.data['curfewtimesquestion']
     if (curfewtimesquestion == "Yes"){
-        response.redirect("/v1/monitoring-conditions/curfew-4?curfewtimetableday=false&curfewstandard=true&curfewchange-starttime-hours=19&CurfewStart-ampm=pm&curfewchange-starttime-minutes=00&curfewchange-endtime-hours=07&curfewchange-endtime-minutes=00&CurfewEnd-ampm=am&curfewperiods=one")
+        redirectToCurfewPage(response, 'curfew-4', '?curfewtimetableday=false&curfewstandard=true&curfewchange-starttime-hours=19&CurfewStart-ampm=pm&curfewchange-starttime-minutes=00&curfewchange-endtime-hours=07&CurfewEnd-ampm=am&curfewperiods=one')
     } else {
-        response.redirect("/v1/monitoring-conditions/curfew-period?curfewstandard=false&curfewtimetableday=false")
+        redirectToCurfewPage(response, 'curfew-period', '?curfewstandard=false&curfewtimetableday=false')
     }
 })
 
@@ -939,7 +971,7 @@ registerPost('/curfew-dates-question', function(request, response) {
     if (curfewdatesquestion == "No"){
         response.redirect("/v1/monitoring-conditions/curfew-2") 
     } else {
-        response.redirect("/v1/monitoring-conditions/curfew-3")
+        redirectToCurfewPage(response, 'curfew-3')
     }
 })
 
@@ -947,9 +979,9 @@ registerPost('/curfew-release-question', function(request, response) {
 
     var curfewreleasequestion = request.session.data['curfewreleasequestion']
     if (curfewreleasequestion == "No"){
-        response.redirect("/v1/monitoring-conditions/curfew-3-enter") 
+        redirectToCurfewPage(response, 'curfew-3-enter')
     } else {
-        response.redirect("/v1/monitoring-conditions/curfew-3-question")
+        redirectToCurfewPage(response, 'curfew-3-question')
     }
 })
 
@@ -1178,11 +1210,11 @@ registerPost('/curfew-dates', function(request, response) {
 
     var usertype = request.session.data['usertype']
     if (usertype == "Prison user"){
-        response.redirect("/v1/monitoring-conditions/curfew-3")  
+        redirectToCurfewPage(response, 'curfew-3')
     } else if (usertype == "Youth user") {
-        response.redirect("/v1/monitoring-conditions/curfew-3")        
+        redirectToCurfewPage(response, 'curfew-3')
     } else {
-        response.redirect("/v1/monitoring-conditions/curfew-3-question")
+        redirectToCurfewPage(response, 'curfew-3-question')
     }
 })
 
@@ -1389,4 +1421,6 @@ registerPost('/user-type', function(request, response) {
 // Add your routes here
 // Search routes
 
-// END 
+// END
+
+require('./routes/v2')()
