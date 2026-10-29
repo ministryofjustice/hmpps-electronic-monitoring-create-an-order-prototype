@@ -154,7 +154,7 @@ module.exports = () => {
     var monitoringtype = request.session.data['monitoringtype']
 
     if (monitoringtype == "Curfew"){
-        redirectToCurfewPage(response, 'curfew-address')
+        redirectToCurfewPage(response, 'curfew-dates')
     } else if (monitoringtype == "Exclusion zone monitoring"){
         response.redirect("/v2/monitoring-conditions/exclusion")
     } else if (monitoringtype == "Restriction zone monitoring"){
@@ -175,7 +175,7 @@ module.exports = () => {
     var monitoringtype = request.session.data['monitoringtype']
 
     if (monitoringtype == "Curfew"){
-        redirectToCurfewPage(response, 'curfew-address')
+        redirectToCurfewPage(response, 'curfew-dates')
     } else if (monitoringtype == "Exclusion zone monitoring"){
         response.redirect("/v2/monitoring-conditions/exclusion")
     } else if (monitoringtype == "Inclusion zone monitoring"){
@@ -196,7 +196,7 @@ module.exports = () => {
     var monitoringtype2 = request.session.data['monitoringtype2']
 
     if (monitoringtype2 == "Curfew"){
-        redirectToCurfewPage(response, 'curfew-address')
+        redirectToCurfewPage(response, 'curfew-dates')
     } else if (monitoringtype2 == "Exclusion zone monitoring"){
         response.redirect("/v2/monitoring-conditions/exclusion")
     } else if (monitoringtype2 == "Restriction zone monitoring"){
@@ -217,7 +217,7 @@ module.exports = () => {
     var monitoringtype2 = request.session.data['monitoringtype2']
 
     if (monitoringtype2 == "Curfew"){
-        redirectToCurfewPage(response, 'curfew-address')
+        redirectToCurfewPage(response, 'curfew-dates')
     } else if (monitoringtype2 == "Exclusion zone monitoring"){
         response.redirect("/v2/monitoring-conditions/exclusion")
     } else if (monitoringtype2 == "Inclusion zone monitoring"){
@@ -237,12 +237,15 @@ module.exports = () => {
 
     var curfewaddressquestion = request.session.data['curfewaddressquestion']
     var view = request.session.data['view']
+    var usertype = request.session.data['usertype']
     if (curfewaddressquestion == "Yes"){
         response.redirect("/v2/postcode-lookup/postcode")
     } else if (view == "false"){
         response.redirect("/v2/monitoring-conditions/check-answers-view")
+    } else if (usertype == "Prison user" || usertype == "Youth user") {
+        redirectToCurfewPage(response, 'curfew-first-night')
     } else {
-        redirectToCurfewPage(response, 'curfew-dates')
+        redirectToCurfewPage(response, 'curfew-timetable-type')
     }
 }],
     /* POST forms: monitoring-conditions/curfew-timetable-type.html */
@@ -731,14 +734,7 @@ module.exports = () => {
     /* POST forms: monitoring-conditions/curfew-dates.html */
     ["/curfew-dates", function(request, response) {
 
-    var usertype = request.session.data['usertype']
-    if (usertype == "Prison user"){
-        redirectToCurfewPage(response, 'curfew-first-night')
-    } else if (usertype == "Youth user") {
-        redirectToCurfewPage(response, 'curfew-first-night')
-    } else {
-        redirectToCurfewPage(response, 'curfew-timetable-type')
-    }
+    redirectToCurfewPage(response, 'curfew-address')
 }],
     /* POST forms: otd-old/order-aq.html; GET links: monitoring-conditions/check-answers-error.html, monitoring-conditions/check-answers.html */
     ["/order-aq", function(request, response) {
@@ -1008,7 +1004,7 @@ module.exports = () => {
     var addressquestion = request.session.data['addressquestion']
 
     if (monitoringtype == "Curfew"){
-        redirectToCurfewPage(response, 'curfew-address')
+        redirectToCurfewPage(response, 'curfew-dates')
     } else if (addressquestion == "No"){
         response.redirect("/v2/monitoring-conditions/install-address")
     } else {
@@ -1023,7 +1019,7 @@ module.exports = () => {
 
 
     if (monitoringtype == "Curfew"){
-        redirectToCurfewPage(response, 'curfew-address')
+        redirectToCurfewPage(response, 'curfew-dates')
     } else if (monitoringtype == "Alcohol monitoring"){
     response.redirect("/v2/monitoring-conditions/appointment-question")
     } else if (monitoringtype == "Trail monitoring (Home Office)"){
@@ -1041,7 +1037,7 @@ module.exports = () => {
     var addressquestion = request.session.data['addressquestion']
 
     if (monitoringtype2 == "Curfew"){
-        redirectToCurfewPage(response, 'curfew-address')
+        redirectToCurfewPage(response, 'curfew-dates')
     } else if (addressquestion == "No"){
         response.redirect("/v2/monitoring-conditions/install-address")
     } else {
@@ -1055,7 +1051,7 @@ module.exports = () => {
 
 
     if (monitoringtype2 == "Curfew"){
-        redirectToCurfewPage(response, 'curfew-address')
+        redirectToCurfewPage(response, 'curfew-dates')
     } else {
         response.redirect("/v2/monitoring-conditions/appointment-question")
     }
@@ -1227,53 +1223,7 @@ module.exports = () => {
 }],
 
   ])
-  const v2Handlers = new Map()
-
-  const curfewSelectionRoutes = {
-    '/monitoring-type': 'monitoringtype',
-    '/install-type': 'monitoringtype',
-    '/monitoring-type2': 'monitoringtype2',
-    '/install-type2': 'monitoringtype2',
-    '/monitoring-questionold': 'monitoringtype',
-    '/monitoring-question': 'monitoringtype',
-    '/monitoring-question2old': 'monitoringtype2',
-    '/monitoring-question2': 'monitoringtype2'
-  }
-
-  for (const [path, fieldName] of Object.entries(curfewSelectionRoutes)) {
-    const sharedHandler = routeHandlers.get(path)
-
-    if (sharedHandler) {
-      v2Handlers.set(path, (request, response, next) => {
-        if (request.session.data[fieldName] === 'Curfew') {
-          response.redirect('/v2/monitoring-conditions/curfew-dates')
-          return
-        }
-
-        sharedHandler(request, response, next)
-      })
-    }
-  }
-
-  v2Handlers.set('/curfew-dates', (request, response) => {
-        response.redirect('/v2/monitoring-conditions/curfew-address')
-  })
-
-  v2Handlers.set('/curfew-address-question', (request, response) => {
-    const { curfewaddressquestion, usertype, view } = request.session.data
-
-    if (curfewaddressquestion === 'Yes') {
-            response.redirect('/v2/postcode-lookup/postcode')
-    } else if (view === 'false') {
-            response.redirect('/v2/monitoring-conditions/check-answers-view')
-    } else if (usertype === 'Prison user' || usertype === 'Youth user') {
-            response.redirect('/v2/monitoring-conditions/curfew-first-night')
-    } else {
-            response.redirect('/v2/monitoring-conditions/curfew-timetable-type')
-    }
-  })
-
   for (const [path, handler] of routeHandlers) {
-        router.post(path, v2Handlers.get(path) || handler)
+        router.post(path, handler)
   }
 }
