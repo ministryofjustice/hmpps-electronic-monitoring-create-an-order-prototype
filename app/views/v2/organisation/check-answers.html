@@ -132,9 +132,7 @@
 
     {% if (data['usertype'] == 'Prison user' or data['usertype'] == 'Probation user' or data['usertype'] == 'Youth user') %}   
 
-     <h2 class="govuk-heading-m">Responsible Officer's details</h2>
-
-
+        <h2 class="govuk-heading-m">Responsible Officer's details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -146,7 +144,6 @@
             <dd class="govuk-summary-list__actions">
                
                   <a class="govuk-link" href="responsible-officer?cya2=true">Change<span class="govuk-visually-hidden"> What is the responsible officer's first name? </span></a>
-                </li>
                 
             </dd>
           </div>
@@ -160,7 +157,6 @@
             <dd class="govuk-summary-list__actions">
                
                   <a class="govuk-link" href="responsible-officer?cya2=true">Change<span class="govuk-visually-hidden"> What is the responsible officer's last name?</span></a>
-                </li>
                 
             </dd>
           </div>
@@ -189,20 +185,21 @@
             <dd class="govuk-summary-list__actions">
                
                   <a class="govuk-link" href="responsible-officer?cya2=true">Change<span class="govuk-visually-hidden"> What is the responsible officer's email address? </span></a>
-                </li>
                 
             </dd>
           </div>
 
          {% endif %}     
 
-      </dl>
+        {# Closes the Responsible Officer's details list opened above for these user types. #}
+        {% if (data['usertype'] == 'Prison user' or data['usertype'] == 'Probation user' or data['usertype'] == 'Youth user') %}
+        </dl>
+        {% endif %}
 
         {% if (data['usertype'] == "Court user") %}
 
-     <h2 class="govuk-heading-m">Responsible Police force</h2>
-
-  <dl class="govuk-summary-list govuk-!-margin-bottom-9">  
+        <h2 class="govuk-heading-m">Responsible Police force</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">  
 
   <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -214,7 +211,6 @@
             <dd class="govuk-summary-list__actions">
                
                   <a class="govuk-link" href="police-force?cya2=true">Change<span class="govuk-visually-hidden">  What is the Responsible Organisation's Probation Delivery Unit (PDU)? </span></a>
-                </li>
                 
             </dd>
           </div>
@@ -230,19 +226,14 @@
             <dd class="govuk-summary-list__actions">
                
                   <a class="govuk-link" href="police-force?cya2=true">Change<span class="govuk-visually-hidden">  What is the responsible organisation's email address? </span></a>
-                </li>
                 
             </dd>
           </div>
 
-    </dl>
-
           {% else %} 
 
 
-         <h2 class="govuk-heading-m">Responsible Organisation's details</h2>
-
-
+        <h2 class="govuk-heading-m">Responsible Organisation's details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">  
 
           <div class="govuk-summary-list__row">
@@ -255,7 +246,6 @@
             <dd class="govuk-summary-list__actions">
                
                   <a class="govuk-link" href="org-contact?cya2=true">Change<span class="govuk-visually-hidden"> What organisation is the responsible officer part of? </span></a>
-                </li>
                 
             </dd>
           </div>
@@ -271,7 +261,6 @@
             <dd class="govuk-summary-list__actions">
                
                   <a class="govuk-link" href="org-contact?cya2=true">Change<span class="govuk-visually-hidden">  What is the responsible organisation's email address? </span></a>
-                </li>
                 
             </dd>
           </div>
@@ -322,7 +311,6 @@
             <dd class="govuk-summary-list__actions">
                
                   <a class="govuk-link" href="region2?cya2=true">Change<span class="govuk-visually-hidden">  What is the Responsible Organisation's Probation Delivery Unit (PDU)? </span></a>
-                </li>
                 
             </dd>
           </div>
@@ -346,7 +334,6 @@
             <dd class="govuk-summary-list__actions">
                
                   <a class="govuk-link" href="region?cya2=true">Change<span class="govuk-visually-hidden">  What region is the responsible organisation in? </span></a>
-                </li>
                 
             </dd>
           </div>
@@ -366,7 +353,6 @@
             <dd class="govuk-summary-list__actions">
                
                   <a class="govuk-link" href="region2?cya2=true">Change<span class="govuk-visually-hidden">  What is the Responsible Organisation's Probation Delivery Unit (PDU)? </span></a>
-                </li>
                 
             </dd>
           </div>
@@ -387,7 +373,6 @@
             <dd class="govuk-summary-list__actions">
                
                   <a class="govuk-link" href="region2?cya2=true">Change<span class="govuk-visually-hidden">  What is the Responsible Organisation's Probation Delivery Unit (PDU)? </span></a>
-                </li>
                 
             </dd>
           </div>
@@ -412,6 +397,7 @@
 
 
 
+        {# Closes the Police force or Responsible Organisation list opened above. #}
         </dl>
      
         

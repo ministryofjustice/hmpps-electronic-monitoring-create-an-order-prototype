@@ -159,7 +159,7 @@ module.exports = () => {
     var monitoringtype = request.session.data['monitoringtype']
 
     if (monitoringtype == "Curfew"){
-        redirectToCurfewPage(response, 'curfew-dates')
+        redirectToCurfewPage(response, 'curfew-address')
     } else if (monitoringtype == "Exclusion zone monitoring"){
         response.redirect("/v2/monitoring-conditions/exclusion")
     } else if (monitoringtype == "Restriction zone monitoring"){
@@ -180,7 +180,7 @@ module.exports = () => {
     var monitoringtype = request.session.data['monitoringtype']
 
     if (monitoringtype == "Curfew"){
-        redirectToCurfewPage(response, 'curfew-dates')
+        redirectToCurfewPage(response, 'curfew-address')
     } else if (monitoringtype == "Exclusion zone monitoring"){
         response.redirect("/v2/monitoring-conditions/exclusion")
     } else if (monitoringtype == "Inclusion zone monitoring"){
@@ -201,7 +201,7 @@ module.exports = () => {
     var monitoringtype2 = request.session.data['monitoringtype2']
 
     if (monitoringtype2 == "Curfew"){
-        redirectToCurfewPage(response, 'curfew-dates')
+        redirectToCurfewPage(response, 'curfew-address')
     } else if (monitoringtype2 == "Exclusion zone monitoring"){
         response.redirect("/v2/monitoring-conditions/exclusion")
     } else if (monitoringtype2 == "Restriction zone monitoring"){
@@ -222,7 +222,7 @@ module.exports = () => {
     var monitoringtype2 = request.session.data['monitoringtype2']
 
     if (monitoringtype2 == "Curfew"){
-        redirectToCurfewPage(response, 'curfew-dates')
+        redirectToCurfewPage(response, 'curfew-address')
     } else if (monitoringtype2 == "Exclusion zone monitoring"){
         response.redirect("/v2/monitoring-conditions/exclusion")
     } else if (monitoringtype2 == "Inclusion zone monitoring"){
@@ -242,15 +242,12 @@ module.exports = () => {
 
     var curfewaddressquestion = request.session.data['curfewaddressquestion']
     var view = request.session.data['view']
-    var usertype = request.session.data['usertype']
     if (curfewaddressquestion == "Yes"){
         response.redirect("/v2/postcode-lookup/postcode")
     } else if (view == "false"){
         response.redirect("/v2/monitoring-conditions/check-answers-view")
-    } else if (usertype == "Prison user" || usertype == "Youth user") {
-        redirectToCurfewPage(response, 'curfew-first-night')
     } else {
-        redirectToCurfewPage(response, 'curfew-timetable-type')
+        redirectToCurfewPage(response, 'curfew-dates')
     }
 }],
     /* POST forms: monitoring-conditions/curfew-timetable-type.html */
@@ -738,7 +735,13 @@ module.exports = () => {
 }],
     /* POST forms: monitoring-conditions/curfew-dates.html */
     ["/curfew-dates", function(request, response) {
-    redirectToCurfewPage(response, 'curfew-address')
+
+    var usertype = request.session.data['usertype']
+    if (usertype == "Prison user" || usertype == "Youth user") {
+        redirectToCurfewPage(response, 'curfew-first-night')
+    } else {
+        redirectToCurfewPage(response, 'curfew-timetable-type')
+    }
 }],
     /* POST forms: otd-old/order-aq.html; GET links: monitoring-conditions/check-answers-error.html, monitoring-conditions/check-answers.html */
     ["/order-aq", function(request, response) {
@@ -1008,7 +1011,7 @@ module.exports = () => {
     var addressquestion = request.session.data['addressquestion']
 
     if (monitoringtype == "Curfew"){
-        redirectToCurfewPage(response, 'curfew-dates')
+        redirectToCurfewPage(response, 'curfew-address')
     } else if (addressquestion == "No"){
         response.redirect("/v2/monitoring-conditions/install-address")
     } else {
@@ -1023,7 +1026,7 @@ module.exports = () => {
 
 
     if (monitoringtype == "Curfew"){
-        redirectToCurfewPage(response, 'curfew-dates')
+        redirectToCurfewPage(response, 'curfew-address')
     } else if (monitoringtype == "Alcohol monitoring"){
     response.redirect("/v2/monitoring-conditions/appointment-question")
     } else if (monitoringtype == "Trail monitoring (Home Office)"){
@@ -1041,7 +1044,7 @@ module.exports = () => {
     var addressquestion = request.session.data['addressquestion']
 
     if (monitoringtype2 == "Curfew"){
-        redirectToCurfewPage(response, 'curfew-dates')
+        redirectToCurfewPage(response, 'curfew-address')
     } else if (addressquestion == "No"){
         response.redirect("/v2/monitoring-conditions/install-address")
     } else {
@@ -1055,7 +1058,7 @@ module.exports = () => {
 
 
     if (monitoringtype2 == "Curfew"){
-        redirectToCurfewPage(response, 'curfew-dates')
+        redirectToCurfewPage(response, 'curfew-address')
     } else {
         response.redirect("/v2/monitoring-conditions/appointment-question")
     }

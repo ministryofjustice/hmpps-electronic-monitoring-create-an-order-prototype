@@ -85,7 +85,7 @@
        
    {% if (data['usertype'] !== 'Home Office user') %}
 
-    <h2 class="govuk-heading-m">Order information</h2>
+        <h2 class="govuk-heading-m">Order information</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
         
@@ -277,9 +277,9 @@
             </dd>
           </div>     
          
- </dl>
+        </dl>
 
- <h2 class="govuk-heading-m">Curfew</h2>
+        <h2 class="govuk-heading-m">Curfew</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
            <div class="govuk-summary-list__row">
@@ -440,7 +440,7 @@
           </div>
         </dl>-->
         
-    <h2 class="govuk-heading-m">Curfew timetable</h2>
+        <h2 class="govuk-heading-m">Curfew timetable</h2>
     <!--   {% if (data['usertype'] == 'Probation user' and data['dirtydata'] == 'true') %}
          <p> This curfew timetable may be out of date. View <a href="../dataissue-interupt">what you need to do</a>.</p>
         {% endif %}-->
@@ -546,7 +546,7 @@
 
         {% if (data['monitoringtype2'] == "Exclusion and inclusion zone monitoring") %}
 
- <h2 class="govuk-heading-m">Exclusion and inclusion zone monitoring</h2>
+        <h2 class="govuk-heading-m">Exclusion and inclusion zone monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
            <div class="govuk-summary-list__row">
@@ -670,7 +670,7 @@
           </div>
 
          {% endif %}  
-       </dl>
+        </dl>
 
 
 
@@ -679,7 +679,7 @@
 
    {% if (data['monitoringtype2'] == "Restriction zone monitoring") %}
 
- <h2 class="govuk-heading-m">Restriction zone monitoring</h2>
+        <h2 class="govuk-heading-m">Restriction zone monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -774,7 +774,7 @@
           </div>
 
          {% endif %}  
-       </dl>
+        </dl>
 
 
 
@@ -783,15 +783,9 @@
    
     {% if (data['monitoringtype2'] == "Trail monitoring" or data['monitoringtype2'] == "Trail monitoring (Home Office)") %}
 
- <h2 class="govuk-heading-m">
-
-  {% if (data['monitoringtype'] == "Trail monitoring (Home Office)") %}
-   Trail monitoring (Home Office)
-  {% else %}
-    Trail monitoring
-  {% endif %}
-
-</h2>
+        <h2 class="govuk-heading-m">
+          {% if (data['monitoringtype'] == "Trail monitoring (Home Office)") %}Trail monitoring (Home Office){% else %}Trail monitoring{% endif %}
+        </h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
            <div class="govuk-summary-list__row">
@@ -862,15 +856,14 @@
           {% endif %}  
 
          
-       </dl>
+        </dl>
 
    {% endif %}   
 
     {% if (data['monitoringtype2'] == "Mandatory attendance monitoring") %}
 
- <h2 class="govuk-heading-m">Mandatory attendance monitoring</h2>
-
-   <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <h2 class="govuk-heading-m">Mandatory attendance monitoring</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
          <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -975,13 +968,13 @@
           </div>
 
 
-       </dl>    
+        </dl>
 
    {% endif %}    
 
     {% if (data['monitoringtype2'] == "Alcohol monitoring") %}
 
- <h2 class="govuk-heading-m">Alcohol monitoring</h2>
+        <h2 class="govuk-heading-m">Alcohol monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
            <div class="govuk-summary-list__row">
@@ -1052,7 +1045,7 @@
 
 
 
-       </dl>
+        </dl>
 
    {% endif %}  
 

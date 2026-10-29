@@ -32,7 +32,7 @@
 
 
 
-    <h2 class="govuk-heading-m">Order information</h2>
+        <h2 class="govuk-heading-m">Order information</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
           
@@ -289,7 +289,7 @@
 
         </dl>
 
-    <h2 class="govuk-heading-m">Monitoring details</h2>
+        <h2 class="govuk-heading-m">Monitoring details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
    
@@ -339,11 +339,11 @@
             </dd>
           </div>     
          
- </dl>
+        </dl>
 
   {% if (data['monitoringtype'] == "Curfew" or data['monitoringtype2'] == "Curfew")  %}
 
- <h2 class="govuk-heading-m">Curfew</h2>
+        <h2 class="govuk-heading-m">Curfew</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
 
@@ -405,8 +405,7 @@
           </div>
         </dl>
 
-
-    <h2 class="govuk-heading-m">Curfew on the day of release</h2>
+        <h2 class="govuk-heading-m">Curfew on the day of release</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
        <!--   <div class="govuk-summary-list__row">
@@ -452,7 +451,7 @@
               123 Carter Bar<br>
               Glossop<br>
               High Peak<br>
-              SK22 2NG</p>
+              SK22 2NG
 
               {% elseif (data['release-address'] == "Installation") %}
 
@@ -475,7 +474,7 @@
           </div>
         </dl>
         
-    <h2 class="govuk-heading-m">Curfew timetable</h2>
+        <h2 class="govuk-heading-m">Curfew timetable</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
   
           <div class="govuk-summary-list__row">
@@ -566,7 +565,7 @@
 
    {% if (data['monitoringtype'] == "Alcohol monitoring" or data['monitoringtype2'] == "Alcohol monitoring") %}
 
-<h2 class="govuk-heading-m">Installation address</h2>
+        <h2 class="govuk-heading-m">Installation address</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
           {% if (data['monitoringtype'] != "Alcohol monitoring" or data['monitoringtype2'] != "Alcohol monitoring") %}
@@ -636,13 +635,13 @@
 
 
             {% endif %}  
-        </dl>   
+        </dl>
 
      {% endif %}    
 
  {% if (data['monitoringtype'] == "Exclusion zone monitoring" or data['monitoringtype2'] == "Exclusion zone monitoring") %}
 
- <h2 class="govuk-heading-m">Exclusion zone monitoring</h2>
+        <h2 class="govuk-heading-m">Exclusion zone monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -737,7 +736,7 @@
           </div>
 
          {% endif %}  
-       </dl>
+        </dl>
 
 
 
@@ -745,15 +744,9 @@
    
     {% if (data['monitoringtype'] == "Trail monitoring" or data['monitoringtype'] == "Trail monitoring (Home Office)" or data['monitoringtype2'] == "Trail monitoring" or data['monitoringtype2'] == "Trail monitoring (Home Office)" or data['monitoringtype'] == NULL or data['monitoringtype'] == '') %}
 
- <h2 class="govuk-heading-m">
-
-  {% if (data['monitoringtype'] == "Trail monitoring (Home Office)") %}
-   Trail monitoring (Home Office)
-  {% else %}
-    Trail monitoring
-  {% endif %}
-
-</h2>
+        <h2 class="govuk-heading-m">
+          {% if (data['monitoringtype'] == "Trail monitoring (Home Office)") %}Trail monitoring (Home Office){% else %}Trail monitoring{% endif %}
+        </h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
          
@@ -798,13 +791,13 @@
           {% endif %}  
 
          
-       </dl>
+        </dl>
 
    {% endif %}   
 
     {% if (data['monitoringtype'] == "Mandatory attendance monitoring" or data['monitoringtype2'] == "Mandatory attendance monitoring") %}
 
- <h2 class="govuk-heading-m">Mandatory attendance monitoring</h2>
+        <h2 class="govuk-heading-m">Mandatory attendance monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
          
@@ -895,13 +888,13 @@
           </div>
 
 
-       </dl>    
+        </dl>
 
    {% endif %}    
 
     {% if (data['monitoringtype'] == "Alcohol monitoring" or data['monitoringtype2'] == "Alcohol monitoring") %}
 
- <h2 class="govuk-heading-m">Alcohol monitoring</h2>
+        <h2 class="govuk-heading-m">Alcohol monitoring</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
          
@@ -973,7 +966,7 @@
 
 
 
-       </dl>
+        </dl>
 
    {% endif %}   
 
