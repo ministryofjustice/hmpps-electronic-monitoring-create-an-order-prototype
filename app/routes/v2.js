@@ -1,3 +1,8 @@
+/**
+ * Route handlers for the v2 version of the application
+ */
+
+// Helper function to make curfew handlers a bit more manageable.
 function redirectToCurfewPage(response, page, query = '') {
     response.redirect(`/v2/monitoring-conditions/${page}${query}`)
 }
@@ -733,7 +738,6 @@ module.exports = () => {
 }],
     /* POST forms: monitoring-conditions/curfew-dates.html */
     ["/curfew-dates", function(request, response) {
-
     redirectToCurfewPage(response, 'curfew-address')
 }],
     /* POST forms: otd-old/order-aq.html; GET links: monitoring-conditions/check-answers-error.html, monitoring-conditions/check-answers.html */
