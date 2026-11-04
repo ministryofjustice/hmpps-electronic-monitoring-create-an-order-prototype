@@ -1,7 +1,7 @@
 {% extends "v2/layouts/moj-level2.html" %}
 
 {% block pageTitle %}
-   Order information - Electronic Monitoring
+   Order information - Electronic Monitoring Order
 {% endblock %}
 
 {% block beforeContent %}
@@ -30,7 +30,7 @@
             {% if (data['wearer-firstname'] == "Bob") %}
               <h2 class="govuk-heading-s"> Incorrect monitoring conditions</h2>
              
-              <p>This ‘New order’ request has been rejected because you selected the wrong monitoring conditions. Immigration orders require to have, at a minimum, Trail Monitoring (Fitted device) or Trail Monitoring (non-Fitted device). </p>
+              <p>This ‘New order’ has been rejected because you selected the wrong monitoring conditions. Immigration orders require to have, at a minimum, Trail Monitoring (Fitted device) or Trail Monitoring (non-Fitted device). </p>
 
            <!--   <p>Immigration orders require to have, at a minimum, Trail Monitoring (Fitted device) or Trail Monitoring (non-Fitted device).</p>-->
 
@@ -38,7 +38,7 @@
              
               <h2 class="govuk-heading-s"> Incorrect address</h2>
 
-              <p>This ‘New order’ request has been rejected because the installation address provided is incorrect or invalid. Please ensure that the installation address is complete and accurate. Where possible, please use the built‑in address lookup to reduce the risk of incorrect details and delays when resubmitting. If entering the address manually, you should verify it using reliable tools such as the Post Office postcode finder or Google Maps. </p>
+              <p>This ‘New order’ has been rejected because the installation address provided is incorrect or invalid. Please ensure that the installation address is complete and accurate. Where possible, please use the built‑in address lookup to reduce the risk of incorrect details and delays when resubmitting. If entering the address manually, you should verify it using reliable tools such as the Post Office postcode finder or Google Maps. </p>
 
           <!--    <p>Please ensure that the installation address is complete and accurate.  </p>
 
@@ -88,7 +88,7 @@
             <dd class="govuk-summary-list__value">
               {% if (data['usertype'] == "Home Office user") %}
              
-              This ‘New order’ request has been rejected because you selected the wrong monitoring conditions.  
+              This ‘New order’ has been rejected because you selected the wrong monitoring conditions.
 
               Immigration orders require to have, at minimum, one of the following conditions. Trail Monitoring (Fitted device) or Trail Monitoring (non-Fitted device).
 

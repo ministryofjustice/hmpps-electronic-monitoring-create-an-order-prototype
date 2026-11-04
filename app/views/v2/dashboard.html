@@ -3,7 +3,7 @@
 
 
 {% block pageTitle %}
-  Electronic Monitoring application forms - Electronic Monitoring
+  Application forms - Electronic Monitoring Order
 {% endblock %}
 
 {% block content %}
@@ -15,7 +15,7 @@
 
         <div class="moj-page-header-actions">
           <div class="moj-page-header-actions__title">
-            <h1 class="govuk-heading-xl">Electronic Monitoring Order (EMO) forms</h1>
+            <h1 class="govuk-heading-xl">Electronic monitoring orders</h1>
           </div>
 
           <div class="moj-page-header-actions__actions">
@@ -25,15 +25,13 @@
                 Start new form
               </button>-->
 
-              
-
             </div>
           </div>
 
         </div>
 
         <button type="submit" class="govuk-button" data-module="govuk-button">
-                Start new form
+                Start new order
               </button>
 
       </form>
@@ -43,11 +41,11 @@
     {{ mojSubNavigation({
         label: "Sub navigation",
         items: [{
-          text: "Search for a form",
+          text: "Search for an order",
           href: "dashboard",
           active: true
         }, {
-          text: "Draft forms",
+          text: "Draft orders",
           href: "dashboard2"
           
 
@@ -55,7 +53,7 @@
       }) }}
 
 
-     {% include "/includes/search.html" %}
+     {% include "/v2/includes/search.html" %}
 
 
 {% else %}
@@ -64,11 +62,11 @@
       {{ mojSubNavigation({
         label: "Sub navigation",
         items: [{
-          text: "Draft forms",
+          text: "Draft orders",
           href: "#1",
           active: true
         }, {
-          text: "Search for a form",
+          text: "Search for an order",
           href: "dashboard2?searchresults=false&search="
         }]
       }) }}
@@ -93,7 +91,7 @@
       -->
 
 
-          {% include "/includes/draft.html" %}
+          {% include "/v2/includes/draft.html" %}
 
 
 {% endif %}

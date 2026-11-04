@@ -1,7 +1,7 @@
 {% extends "v2/layouts/moj-level2.html" %}
 
 {% block pageTitle %}
-   Order information - Electronic Monitoring
+   Order information - Electronic Monitoring Order
 {% endblock %}
 
 {% block beforeContent %}
@@ -22,7 +22,7 @@
            <p>What you need to know:</p>
               <ul class="govuk-list govuk-list--bullet">
           
-                <li>It is the most recent version sent through the EMO service.</li>
+                <li>It is the most recent version submitted through the Electronic Monitoring Order service.</li>
                 <li>It does not include any changes that have been sent to EMS by email.</li>
               </ul>
 
@@ -48,7 +48,7 @@
 
  
                    
-  {% include "/includes/aba-message.html" %}
+  {% include "/v2/includes/aba-message.html" %}
 
               
     <button type="submit" class="govuk-button govuk-button--warning" data-module="govuk-button" onclick="window.history.go(-1); return false;" data-govuk-button-init="">

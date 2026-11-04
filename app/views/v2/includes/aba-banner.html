@@ -1,0 +1,15 @@
+      {% if (data['usertype'] == 'Probation user' and data['dirtydata'] == 'true') %}
+
+      <div class="sticky">
+
+                      {%- from "moj/components/alert/macro.njk" import mojAlert -%}
+                      
+                      {{ mojAlert({
+                        variant: "warning",
+                        title: "Some information could not be imported",
+                        dismissible: false,
+                        html: 'Information in this form could be out of date. <a href="../dataissue-interupt">What you need to do</a>.'
+                      }) }}     
+             </div>
+
+     {% endif %}     

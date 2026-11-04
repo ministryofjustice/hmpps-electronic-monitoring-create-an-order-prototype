@@ -1,19 +1,19 @@
 {% extends "v2/layouts/moj.html" %}
 
 {% block pageTitle %}
-  Electronic Monitoring notification form - Electronic Monitoring
+  Electronic Monitoring notification form - Electronic Monitoring Order
 {% endblock %}
 
 {% block beforeContent %}
 <!-- Breadcrumb -->
-<a href="dashboard" action="action" class="govuk-back-link">Back</a>
+<a href="dashboard" action="action" class="govuk-back-link">Back to my orders</a>
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">Electronic Monitoring application form</h1>
+      <h1 class="govuk-heading-l">Electronic monitoring order</h1>
 
       
 
@@ -107,19 +107,19 @@
 
            {% if (data['newform'] == 'true' and data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true') %}
           <button type="submit" class="govuk-button" data-module="govuk-button">
-            Submit form
+            Submit order
           </button>
           {% elseif (data['newform'] == 'false' and data['section-1-complete'] == 'true' and data['section-2-complete'] == 'true' and data['section-3-complete'] == 'true' and data['section-4-complete'] == 'true' and data['section-5-complete'] == 'true' and data['section-6-complete'] == 'true') %}
           <button type="submit" class="govuk-button" data-module="govuk-button">
-            Submit form
+            Submit order
           </button>
           {% else %}
               <button type="submit" class="govuk-button" disabled data-module="govuk-button">
-                Submit form
+                Submit order
               </button>
           {% endif %}
 
-          <a class="govuk-link" href="delete-form">Delete form</a>
+          <a class="govuk-link" href="delete-form">Delete order</a>
         </div>
       </div>
     </form>

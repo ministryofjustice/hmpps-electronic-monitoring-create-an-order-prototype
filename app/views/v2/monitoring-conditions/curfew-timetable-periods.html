@@ -1,7 +1,7 @@
 {% extends "v2/layouts/moj-level2.html" %}
 
 {% block pageTitle %}
-  Curfew times for the curfew timetable - Electronic Monitoring
+  Curfew times for the curfew timetable - Electronic Monitoring Order
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,15 +15,15 @@
 
 
 {% set oneHtml %}
-  {% include "/includes/curfew-period.html" %}
+  {% include "/v2/includes/curfew-period.html" %}
 {% endset -%}
  
 {% set twoHtml %} 
- {% include "/includes/curfew-period-two.html" %}
+ {% include "/v2/includes/curfew-period-two.html" %}
 {% endset -%}
 
 {% set threeHtml %}
- {% include "/includes/curfew-period-three.html" %}
+ {% include "/v2/includes/curfew-period-three.html" %}
 {% endset -%}
 
  

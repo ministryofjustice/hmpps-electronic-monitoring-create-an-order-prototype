@@ -1,0 +1,30 @@
+          {{ xGovukAutocomplete({
+                id: "probation",
+                name: "probation",
+                value: data['probation'],
+                allowEmpty: false,
+                showNoOptionsFound: true,
+                label: {
+                  classes: "govuk-label",
+                  text: "Select the Probation region"
+ },
+
+
+            items: [
+           
+
+            { text: "East Midlands" },
+            { text: "East of England" },
+            { text: "Greater Manchester" },
+            { text: "Kent, Surrey & Sussex" },
+            { text: "London" },
+            { text: "North East" },
+            { text: "North West" },
+            { text: "South Central" },
+            { text: "South West" },
+            { text: "Wales" },
+            { text: "West Midlands" },
+            { text: "Yorkshire and the Humber" }
+            
+      ]
+              }) }}

@@ -1,0 +1,18 @@
+          {{ xGovukAutocomplete({
+                id: "militarycourt",
+                name: "militarycourt",
+                value: data['militarycourt'],
+                allowEmpty: false,
+                showNoOptionsFound: true,
+                label: {
+                  classes: "govuk-label",
+                  text: "Select the name of the Military Court"
+ },
+
+
+            items: [
+            { text: "Bulford Military Court Centre" },
+            { text: "Catterick Military Court Centre" }
+            
+      ]
+              }) }}
