@@ -1306,7 +1306,7 @@ router.post('/checkconditions', function(request, response) {
     }
 })
 
-
+/* This router for 'user-type-cohort' does not appear to be in use: */
 router.post('/user-type-cohort', function(request, response) {
 
     var usertype = request.session.data['usertype']
