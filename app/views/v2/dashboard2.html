@@ -1,9 +1,7 @@
 {% extends "v2/layouts/moj.html" %}
 
-
-
 {% block pageTitle %}
-  Application forms - Electronic Monitoring Order
+Application forms - Electronic Monitoring Order
 {% endblock %}
 
 {% block content %}
@@ -11,77 +9,51 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-         <form class="form" action="org-details?cvl=no&cvl-incomplete=no" method="get">
+    <form class="form" action="org-details?cvl=no&cvl-incomplete=no" method="get">
 
-        <div class="moj-page-header-actions">
-          <div class="moj-page-header-actions__title">
-            <h1 class="govuk-heading-xl">Electronic monitoring orders</h1>
-          </div>
+      <button type="submit" class="govuk-button" data-module="govuk-button">Start new order</button>
 
-          <div class="moj-page-header-actions__actions">
-            <div class="moj-button-group moj-button-group--inline">
+    </form>
 
-            <!--  <button type="submit" class="govuk-button" data-module="govuk-button">
-                Start new form
-              </button>-->
+    {% if (data['usertype'] == "Probation user") %}
 
-              
+    {{ mojSubNavigation({
+    label: "Sub navigation",
+    items: [{
+    text: "Search for an order",
+    href: "dashboard?searchresults=false&search="
 
-            </div>
-          </div>
-
-        </div>
-
-        <button type="submit" class="govuk-button" data-module="govuk-button">
-                Start new order
-              </button>
-
-      </form>
-
-{% if (data['usertype'] == "Probation user") %}
-
-      {{ mojSubNavigation({
-        label: "Sub navigation",
-        items: [{
-          text: "Search for an order",
-          href: "dashboard?searchresults=false&search="
-          
-        }, {
-          text: "Draft orders",
-          href: "#",
-          active: true
-        }]
-      }) }}
+    }, {
+    text: "Draft orders",
+    href: "#",
+    active: true
+    }]
+    }) }}
 
 
-          {% include "/v2/includes/draft.html" %}
+    {% include "/v2/includes/draft.html" %}
 
 
-{% else %}    
+    {% else %}
 
-      {{ mojSubNavigation({
-        label: "Sub navigation",
-        items: [{
-          text: "Draft orders",
-          href: "dashboard"
-        }, {
-          text: "Search for an order",
-          href: "#3",
-          active: true
+    {{ mojSubNavigation({
+    label: "Sub navigation",
+    items: [{
+    text: "Draft orders",
+    href: "dashboard"
+    }, {
+    text: "Search for an order",
+    href: "#3",
+    active: true
 
-        }]
-      }) }}
+    }]
+    }) }}
 
+    {% include "/v2/includes/search.html" %}
 
-     {% include "/v2/includes/search.html" %}
+    {% endif %}
 
-{% endif %}  
-       
-      
-       
-        
-         
-    </div>
+  </div>
 </div>
 
 {% endblock %}
