@@ -622,7 +622,7 @@ module.exports = () => {
     if (sraddress == "No"){
         response.redirect("/v2/variation-simple/sr-question")
     } else {
-        response.redirect("/v2/new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")
+        response.redirect("/v2/order-overview?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")
     }
 }],
     /* POST forms: variation-simple/sr-question.html; GET links: variation-simple/check-answers.html */
@@ -630,15 +630,15 @@ module.exports = () => {
 
     var srtypesimple = request.session.data['sr-type-simple']
     if (srtypesimple == "I have changed something else in the form"){
-        response.redirect("/v2/new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")
+        response.redirect("/v2/order-overview?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")
      } else if (srtypesimple == "I need monitoring equipment installed at a new address") {
-        response.redirect("/v2/new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")
+        response.redirect("/v2/order-overview?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")
     } else if (srtypesimple == "hardstop") {
         response.redirect("/v2/variations/hard-stop?equipment=true")
     } else if (srtypesimple == "hardstop2") {
         response.redirect("/v2/variations/hard-stop?equipment=false")
     } else {
-        response.redirect("/v2/new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")
+        response.redirect("/v2/order-overview?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")
     }
 }],
     /* GET links: variation-simple/check-answers.html */
@@ -1138,13 +1138,13 @@ module.exports = () => {
 
     var srtypesimple = request.session.data['sr-type-simple']
     if (srtypesimple == "I have changed something else in the form"){
-        response.redirect("/v2/new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")
+        response.redirect("/v2/order-overview?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")
     } else if (srtypesimple == "I need to end all monitoring for the device wearer2") {
         response.redirect("/v2/variation-simple/bail")
     } else if (srtypesimple == "I need to end all monitoring for the device wearer") {
         response.redirect("/v2/variation-simple/bail")
      } else if (srtypesimple == "I need monitoring equipment installed at a new address") {
-        response.redirect("/v2/new-form?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")
+        response.redirect("/v2/order-overview?section-1-complete=false&section-2-complete=false&section-3-complete=false&section-4-complete=false&section-5-complete=false&section-6-complete=false&view=none&newform=false")
     } else if (srtypesimple == "hardstop") {
         response.redirect("/v2/variations/hard-stop?equipment=true")
     } else if (srtypesimple == "hardstop2") {
