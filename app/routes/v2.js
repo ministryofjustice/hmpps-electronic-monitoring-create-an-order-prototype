@@ -763,33 +763,6 @@ module.exports = () => {
         response.redirect("/v2/otd-old/order-prrar")
     }
 }],
-    /* POST forms: dashboard.html, dashboard2.html */
-    ["/org-details", function(request, response) {
-
-    var notifyingorg = request.session.data['notifying-org']
-    var usertype = request.session.data['usertype']
-    if (notifyingorg == "Prison service"){
-        response.redirect("/v2/organisation/responsible-officer")
-    } else if (notifyingorg == "Probation service") {
-        response.redirect("/v2/organisation/responsible-officer")
-    } else if (notifyingorg == "Youth Custody Service (YCS)") {
-        response.redirect("/v2/organisation/responsible-officer")
-     } else if (notifyingorg == "Home Office") {
-        response.redirect("/v2/organisation/org-contact")
-    } else if (notifyingorg == "") {
-        response.redirect("/v2/organisation/responsible-officer")
-    } else if (usertype == "Prison user") {
-        response.redirect("/v2/organisation/responsible-officer")
-    } else if (usertype == "Probation user") {
-        response.redirect("/v2/organisation/responsible-officer")
-    } else if (usertype == "Home Office user") {
-        response.redirect("/v2/organisation/org-contact")
-    } else if (usertype == "Youth user") {
-        response.redirect("/v2/organisation/responsible-officer")
-    } else {
-        response.redirect("/v2/organisation/org-contact")
-    }
-}],
     /* POST forms: installation/risk-list.html; GET links: installation/are-you-sure.html */
     ["/risk-list", function(request, response) {
 

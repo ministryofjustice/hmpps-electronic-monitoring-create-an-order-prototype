@@ -1239,7 +1239,7 @@ registerPost('/order-aq-region', function(request, response) {
 })
 
 
-registerPost('/org-details', function(request, response) {
+router.post('/org-details', function(request, response) {
 
     var notifyingorg = request.session.data['notifying-org']
     var usertype = request.session.data['usertype']
