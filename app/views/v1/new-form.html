@@ -167,6 +167,15 @@
               text: "Electronic monitoring required"
             },
             href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "./otd-old/order-information?cya4=false"),
+            classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'Yes'),
+            status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
+          }, 
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "monitoring-conditions/check-conditions-draft?cya4=false"),
+            classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'No'),
             status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
           }, 
           {
@@ -181,6 +190,15 @@
               text: "Additional documents"
             },
             href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/licence?cya5=false"),
+            classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'Yes'),
+            status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          },
+           {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/check-licence-draft?cya5=false"),
+            classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'No'),
             status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
           }
 
@@ -211,9 +229,18 @@
             title: {
               text: "Electronic monitoring required"
             },
-            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "./otd-old/order-sentence?cya4=false"),
+            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "monitoring-conditions/check-conditions-draft?cya4=false"),
+            classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'No'),
             status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
-          }, 
+          },
+          {
+            title: {
+              text: "Electronic monitoring required"
+            },
+            href: ("monitoring-conditions/check-answers" if data['section-4-complete'] == 'true' else "./otd-old/order-sentence?cya4=false"),
+            classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'Yes'),
+            status: (completedStatus if data['section-4-complete'] == 'true' else incompleteStatus)
+          },  
           {
             title: {
               text: "Access needs and installation risk"
@@ -225,7 +252,16 @@
             title: {
               text: "Additional documents"
             },
+            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/check-licence-draft?cya5=false"),
+            classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'No'),
+            status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          },
+           {
+            title: {
+              text: "Additional documents"
+            },
             href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/licence?cya5=false"),
+            classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'Yes'),
             status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
           }
 

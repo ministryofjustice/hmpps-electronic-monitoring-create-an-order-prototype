@@ -428,7 +428,7 @@
               On the day of release, what time does the curfew start?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['release-starttime-hours'] }}:{{ data['release-starttime-minutes'] }}pm
+              {{ data['release-starttime-hours'] or '19'}}:{{ data['release-starttime-minutes'] or '00' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="curfew-3?cya4=true">Change<span class="govuk-visually-hidden"> What is the start time for curfew this day? </span></a>
@@ -439,7 +439,7 @@
               On the day of release, what time does the curfew end?
             </dt>
             <dd class="govuk-summary-list__value">
-              {{ data['release-endtime-hours'] }}:{{ data['release-endtime-hours'] }}am
+              {{ data['release-endtime-hours'] or '7' }}:{{ data['release-endtime-hours'] or '00' }}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="curfew-3?cya4=true">Change<span class="govuk-visually-hidden"> WWhat is the end time for curfew? </span></a>
@@ -1161,7 +1161,7 @@
       <div class="govuk-button-group">
         {{ govukButton({
           text: "Save and go to next section",
-          href: ("../installation/check-answers?section-4-complete=true" if data['section-4-complete'] == 'true' else "../installation/disability?section-4-complete=true")
+          href: ("../installation/check-answers?section-4-complete=true" if data['section-3-complete'] == 'true' else "../installation/disability?section-4-complete=true")
         }) }}
 
         {{ govukButton({

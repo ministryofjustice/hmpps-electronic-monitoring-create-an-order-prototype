@@ -83,6 +83,24 @@
                     })}}</td>
               </tr>
 
+               {% if (data['usertype'] == "Prison user" or data['usertype'] == "Probation user") %}
+
+               <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><a href="licence-update-draft">John Smith</a></td>
+                <td class="govuk-table__cell">11/11/2026</td>
+                <td class="govuk-table__cell">29/10/2026</td>
+                <td class="govuk-table__cell">Ada Lovelace</td>
+               
+                <td class="govuk-table__cell">
+                  {{govukTag({
+                      text: "Draft",
+                      classes: "govuk-tag--grey"
+                    })}}</td>
+              </tr>
+
+
+                {% endif %}
+
               <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=true&section-5-complete=true&newform=true&error=false&monitoringtype=Curfew&monitoringtype2=&cvl-update=no&licencedate=25 October 2026">David Francis</a></td>
                 <td class="govuk-table__cell">11/11/2026</td>
@@ -95,6 +113,9 @@
                       classes: "govuk-tag--grey"
                     })}}</td>
               </tr>
+
+
+
                <tr class="govuk-table__row">
                 <td class="govuk-table__cell"><a href="new-form-error?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=false&section-5-complete=true&newform=true&cvl=no&cvl-incomplete=no">Dylan Davies</a></td>
              <td class="govuk-table__cell">12/11/2026</td>

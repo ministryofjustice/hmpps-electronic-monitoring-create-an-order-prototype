@@ -1274,6 +1274,17 @@ router.post('/check-document', function(request, response) {
     }
 })
 
+router.post('/check-document-draft', function(request, response) {
+
+    var checkdocument = request.session.data['checkdocument']
+    if (checkdocument == "Yes"){
+        response.redirect("/v1/attachments/licence")     
+    } else {
+        response.redirect("/v1/attachments/check-answers")
+    }
+})
+
+
 router.post('/licence-update', function(request, response) {
 
     var licenceupdate = request.session.data['licenceupdate']
@@ -1283,6 +1294,17 @@ router.post('/licence-update', function(request, response) {
         response.redirect("/v1/submitted-form?monitoringtype2=&cvl-update=no")
     }
 })
+
+router.post('/licence-update-draft', function(request, response) {
+
+    var licenceupdate = request.session.data['licenceupdate']
+    if (licenceupdate == "Yes"){
+        response.redirect("/v1/new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=false&section-5-complete=false&newform=true&error=false&monitoringtype=Curfew&monitoringtype2=Trail monitoring&cvl-update=Yes&licencedate=25 October 2026")     
+    } else {
+        response.redirect("/v1/new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=true&section-5-complete=true&newform=true&error=false&monitoringtype=Curfew&monitoringtype2=&cvl-update=no&licencedate=25 October 2026")
+    }
+})
+
 
 
 router.post('/checkrisk', function(request, response) {
