@@ -33,7 +33,7 @@ console.log('previous page is: ' + res.locals.prevURL + " and current page is " 
 
 
 
-router.get('*', function (req, res, next) {
+router.get(/.*/, function (req, res, next) {
   // These functions are available on all pages in the prototype.
   // To use call the function inside curly brackets, for example {{ example_function() }}
 
