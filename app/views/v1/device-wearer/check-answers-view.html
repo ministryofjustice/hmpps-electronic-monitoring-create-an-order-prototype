@@ -303,10 +303,9 @@
             <dd class="govuk-summary-list__value">
               {% if (data['edited'] == 'true') %}
               
-               {{ data['contactaddressLine1'] }}<br>
-              {{ data['contactaddressTown'] }}<br>
-              {{ data['contactaddresscounty'] }}<br>
-              {{ data['contactaddressPostcode'] }}
+               10 Washington Street,<br>
+                Worcester,<br>
+                WR1 1NL<br>
 
                {% else %}
 
@@ -323,7 +322,7 @@
               {% if (data['view'] == 'true') %}
                  <a class="govuk-link" href="contact-address-view"><span class="govuk-visually-hidden"> </span></a>
                 {% else %}
-                  <a class="govuk-link" href="../postcode-lookup/postcode?sectionid=About the device wearer&postcodetype=device wearer's&variation-simple=false&sr-address=Yes">Change<span class="govuk-visually-hidden"> </span></a>                  
+                  <a class="govuk-link" href="../postcode-lookup/postcode?sectionid=About the device wearer&postcodetype=device wearer's&variation-simple=false&sr-address=Yes&edited=true">Change<span class="govuk-visually-hidden"> </span></a>                  
                 {% endif %}
             </dd>
           </div>
