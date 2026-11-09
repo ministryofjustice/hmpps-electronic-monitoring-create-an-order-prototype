@@ -14,225 +14,227 @@ Identity numbers - Electronic Monitoring Order
 
     <span class="govuk-caption-l">About the device wearer</span>
 
-    {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-    {% from "govuk/components/input/macro.njk" import govukInput %}
+    <form class="form" action="/identity-numbers-lookup" method="post">
 
-    {% set nomisHtml %}
-    {{ govukInput({
-    id: "nomis",
-    name: "nomis",
-    spellcheck: false,
-    value: data['nomis'],
-    classes: "govuk-!-width-two-thirds",
-    label: {
-    text: "Enter NOMIS"
-    }
-    }) }}
-    {% endset -%}
+      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+      {% from "govuk/components/input/macro.njk" import govukInput %}
 
-    {% set pncHtml %}
-    {{ govukInput({
-    id: "pnc",
-    name: "pnc",
-    value: data['wearer-pnc'],
-    classes: "govuk-!-width-two-thirds",
-    label: {
-    text: "Enter PNC"
-    }
-    }) }}
-    {% endset -%}
+      {% set nomisHtml %}
+      {{ govukInput({
+      id: "nomis",
+      name: "nomis",
+      spellcheck: false,
+      value: data['nomis'],
+      classes: "govuk-!-width-two-thirds",
+      label: {
+      text: "Enter NOMIS"
+      }
+      }) }}
+      {% endset -%}
 
-    {% set deliusHtml %}
-    {{ govukInput({
-    id: "delius",
-    name: "delius",
-    classes: "govuk-!-width-two-thirds",
-    value: data['delius'],
-    label: {
-    text: "Enter CRN"
-    }
-    }) }}
-    {% endset -%}
+      {% set pncHtml %}
+      {{ govukInput({
+      id: "pnc",
+      name: "pnc",
+      value: data['wearer-pnc'],
+      classes: "govuk-!-width-two-thirds",
+      label: {
+      text: "Enter PNC"
+      }
+      }) }}
+      {% endset -%}
 
-    {% set prisonHtml %}
-    {{ govukInput({
-    id: "prison",
-    name: "prison",
-    classes: "govuk-!-width-two-thirds",
-    value: data['prison'],
-    hint: {
-    text: "This is sometimes known as a ‘NOMIS number’ or ‘alpha number’. For example, A1234BC"
-    },
-    label: {
-    text: "Enter prison number"
-    }
-    }) }}
-    {% endset -%}
+      {% set deliusHtml %}
+      {{ govukInput({
+      id: "delius",
+      name: "delius",
+      classes: "govuk-!-width-two-thirds",
+      value: data['delius'],
+      label: {
+      text: "Enter CRN"
+      }
+      }) }}
+      {% endset -%}
 
-    {% set hoHtml %}
-    {{ govukInput({
-    id: "ho",
-    name: "ho",
-    value: data['ho'],
-    classes: "govuk-!-width-two-thirds",
-    label: {
-    text: "Enter CEPR"
-    }
-    }) }}
-    {% endset -%}
+      {% set prisonHtml %}
+      {{ govukInput({
+      id: "prison",
+      name: "prison",
+      classes: "govuk-!-width-two-thirds",
+      value: data['prison'],
+      hint: {
+      text: "This is sometimes known as a ‘NOMIS number’ or ‘alpha number’. For example, A1234BC"
+      },
+      label: {
+      text: "Enter prison number"
+      }
+      }) }}
+      {% endset -%}
 
-    {% set ho2Html %}
-    {{ govukInput({
-    id: "ho2",
-    name: "ho2",
-    value: data['ho2'],
-    classes: "govuk-!-width-two-thirds",
-    label: {
-    text: "Enter Home Office Reference Number"
-    }
-    }) }}
-    {% endset -%}
+      {% set hoHtml %}
+      {{ govukInput({
+      id: "ho",
+      name: "ho",
+      value: data['ho'],
+      classes: "govuk-!-width-two-thirds",
+      label: {
+      text: "Enter CEPR"
+      }
+      }) }}
+      {% endset -%}
 
-    {% set urnHtml %}
-    {{ govukInput({
-    id: "ccrn",
-    name: "ccrn",
-    value: data['ccrn'],
-    classes: "govuk-!-width-two-thirds",
-    label: {
-    text: "Enter Court Case Reference Number"
-    }
-    }) }}
-    {% endset -%}
+      {% set ho2Html %}
+      {{ govukInput({
+      id: "ho2",
+      name: "ho2",
+      value: data['ho2'],
+      classes: "govuk-!-width-two-thirds",
+      label: {
+      text: "Enter Home Office Reference Number"
+      }
+      }) }}
+      {% endset -%}
 
-    {% set mrnHtml %}
-    {{ govukInput({
-    id: "mrn",
-    name: "mrn",
-    value: data['mrn'],
-    classes: "govuk-!-width-two-thirds",
-    label: {
-    text: "Enter Crown Court Case Reference Number"
-    }
-    }) }}
-    {% endset -%}
+      {% set urnHtml %}
+      {{ govukInput({
+      id: "ccrn",
+      name: "ccrn",
+      value: data['ccrn'],
+      classes: "govuk-!-width-two-thirds",
+      label: {
+      text: "Enter Court Case Reference Number"
+      }
+      }) }}
+      {% endset -%}
 
-    {% if (data['usertype'] == "Prison user") %}
+      {% set mrnHtml %}
+      {{ govukInput({
+      id: "mrn",
+      name: "mrn",
+      value: data['mrn'],
+      classes: "govuk-!-width-two-thirds",
+      label: {
+      text: "Enter Crown Court Case Reference Number"
+      }
+      }) }}
+      {% endset -%}
 
-    {{ govukInput({
-    label: {
-    text: "What is the device wearer's prison number?",
-    classes: "govuk-label--l",
-    isPageHeading: true
-    },
-    id: "event-name",
-    hint: {
-    text: "This is sometimes known as a ‘NOMIS number’ or ‘alpha number’. For example, A1234BC"
-    },
-    classes: "govuk-input--width-20",
-    name: "eventName"
-    }) }}
+      {% if (data['usertype'] == "Prison user") %}
 
-
-    {% elseif (data['usertype'] == "Youth user") %}
-
-
-    {{ govukCheckboxes({
-    name: "identity-numbers",
-    fieldset: {
-    legend: {
-    text: "What identity numbers do you have for the device wearer?",
-    classes: "govuk-fieldset__legend--l"
-    }
-    },
-    hint: {
-    text: "Select and enter all identity numbers that you have for the device wearer."
-    },
-    items: [
-
-    {
-    value: "Police National Computer (PNC)",
-    checked: (true if data['pnc'] !== NULL and data['pnc'] !== ''),
-    text: "Police National Computer (PNC)",
-    conditional: {
-    html: pncHtml
-    }
-    },
-
-    {
-    value: "Prison number",
-    checked: (true if data['prison'] !== NULL and data['prison'] !== ''),
-    text: "Prison number",
-    conditional: {
-    html: prisonHtml
-    }
-    }
-    ]
-    }) }}
+      {{ govukInput({
+      label: {
+      text: "What is the device wearer's prison number?",
+      classes: "govuk-label--l",
+      isPageHeading: true
+      },
+      id: "event-name",
+      hint: {
+      text: "This is sometimes known as a ‘NOMIS number’ or ‘alpha number’. For example, A1234BC"
+      },
+      classes: "govuk-input--width-20",
+      name: "eventName"
+      }) }}
 
 
+      {% elseif (data['usertype'] == "Youth user") %}
 
 
+      {{ govukCheckboxes({
+      name: "identity-numbers",
+      fieldset: {
+      legend: {
+      text: "What identity numbers do you have for the device wearer?",
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      hint: {
+      text: "Select and enter all identity numbers that you have for the device wearer."
+      },
+      items: [
 
-    {% elseif (data['usertype'] == "Probation user") %}
+      {
+      value: "Police National Computer (PNC)",
+      checked: (true if data['pnc'] !== NULL and data['pnc'] !== ''),
+      text: "Police National Computer (PNC)",
+      conditional: {
+      html: pncHtml
+      }
+      },
 
-
-    {{ govukCheckboxes({
-    name: "identity-numbers",
-    fieldset: {
-    legend: {
-    text: "What identity numbers do you have for the device wearer?",
-    classes: "govuk-fieldset__legend--l"
-    }
-    },
-    hint: {
-    text: "Select and enter all identity numbers that you have for the device wearer."
-    },
-    items: [
-
-
-    {
-    value: "Prison number",
-    checked: (true if data['prison'] !== NULL and data['prison'] !== ''),
-    text: "Prison number",
-    conditional: {
-    html: prisonHtml
-    }
-    },
-    {
-    value: "Delius ID",
-    checked: (true if data['delius'] !== NULL and data['delius'] !== ''),
-    text: "Case Reference Number (CRN)",
-    conditional: {
-    html: deliusHtml
-    }
-
-
-    }
-    ]
-    }) }}
+      {
+      value: "Prison number",
+      checked: (true if data['prison'] !== NULL and data['prison'] !== ''),
+      text: "Prison number",
+      conditional: {
+      html: prisonHtml
+      }
+      }
+      ]
+      }) }}
 
 
 
 
 
+      {% elseif (data['usertype'] == "Probation user") %}
+
+
+      {{ govukCheckboxes({
+      name: "identity-numbers",
+      fieldset: {
+      legend: {
+      text: "What identity numbers do you have for the device wearer?",
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      hint: {
+      text: "Select and enter all identity numbers that you have for the device wearer."
+      },
+      items: [
+
+
+      {
+      value: "Prison number",
+      checked: (true if data['prison'] !== NULL and data['prison'] !== ''),
+      text: "Prison number",
+      conditional: {
+      html: prisonHtml
+      }
+      },
+      {
+      value: "Delius ID",
+      checked: (true if data['delius'] !== NULL and data['delius'] !== ''),
+      text: "Case Reference Number (CRN)",
+      conditional: {
+      html: deliusHtml
+      }
+
+
+      }
+      ]
+      }) }}
 
 
 
-    {% elseif (data['usertype'] == "Court user") %}
 
-    {{ govukInput({
-    label: {
-    text: "What is the device wearer's Court Case Reference Number (CCRN)?",
-    classes: "govuk-label--l",
-    isPageHeading: true
-    },
-    id: "event-name",
-    classes: "govuk-input--width-20",
-    name: "eventName"
-    }) }}
 
-    <!--
+
+
+
+      {% elseif (data['usertype'] == "Court user") %}
+
+      {{ govukInput({
+      label: {
+      text: "What is the device wearer's Court Case Reference Number (CCRN)?",
+      classes: "govuk-label--l",
+      isPageHeading: true
+      },
+      id: "event-name",
+      classes: "govuk-input--width-20",
+      name: "eventName"
+      }) }}
+
+      <!--
     {{ govukCheckboxes({
           name: "identity-numbers",
           fieldset: {
@@ -269,22 +271,22 @@ Identity numbers - Electronic Monitoring Order
 
 -->
 
-    {% elseif (data['usertype'] == "Home Office user") %}
+      {% elseif (data['usertype'] == "Home Office user") %}
 
-    {{ govukInput({
-    label: {
-    text: "What is the device wearer's Compliance and Enforcement Person Reference (CEPR)?",
-    classes: "govuk-label--l",
-    isPageHeading: true
-    },
-    id: "event-name",
-    classes: "govuk-input--width-20",
-    name: "eventName"
-    }) }}
+      {{ govukInput({
+      label: {
+      text: "What is the device wearer's Compliance and Enforcement Person Reference (CEPR)?",
+      classes: "govuk-label--l",
+      isPageHeading: true
+      },
+      id: "event-name",
+      classes: "govuk-input--width-20",
+      name: "eventName"
+      }) }}
 
 
 
-    <!-- {{ govukCheckboxes({
+      <!-- {{ govukCheckboxes({
           name: "identity-numbers",
           fieldset: {
             legend: {
@@ -321,92 +323,92 @@ Identity numbers - Electronic Monitoring Order
 
 
 -->
-    {% else %}
+      {% else %}
 
 
-    {{ govukCheckboxes({
-    name: "identity-numbers",
-    fieldset: {
-    legend: {
-    text: "What identity numbers do you have for the device wearer?",
-    classes: "govuk-fieldset__legend--l"
-    }
-    },
-    hint: {
-    text: "Select and enter all identity numbers that you have for the device wearer."
-    },
-    items: [
+      {{ govukCheckboxes({
+      name: "identity-numbers",
+      fieldset: {
+      legend: {
+      text: "What identity numbers do you have for the device wearer?",
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      hint: {
+      text: "Select and enter all identity numbers that you have for the device wearer."
+      },
+      items: [
 
-    {
-    value: "Police National Computer (PNC)",
-    checked: (true if data['pnc'] !== NULL and data['pnc'] !== ''),
-    text: "Police National Computer (PNC)",
-    conditional: {
-    html: pncHtml
-    }
-    },
-    {
-    value: "National Offender Management Information System (NOMIS)",
-    checked: (true if data['nomis'] !== NULL and data['nomis'] !== ''),
-    text: "National Offender Management Information System (NOMIS)",
-    conditional: {
-    html: nomisHtml
-    }
-    },
-    {
-    value: "Prison number",
-    checked: (true if data['prison'] !== NULL and data['prison'] !== ''),
-    text: "Prison number",
-    conditional: {
-    html: prisonHtml
-    }
-    },
-    {
-    value: "Delius ID",
-    checked: (true if data['delius'] !== NULL and data['delius'] !== ''),
-    text: "Case Reference Number (CRN)",
-    conditional: {
-    html: deliusHtml
-    }
-    },
-
-
-    {
-    value: "Compliance and Enforcement Person Reference (CEPR)",
-    checked: (true if data['ho'] !== NULL and data['ho'] !== ''),
-    text: "Compliance and Enforcement Person Reference (CEPR)",
-    conditional: {
-    html: hoHtml
-    }
-    },
-    {
-    value: "Court Case Reference Number (CCRN)",
-    checked: (true if data['ccrn'] !== NULL and data['ccrn'] !== ''),
-    text: "Court Case Reference Number",
-    conditional: {
-    html: urnHtml
-    }
-    }
-    ]
-    }) }}
-
-    {% endif %}
+      {
+      value: "Police National Computer (PNC)",
+      checked: (true if data['pnc'] !== NULL and data['pnc'] !== ''),
+      text: "Police National Computer (PNC)",
+      conditional: {
+      html: pncHtml
+      }
+      },
+      {
+      value: "National Offender Management Information System (NOMIS)",
+      checked: (true if data['nomis'] !== NULL and data['nomis'] !== ''),
+      text: "National Offender Management Information System (NOMIS)",
+      conditional: {
+      html: nomisHtml
+      }
+      },
+      {
+      value: "Prison number",
+      checked: (true if data['prison'] !== NULL and data['prison'] !== ''),
+      text: "Prison number",
+      conditional: {
+      html: prisonHtml
+      }
+      },
+      {
+      value: "Delius ID",
+      checked: (true if data['delius'] !== NULL and data['delius'] !== ''),
+      text: "Case Reference Number (CRN)",
+      conditional: {
+      html: deliusHtml
+      }
+      },
 
 
-    {% from "govuk/components/button/macro.njk" import govukButton %}
-
-    <div class="govuk-button-group">
-      {{ govukButton({
-      text: "Save and continue"
+      {
+      value: "Compliance and Enforcement Person Reference (CEPR)",
+      checked: (true if data['ho'] !== NULL and data['ho'] !== ''),
+      text: "Compliance and Enforcement Person Reference (CEPR)",
+      conditional: {
+      html: hoHtml
+      }
+      },
+      {
+      value: "Court Case Reference Number (CCRN)",
+      checked: (true if data['ccrn'] !== NULL and data['ccrn'] !== ''),
+      text: "Court Case Reference Number",
+      conditional: {
+      html: urnHtml
+      }
+      }
+      ]
       }) }}
 
-      {{ govukButton({
-      text: "Save as draft",
-      href: '../new-form',
-      classes: "govuk-button--secondary"
-      }) }}
+      {% endif %}
 
-    </div>
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+        text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+        text: "Save as draft",
+        href: '../new-form',
+        classes: "govuk-button--secondary"
+        }) }}
+
+      </div>
 
     </form>
 
