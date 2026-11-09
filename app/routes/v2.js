@@ -712,8 +712,6 @@ module.exports = () => {
         response.redirect("/v2/device-wearer/personal-details")
     } else if (usertype == "Court user") {
         response.redirect("/v2/device-wearer/personal-details")
-    } else if (usertype == "Court user") {
-        response.redirect("/v2/device-wearer/personal-details")
     } else {
         response.redirect("/v2/device-wearer/device-wearer-confirm")
     }
