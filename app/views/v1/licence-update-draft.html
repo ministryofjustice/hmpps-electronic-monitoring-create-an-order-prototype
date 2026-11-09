@@ -13,95 +13,167 @@
     <div class="govuk-grid-column-two-thirds">
 
 
-     <form class="form" action="/licence-update-draft" method="post">
 
       <h1 class="govuk-heading-l">
   <!--    <span class="govuk-caption-l">Electronic monitoring required</span>-->
         A new version of the licence is available
        </h1>
 
-  <p>The new version of the licence for {{ data['fullname'] or "David Murphy" }} was approved in Create and Vary a Licence on 4 November 2026. It may or may not contain changes to the monitoring conditions.</p>
-
-    <!--    <p>The latest version of the licence may or may not include changes to the monitoring conditions.</p>
-
-      <p>Conditions that have changed:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>Curfew monitoring</li>
-        </ul> -->
+       <p>The new version of the licence for {{ data['fullname'] or "David Murphy" }} was approved on 4 November 2026.</p>
+   
+       <p>Would you like to pull through the following information from the new licence?</p>
 
 
-      <p>Updating this order with the electronic monitoring conditions from the licence will delete all the existing monitoring types and replace them with the ones in the licence.</p>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+           <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What monitoring does the device wearer need?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Curfew<br>
+              {{ data['monitoringtype2'] }}
+            </dd>
+           
+          </div>    
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What date does curfew start?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfewstart-date'] or '5/11/2026' }} 
+            </dd>
+           
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What date does curfew end? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfewend-date'] or '5/11/2027' }} 
+            </dd>
+          
+            
+          </div>
 
-      
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             On the day of release, what time does the curfew start?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['release-starttime-hours'] or '19' }}:{{ data['release-starttime-minutes'] or '00' }}
+            </dd>
+           
+          </div>
+      <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              On the day of release, what time does the curfew end?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['release-endtime-hours'] or "07" }}:{{ data['release-endtime-hours'] or '00' }} 
+            </dd>
+           
+          </div>
        
 
-      
-       <p>Before you submit the form, check that all the changes are correct.</p>
-
- <!-- 
-
-  <p>This latest licence was approved on 25 October 2026.</p>
-        <p>It may or may not contain changes to the monitoring conditions.</p>
-
-
-
-
-  
-
-    
-
-    <p class="govuk-body">If any exclusion zones have been added without a map:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>Check that they can be monitored electronically. For example, "all Tesco stores in the UK" cannot be monitored electronically. </li>
-          <li>Remove any exclusion zones that cannot be electronically monitored from the form.</li>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Curfew timetable
+              
+            </dt>
+            <dd class="govuk-summary-list__value">
+             
+                 {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Monday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Tuesday
+                {% else %} 
+                    Monday 19:00 until 7:00 
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Tuesday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Wednesday
+                {% else %} 
+                    Tuesday 19:00 until 7:00 
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Wednesday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Thursday
+                {% else %} 
+                    Wednesday 19:00 until 7:00 
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Thursday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Friday
+                {% else %} 
+                    Thursday 19:00 until 7:00 
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Friday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Saturday
+                {% else %} 
+                    Friday 19:00 until 7:00 
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Saturday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Sunday
+                {% else %} 
+                    Saturday 19:00 until 7:00 
+                 {% endif %} 
+                 <br>
+                  {% if (data['curfewstandard'] == "false") %}
+                     {{ data['curfewchange-starttime-hours']}}:{{ data['curfewchange-starttime-minutes']}} Sunday until {{ data['curfewchange-endtime-hours']}}:{{ data['curfewchange-endtime-minutes']}} Monday
+                {% else %} 
+                    Sunday 19:00 until 7:00 
+                 {% endif %} 
+            </dd>
           
-        </ul>
+          </div>
 
--->
+                <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+             Do you want to change the standard curfew address boundary?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfew-boundary-question'] or "No" }}
+               
+            </dd>
+           
+          </div>  
 
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What date does trail monitoring start?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfewstart-date'] or '5/11/2026' }} 
+            </dd>
+           
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              What date does trail monitoring end? 
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['curfewend-date'] or '5/11/2027' }} 
+            </dd>
+          
+            
+          </div>
 
-
-
-
-
-     {{ govukRadios({
-          classes: "govuk-radios--inline",
-          name: "licenceupdate",
-          fieldset: {
-            legend: {
-              text: "Do you want to update this order with the monitoring conditions from the licence?",
-              isPageHeading: false,
-              classes: "govuk-fieldset__legend--s"
-            }
-          },
-   
-          items: [
-            {
-              value: "Yes",
-              checked: (true if data['licenceupdate'] == "Yes"),
-              text: "Yes"
-            },
-            {
-              value: "No",
-              checked: (true if data['licenceupdate'] == "No"),
-              text: "No"
-            }
-          ]
-          }) }}
+        </dl>
 
 
 
 
            <div class="govuk-button-group">
         {{ govukButton({
-          text: "Save and continue"
+          text: "Update the order with this information",
+          href: ('/v1/new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=false&section-5-complete=false&newform=true&error=false&monitoringtype=Curfew&monitoringtype2=Trail monitoring&cvl-update=Yes&licencedate=25 October 2026&licenceupdate=Yes' )
         }) }}
 
-<!--{{ govukButton({
-          text: "Save as draft",
-           href: ('../submitted-form' if data['view'] == 'false' else '../new-form' ),
+      {{ govukButton({
+          text: "Do not update",
+           href: ('/v1/new-form?section-1-complete=true&section-2-complete=true&section-3-complete=true&section-4-complete=true&section-5-complete=true&newform=true&error=false&monitoringtype=Curfew&monitoringtype2=&cvl-update=no&licencedate=25 October 2026&licenceupdate=No' ),
           classes: "govuk-button--secondary"
-        }) }}-->
+        }) }}
 
       </div>
 
@@ -113,3 +185,4 @@
         </div>
       </div>
 {% endblock %}
+
