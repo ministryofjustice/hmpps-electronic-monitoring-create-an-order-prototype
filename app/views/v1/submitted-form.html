@@ -696,6 +696,15 @@
               text: "Additional documents"
             },
             href: ("attachments/check-answers-view" if data['section-5-complete'] == 'true' else "attachments/check-licence"),
+            classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'Yes'),
+           status: ( completedSectionStatus if data['section-5-complete'] == 'true' else incompleteStatus)
+          },
+           {
+            title: {
+              text: "Additional documents"
+            },
+            href: ("attachments/check-answers-view" if data['section-5-complete'] == 'true' else "attachments/licence"),
+            classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'No'),
            status: ( completedSectionStatus if data['section-5-complete'] == 'true' else incompleteStatus)
           },
           {
@@ -767,7 +776,7 @@
             title: {
               text: "Additional documents"
             },
-            href: ("attachments/check-answers-view"  if data['section-5-complete'] == 'true' else "attachments/check-licence"),
+            href: ("attachments/check-answers-view"  if data['section-5-complete'] == 'true' else "attachments/licence"),
             classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'No'),
            status: ( completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
           },

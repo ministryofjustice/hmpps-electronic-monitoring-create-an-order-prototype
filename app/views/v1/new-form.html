@@ -197,7 +197,7 @@
             title: {
               text: "Additional documents"
             },
-            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/check-licence-draft?cya5=false"),
+            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/licence?cya5=false"),
             classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'No'),
             status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
           }
@@ -252,7 +252,7 @@
             title: {
               text: "Additional documents"
             },
-            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/check-licence-draft?cya5=false"),
+            href: ("attachments/check-answers" if data['section-5-complete'] == 'true' else "attachments/licence?cya5=false"),
             classes: ("govuk-visually-hidden" if data['licenceupdate'] == 'No'),
             status: (completedStatus if data['section-5-complete'] == 'true' else incompleteStatus)
           },
